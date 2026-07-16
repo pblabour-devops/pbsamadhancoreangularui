@@ -15,7 +15,6 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
   styleUrl: './claim-under-code-on-wages.component.css',
 })
 export class ClaimUnderCodeOnWagesComponent {
-  @Output() appSteps = new EventEmitter<void>();
   @Output() claimUnderCodeOnWagesDataEvent  = new EventEmitter<IComplaint_Claim_CodeOnWage>();
   @Input() claimUnderCodeOnWagesApiData:any;
   protected ngUnsubscribe: Subject<void> = new Subject<void>();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -15,6 +15,7 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
   styleUrl: './minimum-wages-not-paid.component.css',
 })
 export class MinimumWagesNotPaidComponent {
+@Output() minimumWagesDataEvent  = new EventEmitter<IComplaint_MinimumWagesNotPaid>();
 protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
   public appFormStepsList: any[] = [];
@@ -39,16 +40,16 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
       id: [0, Validators.required],
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
-      detailAboutTheClaim: ['', [Validators.required, Validators.min(0)]],
+      detailAboutTheClaim: [''],
       Complaint_MinimumWagesNotPaidDetails: this.fb.array([]),
-      projectSiteRefId : ['', Validators.required],
-      applicationPurposeType : ['', Validators.required],
-      iPin: ['', Validators.required],
-      investPunjab_AppId: ['', Validators.required],
-      projectSiteVersion: ['', Validators.required],
-      toDoActivityModeType: ['', Validators.required],
-      rootActivityRefId: ['', Validators.required],
-      toDoActivityCategoryType: ['', Validators.required]
+      projectSiteRefId : [0, Validators.required],
+      applicationPurposeType : [0, Validators.required],
+      iPin: [0, Validators.required],
+      investPunjab_AppId: [0, Validators.required],
+      projectSiteVersion: [1, Validators.required],
+      toDoActivityModeType: [1, Validators.required],
+      rootActivityRefId: ['de', Validators.required],
+      toDoActivityCategoryType: [0, Validators.required]
     }
   ) as TForm<IComplaint_MinimumWagesNotPaid>;
 
@@ -58,6 +59,10 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
   ngOnInit(){
     this.addMore();
+      this.Input_Form.valueChanges.subscribe(value => {
+      console.log('asdf')
+      this.minimumWagesDataEvent.emit(value);
+    });
   }
 
   ngAfterViewInit() {
@@ -95,6 +100,11 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   addMore(): void {
     this.complaintDetails.push(this.createComplaintDetail());
   }
+
+    public isFormValid(): boolean {
+    return this.Input_Form.valid;
+}
+
 
   removeRow(index: number): void {
     this.complaintDetails.removeAt(index);

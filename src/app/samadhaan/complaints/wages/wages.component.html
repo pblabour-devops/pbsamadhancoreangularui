@@ -14,8 +14,8 @@
         </div>
           <app-formtab [appSteps]="appFormStepsList"></app-formtab>
 
-          <app-claim-under-code-on-wages [claimUnderCodeOnWagesApiData]="claimUnderCodeOnWagesApiData" (claimUnderCodeOnWagesDataEvent)="claimUnderCodeOnWagesDataEventListener($event)" (appSteps)="appStepInfoDataEventListener($event)"></app-claim-under-code-on-wages>
-          <app-minimum-wages-not-paid ></app-minimum-wages-not-paid>
+          <app-claim-under-code-on-wages [claimUnderCodeOnWagesApiData]="claimUnderCodeOnWagesApiData" (claimUnderCodeOnWagesDataEvent)="claimUnderCodeOnWagesDataEventListener($event)"></app-claim-under-code-on-wages>
+          <app-minimum-wages-not-paid (minimumWagesDataEvent)="minimumWagesDataDataEventListener($event)" ></app-minimum-wages-not-paid>
   
 
     <!-- Action Buttons -->

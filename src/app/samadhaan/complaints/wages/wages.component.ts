@@ -6,9 +6,10 @@ import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
-import { IComplaint_Claim_CodeOnWage } from '../../samadhaan-typed-modelts';
+import { IComplaint_Claim_CodeOnWage, IComplaint_MinimumWagesNotPaid } from '../../samadhaan-typed-modelts';
 import { ClaimUnderCodeOnWagesComponent } from './claim-under-code-on-wages/claim-under-code-on-wages.component';
 import Swal from 'sweetalert2';
+import { MinimumWagesNotPaidComponent } from './minimum-wages-not-paid/minimum-wages-not-paid.component';
 
 @Component({
   selector: 'app-wages',
@@ -20,7 +21,9 @@ export class WagesComponent {
 protected ngUnsubscribe: Subject<void> = new Subject<void>();
   @ViewChild(ClaimUnderCodeOnWagesComponent)
   claimCodeOnWagesComponent: ClaimUnderCodeOnWagesComponent;
-
+  @ViewChild(MinimumWagesNotPaidComponent)
+  MinimumWagesNotPaidComponent: MinimumWagesNotPaidComponent;
+  minimumWagesDetailData : IComplaint_MinimumWagesNotPaid
   public appFormStepsList: any[] = [];
   public paramInfo: any;
   public parmamEncodedinfo: string;
@@ -79,6 +82,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: GenericFormModel<IComplaint_Claim_CodeOnWage>) => {
       this.claimUnderCodeOnWagesApiData = data
+      this.appFormStepsList = data.appFormStepsList
     })
   }
 
@@ -95,30 +99,53 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
   onSubmit(): void {
-   if(!this.claimCodeOnWagesComponent?.isFormValid()){
-    Swal.fire({ icon: 'warning', text: 'Please fill Claim Under code on wages completely.' });
+  //  if(!this.claimCodeOnWagesComponent?.isFormValid()){
+  //   Swal.fire({ icon: 'warning', text: 'Please fill Claim Under code on wages completely.' });
+  //   return;
+  //  }
+   if(!this.MinimumWagesNotPaidComponent?.isFormValid()){
+    Swal.fire({ icon: 'warning', text: 'Please fill Minimum Wages completely.' });
     return;
    }
-   console.log('prama info', this.paramInfo)
-   this.codeOnWagesDetailData.appRefId = this.paramInfo?.appRefId;
-   this.codeOnWagesDetailData.projectSiteRefId=this.paramInfo?.projectSiteRefId;
-   this.codeOnWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
-   this.codeOnWagesDetailData.iPin=this.paramInfo?.iPin;
-   this.codeOnWagesDetailData.investPunjab_AppId=this.paramInfo?.investPunjab_AppId;
-   this.codeOnWagesDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
-   this.codeOnWagesDetailData.toDoActivityModeType=1;
-   this.codeOnWagesDetailData.rootActivityRefId='default value';
-   this.codeOnWagesDetailData.toDoActivityCategoryType=2006;
-   this.codeOnWagesDetailData.applicationType = this.paramInfo.applicationType;
+   console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+  //  this.codeOnWagesDetailData.appRefId = this.paramInfo?.appRefId;
+  //  this.codeOnWagesDetailData.projectSiteRefId=this.paramInfo?.projectSiteRefId;
+  //  this.codeOnWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+  //  this.codeOnWagesDetailData.iPin=this.paramInfo?.iPin;
+  //  this.codeOnWagesDetailData.investPunjab_AppId=this.paramInfo?.investPunjab_AppId;
+  //  this.codeOnWagesDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+  //  this.codeOnWagesDetailData.toDoActivityModeType=1;
+  //  this.codeOnWagesDetailData.rootActivityRefId='default value';
+  //  this.codeOnWagesDetailData.toDoActivityCategoryType=2006;
+  //  this.codeOnWagesDetailData.applicationType = this.paramInfo.applicationType;
 
-   console.log('codeOnWagesDetailData', this.codeOnWagesDetailData)
+  //  console.log('codeOnWagesDetailData', this.codeOnWagesDetailData)
 
-    this.appHttpRequestHandlerService
-      .httpPost(this.codeOnWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_Claim_CodeOnWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
-        next: () => {
+  //   this.appHttpRequestHandlerService
+  //     .httpPost(this.codeOnWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_Claim_CodeOnWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+  //       next: () => {
+
+        this.minimumWagesDetailData.appRefId = this.paramInfo?.appRefId;
+        this.minimumWagesDetailData.projectSiteRefId=this.paramInfo?.projectSiteRefId;
+        this.minimumWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        this.minimumWagesDetailData.iPin=this.paramInfo?.iPin;
+        this.minimumWagesDetailData.investPunjab_AppId=this.paramInfo?.investPunjab_AppId;
+        this.minimumWagesDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        this.minimumWagesDetailData.toDoActivityModeType=1;
+        this.minimumWagesDetailData.rootActivityRefId='default value';
+        this.minimumWagesDetailData.toDoActivityCategoryType=2007;
+        this.minimumWagesDetailData.applicationType = this.paramInfo.applicationType;
+        delete this.minimumWagesDetailData.Complaint_MinimumWagesNotPaidDetails;
+        console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+        this.appHttpRequestHandlerService.httpPost(this.minimumWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_MinimumWagesNotPaid','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+         next: () => {
+
+         }})
+      
+        
          
-        }
-      });
+  //       }
+  //     });
 
   }
 
@@ -127,9 +154,11 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   this.codeOnWagesDetailData = data
   }
 
-  appStepInfoDataEventListener(event:any){
-  this.appFormStepsList = event
+  minimumWagesDataDataEventListener(data: IComplaint_MinimumWagesNotPaid){
+    console.log('data',data)
+    this.minimumWagesDetailData = data
   }
+
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();

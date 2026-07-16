@@ -12,7 +12,7 @@
 
       <div class="section-card">
 
-        <h5>A. Claim period for which minimum wages not paid: *</h5>
+        <h5  class="required">A. Claim period for which minimum wages not paid: *</h5>
 
       <!-- Discharge/Dismissal Question -->
     <div formArrayName="Complaint_MinimumWagesNotPaidDetails">
@@ -23,7 +23,7 @@
         [formGroupName]="i">
 
         <div class="col">
-        <label class="required">From</label>
+        <label>From</label>
         <input type="date" class="form-control" formControlName="fromDate">
 
         <div
@@ -34,7 +34,7 @@
         </div>
 
         <div class=" col">
-        <label class="required">To</label>
+        <label >To</label>
         <input type="date" class="form-control" formControlName="toDate">
 
         <div
@@ -45,7 +45,7 @@
         </div>
 
         <div class=" col">
-        <label class="required">Amount</label>
+        <label >Amount</label>
         <input type="number" class="form-control" formControlName="amount">
 
         <div
@@ -111,16 +111,16 @@
       </div> -->
 
         <div class=" col">
-        <label class="required">Total relief sought</label>
-        <input  type="text" class="form-control" formControlName="totalReliefSought"/>
+        <label >Total relief sought</label>
+        <input  type="number" class="form-control" formControlName="totalReliefSought"/>
         <div *ngIf="Input_Form.get('totalReliefSought').errors?.required && Input_Form.get('totalReliefSought').touched" class="text-danger">
             Required
         </div>
         </div>
 
           <div class=" col">
-        <label class="required">Compensation Sought</label>
-        <input  type="text" class="form-control" formControlName="compensationSought"/>
+        <label >Compensation Sought</label>
+        <input  type="number" class="form-control" formControlName="compensationSought"/>
         <div *ngIf="Input_Form.get('compensationSought').errors?.required && Input_Form.get('compensationSought').touched" class="text-danger">
             Required
         </div>
@@ -129,9 +129,6 @@
            <div class=" col">
         <label>Details about the claim (s) (if any)</label>
         <input  type="text" class="form-control" formControlName="detailAboutTheClaim"/>
-        <div *ngIf="Input_Form.get('detailAboutTheClaim').errors?.required && Input_Form.get('detailAboutTheClaim').touched" class="text-danger">
-            Required
-        </div>
         </div>
     </div>
     </div>
