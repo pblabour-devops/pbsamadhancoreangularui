@@ -1,0 +1,42 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card user-profile-list shadow">
+                <div class="card-header bg-light text-center">
+                    <h5 class="mb-0 ">Already Tried Transactions Details</h5>
+                </div>
+            <div class="table-responsive">
+                    <table class="table table-sm table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Transaction Initalization Date</th>
+                                <th>Transaction request Ref. Num.</th>
+                                <th>Payment Mode</th>
+                                <th>Payment Gateway Details</th>
+                                <th>Amount</th>
+                                <th>Transaction Status</th>
+                                <th>Transaction Status Message</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="appFeeTransactions?.length>0">
+                            <tr *ngFor="let item of appFeeTransactions; let ndx = index">
+                                <td>{{ndx+1}}</td>
+                                <td>{{item.transactionInitializationDate | date:'medium'}}</td>
+                                <td>{{item.uniquePaymentGatewayTransactionId}}</td>
+                                <td>{{item.paymentModeType}}</td>
+                                <td>{{item.paymentGatewayType}}_{{item.paymentTreasuryType}}</td>
+                                <td>{{item.amountCalculated}}</td>
+
+                                <td><span class="badge" [ngClass]="item.transactionFinalStatusType == 1 ? 'badge-success' : 'badge-danger'">{{item.transactionFinalStatusTypeDesc}}</span></td>
+                                <td>{{item.responseMessage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

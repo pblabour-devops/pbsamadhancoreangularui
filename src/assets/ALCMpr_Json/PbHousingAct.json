@@ -1,0 +1,59 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 16,
+      "SectionTitle": "THE PUNJAB INDUSTRIAL HOUSING ACT, 1956.",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "The amount of proceeds to start at the beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": " The amount you make during the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Total Assessable Amount the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Recovered amount",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 5,
+              "LableTitle": "Total recoverable amount pending at the end of the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 6,
+              "LableTitle": "Number of houses occupied by unauthorized sellers",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+            
+          ]
+        }
+      ]
+    }
+  }
+]

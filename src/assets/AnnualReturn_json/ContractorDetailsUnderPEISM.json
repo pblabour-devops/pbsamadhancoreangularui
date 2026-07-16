@@ -1,0 +1,81 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 16,
+      "SectionTitle": "Particulars of Contractors and Contract Labour",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "nameOfContractor",
+                "ColumnTitle": "Name of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              
+              {
+                "ColumnId": "Address",
+                "ColumnTitle": "Address of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "WorkersRecruited",
+                "ColumnTitle": "Workmen are to be recruited or employed",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "WorkersEmployed",
+                "ColumnTitle": "Be employed on any day through each contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "DateOfCommencement",
+                "ColumnTitle": "Establishment date and commencement of work under each contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "DateofTermination",
+                "ColumnTitle": "Estimated Date of Termination of employment of migrant workmen under each contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "WorkedDays",
+                "ColumnTitle": "No. of days Worked",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "MandaysWorked",
+                "ColumnTitle": "No. of mandays Worked",
+                "DataType": "Number",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "nameOfContractor": "",
+                "Address": "",
+                "WorkersRecruited": "",
+                "WorkersEmployed": "",
+                "DateOfCommencement": "",
+                "DateofTermination": "",
+                "WorkedDays": "",
+                "MandaysWorked": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
+

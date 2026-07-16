@@ -1,0 +1,100 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 9.1,
+      "SectionTitle": "Payment of Gratuity Act,1972",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Pending at the beginning of the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Received During the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Decided",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Awarded amount of disposed cases in the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 5,
+              "LableTitle": "Pending at the end of  the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 6,
+              "LableTitle": "Less Than Six Months",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 7,
+              "LableTitle": "6 to 12 Months",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 8,
+              "LableTitle": "1 to 2 Years",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 9,
+              "LableTitle": "2 to 3 Years",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 10,
+              "LableTitle": "3 to 4 Years",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 11,
+              "LableTitle": "4 to 5 Years",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 12,
+              "LableTitle": "Above 5 years",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

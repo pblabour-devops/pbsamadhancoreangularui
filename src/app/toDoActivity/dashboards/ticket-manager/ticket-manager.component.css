@@ -1,0 +1,152 @@
+.activity-expanded {
+    display: table-row;
+  }
+  
+  .activity-collapsed {
+    display: none;
+  }
+  
+  ::ng-deep .my-class .modal-dialog {
+    max-width: 80%;
+    width: 80%;
+  }
+  
+  ::ng-deep .error-message .modal-dialog {
+    max-width: 60%;
+    width: 60%;
+  }
+  
+  .stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+  
+  .stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #808b96;
+    width: 100%;
+    top: 24px;
+    left: -50%;
+    z-index: 2;
+  }
+  
+  .stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #808b96;
+    width: 100%;
+    top: 24px;
+    left: 50%;
+    z-index: 2;
+  }
+  
+  .stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #808b96;
+    margin-bottom: 6px;
+    font-size: 34px;
+    color: white;
+  }
+  
+  .stepper-item.active {
+    font-weight: bold;
+  }
+  
+  .stepper-item.completed .step-counter {
+    background-color: #1e8449;
+    color: white;
+  }
+  
+  .stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #7dcea0;
+    width: 100%;
+    top: 24px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  
+  .stepper-item.failed .step-counter {
+    background-color: #d35400;
+    color: white;
+  }
+  
+  .stepper-item.failed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #ec7063;
+    width: 100%;
+    top: 24px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .stepper-item.skipped .step-counter {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .stepper-item.skipped::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #fad7a0;
+    width: 100%;
+    top: 24px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .step-name {
+    padding: 7px;
+    text-align: center;
+  }
+  
+  
+  .stepper-item:first-child::before {
+    content: none;
+  }
+  
+  .stepper-item:last-child::after {
+    content: none;
+  }
+  
+  .icon-additional {
+    line-height: 0px !important;
+  }
+  .time-stemp-sec{
+    font-style: italic;
+    color: #808b96;
+  }
+  
+  .step-name-sec{
+    color: #34495e;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .step-complete-desc--sec{
+    color:#2c3e50;
+  }

@@ -1,0 +1,92 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 9,
+      "SectionTitle": "Shops and for other Establishments",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "MAdults", "ColumnTitle": "Adults (Men)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "FAdults", "ColumnTitle": "Adults (Women)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "AdoloMale", "ColumnTitle": "Adoloscents (Male)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "AdoloFemale", "ColumnTitle": "Adoloscents (Female)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Boy", "ColumnTitle": "Children (Boys)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Girl", "ColumnTitle": "Children (Girls)", "DataType": "Number", "IsMendatory": false }
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. Average Daily no. of Workers Employed:" }
+     
+              
+            ]
+          }
+        },
+       
+        
+       
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adultss", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adoloscentss", "ColumnTitle": "Adoloscents", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. No. of mandays worked during the year(total attendances):" }
+     
+              
+            ]
+          }
+        },
+         {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. Total Number of man hours worked(including overtime)" }
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 4,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+               ],
+            "Rows": [
+              { "category": "1. Normal hours worked per week)" }
+     
+              
+            ]
+          }
+        }
+     ]
+    }
+  }
+]

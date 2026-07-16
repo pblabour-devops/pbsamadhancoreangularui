@@ -1,0 +1,116 @@
+<div class="col-xl-6" id="feeReceiptSection" style="margin-left: auto; margin-right: auto;">
+    <h6 class="text-center mb-3"></h6>
+    <div class="card user-card user-card-2 shape-right background-image" style="padding: 30px; margin-top: 70px;" id="receipt">
+        <div class="card-header border-0 p-2 pb-0">
+        </div>
+        <div class="card-body pt-0">
+            <div class="user-about-block">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="row align-items-center">
+                            <div class="col-auto col pr-0">
+                                <div class="change-profile">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="profile-dp">
+                                                <img class="img-radius img-fluid wid-100" src="assets/images/icon/govt-of-punjab.png" alt="User image">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="mb-0" style="font-size: 22px;"><b>Application Online Fee Payment Receipt</b>
+                            </div>
+                        </div>
+                        <p style="text-align: right; font-size: 15px;">{{ currentDate | date:'medium'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table invoice-detail-table">
+                        <tbody>
+                            
+                            <tr class="col-sm-12">
+                                <td class="col-3">
+                                    <b>
+                                        File Number :
+                                    </b>
+                                </td>
+                                <td class="col-3">
+                                    {{receiptData?.publicAppRefNum}} 
+                                </td>
+                                <td class="col-xl-3">
+                                    <b>
+                                        Establishment Name :
+                                    </b>
+                                </td>
+                                <td class="col-xl-3"> {{receiptData?.establishmentName}} </td>
+                            </tr>
+
+                            <tr class="col-sm-12">
+                                <td class="col-3">
+                                    <b>
+                                        Application Name :
+                                    </b>
+                                </td>
+                                <td class="col-3">
+                                    {{receiptData?.applicationTypeDesc}}
+                                </td>
+                                <td class="col-xl-3">
+                                    <b>
+                                        Application Type :
+                                    </b>
+                                </td>
+                                <td class="col-xl-3">{{receiptData?.applicationPurposeTypeDesc}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <table class="table table-bordered invoice-detail-table">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Date</th>
+                                <th>Fee Name</th>
+                                <th>Transaction Id</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of receiptData?.appFeePaymentReceiptData;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.bankSettlementOn | date:'medium'}}</td>
+                                <td>{{item.feeHeaderTitle}}</td>
+                                <td>{{item.uniquePaymentGatewayTransactionId}}</td>
+                                <td>{{item.amount  | currency:"INR":"symbol"}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right" colspan="4">Net Amouunt:</th>
+                                <th >{{receiptData?.grandTotal  | currency:"INR":"symbol"}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table invoice-detail-table">
+                        <tbody>
+                            <tr class="col-sm-12">
+                                <td class="col-xl-6">
+                                    *This eReceipt produced by <b>eLabour</b> portal of Department of Labour, Punjab and not required signature.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 invoice-btn-group text-center">
+            <button type="button" class="btn waves-effect waves-light btn-success btn-print-invoice" (click)="downloadPdf()"><i class="feather icon-download"></i> Download Receipt</button>
+            <button type="button" style="margin-left: 10px;" class="btn waves-effect waves-light btn-primary homeButtonClick" (click)="homeButtonClick()"><i class="feather icon-home"></i> Go To Home</button>
+        </div>
+    </div>
+</div>

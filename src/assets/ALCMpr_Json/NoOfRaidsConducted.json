@@ -1,0 +1,72 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 25,
+      "SectionTitle": "Number of raids conducted under THE BONDED LABOUR SYSTEM (ABOLITION) ACT, 1976",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Raids and Releases Summary",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "complaintsReceivedHighCourt",
+                "ColumnTitle": "Complaint received from High Court/NHRC/District Administration/Head office",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "raidLocation",
+                "ColumnTitle": "Raid Location",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "InspDate",
+                "ColumnTitle": "Inspection Date",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "violationFound",
+                "ColumnTitle": "Violation Found (Yes/No)",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "ActSelect",
+                "ColumnTitle": "Under which Act (PWA or MWA or NFHA or ISMW or PBA or CLA)",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "BondedLabourers",
+                "ColumnTitle": "Whether Bonded labourers found or not (Yes/No)",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "CertificateIssued",
+                "ColumnTitle": "If found, number of release certificate issued",
+                "DataType": "Number",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "complaintsReceivedHighCourt": "",
+                "raidLocation": "",
+                "InspDate": "",
+                "violationFound": "",
+                "ActSelect": "",
+                "BondedLabourers": "",
+                "CertificateIssued": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
+

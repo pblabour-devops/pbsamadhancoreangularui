@@ -1,0 +1,74 @@
+/* Remove default bullets */
+ul, #myUL {
+    list-style-type: none;
+  }
+  
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the caret/arrow */
+  .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+  }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+  
+  /* Hide the nested list */
+  .nested {
+    display: none;
+  }
+  
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  }
+
+  .text-application-name{
+    font-size: 22px;
+    font-weight: bold;
+    color: #d35400;
+  }
+
+  .text-application-purpose-name{
+    font-size: 20px;
+    font-weight: bold;
+    color: #27ae60;
+  }
+
+  .text-activity-category-name{
+    font-size: 18px;
+    font-weight: bold;
+    color: #8e44ad;
+  }
+  .text-activity-mode-name{
+    font-size: 16px;
+    font-weight: bold;
+    color: #3498db;
+    
+  }
+  .text-activity-code-name{
+    font-size: 14px;
+    font-weight: bold;
+    color: #78281f;
+    margin-top: 8px;
+  }
+  .code-type-name{
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c3e50;
+  }

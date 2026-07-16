@@ -1,0 +1,258 @@
+<div class="pcoded-main-container">
+<div class="pcoded-content">
+<div class="card" >
+<div class="m-2">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+
+   <!-- Title bar -->
+  <div class="title-bar">
+    Application for Your Complaint
+  </div>
+
+
+    <!-- General Information label -->
+    <div class="general-info-label">
+      General Information <span class="required">*</span>
+    </div>
+      <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+
+  <!-- Basic / General Info -->
+  <div class="card-body" style="margin-top: 0px;">
+
+
+
+ <div class="section-card">
+    <h5 class="section-title">Worker Details</h5>
+    <div class="row">
+    <div class="col-md-6 mb-4 ">
+      <label class="form-label fw-semibold">
+        Name of Worker/Employee<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+       />
+        <div class="invalid-feedback">
+            Name is required
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 ">
+      <label class="form-label fw-semibold">
+        Gender<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="gender"
+        class="form-control"
+        [class.is-invalid]="Input_Form.get('gender')?.touched && Input_Form.get('gender')?.invalid">
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let g of genderOptions" [value]="g">{{ g }}</option>
+      </select>
+      <div class="invalid-feedback">
+        Gender is required
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Designation<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="designation"
+        class="form-control"
+        [class.is-invalid]="Input_Form.get('designation')?.touched && Input_Form.get('designation')?.invalid" />
+      <div class="invalid-feedback">
+        Designation is required
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">Marital Status</label>
+      <select formControlName="maritalStatus" class="form-control">
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let m of maritalStatusOptions" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Mobile Number<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="mobileNumber"
+        class="form-control"
+        maxlength="10"
+        [class.is-invalid]="Input_Form.get('mobileNumber')?.touched && Input_Form.get('mobileNumber')?.invalid" />
+      <div class="invalid-feedback">
+        Valid 10-digit mobile number required
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">Email</label>
+      <input type="email" formControlName="email" class="form-control mb-2" />
+      <button
+        type="button"
+        class="btn btn-sm"
+        [ngClass]="isEmailVerified ? 'btn-success' : 'btn-secondary'"
+        (click)="verifyEmail()">
+        <span *ngIf="isEmailVerified">&#10003; Verified</span>
+        <span *ngIf="!isEmailVerified">Verify</span>
+      </button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Permanent Address -->
+    <div class="section-card">
+    <h5 class="section-title">Worker Address</h5>
+
+  <div class="section-title text-dark px-3 py-2 mb-4 rounded">
+    Permanent Address
+  </div>
+
+  <div class="row g-4 mb-4">
+
+    <div class="col-12">
+      <label class="form-label fw-semibold">
+        Address :<span class="text-danger">*</span>
+      </label>
+      <input formControlName="permanentAddress" class="form-control" rows="2">
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Country<span class="text-danger">*</span>
+      </label>
+      <select formControlName="permanentCountry" class="form-control">
+        <option *ngFor="let c of countryOptions" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        State<span class="text-danger">*</span>
+      </label>
+    <select class="form-control" formControlName="permanentState">
+        <option value="">Select State</option>
+        <option value="Punjab">Punjab</option>
+    </select>     
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        District<span class="text-danger">*</span>
+      </label>
+      <select class="form-control" formControlName="permanentDistrictRefId">
+          <option value="">Select District</option>
+          <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">{{ dist.districtName }}</option>
+        </select>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Pincode<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="permanentPincode"
+        class="form-control"
+        maxlength="6" />
+    </div>
+
+  </div>
+
+  <!-- Correspondence Address -->
+  <div class="section-title text-dark px-3 py-2 mb-3 rounded">
+    Correspondence Address
+  </div>
+
+  <div class="form-check mb-4">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="sameAsAbove"
+      formControlName="sameAsAbove" />
+    <label class="form-check-label" for="sameAsAbove">
+      Same as above
+    </label>
+  </div>
+
+  <div class="row g-4 mb-4">
+
+    <div class="col-12">
+      <label class="form-label fw-semibold">Address :</label>
+      <input formControlName="correspondenceAddress" class="form-control" rows="2">
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Country<span class="text-danger">*</span>
+      </label>
+      <select formControlName="correspondenceCountry" class="form-control">
+        <option *ngFor="let c of countryOptions" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        State<span class="text-danger">*</span>
+      </label>
+      <select class="form-control" formControlName="correspondenceState">
+        <option value="">Select State</option>
+        <option value="Punjab">Punjab</option>
+    </select>     
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        District<span class="text-danger">*</span>
+      </label>
+         <select class="form-control" formControlName="correspondenceDistrictRefId">
+          <option value="">Select District</option>
+          <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">{{ dist.districtName }}</option>
+        </select>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <label class="form-label fw-semibold">
+        Pincode<span class="text-danger">*</span>
+      </label>
+       <input
+        type="text"
+        formControlName="correspondencePincode"
+        class="form-control"
+        maxlength="6" />
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+    <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+      Reset
+    </button>
+    <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
+      Save as Draft
+    </button>
+    <button type="submit" class="btn btn-primary">
+      Next
+    </button>
+  </div>
+    </div>
+
+
+</form>
+</div>
+</div>
+  </div>
+</div>

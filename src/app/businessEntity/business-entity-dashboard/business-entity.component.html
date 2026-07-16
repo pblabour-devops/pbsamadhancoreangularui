@@ -1,0 +1,121 @@
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <button class="btn btn-outline-info" style="margin-bottom: 10px;" (click)="open(content)"><i class="feather icon-plus-circle"></i> New Business Entity</button>
+		
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 filter-bar invoice-list">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-border-c-blue">
+                            <div class="card-body">
+								
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="list list-unstyled">
+                                            <div class="alert alert-primary d-block text-center text-uppercase"><i class="feather icon-check-circle mr-2"></i>Business Entity Name</div>
+                                            <li class="fas fa-mobile-alt"> 9814551313</li><br>
+                                            <li class="fas fa-envelope"> elabourhelpdesk&#64;gmail.com</li>
+											<li class="fas fa-address-card"> S.A.S. Nagar, Sahibzada Ajit Singh Nagar, Punjab, 160062</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="m-t-30">
+									<div class="row">
+										<div class="col-sm-12">
+											<ul class="list list-unstyled">
+												<li>Created Date: <span class="text-semibold">2015/01/25</span></li>
+											</ul>
+										</div>
+									</div>
+                                    <hr>
+									
+                                    <div class="task-board m-0 float-center" style="text-align: center;">
+                                        <a href="FileDetails.html" class="btn waves-effect waves-light btn-primary"><i class="fas fa-eye m-0"></i> View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-border-c-green">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="list list-unstyled">
+                                            <div class="alert alert-success d-block text-center text-uppercase"><i class="feather icon-check-circle mr-2"></i>Business Entity Name</div>
+                                            <li class="fas fa-mobile-alt"> 9814551313</li><br>
+                                            <li class="fas fa-envelope"> elabourhelpdesk&#64;gmail.com</li>
+											<li class="fas fa-address-card"> S.A.S. Nagar, Sahibzada Ajit Singh Nagar, Punjab, 160062</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="m-t-30">
+									<div class="row">
+										<div class="col-sm-12">
+											<ul class="list list-unstyled">
+												<li>Created Date: <span class="text-semibold">2015/01/25</span></li>
+											</ul>
+										</div>
+									</div>
+                                    <hr>
+									
+                                    <div class="task-board m-0 float-center" style="text-align: center;">
+                                        <a href="FileDetails.html" class="btn waves-effect waves-light btn-primary"><i class="fas fa-eye m-0"></i> View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-border-c-red">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="list list-unstyled">
+                                            <div class="alert alert-danger d-block text-center text-uppercase"><i class="feather icon-check-circle mr-2"></i>Business Entity Name</div>
+                                            <li class="fas fa-mobile-alt"> 9814551313</li><br>
+                                            <li class="fas fa-envelope"> elabourhelpdesk&#64;gmail.com</li>
+											<li class="fas fa-address-card"> S.A.S. Nagar, Sahibzada Ajit Singh Nagar, Punjab, 160062</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="m-t-30">
+									<div class="row">
+										<div class="col-sm-12">
+											<ul class="list list-unstyled">
+												<li>Created Date: <span class="text-semibold">2015/01/25</span></li>
+											</ul>
+										</div>
+									</div>
+                                    <hr>
+									
+                                    <div class="task-board m-0 float-center" style="text-align: center;">
+                                        <a href="FileDetails.html" class="btn waves-effect waves-light btn-primary"><i class="fas fa-eye m-0"></i> View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+<ng-template #content let-modal>
+    <div class=" text-center bg-danger text-white">
+        <h5 class="Header-Text" style="padding-top: 10px;">Add Business Entity
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="margin-right: 22px;">
+                <span aria-hidden="true">&times;</span>
+              </button></h5>
+      </div>
+
+
+    <div class="modal-body">
+      <app-business-entity-form></app-business-entity-form>
+    </div>
+  </ng-template>
+
+  
+
+  

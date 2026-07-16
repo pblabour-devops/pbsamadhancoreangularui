@@ -1,0 +1,43 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 31,
+      "SectionTitle": "Training /Workshop/Seminar Attended",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "TrainingName",
+                "ColumnTitle": "Name of Training /Workshop/Seminar Attended",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "period",
+                "ColumnTitle": "Period",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "remarks",
+                "ColumnTitle": "Remarks",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "TrainingName": "",
+                "period": "",
+                "remarks": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

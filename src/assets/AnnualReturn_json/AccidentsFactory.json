@@ -1,0 +1,54 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 8,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "ACCIDENTS FORM NO. 31 [Prescribed under rule 107(4) of the Punjab Factory Rules,1952]",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "(28(A)) Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Fatal", "ColumnTitle": "Fatal", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "NonFatal", "ColumnTitle": "Non Fatal", "DataType": "Number", "IsMendatory": false }
+            
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. Total Number of Accidents:" }
+        
+     
+              
+            ]
+          }
+        },
+        
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "(28(B)) Accidents in which Workers returned to work during the year to which this return relates",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Number", "ColumnTitle": "Number", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "MandaysLost", "ColumnTitle": "Mandays Lost", "DataType": "Number", "IsMendatory": false }
+             
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. Accidents (persons injured ) occuring during the year in which workers return to work during the same" },
+              { "category": "2. Accidents (person injured) occuring in the previous year in which workers return to work during the year to which the return relates:" },
+             { "category": "3. Accidents in which workers did not return to work during the year:" }
+     
+              
+            ]
+          }
+        }
+        
+     ]
+    }
+  }
+]

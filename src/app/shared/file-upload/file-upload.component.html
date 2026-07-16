@@ -1,0 +1,97 @@
+<div class="tabs-container">
+  <div class="tabs-header">
+    <div class="tab" [class.active]="activeTab === 'Enclosures'" (click)="selectTab('Enclosures')">
+      Application Enclosures
+    </div>
+
+    <div class="tab" [class.active]="activeTab === 'Addendums'" (click)="selectTab('Addendums')">
+      Addendums
+    </div>
+  </div>
+
+  <div class="tabs-content">
+    <div *ngIf="activeTab === 'Enclosures'">
+      <table border="1" width="100%">
+        <thead>
+          <tr>
+            <th class="text-center">Sr. No.</th>
+            <th>Enclosures</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of appFilesInfo; let ndx = index">
+            <td class="text-center">{{ndx+1}}</td>
+            <td id="docName_{{item.documentId}}">
+              <table width="100%">
+                <tr>
+                  <td>
+                    <b>{{item.documentName}}</b> <span *ngIf="!item.isOptional"
+                      style="color: red; font-size: 20px;">*</span>
+                  </td>
+                  <td style="text-align: right; white-space: nowrap;">
+                    <label *ngIf="isUploadShow && item.isSampleDoc" class="download-sample-btn"
+                      (click)="previewDocument(longContent, item.sampleDocPath,'type', '', item.documentName, 'publicReferenceNum')">
+                      <span class="download-sample-icon"><i class="feather icon-download-cloud"></i></span>
+                      <span>Download Sample <span class="separators">|</span> </span>
+                    </label>
+                    <label *ngIf="isUploadShow" class="size-format-btn">
+                      <span>Max {{item.allowedMaxMB}} MB & {{item.documentExtensionType}} </span>
+                    </label>
+                    <label *ngIf="isUploadShow" for="{{item.documentId}}" class="upload-btn">
+                      <span class="upload-icon"><i class="feather icon-upload-cloud"></i></span>
+                      <span> <span class="separators">|</span> Upload</span>
+                    </label>
+                    <input #file type="file" id="{{item.documentId}}" accept="{{item.documentExtensionType}}"
+                      (change)="upload($event,file, file.files, item.documentId, item.allowedMaxMB, item.documentExtensionType)"
+                      hidden>
+                    <input type="hidden" class="appDocIdInput" id="appDocId_{{item.documentId}}" value="0">
+                  </td>
+                </tr>
+              </table>
+              <div class="item-tags" *ngIf="item?.alreadyUploadedInfo?.length>0; else noFiles">
+                <span class="tag" *ngFor="let alreadyFile of item.alreadyUploadedInfo; let i = index"
+                  (click)="previewDocument(longContent, alreadyFile.fileName,'type', alreadyFile.fileUploadOn, item.documentName, 'publicReferenceNum')">
+                  <i class="feather icon-paperclip"></i> {{alreadyFile.fileUploadOn | date:'dd/MM/y hh:mm a'}}
+                </span>
+              </div>
+
+              <ng-template #noFiles>
+                <div class="item-tags">
+                  <span class="tag-no-file">
+                    No file uploaded..!
+                  </span>
+                </div>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row form-row" *ngIf="(this.applicationType == 70 || this.applicationType == 5) && roleName !='INDL'">
+        <span class="text-danger font-weight-bold">Dear officer's you can <a
+            click="https://firenoc.lgpunjab.gov.in/pgThirdPartyVerification.aspx" target="_blank"
+            style="cursor: pointer;margin-left: 10px;color: blue; font-weight: 800;"> Click here</a> to verify the NOC
+          of fire
+          department.</span>
+      </div>
+
+    </div>
+
+    <div *ngIf="activeTab === 'Addendums'">
+      <app-addendum [isUploadOptionShown]="true" [appRefId]="appRefId">
+      </app-addendum>
+    </div>
+  </div>
+</div>
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title text-primary">Preview document</h6>
+  </div>
+  <div class="card-body">
+    <iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" style="min-height: 600px;"></iframe>
+  </div>
+  <div class="card-footer text-right">
+    <button type="button" class="btn  btn-danger" (click)="closePreviewModal()">Close</button>
+    <!-- <button class="btn btn-success" (click)="onApproveClick()" type="submit" style="float: right;">Approve And Generate Licence</button> -->
+  </div>
+</ng-template>

@@ -1,0 +1,17 @@
+<!-- <form [formGroup]="checkListForm">
+    <div formArrayName="checkListNodes"> 
+        <div [formGroupName]="'empName'">
+            <app-form-checklist-node (addCheckListToForm)="onaddCheckListToFormEvent($event)" [nodeName]="'empName'"></app-form-checklist-node>
+        </div>
+        <div [formGroupName]="'fatherName'">
+            <app-form-checklist-node (addCheckListToForm)="onaddCheckListToFormEvent($event)" [nodeName]="'fatherName'"></app-form-checklist-node>
+        </div>
+    </div>
+</form>  -->
+
+<!-- <app-form-checklist-node (addCheckListToForm)="onaddCheckListToFormEvent($event)" (updateChecklistNode)="onChangeChecklistNodeEvent($event)" [nodeName]="'empName'" [isDocument]="false"></app-form-checklist-node>
+<app-form-checklist-node (addCheckListToForm)="onaddCheckListToFormEvent($event)" (updateChecklistNode)="onChangeChecklistNodeEvent($event)" [nodeName]="'fatherName'"  [isDocument]="false"></app-form-checklist-node>
+<app-form-checklist-node (addCheckListToForm)="onaddCheckListToFormEvent($event)" (updateChecklistNode)="onChangeChecklistNodeEvent($event)" [nodeName]="'address'" [isDocument]="true"></app-form-checklist-node> -->
+
+{{checkListForm.value | json}}
+<button (click)="btnClick('empName')">click</button>

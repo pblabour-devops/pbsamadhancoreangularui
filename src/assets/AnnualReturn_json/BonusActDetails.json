@@ -1,0 +1,30 @@
+[
+  {
+    "Section": {
+      "SectionSortId":47,
+      "SectionTitle": "FORM D See rule 5",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+    
+            { "LableSortId": 1, "LableTitle": "1(a). Name of Estalbishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "1(b). Establishment Address", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "1(c). Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "1(d). District", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "1(e). Tehsil", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "2. Nature of Industry", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "3. Name of Employer", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "4. Total No. of Employees", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "5. Number of Employees Benefitted by Bonus Payments", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+            
+          ]
+        }
+         
+        
+      ]
+    }
+  }
+]

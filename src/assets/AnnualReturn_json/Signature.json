@@ -1,0 +1,25 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 49,
+      "SectionTitle": "Manager Signature",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Upload Signature (JPG or PNG only)",      
+              "LableValueInfo": {
+                "DataType": "File",
+                "IsMendatory": true,
+                "Value": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,113 @@
+<div class="main-content">
+    <div class="card col-md-8 card-form">
+<div class="card-header text-center" >
+    <span class="f-20 f-w-600 form-header">Submission of Stability Certificate Under Factories Act-1948</span>
+  </div>
+  <div class="col-md-12 m-t-20">
+    <div class="btn btn-sm text-danger font-weight-bold float-right" (click)="downloadPdf()"> <i class="feather icon-download"></i> Acknowledgement Receipt</div>
+</div>
+  <div id="acknowledgementReceiptSection" class="receiptSection">
+    <div class="custom-margin-top">
+        <h3 class="text-center">ACKNOWLEDGEMENT</h3>
+    </div>
+    <h5 class="text-center">SUBMISSION OF STABILITY CERTIFICATE UNDER THE FACTORIES ACT 1948</h5>
+
+    <div class="col-md-12 col-sm-12 m-t-40">
+        <h5 class="m-l-10">Establishment Details</h5>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Acknowledgement Number</th>
+                    <td colspan="5">{{receiptResponse?.fileNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Name of Establishment</th>
+                    <td colspan="5">{{receiptResponse?.establishmentName}}</td>
+                </tr>
+                <tr>
+                    <th>Site/Location Address</th>
+                    <td colspan="5">{{receiptResponse?.address}}</td>
+                </tr>
+                <tr>
+                    <th>Applicant Name</th>
+                    <td>{{receiptResponse?.contactPersonName}}</td>
+                    <th>Mobile No</th>
+                    <td>{{receiptResponse?.contactPersonMobileNo}}</td>
+                    <th>Email</th>
+                    <td>{{receiptResponse?.contactPersonEmail}}</td>
+                </tr>
+                <tr>
+                    <th>District</th>
+                    <td>{{receiptResponse?.districtName}}</td>
+                    <th>Tehsil</th>
+                    <td>{{receiptResponse?.districtName}}</td>
+                    <th>Pin Code</th>
+                    <td>{{receiptResponse?.pinCode}}</td>
+                </tr>
+                <tr>
+                    <th>Contact Person Name</th>
+                    <td>{{receiptResponse?.contactPersonName}}</td>
+                    <th>Contact Person Email</th>
+                    <td>{{receiptResponse?.contactPersonEmail}}</td>
+                    <th>Contact Person Mobile No</th>
+                    <td>{{receiptResponse?.contactPersonMobileNo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 col-sm-12 m-t-40" *ngIf="receiptResponse?.isStabilityApproved == 1">
+        <h5 class="m-l-10">Competent Person Details</h5>
+        <table class="m-t-10 col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">Competent Person Name</th>
+                        <th class="col-md-3">Email</th>
+                        <th class="col-md-3">Contact Number</th>
+                        <th class="col-md-3">Application Approval Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-md-3">{{receiptResponse?.competentPersonName}}</td>
+                    <td class="col-md-3">{{receiptResponse?.competentPersonEmail}}</td>
+                    <td class="col-md-3">{{receiptResponse?.competentPersonContactNo}}</td>
+                    <td class="col-md-3">{{receiptResponse?.approvedDate | date:'dd-MM-yyyy  HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </table>
+    </div>
+    
+
+    <div class="col-md-12 col-sm-12 m-t-40" *ngIf="receiptResponse?.isStabilityApproved == 3">
+        <h5 class="m-l-10">Empaneled Engineer Details</h5>
+        <table class="m-t-10 col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">Engineer Person Name</th>
+                        <th class="col-md-3">Email</th>
+                        <th class="col-md-3">Contact Number</th>
+                        <th class="col-md-3">Application Approval Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-md-3">{{receiptResponse?.engineerName}}</td>
+                    <td class="col-md-3">{{receiptResponse?.engineerEmail}}</td>
+                    <td class="col-md-3">{{receiptResponse?.engineerContactNo}}</td>
+                    <td class="col-md-3"> {{receiptResponse?.approvedDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </table>
+    </div>
+    <div class="alert alert-danger" role="alert">
+      <span class="text-danger" style="font-size: 15px;"> NOTE: This acknowledgement is computer generated from portal “pblabour.gov.in” hence requires no signature.<br>
+        Dear applicant, a stability certificate issued by a competent person has been successfully submitted to the portal.
+        There is no need to take any further action on it. </span>
+    </div>
+  </div>
+    </div>
+</div>

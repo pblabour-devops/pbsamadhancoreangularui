@@ -1,0 +1,347 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Minimum Wages Act 1948 </h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                    <td rowspan="3">Section-12</td>
+                    <td class="inspection-back-theme1"><strong>12.1.1</strong> Are wages being paid to all employees as fixed by appropriate government under section-5?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>12.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks"><strong>12.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks" (input)="updateCharacterCount('sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks" placeHolder="sec_12_IsWagesPaid_ToAll_FixedByGovernment_UnderSection_5_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="9">Section-13</td>
+                    <td class="inspection-back-theme2"><strong>13.1.1</strong> Are all employees working as per hours fixed by appropriate government?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>13.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_Remarks"><strong>13.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_Remarks" (input)="updateCharacterCount('sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_13_AllEmployeeWorking_Hours_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_Remarks" placeHolder="sec_13_IsAllEmployeeWorking_AsFixedHoursBy_AppropriateGovernment_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>13.2.1</strong> Is rest in period of seven days is given to every employee?</td>
+                    <td>
+                      <select class="form-select form-control" formControlName="sec_13_IsRest_Given_ToEvery_Employee">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                
+                  <tr class="inspection-back-theme1">
+                    <td><strong>13.2.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="sec_13_IsRest_Given_ToEvery_Employee_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="sec_13_IsRest_Given_ToEvery_Employee_Remarks"><strong>13.2.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_IsRest_Given_ToEvery_Employee_Remarks" (input)="updateCharacterCount('sec_13_IsRest_Given_ToEvery_Employee_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_13_Rest_Given_ToEvery_Employee_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_IsRest_Given_ToEvery_Employee_Remarks" placeHolder="sec_13_IsRest_Given_ToEvery_Employee_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr class="inspection-back-theme2">
+                    <td><strong>13.3.1</strong> Is payment for work done on rest day is given at rate overtime?</td>
+                    <td>
+                      <select class="form-select form-control" formControlName="sec_13_IsPayment_Overtime_Given">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>13.3.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="sec_13_IsPayment_Overtime_Given_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="sec_13_IsPayment_Overtime_Given_Remarks"><strong>13.3.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_IsPayment_Overtime_Given_Remarks" (input)="updateCharacterCount('sec_13_IsPayment_Overtime_Given_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_13_IsPayment_Overtime_Given_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_IsPayment_Overtime_Given_Remarks" placeHolder="sec_13_IsPayment_Overtime_Given_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Section-15</td>
+                    <td class="inspection-back-theme1"><strong>15.1.1</strong> Are wages to workers who work for less than normal working day being paid as per provision of section-15?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>15.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks"><strong>15.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks" (input)="updateCharacterCount('sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks" placeHolder="sec_15_IsWagesPaid_ForLessWorkingDays_AsPerSection_15_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="12">Section-21</td>
+                    <td class="inspection-back-theme2"><strong>21.1.1</strong> Is time and conditions of payment being complied?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="rule_21_IsTimeAndConditions_OfPayment_Complied">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>21.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_21_IsTimeAndConditions_OfPayment_Complied_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks"><strong>21.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks" (input)="updateCharacterCount('rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks" placeHolder="rule_21_IsTimeAndConditions_OfPayment_Complied_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>21.2.1</strong> Are deductions made as prescribed?</td>
+                    <td>
+                      <select class="form-select form-control" formControlName="rule_21_IsDeductionMade_AsPrescribed">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>21.2.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_21_IsDeductionMade_AsPrescribed_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="rule_21_IsDeductionMade_AsPrescribed_Remarks"><strong>21.2.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_21_IsDeductionMade_AsPrescribed_Remarks" (input)="updateCharacterCount('rule_21_IsDeductionMade_AsPrescribed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_21_IsDeductionMade_AsPrescribed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_21_IsDeductionMade_AsPrescribed_Remarks" placeHolder="rule_21_IsDeductionMade_AsPrescribed_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>21.3.1</strong> Upon by employer/authorized representative?</td>
+                    <td>
+                      <select class="form-select form-control" formControlName="rule_21_Upon_EmployerOrAuthorized_Representative">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>21.3.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_21_Upon_EmployerOrAuthorized_Representative_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="rule_21_Upon_EmployerOrAuthorized_Representative_Remarks"><strong>21.3.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_21_Upon_EmployerOrAuthorized_Representative_Remarks" (input)="updateCharacterCount('rule_21_Upon_EmployerOrAuthorized_Representative_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_21_Upon_EmployerOrAuthorized_Representative_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_21_Upon_EmployerOrAuthorized_Representative_Remarks" placeHolder="rule_21_Upon_EmployerOrAuthorized_Representative_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>21.4.1</strong> Is Muster roll Form V Maintained?</td>
+                    <td>
+                      <select class="form-select form-control" formControlName="rule_21_IsMusterRoll_Form_V_Maintained">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>21.4.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_21_IsMusterRoll_Form_V_Maintained_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="rule_21_IsMusterRoll_Form_V_Maintained_Remarks"><strong>21.4.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_21_IsMusterRoll_Form_V_Maintained_Remarks" (input)="updateCharacterCount('rule_21_IsMusterRoll_Form_V_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_21_IsMusterRoll_Form_V_Maintained_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_21_IsMusterRoll_Form_V_Maintained_Remarks" placeHolder="rule_21_IsMusterRoll_Form_V_Maintained_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Section-26B</td>
+                    <td class="inspection-back-theme2"><strong>26B.1.1</strong> Are registered preserved for three years after date of  last entry made in therein?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="rule_26_B_IsRegistered_Preserved_For_Three_Years">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>26B.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_26_B_IsRegistered_Preserved_For_Three_Years_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks"><strong>26B.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks" (input)="updateCharacterCount('rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('Rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks" placeHolder="rule_26_B_IsRegistered_Preserved_For_Three_Years_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Section-26C</td>
+                    <td class="inspection-back-theme1"><strong>26C.1.1</strong> Are registered produced at time of inspection?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="rule_26_C_IsRegistered_Produced_While_Inspection">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>26C.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="rule_26_C_IsRegistered_Produced_While_Inspection_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="rule_26_C_IsRegistered_Produced_While_Inspection_Remarks"><strong>26C.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_26_C_IsRegistered_Produced_While_Inspection_Remarks" (input)="updateCharacterCount('rule_26_C_IsRegistered_Produced_While_Inspection_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('rule_26_C_IsRegistered_Produced_While_Inspection_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_26_C_IsRegistered_Produced_While_Inspection_Remarks" placeHolder="rule_26_C_IsRegistered_Produced_While_Inspection_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

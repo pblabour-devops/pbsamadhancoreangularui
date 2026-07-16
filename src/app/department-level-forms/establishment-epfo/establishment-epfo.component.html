@@ -1,0 +1,192 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 mx-auto">
+                <div class="card">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                <h4 class="text-center form-header">Establishment Details</h4>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="required">Establishment Id</label>
+                                        <input type="text" class="form-control" formControlName="establishmentId"
+                                            placeholder="Enter your establishment id">
+                                        <div *ngIf="myForm.get('establishmentId').invalid && myForm.get('establishmentId').touched"
+                                            class="text-danger">
+                                            Establishment ID must be at least 15 characters long.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-4">
+                                        <label><br><br></label>
+                                        <button type="submit" class="btn btn-success" [disabled]="myForm.invalid"
+                                            (click)="ViewLogs()">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-body"  *ngIf="responseData">
+                            <h4 class="text-center form-header">Establishment Details</h4>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Establishment Name</label>
+                                    <input type="text" class="form-control" [value]="responseData?.establishmentName"
+                                        readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Establishment Address-1</label>
+                                    <input type="text" class="form-control"
+                                        [value]="responseData?.establishmentAddress1" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Establishment Address-2</label>
+                                    <input type="text" class="form-control"
+                                        [value]="responseData?.establishmentAddress2" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" [value]="responseData?.city" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>District</label>
+                                    <input type="text" class="form-control" [value]="responseData?.district" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Pin Code</label>
+                                    <input type="text" class="form-control" [value]="responseData?.pinCode" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Cover Date</label>
+                                    <input type="text" class="form-control" [value]="responseData?.coverDate" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Establishment Status</label>
+                                    <input type="text" class="form-control" [value]="responseData?.establishmentStatus"
+                                        readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Establishment Type</label>
+                                    <input type="text" class="form-control" [value]="responseData?.establishmentType"
+                                        readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Industry GRP_Id</label>
+                                    <input type="text" class="form-control" [value]="responseData?.industry_GRP_Id"
+                                        readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Industry Code</label>
+                                    <input type="text" class="form-control" [value]="responseData?.industry_Code"
+                                        readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>DSC</label>
+                                    <input type="text" class="form-control" [value]="responseData?.dsc" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row col-md-12" *ngIf="responseData">
+                            <div class="form-group text-center col-md-12">
+                                <button type="button" class="btn btn-danger" (click)="generatePDF(this.myForm.controls.establishmentId.value,longContent)">Generate
+                                    Notice
+                                </button>
+                            </div>
+                            <!-- <div class="form-group text-center col-md-6">
+                                <button type="button" class="btn btn-success" (click)="takeAction(takeActionAlertModal)">Mark As Send</button>
+                            </div> -->
+                        </div>
+                        <div class="alert alert-danger" *ngIf="this.EstablishmentDataNotFound">
+                            <h4 class="alert-heading">Data Not found Against Establishment ID..!</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" style="color: black;">Generate Notice</h5>
+      </div>
+	<div class="card-body">
+		<div class="dt-responsive table-responsive">
+			<iframe [src]="pdfPath | safe: 'resourceUrl'" width="100%" height="500px"></iframe>
+			<div class="card-footer">
+				<div>
+					<button type="button" class="btn  btn-danger" (click)="deleteTempCreatedLicense()">Cancel</button>
+					<button class="btn btn-success" (click)="takeAction(takeActionAlertModal)" type="submit"
+						style="float: right;">Approve And Take Action</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-template>
+<ng-template #takeActionAlertModal let-modal>
+<div class="col-md-12">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-12" style="width: 750px; height: 300px; overflow: scroll;" *ngIf="Data && Data.length > 0">
+            <h5>Alreay Sent Notice</h5>
+
+            <table class="table table-bordered table-reponsive" style="overflow: scroll;">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Establishment Id</th>
+                        <th>Date</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of Data; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{data.establishmentRefId}}</td>
+                        <td>{{ data.sentDate  | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+                        <td>{{data.sentRemarks}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Date:</label>
+                <input type="text" class="form-control" id="dateInput" value="{{ today | date: 'dd-MM-yyyy HH:mm:ss'  }}" readonly #DateTime>
+            </div>
+            <div class="form-group">
+                <label for="remarks" class="col-form-label">Remarks:</label>
+                <textarea class="form-control" id="remarks" #remarksTextarea></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onModelNoClick()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onAlertModelYesClick(remarksTextarea.value)">Take Action</button>
+    </div>
+</div>
+
+
+</ng-template>
+
+

@@ -1,0 +1,178 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">Inspections under the Punjab Shops and Commercial Establishment Act, 1958</h4>
+          </div>
+            <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.natureOfBusinessType?.invalid && (submitted || formControls.natureOfBusinessType.dirty || formControls.natureOfBusinessType.touched)}">
+                      <label for="natureOfBusinessType">Nature Of Business Type</label>
+                      <select class="form-select form-control" id="natureOfBusinessType" formControlName="natureOfBusinessType">
+                        <option [selected]="true" value="" disabled>-- Please Select --</option>
+                        <option value="1">Shop</option>
+                        <option value="2">Establishment</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.noOfWorkerMale?.invalid && (submitted || formControls.noOfWorkerMale.dirty || formControls.noOfWorkerMale.touched)}">
+                      <label for="noOfWorkerMale">Number of workers employed Male</label>
+                      <input type="text" class="form-control" formControlName="noOfWorkerMale">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.noOfWorkerFemale?.invalid && (submitted || formControls.noOfWorkerFemale.dirty || formControls.noOfWorkerFemale.touched)}">
+                      <label for="noOfWorkerFemale">Number of workers employed Female</label>
+                      <input type="text" class="form-control" formControlName="noOfWorkerFemale">
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.noOfWorkerYoungPerson?.invalid && (submitted || formControls.noOfWorkerYoungPerson.dirty || formControls.noOfWorkerYoungPerson.touched)}">
+                      <label for="noOfWorkerYoungPerson">Number of workers employed Young Person</label>
+                      <input type="text" class="form-control" formControlName="noOfWorkerYoungPerson">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.noOfWorkerChild?.invalid && (submitted || formControls.noOfWorkerChild.dirty || formControls.noOfWorkerChild.touched)}">
+                      <label for="noOfWorkerChild">Number of workers employed Child</label>
+                      <input type="text" class="form-control" formControlName="noOfWorkerChild">
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.is_Registration_Certificate_Obtained?.invalid && (submitted || formControls.is_Registration_Certificate_Obtained.dirty || formControls.is_Registration_Certificate_Obtained.touched)}">
+                      <label for="is_Registration_Certificate_Obtained">Whether Registration Certificate Obtained</label>
+                      <select class="form-select form-select-sm" class="form-control" formControlName="is_Registration_Certificate_Obtained">
+                        <option [value]="''">-- Please Select --</option>
+                        <option [value]="0">No</option>
+                        <option [value]="1">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.is_Registration_Certificate_Valid?.invalid && (submitted || formControls.is_Registration_Certificate_Valid.dirty || formControls.is_Registration_Certificate_Valid.touched)}">
+                      <label for="is_Registration_Certificate_Valid">Whether Registration Certificate is valid</label>
+                      <select class="form-select form-select-sm" class="form-control"  formControlName="is_Registration_Certificate_Valid">
+                        <option [value]="''">-- Please Select --</option>
+                        <option [value]="0">No</option>
+                        <option [value]="1">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.is_Shop_Or_Esablishment_Obtained_Exemption?.invalid && (submitted || formControls.is_Shop_Or_Esablishment_Obtained_Exemption.dirty || formControls.is_Shop_Or_Esablishment_Obtained_Exemption.touched)}">
+                      <label for="is_Shop_Or_Esablishment_Obtained_Exemption">Whether Shop or establishment has obtained any exemption under the Act (under Section 4)</label>
+                      <select class="form-select form-select-sm" class="form-control"  formControlName="is_Shop_Or_Esablishment_Obtained_Exemption">
+                        <option [value]="''">-- Please Select --</option>
+                        <option [value]="0">No</option>
+                        <option [value]="1">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.wagesPeriod?.invalid && (submitted || formControls.wagesPeriod.dirty || formControls.wagesPeriod.touched)}">
+                      <label for="wagesPeriod">Wage Period</label>
+                      <input type="text" class="form-control" formControlName="wagesPeriod">
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row form-row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.wagesPaymentDate?.invalid && (submitted || formControls.wagesPaymentDate.dirty || formControls.wagesPaymentDate.touched)}">
+                      <label for="wagesPaymentDate">Date of Payment of Wages</label>
+                      <input type="date" class="form-control" formControlName="wagesPaymentDate">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.wagesPaymentModeType?.invalid && (submitted || formControls.wagesPaymentModeType.dirty || formControls.wagesPaymentModeType.touched)}">
+                      <label for="wagesPaymentModeType">Mode of Payment</label>
+                      <select class="form-select form-control" id="wagesPaymentModeType" formControlName="wagesPaymentModeType">
+                        <option [selected]="true" value="" disabled>-- Please Select --</option>
+                        <option value="1">Cash</option>
+                        <option value="2">Cheque</option>
+                        <option value="3">ECS</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row form-row">
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="isViolationFound">Violation Found or Not</label>
+                      <select class="form-select form-control" id="isViolationFound" formControlName="isViolationFound">
+                        <option value="true">Yes</option>
+                        <option  [selected]="true" value= "false">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'form-validation-icon-input': formControls.remarks?.invalid && (submitted || formControls.remarks.dirty || formControls.remarks.touched)}">
+                      <label for="remarks">Remarks</label>
+                      <input type="text" class="form-control" formControlName="remarks">
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="text-center">
+                  <button type="submit" class="btn btn-success">Add Details</button>
+                </div>
+            </form>
+
+            <table class="table table-bordered m-t-20">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Establishment name</th>
+                        <th>Inspection date</th>
+                        <th>Number of workers</th>
+                        <th>Male Workers</th>
+                        <th>Female Workers</th>
+                        <th>Violations Found (yes or no)</th>
+                        <th>Action Taken (Remarks)</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr *ngFor="let item of tableData; let i = index">
+                        <td class="text-center">{{ i + 1 }}</td>
+                        <td class="text-center">{{paramInfo.establishmentName}}</td>
+                         <td class="text-center">{{ item.inspection_Master?.inspectionDoneOn_Labour_Wing | date }}</td> 
+                        <td class="text-center">{{ item.noOfWorkerMale + item.noOfWorkerFemale + item.noOfWorkerYoungPerson + item.noOfWorkerChild }}</td>
+                        <td class="text-center">{{ item.noOfWorkerMale }}</td>
+                        <td class="text-center">{{ item.noOfWorkerFemale }}</td>
+                        <td class="text-center">{{ item.isViolationFound === true ? 'Yes' : 'No' }}</td>
+                        <td class="text-center">{{ item.remarks }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+
+ 
+  
+  

@@ -1,0 +1,21 @@
+.required::after {
+  content: " *";
+  color: red;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 8px;
+}
+
+.card-header {
+  border-radius: 8px 8px 0 0;
+}
+
+.form-row {
+  align-items: center;
+}
+
+.form-control {
+  border-radius: 4px;
+}

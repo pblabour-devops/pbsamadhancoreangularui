@@ -1,0 +1,68 @@
+.section-card {
+  border: 1px solid #dcdcdc;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-weight: 600;
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.sub-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.details-title {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+}
+
+.verify-btn {
+  height: 38px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.details-table thead {
+  background-color: #2f74c0;
+  color: white;
+}
+
+.details-table th {
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.details-table td {
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-3 {
+  margin-top: 15px;
+}
+
+.mt-4 {
+  margin-top: 25px;
+}
+
+.ml-2 {
+  margin-left: 10px;
+}

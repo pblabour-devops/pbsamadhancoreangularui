@@ -1,0 +1,390 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Child And Adolescent Labour (Prohibition And Regulation) Act, 1986</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Section-3</td>
+                  <td class="inspection-back-theme1"><strong>3.1.1</strong>  Is any child found working?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_3_AnyChild_Found_Working">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>3.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_3_AnyChild_Found_Working_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_3_AnyChild_Found_Working_Remarks"><strong>3.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_3_AnyChild_Found_Working_Remarks" (input)="updateCharacterCount('sec_3_AnyChild_Found_Working_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_3_AnyChild_Found_Working_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_3_AnyChild_Found_Working_Remarks" placeHolder="sec_3_AnyChild_Found_Working_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Section-3A</td>
+                  <td class="inspection-back-theme2"><strong>3A.1.1</strong> Is any adolescent found working in certain hazardous occupations or processes which are prohibited under this section?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_3_A_AnyAdolescent_Found_Working">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>3.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_3_A_AnyAdolescent_Found_Working_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_3_A_AnyAdolescent_Found_Working_Remarks"><strong>3A.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_3_A_AnyAdolescent_Found_Working_Remarks" (input)="updateCharacterCount('sec_3_A_AnyAdolescent_Found_Working_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_3_A_AnyAdolescent_Found_Working_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_3_A_AnyAdolescent_Found_Working_Remarks" placeHolder="sec_3_A_AnyAdolescent_Found_Working_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="12">Section-7</td>
+                  <td class="inspection-back-theme1"><strong>7.1.1</strong> Is interval or rest of half an hour after every three hours working is being given to adolescent?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_7_IsRestGiven_To_Adolescent">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>7.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_7_IsRestGiven_To_Adolescent_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_7_IsRestGiven_To_Adolescent_Remarks"><strong>7.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_7_IsRestGiven_To_Adolescent_Remarks" (input)="updateCharacterCount('sec_7_IsRestGiven_To_Adolescent_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_7_IsRestGiven_To_Adolescent_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_7_IsRestGiven_To_Adolescent_Remarks" placeHolder="sec_7_IsRestGiven_To_Adolescent_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>7.2.1</strong> Is spread over (including interval/rest period) is not more than six hours on any day</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_7_IsWorkPeriod_NotMoreThen_6_Hours">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>7.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_7_IsWorkPeriod_NotMoreThen_6_Hours_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks"><strong>7.2.2</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks" (input)="updateCharacterCount('sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks" placeHolder="sec_7_IsWorkPeriod_NotMoreThen_6_Hours_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>7.3.1</strong> Is any adolescent was working between 7PM and 8 AM</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>7.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for=""><strong>7.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_Remarks" (input)="updateCharacterCount('sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_Remarks" placeHolder="sec_7_IsAny_Adolescent_Work_Between_7_PM_To_8_AM_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>7.4.1</strong> Is any adolescent was working on overtime?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_7_IsAny_Adolescent_Working_Overtime">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>7.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_7_IsAny_Adolescent_Working_Overtime_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_7_IsAny_Adolescent_Working_Overtime_Remarks"><strong>7.4.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_7_IsAny_Adolescent_Working_Overtime_Remarks" (input)="updateCharacterCount('sec_7_IsAny_Adolescent_Working_Overtime_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_7_IsAny_Adolescent_Working_Overtime_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_7_IsAny_Adolescent_Working_Overtime_Remarks" placeHolder="sec_7_IsAny_Adolescent_Working_Overtime_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="9">Section-8</td>
+                  <td class="inspection-back-theme1"><strong>8.1.1</strong> Is weekly holiday given to adolescent as fixed by employer?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_8_Is_Weekly_Holidays_Given_To_Adolescent">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_8_Is_Weekly_Holidays_Given_To_Adolescent_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks"><strong>8.1.3</strong> Remarks if any</label> 
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks" (input)="updateCharacterCount('sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks" placeHolder="sec_8_Is_Weekly_Holidays_Given_To_Adolescent_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.2.1</strong> Is notice of weekly holiday given to adolescent  is exhibited at conspicuous place?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks"><strong>8.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks" (input)="updateCharacterCount('sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks" placeHolder="sec_8_Is_Notice_Of_Weekly_Holidays_Given_To_Adolescent_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.3.1</strong> Is notice altered within three months?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_Is_Notice_Altered_Within_3_months">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_8_Is_Notice_Altered_Within_3_months_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_Is_Notice_Altered_Within_3_months_Remarks"><strong>8.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Is_Notice_Altered_Within_3_months_Remarks" (input)="updateCharacterCount('sec_8_Is_Notice_Altered_Within_3_months_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_Is_Notice_Altered_Within_3_months_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Is_Notice_Altered_Within_3_months_Remarks" placeHolder="sec_8_Is_Notice_Altered_Within_3_months_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td rowspan="3">Section-9</td>
+                  <td class="inspection-back-theme2"><strong>9.1.1</strong> Is notice sent to inspector?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_9_Is_Notice_Sent_To_Inspector">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>9.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_9_Is_Notice_Sent_To_Inspector_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_9_Is_Notice_Sent_To_Inspector_Remarks"><strong>9.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_9_Is_Notice_Sent_To_Inspector_Remarks" (input)="updateCharacterCount('sec_9_Is_Notice_Sent_To_Inspector_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_9_Is_Notice_Sent_To_Inspector_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_9_Is_Notice_Sent_To_Inspector_Remarks" placeHolder="sec_9_Is_Notice_Sent_To_Inspector_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">Section-11</td>
+                  <td class="inspection-back-theme1"><strong>11.1.1</strong> Are prescribed register being maintained?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_11_Is_Prescribed_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>11.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_11_Is_Prescribed_Register_Maintained_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for=""><strong>11.1.3</strong> Remarks if any</label> 
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_11_Is_Prescribed_Register_Maintained_Remarks" (input)="updateCharacterCount('sec_11_Is_Prescribed_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_11_Is_Prescribed_Register_Maintained_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_11_Is_Prescribed_Register_Maintained_Remarks" placeHolder="sec_11_Is_Prescribed_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-12</td>
+                  <td class="inspection-back-theme2"><strong>12.1.1</strong> Is notice of abstract containing section 3A and 14 is displayed at conspicuous place?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>12.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for=""><strong>12.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_Remarks" (input)="updateCharacterCount('sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_Remarks" placeHolder="sec_12_Is_NoticeOfAbstract_Section_3A_And_14_displayed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

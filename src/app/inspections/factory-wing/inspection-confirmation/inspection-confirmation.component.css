@@ -1,0 +1,68 @@
+.card-body {
+  min-height: 70px !important;
+}
+.dropzone.testing_datadropZone {
+  max-height: 377px !important;
+  overflow-y: auto;
+}
+.alert {
+  padding: 2px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.card-body {
+  margin-top: 5px;
+  padding: 0px 9px;
+}
+.card-header {
+  text-align: center;
+  padding: 5px;
+}
+h5.text-center.form-header {
+  color: #0052A3;
+}
+
+i.feather.icon-align-justify {
+  font-size: 22px;
+  color: black;
+  float: right;
+  margin-right: 16px;
+  cursor: move !important;
+}
+.vertical_Line {
+  border-right: 2px solid green;
+  height: auto;
+  min-height: 70px !important;
+}
+.form-header.UnAssigned {
+  position: fixed;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+ }
+ .show-scrollTop {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+ }
+ .floating-bucket{
+  top: 300px;
+ }
+ .width-control{
+  max-width: 742px !important;
+ }
+
+ .verticle{
+  vertical-align: middle !important;
+ }
+ tr td{
+  vertical-align: middle !important;
+ }
+
+ .custom-modal-body {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}

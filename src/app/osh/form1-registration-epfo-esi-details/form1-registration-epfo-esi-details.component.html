@@ -1,0 +1,150 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+      <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="register-modal-header">
+                <h4 class="text-center form-header">
+                  Registration under OSH & CoSS Code 2020
+                </h4>
+                <p class="text-center purpose-type-header">(Registration)</p>
+            </div>
+            <div class="col-md-12" style="margin-top: 5px;">
+              <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+              </app-app-form-stepper-navigation-panel> -->
+            </div>
+
+          <div class="col-md-12 text-right text-danger">
+              * mandatory fields
+          </div>
+          <div class="col-md-12">
+             <h5 class="m-t-30">EPFO/ESIC Details</h5>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dateOnWhich10OrMorePersonEmployed" class="required">Date on Which 10 or More Persons Employed</label>
+                    <input type="date" class="form-control" formControlName="dateOnWhich10OrMorePersonEmployed"/>
+                    <div *ngIf="Input_Form.get('dateOnWhich10OrMorePersonEmployed').errors?.required" class="text-danger">
+                        10 or more persons employed date is required.
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dateOnWhich20OrMorePersonEmployed" class="required">Date on Which 20 or More Persons Employed</label>
+                    <input type="date" class="form-control" formControlName="dateOnWhich20OrMorePersonEmployed"/>
+                    <div *ngIf="Input_Form.get('dateOnWhich20OrMorePersonEmployed').errors?.required" class="text-danger">
+                        20 or more persons employed date is required.
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="employeesVoluntaryRegistrationDate" class="required">Employees Voluntary Registration Date</label>
+                    <input type="date" class="form-control" formControlName="employeesVoluntaryRegistrationDate"/>
+                    <div *ngIf="Input_Form.get('employeesVoluntaryRegistrationDate').errors?.required" class="text-danger">
+                        Employees voluntary registration date is required.
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dPIIT_StartupRegistrationNumber" class="required">DPIIT Startup Registration Number</label>
+                    <input type="text" class="form-control" formControlName="dPIIT_StartupRegistrationNumber"/>
+                    <div *ngIf="Input_Form.get('dPIIT_StartupRegistrationNumber').errors?.required" class="text-danger">
+                        DPIIT registration no is required.
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dPIIT_StartupRegistrationDate">DPIIT Startup Registration Date</label>
+                    <input type="date" class="form-control" formControlName="dPIIT_StartupRegistrationDate"/>
+                </div>
+              </div>
+            </div>
+          
+            <h5 class="m-t-30">EPFO/ESIC Coverage</h5>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dateOfCommencement" class="required">Date of Commencement</label>
+                    <input type="date" class="form-control" formControlName="dateOfCommencement"/>
+                    <div *ngIf="Input_Form.get('dateOfCommencement').errors?.required" class="text-danger">
+                        Date of commencement is required.
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="esic_NatureOfWork" class="required">ESIC Nature of Work</label>
+                    <input type="text" class="form-control" formControlName="esic_NatureOfWork"/>
+                    <div *ngIf="Input_Form.get('esic_NatureOfWork').errors?.required" class="text-danger">
+                        ESIC nature of Work is required.
+                    </div>
+                </div>
+              </div>
+            </div>
+
+             <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="esic_SubCategory_NatureOfWork" class="required">ESIC Sub-Category / Nature of Work</label>
+                    <input type="text" class="form-control" formControlName="esic_SubCategory_NatureOfWork"/>
+                    <div *ngIf="Input_Form.get('esic_SubCategory_NatureOfWork').errors?.required" class="text-danger">
+                        ESIC sub-category / nature of work is required.
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="esic_BranchOffice" class="required">ESIC Branch Office</label>
+                    <input type="text" class="form-control" formControlName="esic_BranchOffice"/>
+                    <div *ngIf="Input_Form.get('esic_BranchOffice').errors?.required" class="text-danger">
+                        ESIC branch office is required.
+                    </div>
+                </div>
+              </div>
+            </div>
+
+             <div class="row form-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="esic_InspectionDivision" class="required">ESIC Inspection Division</label>
+                    <input type="text" class="form-control" formControlName="esic_InspectionDivision"/>
+                    <div *ngIf="Input_Form.get('esic_InspectionDivision').errors?.required" class="text-danger">
+                        ESIC inspection division is required.
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                  <div class="col-md-6">
+                      <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                  </div>
+                  <div class="col-md-6 text-right">
+                      <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" type="submit" class="btn btn-primary">Save & Next</button>
+                      <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+</form>

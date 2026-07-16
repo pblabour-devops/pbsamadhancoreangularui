@@ -1,0 +1,89 @@
+<div class="main-content">
+<div class="card col-md-12">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="id" />
+  <input type="hidden" formControlName="appRefId" />
+
+  <!-- Section Title -->
+  <div class="fw-semibold mb-3 mt-4 pt-3 border-top">
+    Workplace Details (Where the worker/employee is/was actually working):
+  </div>
+  <div class="row g-4 mb-4">
+
+    <!-- Address of Workplace -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">
+        Address of Workplace<span class="text-danger">*</span>
+      </label>
+      <textarea
+        formControlName="workplaceAddress"
+        class="form-control"
+        rows="2"
+        [class.is-invalid]="formControls.workplaceAddress.touched && formControls.workplaceAddress.invalid">
+      </textarea>
+      <div class="invalid-feedback">
+        Address of Workplace is required
+      </div>
+    </div>
+
+    <!-- State of Workplace -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        State of Workplace<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="state"
+        class="form-control"
+        [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+        <option value="" disabled selected>Select State</option>
+        <option value="Punjab">Punjab</option>
+      </select>
+      <div class="invalid-feedback">
+        State of Workplace is required
+      </div>
+    </div>
+
+    <!-- District of Workplace -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        District of Workplace<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="districtRefId"
+        class="form-control"
+        [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid"
+        >
+        <option value="" disabled selected>Select District</option>
+        <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
+          {{ dist.districtName }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        District of Workplace is required
+      </div>
+    </div>
+
+    <!-- PIN Code of Workplace -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        PIN Code of Workplace<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="pinCode"
+        class="form-control"
+        placeholder="Enter PIN Code"
+        maxlength="6"
+        [class.is-invalid]="formControls.pinCode.touched && formControls.pinCode.invalid">
+      <div class="invalid-feedback">
+        PIN Code of Workplace is required
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Action Buttons -->
+
+</form>
+</div>
+</div>

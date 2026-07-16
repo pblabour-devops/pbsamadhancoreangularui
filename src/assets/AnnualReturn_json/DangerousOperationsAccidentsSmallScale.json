@@ -1,0 +1,47 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 53,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Dangerous Operations and Accidents",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(9) Does the establishment carry out any hazardous process or dangerous operations coming within the meaning of factories act,1948", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(9(ii) If So,give particulars", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+
+          ]
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Accidents Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Fatal", "ColumnTitle": "Fatal", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "NonFatal", "ColumnTitle": "NonFatal", "DataType": "Number", "IsMendatory": false }
+
+
+            ],
+            "Rows": [
+              { "category": "1. Number of Accidents" }
+
+
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Nature of safety measures provided as required under the factories act,1948", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+
+
+          ]
+        }
+
+      ]
+    }
+  }
+]

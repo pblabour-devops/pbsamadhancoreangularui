@@ -1,0 +1,78 @@
+<form [formGroup]="CommonLicence_ContractorDetail_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="commonLicenceRefId">
+    <input type="hidden" formControlName="commonLicence_ContractorDetailId">
+    <div class="pcoded-main-container">
+        <div class="pcoded-content ">
+            <div class="card border-danger " style="margin: 8px; ">
+                <div class="card-header text-center bg-danger text-white ">
+                    <h6>FORM-58</h6>
+                    <p class="mb-0">Application for Grant / Amendment / Transfer of license as a Factory / Industrial premises for Beedi Or Cigar / Engagement of contractor</p>
+                </div>
+                <div class="card-body ">
+                    <div class="row marginClass">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                            </app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                              <div class="card-body">
+                                <div class="col-md-12">
+                                  <h6><span class="badge badge-info"> Particulars Of Contract Labour</span></h6>
+                                </div>
+                
+                                <div class="row form-row">
+                                  <div class="col-md-2 fw-bold text-end text-secondary">
+                                      Nature of work in which contract labour is employed or to be employed : 
+                                  </div>
+                                  <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm " formControlName="natureOfWorkContractLabour">
+                                    <app-form-validation-error [formGroup]="CommonLicence_ContractorDetail_Form" controlName="natureOfWorkContractLabour" placeHolder=""></app-form-validation-error>
+                                  </div>
+                                  <div class="col-md-2 fw-bold text-end text-secondary">
+                                    Maximum no of contract labour to be employed on any day : 
+                                  </div>
+                                  <div class="col-md-4">
+                                    <textarea type="text" class="form-control form-control-sm " formControlName="numberOfContractLabourToBeEmployed"></textarea>
+                                    <app-form-validation-error [formGroup]="CommonLicence_ContractorDetail_Form" controlName="numberOfContractLabourToBeEmployed" placeHolder=""></app-form-validation-error>
+                                  </div>
+                                </div>
+                                
+                                <div class="row form-row">
+                                  <div class="col-md-2 fw-bold text-end text-secondary">
+                                      Estimate date of commencement of each contract work under each contractor : 
+                                  </div>
+                                  <div class="col-md-4">
+                                    <input type="date" class="form-control form-control-sm" formControlName="dateOfCommencementOfEachContractWorkUnderEachContractor">
+                                    <app-form-validation-error [formGroup]="CommonLicence_ContractorDetail_Form" controlName="dateOfCommencementOfEachContractWorkUnderEachContractor" placeHolder=""></app-form-validation-error>
+                                  </div>
+              
+                                  <div class="col-md-2 fw-bold text-end text-secondary">
+                                      Estimate date of termination of employment of contract labour under each contractor : 
+                                  </div>
+                                  <div class="col-md-4">
+                                    <input type="date" class="form-control form-control-sm" formControlName="dateOfTerminationOfEmployementUnderEachContractor">
+                                    <app-form-validation-error [formGroup]="CommonLicence_ContractorDetail_Form" controlName="dateOfTerminationOfEmployementUnderEachContractor" placeHolder=""></app-form-validation-error>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <button type="button " class="btn btn-danger ">Home</button>
+                        </div>
+                         <!-- {{CommonLicence_ContractorDetail_Form.value | json}} -->
+                        <div class="col-md-6 text-end ">
+                            <button type="submit " class="btn btn-primary float-right" [disabled]="!CommonLicence_ContractorDetail_Form.valid">Save &
+                                Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

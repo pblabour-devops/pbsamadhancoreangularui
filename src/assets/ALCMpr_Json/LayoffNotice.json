@@ -1,0 +1,85 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 7,
+      "SectionTitle": "Notice Related Lay Off",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "FactoryName",
+                "ColumnTitle": "Factory Code/License Number",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "InstitutionName",
+                "ColumnTitle": "Name of Institution Public/Pvt/Cooperative",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "numberOfWorkersInInstitution",
+                "ColumnTitle": "Total Number of Workers in Institution",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "LayOffWorkers",
+                "ColumnTitle": "Lay off Workers",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "seriesofLayOffWorkers",
+                "ColumnTitle": "Series of Lay off Workers",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "startDate",
+                "ColumnTitle": "Lay off start date",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "endDate",
+                "ColumnTitle": "Lay off end date",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "LostDays",
+                "ColumnTitle": "Lost Working Days",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "LayOffReason",
+                "ColumnTitle": "Lay off Reason",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "FactoryName": "",
+                "InstitutionName": "",
+                "numberOfWorkersInInstitution": "",
+                 "LayOffWorkers": "",
+                "seriesofLayOffWorkers": "",
+                "endDate": "",
+                "LostDays": "",
+                "LayOffReason": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

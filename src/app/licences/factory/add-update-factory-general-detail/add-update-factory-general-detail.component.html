@@ -1,0 +1,681 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" id="mainForm">
+    <input type="hidden" formControlName="factoryLicenceId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="applicationType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+
+    <input type="hidden" formControlName="isRBAVerified">
+    <input type="hidden" formControlName="isTempRegistrationVerified">
+    <input type="hidden" formControlName="isBuildingPlanVerified">
+    <input type="hidden" formControlName="isStabilityPlanVerified">
+    <input type="hidden" formControlName="projectSiteVersion">
+
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+    <div class="main-content" *ngIf="isReturnAndFundPaid"> 
+        <div class="card col-md-8 card-form" >
+            <div class="col-md-12">
+                <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                </app-app-form-stepper-navigation-panel> -->
+            </div>
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center">Factory License under Punjab Factory Rules 1952. <br> The Factories Act, 1948</h4>
+                    <p class="text-center purpose-type-header">
+                        {{common.getApplicationPurposeTypeDesc(Input_Form.controls.applicationPurposeType.value)}}
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="col-md-12 text-right text-danger">
+                *mandatory fields
+            </div> -->
+            <div class="col-md-12">
+            </div>
+        </div>
+
+        <div class="card col-md-8 card-form mt-0" *ngIf="Input_Form.controls.applicationPurposeType.value == 1">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h4 class="text-center">Prerequisites</h4>
+                    <h5 class="m-t-20"><span class="badge badge-primary">2.</span>&nbsp; Approval under Right-To-Business Details</h5>
+                    <div class="row form-row m-t-10">
+                        <div class="col-md-5">
+                            <!-- [ngClass]="formControls.isUnderRightToBusinessAct.invalid && (submitted || formControls.isUnderRightToBusinessAct.dirty || formControls.isUnderRightToBusinessAct.touched) ? 'form-validation-icon-input' : ''" -->
+                            <div class="form-group">
+                                <label for="isUnderRightToBusinessAct" class="required">2.1. Have you availed in-principal approval under Right-To-Business rules</label>
+                                <select class="form-control rounded" (change)="onPrincipalApprovalChange(formControls.isUnderRightToBusinessAct.value)" formControlName="isUnderRightToBusinessAct">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="isUnderRightToBusinessAct" placeHolder="Have you availed in-principal approval under Right-To-Business rules">
+                            </app-form-validation-error>
+                        </div>
+                    </div>
+        
+                    <div class="row form-row" *ngIf="Input_Form.controls.isUnderRightToBusinessAct.value == 1">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="projectIdentificationNo" class="required">2.2. Project identification number - RBA</label>
+                                <input type="text" class="form-control" formControlName="projectIdentificationNo">
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="projectIdentificationNo" placeHolder="Have you availed in-principal approval under Right-To-Business rules">
+                            </app-form-validation-error>
+                        </div>
+        
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="appIdRightToBusinessAct" class="required">2.3. Application id-RBA</label>
+                                <input type="text" class="form-control" formControlName="appIdRightToBusinessAct">
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="appIdRightToBusinessAct" placeHolder="Have you availed in-principal approval under Right-To-Business rules">
+                            </app-form-validation-error>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 35px;">
+                            <div class="btn  btn-outline-primary" *ngIf="formControls.projectIdentificationNo.valid && formControls.appIdRightToBusinessAct.valid && !Input_Form.controls.isRBAVerified.value" (click)="findPrincipalApprovalDetails(formControls.projectIdentificationNo.value, formControls.appIdRightToBusinessAct.value)">VERIFY</div>
+                            <div class="btn btn-primary" *ngIf="formControls.projectIdentificationNo.valid && formControls.appIdRightToBusinessAct.valid && Input_Form.controls.isRBAVerified.value" (click)="resetRbaVerification()">RESET</div>
+                        </div>
+                    </div>
+                    <div class="row form-row" *ngIf="Input_Form.controls.isUnderRightToBusinessAct.value == 1">
+                        <div class="row">
+                            <div class="col-md-12 text-danger font-weight-bold" *ngIf="!Input_Form.controls.isRBAVerified.value">
+                                <i class="feather icon-alert-triangle"></i> Approval under Right-To-Business rules is not verified..! Please input Project identification number and Application id - RBA click on verified button. 
+                            </div>
+                            <div class="col-md-12 text-success font-weight-bold" *ngIf="Input_Form.controls.isRBAVerified.value">
+                                <i class="feather icon-check"></i> Approval under Right-To-Business rules is verified..!
+                            </div>
+                            <div class="col-md-12 text-center m-t-10" *ngIf="Input_Form.controls.isRBAVerified.value">
+                                <table>
+                                    <table class="table table-bordered table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>Establishment</th>
+                                                <th>Address</th>
+                                                <th>Approval date</th>
+                                                <th>Approval file</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>{{rightToBussinessApprovalDetails?.be_name}}</td>
+                                            <td>
+                                                {{rightToBussinessApprovalDetails?.projectaddress}}, 
+                                                {{rightToBussinessApprovalDetails?.projectvillagetown}},
+                                                {{rightToBussinessApprovalDetails?.projecttehsilname}}
+                                                {{rightToBussinessApprovalDetails?.projectdistrictname}},
+                                                {{rightToBussinessApprovalDetails?.projectpincode}}
+                                            </td>
+                                            <td>{{rightToBussinessApprovalDetails?.approvaldate}}</td>
+                                            <td><a class="text-danger" target="_blank" href="{{rightToBussinessApprovalDetails?.approval_file}}">Click here</a></td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5><span class="badge badge-primary">3.</span> &nbsp;Temporary License Details</h5>
+                    <div class="row form-row m-t-10">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="isTempRegistered" class="required">3.1. Have you availed a temporary registration ?</label>
+                                <select class="form-select form-select-sm" class="form-control" (change)="tempRegChange()" formControlName="isTempRegistered">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="isTempRegistered" placeHolder="Have you availed a temporary registration">
+                            </app-form-validation-error>
+                        </div>
+
+                        <div class="col-md-5" *ngIf="Input_Form.controls.isTempRegistered.value == 1">
+                            <div class="form-group">
+                                <label for="tempRegistrationNumber" class="required">3.2. Temporary registration number</label>
+                                <input type="text" class="form-control" formControlName="tempRegistrationNumber">
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="tempRegistrationNumber" placeHolder="Temporary registration number">
+                            </app-form-validation-error>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 35px;">
+                            <div class="btn  btn-outline-primary" (click)="findTempRegistrationDetails(formControls.tempRegistrationNumber.value)" *ngIf="formControls.isTempRegistered.value == 1 && formControls.tempRegistrationNumber.valid && !Input_Form.controls.isTempRegistrationVerified.value">VERIFY</div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row" *ngIf="Input_Form.controls.isTempRegistered.value == 1">
+                        <div class="row">
+                            <div class="col-md-12 text-danger font-weight-bold" *ngIf="!Input_Form.controls.isTempRegistrationVerified.value">
+                                <i class="feather icon-alert-triangle"></i> Temporary license detail is not verified..! Please input the correct temporary license number and click on verified button. 
+                            </div>
+                            <div class="col-md-12 text-success font-weight-bold" *ngIf="Input_Form.controls.isTempRegistrationVerified.value">
+                                <i class="feather icon-check"></i> Temporary license detail is verified..!
+                            </div>
+                            <div class="col-md-12 m-t-10" *ngIf="Input_Form.controls.isTempRegistrationVerified.value">
+                                <a class="text-danger" target="_blank" href="https://pblabour.gov.in/eLabour/writereaddata/Licence/{{temporaryLicenceDetailsViewModel?.licencePath}}">Click here to see temporary license approval Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <h5><span class="badge badge-primary">4.</span>&nbsp; Building Plan Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="isBuildingPlanApproved" class="required">4.1. Authority from building plan approved</label>
+                                <select class="form-select form-select-sm" class="form-control" (change)="buildingPlanApprovedChange()" formControlName="isBuildingPlanApproved">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "1"> Director of Factories </option>
+                                    <option value= "4"> Invest Punjab </option>
+                                    <option value= "3"> Offline </option>
+                                    <option *ngIf="Input_Form.controls.isUnderRightToBusinessAct.value == 1 && Input_Form.controls.isRBAVerified.value" value= "2"> Not applicable</option>
+                                </select>
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="isBuildingPlanApproved" placeHolder="Please select authority from which you have got building plan approval">
+                            </app-form-validation-error>
+                        </div>
+                        <div class="col-md-5" *ngIf="Input_Form.controls.isBuildingPlanApproved.value == 1 || Input_Form.controls.isBuildingPlanApproved.value == 3 || Input_Form.controls.isBuildingPlanApproved.value == 4 ">
+                            <div class="form-group">
+                                <label for="buildingPlanDofNumber" class="required">4.2. Building plan DOF number</label>
+                                <input type="text" class="form-control" formControlName="buildingPlanDofNumber">
+                            </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="buildingPlanDofNumber" placeHolder="Please enter building plan DOF number">
+                            </app-form-validation-error>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 36px;">
+                            <div class="btn btn-outline-primary" (click)="findDOFNoDetails(formControls.buildingPlanDofNumber.value)" *ngIf="formControls.isBuildingPlanApproved.value == 1 && formControls.buildingPlanDofNumber.valid && !Input_Form.controls.isBuildingPlanVerified.value">VERIFY</div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-5" *ngIf="Input_Form.controls.isBuildingPlanApproved.value == 3 || Input_Form.controls.isBuildingPlanApproved.value == 4">
+                            <div class="form-group">
+                                <label for="buildingPlanApprovalDate" class="required">4.3. Building plan approval date</label>
+                                <input type="date" class="form-control m-t-20" formControlName="buildingPlanApprovalDate">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row" *ngIf="Input_Form.controls.isBuildingPlanApproved.value == 1">
+                        <div class="col-md-12 text-danger font-weight-bold" *ngIf="!Input_Form.controls.isBuildingPlanVerified.value">
+                            <i class="feather icon-alert-triangle"></i> Building plan detail is not verified..! Please input the correct building plan DOF number and click on verified button. 
+                        </div>
+                        <div class="col-md-12 text-success font-weight-bold" *ngIf="Input_Form.controls.isBuildingPlanVerified.value">
+                            <i class="feather icon-check"></i> Building plan detail is verified..!
+                        </div>
+                        <div class="col-md-12 m-t-10" *ngIf="Input_Form.controls.isBuildingPlanVerified.value">
+                            <a class="text-danger" target="_blank" href="https://{{buildingPlanApprovalCertificateFile}}">Click here to see approved building plan certificate</a>
+                        </div>
+                    </div>
+                    <div class="row form-row" *ngIf="Input_Form.controls.isBuildingPlanApproved.value == 0">
+                        <div class="col-md-12 text-primary special-note" *ngIf="Input_Form.controls.isBuildingPlanVerified.value">
+                            Note : In case you have got approval of building plan from another authority (Other than Director of Factories) then you have to upload documentry proof in the next part of application form.
+                        </div>
+                    </div>
+
+                    <h5><span class="badge badge-primary">5.</span>&nbsp; Stability Details</h5>
+                    <div class="row form-row m-t-10">
+                        <div class="col-md-5">
+                            <div class="form-group" [ngClass]="formControls.isStabilityApproved.invalid && (submitted || formControls.isStabilityApproved.dirty || formControls.isStabilityApproved.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="isStabilityApproved" class="required">5.1. Authority from stability approved</label>
+                                    <select class="form-select form-select-sm form-control" (change)="onBuildingPlanAuthorityTypeChange($event)" formControlName="isStabilityApproved">
+                                        <option [selected]="true" value="">-- Select --</option>
+                                        <option *ngFor="let item of buildingPlanStabilityAuthorityTypeEnum" value="{{item.value}}">{{item.text}}
+                                    </select>
+                                </div>
+                            <app-form-validation-error [formGroup]="Input_Form" controlName="isStabilityApproved" placeHolder="Please select authority from which you have got building plan approval">
+                            </app-form-validation-error>
+                        </div>
+                        <div class="col-md-5" *ngIf=" Input_Form.controls.isStabilityApproved.value == 2 ||Input_Form.controls.isStabilityApproved.value == 4 || Input_Form.controls.isStabilityApproved.value == 5 ">
+                            <div class="form-group">
+                                <label for="stabilityPlanDofNumber" class="required">5.2. Enter building plan stability DOF number</label>
+                                <input type="text" class="form-control" (change)="onBuildingPlanAuthorityTypeChange($event)"  formControlName="stabilityPlanDofNumber">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2" style="margin-top: 35px;">
+                            <div class="btn btn-outline-primary" (click)="findStabilityDOFNoDetails(formControls.stabilityPlanDofNumber.value)" *ngIf="formControls.isStabilityApproved.value == 4 && formControls.stabilityPlanDofNumber.valid && !Input_Form.controls.isStabilityPlanVerified.value">VERIFY</div>
+                        </div>
+                    </div>
+
+                    <div  *ngIf="selectedOption == 1">
+                        <h5 class="m-t-30">6. Empaneled Competent Person Details</h5>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonUserRefId.invalid && (submitted || formControls.competentPersonUserRefId.dirty || formControls.competentPersonUserRefId.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonUserRefId" class="required">6.1. Competent person name</label>
+                                    <select class="form-select form-select-sm form-control" formControlName="competentPersonUserRefId" (change)="getCompetentPersonDetailsByName(formControls.competentPersonUserRefId)">
+                                        <option [selected]="true" value="">-- select --</option>
+                                        <option *ngFor="let item of competentPersonList?.competentPersonList" value="{{item.id}}">{{item.officerFullName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonContactNo.invalid && (submitted || formControls.competentPersonContactNo.dirty || formControls.competentPersonContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonContactNo" class="required">6.2. Competent person contact no</label>
+                                    <input type="text" class="form-control" formControlName="competentPersonContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonEmail.invalid && (submitted || formControls.competentPersonEmail.dirty || formControls.competentPersonEmail.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonEmail" class="required">6.3. Competent person email</label>
+                                    <input type="text" class="form-control" formControlName="competentPersonEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Engineer Details -->
+                     <div *ngIf="selectedOption == 3">
+                        <h5 class="m-t-30">Empaneled Engineer Details</h5>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerName.invalid && (submitted || formControls.engineerName.dirty || formControls.engineerName.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerName" class="required">Engineer name</label>
+                                    <select class="form-select form-select-sm form-control" formControlName="engineerUserRefId" (change)="getEngineersDetailsByName(formControls.engineerUserRefId)">
+                                        <option [selected]="true" value=0>-- select --</option>
+                                        <option *ngFor="let item of empaneledEngineersList?.empaneledEngineersList" value="{{item.id}}">{{item.officerFullName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerContactNo.invalid && (submitted || formControls.engineerContactNo.dirty || formControls.engineerContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerContactNo" class="required">Engineer contact no</label>
+                                    <input type="text" class="form-control" formControlName="engineerContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerEmail.invalid && (submitted || formControls.engineerEmail.dirty || formControls.engineerEmail.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerEmail" class="required">Engineer email</label>
+                                    <input type="text" class="form-control" formControlName="engineerEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5" *ngIf=" Input_Form.controls.isStabilityApproved.value == 2 || Input_Form.controls.isStabilityApproved.value == 5 ">
+                        <div class="form-group">
+                            <label for="buildingPlanStabilityApprovalDate" class="required"> Building plan approval date</label>
+                            <input type="date" class="form-control" formControlName="buildingPlanStabilityApprovalDate">
+                        </div>
+                    </div>
+                    
+                    <div class="row form-row" *ngIf="Input_Form.controls.isStabilityApproved.value == 4">
+                        <div class="col-md-12 text-danger font-weight-bold" *ngIf="!Input_Form.controls.isStabilityPlanVerified.value">
+                            <i class="feather icon-alert-triangle"></i> Building plan stability detail is not verified..! Please input the correct building plan DOF number and click on verified button. 
+                        </div>
+                        <div class="col-md-12 text-success font-weight-bold" *ngIf="Input_Form.controls.isStabilityPlanVerified.value">
+                            <i class="feather icon-check"></i> Building plan stability detail is verified..!
+                        </div>
+                        <div class="col-md-12 m-t-10" *ngIf="Input_Form.controls.isStabilityPlanVerified.value">
+                            <a class="text-danger" target="_blank" href="https://pblabour.gov.in/eLabour/writereaddata/Licence/{{buildingPlanStabilityApprovalCertificateFile}}">Click here to see approved building plan stability certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card col-md-8 card-form mt-0" *ngIf="doesPrerequisitesFullfilled">
+            <div class="col-md-12 text-right text-danger">
+                * mandatory fields
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">6.</span>&nbsp; Factory Circle</h5>
+                    <div class="row form-row">
+                        <app-factory-circle-selection class="col-md-12" [selectedFactoryCircleId]="this.Input_Form.controls.factoryCircleRefId.value" (circleOptionsEvent)="onCircleOptionChange($event)" [districRefId]="this.districtRefId" [isReadOnly]="genericFormData?.isLocked"></app-factory-circle-selection>
+                        <div *ngIf="formControls.factoryCircleRefId.invalid && (submitted || formControls.factoryCircleRefId.dirty || formControls.factoryCircleRefId.touched)" class="text-danger">
+                            <div *ngIf="formControls.factoryCircleRefId.errors?.required">
+                                Select circle..!
+                            </div>
+                            <div *ngIf="formControls.factoryCircleRefId.errors?.min">
+                                Select circle..!
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">7.</span>&nbsp; Factory Basic Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="isBuildingConstructedBefore29June2018" class="required">7.1. Is your building constructed before June 29, 2018? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="isBuildingConstructedBefore29June2018">
+                                    <option value="">-- Select --</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">Not-Applicable</option>
+                                </select>
+                                <div *ngIf="Input_Form.get('isBuildingConstructedBefore29June2018').errors?.required" class="text-danger">
+                                    Building construction date is required.
+                                </div>
+                            </div>
+
+                            
+                            <!-- <div class="form-group">
+                                <label for="isBuildingConstructedBefore29June2018" class="required">Is your building constructed before June 29, 2018? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="isBuildingConstructedBefore29June2018">
+                                    <option value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                    <option value= "2"> Not-Applicable </option>
+                                </select>
+                                <div *ngIf="hasSubmitClicked && Input_Form.get('isBuildingConstructedBefore29June2018').invalid" class="text-danger">
+                                    <div *ngIf="Input_Form.get('isBuildingConstructedBefore29June2018').errors?.required">
+                                        Building construction date is required.
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <app-form-validation-error [formGroup]="Input_Form" controlName="isBuildingConstructedBefore29June2018" placeHolder="Is your building constructed before June 29">
+                            </app-form-validation-error> -->
+
+                            <!-- <div *ngIf="Input_Form.get('isBuildingConstructedBefore29June2018').errors.required" class="required">
+                                <span class="text-danger">Building construction date is required.</span>
+                            </div> -->
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="haveYouMadeChangesInBuildingPlan" class="required">7.2. Have you made any changes in Building Plan ?</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="haveYouMadeChangesInBuildingPlan">
+                                    <option value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('haveYouMadeChangesInBuildingPlan').errors?.required" class="text-danger">
+                                    Any changes in Building Plan is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span *ngIf="Input_Form.controls.isBuildingConstructedBefore29June2018.value && (Input_Form.controls.isBuildingConstructedBefore29June2018.value == 2)"><strong>Note :</strong>  Not applicable means - Your Factory fall under the category in which approvals from PRTPD Act is not required..!</span>
+
+                    <div class="row form-row">
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('oldLicenceNo',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="oldLicenceNo" class="required">Old Licence No </label>
+                                <input type="text" class="form-control" formControlName="oldLicenceNo">
+                                <div *ngIf="Input_Form.get('oldLicenceNo').errors?.required" class="text-danger">
+                                    Old Licence no is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('oldLicenceValidUpTo_Json',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="oldLicenceValidUpTo_Json" class="required">Old Licence Valid UpTo </label>
+                                <div class="input-group">
+                                    <input class="form-control" formControlName="oldLicenceValidUpTo_Json" placeholder="yyyy-mm-dd" name="oldLicenceValidUpTo_Json" ngbDatepicker #oldLicenceValidUpTo="ngbDatepicker">
+                                    <div class="btn btn-outline-info" (click)="oldLicenceValidUpTo.toggle()"> <i class="feather icon-calendar"></i></div>
+                                </div>
+                                <div *ngIf="Input_Form.get('oldLicenceValidUpTo_Json').errors?.required" class="text-danger">
+                                    Old licence valid upto is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('oldLicenceTotalEmployees',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="oldLicenceTotalEmployees" class="required">Old licence total employees </label>
+                                <input type="text" class="form-control" formControlName="oldLicenceTotalEmployees" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('oldLicenceTotalEmployees').errors?.required" class="text-danger">
+                                    Old licence total employees is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('oldLicenceFactoryKiloWatt',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="oldLicenceFactoryKiloWatt" class="required">Old licence factory Kilo Watt </label>
+                                <input type="text" class="form-control" formControlName="oldLicenceFactoryKiloWatt" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('oldLicenceFactoryKiloWatt').errors?.required" class="text-danger">
+                                    Old licence kilo watt is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('registrationDate_Json',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="registrationDate" class="required">7.3. Registration date <span class="text-primary" style="font-size: x-small;margin-left: 2px;">(mm/dd/yyyy)</span></label>
+                                <div class="input-group">
+                                    <input class="form-control" formControlName="registrationDate_Json"  placeholder="yyyy-mm-dd" name="registrationDate_Json" ngbDatepicker #registrationDate="ngbDatepicker">
+                                    <div class="btn btn-primary btn-date" (click)="registrationDate.toggle()"> <i class="feather icon-calendar"></i></div>
+                                </div>
+                                <div *ngIf="Input_Form.get('registrationDate_Json').errors?.required" class="text-danger">
+                                    Registration date is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('renewalFromDate_Json',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="renewalFromDate" class="required">7.3. Renewal from date </label>
+                                <div class="input-group">
+                                    <input class="form-control" formControlName="renewalFromDate_Json" placeholder="yyyy-mm-dd" name="renewalFromDate_Json" ngbDatepicker #renewalFromDate="ngbDatepicker">
+                                    <div class="btn btn-outline-info" (click)="renewalFromDate.toggle()"> <i class="feather icon-calendar"></i></div>
+                                </div>
+                                <div *ngIf="Input_Form.get('renewalFromDate_Json').errors?.required" class="text-danger">
+                                    Renewal date is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('ammendmentDate_Json',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="ammendmentDate" class="required">7.3. Ammendment date </label>
+                                <div class="input-group">
+                                    <input class="form-control" [attr.max]="todayDate" formControlName="ammendmentDate_Json" placeholder="yyyy-mm-dd" name="ammendmentDate_Json" ngbDatepicker #ammendmentDate="ngbDatepicker">
+                                    <div class="btn btn-outline-info" (click)="ammendmentDate.toggle()"> <i class="feather icon-calendar"></i></div>
+                                </div>
+                                <div *ngIf="Input_Form.get('ammendmentDate_Json').errors?.required" class="text-danger">
+                                    Ammendment date is required.
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div>
+                    <div class="row form-row"> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="noOfYears" class="required">7.4. Licence for number of year </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="noOfYears">
+                                    <option value="">-- Select --</option>
+                                    <option value= "1">1 - Year </option>
+                                    <option value= "2">2 - Years</option>
+                                    <option value= "3">3 - Years</option>
+                                    <option value= "4">4 - Years</option>
+                                    <option value= "5">5 - Years</option>
+                                    <option value= "6">6 - Years</option>
+                                    <option value= "7">7 - Years</option>
+                                    <option value= "8">8 - Years</option>
+                                    <option value= "9">9 - Years</option>
+                                    <option value= "10">10 - Years</option>
+                                </select >
+                                <div *ngIf="Input_Form.get('noOfYears').errors?.required" class="text-danger">
+                                    Licence for the number of year is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 font-weight-bold" *ngIf = "Input_Form.get('applicationPurposeType').value !=3">
+                            <div class="text-center" *ngIf="Input_Form.get('renewalFromDate_Json').value && Input_Form.get('noOfYears').value">
+                                <!-- Your Licence will be valid from {{ Input_Form.get('renewalFromDate').value | date:'medium'}}
+                                to {{ calculateLicenceEndDate(Input_Form.get('renewalFromDate').value, Input_Form.get('noOfYears').value) | date:'medium'}} -->
+                                {{calcLicenceValidRange()}}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 m-t-20">
+                            <div class="form-group">
+                                <label for="manufacturingProcess_Last12Months" class="required">7.5. Manufacturing process last 12 months </label>
+                                <input type="text" class="form-control" formControlName="manufacturingProcess_Last12Months" >
+                                <span class="text-primary special-note">In case you have multiple manufacturing processes applicable then enter multiple values separated by comma's (e.g. item-1, item-2)</span>
+                                <div *ngIf="Input_Form.get('manufacturingProcess_Last12Months').errors?.required" class="text-danger">
+                                    Manufacturing process last 12 months is required.
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div>
+                    <div class="row form-row"> -->
+                        <div class="col-md-6 m-t-20">
+                            <div class="form-group">
+                                <label for="manufacturingProcess_Next12Months" class="required">7.6. Manufacturing process next 12 months </label>
+                                <input type="text" class="form-control" formControlName="manufacturingProcess_Next12Months" >
+                                <span class="text-primary special-note">In case you have multiple manufacturing processes applicable then enter multiple values separated by comma's (e.g. item-1, item-2)</span>
+                                <div *ngIf="Input_Form.get('manufacturingProcess_Next12Months').errors?.required" class="text-danger">
+                                    Manufacturing process next 12 months is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nationalIndustrialClassificationCode">7.7. NIC code or nature of business</label>
+                                <!-- <nic-code-form-control [selectedNicCodesFromParent]="Input_Form.controls.nationalIndustrialClassificationCode.value" [canEdit]="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true" (updateSelectedNicCodeToParent)="updateNicCode($event)"></nic-code-form-control> -->
+                                <div class="text-danger" *ngIf="validateNicCode()">Select NIC code..!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mfgProducts_Last12Month" class="required">7.8. Manufacturing products last 12 month </label>
+                                <input type="text" class="form-control" formControlName="mfgProducts_Last12Month" >
+                                <span class="text-primary special-note">In case you have multiple manufacturing processes applicable then enter multiple values separated by comma's (e.g. item-1, item-2)</span>
+                                <div *ngIf="Input_Form.get('mfgProducts_Last12Month').errors?.required" class="text-danger">
+                                    Manufacturing products last 12 months is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="workers_MaxDuringYear" class="required">7.9. Maximum workers during the year </label>
+                                <input type="text" class="form-control" formControlName="workers_MaxDuringYear" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('workers_MaxDuringYear').errors?.required" class="text-danger">
+                                    Maximum workers during the year is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <!-- [ngClass]="formControls.powerKW_Installed.invalid && (submitted || formControls.powerKW_Installed.dirty || formControls.powerKW_Installed.touched) ? 'form-validation-icon-input' : ''" -->
+                            <div class="form-group">
+                                <label for="powerKW_Installed" class="required">7.10. Maximum Kilowatt power installed </label>
+                                <input type="text" class="form-control" formControlName="powerKW_Installed" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('powerKW_Installed').errors?.required" class="text-danger">
+                                    Maximum Kilowatt power installed is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- [ngClass]="formControls.powerKW_MaxProposed.invalid && (submitted || formControls.powerKW_MaxProposed.dirty || formControls.powerKW_MaxProposed.touched) ? 'form-validation-icon-input' : ''" -->
+                            <div class="form-group">
+                                <label for="powerKW_MaxProposed" class="required">7.11. Maximum Kilowatt power proposed </label>
+                                <input type="text" class="form-control" formControlName="powerKW_MaxProposed" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('powerKW_MaxProposed').errors?.required" class="text-danger">
+                                    Maximum Kilowatt power proposed is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('workers_MaxLast12Month',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="workers_MaxLast12Month" class="required">7.12. Maximum workers last 12 month </label>
+                                <input type="text" class="form-control" formControlName="workers_MaxLast12Month" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('workers_MaxLast12Month').errors?.required" class="text-danger">
+                                    Maximum workers last 12 month is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="columnsToBeShownHide('workers_OrdinarilyEmployed',Input_Form.controls.applicationPurposeType.value)">
+                            <div class="form-group">
+                                <label for="workers_OrdinarilyEmployed" class="required">7.13. Workers ordinarily employed </label>
+                                <input type="text" class="form-control" formControlName="workers_OrdinarilyEmployed" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" >
+                                <div *ngIf="Input_Form.get('workers_OrdinarilyEmployed').errors?.required" class="text-danger">
+                                    Workers ordinarily employed is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-go-to-home-button class="btn btn-outline-primary" style="border-radius: 25px;"></app-go-to-home-button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" [disabled]="hasSubmitClicked" type="submit"  class="btn btn-primary">Save & Next</button>
+                        <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="main-content" *ngIf="!isReturnAndFundPaid" style="margin-top: 60px;"> 
+        <div class="card col-md-8 card-form mt-0">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div class="row form-row">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Dear Applicant,</strong> <br>
+                            You are not allowed to avail the Factory Licence Renewal service because your 
+                            <ng-container *ngIf="isAnnualReturnFilled === 0">
+                                <strong>Annual Return of {{ annualReturnYear }}</strong>
+                            </ng-container>
+                            <ng-container *ngIf="isAnnualReturnFilled === 0 && isFundPaid === 0">
+                                 and 
+                            </ng-container>
+                            <ng-container *ngIf="isFundPaid === 0">
+                                <strong> Welfare Fund Contribution of {{ welfareFundYear }}</strong>
+                            </ng-container>
+                           against the licence number:<strong>{{annualReturnlicenceNumber}} </strong> has not been submitted yet. <br>
+
+                            Kindly fill out your 
+                            <ng-container *ngIf="isAnnualReturnFilled === 0">
+                                <strong>Annual Return</strong>
+                            </ng-container>
+                            <ng-container *ngIf="isAnnualReturnFilled === 0 && isFundPaid === 0">
+                                 and 
+                            </ng-container>
+                            <ng-container *ngIf="isFundPaid === 0">
+                                <strong> Welfare Fund Contribution </strong>
+                            </ng-container>
+                             first to avail the service. <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+

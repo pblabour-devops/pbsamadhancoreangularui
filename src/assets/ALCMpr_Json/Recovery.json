@@ -1,0 +1,51 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 6,
+      "SectionTitle": "Recovery",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "CertificateRecovery",
+                "ColumnTitle": "Recovery certificate sent for approval",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "received",
+                "ColumnTitle": "Received",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "amountRecovered",
+                "ColumnTitle": "Amount Recovered",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "amountDisbursed",
+                "ColumnTitle": "Amount Disbursed",
+                "DataType": "Number",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "CertificateRecovery": "",
+                "received": "",
+                "amountRecovered": "",
+                "amountDisbursed":""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,146 @@
+<div class="main-content">
+    <div class="card col-md-10 card-form">
+  
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Inspections (Randomization Dashboard)</h4>
+        </div>
+      </div>
+      <div class="row m-t-10">
+        <div class="col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text" id="btnGroupAddon2">
+                        Search</div>
+                </div>
+                <input class="form-control" type="search"
+                    (keyup)="searchKeyUp($event)" 
+                    (keydown)="searchPressed($event)"
+                    placeholder="Search keyword here and press enter.."
+                    id="searchKeyword">
+                <button class="btn btn-danger"
+                    *ngIf="searchText.length>0" (click)="clearSearch()"
+                    type="button">Clear</button>
+                <button class="btn btn-success"
+                    (click)="onClickSearchBar()" type="submit"><i
+                        class="feather icon-search"></i></button>
+            </div>
+           
+        </div>
+    </div>
+      <div class="m-t-10">
+        <span style="font-style: italic;" class="font-weight-bold text-danger">*Sorted by Lastest to Oldest</span>
+        <table class="table table-bordered table-striped text-center">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Month</th>
+              <th>Year</th>
+              <th>Randomization Id</th>
+              <th>Randomization Date</th>
+              <th class="col-dark">Total Inspections<br>(A)</th>
+              <th class="col-dark">Total Transfered<br></th>
+              <th class="col-dark">Total Submitted<br></th>
+              <th class="col-dark">Total Pending<br></th>
+              <th class="col-dark">Total assigned to labour-wing<br>(To labour wing)<br>(B)</th>
+              <th class="col-dark">Total Pending<br>(To labour wing)<br>(A-B)</th>
+              <th>Is Assignd to labour-wing and Locked</th>
+              <th>Locked Date On</th>
+              <th>Total time taken to assign labour wing (in Hrs.)
+                <!-- <br><span style="font-size:11px;" class="text-danger">(excluding gadget holidays and weekends)</span> -->
+              </th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of randomizationList; let i = index">
+              <td
+                class="badge-light-success font-weight-bold">
+                <span
+                    *ngIf="dataTableParams.pageNo == 1 else NotFirstPage">
+                    {{i+1}}
+                </span>
+                <ng-template #NotFirstPage>
+                    {{ (dataTableParams.pageSize *
+                    (dataTableParams.pageNo-1) )+ i+1}}
+                </ng-template>
+            </td>
+              <td>{{ getMonthName(data.month) }}</td>
+              <td>{{ data.year}}</td>
+              <td>#{{ data.randomizationId}}</td>
+              <td>{{ data.timestemp  | date:'medium'}}</td>
+              <td class="col-light">{{ data.totalInspections}}</td>
+              <td class="col-light">{{ data.totalTransfered}}</td>
+              <td class="col-light text-success font-weight-bold">{{ data.totalSubmitted}}</td>
+              <td class="col-light text-danger font-weight-bold">{{ data.totalPending}}</td>
+              <td class="col-light">{{ data.totalAssigned}}</td>
+              <td class="col-light"><span [ngClass]="(data.totalInspections - data.totalAssigned)>0 ? 'text-danger font-weight-bold' : ''">{{ data.totalInspections - data.totalAssigned}}</span></td>
+              <td><span *ngIf="data.isLocked==1 || ( (data.year < 2024) || (data.year ==2024 && data.month <=9) ); else lockedPending" class="text-success">locked</span> <ng-template #lockedPending><span class="text-danger font-weight-bold">Pending </span> 
+                <span class="text-info"><br>Please Note: The industry users will be notified/informed regarding their inspection, only after the inspections are assigned and locked by you</span></ng-template></td>
+              <td>
+                {{ data.isLocked === 'No' ? '-' : (data.lockedOn | date: 'medium') }}
+              </td>
+              <th> <span  *ngIf="data.isLocked==1 "><span style="font-size:26px;" class="text-danger">{{data.totalTimeTaken_Hours}}</span>Hrs.</span></th>
+
+
+
+              <td *ngIf="(authService.getUserJwtDecodedInfo().RoleName=='ADRF' || authService.getUserJwtDecodedInfo().RoleName=='DDRF') && ( (data.year > 2024) || (data.year ==2024 && data.month >=9) )">
+                <div class="btn btn-link text-success font-weight-bold" (click)="openInspectionDashboard(data.randomizationId,data.isLocked, data.month, data.year, data.factoryRefId)" *ngIf="(data.isLocked==1 && (data.totalInspections - data.totalAssigned)==0);else showAssignButton">Start Process Inspections</div>
+                
+                <ng-template #showAssignButton>
+                  <div class="btn btn-link text-primary font-weight-bold" (click)="editRandomizationInspection(data.randomizationId,data.isLocked, data.month, data.year, data.factoryRefId,data.timestemp,(data.totalInspections - data.totalAssigned))">Start Assign Inspections to Labour-wing</div>
+                  </ng-template>
+              </td>
+
+
+
+              <td *ngIf="(authService.getUserJwtDecodedInfo().RoleName=='ADRF' || authService.getUserJwtDecodedInfo().RoleName=='DDRF') && ( (data.year < 2024) || (data.year ==2024 && data.month <=9) )">
+                <div class="btn btn-link text-success font-weight-bold" (click)="openInspectionDashboard(data.randomizationId,data.isLocked, data.month, data.year, data.factoryRefId)">View Inspections</div>
+                
+              </td>
+              <td *ngIf = "authService.getUserJwtDecodedInfo().RoleName=='ALLC'">
+                <div class="btn btn-link text-success font-weight-bold" (click)="openInspectionDashboard(data.randomizationId,data.isLocked, data.month, data.year, data.factoryRefId)">View Inspections</div>
+              </td>
+              <td *ngIf="authService.getUserJwtDecodedInfo().RoleName=='LBIN'">
+                  <div class="btn btn-link text-success font-weight-bold" (click)="openInspectionDashboard(data.randomizationId,data.isLocked, data.month, data.year, data.factoryRefId)" *ngIf="data.isLocked==1 && (data.totalInspections - data.totalAssigned)==0;else showAssignButton">Start Process Inspections</div>
+                  <ng-template #showAssignButton>
+                  <div class=" text-danger " >Factory Wing yet not assigned inspections</div>
+                  </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+            Show Results per page:
+            <select name="user-list-table_length"
+                aria-controls="user-list-table"
+                class="custom-select custom-select-sm form-control form-control-sm"
+                (change)="onChangePageSize($event)">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <div style="float: right; margin-top: 13px;">
+                Page No:
+                <select (change)="onChangePageNumber($event)"
+                    class="custom-select custom-select-sm form-control form-control-sm">
+                    <option [value]="index+1"
+                        *ngFor="let a of fakeArray; let index = index">
+                        {{index+1}}</option>
+                </select>
+                <span class="text-danger current-page-total">(Total Pages:
+                    {{fakeArray.length}})</span>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+  
+  
+  

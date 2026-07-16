@@ -1,0 +1,493 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 1,
+      "SectionTitle": "Registrations under Punjab Shops and Commercial Establishment Act, 1958",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Registration Details",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Registration beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "",
+               "IsMendatory": true, 
+               "IsVisible": true, 
+               "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Number of Workers beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "No. of registration applied during the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+               "Value": "", 
+               "IsMendatory": false,
+                "IsVisible": true, 
+                "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Registered During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 5,
+              "LableTitle": "Number Of Workers During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 6,
+              "LableTitle": "De-Register During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 7,
+              "LableTitle": "De-Number Of Workers During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 8,
+              "LableTitle": "Total Shops end of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 9,
+              "LableTitle": "Total Workers end of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 10,
+              "LableTitle": "Number of Registration issued within Time Limit prescribed in this month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 11,
+              "LableTitle": "Deemed registration in this month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            }
+         
+          ]
+        },
+        {
+          "SubSectionSortId": 2,
+        "SubSectionTitle": "Observations",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "Whether spread over is being observed as prescribed under the Act and during the period of rest, the workers are free to leave the place",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 2,
+            "LableTitle": "Whether any child was found employed",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 3,
+            "LableTitle": "Whether the working hours and timings in case of young persons, women are being adhered to",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 4,
+            "LableTitle": "Whether opening & closing hours are being observed",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+           {
+            "LableSortId": 5,
+            "LableTitle": "Whether close day is being observed, if not, whether the employees are being provided weekly holiday",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 6,
+            "LableTitle": "Whether the employees are called for duty on National Holidays. If yes, whether they are being paid overtime wage and a compensatory holiday in lieu thereof",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 7,
+            "LableTitle": "Whether any deduction from wage is being made other than specified in section 20 (2)",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 8,
+            "LableTitle": "Whether any fine imposed or deduction made on account of damage or loss to the employer caused by employee has been explained to him personally and also in writing",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 9,
+            "LableTitle": "Whether fine realized is being utilized in accordance with the directions of the government",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 10,
+            "LableTitle": "Whether the employees are being allowed casual, sick leave, Festival and Gazetted Holidays (21 in a year)",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 11,
+            "LableTitle": "Cleanliness",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 12,
+            "LableTitle": "Ventilation and Lighting",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 13,
+            "LableTitle": "Drinking Water facility",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 14,
+            "LableTitle": "Precaution against Fire",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+        ]
+        }
+      ]
+    }
+  }
+ 
+ 
+]
+   

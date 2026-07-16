@@ -1,0 +1,162 @@
+    <div class="main-content"> 
+        <div class="card col-md-10 card-form">
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Combined Proposed Approval of Building Plans (HUD and Factories)</h4>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h5>Establishment & address</h5>
+                    <div class="col-md-12 col-sm-12 m-t-20">
+                    </div>  
+                    
+                    <div *ngIf="feesUnderRTB.length>0">
+                        <h5 class="m-t-20">Fees already been paid under In-Principal approval</h5>
+                        <hr>
+                        <h6 class="text-info">This applicant has already been paid some fees component under Right-To-Business Act.</h6>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Application fee header</th>
+                                    <th class="text-center">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of feesUnderRTB; let ndx = index">
+                                    <td>{{ndx+1}}</td>
+                                    <td>{{item.bifurcationname}}</td>
+                                    <td class="text-center">{{item.bifurcationamount | number : '1.2-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="m-t-20">Fee Raise Calculator</h5>
+                    <table class="table m-t-20">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Application fee header</th>
+                                <th>Options</th>
+                                <th></th>
+                                <th class="text-center">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th colspan="5" class="text-center"><h5><span  class="badge badge-danger">Treasury Payments</span></h5></th>
+                            </tr>
+                            <tr *ngFor="let feeHeader of getPaymentTypeHeads(raiseFeeParms?.feeCalculatorInfoParms, true); let ndx = index">
+                                <td>{{ndx+1}}</td>
+                                <td>{{feeHeader.feeHeaderTitle}}
+                                    <br><span class="text-primary">{{feeHeader.description}}</span>
+                                </td>
+                                <td></td>
+                                <td class="text-right">
+                                    <!-- <span *ngIf="feeHeader?.isDeduductible; else plusSign">(-)</span>
+                                    <ng-template #plusSign><span>(+)</span></ng-template> -->
+                                </td>
+                                <td>
+                                    <!-- [readonly]="true" -->
+                                    <!-- [disabled]="feeHeader?.feeHeaderId==19" -->
+                                    <input type="text" (keyup)="setFeeInHeader($event, feeHeader?.feeHeaderId)" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 8)" class="form-control" style="text-align: right;" value="{{feeHeader?.amountCalculated}}">
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr>
+                                <th colspan="5" class="text-center" style="padding-top: 50px;"><h5><span  class="badge badge-danger">Non-Treasury Payments</span></h5></th>
+                            </tr>
+                            <tr *ngFor="let feeHeader of getPaymentTypeHeads(raiseFeeParms?.feeCalculatorInfoParms, false); let ndx = index">
+                                <td>{{ndx+1}}</td>
+                                <td>{{feeHeader.feeHeaderTitle}}
+                                    <br><span class="text-primary">{{feeHeader.description}}</span>
+                                </td>
+                                <td>
+                                    <div *ngIf="feeHeader.feeHeaderId==22">
+                                        <div class="font-weight-bold">Please select Authority</div>
+                                        <select class="form-control m-t-10" id="edcAuthoritySelector" (change)="getAuthorityFullDetail($event)">
+                                            <!-- <option value="" selected>-- Please Select --</option> -->
+                                            <option [selected]="selectedEdcAuthority==item.nonTreasuryCode" *ngFor="let item of eDCAuthorities" value="{{item.nonTreasuryCode}}">{{item.title}}</option>
+                                        </select>
+                                        <div class="card alert-light m-t-10" *ngIf="eDCAuthority">
+                                            <div class="card-body">
+                                                <table class="table table-responsive">
+                                                    <tr>
+                                                        <th>Authority Name</th>
+                                                        <td colspan="3">{{eDCAuthority?.title}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Bank Name</th>
+                                                        <td>{{eDCAuthority?.bankName}}</td>
+                                                        <th>Bank A/c Holder Name</th>
+                                                        <td>{{eDCAuthority?.bankAccountHolderName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Bank A/c number</th>
+                                                        <td>{{eDCAuthority?.bankAccountNumber}}</td>
+                                                        <th>Bank IFSC</th>
+                                                        <td>{{eDCAuthority?.bankIFSC}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <!-- <span *ngIf="feeHeader?.isDeduductible; else plusSign">(-)</span>
+                                    <ng-template #plusSign><span>(+)</span></ng-template> -->
+                                </td>
+                                <td>
+                                    <!-- [readonly]="true" -->
+                                    <!-- [disabled]="feeHeader?.feeHeaderId==19" -->
+                                    <input type="text" (keyup)="setFeeInHeader($event, feeHeader?.feeHeaderId)" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 8)" class="form-control" style="text-align: right;" value="{{feeHeader?.amountCalculated}}">
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="border-bottom-0">
+                                <th class="text-right text-danger" colspan="4">Net calculated amount: </th>
+                                <th class="text-right text-danger">
+                                    {{netFeeCalculated}}
+                                </th>
+                            </tr>
+                            <tr class="border-top-0">
+                                <th colspan="5" class="text-info font-weight-light text-right">
+                                    ({{netFeeCalculated | numberToWord}} only)
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <h5 class="m-b-0 m-t-20">Remarks</h5>
+                    <div class="form-group row">
+                      <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks :</label>
+                      <div class="col-sm-6">
+                        <textarea class="form-control" name="remarks" id="required" [(ngModel)]="remarks" required #remarksInput="ngModel"></textarea>
+                        <div *ngIf="remarksInput.invalid && (remarksInput.dirty || remarksInput.touched)">
+                            <div *ngIf="remarksInput.errors.required" class="text-danger">Please specify remarks..!</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <!-- <button *ngIf="netFeeCalculated>0" (click)="onSubmit()" class="btn btn-primary">Raised Fee</button> -->
+                        <button (click)="onSubmit()" class="btn btn-primary">Submit & Raise Fee</button>
+                        <!-- <span *ngIf="netFeeCalculated==0" class="font-weight-bold text-danger"><i class="icon feather icon-alert-circle"></i> Something went wrong. No fee calulated.</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

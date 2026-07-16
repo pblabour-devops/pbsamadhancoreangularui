@@ -1,0 +1,1948 @@
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" />
+  <div class="main-content">
+    <div class="card col-md-10 card-form">
+      <div class="col-md-12">
+      </div>
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">The Inter-State Migrant Workmen (ROECS) Act 1979</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-gary">
+            <tr>
+              <th>Section/Rule</th>
+              <th>Details</th>
+              <th>Yes/No/Not Applicable</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td rowspan="51">Section-16, Rule-41</td>
+                <td class="inspection-back-theme1"><strong>16.41.1.1</strong> Is canteen provided and maintained in efficient manner?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_Provided_Remarks"><strong>16.41.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Provided_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Provided_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.2.1</strong> Is canteen consist of dinning hall, kitchen, storeroom, pantry and washing place for workers and utensils?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks"><strong>16.41.2.3</strong> Remarks if any </label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Consist_DinningHall_Kitchen_StoreRoom_Pantry_WashingPlace_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.3.1</strong> Is canteen sufficiently lighted?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks"><strong>16.41.3.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Sufficiently_Lighted_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.4.1</strong> Is floor of canteen is of impervious material?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.4.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks"><strong>16.41.4.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Floor_Impervious_Material_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.5.1</strong> Are inside walls of canteen are lime washed once in each year?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.5.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks"><strong>16.41.5.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Wall_Lime_Washed_Once_InYear_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.6.1</strong> Are inside walls of kitchen lime washed every four months?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.41.6.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks"><strong>16.41.6.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_InSide_Wall_Lime_Washed_Every_Four_Month_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.7.1</strong> Is precincts of canteen in clean and sanitary conditions?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.41.7.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks"><strong>16.41.7.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks" placeHolder="sec_16_Rule_41_Is_Precincts_Of_Canteen_In_Clean_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                  <td><strong>16.41.8.1</strong> Is wastewater and garbage is disposed properly?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.8.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks"><strong>16.41.8.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks" placeHolder="sec_16_Rule_41_Is_Wastewater_And_Garbage_Disposed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.9.1</strong> Is dining hall accommodating 30%  of contract labour working at a time?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.9.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks"><strong>16.41.9.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks" placeHolder="sec_16_Rule_41_Is_DiningHall_Accommodates_30Percent_ContractLabour_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.10.1</strong> Is area of 1 m2 is available every diner?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.10.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks"><strong>16.41.10.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks" placeHolder="sec_16_Rule_41_Is_Area_Of_1_Mtr_Sqr_Available_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.11.1</strong> Is portion of dinning hall and service counter is reserved for women workers?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.11.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks"><strong>16.41.11.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks" placeHolder="sec_16_Rule_41_Is_Portion_Of_Dinning_Reserved_For_Women_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.12.1</strong> Is separate washing place with  privacy is provided?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Separate_Washing_Place_Provided">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.12.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Separate_Washing_Place_Provided_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks"><strong>16.41.12.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks" placeHolder="sec_16_Rule_41_Is_Separate_Washing_Place_Provided_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.13.1</strong> Are provisions of this rule being complied?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.13.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks"><strong>16.41.13.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks" placeHolder="sec_16_Rule_41_Is_Provisions_Of_Rule_Complied_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.14.1</strong> Are foodstuff meeting the requirements of natural habits of contract labour?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.14.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks"><strong>16.41.14.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks" placeHolder="sec_16_Rule_41_Is_FoodStuffs_Meets_habits_Of_ContractLabour_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.15.1</strong> Is canteen running at “NO PROFIT NO LOSS”?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.15.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1"> 
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks"><strong>16.41.15.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Running_No_Profit_No_Loss_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.16.1</strong> Are account books and other records produced during inspection?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.41.16.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks"><strong>16.41.16.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks" placeHolder="sec_16_Rule_41_Is_AccountBook_Produced_While_Inspection_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.17.1</strong> Are accounts of canteen audit every 12 months by registered accountant and auditors?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_41_Is_Canteen_Audit_Performed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.41.17.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_41_Is_Canteen_Audit_Performed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks"><strong>16.41.17.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks" (input)="updateCharacterCount('sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks" placeHolder="sec_16_Rule_41_Is_Canteen_Audit_Performed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td rowspan="3">Section-16, Rule-40</td>
+                  <td class="inspection-back-theme2"><strong>16.40.1.1</strong> Are restrooms provide as per provisions under this section and rule?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_16_Rule_40_Is_Restroom_Provided">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.40.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_40_Is_Restroom_Provided_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_40_Is_Restroom_Provided_Remarks"><strong>16.40.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_40_Is_Restroom_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_40_Is_Restroom_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_16_Rule_40_Is_Restroom_Provided_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_40_Is_Restroom_Provided_Remarks" placeHolder="sec_16_Rule_40_Is_Restroom_Provided_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-16, Rule-39</td>
+                  <td class="inspection-back-theme1"><strong>16.39.1.1</strong> Is sufficient supply of wholesome drinking water is available to all workers?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.39.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks"><strong>16.39.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks" (input)="updateCharacterCount('sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks" placeHolder="sec_16_Rule_39_Is_Sufficient_Drinking_Water_Available_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+              <tr>
+                <td rowspan="21">Section-16, Rule-42</td>
+                <td class="inspection-back-theme2"><strong>16.42.1.1</strong> Are latrines provided as per provisions of this rule?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Latrines_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.42.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_42_Is_Latrines_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_42_Is_Latrines_Provided_Remarks"><strong>16.42.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Latrines_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Latrines_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Latrines_Provided_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Latrines_Provided_Remarks" placeHolder="sec_16_Rule_42_Is_Latrines_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.42.2.1</strong> Are signboards with figures on latrines in language understood by workers displayed?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.42.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks"><strong>16.42.2.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks" placeHolder="sec_16_Rule_42_Is_Signboard_In_Latrines_Displayed_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                <td><strong>16.42.3.1</strong> Are Urinals provided as per provisions of this rule?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Urinals_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.42.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_42_Is_Urinals_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_42_Is_Urinals_Provided_Remarks"><strong>16.42.3.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Urinals_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Urinals_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Urinals_Provided_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Urinals_Provided_Remarks" placeHolder="sec_16_Rule_42_Is_Urinals_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.42.4.1</strong> Are latrine/Urinals adequately lighted?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.42.4.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks"><strong>16.42.4.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks" placeHolder="sec_16_Rule_42_Is_Latrine_Urinals_Adequately_Lighted_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                  <td><strong>16.42.5.1</strong> Are latrines/Urinals in clean and sanitary conditions? </td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Clean">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.42.5.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Clean_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks"><strong>16.42.5.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks" placeHolder="sec_16_Rule_42_Is_Latrine_Urinals_Clean_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.42.6.1</strong> Are latrines/Urinals confirming to public health requirements?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.42.6.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks"><strong>16.42.6.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks" placeHolder="sec_16_Rule_42_Is_Latrine_Urinals_Public_Health_Requirements_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.42.7.1</strong> Is water supply in latrine/Urinal is as per this rule?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.42.7.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks"><strong>16.42.7.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks" (input)="updateCharacterCount('sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks" placeHolder="sec_16_Rule_42_Is_Water_Supply_In_Latrine_Urinals_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+              <tr>
+                <td rowspan="3">Section-16, Rule-43</td>
+                <td class="inspection-back-theme1"><strong>16.43.1.1</strong> Are washing facilities are provided as per this rule?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_43_Is_Washing_Facilities_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.43.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_43_Is_Washing_Facilities_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks"><strong>16.43.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks" placeHolder="sec_16_Rule_43_Is_Washing_Facilities_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="18">Section-16, Rule-37</td>
+                <td class="inspection-back-theme2"><strong>16.37.1.1</strong> Is medical facility for outdoor treatment provided to migrant workmen by the contractor? </td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.37.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks"><strong>16.37.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks" placeHolder="sec_16_Rule_37_Is_Medical_Facility_Provided_By_Contractor_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                <td><strong>16.37.2.1</strong> Is contractor reimbursing the cost incurred by migrant workman on purchase of medicines?</td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.37.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks"><strong>16.37.2.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks" placeHolder="sec_16_Rule_37_Is_Medicines_Cost_Reimburse_By_Contractor_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme2">
+                <td><strong>16.37.3.1</strong> Is contractor bearing the expenses of hospitalization of migrant workmen or his family </td>
+                <td>
+                  <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.37.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks"><strong>16.37.3.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks" placeHolder="sec_16_Rule_37_Is_Family_Hospital_Expenses_Bearing_By_Contractor_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr class="inspection-back-theme1">
+                  <td><strong>16.37.4.1</strong> Are sufficient number of first aid boxes are proved and maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Provided">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.37.4.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Provided_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks"><strong>16.37.4.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks" placeHolder="sec_16_Rule_37_Is_First_Aid_Boxes_Provided_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.37.5.1</strong> Are first aid boxes being maintained as per this rule ?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>16.37.5.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks"><strong>16.37.5.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks" placeHolder="sec_16_Rule_37_Is_First_Aid_Boxes_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.37.6.1</strong> Are first aid boxes kept in charge of trained person who are readily available during working hours? </td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.37.6.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks"><strong>16.37.6.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks" (input)="updateCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks" placeHolder="sec_16_Rule_37_Is_First_Aid_Boxes_InCharged_TrainedPerson_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+              <tr>
+                <td rowspan="3">Section-16 Rule 38</td>
+                <td class="inspection-back-theme2"><strong>16.38.1.1</strong> Are protective clothes provided to  migrant workmen as per this rule?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_38_Is_Protective_Clothes_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.38.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_38_Is_Protective_Clothes_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_38_Is_Protective_Clothes_Provided_Remarks"><strong>16.38.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_38_Is_Protective_Clothes_Provided_Remarks" (input)="updateCharacterCount('sec_18_Rule_56_Water_Supply_In_Latrine_Urinals_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_38_Is_Protective_Clothes_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_38_Is_Protective_Clothes_Provided_Remarks" placeHolder="sec_16_Rule_38_Is_Protective_Clothes_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-16, Rule 44</td>
+                <td class="inspection-back-theme1"><strong>16.44.1.1</strong> Is creche provided as this rule?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_44_Is_Creche_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>16.44.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_44_Is_Creche_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_16_Rule_44_Is_Creche_Provided_Remarks"><strong>16.44.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_44_Is_Creche_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_44_Is_Creche_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_44_Is_Creche_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_44_Is_Creche_Provided_Remarks" placeHolder="sec_16_Rule_44_Is_Creche_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-16, Rule 45</td>
+                <td class="inspection-back-theme2"><strong>16.45.1.1</strong> Is residential accommodation  provided as this rule?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_16_Rule_45_Is_Residential_Accommodation_Provided">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>16.15.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_16_Rule_45_Is_Residential_Accommodation_Provided_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks"><strong>16.45.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks" (input)="updateCharacterCount('sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks" placeHolder="sec_16_Rule_45_Is_Residential_Accommodation_Provided_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+              <tr>
+                <td rowspan="3">Section-12, Rule-21</td>
+                <td class="inspection-back-theme1"><strong>12.21.1.1</strong> Has contractor furnished particulars of migrant workmen in Form-X</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              
+              <tr class="inspection-back-theme1">
+                <td><strong>12.21.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks"><strong>12.21.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks" (input)="updateCharacterCount('sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks" placeHolder="sec_12_Rule_21_Is_Contractor_Furnished_Particulars_In_Form_X_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-12, Rule-22</td>
+                <td class="inspection-back-theme2"><strong>12.22.1.1</strong> Has contractor paid return fair to migrant workmen?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>12.22.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks"><strong>12.22.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks" (input)="updateCharacterCount('sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks" placeHolder="sec_12_Rule_22_Is_Contractor_Paid_Return_Fair_To_Migrant_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-12, Rule-23</td>
+                <td class="inspection-back-theme1"><strong>12.23.1.1</strong> Is pass-book issued to every migrant workman?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>12.23.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks"><strong>12.23.1.3</strong></label>  
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks" (input)="updateCharacterCount('sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks" placeHolder="sec_12_Rule_23_Is_Passbook_Issued_To_Every_Migrant_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-12, Rule-24</td>
+                <td class="inspection-back-theme2"><strong>12.24.1.1</strong> Is return in Form XI submitted by contractor?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>12.24.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks"><strong>12.24.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks" (input)="updateCharacterCount('sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks" placeHolder="sec_12_Rule_24_Is_Return_In_Form_XI_Submitted_By_Contractor_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-13 Rule 25</td>
+                <td class="inspection-back-theme1"><strong>13.25.1.1</strong> Are wages being paid to workers as per provisions under this section and rule</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_13_Rule_25_Is_Wages_Paid_To_Workers">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td><strong>13.25.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_13_Rule_25_Is_Wages_Paid_To_Workers_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks"><strong>13.25.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks" (input)="updateCharacterCount('sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks" placeHolder="sec_13_Rule_25_Is_Wages_Paid_To_Workers_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Section-17, Rule-28</td>
+                <td class="inspection-back-theme2"><strong>17.28.1.1</strong> Are payments of wages made on seventh or tenth of every month, as the case may?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>17.28.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks"><strong>17.28.1.3</strong> Remarks if any </label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks" (input)="updateCharacterCount('sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks" placeHolder="sec_17_Rule_28_Is_Wages_Payment_Made_On_7_or_10_Every_Month_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Rule-33</td>
+                <td class="inspection-back-theme1"><strong>33.1.1</strong> Is notice as per this rule displayed?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="rule_33_Is_Notice_Displayed">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+             
+              <tr class="inspection-back-theme1">
+                <td><strong>33.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="rule_33_Is_Notice_Displayed_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="rule_33_Is_Notice_Displayed_Remarks"><strong>33.1.3</strong></label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_33_Is_Notice_Displayed_Remarks" (input)="updateCharacterCount('rule_33_Is_Notice_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_33_Is_Notice_Displayed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_33_Is_Notice_Displayed_Remarks" placeHolder="rule_33_Is_Notice_Displayed_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="3">Rule-35</td>
+                <td class="inspection-back-theme2"><strong>35.1.1</strong> Is signing certificate given in wages register or wages-cum-muster roll register?</td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="rule_35_Is_Signing_Certificate_Given_In_Wages_Register">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>35.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="rule_35_Is_Signing_Certificate_Given_In_Wages_Register_ViolationExist">
+                    <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks"><strong>35.1.3</strong> Remarks if any</label>  
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks" (input)="updateCharacterCount('rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks" placeHolder="rule_35_Is_Signing_Certificate_Given_In_Wages_Register_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+
+              <tr>
+                  <td rowspan="3">Section-33, Rule-48</td>
+                  <td class="inspection-back-theme1"><strong>33.48.1.1</strong> Is register of contractor in Form XII maintained by principal employer? </td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>33.48.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks"><strong>33.48.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks" (input)="updateCharacterCount('sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks" placeHolder="sec_33_Rule_48_Is_Contractor_Register_Maintained_In_Form_XII_By_PE_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-33 & 35, Rule-49</td>
+                  <td class="inspection-back-theme2"><strong>33.49.1.1</strong> Are contractor(s) maintaining register  of persons employed in Form XIII?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>33.49.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks"><strong>33.49.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks" (input)="updateCharacterCount('sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks" placeHolder="sec_33_35_Rule_49_Is_Contractor_Maintained_Employee_Register_In_Form_XIII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-35, Rule-50</td>
+                  <td class="inspection-back-theme1"><strong>35.50.1.1</strong> Are service certificate in Form XIV issued to workers on termination?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>35.50.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks"><strong>35.50.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks" (input)="updateCharacterCount('sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks" placeHolder="sec_35_Rule_50_Is_Service_Certificate_Issued_To_Workers_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="6">Section-23, Rule-51</td>
+                  <td class="inspection-back-theme2"><strong>23.51.1.1</strong> Is contractor maintaining displacement_cum_outward journey allowance in Form XV</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>35.50.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks"><strong>23.51.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks" (input)="updateCharacterCount('sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks" placeHolder="sec_23_Rule_51_Is_Contractor_Maintained_Displacement_Cum_Outward_Journey_Allowance_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>35.50.2.1</strong> Is contractor maintaining return journey allowance in Form XVI</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme1">
+                  <td><strong>35.50.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks"><strong>35.50.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks" (input)="updateCharacterCount('sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks" placeHolder="sec_23_Rule_51_Is_Contractor_Maintained_Return_Journey_Allowance_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="30">Section-23, Rule-52</td>
+                  <td class="inspection-back-theme2"><strong>23.52.1.1</strong> Is rule-52(1) applicable?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Rule_52_1_Applicable">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Rule_52_1_Applicable_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks"><strong>23.52.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks" placeHolder="sec_23_Rule_52_Is_Rule_52_1_Applicable_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.2.1</strong> Is muster roll in Form XVII maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks"><strong>23.52.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks" placeHolder="sec_23_Rule_52_Is_Muster_Roll_Form_XVII_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.2.1</strong> Is register of wages in Form XVIII maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks"><strong>23.52.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks" placeHolder="sec_23_Rule_52_Is_Wages_Register_Maintained_In_Form_XVIII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.3.1</strong> Is register of wages-cum-muster roll in Form XVIII maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.3.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks"><strong>23.52.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks" placeHolder="sec_23_Rule_52_Is_Wages_Cum_Muster_Roll_Register_Maintained_In_Form_XVIII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.4.1</strong> Is register of deduction in Form XIX maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.4.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks"><strong>23.52.4.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks" placeHolder="sec_23_Rule_52_Is_Deduction_Register_Maintained_In_Form_XIX_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.5.1</strong> Is register of fines in Form XX maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.5.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks"><strong>23.52.5.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks" placeHolder="sec_23_Rule_52_Is_Fine_Register_Maintained_In_Form_XX_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.6.1</strong> Is register of advances in Form XXI maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.6.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks"><strong>23.52.6.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks" placeHolder="sec_23_Rule_52_Is_Advances_Register_Maintained_In_Form_XXI_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.7.1</strong> Is register of overtime  in Form XXII maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.7.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks"><strong>23.52.7.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks" placeHolder="sec_23_Rule_52_Is_Overtime_Register_Maintained_In_Form_XXII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.8.1</strong> Are signature or thump impression of workers are taken in Register of Wages or Muster Roll_cum_Register of Wages, as the case may be, mentioned registered and are authenticated upon by employer/authorized representative?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.52.8.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks"><strong>23.52.8.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks" placeHolder="sec_23_Rule_52_Is_Biometric_Of_Workers_Taken_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.9.1</strong> Are provision of Rule 52(3) applicable?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.52.9.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks"><strong>23.52.9.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks" (input)="updateCharacterCount('sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks" placeHolder="sec_23_Rule_52_Is_Provision_Of_Rule_52_3_Applicable_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-23, Rule-54</td>
+                  <td class="inspection-back-theme2"><strong>23.54.1.1</strong> Are notices, prescribed in rule 79, displayed?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.54.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks"><strong>23.54.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks" (input)="updateCharacterCount('sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks" placeHolder="sec_23_Rule_54_Is_Notices_Prescribed_In_Rule_79_Displayed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="6">Section-23, Rule-53</td>
+                  <td class="inspection-back-theme1"><strong>23.53.1.1</strong> Are registered preserved for three years after date of  last entry made in therein?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.53.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks"><strong>23.53.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks" (input)="updateCharacterCount('sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks" placeHolder="sec_23_Rule_53_IsRegistered_Preserved_For_Three_Years_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.53.2.1</strong> Are registered produced at time of inspection?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_53_IsRegistered_Produced_While_Inspection">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.53.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_53_IsRegistered_Produced_While_Inspection_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks"><strong>23.53.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks" (input)="updateCharacterCount('sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks" placeHolder="sec_23_Rule_53_IsRegistered_Produced_While_Inspection_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-23, Rule-55</td>
+                  <td class="inspection-back-theme1"><strong>23.55.1.1</strong> Are notices, prescribed in rule 55, displayed?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.55.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks"><strong>23.55.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks" (input)="updateCharacterCount('sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks" placeHolder="sec_23_Rule_55_Is_Notices_Prescribed_In_Rule_Displayed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="6">Section-23, Rule-56</td>
+                  <td class="inspection-back-theme2"><strong>23.56.1.1</strong> Is half yearly return in Form XXIII submitted by each contractor?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>23.56.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks"><strong>23.56.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks" (input)="updateCharacterCount('sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks" placeHolder="sec_23_Rule_56_Is_HalfYearlyReturn_In_Form_XXIII_Submitted_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.56.2.1</strong> Is annual return in Form XXIV is submitted by principal employer?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>23.56.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks"><strong>23.56.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks" (input)="updateCharacterCount('sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks" placeHolder="sec_23_Rule_56_Is_AnnualReturn_In_Form_XXIV_Submitted_By_PE_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+        </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+      </div>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,28 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 20,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Workers Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adoloscents", "ColumnTitle": "Adoloscents", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "3. Average No. of Workers" },
+              { "category": "4. Normal hours worked per day" },
+              { "category": "5. What rest intervals were given?" }
+              
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

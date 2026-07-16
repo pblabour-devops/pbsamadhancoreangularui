@@ -1,0 +1,33 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 17,
+      "SectionTitle": "Wages Details",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": true },
+              { "ColumnId": "women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": true },
+              { "ColumnId": "children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": true }
+             
+              
+              
+            ],
+            "Rows": [
+              { "category": "12. Amount of wages for outward journies period paid:" },
+              { "category": "13. Amount of return journies allowance paid:" },
+              { "category": "14. Amount of wages for return journies period paid:" }
+             
+ 
+            ]
+          }
+        }
+        
+      ]
+    }
+  }
+]

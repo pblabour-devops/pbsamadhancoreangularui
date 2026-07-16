@@ -1,0 +1,22 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 24,
+      "SectionTitle": "Schemes under Punjab Labour Welfare board.",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Number of welfare schemes application pending at the beginning of the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Number of welfare schemes applications received during the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Number of welfare schemes applications on which objection raised during the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Number of applications approved during the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Number of applications pending at the end of the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+
+          ]
+        }
+      ]
+    }
+  }
+]

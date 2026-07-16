@@ -1,0 +1,294 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" id="mainForm">
+
+  <div class="pcoded-main-container">
+    <div class="pcoded-content">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+
+          <div class="card unpaid-card">
+
+            <!-- Header -->
+            <div class="card-header unpaid-header">
+              <h4>PUNJAB LABOUR UNPAID WAGES</h4>
+            </div>
+
+            <div class="card-body">
+
+              <!-- SECTION 1 -->
+              <div class="form-section">
+
+                <div class="section-title">
+                  <span>I</span>
+                  <h5>Basic Information</h5>
+                </div>
+
+                <!-- Payment Type -->
+                <div class="radio-wrapper">
+
+                  <div class="custom-radio">
+                    <input
+                      type="radio"
+                      id="wages"
+                      value="Wages"
+                      formControlName="paymentType">
+                    <label for="wages">Wages</label>
+                  </div>
+
+                  <div class="custom-radio">
+                    <input
+                      type="radio"
+                      id="bonus"
+                      value="Bonus"
+                      formControlName="paymentType">
+                    <label for="bonus">Bonus</label>
+                  </div>
+
+                </div>
+
+                <!-- Establishment Auto Filled Card -->
+                <div class="establishment-card">
+
+                  <div class="establishment-header">
+
+                    <div>
+                      <h5>{{ factoryDetails[0]?.establishmentName }}</h5>
+
+                      <span class="license-tag">
+                        License No : {{ factoryDetails[0]?.licenceNumber }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="establishment-grid">
+
+                    <div class="establishment-item">
+                      <label>Site/Location Address</label>
+                      <p>{{ factoryDetails[0]?.address }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Type of Business</label>
+                      <p>{{ factoryDetails[0]?.projectPurpose }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Mobile Number</label>
+                      <p>{{ factoryDetails[0]?.mobileNo }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Email Address</label>
+                      <p>{{ factoryDetails[0]?.alternateEmail }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Contact Person</label>
+                      <p>{{ factoryDetails[0]?.applicantName }}</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- SECTION 2 -->
+              <div class="form-section">
+
+                <div class="section-title">
+                  <span>II</span>
+                  <h5>Please select the Financial Year and Slot</h5>
+                </div>
+
+                <div class="financial-filter-row">
+
+                  <!-- Financial Year -->
+                  <div class="filter-box">
+                    <label>Financial Year <span class="text-danger">*</span></label>
+
+                    <select
+                      class="form-control custom-select"
+                      formControlName="financialYear"
+                      (change)="verifySelection()">
+
+                      <option value="">Select Financial Year</option>
+                      <option value="2024-25">2024-25</option>
+                      <option value="2023-24">2023-24</option>
+                    </select>
+
+                    <small
+                      class="text-danger"
+                      *ngIf="Input_Form.get('financialYear')?.touched &&
+                             Input_Form.get('financialYear')?.invalid">
+                      Financial Year is required.
+                    </small>
+                  </div>
+
+                  <!-- Time Slot -->
+                  <div class="filter-box">
+                    <label>Time Slot <span class="text-danger">*</span></label>
+
+                    <select
+                      class="form-control custom-select"
+                      formControlName="timeSlot"
+                      (change)="verifySelection()">
+
+                      <option value="">Select Time Slot</option>
+                      <option value="3" *ngIf="paramInfo?.serviceType == 1">April-September</option>
+                      <option value="2" *ngIf="paramInfo?.serviceType == 1">October-March</option>
+                      <option value="1" *ngIf="paramInfo?.serviceType == 1">April-March</option>
+                      <option value="4" *ngIf="paramInfo?.serviceType == 2">May-July</option>
+                      <option value="5" *ngIf="paramInfo?.serviceType == 2"> August-October</option>
+                      <option value="6" *ngIf="paramInfo?.serviceType == 2">November-January</option>
+                      <option value="7" *ngIf="paramInfo?.serviceType == 2">February-April</option>
+
+                    </select>
+
+                    <small
+                      class="text-danger"
+                      *ngIf="Input_Form.get('timeSlot')?.touched &&
+                             Input_Form.get('timeSlot')?.invalid">
+                      Time Slot is required.
+                    </small>
+                  </div>
+
+                </div>
+
+                <!-- Alert -->
+                <div class="custom-alert">
+                  Employees Sheet has been Updated on
+                  <strong>08-09-2021</strong>.
+                  Please download new sample sheet and enter data accordingly.
+                </div>
+
+                <!-- Steps -->
+               <div class="steps-row">
+
+  <!-- Step 1 -->
+  <div class="step-box s1">
+    <div class="shead">
+      <span class="s-pill sp1">Step 1</span>
+      <span class="shead-t">Read Instructions</span>
+    </div>
+
+    <div class="sbody">
+      <ul>
+        <li><span class="dot1"></span>All values are mandatory</li>
+        <li><span class="dot1"></span>No duplicate entries accepted</li>
+        <li><span class="dot1"></span>Download the sample Excel sheet</li>
+        <li><span class="dot1"></span>Do not change the Excel format</li>
+        <li><span class="dot1"></span>Save as CSV before uploading</li>
+      </ul>
+
+      <!-- Sample Sheet -->
+      <div class="sample-sheet mt-3">
+        <a class="btn btn-outline-primary btn-sm"
+           href="assets/Sample Unpaid Sheet.xlsx"
+           download>
+          <i class="ti ti-download"></i>
+          Download Sample Sheet
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step-box s2">
+    <div class="shead">
+      <span class="s-pill sp2">Step 2</span>
+      <span class="shead-t">Upload Attachment</span>
+    </div>
+
+    <div class="sbody">
+
+      <div class="mb-3 text-center">
+        <small class="text-muted">
+          Please refer to the sample sheet before uploading your CSV file.
+        </small>
+      </div>
+
+      <div class="drop-zone"
+           (dragover)="onDragOver($event)"
+           (drop)="onDrop($event)"
+           (click)="fileInput.click()">
+
+        <i class="ti ti-cloud-upload"></i>
+
+        <span class="dz-t" *ngIf="!files">
+          Drop your CSV here
+        </span>
+
+        <span class="dz-t" *ngIf="files">
+          {{ files.name }}
+        </span>
+
+        <span class="dz-s" *ngIf="!files">
+          or click to browse files
+        </span>
+
+        <input
+          #fileInput
+          type="file"
+          accept=".csv"
+          (change)="onFileChange($event)"
+          hidden>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+              </div>
+
+              <!-- SECTION 3 -->
+              <div class="form-section">
+
+                <div class="section-title">
+                  <span>III</span>
+                  <h5>Remarks</h5>
+                </div>
+
+                <div class="remarks-box">
+
+                  <label>Enter Remarks</label>
+
+                  <textarea
+                    rows="5"
+                    class="form-control"
+                    formControlName="remarks"
+                    placeholder="Enter remarks here">
+                  </textarea>
+
+                </div>
+
+              </div>
+
+              <!-- Buttons -->
+              <div class="button-wrapper">
+                 <button
+                  type="button"
+                  class="btn dashboard-btn"
+                  (click)="backToDashboard()">
+                  Back to Dashboard  
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn submit-btn">
+                  Upload & Start Verification Process
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,42 @@
+<div class="auth-wrapper maintance">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div *ngIf="canProceedFlag==0 || canProceedFlag==1; else determinded">
+                    Please wait..!
+                </div>
+                <ng-template #determinded>
+                    <div *ngIf="errCode==1">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="">
+                                    <div style="text-align: center;">
+                                        <img src="assets/images/icon/location-off.png" class="img-radius"> 
+                                        <h4 class="alert-heading m-t-10">Dear User, <br>
+                                            eLabour portal is seeking permission of your location capturing.
+                                            <br>Your browser location Permission is Denied. Kindly Allow your location first and retry..!</h4>
+                                        <div class="col-md-12">
+                                            <p class="text-left m-t-20">Steps For Change your default location settings-</p>
+                                        <hr>
+                                        <p class="mb-0 text-left">Step-1. On your computer, open Chrome.</p>
+                                        <p class="mb-0 text-left">Step-2. At the top right, select More Settings. Privacy and security.</p>
+                                        <p class="mb-0 text-left">Step-3. Select Site settings.</p>
+                                        <p class="mb-0 text-left">Step-4. Under “Permissions,” select Location.</p>
+                                        <p class="mb-0 text-left">Step-5. Select the option you want as your default setting.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <button class="btn waves-effect waves-light btn-primary mb-4b" (click)="pageReloadClick()"><i class="feather icon-refresh-ccw mr-2"></i>Reload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="errCode==2">POSITION_UNAVAILABLE</div>
+                    <div *ngIf="errCode==3">TIMEOUT</div>
+                    <div *ngIf="errCode==4">Geolocation is not supported by this browser.</div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<nav class="pcoded-navbar menupos-fixed menu-light" [ngClass]="{'nav-open': isNavOpen, 'navbar-collapsed': !isNavOpen}" style="background-color: #0275a4;">
+	<div class="navbar-wrapper" style="overflow-x: auto;">
+		<div class="navbar-content scroll-div ps">
+			<ul class="nav pcoded-inner-navbar" style="margin-top: 10px;">
+				<!-- <li>
+					<label class="text-c-blue"><i class="feather icon-home"></i>Workspace</label>
+				</li> -->
+				<li (click)="toggleCollapse(applicationType)"
+					[ngClass]="{'pcoded-trigger': (isMenuItemExpanded && applicationType == selApplicationType)}"
+					class="nav-item pcoded-hasmenu" *ngFor="let applicationType of distinctApplicationTypes">
+					<a style="min-height: 55px!important" href="javascript:void(0);" class="nav-link"><span
+							class="pcoded-micon"><i class="feather"
+								[ngClass]="(isMenuItemExpanded && applicationType == selApplicationType) ? 'icon-chevron-down': 'icon-chevron-right'"></i></span>
+						<span style="max-width: 180px;"
+							class="pcoded-mtext">{{getApplicationTypeShortDesc(applicationType)}}</span>
+						<span class="pcoded-mtext"
+							style="float: right; font-size: 18px;">[{{getTotalApplicationTypeWiseCount(applicationType)}}]</span>
+					</a>
+					<ul class="pcoded-submenu"
+						[ngStyle]="{'display':(isMenuItemExpanded && applicationType == selApplicationType) ? 'block' : 'none'}">
+						<li [ngStyle]="{'display':((applicationType==71 || applicationType==72 || applicationType==73) && (headCode==7)) ? 'none' : 'block'}" class="nav-link" (click)="onRecordTypeItemClick($event, headCode, applicationType)"
+							*ngFor="let headCode of distinctHeadCodes">
+							<a href="javascript:void(0);">{{getRecordHead(headCode)}} <span
+									style="float:right; padding-right: 20px;">({{getTotalHeadWiseCount(headCode,
+									applicationType)}})</span></a>
+						</li>
+					</ul>
+				</li>
+
+				<li  class="nav-item pcoded-hasmenu"
+					[ngClass]="{'pcoded-trigger': isMenuItemDashboardExpanded}">
+					<!-- <a style="min-height: 55px!important" href="javascript:void(0);" class="nav-link"><span
+							class="pcoded-micon"><i class="feather"
+								[ngClass]="(isMenuItemDashboardExpanded) ? 'icon-chevron-down': 'icon-chevron-right'"></i></span>
+						<span style="max-width: 180px;" class="pcoded-mtext">Dashboards</span>
+					</a> -->
+					<ul class="pcoded-submenu" [ngStyle]="{'display':isMenuItemDashboardExpanded ? 'block' : 'none'}" style="background-color: #0275a4;">
+													<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+							<a style="color : white" (click)="onDashboardClick()" href="javascript:void(0);">Dashboard</a>
+						</li>
+						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+							<a style="color : white" (click)="onFileApplicationClick()" href="javascript:void(0);">File Application</a>
+						</li>
+							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+							<a style="color : white" (click)="onTrackApplicationClick()" href="javascript:void(0);">Track Application</a>
+						</li>
+							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+							<a style="color : white" (click)="onDraftApplicationClick()" href="javascript:void(0);">Draft Application</a>
+						</li>
+							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+							<a style="color : white" (click)="onHelpClick()" href="javascript:void(0);">Help</a>
+						</li>
+					</ul>
+				</li>
+
+				
+				<li (click)="toggleDashboardMenuCollapse()" *ngIf="roleName =='SUPTGEN'" class="nav-item pcoded-hasmenu"
+					[ngClass]="{'pcoded-trigger': isMenuItemEPFOExpanded}">
+					<a style="min-height: 55px!important" href="javascript:void(0);" class="nav-link"><span
+							class="pcoded-micon"><i class="feather"
+								[ngClass]="(isMenuItemEPFOExpanded) ? 'icon-chevron-down': 'icon-chevron-right'"></i></span>
+						<span style="max-width: 180px;" class="pcoded-mtext">EPFO</span>
+					</a>
+					<ul class="pcoded-submenu" [ngStyle]="{'display':isMenuItemEPFOExpanded ? 'block' : 'none'}">
+						<li class="nav-link">
+							<a (click)="onEPFOInboxClick()" href="javascript:void(0);">Generate Notice</a>
+						</li>
+						<li class="nav-link">
+							<a (click)="onEPFOSentClick()" href="javascript:void(0);">View Sent Notices</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- <ul style="height: 50px;width: 80px;text-align: center;">
+				<img src="assets/images/nic-logo.png"/>
+			</ul> -->
+
+			<!-- <ul>
+				<li class="nav-item pcoded-hasmenu">
+					<a (click)="onBackToSystem_O_Click(authService.getUserJwtDecodedInfo().RoleName)" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out text-primary" style="font-size: 20px; margin-left: -10px;"></i></span><span class="sub-menu m-t-20">Back To eLabour</span></a>
+				</li>
+			</ul> -->
+			<!-- <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+				<div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+			</div>
+			<div class="ps__rail-y" style="top: 0px; right: 0px;">
+				<div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+			</div> -->
+			<!-- <ul style="color: red; position: fixed;bottom: 0;overflow: hidden;transition: .5s; text-wrap: nowrap;;">
+				 <li>Develped & Maintained by NIC Punjab</li>
+			</ul> -->
+		</div>
+		
+	</div>
+	
+</nav>
+

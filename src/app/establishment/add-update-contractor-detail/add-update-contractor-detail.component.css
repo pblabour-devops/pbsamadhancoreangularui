@@ -1,0 +1,36 @@
+.form-row{
+    padding-top: 15px;
+}   
+
+.form-section{
+    margin-top: 15px;
+}   
+.card-body{
+    margin-top: 20px;
+}
+.pcoded-content{
+    margin-top: 45px;
+}
+.table thead th {
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+tbody tr
+{
+  background-color: blanchedalmond;
+}
+
+tbody tr:nth-child(odd)
+{
+  background: #c4f4eb;
+}
+.card .tableHead h6 {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -24px;
+}

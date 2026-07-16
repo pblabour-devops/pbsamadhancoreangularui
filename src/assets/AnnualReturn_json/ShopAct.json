@@ -1,0 +1,263 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 2,
+      "SectionTitle": "SHOP AND FOR OTHER ESTABLSHMENT",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Shop Registration No.", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Shop Registration Date", "LableValueInfo": { "DataType": "DateTime", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Name of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Name of Occupier", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Name of Manager", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Phone No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "Mobile No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "Name of Locality,Mohalla,Plot No. etc where the Establishment is situated", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "Nature of Business", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 11, "LableTitle": "Sector", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+    
+          ]
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Annual Returns Information",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Average daily No. of workers employed",
+              "LableValueInfo": { "DataType": "Group", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": [
+                {
+                  "LableTitle": "Perennial Factories",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Working Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Off Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                }
+              ]
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "No. of days worked in the year",
+              "LableValueInfo": { "DataType": "Group", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": [
+                { "LableTitle": "Perennial Factories", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                { "LableTitle": "Seasonal Factories - During Working Season", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                { "LableTitle": "Seasonal Factories - During Off Season", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+              ]
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "No. of man-days worked during the year",
+              "LableValueInfo": { "DataType": "Group", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": [
+                {
+                  "LableTitle": "Perennial Factories",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Working Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Off Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                }
+              ]
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Total no. of man hours worked (including overtime)",
+              "LableValueInfo": { "DataType": "Group", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": [
+                {
+                  "LableTitle": "Perennial Factories",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Working Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Off Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                }
+              ]
+            },
+             {
+              "LableSortId": 5,
+              "LableTitle": "No. of hours worked per week",
+              "LableValueInfo": { "DataType": "Group", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": [
+                {
+                  "LableTitle": "Perennial Factories",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Working Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                },
+                {
+                  "LableTitle": "Seasonal Factories - During Off Season",
+                  "SubLables": [
+                    { "LableTitle": "Adults (Men)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adults (Women)", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Adolescents", "LableValueInfo": { "DataType": "Number", "Value": "0" } },
+                    { "LableTitle": "Children", "LableValueInfo": { "DataType": "Number", "Value": "0" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",  
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Does the factory carry any operation declared dangerous under section 87?", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "If so,state average daily number of workers employed in such dangerous operation", "LableValueInfo": { "DataType": "Date", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Manufacture of a erated water and Process incidental thereto,etc (Schedule I)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Electrolytic plating or oxidation of metal article by use of an electrolytic containing chromic acid or other chromium compounds (Schedule II) ", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Manufacture and repair of accumulator (Schedule III),electric", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Manufacture and treatment of lead and certain compounds of lead", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "Liming and tanning of row hides and skins and process incidental thereto", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "Carrying of certain process of lead and lead material in printing process and type foundries", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "Chemical Works", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "Manufacture of pottery and ceramics", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "Other dangerous", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+          ]
+        },
+        {
+          "SubSectionSortId": 4,
+          "SubSectionTitle": "LEAVE WITH WAGES",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Total No. of employed during the year(Men)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Total No. of employed during the year(Women)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "No. of workers who were entitled to annual leave with wages during the year(Men)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "No. of workers who were entitled to annual leave with wages during the year(Women)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "No. of workers who were granted leave during the year(Men)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "No. of workers who were granted leave during the year(Women)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "No. of workers discharged or dismissed from the service whose service was terminated during the year", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "No. of such workers paid wages in due leave", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "No. of canteens prviding", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "Cooked food and Refreshment", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "Cooked Food only", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":11, "LableTitle": "Refreshment and tea only", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 12, "LableTitle": "Tea only", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 13, "LableTitle": "State reasons for not maintaining the canteen", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 14, "LableTitle": "Approximate average no. of workers using daily", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 15, "LableTitle": "State reasons for not maintaining the canteen", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 16, "LableTitle": "Approximate average no. of workers using daily", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 17, "LableTitle": "Is the canteen run/managed departmently or through a contractor?", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 18, "LableTitle": "Is the canteen running on NO PROFIT basis as required under the Punjab factory Rules,1952", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 19, "LableTitle": "Item of expenditure borne by the occupier stating separately the total expenditure bourne by the occupier in subsiding sale of food stuff or in otherwise selling food stuff below cost price", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 20, "LableTitle": "Please state if a common canteen is being shared with some other factory", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":21, "LableTitle": "Whether provision for cooling drinking water has been made", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":22, "LableTitle": "Item of expenditure borne by the occupier stating separately the total expenditure bourne by the occupier in subsiding sale of food stuff or in otherwise selling food stuff below cost price", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+
+          ]
+        },
+        {
+          "SubSectionSortId": 5,
+          "SubSectionTitle": "Rest Rooms/Shelters and Lunch Rooms (Only for the factories which are employing more than 150 workers)",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "No. of rest rooms/shelters provided", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "No. of lunch rooms provided", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        },
+         {
+          "SubSectionSortId": 6,
+          "SubSectionTitle": "CRECHE (Only for those factories which are employing more than 30 women workers)",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "No. of creches provided", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Approximate average daily attendance of children at the creche", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "No. of labour welfare officers (having prescribed qualification) appointed", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Whether ambulance room is provided", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "State reasons for not appointing such officers not keeping ambulance room SAFETY OFFICER (only for those factories which are employing 1000 or more workers)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Whether qualified Safety Officer is appointed?", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        },
+        {
+          "SubSectionSortId": 7,
+          "SubSectionTitle": "ACCIDENTS FORM NO. 31 [Prescribed under rule 107(4) of the Punjab Factory Rules,1952]",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Total number of Accidents(Fatal)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Total number of Accidents(Non-fatal)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "No. of labour welfare officers (having prescribed qualification) appointed", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Whether ambulance room is provided", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "State reasons for not appointing such officers not keeping ambulance room SAFETY OFFICER (only for those factories which are employing 1000 or more workers)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Whether qualified Safety Officer is appointed?", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        }
+      ]
+    }
+  }
+]

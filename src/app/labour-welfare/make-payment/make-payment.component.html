@@ -1,0 +1,166 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" id="mainForm">
+
+  <div class="pcoded-main-container">
+    <div class="pcoded-content">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+
+          <div class="card unpaid-card">
+
+            <!-- Header -->
+            <div class="card-header unpaid-header">
+              <h4>PUNJAB LABOUR UNPAID WAGES</h4>
+            </div>
+
+            <div class="card-body">
+
+              <!-- SECTION 1 -->
+              <div class="form-section">
+
+                <div class="section-title">
+                  <span>I</span>
+                  <h5>Basic Information</h5>
+                </div>
+
+                <!-- Establishment Auto Filled Card -->
+                <div class="establishment-card">
+
+                  <div class="establishment-header">
+
+                    <div>
+                      <h5>{{ factoryDetails[0]?.establishmentName }}</h5>
+
+                      <span class="license-tag">
+                        License No : {{ factoryDetails[0]?.licenceNumber }}
+                      </span>
+                    </div>
+
+                    <div class="status-badge">
+                      Active
+                    </div>
+
+                  </div>
+
+                  <div class="establishment-grid">
+
+                    <div class="establishment-item">
+                      <label>Site/Location Address</label>
+                      <p>{{ factoryDetails[0]?.address }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Type of Business</label>
+                      <p>{{ factoryDetails[0]?.projectPurpose }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Mobile Number</label>
+                      <p>{{ factoryDetails[0]?.mobileNo }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Email Address</label>
+                      <p>{{ factoryDetails[0]?.alternateEmail }}</p>
+                    </div>
+
+                    <div class="establishment-item">
+                      <label>Contact Person</label>
+                      <p>{{ factoryDetails[0]?.applicantName }}</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- SECTION 2 -->
+              <div class="form-section">
+
+  <div class="section-title">
+    <span>II</span>
+    <h5>Payment Summary</h5>
+  </div>
+
+ <table class="table table-bordered table-striped mt-3">
+  <thead style="background-color:#445b72; color:white;">
+    <tr>
+      <th>Sr. No.</th>
+      <th>Employee_Id</th>
+      <th>Employee_Name</th>
+      <th>Father_Name</th>
+      <th>Date_of_Joining</th>
+      <th>Date_of_Resign</th>
+      <th>Mobile</th>
+      <th>Bank_Account_No</th>
+      <th>Bank_Name</th>
+      <th>IFSC_Code</th>
+      <th>Amount</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let payment of empDetails; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ payment.empIdInEstablishment }}</td>
+      <td>{{ payment.name }}</td>
+      <td>{{ payment.fatherName }}</td>
+      <td>{{ payment.dateOfJoining | date:'dd/MM/yyyy' }}</td>
+      <td>{{ payment.dateOfResign | date:'dd/MM/yyyy' }}</td>
+      <td>{{ payment.mobile }}</td>
+      <td>{{ payment.bankAccountNo }}</td>
+      <td>{{ payment.bankName }}</td>
+      <td>{{ payment.ifscCode }}</td>
+      <td>{{ payment.amount }}</td>
+      <td>{{ payment.remarks }}</td>
+    </tr>
+
+    <tr *ngIf="empDetails?.length == 0">
+      <td colspan="12" class="text-center">
+        No payment details available
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot *ngIf="empDetails?.length > 0">
+    <tr style="font-weight: bold; background-color: #f2f2f2; font-size: 16px;">
+      <td colspan="10" class="text-end" >Total Amount</td>
+      <td style="color: crimson;">{{ getTotalAmount() }}/-</td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+</div>
+
+              <!-- Buttons -->
+              <div class="button-wrapper">
+
+                <button
+                  type="button"
+                  class="btn dashboard-btn"
+                  (click)="backToDashboard()">
+                  Back to Dashboard  
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn submit-btn">
+                 Proceed to Payment 
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+ 
+
+            

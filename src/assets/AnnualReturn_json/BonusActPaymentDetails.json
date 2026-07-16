@@ -1,0 +1,73 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 48,
+      "SectionTitle": "Payment of Bonus Act(Bonus Details)",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "AmountPayable",
+                "ColumnTitle": "Total amount payable as bonus under section 10 or 11 of the Payment of Bonus Act, 1965 as the case may be",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "Settlement",
+                "ColumnTitle": "Settlement, if any reached under section 18(1) or 12(3) of the Industrial Disputes Act. 1947 with date",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "PercentOfBonus",
+                "ColumnTitle": "Percentage of bonus declared to be paid",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "BonusPaid",
+                "ColumnTitle": "Total amount of bonus actually paid",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "PaymentMadeOn",
+                "ColumnTitle": "Date on which payment made",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "BonusPaidOrNot",
+                "ColumnTitle": "Whether bonus has been paid to all the employees, if not, reasons for non-payment",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "remarks",
+                "ColumnTitle": "Remark",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+              
+            ],
+            "Rows": [
+              {
+                "AmountPayable": "",
+                "Settlement": "",
+                "PercentOfBonus": "",
+                "BonusPaid": "",
+                "PaymentMadeOn": "",
+                "BonusPaidOrNot": "",
+                "remarks": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

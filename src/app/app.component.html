@@ -1,0 +1,109 @@
+<app-http-loader></app-http-loader>
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<!-- <div class="buttons">
+	<button class="btn btn-primary" (click)="showStandard()" ngbTooltip="Will disappear in 5s">Standard toast</button
+	>&nbsp;
+	<button class="btn btn-success" (click)="showSuccess()" ngbTooltip="Will disappear in 10s">Success toast</button
+	>&nbsp;
+	<button class="btn btn-danger" (click)="showDanger(dangerTpl)" ngbTooltip="Will disappear in 15s">Danger toast</button
+	>&nbsp;
+</div> -->
+
+
+<div class="location-loading" *ngIf="isLocationOn && !isLocationFetched">
+  
+<svg viewBox="0 -10 100 100" width="100" height="152">
+  <defs>
+    <!-- Define the shadow animation -->
+    <style>
+      .pin {
+        animation: bounce 1s infinite alternate ease-in-out;
+        transform-origin: bottom;
+      }
+      .shadow {
+        animation: shadow-scale 1s infinite alternate ease-in-out;
+        transform-origin: center;
+        fill: rgba(0, 0, 0, 0.5);
+      }
+      @keyframes bounce {
+        from { transform: translateY(0px); }
+        to { transform: translateY(-15px); }
+      }
+      @keyframes shadow-scale {
+        from { transform: scale(1); opacity: 0.2; }
+        to { transform: scale(0.6); opacity: 0.1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse class="shadow" cx="50" cy="90" rx="15" ry="5" />
+
+  <!-- Location Pin -->
+  <g class="pin" fill="#E74C3C">
+    <path d="M50 10c-11 0-20 9-20 20 0 13 20 35 20 35s20-22 20-35c0-11-9-20-20-20z" />
+    <circle cx="50" cy="30" r="6" fill="white" />
+  </g>
+</svg>
+<div>Please wait, fetching your location....</div>
+</div>
+
+<div class="location-loading" *ngIf="!isLocationOn">
+  <svg width="175px" height="175px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.288"/>
+  <g id="SVGRepo_iconCarrier"> <path d="M9.19739 3.60027C10.0555 3.2142 11.0034 3 12 3C15.866 3 19 6.22355 19 10.2C19 11.1279 18.8094 12.0148 18.4727 12.875M16.3439 16.3431C15.0983 17.887 13.5491 19.4066 12 21C8.5 17.4 5 14.1764 5 10.2C5 8.71437 5.43745 7.33384 6.18709 6.18723M3 3L21 21" stroke="#F54927" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+  </svg>
+  <h6 class="text-danger">Browser location is not enabled..!</h6>
+  Please enable the location of your browser..!
+</div>
+
+ <div *ngIf="isLogoutTimerStarts" class="time-out-reminder-box"></div>
+<div *ngIf="isLogoutTimerStarts" class="progress-bar-box">
+  <div class="progress-bar">
+    <progress [value]="maxLogoutWaitingTimeRemains_seconds" min="0" [max]="maxLogoutWaitingTimeRemains_seconds" style="visibility:hidden;height:0;width:0;"></progress>
+    <div class="logout-time-text">Signed-out in</div>
+    <div class="remain-time-counter">{{maxLogoutWaitingTimeRemains_seconds}}</div>
+    <div class="logout-time-text">Seconds</div>
+  </div>
+  <div class="stay-loggedin" (click)="stop()">Keep me signed-in</div>
+</div>
+<app-header *ngIf="isLocationOn && isLocationFetched && authService.isUserLoggedIn()"></app-header>
+<app-side-nav-bar *ngIf="isLocationOn && isLocationFetched && authService.isUserLoggedIn() && authService.getUserJwtDecodedInfo().RoleName!='INDL'"></app-side-nav-bar>
+<div  [ngClass]="{'content-collapsed': !isNavOpen}">
+  <div >
+  <router-outlet *ngIf="isLocationOn && isLocationFetched"></router-outlet>
+  </div>
+</div>
+<app-footer *ngIf="isLocationOn && isLocationFetched"></app-footer>
+
+  <div
+  class="main-container"
+  (mousemove)="onMouseMove($event)"
+  (mouseup)="stopDrag()" *ngIf="pdfWindows.length>0">
+  <div
+    *ngFor="let pdf of pdfWindows"
+    class="pdf-window"
+    [style.left.px]="pdf.x"
+    [style.top.px]="pdf.y"
+    [style.zIndex]="pdf.zIndex"
+    (mousedown)="bringToFront(pdf)"
+    [id]="pdf.id">
+    <div class="header" (mousedown)="startDrag($event, pdf)">
+       <div class="title-section">
+        <div class="document-title">{{pdf.title}}</div>
+        <div class="document-uploaded-on">
+          <b>Uploaded On:</b> {{pdf.uploadedOn | date:'d/MM/y hh:mm a'}}
+        </div>
+      </div>
+      <button
+        class="close-btn"
+        (click)="removeWindow(pdf.id)">
+        <i class="feather icon-x-circle"></i>
+      </button>
+    </div>
+    <embed [id]="pdf.id" [src]="pdf.path" type="application/pdf" width="100%"/>
+  </div>
+</div>
+

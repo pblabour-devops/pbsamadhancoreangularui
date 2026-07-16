@@ -1,0 +1,105 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card user-profile-list shadow">
+          <div class="card-header bg-light text-dark d-flex justify-content-between align-items-center">
+            <h5 class="mb-0" style="font-size: 18px; font-weight: 800;">Deemed Applications Time Line</h5>
+            <!-- <button type="button" class="btn btn-success btn-sm shadow-sm" (click)="openScrollableContent(longContent)">
+              <i class="feather icon-plus-circle"></i> Add New
+            </button> -->
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+               <div class="form-group row m-t-20 align-items-center offset-10">
+                <button class="btn btn-primary" title="Download Excel">
+                    <i class="feather icon-download"></i> Download Excel
+                </button>
+              </div>
+
+            </div>
+          </div>
+           -->
+            <div class="col-sm-12">
+                <div class="card tabs-card">
+                    <div class="card-body">
+                        <div class="table-scrollable">
+                            <div class="table-container">
+                                <div class="col-sm-12 m-t-10">
+                                    <table class="table table-bordered mt-2">
+                                        <thead>
+                                            <tr class="header-row text-center">
+                                            <th class="table-heading">Sr. No</th>
+                                            <th class="table-heading text-left">Service Name</th>
+                                            <th class="table-heading text-left">File No</th>
+                                            <th class="table-heading text-left">Current Pending With</th>
+                                            <th class="table-heading text-left">Establishment Name</th>
+                                            <th class="table-heading col-md-1">Submission Date</th>
+                                            <th class="table-heading col-md-1">Deemed Date</th>
+                                            <th class="text-primary table-heading">
+                                                Total Time
+                                            </th>
+                                            <th class="text-success table-heading">
+                                                Total Holidays Time
+                                            </th>
+                                            <th class="text-info table-heading">
+                                                Total WeekEnds Time
+                                            </th>
+                                            <th class="text-danger table-heading">
+                                                Total Objection Time
+                                            </th>
+                                            <th class="text-secondary table-heading">
+                                                Deemed InTime
+                                            </th>
+                                            <th class="maxdeemded table-heading">
+                                                Max DeemedTime
+                                            </th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody *ngIf="applicationTimeLineData?.length>0">
+                                                <tr *ngFor="let item of applicationTimeLineData; let i = index">
+                                                    <td class="text-center">{{ i + 1 }}</td>
+                                                    <td class="text-left font-weight-bold">{{ item.serviceName }}</td>
+                                                    <td class="text-left">{{ item.publicAppRefNum }}</td>
+                                                    <td class="text-left">{{ item.userName }}</td>
+                                                    <td class="text-left">
+                                                        <span class="font-weight-bold" style="color: #DE3163;">{{item.establishmentName}} </span>
+                                                    </td>
+                                                    <td class="text-left font-weight-bold">{{ item.submissionDate | date:'dd-MM-yyyy hh:mm' }}</td>
+                                                   <td class="text-left font-weight-bold"> 
+                                                        {{ item.lastDeemedDate ? (item.lastDeemedDate | date:'dd-MM-yyyy hh:mm') : 'Ready for deemed' }}<br>
+                                                        {{ item.lastDeemedDate ? '(' + (item.lastDeemedDate | date:'EEEE') + ')' : '' }}
+                                                    </td>
+                                                    <td class="text-center text-primary">{{ (item.totalTime / 24).toFixed(1) }}<br><span class="spanfont">( Days )</span></td>
+                                                    <td class="text-center text-success">{{ (item.totalHolidaysTime / 24).toFixed(1) }}<br><span class="spanfont">( Days )</span></td>
+                                                    <td class="text-center text-info">{{ (item.totalWeekEndsTime / 24).toFixed(1) }}<br><span class="spanfont">( Days )</span></td>
+                                                    <td class="text-center text-danger">
+                                                        {{ item.totalObjectionTime < 24 
+                                                            ? item.totalObjectionTime 
+                                                            : (item.totalObjectionTime / 24).toFixed(1) }}
+                                                        <br>
+                                                        <span class="spanfont">
+                                                        ( {{ item.totalObjectionTime < 24 ? 'Hours' : 'Days' }} )
+                                                        </span>
+                                                    </td>
+
+                                                    <td class="text-center text-secondary">{{ (item.deemedInTime / 24).toFixed(1) }}<br><span class="spanfont">( Days )</span></td>
+                                                    <td class="text-center maxdeemded">{{ (item.maxDeemedTime / 24).toFixed(1) }}<br><span class="spanfont">( Days )</span></td>
+                                                </tr>      
+                                        </tbody>
+                                        <tbody *ngIf="applicationTimeLineData?.length==0" >
+                                                <tr><td colspan="7" class="text-danger">No record found...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

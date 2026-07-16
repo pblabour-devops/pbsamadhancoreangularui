@@ -1,0 +1,26 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 19,
+      "SectionTitle": "THE PUNJAB MOTOR TRANSPORT WORKERS RULE,1963 FORM NO. XIII [See rule 39] ",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Motor Transport Details",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "1. Name of Motor Transport Undertaking", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "2(a). Address", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "2(b). Pin Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "2(c). District", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "2(d). Tehsil", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+           
+            
+          ] 
+        }
+         
+        
+      ]
+    }
+  }
+]

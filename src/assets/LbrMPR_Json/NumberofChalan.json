@@ -1,0 +1,45 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 15,
+      "SectionTitle": "Number of Chalan",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Chalan Summary under Various Acts",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "FA", "ColumnTitle": "FA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "PWA", "ColumnTitle": "PWA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "MWA", "ColumnTitle": "MWA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "PBA", "ColumnTitle": "PBA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "NFHA", "ColumnTitle": "NFHA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SA", "ColumnTitle": "SA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "CLA", "ColumnTitle": "CLA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "CHLA", "ColumnTitle": "CHLA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "BOCW", "ColumnTitle": "BOCW", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "PGA", "ColumnTitle": "PGA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "ISMWA", "ColumnTitle": "ISMWA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "WJNE", "ColumnTitle": "WJNE", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "MBA", "ColumnTitle": "MBA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "ERA", "ColumnTitle": "ERA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SPA", "ColumnTitle": "SPA", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Others", "ColumnTitle": "Others (with remarks)", "DataType": "Text", "IsMendatory": false }
+            ],
+            "Rows": [
+              { "category": "1. Pending at the beginning of the month" },
+              { "category": "2. New Prosecutions launched during the month" },
+              { "category": "3. No. of Challans in which fine imposed or sentence awarded" },
+              { "category": "4. Acquittals" },
+              { "category": "5. Dismissed" },
+              { "category": "6. Total Disposed off" },
+              { "category": "7. Amount of Fine" },
+              { "category": "8. Prosecution pending at the end of the month" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

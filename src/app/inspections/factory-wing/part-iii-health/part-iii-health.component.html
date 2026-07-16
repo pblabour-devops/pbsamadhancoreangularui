@@ -1,0 +1,1260 @@
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" />
+  <div class="main-content">
+    <div class="card col-md-10 card-form">
+      <div class="col-md-12">
+        <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+      </div>
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Health</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-gary">
+            <tr>
+              <th>Section/Rule</th>
+              <th>Details</th>
+              <th>Yes/No/Not Applicable</th>
+              <!-- <th>Remarks by Inspecting Officer</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="15">Section-11: Cleanliness</td>
+              <td class="inspection-back-theme1">
+                <strong>11.1.1</strong> Is accumulation of dirt and refuse removed daily by sweeping or
+                by any other effective method from the floors and benches of
+                workrooms and from staircases and passages, and disposed of in a
+                suitable manner?
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_SuitableManner_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+          
+            <tr class="inspection-back-theme1">
+              <td> <strong>11.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_SuitableManner_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_11_Cleanliness_SuitableManner_Remarks"><strong>11.1.3</strong> Remarks if any</label>
+              <textarea
+                type="text" 
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_11_Cleanliness_SuitableManner_Remarks" maxlength="1000"
+              ></textarea>
+              <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_11_Cleanliness_SuitableManner_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_11_Cleanliness_SuitableManner_Remarks"
+                placeHolder="sec_11_Cleanliness_SuitableManner_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td class="inspection-back-theme2">
+                <strong>11.2.1</strong> Is the floor of every workroom being cleaned at least once in
+                every week by washing, using disinfectant, where necessary, or
+                by some other effective method?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Method_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>11.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Method_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_11_Cleanliness_Method_Remarks"> <strong>11.2.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_11_Cleanliness_Method_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_11_Cleanliness_Method_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_11_Cleanliness_Method_Remarks"
+                placeHolder="sec_11_Cleanliness_Method_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>11.3.1</strong> Are effective means of drainage being provided and maintained
+                where a floor is liable to become wet in the course of any
+                manufacturing process to such extent as is capable of being
+                drained, effective means of drainage shall be provided and
+                maintained?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Drainage_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong> 11.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Drainage_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_11_Cleanliness_Drainage_Remarks"><strong>11.3.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_11_Cleanliness_Drainage_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_11_Cleanliness_Drainage_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form" 
+                controlName="sec_11_Cleanliness_Drainage_Remarks"
+                placeHolder="sec_11_Cleanliness_Drainage_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>11.4.1</strong> Are all inside walls and partitions, all ceilings or tops of
+                rooms and all walls, sides and tops of passages, staircases,
+                latrines, canteen etc. lime washed as per provisions of
+                Factories Act 1948 and rules made thereunder
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_LimeWashed_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>11.4.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_LimeWashed_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_11_Cleanliness_LimeWashed_Remarks"><strong>11.4.3</strong></label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_11_Cleanliness_LimeWashed_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_11_Cleanliness_LimeWashed_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_11_Cleanliness_LimeWashed_Remarks"
+                placeHolder="sec_11_Cleanliness_LimeWashed_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>11.5.1</strong> Is the record of dates on which whitewashing, color-washing,
+                varnishing, etc., are carried out entered in a register
+                maintained in Form No. 7
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Whitewashing_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>11.5.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_11_Cleanliness_Whitewashing_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_11_Cleanliness_Whitewashing_Remarks"><strong>11.5.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_11_Cleanliness_Whitewashing_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_11_Cleanliness_Whitewashing_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_11_Cleanliness_Whitewashing_Remarks"
+                placeHolder="sec_11_Cleanliness_Whitewashing_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+
+            <tr>
+              <td rowspan="3">Section-12: Disposal of Wastes and Effluents</td>
+              <td class="inspection-back-theme2">
+                <strong>12.1.1 </strong>Are the arrangements made in every factory for the disposal of
+                wastes and effluents due to the manufacturing processes carried
+                on therein in accordance with those approved by the Punjab
+                Pollution Control Board and other appropriate authorities
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_12_DisposalWaste_PPCB_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>12.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_12_DisposalWaste_PPCB_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_12_DisposalWaste_PPCB_Remarks"><strong>12.1.3 </strong></label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_12_DisposalWaste_PPCB_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_12_DisposalWaste_PPCB_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_12_DisposalWaste_PPCB_Remarks"
+                placeHolder="sec_12_DisposalWaste_PPCB_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td rowspan="6">Section-13: Ventilation and Temperature</td>
+              <td class="inspection-back-theme1">
+                <strong>13.1.1</strong> Are Wet-Bulb/Dry-Bulb/air-movement provided as per Rule-19A(1)
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_13_VantilationTemperature_WetBulb_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>13.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_13_VantilationTemperature_WetBulb_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_13_VantilationTemperature_WetBulb_Remarks"><strong>13.1.3</strong></label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_13_VantilationTemperature_WetBulb_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;" style="float: right; color: blue;">{{ getCharacterCount('sec_13_VantilationTemperature_WetBulb_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_13_VantilationTemperature_WetBulb_Remarks"
+                placeHolder="sec_13_VantilationTemperature_WetBulb_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>13.2.1</strong> Is ventilation in workroom as per Rule-19A(2)</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_13_VantilationTemperature_WorkRoom_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>13.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_13_VantilationTemperature_WorkRoom_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_13_VantilationTemperature_WorkRoom_Remarks"><strong>13.2.3</strong></label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_13_VantilationTemperature_WorkRoom_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_13_VantilationTemperature_WorkRoom_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_13_VantilationTemperature_WorkRoom_Remarks"
+                placeHolder="sec_13_VantilationTemperature_WorkRoom_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td rowspan="3">Section-14: Dust and Fume</td>
+              <td class="inspection-back-theme1"><strong>14.1.1</strong> Are provisions of Section 14 being complied with</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_14_DustFume_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>14.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_14_DustFume_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_14_DustFume_Remarks"><strong>14.1.3</strong></label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_14_DustFume_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_14_DustFume_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_14_DustFume_Remarks"
+                placeHolder="sec_14_DustFume_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td rowspan="3">Section-16: Overcrowding</td>
+              <td class="inspection-back-theme2">
+                <strong>16.1.1</strong> Is space of 14.2 cubic meters available for every worker in
+                every room
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_16_Overcrowding_142CM_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>16.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_16_Overcrowding_142CM_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_16_Overcrowding_142CM_Remarks"><strong>16.1.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_16_Overcrowding_142CM_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_16_Overcrowding_142CM_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_16_Overcrowding_142CM_Remarks"
+                placeHolder="sec_16_Overcrowding_142CM_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+
+            <tr>
+              <td rowspan="9">Section-17: Lighting</td>
+              <td class="inspection-back-theme1"><strong>17.1.1</strong> Are windows/sky-lights being kept clean for lighting?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_17_Lighting_Windows_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>17.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_17_Lighting_Windows_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_17_Lighting_Windows_Remarks"><strong>17.1.3</strong>  Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_17_Lighting_Windows_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_17_Lighting_Windows_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_17_Lighting_Windows_Remarks"
+                placeHolder="sec_17_Lighting_Windows_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>17.2.1</strong> Are effective arrangements in place to prevent glare,
+                eye-strain, etc.?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_17_Lighting_EyeStrain_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>17.2.2</strong>{{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_17_Lighting_EyeStrain_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_17_Lighting_EyeStrain_Remarks"><strong>17.2.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_17_Lighting_EyeStrain_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_17_Lighting_EyeStrain_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_17_Lighting_EyeStrain_Remarks"
+                placeHolder="sec_17_Lighting_EyeStrain_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>17.3.1</strong> Are working places and passages sufficiently and suitable
+                lighting?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_17_Lighting_Passages_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>17.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_17_Lighting_Passages_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_17_Lighting_Passages_Remarks"><strong>17.3.3</strong> Remarks if any </label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_17_Lighting_Passages_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_17_Lighting_Passages_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_17_Lighting_Passages_Remarks"
+                placeHolder="sec_17_Lighting_Passages_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+
+            <tr>
+              <td rowspan="24">Section-18: Drinking Water</td>
+
+              <td class="inspection-back-theme2">
+                <strong>18.1.1</strong> Are notices “DRINKING WATER” in language understood by workers
+                displayed?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Language_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>18.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Language_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Language_Remarks"><strong>18.1.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Language_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Language_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Language_Remarks"
+                placeHolder="sec_18_DrinkingWater_Language_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>18.2.1</strong>  Are drinking water points complying with the distance prescribed
+                in section 18(2)
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Distance_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>18.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Distance_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Distance_Remarks"><strong>18.2.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Distance_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Distance_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Distance_Remarks"
+                placeHolder="sec_18_DrinkingWater_Distance_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>18.3.1</strong> Is the quantity of drinking water as prescribed in Rule 36 being
+                supplied?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Quality_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>18.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Quality_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Quality_Remarks"><strong>18.3.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Quality_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Quality_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Quality_Remarks"
+                placeHolder="sec_18_DrinkingWater_Quality_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>18.4.1</strong> Is drinking water supplied from the public authority system?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Authority_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>18.4.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Authority_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Authority_Remarks"><strong>18.4.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Authority_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Authority_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Authority_Remarks"
+                placeHolder="sec_18_DrinkingWater_Authority_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>18.5.1</strong> Does the source of drinking water require approval from Health
+                Officer?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Approval_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>18.5.2</strong>  {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Approval_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Approval_Remarks"><strong>18.5.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Approval_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Approval_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Approval_Remarks"
+                placeHolder="sec_18_DrinkingWater_Approval_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>18.6.1</strong>  Are points of drinking water kept clean?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Clean_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>18.6.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Clean_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Clean_Remarks"><strong>18.6.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Clean_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Clean_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Clean_Remarks"
+                placeHolder="sec_18_DrinkingWater_Clean_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td class="inspection-back-theme2">
+                <strong>18.7.1</strong> Are drinking water points for every 150 workers provided as per
+                Rule 41?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Point_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>18.7.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_Point_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_Point_Remarks"><strong>18.7.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_Point_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_Point_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_Point_Remarks"
+                placeHolder="sec_18_DrinkingWater_Point_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>18.8.1</strong> Are arrangements to supply cool water made as per Rule-41?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_CoolWater_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>18.8.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_18_DrinkingWater_CoolWater_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_18_DrinkingWater_CoolWater_Remarks"><strong>18.8.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_18_DrinkingWater_CoolWater_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_18_DrinkingWater_CoolWater_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_18_DrinkingWater_CoolWater_Remarks"
+                placeHolder="sec_18_DrinkingWater_CoolWater_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td rowspan="18">Section-19: Latrines and Urinals</td>
+              <td class="inspection-back-theme2"><strong>19.1.1</strong> Are latrine accommodations provided as per Rule-42</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_Accomodation_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>19.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Accomodation_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_19_Urinals_Accomodation_Remarks"><strong>19.1.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_Accomodation_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_Accomodation_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_19_Urinals_Accomodation_Remarks"
+                placeHolder="sec_19_Urinals_Accomodation_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>19.2.1</strong> Are latrines conforming to public health requirements?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_PublicHealth_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>19.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Accomodation_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_19_Urinals_PublicHealth_Remarks"><strong>19.2.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_PublicHealth_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_PublicHealth_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_19_Urinals_PublicHealth_Remarks"
+                placeHolder="sec_19_Urinals_PublicHealth_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>19.3.1</strong> Is privacy ensured in latrine accommodation?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_Privacy_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>19.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Privacy_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_19_Urinals_Privacy_Remarks"> <strong>19.3.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_Privacy_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_Privacy_Remarks') }}/1000</span>
+              <app-form-validation-error
+                [formGroup]="Input_Form"  [isSubmitted]="hasSubmitClicked" 
+                controlName="sec_19_Urinals_Privacy_Remarks"
+                placeHolder="sec_19_Urinals_Privacy_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>19.4.1</strong> Are signboards on latrines in language understood by workers
+                displayed?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_Signboards_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>19.4.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Signboards_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_19_Urinals_Signboards_Remarks"><strong>19.4.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_Signboards_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_Signboards_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_19_Urinals_Signboards_Remarks"
+                placeHolder="sec_19_Urinals_Signboards_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>19.5.1</strong> Are latrine accommodations provided as per Rule-46</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_Rule46_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>19.5.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Rule46_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_19_Urinals_Rule46_Remarks"><strong>19.5.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_Rule46_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_Rule46_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_19_Urinals_Rule46_Remarks"
+                placeHolder="sec_19_Urinals_Rule46_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>19.6.1</strong> The walls, ceilings, and partitions of every latrine and urinal
+                shall be whitewashed, and the whitewashing shall be repeated at
+                least once in every period of four months. The dates on which
+                the whitewashing is carried out shall be entered in the
+                prescribed register Form No. 7.
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_19_Urinals_Walls_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>19.6.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_19_Urinals_Walls_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <label for="sec_19_Urinals_Walls_Remarks"><strong>19.6.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_19_Urinals_Walls_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_19_Urinals_Walls_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_19_Urinals_Walls_Remarks"
+                placeHolder="sec_19_Urinals_Walls_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td rowspan="3">Section-20: Spittoons</td>
+              <td class="inspection-back-theme2"><strong>20.1.1</strong> Are spittoons kept and maintained as per Rule-53 and 54</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_20_Spittoons_Rule_53_54_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>20.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_20_Spittoons_Rule_53_54_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <label for="sec_20_Spittoons_Rule_53_54_Remarks"><strong>20.1.3</strong> Remarks if any</label>
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_20_Spittoons_Rule_53_54_Remarks" maxlength="1000"></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_20_Spittoons_Rule_53_54_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_20_Spittoons_Rule_53_54_Remarks"
+                placeHolder="sec_20_Spittoons_Rule_53_54_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        
+      </div>
+  
+    </div>
+  </div>
+</form>

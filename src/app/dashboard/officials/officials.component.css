@@ -1,0 +1,239 @@
+.pcoded-badge{
+    float: right;
+}
+a {
+    color: #4099ff
+}
+
+.table {
+    width: 100%;
+    color: #222;
+    margin-top: 7px;
+}
+
+.table thead th {
+    font-size: 14px;
+    color: #0c0c0c;
+    background: #f6f7fb;
+}
+.tableClass{
+    position: relative;
+    border-bottom: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-radius: 5px;
+    /* overflow-y: auto; */
+}
+
+.card .card-header {
+    margin-top: 30px;
+}
+
+.action-taken-count{
+    color:#922B21; 
+    font-style: italic;
+}
+
+.text-c-green{
+    font-style: italic;
+    font-size: 13px;
+}
+
+.text-c-red{
+    font-style: italic;
+    font-size: 13px;
+}
+.b-brand .b-title {
+    margin-left: 10px;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.badge {
+    font-size: 100%;
+    padding: 0.35em 0.6em;
+    font-weight: 600;
+}
+
+
+.btn-link {
+    color:black;
+    font-weight: 400;
+    
+}
+.btn-link:hover {
+    color: #4099ff;
+    text-decoration: none;
+}
+.m-0 {
+    margin-left: 100px !important;
+}
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 5px;
+}
+.floatRight{
+    position: absolute;
+    right: 10px;
+}
+.card{
+    box-shadow: 0px 0px 30px -15px black;
+}
+
+.badge-light-danger {
+    background: #dcf7f3;
+    border-color: #ffcfd7;
+    color: #473B7B;
+}
+.email-card .tab-content .nav-pills>li .nav-link.active:after {
+    background: #473B7B;
+}
+
+.email-card .tab-content .nav-pills>li .nav-link.active {
+    background: transparent;
+    color: #473B7B;
+}
+.pcoded-navbar .pcoded-inner-navbar>li.active>a, .pcoded-navbar .pcoded-inner-navbar>li.pcoded-trigger>a {
+    background: #dcf7f3;
+}
+.width20{
+    width: 20%;
+}
+.width40{
+    width: 40%;
+}
+/* .lblestablishmentName{
+    background-color: rgb(236, 235, 235); 
+    border: 1px solid lightgrey; 
+    box-shadow: 0px 0px 5px rgb(216, 211, 211); 
+    padding: 5px; 
+    border-radius: 5px; 
+    margin-top: -10px;
+    margin-right: 3px;
+} */
+
+.cursor{
+    cursor: pointer;
+}
+.resultPagination{
+    margin-top: 15px;
+}
+
+.timeline-workingday{
+    background-color: #eafaf1;
+}
+.timeline-offday{
+    background-color: #eaecee;
+}
+
+.timelines-table-sub-head{
+    color: #5b2c6f;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.timelines-slab-day-desc-working{
+    color: #186a3b;
+    font-size: 11px;
+    font-weight: bold;
+}
+.timelines-slab-day-desc-off{
+    color: #566573;
+    font-size: 10px;
+    font-weight: bold;
+}
+.timelines-working-hrs{
+    color: #a93226;
+    font-size: 20px;
+    font-weight: bold;
+}
+.timelines-working-hrs-title{
+    color: #273746;
+    font-size: 11px;
+    font-weight: bold;
+}
+.rts-warning{
+    font-size: 12px;
+    color: #d35400;
+}
+
+.f{
+    font-size: 25px;
+}
+.time-container{
+    font-size: 18px;
+}
+.small-text {
+  font-size: 12px !important;
+}
+
+
+.reports-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  height: 55px;
+  width: 55px;
+  background: #0accee; /* green */
+  color: #fff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(8, 112, 126, 0.2);
+  transition: all 0.35s ease;
+  z-index: 9999;
+}
+
+/* Expand on hover */
+.reports-widget:hover {
+  width: 160px;
+}
+
+/* Icon container */
+.reports-icon {
+  min-width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reports-text {
+  opacity: 0;
+  white-space: nowrap;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+   align-items: left;
+}
+/* Show text on hover */
+.reports-widget:hover .reports-text {
+  opacity: 1;
+}
+.reports-widget::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(45, 69, 85, 0.4);
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { opacity: 0; }
+}
+.reports-widget {
+  transform: translateX(100px);
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}

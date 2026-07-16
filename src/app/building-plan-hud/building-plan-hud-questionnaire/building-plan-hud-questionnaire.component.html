@@ -1,0 +1,162 @@
+<form [formGroup]="Building_Plan_Hud_Questionnaire_Form" (ngSubmit)="onSubmit()">
+
+    <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Combined Proposed Approval of Building Plans (HUD and Factories)</h4>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div class="form-group row m-t-30">
+                        <label class="col-sm-3 font-weight-bolder"> Does your site fall within limit of Municipal Corporation / Municipal Committee / Notified Area Committee ?</label>
+                        <div class="col-sm-3">
+                            <select class="form-select form-select-sm" (change)="MCSiteChange()" aria-label="Default select example" formControlName="isSiteFallUnderMC">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option value= "0"> No </option>
+                                <option value= "1"> Yes </option>
+                            </select>
+                        </div>
+    
+                        <label class="col-sm-3 font-weight-bolder" *ngIf="formControls.isSiteFallUnderMC.value == 1">Have you got your site plan approved from Municipal Corporation / Municipal Committee / Notified Area Committee ?</label>
+                        <div class="col-sm-3" *ngIf="formControls.isSiteFallUnderMC.value == 1">
+                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="isApprovedFromMC">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option value= "0"> No </option>
+                                <option value= "1"> Yes </option>
+                            </select>
+                        </div>
+                        <label class="col-sm-3 font-weight-bolder" *ngIf="formControls.isSiteFallUnderMC.value == 0 && formControls.isSiteFallUnderMC.value"> Within limit of PSIEC ?</label>
+                        <div class="col-sm-3" *ngIf="formControls.isSiteFallUnderMC.value == 0 && formControls.isSiteFallUnderMC.value">
+                            <select class="form-select form-select-sm" (change)="PSIECSiteChange()"  aria-label="Default select example" formControlName="isSiteFallUnderPSIEC">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option value= "0"> No </option>
+                                <option value= "1"> Yes </option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row m-t-30">
+                        <label class="col-sm-3 font-weight-bolder" *ngIf="formControls.isSiteFallUnderPSIEC.value == 1"> Have you got your site plan approved from PSIEC?</label>
+                        <div class="col-sm-3" *ngIf="formControls.isSiteFallUnderPSIEC.value == 1">
+                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="isApprovedFromPSIEC">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option value= "0"> No </option>
+                                <option value= "1"> Yes </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf="(formControls.isApprovedFromMC.value == 1 && formControls.isApprovedFromMC.value == 1) || (formControls.isApprovedFromMC.value == 0 && formControls.isApprovedFromPSIEC.value == 1 && formControls.isSiteFallUnderPSIEC.value == 1)">
+                        <div class="alert alert-danger">
+                            <h4 class="alert-heading">Please Note!</h4>
+                            <p>You need to apply for your Building Plan approval under the Factory Act, 1948. Please go back to <a class="text-c-blue" href={{defaultReturnPath}}>Invest Punjab portal</a> and choose to apply service : "Approval of Building Plan Under Factory Act, 1948".</p>
+                            <hr>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body" *ngIf="formControls.isApprovedFromMC.value == 0 && formControls.isApprovedFromMC.value">
+                        <div class="alert alert-danger">
+                            <h4 class="alert-heading">Please Note!</h4>
+                            <p>First, get your site plan approved from Municipal Corporation / Municipal Committee / Notified Area Committee</p>
+                            <hr>
+                        </div>
+                    </div>
+    
+                    <div class="card-body" *ngIf="formControls.isApprovedFromPSIEC.value == 0 && formControls.isApprovedFromPSIEC.value">
+                        <div class="alert alert-danger">
+                            <h4 class="alert-heading">Please Note!</h4>
+                            <p>First, get your site plan approved from Punjab Small Industries & Export Corporation (PSIEC)</p>
+                            <hr>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row m-t-30" *ngIf="formControls.isSiteFallUnderPSIEC.value == 0 && formControls.isSiteFallUnderPSIEC.value">
+                        <label class="col-sm-3 font-weight-bolder"> Have you availed the CLU from the concerned authority as per Notification dated 09-10-2025.</label>
+                        <div class="col-sm-3">
+                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="isCLUAvailedFromAuthority">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option value= "0"> No </option>
+                                <option value= "1"> Yes </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card-body" *ngIf="formControls.isCLUAvailedFromAuthority.value == 0 && formControls.isCLUAvailedFromAuthority.value">
+                        <div class="alert alert-danger">
+                            <h4 class="alert-heading">Please Note!</h4>
+                            <p>You are not allowed to apply for the Combined Building Plan without obtaining the "Change of Land Use" from the competent authority..!</p>
+                            <hr>
+                        </div>
+                    </div>
+    
+                    <div class="card-footer">
+                        <div class="text-center" *ngIf="formControls.isSiteFallUnderPSIEC.value == 0 && formControls.isSiteFallUnderPSIEC.value && formControls.isCLUAvailedFromAuthority.value == 1">
+                            <div class="btn btn-success" (click)="openScrollableContent(longContent)">Start Filling Application Form</div>
+                        </div>
+                        <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+        <div class="col-lg-12">
+            <h4 class="modal-title form-header text-center">Instructions and prerequisite for Combined Proposed Approval of Building Plans (HUD and Factories)</h4>
+        </div>
+    </div>
+    <div class="modal-header">
+        <div class="col-lg-12 text-right">
+            <a target="_blank" href="assets/file/instruction.pdf" style="color: green; font-weight: 800;font-size: larger;"> Download Instructions <i class="feather icon-download"></i></a>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <ul>
+                    <li>Fard/Jamabandi (Not older than three months) for the Khasra Numbers applied for approval showing the ownership/lease deed.</li>
+                    <li>Copy of registered ownership deed or registered lease deed (for minimum 15 years) entered in Jamabandi.</li>
+                    <li>Location Plan showing features in immediate surroundings (ie. water body, house,school, factory.Gurdwaraetc), name and width of approach road, distance of site from junction or any other land mark.</li>
+                    <li>CRO report (not older than 3 months)</li>
+                    <li>AksShajara Plan Showing dimensions, area of individual Khasra numbers and width of abutting revenue road/rasta.</li>
+                    <li>If Ownership/lease is individual: AksShajra Plan signed by concerned Patwari.</li>
+                    <li>If Ownership/lease is in MustarkaKhata (Joint Ownership): Kabja (possession) marked on duly dimensioned AksShajra Plan as per the Kabja on site, verified by concerned CRO.</li>
+                    <li>List of Khasra Numbers showing area of individual Khasraspecifically.</li>
+                    <li>NOC from Concerned Bank/Financial Institution, if land has encumbrance.</li>
+                    <li>Detailed Project Report giving project purpose, process flow number of workers/employees.</li>
+                    <li>Provisional/Final NOC along with the approved drawing from NHAI for access to site from National Highway (if applicable).</li>
+                    <li>Letter declaring Authorized Signatory on behalf of company/firm/promoters dulysigned by all or minimum 2/3rd members/directors.</li>
+                    <li>NOC from Gas Authority of India Limited. If Gas/Fuel pipe line passes through within 150-meter radius of site.</li>
+                    <li>NOC from National Monument Authority of India or Archeological Survey of India, it historical site/heritage monument is located within 100 m radius of site.</li>
+                    <li>Undertaking regarding road widening, clearance zone beneath HT/LT line, green buffer, no construction zone, khaal, revenue rasta if applicable (attached).</li>
+                    <li>NOC from Department of Water resources (drainage/irrigation) if khaal/water bodies are passing through/near the site for making culvert and for no construction zone.</li>
+                    <li>Prior NOC from Department of Forest is required in case the site falls within District SAS Nagar.</li>
+                    <li>Prior NOC from Department of Fire is required.</li>
+                    <li>Prior NOC/Clearance from Airport Authority of India or Indian Air Force is required in case the height of the building is 15m or more or site falls in the red colour of home grid of Colour Coded Zoning Map issued by Airports Authority of India or Indian Air Force.</li>
+                    <!-- <li>Processing fee: Rs. 5000/- for first acre and Rs. 1000/- for every consecutive acre or part thereof or any other fee as applicable as specified by Department of Local Government/HUD.</li> -->
+                    <li>Processing fee: Rs. 7500/- for first acre and Rs. 1500/- for every consecutive acre or part thereof or any other fee as applicable as specified by Department of Local Government/HUD.</li>
+                    <li>Fully dimensioned and readable Zoning Plan. Site Plan. Floor Plans, Elevation, Section etc. on prescribed scale as per Building Rules, 2021 or as amended from time to time and as per the Punjab Municipal Building Bye-Laws.</li>
+                    <li>No permission shall be granted within the radius of 900 meter from the Ammunition Depot/dump or as per the notification of Ministry of Defence, Government of India.</li>
+                    <li>Form No 1-C attachment is mandatory in application form </li>
+                    <li>Form No 1-D attachment is mandatory in application form </li>
+                    <li>Form No 1-E attachment is mandatory in application form </li>
+                    <li>Form No 1-F attachment is mandatory in application form </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <input [(ngModel)]="checkboxFlag" (change)="checkBoxFlagChanged()" type="checkbox"/> <span class="text-danger font-weight-bold"> I have read all the above instructions</span>
+            </div>
+            <div class="col-lg-12 col-md-12 text-center m-t-10">
+                <div (click)="openApplicationForm()" *ngIf="checkboxFlag" class="btn btn-primary">Start filling application form</div>
+                <div *ngIf="!checkboxFlag" class="btn btn-primary disabled">Start filling application form</div>
+            </div>
+        </div>
+    </div>
+  </ng-template>

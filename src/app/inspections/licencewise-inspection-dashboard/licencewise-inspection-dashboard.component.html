@@ -1,0 +1,449 @@
+<div class="main-content">
+    <div class="card col-md-10 card-form">
+      
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Inspection (Violation Dashboard)</h4>
+        </div>
+      </div>
+
+        
+        <div class="col-md-12 align-middle" *ngIf="authService.getUserJwtDecodedInfo().RoleName == 'INDL'">
+            <!-- <button class="btn btn-primary" style="cursor: pointer !important;"(click)="mapLicenceNumber(mapLicence)">Map LicenceNumber</button> -->
+            <p class="font-weight-bold">
+              In case you are not able to see your inspections, 
+              <a href="javascript:void(0)" (click)="mapLicenceNumber(mapLicence)">click here</a> to search and map your inspections with the account.
+            </p>
+        </div>
+
+        <div class="mt-5" *ngIf="inspectionsData?.length>0 ; else noinspectionsData">  
+          <h5 *ngIf="authService.getUserJwtDecodedInfo().RoleName != 'LBIN'">Factory Inspection</h5>
+          <table class="table table-bordered table-striped text-center" *ngIf="authService.getUserJwtDecodedInfo().RoleName != 'LBIN'">
+            <thead>
+              <tr>
+                <th rowspan="2">Sr No.</th>
+                <th rowspan="2">Establishment/License No.</th>
+                <th rowspan="2">Inspection Date</th>
+                <th rowspan="2">Officer Name</th>
+                <th>Days left</th>
+                <th rowspan="1">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="factoryInspections?.length>0 ;">  
+                <tr *ngFor="let data of factoryInspections; let i = index" class="tableRow ">
+                  <td class="align-middle">{{i+1}}</td>
+                  <td class="align-middle">{{ data.establishmentName}}    
+                    {{ data.establishmentAddress}}<br>
+                    ({{data.licenceNumber}})
+                  </td>
+                                   
+                  <td class="align-middle col-light1">
+                      <span style="white-space: nowrap;font-weight: bold;">{{data.inspectionDoneOn | date: 'medium'}}</span>
+                  </td>
+                
+                  <td class="align-middle col-light1">
+                      <span style="white-space: nowrap;font-weight: bold;">{{data.submittedByName}}</span><br>
+                      <span>({{data.submittedByRole}})</span>
+                  </td>
+
+                  <td class="align-middle col-light1" *ngIf="data.latestAction ==404 || data.latestAction ==1">
+                   <span class="time-taken-value" style="font-size: 25px;" [ngClass]="(data.allowedDays)>(data.gapDays) ? 'text-danger font-weight-bold' : 'text-success font-weight-bold'">{{data.allowedDays }}</span><span class="font-weight-bold">out of {{data.gapDays}}</span> days left
+                  </td>
+                  <td class="align-middle col-light1" *ngIf="data.latestAction !=404 && data.latestAction !=1">
+                    <span style="color: #4c8824;">Report submitted by applicant</span>
+                  </td>
+                  
+                  <td>
+                  <div class="row">
+                    <div class="col-md-12  mt-2" *ngIf="authService.getUserJwtDecodedInfo().UserId == data.receiverUserId">
+                        <button type="button" class="btn btn-outline-primary text-center" (click)="onFillingInspectionClick(data.inspectionId,1,data.licenceNumber,data.latestAction)">
+                            <i class="feather icon-activity"></i> Take Action
+                        </button>
+                    </div>
+
+                    <div class="col-md-12  mt-3">
+                        <button class="btn btn-outline-warning text-center" (click)="viewComplianceLogs(data,1,longContent)"><i class="feather icon-message-circle"></i> View Logs</button>
+                    </div>
+
+                    <div class="col-md-12 mt-3">
+                        <button  class="btn btn-outline-success text-center" (click)="downloadViolationReport(data.inspectionId,1)"><i class="feather icon-download"></i> Download Factory Violation Report</button>
+                    </div>
+                </div>
+                </td>
+
+                </tr>
+              </ng-container>
+            </tbody>
+          </table> 
+          
+          <h5 *ngIf="authService.getUserJwtDecodedInfo().RoleName != 'ADRF' && authService.getUserJwtDecodedInfo().RoleName != 'DDRF'">Labour Inspection</h5>
+          <table class="table table-bordered table-striped text-center" *ngIf="authService.getUserJwtDecodedInfo().RoleName != 'ADRF' && authService.getUserJwtDecodedInfo().RoleName != 'DDRF'">
+            <thead>
+              <tr>
+                <th >Sr No.</th>
+                <th >Establishment/License No.</th>
+                <th >Inspection Date</th>
+                <th >Officer Name</th>
+                <th >Days left</th>
+                <th >Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="labourInspections?.length>0 ;"> 
+                <tr *ngFor="let data of labourInspections; let i = index" class="tableRow">
+                  <td class="align-middle">{{i+1}}</td>
+                  <td class="align-middle">{{ data.establishmentName}}    
+                    {{ data.establishmentAddress}}<br>
+                    ({{data.licenceNumber}})
+                  </td>
+                                   
+                  <td class="align-middle col-light1">
+                      <span style="white-space: nowrap;font-weight: bold;">{{data.inspectionDoneOn | date: 'medium'}}</span>
+                  </td>
+                
+                  <td class="align-middle col-light1">
+                      <span style="white-space: nowrap;font-weight: bold;">{{data.submittedByName}}</span><br>
+                      <span >({{data.submittedByRole}})</span>
+                  </td>
+
+                  <td class="align-middle col-light1" *ngIf="data.latestAction ==404 || data.latestAction ==1">
+                     <span class="time-taken-value" style="font-size: 25px;" [ngClass]="(data.allowedDays)>(data.gapDays) ? 'text-danger font-weight-bold' : 'text-success font-weight-bold'">{{ data.allowedDays }}</span><span class="font-weight-bold">out of {{data.gapDays}}</span> days left
+                  </td>
+
+                  <td class="align-middle col-light1" *ngIf="data.latestAction !=404 && data.latestAction !=1">
+                    <span style="color: #4c8824;">Report submitted by applicant</span>
+                  </td>
+
+                  <td>
+                  <div class="row">
+                    <div class="col-md-12  mt-2" *ngIf="authService.getUserJwtDecodedInfo().UserId == data.receiverUserId">
+                        <button type="button" class="btn btn-outline-primary text-center" (click)="onFillingInspectionClick(data.inspectionId,2,data.licenceNumber,data.latestAction)">
+                            <i class="feather icon-activity"></i> Take Action
+                        </button>
+                    </div>
+
+                    <div class="col-md-12  mt-3">
+                        <button class="btn btn-outline-warning text-center" (click)="viewComplianceLogs(data,2,longContent)"><i class="feather icon-message-circle"></i> View Logs</button>
+                    </div>
+
+                    <div class="col-md-12 mt-3">
+                      <button  class="btn btn-outline-success text-center" (click)="downloadViolationReport(data.inspectionId,2)"><i class="feather icon-download"></i> Download Labour Violation Report</button>
+                  </div>
+                </div>
+                </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table> 
+        </div>
+
+      <div class="mt-2 row">
+        <div class="col-md-12">
+         <button class="btn btn-primary" style="cursor: pointer !important;float: right;" (click)="backToDashboard()" type="button">Back to dashboard</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<ng-template #mapLicence let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Map LicenceNumber with this user...!</h4>
+    <button
+      type="button"
+      class="close float-right"
+      aria-label="Close"
+      (click)="modal.close('Close click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card-body custom-modal-body" style="overflow: auto;">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <form [formGroup]="InputForm">
+          <div class="row form-row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="licenceNumber">Enter Licence Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="licenceNumber"
+                />
+              </div>
+            </div>
+            <div class="mt-4">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="verifyLicenceNumber()"
+              >
+                Verify
+              </button>
+            </div>
+            <div
+              *ngIf="licenceData?.userName && !otpSent"
+              class="alert alert-warning"
+            >
+              <h5 class="text-dark">
+                Dear Applicant, the licence number you entered is not mapped
+                with the current user. It is mapped with username
+                <strong>({{ licenceData.userName }})</strong>. If you want to
+                map this licence with the current user,
+                <a
+                  href="javascript:void(0)"
+                  (click)="openOtpModal(1)"
+                  class="text-primary fw-bold"
+                >
+                  click here
+                </a>.
+              </h5>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card shadow-lg" *ngIf="isMapLicence && !otpSent">
+      <div class="card-header bg-secondary text-white">
+        <h5>Send OTP</h5>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-success text-center">
+            Do you want to send an OTP to 
+            <strong>{{ maskedPhoneNumber }}</strong>?
+          
+            <div class="d-flex justify-content-center mt-3">
+              <button
+                type="button"
+                class="btn btn-primary mx-2"
+                (click)="sendOtp()"
+              >
+                Yes, Send OTP
+              </button> 
+              
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+                (click)="cancelOtp()"
+              >
+                Cancel
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-5 mx-auto shadow-lg" style="max-width: 400px;" *ngIf="otpSent">
+      <div class="card-header text-center bg-secondary text-white">
+        <h4>Verify OTP</h4>
+      </div>
+      <div class="card-body">
+        <p class="text-center mb-4">
+          A One-Time Password (OTP) has been sent to <strong>{{ maskedPhoneNumber }}</strong>.
+          Enter the OTP below to proceed.
+        </p>
+        <form [formGroup]="submitForm" class="text-center">
+          <div class="form-group d-flex justify-content-center gap-2">
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-box text-center"
+              formControlName="otp1"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-box text-center"
+              formControlName="otp2"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-box text-center"
+              formControlName="otp3"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-box text-center"
+              formControlName="otp4"
+            />
+          </div>
+          <div *ngIf="!submitForm.valid && submitForm.touched" class="text-danger mt-2">
+            Please fill in all the OTP boxes correctly.
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary mt-4 w-100"
+            [disabled]="!submitForm.valid"
+            (click)="submitOtp()"
+          >
+            Verify OTP
+          </button>
+        </form>
+        <hr />
+        <div class="text-center mt-3">
+          <small class="text-muted">Didn't receive the OTP?</small><br />
+          <button class="btn btn-link p-0 text-decoration-none"(click)="resendOtp()">Resend OTP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-center"></div>
+</ng-template>
+
+
+  <!-- <ng-template #mapLicence let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Map Licence Number with This User</h4>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+    </div>
+  
+    <div class="modal-body">
+      <div class="card shadow-sm">
+        <div class="card-body custom-modal-body">
+          <form [formGroup]="InputForm">
+            <div class="mb-3">
+              <label for="licenceNumber" class="form-label">Enter Licence Number</label>
+              <input
+                type="text"
+                id="licenceNumber"
+                class="form-control form-control-lg"
+                formControlName="licenceNumber"
+                placeholder="Enter licence number"
+              />
+            </div>
+  
+            <button type="button" class="btn btn-success w-100 mb-3" (click)="verifyLicenceNumber()">
+              Verify
+            </button>
+          </form>
+  
+          <div *ngIf="licenceData.userName" class="alert alert-warning">
+            <h5 class="text-dark">
+              Dear Applicant, the licence number you entered is not mapped with the current user. It is mapped with 
+              <strong>{{ licenceData.userName }}</strong>.
+              If you want to map this licence with the current user, 
+              <a href="javascript:void(0)" (click)="openOtpModal(1)" class="text-primary fw-bold">click here</a>.
+            </h5>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card mt-3" *ngIf="isMapLicence">
+        <div class="card-header bg-secondary text-white">
+          <h5>Send OTP</h5>
+        </div>
+        <div class="card-body">
+          <p>Do you want to send an OTP to <strong>{{ 9877989911 }}</strong>?</p>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary" >Yes, Send OTP</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal-footer text-center">
+      <button type="button" class="btn btn-danger w-100" (click)="modal.close('Close click')">
+        Close
+      </button>
+    </div>
+  </ng-template> -->
+
+  <ng-template #longContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Compliance Report Logs</h4>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+    </div>
+    <div class="modal-body">
+        <div class="card-body">
+            <ul class="feed-blog pl-0">
+                <li *ngIf="!notingLogs || notingLogs.length === 0">
+                    <section class="m-t-30">
+                        <span class="text-danger font-weight-bold">No data found..!</span>
+                      </section>
+                </li>
+                <li *ngFor="let item of notingLogs">
+                    <div class="feed-user-img">
+                        <img src="assets/images/email.png" class="img-radius" alt="User-Profile-Image">
+                    </div>
+                    <h6>
+                        <span class="badge badge-info">{{item.statusDate | date:'medium'}}</span>
+                        <!-- <span style="float: right; color: #2C3E50;"> 
+                            Time Taken : 
+                            <span style="color: #A93226;">Days: {{item.actionTakenDaysCount}} (In Hrs.: {{item.actionTakenHoursCount}}) </span> 
+                        </span> -->
+                    </h6>
+                    <div class="row">
+                        <div class="col-md-12 border-bottom">
+                            <div class="row font-weight-bold" style="margin-top:10px; font-size: 14px;">
+                                <div class="col-md-6">
+                                    <i class="fas fa-user"></i> Action taken by
+                                </div>
+                                <div class="col-md-6 text-right font-weight-bold text-primary">
+                                    Noting Log #: <span style="font-size: 20px; font-style: italic;">{{item.appPBIPActionLogId}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                <span style="margin-left: 10px;" class="officename" style="color: rgb(118 35 35);"> {{item.officerName}} </span>	
+                                    <br> 
+                                <span style="margin-left: 10px;" class="officename"> {{item.name}} </span>
+                                </div>
+                                
+                                <div class="col-md-6 text-right">
+                                    <span class="font-weight-bold">Action : </span> <br> {{item.statusDesc}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row rounded" style="margin: 10px 0px 0px 3px; border: 4px solid #dbdddd;margin-top: 15px; padding-top: 10px;padding-bottom: 10px;">
+                                <div class="col-md-12 font-weight-bold">Comments (If any)</div>
+                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                    {{item.remarks }}
+                                </div>
+                                <div class="col-md-12 border-top text-primary">
+                                  Any file uploaded:  <span class="text-danger" *ngIf="item.isDocumentUploaded; else fileNotUploaded">Yes <a class="btn btn-link" href="javascript:;" (click)="previewDocument(previewAttachement, item.attachmentName)"> View attachment</a></span>
+                                  <ng-template #fileNotUploaded>
+                                      <span class="text-info">No</span>
+                                  </ng-template>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </ng-template>
+
+  <ng-template #noinspectionsData>
+    <section class="m-t-30">
+      <span class="text-danger font-weight-bold text-center" style="font-size: 20px;">No Inspection under any licence is mapped with current user..!</span>
+    </section>
+</ng-template>
+
+<ng-template #previewAttachement let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title text-primary">Preview document</h6>
+  </div>
+  <div class="card-body" >
+    <iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" style="min-height: 600px;"></iframe>
+  </div>
+  <div class="card-footer text-right">
+    <button  type="button" class="btn  btn-danger" (click)="closePreviewModal()">Close</button>
+    <!-- <button class="btn btn-success" (click)="onApproveClick()" type="submit" style="float: right;">Approve And Generate Licence</button> -->
+  </div>
+</ng-template>
+
+
+
+ 

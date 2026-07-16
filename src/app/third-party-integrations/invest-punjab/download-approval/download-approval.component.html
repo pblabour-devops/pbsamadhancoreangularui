@@ -1,0 +1,24 @@
+<div class="main-content"> 
+    <div class="card col-md-8 card-form" style="box-shadow : 0px 5px 10px 5px lightgrey">
+        <div class="col-md-12">
+            <div class="register-modal-header">
+                <h4 class="text-center form-header"><span class="text-success">Deemed Approval</span> </h4>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <div class="alert alert-info" *ngIf="receiptResponse?.isCertificateDownload == true">
+                    <h4 class="alert-heading">{{receiptResponse?.messageText}}</h4>
+                    <a class="download-link" target="_blank" [href]="receiptResponse?.certificatePath">Download Approval</a>
+                </div>
+                <div class="alert alert-info" *ngIf="receiptResponse?.isCertificateDownload == false">
+                    <h4 class="alert-heading">{{receiptResponse?.messageText}}</h4>
+                </div>
+
+                <div class="card-footer text-center">
+                    <button class="btn btn-success m-l-10" (click)="backToInvestPunjab()">Back To Invest Punjab</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

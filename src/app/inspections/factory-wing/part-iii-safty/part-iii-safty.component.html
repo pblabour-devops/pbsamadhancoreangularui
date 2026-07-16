@@ -1,0 +1,2690 @@
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" />
+  <div class="main-content">
+    <div class="card col-md-10 card-form">
+      <div class="col-md-12">
+        <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+      </div>
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Safety</h4>
+        </div>
+
+        <table class="table table-bordered table-striped">
+          <thead class="thead-gary">
+            <tr>
+              <th>Section/Rule</th>
+              <th>Details</th>
+              <th>Yes/No/Not Applicable</th>
+              <!-- <th>Remarks by Inspecting Officer</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- sec_tion-21 -->
+            <!-- sec_tion-21 -->
+            <tr>
+              <td rowspan="9">section-21:  Fencing of Machinery</td>
+              <td class="inspection-back-theme1"><strong>21.1.1</strong> Is any Schedule prescribed under Rule-55 applicable?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_Rule55_Selection">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>21.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_Rule55_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>21.1.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_21_FancingOfMachinery_Rule55_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_21_FancingOfMachinery_Rule55_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_21_FancingOfMachinery_Rule55_Remarks"
+                placeHolder="sec_21_FancingOfMachinery_Rule55_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>21.2.1</strong> Report on guarding of as per sec_tion 21?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_Guarding_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>21.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_Guarding_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                > <strong>21.2.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_21_FancingOfMachinery_Guarding_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_21_FancingOfMachinery_Guarding_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_21_FancingOfMachinery_Guarding_Remarks"
+                placeHolder="sec_21_FancingOfMachinery_Guarding_Remarks"
+              ></app-form-validation-error> 
+            </td>
+          </tr>
+            <tr rowspan="2">
+              <td class="inspection-back-theme1"><strong>21.3.1</strong> Any other specific report</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_OtherSpecificReport_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>21.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_21_FancingOfMachinery_OtherSpecificReport_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>21.3.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_21_FancingOfMachinery_OtherSpecificReport_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_21_FancingOfMachinery_OtherSpecificReport_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_21_FancingOfMachinery_OtherSpecificReport_Remarks"
+                placeHolder="sec_21_FancingOfMachinery_OtherSpecificReport_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <!-- sec_tion-21 -->
+
+            <!-- sec_tion-22 -->
+            <tr>
+              <td rowspan="3">
+                section-22: Work on or near machinery in motion
+              </td>
+              <td class="inspection-back-theme2">
+                <strong>22.1.1</strong> Registers of workers attending to machinery as provided in
+                sub-section (1) of section 22 of the Act shall be in Form 7-A.
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_22_MachineryInMotion_Form7_A_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>22.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_22_MachineryInMotion_Form7_A_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>22.1.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_22_MachineryInMotion_Form7_A_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_22_MachineryInMotion_Form7_A_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_22_MachineryInMotion_Form7_A_Remarks"
+                placeHolder="sec_22_MachineryInMotion_Form7_A_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <!-- sec_tion-22 -->
+            <!-- sec_tion-28 -->
+            <tr>
+              <td rowspan="12">section-28: Hoists and Lifts</td>
+              <td class="inspection-back-theme1">
+                <strong>28.1.1</strong> Is record of examination of hoist and lifts is being kept in
+                Form 23
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_Examination_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>28.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_Examination_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>28.1.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_28_HoistAndLifts_Examination_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_28_HoistAndLifts_Examination_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_28_HoistAndLifts_Examination_Remarks"
+                placeHolder="sec_28_HoistAndLifts_Examination_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>28.2.1</strong> (c) the maximum safe working load shall be plainly marked</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_SafeWorking_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>28.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_SafeWorking_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>28.2.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_28_HoistAndLifts_SafeWorking_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_28_HoistAndLifts_SafeWorking_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_28_HoistAndLifts_SafeWorking_Remarks"
+                placeHolder="sec_28_HoistAndLifts_SafeWorking_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>28.3.1</strong> Is interlocking or other safety device provided</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_Interlocking_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>28.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_Interlocking_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>28.3.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_28_HoistAndLifts_Interlocking_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_28_HoistAndLifts_Interlocking_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_28_HoistAndLifts_Interlocking_Remarks"
+                placeHolder="sec_28_HoistAndLifts_Interlocking_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>28.4.1</strong> Any other specific report including annual maintenance contract.
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_OtherSpecificReport_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>28.4.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_28_HoistAndLifts_OtherSpecificReport_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>28.4.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_28_HoistAndLifts_OtherSpecificReport_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_28_HoistAndLifts_OtherSpecificReport_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_28_HoistAndLifts_OtherSpecificReport_Remarks"
+                placeHolder="sec_28_HoistAndLifts_OtherSpecificReport_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <!-- sec_tion-28 -->
+
+            <!-- sec_tion-29 -->
+            <tr>
+              <td rowspan="18">
+                section-29 Lifting machine, chains, ropes and lifting tackles
+              </td>
+              <td class="inspection-back-theme1">
+                <strong>29.1.1</strong> Are all parts, including the working gear, whether fixed or
+                movable, of every lifting machine and every chain, rope or
+                lifting tackle (i) of good construction, sound material and
+                adequate strength and free from defects;
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_GoodConstruction_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>29.1.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_GoodConstruction_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>29.1.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_29_LiftingMachine_GoodConstruction_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_GoodConstruction_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_29_LiftingMachine_GoodConstruction_Remarks"
+                placeHolder="sec_29_LiftingMachine_GoodConstruction_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>29.2.1</strong> (ii) properly maintained</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_22_MachineryInMotion_Form7_A_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>29.2.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_ProperlyMaintained_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>29.2.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_29_LiftingMachine_ProperlyMaintained_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_ProperlyMaintained_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_29_LiftingMachine_ProperlyMaintained_Remarks"
+                placeHolder="sec_29_LiftingMachine_ProperlyMaintained_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>29.3.1</strong> (iii) thoroughly examined by a competent person at least once in
+                every period of twelve months
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_CompetentPerson_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>29.3.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_CompetentPerson_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>29.3.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_29_LiftingMachine_CompetentPerson_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_CompetentPerson_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_29_LiftingMachine_CompetentPerson_Remarks"
+                placeHolder="sec_29_LiftingMachine_CompetentPerson_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>29.4.1</strong> Is the maximum safe working load and identification number
+                marked?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_MaximumSafeWorking_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>29.4.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_MaximumSafeWorking_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>29.4.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_29_LiftingMachine_MaximumSafeWorking_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_MaximumSafeWorking_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="sec_29_LiftingMachine_MaximumSafeWorking_Remarks"
+                placeHolder="sec_29_LiftingMachine_MaximumSafeWorking_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr>
+              <td class="inspection-back-theme1">
+                <strong>29.5.1</strong> Is register containing the details prescribed in Rule 60A(3)
+                maintained?
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_Rule60A_3_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>29.5.2</strong> {{hasViolationFound}}  </td>
+            <td>
+              <select class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_Rule60A_3_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td colspan="2">
+              <span class="remarks_span_label"
+                ><strong>29.5.3</strong> Remarks by Inspecting Officer</span
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                (focusout)="fillDefaultValueInRemarks($event)"
+                formControlName="sec_29_LiftingMachine_Rule60A_3_Remarks" maxlength="1000"
+                ></textarea>
+                <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_Rule60A_3_Remarks') }}/1000</span>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form" 
+                controlName="sec_29_LiftingMachine_Rule60A_3_Remarks"
+                placeHolder="sec_29_LiftingMachine_Rule60A_3_Remarks"
+              ></app-form-validation-error>
+            </td>
+          </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>29.6.1</strong> Are suitable passages for cranes provided?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_29_LiftingMachine_SuitablePassages_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+                <td><strong>29.6.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_29_LiftingMachine_SuitablePassages_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>29.6.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_29_LiftingMachine_SuitablePassages_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_29_LiftingMachine_SuitablePassages_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_29_LiftingMachine_SuitablePassages_Remarks"
+                  placeHolder="sec_29_LiftingMachine_SuitablePassages_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <!-- sec_tion-30 -->
+            <tr>
+              <td rowspan="3">sec_tion-30 Revolving Machine</td>
+              <td class="inspection-back-theme1">
+                <strong>30.1.1</strong> Are notices of safe speed displayed near revolving machines as
+                per sec_tion -30
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_30_RevolvingMachine_NoticesOfSafe_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>30.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_30_RevolvingMachine_NoticesOfSafe_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>30.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_30_RevolvingMachine_NoticesOfSafe_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_30_RevolvingMachine_NoticesOfSafe_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_30_RevolvingMachine_NoticesOfSafe_Remarks"
+                  placeHolder="sec_30_RevolvingMachine_NoticesOfSafe_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <!-- sec_tion-31 -->
+            <tr>
+              <td rowspan="21">sec_tion-31 Pressure Plant</td>
+              <td class="inspection-back-theme2">
+                <strong>31.1.1</strong>  Are pressure plants of good construction, sound material,
+                adequate strength, and free from any patent defect and properly
+                maintained in a safe condition?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_GoodConstruction_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>31.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_GoodConstruction_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_GoodConstruction_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_GoodConstruction_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_GoodConstruction_Remarks"
+                  placeHolder="sec_31_PressurePlant_GoodConstruction_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>31.2.1</strong> Is a suitable safety valve or other effective device provided to
+                ensure the maximum permissible working pressure?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_SafetyValve_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>31.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_SafetyValve_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_SafetyValve_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_SafetyValve_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_SafetyValve_Remarks"
+                  placeHolder="sec_31_PressurePlant_SafetyValve_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>31.3.1</strong> Is a suitable pressure gauge provided, easily visible, and
+                designed to show the correct internal pressure in kilogram per
+                square centimeter, marked with a prominent red mark at the safe
+                working pressure of the vessel?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_Gauge_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>31.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_Gauge_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_Gauge_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_Gauge_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_Gauge_Remarks"
+                  placeHolder="sec_31_PressurePlant_Gauge_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>31.4.1</strong> Is a suitable stop valve or valves provided to isolate the
+                vessel from other vessels or sources of pressure supply?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_StopValve_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>31.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_StopValve_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_StopValve_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_StopValve_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_StopValve_Remarks"
+                  placeHolder="sec_31_PressurePlant_StopValve_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>31.5.1</strong> Is a suitable drain cock or valve at the lowest part of the
+                vessel for the discharge of connected liquid provided?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_DrainCock_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>31.5.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_DrainCock_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.5.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_DrainCock_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_DrainCock_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_DrainCock_Remarks"
+                  placeHolder="sec_31_PressurePlant_DrainCock_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>31.6.1</strong> Is every pressure vessel thoroughly examined by a competent
+                person: (i) externally, once in every period of six months, to
+                ensure the general condition of the vessel and the working of
+                its fittings; (ii) internally, once in every period of twelve
+                months, to ensure the condition of the walls, seams, and ties
+                both inside and outside of the vessel, soundness of the part of
+                the vessel, and the effects of corrosion; (iii) hydraulically
+                tested at intervals of not more than four years?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_CompetentPerson_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>31.6.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_CompetentPerson_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.6.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_CompetentPerson_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_CompetentPerson_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_CompetentPerson_Remarks"
+                  placeHolder="sec_31_PressurePlant_CompetentPerson_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>31.7.1</strong> Any other specific report</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_31_PressurePlant_SpecificReport_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>31.7.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_31_PressurePlant_SpecificReport_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>31.7.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_31_PressurePlant_SpecificReport_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_31_PressurePlant_SpecificReport_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_31_PressurePlant_SpecificReport_Remarks"
+                  placeHolder="sec_31_PressurePlant_SpecificReport_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <!-- sec_tion-32 -->
+            <tr>
+              <td rowspan="6">sec_tion-32 Floor, Stairs and means of access</td>
+              <td class="inspection-back-theme1">
+                <strong>32.1.1</strong> (a) all floors, steps, stairs, passages and gangways shall be of
+                sound construction and properly maintained.
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_32_FloorStairs_ProperlyMaintained_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>32.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_32_FloorStairs_ProperlyMaintained_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>32.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_32_FloorStairs_ProperlyMaintained_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_32_FloorStairs_ProperlyMaintained_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_32_FloorStairs_ProperlyMaintained_Remarks"
+                  placeHolder="sec_32_FloorStairs_ProperlyMaintained_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>32.2.1</strong> (b) Are substantial handrails provided?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_32_FloorStairs_HandrailsProvided_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>32.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_32_FloorStairs_HandrailsProvided_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>32.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_32_FloorStairs_HandrailsProvided_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_32_FloorStairs_HandrailsProvided_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_32_FloorStairs_HandrailsProvided_Remarks"
+                  placeHolder="sec_32_FloorStairs_HandrailsProvided_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-33 -->
+            <tr>
+              <td rowspan="3">sec_tion-33 Pits, Sumps, opening in floors</td>
+              <td class="inspection-back-theme1">
+                <strong>33.1.1</strong> Is every fixed vessel, sump, tank, pit or opening in the ground
+                or in a floor which, by reason of its depth, situation,
+                construction or contents, is or may be a source of danger, shall
+                be either securely covered or securely fenced?
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_33_PitsSumps_SecurelyCovered_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>33.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_33_PitsSumps_SecurelyCovered_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>33.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_33_PitsSumps_SecurelyCovered_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_33_PitsSumps_SecurelyCovered_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_33_PitsSumps_SecurelyCovered_Remarks"
+                  placeHolder="sec_33_PitsSumps_SecurelyCovered_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-34 -->
+            <tr>
+              <td rowspan="3">sec_tion-34 Excessive weights</td>
+              <td class="inspection-back-theme2"><strong>34.1.1</strong> Are provisions of Rule 62 being complied with?</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_34_ExcessiveWeights_Rule62_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>34.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_34_ExcessiveWeights_Rule62_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>34.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_34_ExcessiveWeights_Rule62_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_34_ExcessiveWeights_Rule62_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_34_ExcessiveWeights_Rule62_Remarks"
+                  placeHolder="sec_34_ExcessiveWeights_Rule62_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-35 -->
+            <tr>
+              <td rowspan="3">sec_tion-35 Protection of eyes</td>
+              <td class="inspection-back-theme1">
+                <strong>35.1.1</strong> Are effective screens or suitable goggles shall be provided for
+                the protection of persons employed in or in the immediate
+                vicinity of the processes specified in Schedule I and II
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_35_ProtectionOfEyes_SuitableGoggles_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>35.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_35_ProtectionOfEyes_SuitableGoggles_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>35.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_35_ProtectionOfEyes_SuitableGoggles_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_35_ProtectionOfEyes_SuitableGoggles_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_35_ProtectionOfEyes_SuitableGoggles_Remarks"
+                  placeHolder="sec_35_ProtectionOfEyes_SuitableGoggles_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-36 -->
+            <tr>
+              <td rowspan="3">
+                sec_tion-36 Precautions against dangerous fumes
+              </td>
+              <td class="inspection-back-theme2">
+                <strong>36.1.1</strong> Are manholes have Minimum dimensions as prescribed under Rule-64
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_36_PrecautionsDangerusFumes_Rule64_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>36.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_36_PrecautionsDangerusFumes_Rule64_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>36.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_36_PrecautionsDangerusFumes_Rule64_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_36_PrecautionsDangerusFumes_Rule64_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form" 
+                  controlName="sec_36_PrecautionsDangerusFumes_Rule64_Remarks"
+                  placeHolder="sec_36_PrecautionsDangerusFumes_Rule64_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-37 -->
+            <tr>
+              <td rowspan="3">
+                sec_tion-37 Explosive, Inflammable dust, gas etc.
+              </td>
+              <td class="inspection-back-theme1">
+                <strong>37.1.1</strong> Is manufacturing process produces dust, gas, fume or vapour of
+                such character and to such extent as to be likely to explode on
+                ignition, all practicable measures shall be taken to prevent any
+                such explosion by; (a) effective enclosure of the plant or
+                machinery used in the process; (b) removal or prevention of the
+                accumulation of such dust, gas, fume or vapour; (c) exclusion or
+                effective enclosure of all possible sources of ignition.
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_37_Explosive_ManufaturinProcess_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme1"><strong>37.1.2</strong> {{hasViolationFound}}  </td>
+              <td class="inspection-back-theme1">
+                <select class="form-select form-control"
+                    formControlName="sec_37_Explosive_ManufaturinProcess_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>37.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_37_Explosive_ManufaturinProcess_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_37_Explosive_ManufaturinProcess_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_37_Explosive_ManufaturinProcess_Remarks"
+                  placeHolder="sec_37_Explosive_ManufaturinProcess_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- sec_tion-38 -->
+            <tr>
+              <td rowspan="36">sec_tion-38 Precaution in case of fire</td>
+              <td class="inspection-back-theme2">
+                <strong>38.1.1</strong> Is protection against lighting - Protection from lighting
+                provided as per Rule 66(3)?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_3_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme2"><strong>38.1.2</strong> {{hasViolationFound}}  </td>
+              <td class="inspection-back-theme2">
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_3_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_3_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_3_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_3_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_3_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme1"><strong>38.2.1</strong> Are protections against ignition taken as per Rule 66(4)?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_4_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme1"><strong>38.2.2</strong> {{hasViolationFound}}  </td>
+              <td class="inspection-back-theme1">
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_4_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_4_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_4_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_4_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_4_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme2">
+                <strong>38.3.1</strong> Are materials susceptible to auto ignition are stored as per
+                Rule 66(5)?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_5_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>38.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_5_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_5_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_5_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_5_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_5_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme1">
+                <strong>38.4.1</strong> Are compressed gas cylinders are stored as per Rule 66(6)?
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_6_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>38.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_6_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_6_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_6_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_6_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_6_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme2"><strong>38.5.1</strong> Are Inflammable liquids are stored as per Rule 66(7)?</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_7_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>38.5.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_7_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.5.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_7_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_7_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_7_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_7_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr>
+              <td class="inspection-back-theme1">
+                <strong>38.6.1</strong> Are preventive measures have been taken for accumulation of
+                flammable dust, gas, fume or vapour in air of flammable waste
+                material on the floors?
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_PreventiveMeasures_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>38.6.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_PreventiveMeasures_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.6.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_PreventiveMeasures_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_PreventiveMeasures_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_PreventiveMeasures_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_PreventiveMeasures_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>38.7.1</strong> Are FIRE EXITS are maintained as per Rule 66(9)?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_9_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td><strong>38.7.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_9_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.7.3</strong>Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_9_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_9_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_9_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_9_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>38.8.1</strong> Are First-aid fire fighting arrangements are maintained
+                adequately and suitably as per Rule 66(10)?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_10_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>38.8.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_10_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.8.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_10_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_10_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_10_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_10_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>38.9.1</strong> Are other fire fighting arrangements are provided as per Rule
+                66(11)?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_11_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>38.9.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_Rule66_11_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.9.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_Rule66_11_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_Rule66_11_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_Rule66_11_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_Rule66_11_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>38.10.1</strong> Are first-Aid and other fire fighting equipment in the charge of
+                a trained responsible person?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_FirstAid_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>38.10.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_FirstAid_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.10.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_FirstAid_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_FirstAid_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form" 
+                  controlName="sec_38_PrecautionOfFire_FirstAid_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_FirstAid_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>38.11.1</strong> Are sufficient number of persons trained in the proper handling
+                of fire fighting equipment?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_PersonTrained_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>38.11.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_PersonTrained_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.11.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_PersonTrained_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_PersonTrained_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_PersonTrained_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_PersonTrained_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>38.12.1</strong> Is fire fighting drill held at least once in every period of two
+                months
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_38_PrecautionOfFire_FightingDrill_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>38.12.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_38_PrecautionOfFire_FightingDrill_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>38.12.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_38_PrecautionOfFire_FightingDrill_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_38_PrecautionOfFire_FightingDrill_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_38_PrecautionOfFire_FightingDrill_Remarks"
+                  placeHolder="sec_38_PrecautionOfFire_FightingDrill_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 40 a -->
+            <tr>
+              <td rowspan="12">
+                 Section-40/Rule-66A, 66B, 66C, and 66D<br />Special report
+              </td>
+              <td class="inspection-back-theme2">
+                <strong>40.1.1</strong> Is any building or structure constructed, situated or maintained
+                in factory in such a manner to cause risk of bodily injury
+              </td>
+              <td class="inspection-back-theme2"> 
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>40.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_Remarks"
+                  placeHolder="sec_40_SpecialReport_BuildingCauseRiskOfBodilyInjury_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>40.2.1</strong> Is any plant or machinery constructed, situated or maintained in
+                factory in such a manner to cause risk of bodily injury
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>40.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_Remarks"
+                  placeHolder="sec_40_SpecialReport_PlantCauseRiskOfBodilyInjury_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>40.3.1</strong> Is any process or method of work carried out in factory in such
+                a manner to cause risk of bodily injury
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>40.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40.3.3</strong>Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form" 
+                  controlName="sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_Remarks"
+                  placeHolder="sec_40_SpecialReport_ProcessCauseRiskOfBodilyInjury_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>40.4.1</strong> Is any material or equipment stacked or stored in factory in
+                such a manner to cause risk of bodily injury
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>40.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_Remarks"
+                  placeHolder="sec_40_SpecialReport_MaterialCauseRiskOfBodilyInjury_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 40 b -->
+            <tr>
+              <td rowspan="9">Section-40B<br />Safety Officer</td>
+              <td class="inspection-back-theme2"><strong>40B.1.1</strong> Number of Safety officers required</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40B_SafetyOfficer_NoOfRequired_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>40B.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40B_SafetyOfficer_NoOfRequired_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40B.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40B_SafetyOfficer_NoOfRequired_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40B_SafetyOfficer_NoOfRequired_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40B_SafetyOfficer_NoOfRequired_Remarks"
+                  placeHolder="sec_40B_SafetyOfficer_NoOfRequired_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="inspection-back-theme1"> <strong>40B.2.1</strong> >Number of Safety Officer appointed</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40B_SafetyOfficer_NoOfAppointed_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>40B.2.2</strong>{{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40B_SafetyOfficer_NoOfAppointed_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40B.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40B_SafetyOfficer_NoOfAppointed_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40B_SafetyOfficer_NoOfAppointed_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40B_SafetyOfficer_NoOfAppointed_Remarks"
+                  placeHolder="sec_40B_SafetyOfficer_NoOfAppointed_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>40B.3.1</strong> Are appointed Safety officer fulfilling the eligibility criteria
+                as per rules
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_40B_SafetyOfficer_EligibilityCriteria_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>40B.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_40B_SafetyOfficer_EligibilityCriteria_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>40B.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_40B_SafetyOfficer_EligibilityCriteria_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_40B_SafetyOfficer_EligibilityCriteria_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_40B_SafetyOfficer_EligibilityCriteria_Remarks"
+                  placeHolder="sec_40B_SafetyOfficer_EligibilityCriteria_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 66F -->
+            <tr>
+              <td rowspan="12">Rule-66F<br />Safety Committee</td>
+              <td class="inspection-back-theme1"><strong>66.1.1</strong> Is safety Committee required as per Rule-66F</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeRequired_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>66.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_66F_SafetyCommittee_CommitteeRequired_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>66.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeRequired_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_66F_SafetyCommittee_CommitteeRequired_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_66F_SafetyCommittee_CommitteeRequired_Remarks"
+                  placeHolder="sec_66F_SafetyCommittee_CommitteeRequired_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>66.2.1</strong> Is safety committee constituted (Attach copy)</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeConstructed_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme2">
+              <td><strong>66.2.2</strong>{{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_66F_SafetyCommittee_CommitteeConstructed_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>66.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeConstructed_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_66F_SafetyCommittee_CommitteeConstructed_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_66F_SafetyCommittee_CommitteeConstructed_Remarks"
+                  placeHolder="sec_66F_SafetyCommittee_CommitteeConstructed_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>66.3.1</strong> Is meeting of safety committee held?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeHeld_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>66.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_66F_SafetyCommittee_CommitteeHeld_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>66.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_66F_SafetyCommittee_CommitteeHeld_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_66F_SafetyCommittee_CommitteeHeld_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_66F_SafetyCommittee_CommitteeHeld_Remarks"
+                  placeHolder="sec_66F_SafetyCommittee_CommitteeHeld_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>66.4.1</strong> Is record of minutes of meetings of safety committee maintained?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_66F_SafetyCommittee_RecordOfMinutes_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>66.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_66F_SafetyCommittee_RecordOfMinutes_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>66.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_66F_SafetyCommittee_RecordOfMinutes_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_66F_SafetyCommittee_RecordOfMinutes_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_66F_SafetyCommittee_RecordOfMinutes_Remarks"
+                  placeHolder="sec_66F_SafetyCommittee_RecordOfMinutes_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 67 A -->
+            <tr>
+              <td rowspan="3">Rule-67A<br />Safety Belts etc.</td>
+              <td class="inspection-back-theme1">
+                <strong>67A.1.1</strong> Safety belts and other safety equipment proved as per Rule 67A
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67A_SafetyBelts_Rule67A_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>67A.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67A_SafetyBelts_Rule67A_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67A.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67A_SafetyBelts_Rule67A_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67A_SafetyBelts_Rule67A_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_67A_SafetyBelts_Rule67A_Remarks"
+                  placeHolder="sec_67A_SafetyBelts_Rule67A_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 67 c -->
+            <tr>
+              <td rowspan="3">Rule-67C<br />Electrical safety</td>
+              <td class="inspection-back-theme2">
+                <strong>67C.1.1</strong> Are Provisions of Rule 67C being complied? Submit comments
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67C_SafetyElecrical_Rule67C_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>67C.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67C_SafetyElecrical_Rule67C_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67C.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67C_SafetyElecrical_Rule67C_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67C_SafetyElecrical_Rule67C_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_67C_SafetyElecrical_Rule67C_Remarks"
+                  placeHolder="sec_67C_SafetyElecrical_Rule67C_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 67 d -->
+            <tr>
+              <td rowspan="3">Rule-67D<br />Personal protective equipment</td>
+              <td class="inspection-back-theme1">
+                <strong>67D.1.1</strong> Quality of personal protective equipment certification from
+                Bureau of Indian Standards
+              </td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67D_QualityOfProposal_BoIS_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>67D.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67D_QualityOfProposal_BoIS_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67D.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67D_QualityOfProposal_BoIS_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67D_QualityOfProposal_BoIS_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_67D_QualityOfProposal_BoIS_Remarks"
+                  placeHolder="sec_67D_QualityOfProposal_BoIS_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 67 f -->
+            <tr>
+              <td rowspan="6">
+                Rule-67F<br />Examination of eyesight of certain workers
+              </td>
+              <td class="inspection-back-theme2">
+                <strong>67F.1.1</strong> Are eyes of workers, as required under Rule-67F, examined?
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67F_EyeSight_Rule67F_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>67F.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67F_EyeSight_Rule67F_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67F.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67F_EyeSight_Rule67F_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67F_EyeSight_Rule67F_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_67F_EyeSight_Rule67F_Remarks"
+                  placeHolder="sec_67F_EyeSight_Rule67F_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>67F.2.1</strong> Is record of such examination kept in Form 8-A?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67F_EyeSight_Form8A_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>67F.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67F_EyeSight_Form8A_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67F.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67F_EyeSight_Form8A_Remarks"maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67F_EyeSight_Form8A_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_67F_EyeSight_Form8A_Remarks"
+                  placeHolder="sec_67F_EyeSight_Form8A_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- section 67 g -->
+            <tr>
+              <td rowspan="3">Rule-67G<br />Railways in factory</td>
+              <td class="inspection-back-theme2">
+                <strong>67G.1.1</strong> Are provisions of Rule-67G being complied? Report if applicable
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_67G_RailwaysInFacroty_Rule67G_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>67G.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_67G_RailwaysInFacroty_Rule67G_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>67G.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_67G_RailwaysInFacroty_Rule67G_Remarks" maxlength="1000"
+                  ></textarea>
+                  <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('sec_67G_RailwaysInFacroty_Rule67G_Remarks') }}/1000</span>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form" 
+                  controlName="sec_67G_RailwaysInFacroty_Rule67G_Remarks"
+                  placeHolder="sec_67G_RailwaysInFacroty_Rule67G_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,44 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 28,
+      "SectionTitle": "Court Cases (Appeals or Writ petitions)",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "Court",
+                "ColumnTitle": "Court/Commission",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "Title",
+                "ColumnTitle": "Title of the case",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "Present Status of Case",
+                "ColumnTitle": "presentStautus",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+               
+            ],
+            "Rows": [
+              {
+                "Court": "",
+                "Title": "",
+                "presentStautus": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 18,
+      "SectionTitle": "Child and Adolescent Labour (Prohibition and Regulation) Act 1986",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Inspection and Rescue Details",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Number of Inspections Conducted",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Number of Adolescent Rescued",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Number of Children Rescued",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Legal Actions and FIRs",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Prosecutions Launched during the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Prosecutions Disposed during the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "FIR launched during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "FIR disposed during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "Rehabilitation",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Number of cases compounded",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Rehabilitation status",
+              "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

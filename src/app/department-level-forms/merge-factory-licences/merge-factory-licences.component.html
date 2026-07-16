@@ -1,0 +1,289 @@
+<section class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="card">
+      <div class="card-header">
+        <h5>
+          <span style="color:#30D2BE">Factory Licence</span> Merge Dashboard
+        </h5>
+      </div>
+      <div class="card-body p-2">
+        <!-- ================= LICENCE MERGER ================= -->
+        <div class="sectionTitle">
+          Licence Merger
+        </div>
+        <div class="card card-border-c-yellow mb-2">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th>Establishment</th>
+                  <th>Employees / Power</th>
+                  <th>Process</th>
+                  <th>Licence</th>
+                  <th>Validity</th>
+                  <th>Primary</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let licence of licences; let i=index">
+                  <td>
+                    <strong>{{ licence.establishmentName }}</strong><br>
+                    <span class="text-primary">
+                      {{ licence.address }}
+                    </span>
+                  </td>
+                  <td>
+                    {{ licence.employees }} 👷
+                    <br>
+                    {{ licence.powerInstalled }} kW ⚡
+                  </td>
+                  <td>
+                    {{ licence.manufacturingProcess }}
+                  </td>
+                  <td>
+                    <b>{{ licence.licenceNumber }}</b>
+                  </td>
+                  <td class="text-primary">
+                    {{ licence.licenceValidity | date:'d MMM yyyy' }}
+                  </td>
+                  <td class="text-center">
+                    <input type="radio" name="licenceSelected" [(ngModel)]="selectedLicence" [value]="licence"
+                      (change)="onCheckboxChange(licence)">
+                  </td>
+                  <td class="text-center">
+                    <button class="btn btn-link text-danger p-0" (click)="removeLicenceNumber(licence)">
+                      <i class="feather icon-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <div *ngIf="this.licences?.length == 0" class="text-center mt-3 text-muted">
+                  Please add a licence number to merge.
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ========= REMARKS SECTION ========= -->
+
+        <div *ngIf="allSelected" class="remarksBox">
+
+          <div class="row justify-content-center align-items-center">
+
+            <div class="col-auto">
+
+              <label class="remarksLabel me-2">
+                Remarks :
+              </label>
+            </div>
+            <div class="col-auto">
+              <input type="text" class="form-control form-control-sm" style="width:400px" placeholder="Enter remarks"
+                [(ngModel)]="mergeRemarks">
+            </div>
+          </div>
+        </div>
+        <!-- ========= BUTTONS ========= -->
+        <div class="text-center mt-2">
+          <button class="btn btn-primary" style="margin-right:8px;"
+            (click)="openMergeFactoryLicence(previewMergeFactoryLicence)">
+            Add Licence to Merge List
+          </button>
+
+          <button *ngIf="allSelected" class="btn btn-success" (click)="onMergeFactoryLicence()">
+            Merge Above Licence
+          </button>
+        </div>
+        <br>
+        <br>
+        <hr class="divider">
+
+        <!-- ================= MERGE HISTORY ================= -->
+
+ <div class="sectionTitle">
+  <i class="feather icon-layers mr-1"></i>
+  Merge History
+</div>
+
+<div *ngFor="let item of alreadyMergedLicences" class="rowCard">
+
+  <!-- PRIMARY LICENCE ROW -->
+  <div class="licenceRow primaryRow"
+       *ngFor="let lic of item.licences"
+       [hidden]="lic.isPrimary != 1">
+
+    <!-- Licence Number -->
+    <div class="licCol licenceNo">
+      <div class="licNumber">
+        <i class="feather icon-file-text mr-1"></i>
+        {{ lic.licenceNumber }}
+        <span class="tagPrimary">Primary</span>
+      </div>
+    </div>
+
+    <!-- Establishment Details -->
+    <div class="licCol estBlock">
+      <div><strong>🏭 Name:</strong> {{ lic.establishmentName }}</div>
+      <div><strong>Address:</strong> {{ lic.establishmentAddress }}</div>
+    </div>
+
+    <!-- Employees & Load -->
+    <div class="licCol infoBlock">
+      <div><strong>Employees👷:</strong> {{ lic.employees || 0 }}</div>
+      <div><strong>Power Installed ⚡:</strong> {{ lic.powerUsed || 0 }} KW</div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="licCol contactBlock">
+      <div><strong>Email📩:</strong> {{ lic.email || 'N/A' }}</div>
+      <div><strong>Contact📞:</strong> {{ lic.contactNumber || 'N/A' }}</div>
+    </div>
+
+  </div>
+
+
+  <!-- MERGED LICENCE ROWS -->
+  <div class="mergedContainer">
+
+    <div class="licenceRow mergedRow"
+         *ngFor="let lic of item.licences"
+         [hidden]="lic.isPrimary == 1">
+
+      <div class="childArrow">
+        <i class="feather icon-corner-down-right"></i>
+      </div>
+
+      <!-- Licence Number -->
+      <div class="licCol licenceNo">
+        <i class="feather icon-file"></i>
+        {{ lic.licenceNumber }}
+        <span class="tagMerged">Merged</span>
+      </div>
+
+      <!-- Establishment Details -->
+      <div class="licCol estBlock">
+        <div><strong>🏭 Name:</strong> {{ lic.establishmentName }}</div>
+        <div><strong>Address:</strong> {{ lic.establishmentAddress }}</div>
+      </div>
+
+      <!-- Employees & Load -->
+      <div class="licCol infoBlock">
+        <div><strong>Employees 👷:</strong> {{ lic.employees || 0 }}</div>
+        <div><strong>Power Installed ⚡:</strong> {{ lic.powerUsed || 0 }} KW</div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="licCol contactBlock">
+        <div><strong>Email📩:</strong> {{ lic.email || 'N/A' }}</div>
+        <div><strong>Contact 📞:</strong> {{ lic.contactNumber || 'N/A' }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="mergeFooter">
+
+    <i class="feather icon-edit-2 mr-1"></i>
+    {{ item.remarks }}
+
+    |
+
+    <i class="feather icon-user mr-1"></i>
+    {{ item.officerName }}
+
+    |
+
+    <i class="feather icon-id-card mr-1"></i>
+    {{ item.userName }}
+
+    |
+
+    <i class="feather icon-calendar mr-1"></i>
+    {{ item.mergedDate | date:'dd MMM yyyy' }}
+
+  </div>
+
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #previewMergeFactoryLicence let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title text-dark">Licence Details</h5>
+    <button type="button" class="close" aria-label="Close" (click)="dismissAllModals()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row align-items-center mb-4">
+      <div class="col-md-4">
+        <label class="font-weight-bold mb-0" for="licenceNumberInput">
+          Please enter licence number
+        </label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" id="licenceNumberInput" #licenceInput class="form-control form-control-lg"
+          placeholder="Enter Licence Number" autocomplete="off" />
+      </div>
+      <div class="col-md-3 d-flex align-items-center">
+        <button type="button" class="btn btn-primary" (click)="onLicenceNoSearchClick(licenceInput.value)">
+          Search
+        </button                                                                                                                                                                                                                                                                                                                         >
+      </div>
+    </div>
+
+    <div *ngIf="factoryDetails?.length > 0 and isLicenseExist">
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>Establishment Name & Address</th>
+              <th>Employees & Power Installed (kW)</th>
+              <th>Manufacturing Process</th>
+              <th>Licence Number</th>
+              <th>Licence Validity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of factoryDetails">
+              <td>
+                <strong>{{ f.establishmentName }}</strong><br />
+                <span class="text-primary">{{ f.address }}</span>
+              </td>
+              <td>
+                <strong>Employees : 👷</strong> <span class="text-success"> {{ f.employees }}</span><br />
+                <strong>Power Installed : ⚡</strong> <span class="text-success"> {{ f.powerInstalled }} kW</span>
+              </td>
+              <td>{{ f.manufacturingProcess }}</td>
+              <td>{{ f.licenceNumber }}</td>
+              <td>{{ f.licenceValidity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="!isLicenseExist">
+      <div class="alert alert-warning text-center">
+        The license you entered does not exist in this circle.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="d-flex align-items-center w-100">
+      <button type="button" class="btn btn-success mx-auto" (click)="addLicenceToMainTable()"
+        [disabled]="!factoryDetails?.length">
+        Confirm and Add to Merging List
+      </button>
+
+      <button type="button" class="btn btn-danger" (click)="dismissAllModals()">
+        Dismiss
+      </button>
+    </div>
+  </div>
+</ng-template>

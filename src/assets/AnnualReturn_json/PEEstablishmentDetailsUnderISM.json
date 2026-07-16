@@ -1,0 +1,28 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 15,
+      "SectionTitle": "FORM No. XXIV [See Rule 82(2)] ",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Annual Return of Principal Employer to be sent to the registeering officer",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(1) Name of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(2) Full Address of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(2.1) Address", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(2.2) Pin Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(2.3) District", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "(2.4) Tehsil", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "(3) Full Name of Manager or person responsible for supervision and control of the establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "(4) Number of Contractors who worked in the Establishment during the year", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+            
+          ]
+        }
+         
+        
+      ]
+    }
+  }
+]

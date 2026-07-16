@@ -1,0 +1,81 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="card">
+      <div class="m-2">
+        <form [formGroup]="Input_Form">
+          <input type="hidden" formControlName="id">
+          <input type="hidden" formControlName="appRefId">
+          <input type="hidden" formControlName="projectSiteRefId">
+          <input type="hidden" formControlName="applicationPurposeType">
+          <input type="hidden" formControlName="iPin">
+          <input type="hidden" formControlName="investPunjab_AppId">
+          <input type="hidden" formControlName="projectSiteVersion">
+          <input type="hidden" formControlName="toDoActivityModeType">
+          <input type="hidden" formControlName="rootActivityRefId">
+          <input type="hidden" formControlName="toDoActivityCategoryType">
+
+          <div class="title-bar">
+            Application for Your Complaint
+          </div>
+
+          <!-- General Information label -->
+          <div class="general-info-label">
+            General Information <span class="required">*</span>
+          </div>
+          <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+          <div class="section-card">
+
+            <div class="form-row">
+
+              <!-- Date of Demand Notice Served -->
+              <div class="form-group col-md-6">
+                <label>Date of Demand Notice Served To The Employer <span class="text-danger">*</span></label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="dateOfDemandNoticeServed"
+                  [class.is-invalid]="formControls.dateOfDemandNoticeServed.touched && formControls.dateOfDemandNoticeServed.invalid" />
+                <div class="invalid-feedback">
+                  Date of Demand Notice served to the employer is required
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Money Due Reasons - Multi-select checkbox dropdown (bitmask) -->
+            <div class="form-group col-md-6">
+            <label>
+                Money Due on Account of
+                <span class="text-danger">*</span>
+            </label>
+
+            <select class="form-control" formControlName="moneyDueReasons">
+                <option value="">-- Select --</option>
+
+                <option *ngFor="let option of moneyDueReasonOptions"
+                        [value]="option.value">
+                {{ option.text }}
+                </option>
+            </select>
+
+            <div class="invalid-feedback d-block"
+                *ngIf="formControls.moneyDueReasons.touched && formControls.moneyDueReasons.invalid">
+                Money Due Reason is required
+            </div>
+            </div>
+
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
+            <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+            <button type="button" class="btn btn-success" (click)="onPreview()">Preview</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

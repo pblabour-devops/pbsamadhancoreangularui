@@ -1,0 +1,57 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card">
+            <div class="card-header text-center">
+                <span class="f-20 f-w-600 form-header">Payment Details</span>
+            </div>
+            <div class="card-body">
+                    <h5>Establishment & address</h5>
+                    <div class="col-md-12 col-sm-12 m-t-20">
+                        <!-- <app-establishment-info-card [appRefId]='appRefId'></app-establishment-info-card> -->
+                    </div>  
+            
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h5>Already attempted payment details</h5>
+                            <div class="row form-row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Transaction Id</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Transaction Date</th>
+                                            <th class="text-center"> Payment Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of appFeeTransactions; let ndx = index">
+                                            <td>{{ndx+1}}</td>
+                                            <td>{{item.uniquePaymentGatewayTransactionId}}</td>
+                                            <td class="text-center">{{item.amountCalculated}}</td>
+                                            <td class="text-center">{{item.transactionInitializationDate | date:'medium'}}</td>
+                                            <td class="text-center">
+                                                <span class="badge badge-pill badge-info" *ngIf="item.transactionFinalStatusType == 0">Pending</span> 
+                                                <span class="badge badge-pill badge-primary" *ngIf="item.transactionFinalStatusType == 1">Success</span>
+                                                <span class="badge badge-pill badge-danger" *ngIf="item.transactionFinalStatusType == 2">Failed</span>  
+                                                <span class="badge badge-pill badge-warning" *ngIf="item.transactionFinalStatusType == 3">Incomplete</span> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <h4 class="alert-heading">Please Note..!</h4>
+                        <p>You have a already attempted few transactions for this application and some of these are pending. Sometimes they may be delayed between payment made and settlement of the payments. <br> Kindly wait for above pending transactions to be settled and in case all attempted transactions are failed then you will be able to make payment again..! </p>
+                        <hr>
+                    </div>
+
+                    <div class="text-center">
+                        <button (click)="onLogoutClick()" class="btn btn-success">Back To Invest Punjab</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

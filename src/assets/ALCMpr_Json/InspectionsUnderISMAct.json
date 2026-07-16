@@ -1,0 +1,61 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 21,
+      "SectionTitle": "Inspections Under Inter State Migrant Workmen Act, 1979",
+        "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Inspection Details",
+         "DynamicTableInfo": {
+  "TotalInspectionsLabel": {
+    "LableTitle": "Number of Inspections Conducted",
+    "LableValueInfo": {
+      "DataType": "Number",
+      "Value": "",
+      "IsMendatory": true,
+      "IsVisible": true,
+      "Id": ""
+    }
+  },
+  "TableColumns": [
+    {
+      "LableTitle": "Establishment Name",
+      "DataType": "Text",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Inspection Date and Time",
+      "DataType": "DateTime",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Number of Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Male Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Female Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Violations Found",
+      "DataType": "Option",
+      "Options": ["Yes", "No"],
+      "IsMendatory": true
+    }
+  ],
+  "TableRows": []
+}
+
+        }
+      ]
+    }
+  }
+]

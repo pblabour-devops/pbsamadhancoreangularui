@@ -1,0 +1,30 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 9,
+      "SectionTitle": "Shops and for other Establishments",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Shop Details",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Shop Registration No.", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Shop Registration Date", "LableValueInfo": { "DataType": "DateTime", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Name of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Name of Occupier", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Name of Manager", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Phone No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "Mobile No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "Name of Locality,Mohalla,Plot No. etc where the Establishment is situated", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "Nature of Business", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 11, "LableTitle": "Sector", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 12, "LableTitle": "Total Investment Made", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 13, "LableTitle": "Sector", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+          ]
+        }
+        
+      ]
+    }
+  }
+]

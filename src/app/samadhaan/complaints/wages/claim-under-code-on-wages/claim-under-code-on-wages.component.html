@@ -1,0 +1,83 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+      <div class="section-card">
+
+        <h5 class="section-title">Claim (s) under Code on Wages
+        </h5>
+      <!-- Discharge/Dismissal Question -->
+      <div class="row">
+        <div class="col-md-6 mb-4">
+        <label class="form-label fw-semibold">
+          Select Additional Wages/Allowance (if entitled)
+        </label>
+          <select
+            class="form-control"
+            formControlName="allowanceType"
+            >
+            <option value="">Select</option>
+            <option *ngFor="let opt of allowanceType" [value]="opt.value">{{ opt.text }}</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="form-label fw-semibold">
+        Place of Work (Applicable rate of minimum wages) *<span class="text-danger">*</span>
+      </label>
+      <!-- Applicable Option Radio Buttons - Shown only when Yes is selected -->
+       <div class="row">
+        <div class="col">
+        <label class="form-label fw-semibold">
+          Area A
+        </label>
+          <select
+            class="form-control"
+            formControlName="placeOfWorkTypeA"
+            (change)="onChange('placeOfWorkTypeA')"
+            >
+            <option value="">Select</option>
+            <option *ngFor="let opt of placeOfWorkTypeA" [value]="opt.value">{{ opt.text }}</option>
+          </select>
+      </div>
+
+      <!-- Amount Due -->
+      <div class="col">
+        <label class="form-label fw-semibold">
+          Area B
+        </label>
+          <select
+            class="form-control"
+            formControlName="placeOfWorkTypeB"
+            (change)="onChange('placeOfWorkTypeB')"
+            >
+            <option value="">Select</option>
+            <option *ngFor="let opt of placeOfWorkTypeB" [value]="opt.value">{{ opt.text }}</option>
+          </select>
+        </div>
+
+        <div class="col">
+        <label class="form-label fw-semibold">Area C</label>
+        <input type="text" class="form-control" (input)="onChange('placeofWorkNameC')" formControlName="placeofWorkNameC"/>
+        <div *ngIf="Input_Form.get('placeofWorkNameC').errors?.required && Input_Form.get('placeofWorkNameC').touched" class="text-danger">
+            Required
+        </div>
+        </div>
+    </div>
+    <div
+      *ngIf="Input_Form.hasError('placeOfWorkRequired') &&
+              (Input_Form.touched || Input_Form.dirty)"
+      class="text-danger">
+      Please select any one Place of Work option.
+    </div>
+    </div>
+
+</form>

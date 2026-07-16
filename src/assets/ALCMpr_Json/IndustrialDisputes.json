@@ -1,0 +1,56 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 1,
+      "SectionTitle": "Detail of Industrial Disputes",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "GovtSector2A", "ColumnTitle": "Govt. Sector 2A", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "PrivateSector2A", "ColumnTitle": "Private Sector 2A", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "GovtSector2K", "ColumnTitle": "Govt. Sector 2K", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "PrivateSector2K", "ColumnTitle": "PrivateSector2K", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "total", "ColumnTitle": "total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "1. Pending at the beginning of the month" },
+              { "category": "2. Received during the month" },
+              { "category": "3. Settled U/S 12 (3)" },
+              { "category": "4. Settled U/S 18 (1)" },
+              { "category": "5. Recommended for Rejection / Filed" },
+              { "category": "6. Referred to Industrial Tribunal" },
+              { "category": "7. Rejected" },
+              { "category": "8. Dismissed" },
+              { "category": "9. Withdrawn by the Workers" },
+              { "category": "2. Failure Reports" },
+              { "category": "3. A) Govt" },
+              { "category": "4. B) Private" },
+              { "category": "5. Settled through Mediator" },
+              { "category": "6. Pending at the end of the Month" },
+              { "category": "7. A) Less than 6 Months" },
+              { "category": "8. B) Upto 6 to 12 Months" },
+              { "category": "9. C) Upto 1 to 2 years" },
+              { "category": "10. D) Upto 2 to 3 years" },
+              { "category": "11. E) Upto 3 to 4 years" },
+              { "category": "12. F) Upto 4 to 5 years" },
+              { "category": "13. G) Application of Received Cases" },
+              { "category": "14. 1) AITUC" },
+              { "category": "15. 2) INTUC" },
+              { "category": "16. 3) CITU" },
+              { "category": "17. 4) BMS" },
+              { "category": "18. 5) HMS" },
+              { "category": "19. 6) PMD" },
+              { "category": "20. 7) Other Independent" },
+              { "category": "21. 8) Total" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

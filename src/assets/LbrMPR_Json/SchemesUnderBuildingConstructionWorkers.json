@@ -1,0 +1,23 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 22,
+      "SectionTitle": "Schemes under The Building and Other Constructions Workers (Regulation of Employment and Conditions of Service) Act 1996.",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Number of schemes pending  in the previous  month ", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "New schemes received in this month ", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Number of applications on which objection raised during the schemes", "LableValueInfo": { "DataType":  "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "Number of application rejected during the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Number of schemes forwarded /Approved", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Number of Schemes pending at the end of the Month", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+          ]
+        }
+      ]
+    }
+  }
+]

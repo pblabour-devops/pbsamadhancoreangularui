@@ -1,0 +1,22 @@
+.loading-spinner{    
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    /* left: calc(15% - 287px); */
+    /* bottom: auto; */
+    z-index: 10005;
+    background-color: #0000001f;
+    height: 100%;
+    /* border: 43px solid; */
+    /* opacity: 30%; */
+    padding-top: 200px;
+}
+
+.loading-spinner img{
+    align-self: end;
+}
+
+.loading-message{
+    text-align: center;
+    align-self: start;
+}

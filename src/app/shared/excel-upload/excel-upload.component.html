@@ -1,0 +1,79 @@
+
+
+<!-- <div class="card">
+    <div class="card-body"> -->
+        <table class="table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <td class="text-center font-weight-bold">STEP<br> <h3 style="color: #566573;">1</h3></td>
+                    <td style="vertical-align: middle;">Please <a class="text-danger font-weight-bold" href="https://pblabour.gov.in/ePortal/assets/formats/SHOP_EMPLOYEES_PERFORMA.xlsx">click here</a> to download excel sheet performa. </td>
+                </tr>
+                <tr>
+                    <td class="text-center font-weight-bold">STEP<br> <h3 style="color: #566573;">2</h3></td>
+                    <td style="vertical-align: middle;">Please fill data into excel sheet as per performa provided. <br> 
+                        <span class="text-danger font-weight-bold"><h5>Do not temper performa of excel sheet. Invalid or tempered sheet performa will be rejected by the system and will not allow you to complete the operation until you do not provide data as per fixed performa.</h5></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center font-weight-bold">STEP<br> <h3 style="color: #566573;">3</h3></td>
+                    <td style="vertical-align: middle;">After fill the required data into the excel sheet, please click below button to upload the excel sheet.</td>
+                </tr>
+                <tr>
+                    <td class="text-center font-weight-bold"></td>
+                    <td style="vertical-align: middle;" class="text-danger font-weight-bold">Please Note: In case of excel sheet data validated and updated successfully by the system then existing employees (in cae of already added) will be overridden..!</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <input id="fileUploadInput" type="file" #file type="file" (change)="onCsvUpload($event)"/> 
+                        <div (click)="Reset()" class="btn btn-danger">Reset</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- <div class="row">
+            <div class="col-md-2"><h5>STEP : 1</h5></div>
+            <div class="col-md-10"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><h5>STEP : 2</h5></div>
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><h5>STEP : 3</h5></div>
+            <div class="col-md-10"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input type="file" #file type="file" (change)="onCsvUpload($event)"/> 
+            </div>
+        </div> -->
+    <!-- </div>
+</div> -->
+<!-- <input type="file" #file type="file" (change)="onCsvUpload($event)"> -->
+<!-- {{csvResponseData | json}} -->
+<h5 *ngIf="!uploadCsvResponse.isValidData && uploadCsvResponse.uploadCsvErrorType==3" class="text-danger">Invalid/incorrect data report</h5>
+<table *ngIf="!uploadCsvResponse.isValidData && uploadCsvResponse.uploadCsvErrorType==3" class="table table-sm table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th *ngFor="let colName of uploadCsvResponse.modelColumnList">{{colName}}</th>
+            <th>Excel Sheet Row</th>
+            <th>Errors</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of uploadCsvResponse.rows  | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td *ngFor="let colName of uploadCsvResponse.modelColumnList">{{row.row[colName]}}</td>
+
+            <td>{{row.excelSheetRowIndex+2}}</td>
+            <td class="text-danger" [innerHtml]="row.validationErrors"></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls *ngIf="!uploadCsvResponse.isValidData && uploadCsvResponse.uploadCsvErrorType==3" (pageChange)="p = $event"></pagination-controls>
+
+<div *ngFor="let item of csvResponseData.SheetData" class="text-light">
+    <span [innerHtml]="item.ValidationError"> </span>
+</div>

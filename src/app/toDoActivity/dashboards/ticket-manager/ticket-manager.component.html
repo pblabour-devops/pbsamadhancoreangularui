@@ -1,0 +1,109 @@
+
+
+
+
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card email-card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="mail-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 inbox-right">
+                                    <div class="tab-content p-0" id="v-pills-tabContent">
+                                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel">
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-primary"
+                                                    role="tabpanel" aria-labelledby="pills-primary-tab">
+                                                    <div class="customer-scroll" class="tableClass table-responsive">
+                                                        <table class="table table-bordered table-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Ticket#</th>
+                                                                    <th>Establishment Name</th>
+                                                                    <th>ELab - AppId</th>
+                                                                    <th>IP- Ipin/AppId</th>
+                                                                    <th>User Login</th>
+                                                                    <th>User Name</th>
+                                                                    <th>User Role</th>
+
+                                                                    <th>Application Type</th>
+                                                                    <th>Application Purpose</th>
+                                                                    <th>Status</th>
+                                                                    <th>Activity Type</th>
+                                                                    <th>Created On</th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let ticket of tickets">
+                                                                    <td>{{ticket.rootActivityRefId}}</td>
+                                                                    <td></td>
+                                                                    <td>{{ticket.appRefId}}</td>
+                                                                    <td>{{ticket.investPunjab_AppId}}/{{ticket.investPunjab_Ipin}}</td>
+                                                                    <td>{{ticket.userLoginName}}</td>
+                                                                    <td>{{ticket.userName}}</td>
+                                                                    <td>{{ticket.userRole}}</td>
+                                                                    <td>{{ticket.applicationTypeDesc}}</td>
+                                                                    <td>{{ticket.applicationPurposeTypeDesc}}</td>
+                                                                    <td>{{ticket.toDoTicketStatusTypeDesc}}</td>
+                                                                    <td>{{ticket.toDoActivityCategoryTypeDesc}}</td>
+                                                                    <td>{{ticket.createdOn | date:'medium'}}</td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <a href="javascript:void(0);" class="btn btn-link" (click)="onClickActivityRow(ticket.rootActivityRefId)">View activity graph</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #stepsViewerModal let-modal>
+	<div class="modal-header">
+		<h6 class="modal-title">Activity Steps (#{{selRootActivityRefId}})</h6>
+	</div>
+	<div class="card-body">
+        <div class="stepper-wrapper">
+            <div class="stepper-item" [ngClass]="{'completed': step.toDoActivityCompleteType == 1, 'failed': (step.toDoActivityCompleteType == 2) || (step.toDoActivityCompleteType == 3), 'skipped': step.toDoActivityCompleteType == 4}" *ngFor="let step of stepsWiseData">
+                <div class="step-counter"><i class="icon-additional feather" [ngClass]="{'icon-help-circle': step.toDoActivityCompleteType == 0, 'icon-check': step.toDoActivityCompleteType == 1, 'icon-alert-triangle': (step.toDoActivityCompleteType == 2) || (step.toDoActivityCompleteType == 3), 'icon-fast-forward': step.toDoActivityCompleteType == 4}"></i></div>
+                <div class="step-name step-name-sec">{{step.toDoCodeTypeDesc}}</div>
+                <div class="step-name step-complete-desc-sec">{{step.toDoActivityCompleteTypeDesc}}</div>
+                <div class="step-name time-stemp-sec">{{step.timeStemp | date:'medium'}}</div>
+                <div *ngIf="(step.toDoActivityCompleteType == 2) || (step.toDoActivityCompleteType == 3)" (click)="onClickViewFailedMessage(step.toDoSerialOrderCount)" class="step-name btn btn-link">View Message</div>
+            </div>
+          </div>
+	</div>
+	<div class="card-footer text-right">
+		<button type="button" class="btn  btn-danger" (click)="onClickCloseStepsViewerModal()">Dismiss</button>
+	</div>
+</ng-template>
+
+<ng-template #failedMessageViewerModal let-modal>
+	<div class="modal-header">
+		<h6 class="modal-title">Activity step failure message (#{{selRootActivityRefId}})</h6>
+	</div>
+	<div class="card-body" style="overflow: scroll;">
+       {{activityFailedMessage}}
+	</div>
+	<div class="card-footer text-right">
+		<button type="button" class="btn  btn-danger" (click)="onClickCloseFailedMessageModal()">Dismiss</button>
+	</div>
+</ng-template>
+

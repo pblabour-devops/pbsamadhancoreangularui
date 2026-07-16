@@ -1,0 +1,73 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 13.2,
+      "SectionTitle": "Inspections under Contract Labour (Regulation and Abolition), Act 1970",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "EstName",
+                "ColumnTitle": "Establishment Name",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "InspDate",
+                "ColumnTitle": "Date of Inspection",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "NumberofWorkers",
+                "ColumnTitle": "Number of Workers",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "MaleWorkers",
+                "ColumnTitle": "Male Workers",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "FemaleWorkers",
+                "ColumnTitle": "Female Workers",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "ViolationsFound",
+                "ColumnTitle": "Violations Found (yes or no)",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "ActionTaken",
+                "ColumnTitle": "Remarks",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+              
+            ],
+            "Rows": [
+              {
+                "EstName": "",
+                "InspDate": "",
+                "NumberofWorkers": "",
+                "MaleWorkers": "",
+                "FemaleWorkers": "",
+                "ViolationsFound": "",
+                 "ActionTaken": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

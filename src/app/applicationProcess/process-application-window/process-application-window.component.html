@@ -1,0 +1,1143 @@
+<form [formGroup]="ProcessApplication_Form" (ngSubmit)="onSubmit(takeActionAlertModal)">
+	<input type="hidden" formControlName="appRefId">
+	<input type="hidden" formControlName="ipAddress">
+	<input type="hidden" formControlName="latitude">
+	<input type="hidden" formControlName="longitude">
+	<section class="pcoded-main-container">
+		<div class="pcoded-content bg-patern">
+			<div class="col-sm-12">
+				<div class="card email-card">
+					<div class="card-body">
+						<div class="mail-body">
+							<!-- <div class="row">
+								<div class="col-md-12"> 
+									<div class="btn btn-link" (click)="onGoBack()">Go Back</div> |
+									<app-go-to-home-button  class="btn btn-link"></app-go-to-home-button>
+								</div>
+							</div> -->
+							<div class="row" style="margin-bottom: 17px;border-bottom: 2px solid #E7E5E4;">
+								<div class="col-xl-1 col-md-12 d-flex">
+									<span data-toggle="tooltip" data-placement="top" title="Go Back" class="navigation-icon" (click)="onGoBack()"><i class="feather icon-arrow-left"></i></span>
+									<span data-toggle="tooltip" data-placement="top" title="Go Home" class="navigation-icon" (click)="onGoHome()"><i class="feather icon-home"></i></span>
+								</div>
+								<div class="col-xl-11 col-md-12 d-flex justify-content-center align-items-center">
+									<ul class="mb-2 list_div nav nav-tab flex-column nav-pills " id="v-pills-tab" role="tablist"
+										aria-orientation="vertical">
+										<li class="nav-item mail-section" class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('ACTION')" *ngIf="allowTakeAction==1 && circleInfoData?.isAlreadyUpdated">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'ACTION' ? 'active' : ''" data-toggle="pill"
+												role="tab" aria-controls="v-pills-home" aria-selected="false">
+												<span><i class="feather icon-activity"></i> Take Action</span>
+											</a>
+										</li>
+										<li class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('NOTINGS')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'NOTINGS' ? 'active' : ''" data-toggle="pill"
+												role="tab" aria-controls="v-pills-home" aria-selected="false">
+												<span><i class="fa fa-comments"></i> Notings Logs</span>
+											</a>
+										</li>
+										<li class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('APPFORM')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'active' : ''" data-toggle="pill"
+												role="tab" aria-controls="v-pills-home" aria-selected="false">
+												<span><i class="feather icon-file-text"></i> Application Form</span>
+											</a>
+										</li>
+										<!-- <li class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('ATTACHEMENTS')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'ATTACHEMENTS' ? 'active' : ''"
+												data-toggle="pill" role="tab" aria-controls="v-pills-home"
+												aria-selected="false">
+												<span><i class="feather icon-paperclip"></i> Attachments</span>
+											</a>
+										</li> -->
+										<!-- <li *ngIf="applicationType !== 35 && applicationType !== 62 && applicationType !== 61 && applicationType !== 37 && applicationType !== 38 && applicationType !== 36 && applicationType !== 39 && applicationType !== 8  && applicationType !== 40" 
+										     class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('ADDENDUMS')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'ADDENDUMS' ? 'active' : ''"
+												data-toggle="pill" role="tab" aria-controls="v-pills-home"
+												aria-selected="false">
+												<span><i class="feather icon-file-plus"></i> Addendums</span>
+											</a>
+										</li> -->
+										<li *ngIf="applicationType == 5 || applicationType ==70 || applicationType ==35 || applicationType ==71 || applicationType ==72 || applicationType ==73 || applicationType ==37 || applicationType ==38 || applicationType ==36 || applicationType ==81 || applicationType ==8 || applicationType ==39 || applicationType ==40"  
+											class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('PAYMENT')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'PAYMENT' ? 'active' : ''" data-toggle="pill"
+												role="tab" aria-controls="v-pills-home" aria-selected="false">
+												<span><i class="feather icon-layers"></i> Payment Detail</span>
+											</a>
+										</li>
+										<li *ngIf="applicationType == 5 || applicationType == 71 || applicationType == 72 || applicationType == 73 || applicationType == 81"
+											class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('RAISED-PAYMENT')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'RAISED-PAYMENT' ? 'active' : ''"
+												data-toggle="pill" role="tab" aria-controls="v-pills-home"
+												aria-selected="false">
+												<span><span
+														style="font-weight: 600;margin-right: 18px;font-size: larger;">&#x20b9;</span>Raised
+													Fee Detail</span>
+											</a>
+										</li>
+										<li *ngIf="applicationType ==62 || applicationType == 36 || applicationType == 38 || applicationType == 70 || applicationType == 37" class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('CLEARANCES')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'CLEARANCES' ? 'active' : ''"
+												data-toggle="pill" role="tab" aria-controls="v-pills-home"
+												aria-selected="false">
+												<span><i class="feather icon-check-circle"></i>Other's Clearances</span>
+											</a>
+										</li>
+
+										<li *ngIf="applicationType ==70"
+											class="nav-item mail-section " class="nav-item mx-4" style="cursor: pointer;"
+											(click)="onSelectMenuItem('ADDITIONAL')">
+											<a class="nav-link text-left"
+												[ngClass]="selMenuCode == 'ADDITIONAL' ? 'active' : ''" data-toggle="pill"
+												role="tab" aria-controls="v-pills-home" aria-selected="false">
+												<span><i class="feather icon-plus-circle"></i> Additional Details</span>
+											</a>
+										</li>
+									</ul>
+
+								</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12 col-sm-12 project-site" >
+									</div>
+								</div>
+
+								<div class="row" style="border-top: 2px solid #E7E5E4; margin-top: 10px; padding-top: 10px;">
+								<div class="col-xl-6 col-md-6" style="overflow-x: hidden; max-height: 1000px; overflow: auto;">
+									<!-- <div *ngIf="circleInfoData?.isAlreadyUpdated" class="col-md-12 text-right"><h6 class="text-success"><i class="feather icon-thumbs-up"></i> This file is mapped as per new Circle/jurisdiction system. You can continue to process it..!</h6></div> -->
+									<div class="card" *ngIf="!circleInfoData?.isAlreadyUpdated && ProcessApplication_Form.value.appActionType !=200 && ProcessApplication_Form.value.appActionType !=404 && ProcessApplication_Form.value.appActionType !=402 && ProcessApplication_Form.value.appActionType !=5001">
+										<div class="bg-danger card-header text-center">
+										  <h4>Attention Please..!</h4>
+										</div>
+										<div class="card-body">
+										  <h5 class="card-title">Dear Officer,</h5>
+										  <ul>
+											<!-- <li>This application mapped with circles as per old circle/jurisdiction system.</li>
+											<li>To proceed this application further, the circle mapping must updated as per new circle/jurisdiction system.</li>
+											<li>Please select an appropriate/applicable circle as per geographical location of the establishment and click on submit button.</li>
+											<li>In case the selected circle is mapped with your user login, the you can find the same application into your inbox menu and process it further otherwise the application will be moved to the mapped user.</li>
+											<li class="text-danger font-weight-bold">Please choose circle and submit carefully because taken action will be undone...! </li> -->
+											<li>Currently, this application is mapped with Old Circle/Jurisdiction Area.</li>
+											<li>To proceed further, application needs to map with New Circle/Jurisdiction Area.</li>
+											<li>To update New Cirlcle, please select radio button in front of Circle Name and click Submit button.</li>
+											<li>Once application mapped with New Circle. It will move to Inbox of Concerned Officer.</li>
+											<li class="text-danger font-weight-bold">Please select Circle Name carefully. Once mapped it will not be revert back.</li>
+										  </ul>
+										  <table class="table table-bordered">
+											<thead>
+												<tr>
+													<th></th>
+													<th>Circle Name</th>
+													<th>Juridcition Area</th>
+													<th>Officer Name</th>
+													<th>Officer Desination</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr *ngFor="let circle of circleInfoData?.latestCircles">
+													<td style="vertical-align: middle;" [ngClass]="circle.circleId==upgradeCircle_Form.controls.circleId.value ? 'bg-warning' : ''">
+														<input [checked]="circle.circleId==upgradeCircle_Form.controls.circleId.value" type="radio"
+															name="labCircleOption" id="{{circle.circleId}}"
+															(click)="upgradeApplicationCircle(circle.circleId)">
+														<label for="{{circle.circleId}}" class="cr"></label>
+													</td>
+													<td style="vertical-align: middle; font-weight: bold;text-align: center;" [ngClass]="circle.circleId==upgradeCircle_Form.controls.circleId.value ? 'bg-warning' : ''">{{circle.circleName}}</td>
+													<td [ngClass]="circle.circleId==upgradeCircle_Form.controls.circleId.value ? 'bg-warning' : ''"  [innerHTML]="circle.juridcitionArea"></td>
+													<td [ngClass]="circle.circleId==upgradeCircle_Form.controls.circleId.value ? 'bg-warning' : ''">{{circle.officerName}}</td>
+													<td [ngClass]="circle.circleId==upgradeCircle_Form.controls.circleId.value ? 'bg-warning' : ''">{{circle.roleDesc}}</td>
+												</tr>
+											</tbody>
+										  </table>
+										  <div *ngIf="upgradeCircle_Form.valid" class="btn btn-primary" (click)="submitUpgradeCircle()" >Submit & Update Circle</div>
+										</div>
+									  </div>
+
+
+
+
+									<div class="row" *ngIf="!(selMenuCode == 'APPFORM')">
+										<!-- <div class="col-md-12 col-sm-12">
+											<app-project-site-snapshot [injectionType]="'public'"  [injectionType]="'public'"  [injectionType]="'public'"  [injectionType]="'public'"  [injectionType]="'public'"  [injectionType]="'public'"  [injectionType]="'public'"  [projectSiteRefId]="projectSiteRefId" [appRefId]="appRefId" [projectSiteVersion]="projectSiteVersion" [isEditAllowed] = "false"></app-project-site-snapshot>
+										</div> -->
+										<div *ngIf="selMenuCode=='ACTION' && (applicationType==6 || applicationType==70 || applicationType==37 || applicationType==38 || applicationType==35 || applicationType==39|| applicationType==40 || applicationType==36) && (currentActionCode==5 || currentActionCode == 6 || currentActionCode == 101 || currentActionCode == 102 || currentActionCode == 106)"
+											class="col-md-12 col-sm-12 text-right">
+											<label class="font-weight-bold text-danger">Doesn't belong to my area..?
+											</label>
+											<div (click)="onSelectMenuItem('TRANSFER')" class="btn btn-link">Click here to transfer this file to another officer.!
+											</div>
+										</div>
+									</div>
+
+
+									<div class="tab-content p-0" id="v-pills-tabContent" *ngIf="openMutualProcesses.length>0; else noMutualOpenedActs">
+										<div class="alert alert-danger">
+											<h5 class="alert-msg">Dear Officer, <br/> 
+												You can not take further action on this file untill following officer(s)/official(s) take their pending actions.
+											</h5>
+										</div>
+										<table class="table table-bordered">
+											<tr>
+												<th>Sr. No.</th>
+												<th>Officer Name</th>
+												<th>Designation</th>
+											</tr>
+											<tr *ngFor="let item of openMutualProcesses; let i = index">
+												<td>{{i+1}}</td>
+												<td>{{item.officerName}}</td>
+												<td>{{item.officerDesignation}}</td>
+											</tr>
+										</table>
+									</div>
+
+									<ng-template #noMutualOpenedActs>
+										<div class="tab-content p-0" id="v-pills-tabContent">
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'ACTION' ? 'show' : 'hideTab'" id="v-pills-home"
+											role="tabpanel">
+											<ul class="feed-blog pl-0" style="margin-top: 15px;">
+												<li>
+													<div class="feed-user-img">
+														<a class="btn btn-info btn-icon" role="button">I</a>
+													</div>
+													<h6 class="m-b-0">Actions</h6>
+													<div class="row m-t-20">
+														<div class="col-md-2">
+															<label>Select Action Type </label>
+															
+														</div>
+														<div class="col-md-4">
+
+															<select class="form-select form-select-sm"
+																aria-label="Default select example" id="appActionType"
+																formControlName="appActionType"
+																(change)="onChangeActionDropDown(PsiecOfficerModal,ProcessApplication_Form.value.appActionType)">
+																<option [selected]="true" value=''>--Please Select--
+																</option>
+																<option *ngFor="let action of actionList"
+																	value="{{action.allowedActionCode}}">
+																	{{action.actionName}}</option>
+															</select>
+															<div *ngIf="(formControls.appActionType.invalid) && (submitted || formControls.appActionType.dirty || formControls.appActionType.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.appActionType.errors.required || !formControls.appActionType.value">
+																	Please select action type..!
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2 userListClass">
+															<label style="margin-top:5px;">Select Officer/User</label>
+														</div>
+														<div class="col-md-4 userListClass">
+															<select class="form-select form-select-sm" aria-label="Default select example" formControlName="receiver_UserRefId">
+																<option [selected]="true" value="">--Please Select--</option>
+																<option *ngFor="let user of usersList" value="{{user.userId}}">
+																	{{user.userName}}-({{user.name}},{{user.districtName}})
+																</option>
+															</select>
+															<div *ngIf="(formControls.receiver_UserRefId.invalid) && (submitted || formControls.receiver_UserRefId.dirty || formControls.receiver_UserRefId.touched)" class="text-danger">
+																<div
+																	*ngIf="formControls.receiver_UserRefId.errors.required || !formControls.receiver_UserRefId.value">
+																	Please select officer/user..!
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-4" id="psiecUser" style="display: none;">
+															<label for="registrationCertificateNo">{{selectedSdoAndEoDetails}}</label>
+															<button class="btn btn-outline-primary" (click)="onEditPsiecOfficerClick(PsiecOfficerModal)">Edit</button>
+														</div>
+													</div>
+
+													<div class="row m-t-20 text-center" *ngIf="!isPreCheckPassed">
+														<div class="alert alert-danger">
+															<h5 class="alert-msg">Dear Officer, <br/> 
+																You can not take this action on this file because this same file is pending with other officers/officials
+															</h5>
+														</div>
+													</div>
+
+
+													<div class="row m-t-30" *ngIf="factoryApprovalExtraInputsToBeShown">
+														<div class="col-md-2 text-right">
+															<label>Select Factory Category Type(Process Based)</label>
+														</div>
+														<div class="col-md-4">
+															<select class="form-select form-select-sm"
+																aria-label="Default select example"
+																id="factoryHazardousCategoryType"
+																formControlName="factoryHazardousCategoryType">
+																<option value=''>--Please Select--</option>
+																<option value="1">A1 - (Highly Hazardous)</option>
+																<option value="2">A2 - (Moderately Hazardous)</option>
+																<option value="3">A3 - (Less Hazardous)</option>
+																<option value="4">B - (Very Less Hazardous)</option>
+																<option value="5">C - (Very Less Hazardous)</option>
+																<option value="6">D - (Very Less Hazardous)</option>
+															</select>
+															<div *ngIf="(formControls.factoryHazardousCategoryType.invalid) && (submitted || formControls.factoryHazardousCategoryType.dirty || formControls.factoryHazardousCategoryType.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.factoryHazardousCategoryType.errors.required || !formControls.factoryHazardousCategoryType.value">
+																	Please select factory category type..!
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2 text-right">
+															<label style="margin-top:5px;">Select Applicable Section
+																Type</label>
+														</div>
+														<div class="col-md-4">
+															<select class="form-select form-select-sm"
+																aria-label="Default select example"
+																formControlName="factorySectionCategoryType">
+																<option value="">--Please Select--</option>
+																<option value="1">Section 2m(i)</option>
+																<option value="2">Section 2m(ii)</option>
+																<option value="3">Section 85</option>
+															</select>
+															<div *ngIf="(formControls.factorySectionCategoryType.invalid) && (submitted || formControls.factorySectionCategoryType.dirty || formControls.factorySectionCategoryType.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.factorySectionCategoryType.errors.required || !formControls.factorySectionCategoryType.value">
+																	Please select applicable section type..!
+																</div>
+															</div>
+														</div>
+
+													</div>
+
+													<div class="row m-t-20" *ngIf="factoryApprovalExtraInputsToBeShown">
+														<div class="col-md-2 text-right">
+															<label>Select Factory Season Type</label>
+														</div>
+														<div class="col-md-4">
+															<select class="form-select form-select-sm"
+																aria-label="Default select example"
+																id="factorySessionCategoryType"
+																formControlName="factorySessionCategoryType">
+																<option value=''>--Please Select--</option>
+																<option value="1">Summer Season(Apr-Sep)</option>
+																<option value="2">Winter Season(Oct-Mar)</option>
+																<option selected="selected" value="3">Whole
+																	Year(Jan-Dec)</option>
+																<option value="4">Brick kiln Season(Jan-Jun)</option>
+															</select>
+															<div *ngIf="(formControls.factorySessionCategoryType.invalid) && (submitted || formControls.factorySessionCategoryType.dirty || formControls.factorySessionCategoryType.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.factorySessionCategoryType.errors.required || !formControls.factorySessionCategoryType.value">
+																	Please select factory season type..!
+																</div>
+															</div>
+														</div>
+												
+														
+
+														<div class="col-md-2 text-right">
+															<label>Select Factory Category Type(Risk Based)</label>
+														</div>
+														<div class="col-md-4">
+															<select class="form-select form-select-sm"
+																aria-label="Default select example"
+																id="factoryCategoryType"
+																formControlName="factoryCategoryType">
+																<option selected="selected" value=''>--Please Select--</option>
+																<option value="1">Category A</option>
+																<option value="2">Category B</option>
+																<option  value="3">Category C</option>
+																<option value="4">Category D</option>
+															</select>
+															<div *ngIf="(formControls.factoryCategoryType.invalid) && (submitted || formControls.factoryCategoryType.dirty || formControls.factoryCategoryType.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.factoryCategoryType.errors.required || !formControls.factoryCategoryType.value">
+																	Please select factory category type..!
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="row m-t-20" *ngIf="factoryApprovalExtraInputsToBeShown">
+														<div class="col-md-2 text-right">
+															<label>Select ALC Circle</label>
+														</div>
+														<div class="col-md-4">
+															<select class="form-select form-select-sm"
+																aria-label="Default select example"
+																id="districtLgdRefId"
+																formControlName="districtLgdRefId">
+																<option value=''>--Please Select--</option>
+																<option value="27">Amritsar-1</option>
+																<option value="27">Amritsar-2</option>
+																<option value="605">Barnala</option>
+																<option value="32">Batala</option>
+																<option value="28">Bathinda</option>
+																<option value="29">Faridkot</option>
+																<option value="30">Fatehgarh Sahib at Mandi Gobindgarh</option>
+																<option value="651">Fazilka</option>
+																<option value="31">Ferozepur</option>
+																<option value="33">Hoshiarpur</option>
+																<option value="34">Jalandhar-1</option>
+																<option value="34">Jalandhar-2</option>
+																<option value="35">Kapurthala</option>
+																<option value="36">Ludhiana-1</option>
+																<option value="36">Ludhiana-2</option>
+																<option value="36">Ludhiana-3</option>
+																<option value="36">Ludhiana-4</option>
+																<option value="38">Moga</option>
+																<option value="662">Pathankot</option>
+																<option value="41">Patiala</option>
+																<option value="42">Roopnagar</option>
+																<option value="43">Sangrur</option>
+																<option value="608">SAS Nagar</option>
+																<option value="40">Shahid Bhagat Singh Nagar</option>
+																<option value="39">Sri Muktsar Sahib</option>
+																<option value="609">Tarn-taran</option>
+															</select>
+															<div *ngIf="(formControls.districtLgdRefId.invalid) && (submitted || formControls.districtLgdRefId.dirty || formControls.districtLgdRefId.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.districtLgdRefId.errors.required || !formControls.districtLgdRefId.value">
+																	Please select Alc circle..!
+																</div>
+															</div>
+														</div>
+												
+													</div>
+
+													
+													<div class="row m-t-30" *ngIf="principalEmployerApprovalExtraInputsToBeShown">
+														<div class="col-md-2">
+															<label>Please specify the reason of additional fee </label>
+														</div>
+														<div class="col-md-4">
+															<input  type="text" class="form-control height" formControlName="raisedFeeReason">
+															<div *ngIf="(formControls.raisedFeeReason.invalid) && (submitted || formControls.raisedFeeReason.dirty || formControls.raisedFeeReason.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.raisedFeeReason.errors.required || !formControls.raisedFeeReason.value">
+																	Please specify the reason of additional fee..!
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<label>Fee amount to be raised </label>
+														</div>
+														<div class="col-md-4">
+															<input  type="text" class="form-control height" formControlName="raisedFeeAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+															<div *ngIf="(formControls.raisedFeeAmount.invalid) && (submitted || formControls.raisedFeeAmount.dirty || formControls.raisedFeeAmount.touched)"
+															class="text-danger">
+															<div
+																*ngIf="formControls.raisedFeeAmount.errors.required || formControls.raisedFeeAmount.value<=0">
+																Please enter the fee amount to be raised..!
+															</div>
+														</div>
+														</div>
+													</div>
+
+													<div class="row m-t-30" *ngIf="contractLabourApprovalExtraInputsToBeShown">
+													 <div class="col-md-10 table-bordered p-5 offset-2">
+													<h6 class="m-b-0">Balance Fees</h6>
+														<div class="row m-t-20">
+															<div class="col-md-4">
+																<label>Please specify the reason of additional fee </label>
+															</div>
+															<div class="col-md-8">
+																<input  type="text" class="form-control height" formControlName="raisedFeeReason">
+																<div *ngIf="(formControls.raisedFeeReason.invalid) && (submitted || formControls.raisedFeeReason.dirty || formControls.raisedFeeReason.touched)"
+																	class="text-danger">
+																	<div
+																		*ngIf="formControls.raisedFeeReason.errors.required || !formControls.raisedFeeReason.value">
+																		Please specify the reason of additional fee..!
+																	</div>
+																</div>
+															</div>
+													
+														</div>
+														<div class="row">
+															<div class="col-md-2 m-t-30">
+																<label>Fee amount to be raised </label>
+															</div>
+															<div class="col-md-4 m-t-30">
+																<input  type="text" class="form-control height" formControlName="raisedFeeAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+																<div *ngIf="(formControls.raisedFeeAmount.invalid) && (submitted || formControls.raisedFeeAmount.dirty || formControls.raisedFeeAmount.touched)"
+																	class="text-danger">
+																	<div
+																		*ngIf="formControls.raisedFeeAmount.errors.required || formControls.raisedFeeAmount.value<=0">
+																		Please enter the fee amount to be raised..!
+																	</div>
+																</div>
+															</div>	
+															<div class="col-md-2 m-t-30">
+																<label>Security Fee amount to be raised </label>
+															</div>
+															<div class="col-md-4 m-t-30">
+																<input  type="text" class="form-control height" formControlName="securityRaisedFeeAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+																<div *ngIf="(formControls.securityRaisedFeeAmount.invalid) && (submitted || formControls.securityRaisedFeeAmount.dirty || formControls.securityRaisedFeeAmount.touched)"
+																	class="text-danger">
+																	<div
+																		*ngIf="formControls.securityRaisedFeeAmount.errors.required || formControls.securityRaisedFeeAmount.value<=0">
+																		Please enter the fee amount to be raised..!
+																	</div>
+																</div>
+															</div>
+														</div>	
+														<div class="row">
+																<div class="col-md-12 m-t-30">
+																<div>
+																	<table class="table table-bordered text-size">
+																		<thead>
+																			<tr>
+																				<th class="col-md-1 bg-info">S no</th>
+																				<th class="bg-info">Fees</th>
+																				<th class="bg-info">Security Fees</th>
+																				<th class="bg-info">Total Fees</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<tr>
+																				<td>1</td>
+																				<td>{{this.formControls.raisedFeeAmount.value}}</td>
+																				<td>{{this.formControls.securityRaisedFeeAmount.value}}</td>
+																				<td>{{+this.formControls.raisedFeeAmount.value + +this.formControls.securityRaisedFeeAmount.value}}</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													 </div>	
+													</div>
+
+
+													<div class="row m-t-20"
+														*ngIf="factoryApprovalExtraInputsToBeShown && formControls.districtLgdRefId.valid">
+														<div class="col-md-12 text-left">
+															<label>Select Labour Circle Grade</label>
+														</div>
+														<div class="col-md-12">
+														
+															<div *ngIf="formControls.labourCircleRefId.invalid && (submitted || formControls.labourCircleRefId.dirty || formControls.labourCircleRefId.touched)"
+																class="text-danger">
+																Please select circle..!
+																<!-- <div
+																*ngIf="formControls.labourCircleRefId.errors?.required">
+																Please select circle..!
+															</div>
+															<div *ngIf="formControls.labourCircleRefId.errors?.min">
+																Please select circle..!
+															</div> -->
+															</div>
+
+														</div>
+													</div>
+
+													<div class="card-body"
+														*ngIf="(ProcessApplication_Form.value.appActionType ==200 || ProcessApplication_Form.value.appActionType ==204) && authService.getUserJwtDecodedInfo().RoleName == 'ADDF' && applicationType == 5">
+														<div class="alert alert-secondary">
+															<h5 class="alert-msg">Dear Officer, <br>Please note
+																following instructions :</h5>
+															<ul class="alert-msg">
+																<li>Create a single pdf file containing the
+																	acceptance/approval letter and all approvals of the
+																	building map by the department. So that the
+																	applicant can get/download a single file of the
+																	approved letter and approved maps.</li>
+																<li>System generated DOF number : <h3>{{dofNumber}}</h3>
+																	Please use & write the same system generated DOF
+																	number on the acceptance/Approval letter and
+																	approved maps.</li>
+															</ul>
+														</div>
+													</div>
+
+													<app-file-upload *ngIf="isDocumentUploadOption"
+														[appRefId]='appRefId' [isUploadShow]='true'
+														[deleteTempFiles]='true' [userId]="UserId"
+														[currentActionCode]='currentActionCode'
+														[allowedActionCode]='ProcessApplication_Form.value.appActionType'
+														[applicationaType]='applicationType'
+														[isTimeLineFlow]='isTimeLineFlow'
+														[applicationActionLogId]='applicationActionLogId'></app-file-upload>
+													<div *ngIf="isDocumentUploadOption && !isOptional"
+														class="text-danger">
+														Please upload document..!
+													</div>
+
+													<div class="row m-t-30" *ngIf="factoryApprovalBalanceFeeInputsToBeShown">
+														<div class="col-md-2">
+															<label>Existing Maximum Workers During The Year : </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" [value]="ProcessApplication_Form.controls.existingWorkers_MaxDuringYear.value" readonly>
+														</div>
+
+														<div class="col-md-2">
+															<label>Existing Maximum Kilowatt Power Installed : </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" [value]="ProcessApplication_Form.controls.existingPowerKW_Installed.value" readonly>
+														</div>
+													</div>
+
+													<div class="row m-t-30" *ngIf="factoryApprovalBalanceFeeInputsToBeShown">
+														<div class="col-md-2">
+															<label>Please Specify The Maximum Workers During The Year </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="workers_MaxDuringYear" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)" [ngModel]="ProcessApplication_Form.controls.existingWorkers_MaxDuringYear.value">
+															<div *ngIf="(formControls.workers_MaxDuringYear.invalid) && (submitted || formControls.workers_MaxDuringYear.dirty || formControls.workers_MaxDuringYear.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.workers_MaxDuringYear.errors.required || !formControls.workers_MaxDuringYear.value">
+																	Please enter the maximum workers during the year..!
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-2">
+															<label>Please Specify The Maximum Kilowatt Power Installed </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="powerKW_Installed" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)" [ngModel]="ProcessApplication_Form.controls.existingPowerKW_Installed.value">
+															<div *ngIf="(formControls.powerKW_Installed.invalid) && (submitted || formControls.powerKW_Installed.dirty || formControls.powerKW_Installed.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.powerKW_Installed.errors.required || !formControls.powerKW_Installed.value">
+																	Please enter the maximum kilowatt power installed..!
+																</div>
+															</div>
+														</div>
+													</div>
+													
+													<div class="row m-t-30" *ngIf="factoryApprovalBalanceFeeInputsToBeShown">
+														<div class="col-md-2">
+															<label>Please specify the reason of additional fee </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="raisedFeeReason">
+															<div *ngIf="(formControls.raisedFeeReason.invalid) && (submitted || formControls.raisedFeeReason.dirty || formControls.raisedFeeReason.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.raisedFeeReason.errors.required || !formControls.raisedFeeReason.value">
+																	Please specify the reason of additional fee..!
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<label>Fee amount to be raised </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="raisedFeeAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+															<div *ngIf="(formControls.raisedFeeAmount.invalid) && (submitted || formControls.raisedFeeAmount.dirty || formControls.raisedFeeAmount.touched)"
+															class="text-danger">
+															<div
+																*ngIf="formControls.raisedFeeAmount.errors.required || formControls.raisedFeeAmount.value<=0">
+																Please enter the fee amount to be raised..!
+															</div>
+														</div>
+														</div>
+													</div>
+													
+													<div class="row form-row" *ngIf="factoryApprovalBalanceFeeInputsToBeShown">
+														<div class="col-md-12 text-danger font-weight-bold">
+															Please Note : Additional amendment charges will be included (automatically by the system) in the raised fee amount.
+														</div>
+													</div>
+
+													<div class="row m-t-30" *ngIf="pSIECBalanceFeeInputsToBeShown">
+														<div class="col-md-2">
+															<label>Scrutiny Fee - PSIEC </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="psiecProcessingFeeAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)" [ngModel]="ProcessApplication_Form.controls.psiecProcessingFeeAmount.value">
+															<div *ngIf="(formControls.psiecProcessingFeeAmount.invalid) && (submitted || formControls.psiecProcessingFeeAmount.dirty || formControls.psiecProcessingFeeAmount.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.psiecProcessingFeeAmount.errors.required || !formControls.psiecProcessingFeeAmount.value">
+																	Please enter the valid amount..!
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<label>Building Plan Approval-Factory (BOCW Cess) </label>
+														</div>
+														<div class="col-md-4">
+															<input style="min-height:35px !important" type="text" class="form-control" formControlName="psiecCessAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+															<div *ngIf="(formControls.psiecCessAmount.invalid) && (submitted || formControls.psiecCessAmount.dirty || formControls.psiecCessAmount.touched)"
+															class="text-danger">
+															<div
+																*ngIf="formControls.psiecCessAmount.errors.required || formControls.psiecCessAmount.value<=0">
+																Please enter the valid amount..!
+															</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body"
+														*ngIf="(ProcessApplication_Form.value.appActionType ==213) && authService.getUserJwtDecodedInfo().RoleName == 'ADDF' && applicationType == 81">
+														<div class="alert alert-secondary">
+															<h5 class="alert-msg">Dear Officer, <br>Please note
+																following instructions :</h5>
+															<ul class="alert-msg">
+																<li>As per the terms and conditions mentioned in the sample auto-approval letter of PSIEC – Factory Wing, 
+																	if you wish to include any additional terms or conditions in the approval letter, 
+																	kindly upload the relevant document for the same, 
+																	which will be incorporated into the approval letter.</li>
+																<li>System generated DOF number : <h3 style="display:inline;">{{dofNumber}}</h3>
+																	<br><br>
+																	Note : Please use & write the same system generated DOF number on the acceptance/Approval letter and approved maps.
+																</li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<!-- *ngIf="!isChecklistBasedScrutiny" -->
+												<li>
+													<div class="feed-user-img">
+														<a class="btn btn-info btn-icon" role="button">II</a>
+													</div>
+													<h6 class="m-b-0">Remarks</h6>
+													<div class="form-group row">
+														<label for="validation-t-sate"
+															class="col-sm-3 col-form-label text-right">Enter
+															Remarks</label>
+														<div class="col-sm-6">
+															<textarea class="form-control" name="validation-text"
+																formControlName="remarks"></textarea>
+															<div *ngIf="(formControls.remarks.invalid) && (submitted || formControls.remarks.dirty || formControls.remarks.touched)"
+																class="text-danger">
+																<div
+																	*ngIf="formControls.remarks.errors.required || !formControls.remarks.value">
+																	Please specify remarks..!
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+
+											<div class="text-center" *ngIf="isLocationOn; else locationisNotOn">
+												<button type="button" class="btn btn-success"
+													*ngIf="(applicationType==5 && (ProcessApplication_Form.value.appActionType==200 || ProcessApplication_Form.value.appActionType==204)) || ProcessApplication_Form.value.appActionType!=200"
+													type="submit">Submit My Action</button>
+												<button type="button" class="btn btn-primary" 
+													[disabled]="!ProcessApplication_Form.valid" 
+													*ngIf="ProcessApplication_Form.value.appActionType==200 && applicationType!=5" 
+													(click)="openScrollableContent(longContent)">Preview Certificate And Approve</button>
+											</div>
+											<ng-template #locationisNotOn>
+												<div class="col-xl-12 col-md-12">
+													<div class="col p-l-0 alert alert-info">
+														<img src="assets/images/icon/location-off.png" class="img-radius"> <h6 class="f-20 m-l-40"> Your browser location permission is disabled. Kindly enable your location first and reload this page..!</h6>
+													</div>
+												</div>
+											</ng-template>
+										</div>
+
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'NOTINGS' ? 'show' : 'hideTab'"
+											style="margin-top: 45px;">
+										</div>
+
+										<div *ngIf="applicationType==1">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-establishment-registration-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="1"
+													[projectSiteRefId]=projectSiteData.projectSiteId></app-establishment-registration-details> -->
+											</div>
+										</div>
+
+										<div *ngIf="applicationType==5">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-building-plan-hud-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="5"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-building-plan-hud-details> -->
+											</div>
+										</div>
+
+										<div *ngIf="applicationType==6">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'" id="v-pills-home">
+												<!-- <app-shop-licence-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="6"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-shop-licence-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==70">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-factory-licences-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="7"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-factory-licences-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==61">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-women-in-night-shift-shop-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="61"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-women-in-night-shift-shop-details> -->
+
+											</div>
+										</div>
+										<div *ngIf="applicationType==35">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-bocw-licences-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="35"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-bocw-licences-details> -->
+
+											</div>
+										</div>
+										<div *ngIf="applicationType==62">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-women-in-night-shift-factory-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="62" 
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-women-in-night-shift-factory-details> -->
+											</div>
+										</div>
+
+										<div *ngIf="applicationType==71">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-proposed-building-plan-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="71"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-proposed-building-plan-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==72">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-existing-building-plan-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="72"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-existing-building-plan-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==73">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-addition-amendment-licence-detail [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="73"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-addition-amendment-licence-detail> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==37">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-principal-employer-details [appRefId]='appRefId'
+													[entityPrimaryid]="30015" [applicationType]="37"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-principal-employer-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==38">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-contract-labour-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="38"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-contract-labour-details> -->
+                        					</div>
+                    					</div>
+										<div *ngIf="applicationType==36">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-motor-transport-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="36"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-motor-transport-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==81">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-psiec-building-plan-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="71"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-psiec-building-plan-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==8">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-trade-union-detail-page [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="8"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-trade-union-detail-page> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==40">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-ism-contract-labour-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="40"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion">
+												</app-ism-contract-labour-details> -->
+                        					</div>
+                    					</div>
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'ATTACHEMENTS' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<app-file-upload [appRefId]='appRefId' [entityPrimaryid]="7"
+												[applicationType]="this.applicationType" [isUploadShow]='false' [deleteTempFiles]='false'
+												class="tableDocument">
+											</app-file-upload>
+										</div>
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'ADDENDUMS' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<app-addendum [isUploadOptionShown]="true"
+												[appRefId]="appRefId">
+											</app-addendum>
+										</div>
+
+										<!-- <div *ngIf="applicationType !=6" class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'PAYMENT' ? 'show' : 'hideTab'" id="v-pills-home">
+											<app-app-payment-details></app-app-payment-details>
+										</div> -->
+
+										<div *ngIf="applicationType ==5" class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'RAISED-PAYMENT' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<app-raised-fee-details [appRefId]='appRefId'></app-raised-fee-details>
+										</div>
+
+										<div *ngIf="applicationType == 71 || applicationType == 72 || applicationType == 73 || applicationType == 81" class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'RAISED-PAYMENT' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<app-app-raised-fee-details [appRefId]='appRefId' [applicationType]='applicationType'></app-app-raised-fee-details>
+										</div>
+
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'CLEARANCES' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<!-- <app-already-obtained-learances
+												[projectSiteRefId]="projectSiteRefId"  [applicationType] = 'applicationType'>
+											</app-already-obtained-learances> -->
+										</div>
+										<div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'TRANSFER' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<!-- <app-application-transfer [appRefId]='appRefId' *ngIf="applicationType == 6"></app-application-transfer> -->
+											<!-- <app-application-transfer-role-wise [appRefId]='appRefId' [roleName] = 'authService.getUserJwtDecodedInfo().RoleName'  *ngIf="applicationType==70"></app-application-transfer-role-wise> -->
+											<!-- <app-application-transfer-alc [appRefId]='appRefId' [roleName] = 'authService.getUserJwtDecodedInfo().RoleName'  *ngIf="applicationType==35 || applicationType==36 || applicationType==37 || applicationType==38 || applicationType==39 || applicationType== 40"></app-application-transfer-alc> -->
+										</div>
+
+										<div *ngIf="applicationType == 70" class="tab-pane fade active" [ngClass]="selMenuCode == 'ADDITIONAL' ? 'show' : 'hideTab'" id="v-pills-home">
+											<!-- <app-additional-details [appRefId]='appRefId' [applicationType]="70"></app-additional-details> -->
+										</div>
+
+										<div *ngIf="applicationType==76">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-declaration-stability-certificate-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="76"
+													[projectSiteRefId]="projectSiteRefId" 
+													[projectSiteVersion]="projectSiteVersion"></app-declaration-stability-certificate-details> -->
+											</div>
+										</div>
+										<div *ngIf="applicationType==39">
+											<div class="tab-pane fade active"
+												[ngClass]="selMenuCode == 'APPFORM' ? 'show' : 'hideTab'"
+												id="v-pills-home">
+												<!-- <app-ism-principal-employer-details [appRefId]='appRefId'
+													[entityPrimaryid]="0" [applicationType]="39"
+													[projectSiteRefId]=projectSiteData.projectSiteId>
+												</app-ism-principal-employer-details> -->
+                        					</div>
+                    					</div>
+									</div>
+
+									</ng-template>
+
+									
+
+								</div>
+								<div class="col-xl-6 col-md-6" style="border-left: 2px dashed #404040;">
+									
+									<!-- <app-app-document-viewer [appRefId]="appRefId"></app-app-document-viewer> -->
+									 <app-file-upload [appRefId]='appRefId' [entityPrimaryid]="7"
+												[applicationType]="this.applicationType" [isUploadShow]='false' [deleteTempFiles]='false'
+												class="tableDocument">
+											</app-file-upload>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<div class="col-md-12"> 
+							<div class="btn btn-link" (click)="onGoBack()">Go Back</div> |
+							<app-go-to-home-button class="btn btn-link"></app-go-to-home-button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</form>
+
+<ng-template #longContent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" style="color: black;">Preview certificate and approved</h4>
+	</div>
+	<div class="card-body">
+		<div class="dt-responsive table-responsive">
+			<iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" height="500px"></iframe>
+
+			<div class="card-footer">
+				<div>
+					<button type="button" class="btn  btn-danger" (click)="deleteTempCreatedLicense()">Cancel</button>
+					<button class="btn btn-success" (click)="onApproveClick()" type="submit"
+						style="float: right;">Approve And Generate Licence</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-template>
+
+
+<ng-template #takeActionAlertModal let-modal>
+	<!-- <div class="modal-header">
+		<h4 class="modal-title" style="color: black;">Please confirm..!</h4>
+	</div> -->
+	<div class="modal-body text-center">
+		<img src="assets/images/notification-icon.svg" class="notification-icon" alt="modal-home-icon">
+		<h6>Are you sure to take this action?</h6>
+		<p class="notification-text-account">This action cannot be undone</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn  btn-danger" (click)="onModelNoClick()">No</button>
+		<button type="button" (click)="onAlertModelYesClick()" class="btn  btn-success">Yes</button>
+	</div>
+
+</ng-template>
+
+
+<ng-template #previewAttachement let-modal>
+	<div class="modal-header">
+		<h6 class="modal-title text-primary">Preview document</h6>
+	</div>
+	<div class="card-body">
+		<iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" style="min-height: 600px;"></iframe>
+	</div>
+	<div class="card-footer text-right">
+		<button type="button" class="btn  btn-danger" (click)="closePreviewModal()">Close</button>
+		<!-- <button class="btn btn-success" (click)="onApproveClick()" type="submit" style="float: right;">Approve And Generate Licence</button> -->
+	</div>
+</ng-template>
+
+<ng-template #locationWarningModal let-modal>
+	<div class="modal-header">
+		<h6 class="modal-title text-danger">Location is not enabled..!</h6>
+	</div>
+	<div class="card-body">
+		Please enable the location of your browser..!
+	</div>
+	<div class="card-footer text-right">
+		<button type="button" class="btn  btn-danger" (click)="closePreviewModal()">Dismiss</button>
+	</div>
+</ng-template>
+
+
+<ng-template #PsiecOfficerModal let-modal>
+  <div style="border: 2px solid red; height: auto;">
+    <div class="modal-header">
+      <h5>Please select the below SDO & EO official..!</h5>
+    </div>
+
+    <form [formGroup]="PSIEC_Officers_Form" (ngSubmit)="SubmitPsiecOfficer()">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="sdoName" class="form-label font-weight-bold">
+              Please Select Sub-Divisional Officer (SDO)
+            </label>
+            <select id="sdoName" class="form-select form-select-sm" formControlName="sdoName">
+              <option [ngValue]="null">--Please Select--</option>
+              <option *ngFor="let sdo of pSIECUserDetails?.sdoDetails" [ngValue]="sdo">
+                {{ sdo.userName }} ({{sdo.officerName}} - {{sdo.designation}})
+              </option>
+            </select>
+            <div *ngIf="PSIEC_Officers_Form.get('sdoName')?.invalid && PSIEC_Officers_Form.get('sdoName')?.touched" class="text-danger">
+              Sub-Divisional Officer is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="eoName" class="form-label font-weight-bold">
+              Please Select Executive Officer (EO)
+            </label>
+            <select id="eoName" class="form-select form-select-sm" formControlName="eoName">
+              <option [ngValue]="null">--Please Select--</option>
+              <option *ngFor="let eo of pSIECUserDetails?.eoDetails" [ngValue]="eo">
+                {{ eo.userName }} ({{eo.officerName}} - {{eo.designation}})
+              </option>
+            </select>
+            <div *ngIf="PSIEC_Officers_Form.get('eoName')?.invalid && PSIEC_Officers_Form.get('eoName')?.touched" class="text-danger">
+              Executive Officer is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="button" class="btn btn-danger" (click)="closePreviewModal()">Dismiss</button>
+          <button type="submit" class="btn btn-primary" [disabled]="PSIEC_Officers_Form.invalid" style="margin-left: 5px;">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

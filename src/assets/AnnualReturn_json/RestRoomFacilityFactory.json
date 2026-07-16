@@ -1,0 +1,19 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 6,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Rest Rooms/Shelters and Lunch Rooms (Only for the factories which are employing more than 150 workers)",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(24(A)) No. of rest rooms/shelters provided", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(24(B)) No. of lunch rooms provided", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        }
+         ]
+    }
+  }
+]

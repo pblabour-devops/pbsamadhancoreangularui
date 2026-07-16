@@ -1,0 +1,101 @@
+<div class="main-content">
+  <div class="card col-md-10 card-form">
+    <form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id" />
+          <div class="col-md-12">
+            <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+          </div>
+          
+          <div class="col-md-12">
+            <div class="register-modal-header">
+              <h4 class="text-center form-header">General</h4>
+            </div>
+          </div>
+          <div class="container mt-4">
+            <div class="row form-row">
+              <div class="col-md-6">
+                <label for="factoryName" class="form-label required">1.1 Name of factory</label>
+                <input type="text" class="form-control" id="factoryName" formControlName="factoryName" minlength="5" maxlength="100"/>
+                <span class="character-count">{{ getCharacterCount('factoryName') }}/100</span>
+                <div *ngIf="hasExceededMaxLength('factoryName')" class="error-message">You have exceeded the max length of 100 characters.</div>
+                <!-- <div *ngIf="isMinLength('factoryName')" class="error-message">Length should be greater than 5 characters.</div> -->
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="factoryName" placeHolder="Name of factory"></app-form-validation-error>
+              </div>
+              <div class="col-md-6">
+                <label for="factoryAddress" class="form-label required">1.2 Address of factory</label>
+                <input type="text" class="form-control" id="factoryAddress" formControlName="factoryAddress" minlength="5" maxlength="500" />
+                <span class="character-count">{{ getCharacterCount('factoryAddress') }}/500</span>
+                <div *ngIf="hasExceededMaxLength('factoryAddress')" class="error-message">You have exceeded the max length of 500 characters.</div>
+                <!-- <div *ngIf="isMinLength('factoryAddress')" class="error-message">Length should be greater than 5 characters.</div> -->
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="factoryAddress" placeHolder="Address of factory"></app-form-validation-error>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <label for="dateOfInspection" class="form-label required">1.3 Date and time of Inspection</label>
+                <input type="datetime-local" class="form-control" id="dateOfInspection" formControlName="dateOfInspection" [max]="maxDate"  [min]="minDate"/>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="dateOfInspection" placeHolder="Date of Inspection"></app-form-validation-error>
+              </div>
+              <div class="col-md-6">
+                <label for="dateOfLastInspection" class="form-label required">1.4 Date of Last Inspection</label>
+                <input type="datetime-local" class="form-control" id="dateOfLastInspection" formControlName="dateOfLastInspection" [max]="inspectionMaxDate" />
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="dateOfLastInspection" placeHolder="Date of Last Inspection"></app-form-validation-error>
+            </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <label for="occupierName" class="form-label required">1.5 Name of Occupier</label>
+                <input type="text" class="form-control" id="occupierName" formControlName="occupierName" minlength="5" maxlength="100" />
+                <span class="character-count">{{ getCharacterCount('occupierName') }}/100</span>
+                <div *ngIf="hasExceededMaxLength('occupierName')" class="error-message">You have exceeded the max length of 100 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="occupierName" placeHolder="Name of Occupier"></app-form-validation-error>
+              </div>
+              <div class="col-md-6">
+                <label for="occupierAddress" class="form-label required">1.6 Address of Occupier</label>
+                <input type="text" class="form-control" id="occupierAddress" formControlName="occupierAddress" minlength="5" maxlength="500" />
+                <span class="character-count">{{ getCharacterCount('occupierAddress') }}/500</span>
+                <div *ngIf="hasExceededMaxLength('occupierAddress')" class="error-message">You have exceeded the max length of 500 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="occupierAddress" placeHolder="Address of Occupier"></app-form-validation-error>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <label for="managerName" class="form-label required">1.7 Name of Manager</label>
+                <input type="text" class="form-control" id="managerName" formControlName="managerName" minlength="5" maxlength="100"/>
+                <span class="character-count">{{ getCharacterCount('managerName') }}/100</span>
+                <div *ngIf="hasExceededMaxLength('managerName')" class="error-message">You have exceeded the max length of 100 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="managerName" placeHolder="Name of Manager"></app-form-validation-error>
+              </div>
+              <div class="col-md-6">
+                <label for="managerAddress" class="form-label required">1.8 Address of Manager</label>
+                <input type="text" class="form-control" id="managerAddress" formControlName="managerAddress" minlength="5" maxlength="500" />
+                <span class="character-count">{{ getCharacterCount('managerAddress') }}/500</span>
+                <div *ngIf="hasExceededMaxLength('managerAddress')" class="error-message">You have exceeded the max length of 500 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="managerAddress" placeHolder="Address of Manager"></app-form-validation-error>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-6">
+                <label for="presentPersonName" class="form-label required">1.9 Name of Person Present</label>
+                <input type="text" class="form-control" id="presentPersonName" formControlName="presentPersonName" minlength="5" maxlength="100"/>
+                <span class="character-count">{{ getCharacterCount('presentPersonName') }}/100</span>
+                <div *ngIf="hasExceededMaxLength('presentPersonName')" class="error-message">You have exceeded the max length of 100 characters.</div>
+                <div *ngIf="isMinLength('presentPersonName')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="presentPersonName" placeHolder="Name of Person Present"></app-form-validation-error>
+              </div>
+              <div class="col-md-6">
+                <label for="presentPersonAddress" class="form-label required">1.10 Address of Person Present</label>
+                <input type="text" class="form-control" id="presentPersonAddress" formControlName="presentPersonAddress" minlength="5" maxlength="500"/>
+                <span class="character-count">{{ getCharacterCount('presentPersonAddress') }}/500</span>
+                <div *ngIf="hasExceededMaxLength('presentPersonAddress')" class="error-message">You have exceeded the max length of 500 characters.</div>
+                <div *ngIf="isMinLength('presentPersonAddress')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"  [formGroup]="Input_Form" controlName="presentPersonAddress" placeHolder="Address of Person Present"></app-form-validation-error>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            
+          </div>
+    </form>
+  </div>
+</div>

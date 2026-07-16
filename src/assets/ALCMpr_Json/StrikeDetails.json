@@ -1,0 +1,85 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 4,
+      "SectionTitle": "Strike/Closed Details",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "InstitutionName",
+                "ColumnTitle": "Name of Institution",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "Strike",
+                "ColumnTitle": "Strike/Closed",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "reason",
+                "ColumnTitle": "Reason",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "startDate",
+                "ColumnTitle": "Start Date",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "endDate",
+                "ColumnTitle": "End Date",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "method",
+                "ColumnTitle": "Method",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "WorkerInInstitution",
+                "ColumnTitle": "Total Number of Worker in Institution",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "LostMandays",
+                "ColumnTitle": "Strike/Closed Direct effect on Lost mandays",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "DirectlyIndirectly",
+                "ColumnTitle": "Directly/Indirectly",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "InstitutionName": "",
+                "Strike": "",
+                "reason": "",
+                "startDate": "",
+                "endDate": "",
+                "method": "",
+                "WorkerInInstitution": "",
+                "LostMandays": "",
+                "DirectlyIndirectly": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

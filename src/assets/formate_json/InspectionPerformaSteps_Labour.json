@@ -1,0 +1,160 @@
+[
+	{
+		"partHeading":"PART-I",
+		"partSubHeading":"General",
+		"uiPageUrl":"labour-part-i-general-detail",
+		"isCompleted":false,
+		"stepCode":"PART-I",
+		"hasPageUrl":true
+	},
+	{
+		"partHeading":"PART-II",
+		"partSubHeading":"Detail of Factory",
+		"uiPageUrl":"labour-part-ii-factory-detail",
+		"isCompleted":false,
+		"stepCode":"PART-II",
+		"hasPageUrl":true
+	},
+	{
+		"partHeading":"PART-III",
+		"partSubHeading":"Inspection Report",
+		"uiPageUrl":"",
+		"isCompleted":false,
+		"stepCode":"PART-III",
+		"hasPageUrl":false,
+		"items":[
+			{
+				"itemHeading":"Workers Details",
+				"itemSubHeading": "A. Details as per muster roll",
+				"uiPageUrl":"labour-part-iii-worker-detail-muster-roll",
+				"isCompleted":false,
+				"stepCode":"WORKER_DETAIL",
+				"hasPageUrl":true
+			},
+			
+			{
+				"itemHeading":"Equal Enumeration Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-equal-enumeration-act",
+				"isCompleted":false,
+				"stepCode":"Equal_Enumeration_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Minimum Wage Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-minimum-wage-act",
+				"isCompleted":false,
+				"stepCode":"Minimum_Wage_Act",
+				"hasPageUrl":true
+
+			},
+			{
+				"itemHeading":"Payment Wage Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-payment-wage-act",
+				"isCompleted":false,
+				"stepCode":"Payment_Wage_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Payment Bonus Act Statutory Report",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-payment-bonus-act-statutory-report",
+				"isCompleted":false,
+				"stepCode":"Payment_Bonus_Act_Statutory_Report",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Child Adolescent Labour Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-child-adolescent-labour-act",
+				"isCompleted":false,
+				"stepCode":"Child_Adolescent_Labour_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"National And Festival Holidays",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-national-holidays",
+				"isCompleted":false,
+				"stepCode":"National_Festival_Holidays",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Maternity Benefit Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-maternity-benefit-act",
+				"isCompleted":false,
+				"stepCode":"Maternity_Benefit_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Contract Labour Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-contract-labour-act",
+				"isCompleted":false,
+				"stepCode":"Contract_Labour_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Inter State Migrant Workmen Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-inter-state-migrant-workmen-act",
+				"isCompleted":false,
+				"stepCode":"Inter_State_Migrant_Workmen_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Labour Welfare Fund Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-lwf-act",
+				"isCompleted":false,
+				"stepCode":"Labour_Welfare_Fund_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Gratuity Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-gratuity-act",
+				"isCompleted":false,
+				"stepCode":"Gratuity_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"Industrial Employment Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-industrial-employment-act",
+				"isCompleted":false,
+				"stepCode":"Industrial_Employment_Act",
+				"hasPageUrl":true
+			},
+			{
+				"itemHeading":"BOCW Act",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-bocw-act",
+				"isCompleted":false,
+				"stepCode":"BOCW_Act",
+				"hasPageUrl":true
+			},
+			
+			{
+				"itemHeading":"Observations",
+				"itemSubHeading": "",
+				"uiPageUrl":"labour-part-iii-observations",
+				"isCompleted":false,
+				"stepCode":"Observations",
+				"hasPageUrl":true
+			}
+
+		]
+	},
+	{
+		"partHeading":"Confirm & Lock",
+		"partSubHeading":"Confirm & Lock",
+		"uiPageUrl":"labour-confirm-lock",
+		"isCompleted":false,
+		"stepCode":"LOCk",
+		"hasPageUrl":true
+	}
+]

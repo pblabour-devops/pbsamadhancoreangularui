@@ -1,0 +1,36 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 2,
+      "SectionTitle": "Recovery Certificate",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Counts", "ColumnTitle": "Counts", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Rupees", "ColumnTitle": "Rupees", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Remarks", "ColumnTitle": "Remarks", "DataType": "Number", "IsMendatory": false }
+             
+              
+            ],
+            "Rows": [
+              { "category": "1. Pending at the beginning of the month" },
+              { "category": "2. Released during the month" },
+              { "category": "3. Payment Recovered during the Month" },
+              { "category": "4. Payment Disbursed during the Month" },
+              { "category": "5. Payment Pending at the end of the Month" },
+              { "category": "6. Stay Cases" },
+              { "category": "7. Total" },
+              { "category": "8. A) Upto 3 Months" },
+              { "category": "9. B) More Than 3 Months" }
+             
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

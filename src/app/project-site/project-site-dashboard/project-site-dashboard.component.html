@@ -1,0 +1,425 @@
+
+<div class="pcoded-main-container">
+  <div class="pcoded-wrapper">
+    <div class="pcoded-content">
+      <div class="pcoded-inner-content">
+        <div class="main-body">
+          <div class="page-wrapper">
+
+            <!-- Page Header -->
+            <div class="page-header" style="margin-bottom: 1.5rem;">
+              <div class="page-block">
+                <div class="row align-items-center">
+                  <div class="col-md-12 d-flex justify-content-between align-items-center">
+
+                    <!-- Breadcrumb -->
+                    <ul class="breadcrumb mb-0">
+                      <li class="breadcrumb-item">
+                        <a (click)="MenuButtonClick()" style="cursor:pointer;">
+                          <i class="feather icon-home"></i>
+                        </a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a (click)="MenuButtonClick()" style="cursor:pointer;">Home</a>
+                      </li>
+                      <li class="breadcrumb-item active" style="color:#0F6E56; font-weight:500;">
+                        Project Site
+                      </li>
+                    </ul>
+
+                    <!-- New Button -->
+                    <button *ngIf="loginType != 'IP'" class="btn btn-new-site" (click)="AddNewProjectSite()">
+                      <i class="feather icon-plus-circle"></i> New Project Site
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site Cards Grid -->
+            <div class="row">
+              <div class="col-sm-12">
+
+                    <div class="site-table-container">
+          <table class="site-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Establishment</th>
+                <th>IPIN(Invest Punjab)</th>
+                <th>Licence Number.</th>
+                <th>Location</th>
+                <th>Created On</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let site of projectSites; let i = index">
+                <td>
+                  <span class="serial-badge">
+                    {{ (i + 1) <= 9 ? ('0' + (i + 1)) : (i + 1) }}
+                  </span>
+                </td>
+
+                <td>
+                  <div class="establishment-info">
+                    <div class="establishment-name">
+                      {{ site.establishmentName }}
+                    </div>
+                     <div class="establishment-address">
+                      <i class="fas fa-map-marker-alt me-1"></i>
+                      {{ site.address || 'Address Not Available' }}
+                    </div>
+                    <div class="site-id">
+                     Labour Project ID: {{ site.projectSiteId }}
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <span class="ipin-chip">
+                   {{ site.investPunjab_Ipin || 0 }}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="licence-text">
+                    {{ site.licenceNumber || 'N/A' }}
+                  </span>
+                </td>
+
+                <td>
+                  <div class="location-info">
+                    <div>{{ site.districtName }}</div>
+                    <small>
+                      {{ site.tehsilName }} | {{ site.alcCircleName }}
+                    </small>
+                  </div>
+                </td>
+
+                <td>
+                  {{ site.createdDate | date:'dd MMM yyyy' }}
+                </td>
+
+                <td>
+                  <button
+                    class="btn-view"
+                    (click)="viewSiteServices(site.projectSiteId, site.projectSiteVersion)">
+                    <i class="fas fa-eye"></i>
+                    View Details
+                  </button>
+                </td>
+              </tr>
+
+              <tr *ngIf="!projectSites?.length">
+                <td colspan="7" class="empty-state">
+                  No Project Sites Found
+                </td>
+              </tr>
+                <tr class="licence-search-row">
+                    <td colspan="7">
+                     <div class="licence-help-banner">
+  <i class="fas fa-info-circle"></i>
+
+  <span>
+    Can't find your licence in the above list?
+  </span>
+
+  <a href="javascript:void(0)"
+     (click)="openMergeTemplate(previewMergeFactoryLicence)">
+     Search & Merge Licence
+  </a>
+</div>
+                    </td>
+                  </tr>
+
+                  <tr *ngIf="!projectSites?.length">
+                    <td colspan="7" class="empty-state">
+                      No Project Sites Found
+                    </td>
+                  </tr>
+                </tbody>
+
+          </table>
+
+                </div>
+
+                <!-- Merge / Search Licence Card -->
+                <!-- <div class="merge-card">
+                  <div class="merge-icon-wrap">
+                    <i class="feather icon-help-circle"></i>
+                  </div>
+                  <h6>Desired licence not listed above?</h6>
+                  <p class="text-muted">You can search and merge your licence easily.</p>
+                  <button class="btn btn-search-licence"
+                          (click)="openMergeTemplate(previewMergeFactoryLicence)">
+                    <i class="feather icon-search"></i> Search Licence
+                  </button>
+                </div> -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+      <div class="text-center bg-danger text-white">
+    <h5 class="Header-Text" style="padding-top:10px;">
+      Add Project Site
+
+      <button type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+              style="margin-right:22px;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </h5>
+  </div>
+
+  <div class="modal-body">
+    <app-project-site-form></app-project-site-form>
+  </div>
+
+</ng-template>
+
+
+<ng-template #previewMergeFactoryLicence let-modal>
+
+  <!-- HEADER -->
+  <div class="licence-search-card">
+  <div class="search-header">
+    <i class="feather icon-search"></i>
+    Search Licence
+  </div>
+</div>
+
+  <!-- BODY -->
+  <div class="modal-body">
+
+    <!-- SEARCH BOX -->
+    <div class="search-box mb-4 p-3">
+      <div class="row align-items-center">
+
+        <div class="search-input-group">
+    <input
+      type="text"
+      #licenceInput
+      class="form-control licence-input"
+      placeholder="Enter Licence Number" />
+
+  </div>
+
+        <div class="col-md-3 text-right">
+          <button class="btn btn-primary px-3"
+                  (click)="onLicenceNoSearchClick(licenceInput.value)">
+            <i class="feather icon-search"></i> Search
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+	   <div *ngIf="factoryDetails?.length > 0 && isLicenseExist" class="table-responsive">
+      <table class="table table-hover table-bordered custom-table">
+
+        <thead>
+          <tr>
+            <th>Establishment</th>
+            <th>Invest Punjab</th>
+            <th>User</th>
+            <th>Licence</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let f of factoryDetails">
+
+            <td>
+              <strong>{{ f.establishmentName }}</strong><br />
+              <small class="text-muted">{{ f.address }}</small>
+            </td>
+
+            <td>
+              <div><b>Ipin:</b> <span class="ipin-chip">{{ f.investPunjab_Ipin || 'N.A.' }}</span></div>
+              <div><b>AppId:</b> <span class="appid-chip">{{ f.investPunjab_AppId || 'N.A.' }}</span></div>
+            </td>
+
+            <td>
+              <div><b>User:</b> {{ f.userName }}</div>
+              <div><b>Name:</b> {{ f.applicantName }}</div>
+            </td>
+
+            <td>
+              <span class="licence-chip">
+                {{ f.licenceNumber }}
+              </span>
+            </td>
+
+            <td>
+              <div>
+                <i class="feather icon-phone text-muted"></i>
+                {{ f.mobileNo }}
+              </div>
+              <div>
+                <i class="feather icon-mail text-muted"></i>
+                {{ f.email }}
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <!-- NOT FOUND -->
+    <div *ngIf="isLicenseExist === 2" class="alert alert-danger text-center">
+      <i class="feather icon-alert-circle"></i>
+      The licence you entered does not exist.
+    </div>
+
+    <div *ngIf="isAlreadyMerged" class="alert alert-info text-center">
+      This licence is already merged with user: <strong>{{ this.factoryDetails[0].userName }}</strong>.
+    </div>
+    <!-- MULTIPLE IPIN -->
+    <div *ngIf="isLicenseExist === 1 && investPunjabIpin?.length > 1 && !isAlreadyMerged"
+         class="alert alert-warning text-center">
+      Kindly login with username:
+      <strong>{{ userName }}</strong> on Fastrack Portal.
+      <br />
+      If password not available, please reset it.
+    </div>
+
+    <!-- SINGLE IPIN -->
+    <div *ngIf="isLicenseExist && investPunjabIpin?.length === 1 && !isAlreadyMerged">
+
+      <div class="alert alert-warning text-center mb-2">
+        Licence({{ factoryDetails[0].licenceNumber }}) found but not linked with Invest Punjab.
+        Please create a new user and merge this licence.
+      </div>
+
+      <div class="text-center font-weight-bold text-muted mb-2">OR</div>
+
+      <div class="alert alert-info text-center">
+        You can map this licence with an current user ({{ authService.getUserJwtDecodedInfo()?.UserName }}) by taking consent on factoryDetails[0]?.mobileNo.
+      </div>
+
+      <div class="text-center mt-2">
+        <button
+          (click)="openOtpPopup(otpPopup, factoryDetails[0].licenceNumber)"
+          class="btn-merge">
+          <i class="feather icon-git-merge"></i> Merge Licence
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="modal-footer">
+    <button class="btn btn-danger" (click)="dismissAllModals()">
+      Close
+    </button>
+  </div>
+
+</ng-template>
+
+
+<ng-template #otpPopup let-modal>
+
+  <!-- HEADER -->
+  <div class="modal-header border-0 pb-0">
+    <h5 class="modal-title fw-bold text-dark">
+      Verify OTP
+    </h5>
+    <button type="button" class="close" (click)="dismissAllModals()">
+      <span>&times;</span>
+    </button>
+  </div>
+
+  <!-- BODY -->
+  <div class="modal-body text-center pt-2 pb-4">
+
+    <!-- Icon -->
+    <div class="otp-icon mb-3">
+      <i class="feather icon-shield"></i>
+    </div>
+
+    <!-- Message -->
+    <p class="text-muted mb-2">
+      Enter the 4-digit code sent to
+    </p>
+    <p class="fw-bold mb-3">
+      {{ maskedPhoneNumber }}
+    </p>
+
+    <form [formGroup]="submitForm">
+
+      <!-- OTP BOXES -->
+      <div class="d-flex justify-content-center mb-3">
+        <div class="d-flex justify-content-center mb-3">
+  <input #otp1 type="text" maxlength="1" class="form-control otp-box mx-1"
+         formControlName="otp1"
+         (input)="onOtpInput($event, otp2)"
+         [value]="submitForm.get('otp1')?.value"
+         (keydown)="onOtpKeyDown($event, null)">
+
+  <input #otp2 type="text" maxlength="1" class="form-control otp-box mx-1"
+         formControlName="otp2"
+         (input)="onOtpInput($event, otp3)"
+         [value]="submitForm.get('otp2')?.value"
+         (keydown)="onOtpKeyDown($event, otp1)">
+
+  <input #otp3 type="text" maxlength="1" class="form-control otp-box mx-1"
+         formControlName="otp3"
+         (input)="onOtpInput($event, otp4)"
+         [value]="submitForm.get('otp3')?.value"
+         (keydown)="onOtpKeyDown($event, otp2)">
+
+  <input #otp4 type="text" maxlength="1" class="form-control otp-box mx-1"
+         formControlName="otp4"
+         (input)="onOtpInput($event, null)"
+         [value]="submitForm.get('otp4')?.value"
+         (paste)="onOtpPaste($event)"
+         (keydown)="onOtpKeyDown($event, otp3)">
+</div>
+      </div>
+
+      <!-- ERROR -->
+      <div *ngIf="!submitForm.valid && submitForm.touched"
+           class="text-danger small mb-2">
+        Please enter complete OTP
+      </div>
+
+      <!-- BUTTON -->
+      <button type="button"
+              class="btn btn-primary w-100 otp-btn"
+              [disabled]="!submitForm.valid"
+              (click)="submitOtp()">
+        Verify & Continue
+      </button>
+
+    </form>
+
+    <!-- RESEND -->
+    <div class="mt-3">
+      <small class="text-muted">Didn't receive OTP?</small><br>
+      <span class="resend-link" (click)="resendOtp()">Resend Code</span>
+    </div>
+
+  </div>
+
+</ng-template>
+
+  

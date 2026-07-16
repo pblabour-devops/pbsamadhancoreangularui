@@ -1,0 +1,55 @@
+<!-- <div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card col-md-8 card-form alert">
+            <div class="row">
+                <div class="col-md-12">
+                    Dear {{paramInfo?.name}}, <br>
+                    <p>Thank you for visiting on the eLabour portal. Our system observed that you had faced some issues
+                        while performing some actions on the portal.
+                        Our system has created and assigned a ticket (Ticket #{{paramInfo?.rootActivityRefId}}) to the
+                        concerned technical team and which are
+                        under process</p>
+
+                    <p>We apologize for the inconvenience caused to you, and we assure you that as soon as possible, the
+                        issue will be resolved. Our helpdesk team will inform you of the further action.</p>
+
+                    <p>For more information, kindly contact the helpdesk team.</p>
+
+                    <p>We appreciate your time and patience.</p>
+                    <button (click)="moveToHomepage()" class="btn btn-outline-danger mb-4 toggle-btn"> Back to Invest Punjab</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div> -->
+
+
+
+
+<div class="container">
+    <p class="header">Dear {{paramInfo?.name}},</p>
+    <p class="subheader">Thank you for visiting and applying for service on the eLabour portal. Our system observed
+        that you had faced some issues while performing some actions on the portal. Our system has created and
+        assigned a ticket (<span class="ticket-Id">Ticket# : {{paramInfo?.rootActivityRefId}}</span>) to the concerned
+        technical team.</p>
+
+    <p>We apologize for the inconvenience caused to you, and we assure you that as soon as possible, the issue will
+        be resolved. Our helpdesk team will inform you of the further action.</p>
+
+    <p>For more information, kindly contact the helpdesk team.</p>
+
+    <p>We appreciate your time and patience.</p>
+
+    <div class="signature">
+        <p>HelpDesk Contact Details,<br />
+            <i class="feather icon-phone-call"></i> +91-9814551313<br />
+            <i class="feather icon-mail"></i> elabourhelpdesk[at]gmail[dot]com<br />
+    </div>
+
+    <div class="text-center">
+        <button (click)="moveToHomepage(paramInfo?.applicationType)" class="btn btn-outline-danger mb-4 toggle-btn"> Back to Invest
+            Punjab</button>
+    </div>
+</div>

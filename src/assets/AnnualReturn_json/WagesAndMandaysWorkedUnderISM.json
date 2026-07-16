@@ -1,0 +1,36 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 34,
+      "SectionTitle": "Wages and Mandays Details",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Wages Paid and Mandays Worked",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "1. Number of mandays worked by" },
+              { "category": "2. Amount of Wages Paid" },
+              { "category": "3. Amount of Deductions from wages,if any" },
+              { "category": "4. Amount of displacement allowance paid" },
+              { "category":"5. Amount of outward journey allowance paid" },
+              { "category":"6. Amount of wages for outward journey period paid" },
+              { "category": "7. Amount of return journey allowance paid" },
+             { "category": "7. Amount of wages for return journey period paid" }
+             
+              
+            ]
+          }
+        }  
+      ]
+    }
+  }
+]

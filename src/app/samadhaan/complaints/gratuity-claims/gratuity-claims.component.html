@@ -1,0 +1,296 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card" >
+            <div class="m-2">
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+    <div class="title-bar">
+        Application for Your Complaint
+      </div>
+    
+    
+        <!-- General Information label -->
+        <div class="general-info-label">
+          General Information <span class="required">*</span>
+        </div>
+          <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+  
+    <div class="section-card">
+    
+  
+      <!-- Claim Information -->
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Select basis of claim <span class="text-danger">*</span></label>
+          <select
+            class="form-control"
+            formControlName="basisOfClaim"
+            [class.is-invalid]="formControls.basisOfClaim.touched && formControls.basisOfClaim.invalid">
+            <option value="">Select</option>
+            <option *ngFor="let b of basisOfClaimOptions" [value]="b.value">{{ b.text }}</option>
+          </select>
+          <div class="invalid-feedback">
+            Basis of claim is required
+          </div>
+        </div>
+  
+        <div class="form-group col-md-4">
+          <label>Date of end of employment</label>
+          <input type="date" class="form-control" formControlName="employmentEndDate" />
+        </div>
+  
+        <div class="form-group col-md-4">
+          <label>Date of start of employment</label>
+          <input type="date" class="form-control" formControlName="employmentStartDate" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Years of Continuous Service</label>
+          <input type="text" class="form-control" formControlName="yearsOfContinuousService" readonly />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>Whether application was made to employer for gratuity
+            <span class="text-danger">*</span>
+          </label>
+          <select
+            class="form-control"
+            formControlName="isApplicationMadeToEmployer"
+            [class.is-invalid]="formControls.isApplicationMadeToEmployer.touched && formControls.isApplicationMadeToEmployer.invalid">
+            <option value="">-- Select --</option>
+            <option *ngFor="let opt of yesNoOptions" [value]="opt.id">{{ opt.text }}</option>
+          </select>
+          <div class="invalid-feedback">
+            Please specify whether application was made to employer
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Specify dispute details</label>
+        <div class="col-md-9">
+          <textarea
+            class="form-control"
+            rows="2"
+            formControlName="disputeDetails">
+          </textarea>
+        </div>
+      </div>
+  
+      <!-- <div class="form-group row">
+        <label class="col-md-3 col-form-label">
+          Upload any additional documents related to the dispute
+        </label>
+        <div class="col-md-9">
+          <input type="file" class="form-control" />
+          <small class="text-success d-block mt-1">Supporting Documents (Max size: 30MB)</small>
+        </div>
+      </div> -->
+  
+    </div>
+  
+    <!-- Annexure -->
+    <div class="section-card">
+      <h5 class="section-title">Annexure</h5>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>1. Full name and address of applicant <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="applicantNameAndAddress"
+            [class.is-invalid]="formControls.applicantNameAndAddress.touched && formControls.applicantNameAndAddress.invalid" />
+          <div class="invalid-feedback">
+            Applicant name and address is required
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>2. Basis of claim <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="claimBasisDescription"
+            [class.is-invalid]="formControls.claimBasisDescription.touched && formControls.claimBasisDescription.invalid" />
+          <div class="invalid-feedback">
+            Claim basis description is required
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>3. Name and address in full of the employee <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="employeeNameAndAddress"
+            [class.is-invalid]="formControls.employeeNameAndAddress.touched && formControls.employeeNameAndAddress.invalid" />
+          <div class="invalid-feedback">
+            Employee name and address is required
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>4. Marital status <span class="text-danger">*</span></label>
+          <select
+            class="form-control"
+            formControlName="maritalStatus"
+            [class.is-invalid]="formControls.maritalStatus.touched && formControls.maritalStatus.invalid">
+            <option value="">Select</option>
+            <option *ngFor="let m of maritalStatusOptions" [value]="m.value">{{ m.text }}</option>
+          </select>
+          <div class="invalid-feedback">
+            Marital status is required
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>5. Full name and address of employer <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="employerNameAndAddress"
+            [class.is-invalid]="formControls.employerNameAndAddress.touched && formControls.employerNameAndAddress.invalid" />
+          <div class="invalid-feedback">
+            Employer name and address is required
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>6. Department (where the employee was last employed)</label>
+          <input type="text" class="form-control" formControlName="department" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>7. Post held by the employee with ticket or serial no. if any</label>
+          <input type="text" class="form-control" formControlName="employeePost" />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>8. Date of appointment of the employee (if known)</label>
+          <input type="date" class="form-control" formControlName="appointmentDate" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>8.1 Date of termination of employment</label>
+          <input type="date" class="form-control" formControlName="terminationDate" />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>8.2 Reason for termination of employment</label>
+          <input type="text" class="form-control" formControlName="terminationReason" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>9. Total period of service</label>
+          <input type="text" class="form-control" formControlName="totalServicePeriod" readonly />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>10. Last drawn wages <span class="text-danger">*</span></label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="lastDrawnWages"
+            [class.is-invalid]="formControls.lastDrawnWages.touched && formControls.lastDrawnWages.invalid" />
+          <div class="invalid-feedback">
+            Wages last drawn by the employee is required
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>11. If nominee, nomination number with employer</label>
+          <input type="text" class="form-control" formControlName="nominationNumber" />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>12 Date of recording nomination with employer</label>
+          <input type="date" class="form-control" formControlName="nominationRecordingDate" placeholder="DD/MM/YYYY" />
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">13 Evidence/witness in support of being a legal heir</label>
+        <div class="col-md-9">
+          <input type="file" class="form-control" />
+          <small class="text-success d-block mt-1">Supporting Documents (Max size: 30MB)</small>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>14. Total gratuity payable (if known)</label>
+          <input type="number" class="form-control" formControlName="totalGratuityPayable" />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>15. Percentage of gratuity payable to the applicant</label>
+          <input type="number" class="form-control" formControlName="gratuityPercentagePayable" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>16. Gratuity amount claimed by applicant <span class="text-danger">*</span></label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="gratuityAmountClaimed"
+            [class.is-invalid]="formControls.gratuityAmountClaimed.touched && formControls.gratuityAmountClaimed.invalid" />
+          <div class="invalid-feedback">
+            Gratuity amount claimed by applicant is required
+          </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label>Date</label>
+          <input type="date" class="form-control" formControlName="claimDate" />
+        </div>
+      </div>
+  
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Place</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" formControlName="place" />
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="button" class="btn btn-info text-white" (click)="resetForm()">Reset</button>
+      <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Next</button>
+    </div>
+  
+  </form>
+    </div>
+</div>
+    </div>
+</div>

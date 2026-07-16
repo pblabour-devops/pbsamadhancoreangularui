@@ -1,0 +1,83 @@
+.float-right{
+    background: #dcf7f3;
+    border-color: #ffcfd7;
+    color: #473B7B;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 5px;
+}
+.pcoded-navbar[_ngcontent-sye-c126] .pcoded-inner-navbar[_ngcontent-sye-c126] li.pcoded-menu-caption[_ngcontent-sye-c126] {
+    font-size: 18px;
+    padding: 14px 6px 18px;
+    position: relative;
+    letter-spacing: 0px;
+    margin-top: 10px;
+}
+
+.sub-menu{
+    margin-left: 15px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Poppins';
+}
+.menu-title{
+    margin-left: 0px; 
+    font-weight: 800; 
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.status-inbox {
+    color: blue;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.status-in-process {
+    color: orange;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.status-approved {
+    color: green;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.status-rejected {
+    color: red;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.status-deemed {
+    color: purple;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.service-type{
+    margin-left: 0px;
+    text-transform: none;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Poppins';
+}
+
+.pcoded-navbar .pcoded-inner-navbar li.pcoded-menu-caption {
+    font-size: 12px;
+    /* font-weight: 600; */
+    color: #fff;
+    padding: 18px 15px 5px;
+    position: relative;
+    /* text-transform: lowercase; */
+    letter-spacing: 1px;
+    /* border-top: 1px solid #496178;
+    margin-top: 10px; */
+}
+
+.nav-link{
+    cursor: pointer;
+}

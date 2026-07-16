@@ -1,0 +1,49 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 26,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+           {
+            "LableSortId": 1,
+            "LableTitle": "Half Year Slab",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["January to June", "July to December"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+            { "LableSortId": 2, "LableTitle": "1(a) Name of Contractor", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(b) Postal Address of Contractor", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "2(a) Name of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(b) Postal Address of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "(c) Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":7, "LableTitle": "3(a) Name of Employer", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":8, "LableTitle": "(b) Residential Address of Employer", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":9, "LableTitle": "(c) Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+             { "LableSortId":10, "LableTitle": "4(a) Duration of Contract From", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":11, "LableTitle": "(b) Duration of Contract to", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":12, "LableTitle": "(5(a)) Number of Days during the half year on which the establishment of the principal employer had worked", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":13, "LableTitle": "(5(b)) Number of Days during the half year on which the Contractor's establishment had worked", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+          ]
+        }
+        
+      ]
+    }
+  }
+]

@@ -1,0 +1,50 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+  <div class="section-card">
+    <h5 class="section-title">
+      Motor Transport Details
+    </h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">UBIN</label>
+        <input type="text" class="form-control" formControlName="ubin">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Name of Motor transport undertaking</label>
+        <input type="text" class="form-control" formControlName="motorTransportNameUndertaking">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">Name of Motor transport service</label>
+        <input type="text" class="form-control" formControlName="motorTransportServiceName">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Total No. of mileage</label>
+        <input type="number" class="form-control" formControlName="mileage">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">Total number of motor transport vehicle on the last date of the preceding year</label>
+        <input type="number" class="form-control" formControlName="noOfVehicle">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Maximum No. of motor transport workers employed on any day during preceding year</label>
+        <input type="number" class="form-control" formControlName="maxNoOfEmployedOnAnyDay">
+      </div>
+    </div>
+  </div>
+</form>

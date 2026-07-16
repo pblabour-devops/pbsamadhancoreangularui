@@ -1,0 +1,32 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 23,
+      "SectionTitle": "",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Canteen Facilities",
+          "Lables": [
+           
+            { "LableSortId": 1, "LableTitle": "(9) Canteens (Number of canteens and situations)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+
+          ]
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Medical Facilities",
+          "Lables": [
+           
+            { "LableSortId": 1, "LableTitle": "(10(a)) Number of dispensaries and situations", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(10(b)) Details of accomodation,furniture and other equipment provided", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(10(c)) Approximate average daily attendance of workers", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+
+          ]
+        }
+     ]
+    }
+  }
+]

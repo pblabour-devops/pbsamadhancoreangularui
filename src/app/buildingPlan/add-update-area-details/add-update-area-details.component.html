@@ -1,0 +1,238 @@
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-42</h6>
+                    <h5><i class="feather icon-check"></i> Particulars of rooms</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList"></app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                                <div class="tableHead">
+                                    <h6><span class="badge badge-pill badge-dark"> <i class="icon feather icon-sun text-warning"></i> You can add multiple building plan area detail, To add new details fill the below form and click on add button</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>No of Rooms</th>
+                                                    <th>Length(x-axis)</th>
+                                                    <th>Breadth(y-axis)</th>
+                                                    <th>Maximum Height(z-axis)</th>
+                                                    <th>Minimum Height(z-axis)</th>
+                                                    <th>Purpose Of Room</th>
+                                                    <th>Construction Period</th>
+                                                    <th>Remarks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngIf="detailData?.length>0">
+                                                <tr *ngFor="let item of detailData">
+                                                    <td>{{item.numberOfRooms}}</td>
+                                                    <td>{{item.lengthOfRoom_X_Axis}}</td>
+                                                    <td>{{item.breadthOfRoom_Y_Axis}}</td>
+                                                    <td>{{item.maximum_Z_Axis_Height}}</td>
+                                                    <td>{{item.minimum_Z_Axis_Height}}</td>
+                                                    <td>{{item.purposeOfRoom}}</td>
+                                                    <td>{{item.constructionPeriod}}</td>
+                                                    <td>{{item.remarks}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody *ngIf="detailData?.length==0">
+                                                <tr>
+                                                    <td colspan="8">No area details added yet..</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light">
+                                <form [formGroup]="BuildingPlan_AreaDetail_Form" (ngSubmit)="onSubmit()">
+                                    <input type="hidden" formControlName="buildingPlanRefId">
+                                    <input type="hidden" formControlName="buildingPlan_AreaDetailId">
+
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info"> Particulars of rooms</span></h6>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Number of rooms
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="numberOfRooms">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="numberOfRooms" placeHolder="number Of Rooms"></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Length <span class="fw-normal text-primary">(x-axis coordinate)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="lengthOfRoom_X_Axis">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="lengthOfRoom_X_Axis" placeHolder="length Of Room X Axis"></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Breadth <span class="fw-normal text-primary">(y-axis coordinate)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="breadthOfRoom_Y_Axis">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="breadthOfRoom_Y_Axis" placeHolder="breadth Of Room Y Axis"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Height Maximum <span class="fw-normal text-primary">(z-axis coordinate)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="maximum_Z_Axis_Height">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="maximum_Z_Axis_Height" placeHolder="maximum Z Axis Height"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Height Minimum <span class="fw-normal text-primary">(z-axis coordinate)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="minimum_Z_Axis_Height">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="minimum_Z_Axis_Height" placeHolder="minimum Z Axis Height"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Area
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="area">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="area" placeHolder="area"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Area Occupied By Machine
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="areaOccupiedByMachine">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="areaOccupiedByMachine" placeHolder="area Occupied By Machine"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            volume
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="volume">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="volume" placeHolder="volume"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Breathing Space
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="breathingSpace">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="breathingSpace" placeHolder="breathing Space"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Ventilation
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="ventilation">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="ventilation" placeHolder="ventilation"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Lighting Level
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="lightingLevel">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="lightingLevel" placeHolder="lighting Level"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Maximum Capicity of Room
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="maximumCapicityOfRoom">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="maximumCapicityOfRoom" placeHolder="maximum Capicity of Room"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Number Of Persons To Employed In Room
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="numberOfPersonsToEmployedInRoom">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="numberOfPersonsToEmployedInRoom" placeHolder="number Of Persons To Employed In Room"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Purpose Of Room
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="purposeOfRoom">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="purposeOfRoom" placeHolder="purpose Of Room"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Construction Period
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="constructionPeriod">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="constructionPeriod" placeHolder="construction Period"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Remarks
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm" formControlName="remarks"></textarea>
+                                            <app-form-validation-error [formGroup]="BuildingPlan_AreaDetail_Form" controlName="remarks" placeHolder="remarks"></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align: center;">
+                                            <button type="submit" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedAddMsg" class="btn btn-success text-center" [disabled]="!BuildingPlan_AreaDetail_Form.valid"><i class="feather icon-plus-circle"></i> Add Area Details</button>
+                                            <ng-template #lockedAddMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger">Home</button>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" (click)="nextPage()" class="btn btn-primary">Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

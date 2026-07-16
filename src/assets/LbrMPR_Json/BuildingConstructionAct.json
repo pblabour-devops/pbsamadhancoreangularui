@@ -1,0 +1,328 @@
+[
+    {
+  "Section": {
+    "SectionSortId": 31,
+    "SectionTitle": "The Building and Other Constructions Workers (Regulation of Employment and Conditions of Service) Act, 1996",
+    "SubSections": [
+      {
+        "SubSectionSortId": 1,
+        "SubSectionTitle": "Accident Summary",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "No. of Accidents Reported (Fatal & Non-Fatal)",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          }
+        ]
+      },
+      {
+        "SubSectionSortId": 2,
+        "SubSectionTitle": "Fatal Accidents Details (Month-wise)",
+        "Lables": [],
+        "Table": {
+          "Columns": [
+            { "ColumnId": "Month", "ColumnTitle": "Month", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "FallingFromHeight", "ColumnTitle": "Falling from Height", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "Electrocution", "ColumnTitle": "Electrocution", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "FallingMaterial", "ColumnTitle": "Falling of Material", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "DustBlindness", "ColumnTitle": "Dust in Eyes (Blindness)", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "LungDisease", "ColumnTitle": "Lung Disease", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "Other", "ColumnTitle": "Any Other", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+          ],
+          "Rows": [
+            {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+                 {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+              {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+              {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+              {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+              {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              },
+              {
+                "Month": "",
+                "FallingFromHeight": "",
+                "Electrocution": "",
+                "FallingMaterial":"",
+                "DustBlindness": "",
+                "LungDisease": "",
+                "Other": "",
+                "Total":""
+               
+              }
+          ]
+        }
+      },
+      {
+        "SubSectionSortId": 3,
+        "SubSectionTitle": "Non-Fatal Accidents (Month-wise)",
+        "Lables": [],
+        "Table": {
+          "Columns": [
+            { "ColumnId": "Month", "ColumnTitle": "Month", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "Cause", "ColumnTitle": "Cause of Non-Fatal Accident", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "NoOfCases", "ColumnTitle": "No. of Cases", "DataType": "Number", "IsMendatory": false }
+          ],
+          "Rows": [
+            { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             },
+              { "Month": "",
+              "Cause of Non-Fatal Accident": "",
+               "No. of Cases": ""
+             }
+          ]
+        }
+      },
+     {
+          "SubSectionSortId": 4,
+          "SubSectionTitle": "Assessment of Cess",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Number of assessment cases pending during in the previous Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "0",
+               "IsMendatory": true, 
+               "IsVisible": true, 
+               "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "No. of assessment done during the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "0", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Cess deposited during the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "0", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+               "Value": "", 
+               "IsMendatory": false,
+                "IsVisible": true, 
+                "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "No. of Recovery Certificate Issued during the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "0", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 5,
+              "LableTitle": "Cess Recovered from the Employer (in INR) Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "0", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            }       
+         
+          ]
+        }
+    ]
+  }
+}
+]

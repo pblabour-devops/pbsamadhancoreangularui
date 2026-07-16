@@ -1,0 +1,287 @@
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" />
+  
+  <div class="main-content">
+    <div class="card col-md-10 card-form">
+      <div class="col-md-12">
+        <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+      </div>
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Inspection Report</h4>
+        </div>
+      </div>
+      <div class="container mt-4">
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label for="factorySectionCategoryType" class="form-label required">
+              3.1 Section applicable
+            </label>
+            <select
+              class="form-select form-control"
+              formControlName="factorySectionCategoryType"
+            >
+              <option [selected]="true" value="0" disabled>
+                -- Please Select --
+              </option>
+              <option value="1">2m(i)</option>
+              <option value="2">2m(ii)</option>
+              <option value="3">85</option>
+              <option value="4">2(cb)</option>
+              <option value="5">87(schedule)</option>
+            </select>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="factorySectionCategoryType"
+              placeHolder="Section applicable"
+            ></app-form-validation-error>
+          </div>
+          <div class="col-md-6">
+            <label for="mfg_Process_Reported" class="form-label required">
+              3.2 Manufacturing Process/Product
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="mfg_Process_Reported"
+            />
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="mfg_Process_Reported"
+              placeHolder="mfg_Process_Reported"
+            ></app-form-validation-error>
+          </div>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label for="mfg_Process_Inspected" class="form-label required">
+              3.3 Manufacturing process (On the time of inspection)
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="mfg_Process_Inspected"
+            />
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="mfg_Process_Inspected"
+              placeHolder="mfg_Process_Inspected"
+            ></app-form-validation-error>
+          </div>
+          <div class="col-md-6">
+            <label
+              for="byeProduct_Intermidiates_ChemicalDetail"
+              class="form-label required"
+            >
+              3.4 Bye-product/Intermediates/chemical details
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="byeProduct_Intermidiates_ChemicalDetail"
+            />
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="byeProduct_Intermidiates_ChemicalDetail"
+              placeHolder="byeProduct_Intermidiates_ChemicalDetail"
+            ></app-form-validation-error>
+          </div>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label for="bp_PUPDRules_IsApplicable" class="form-label">
+              3.5 Building Plans: (A) Whether PUPD Rules 2021 applicable or not?
+            </label>
+            <select
+              class="form-select form-control"
+              formControlName="bp_PUPDRules_IsApplicable"
+            >
+              <option value="-1">Not Applicable</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_PUPDRules_IsApplicable"
+              placeHolder="bp_PUPDRules_IsApplicable"
+            ></app-form-validation-error>
+          </div>
+          <div class="col-md-6">
+            <label for="bp_PUPDRules_Status" class="form-label">
+              3.6 Building Plans: Status of approval of plans under these Rules
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bp_PUPDRules_Status" minlength="1" maxlength="500"
+            />
+            <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('bp_PUPDRules_Status') }}/500</span>
+            <div *ngIf="hasExceededMaxLength('bp_PUPDRules_Status')" class="error-message">You have exceeded the max length of 500 characters.</div>
+          </div>
+          <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+            [formGroup]="Input_Form"
+            controlName="bp_PUPDRules_Status"
+            placeHolder="bp_PUPDRules_Status"
+          ></app-form-validation-error>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label for="bp_FactoriesAct_IsAccepted" class="form-label">
+              3.7 Building Plans: (B) Whether building plans under Factories Act
+              1948/Punjab Factory Rules 1952 accepted (yes/No)
+            </label>
+            <select
+              class="form-select form-control"
+              formControlName="bp_FactoriesAct_IsAccepted"
+            >
+              <!-- <option [selected]="true" value="" disabled>
+                -- Please Select --
+              </option> -->
+              <option [ngValue] ="1">Yes</option>
+              <option [ngValue] ="0">No</option>
+            </select>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_FactoriesAct_IsAccepted"
+              placeHolder="bp_FactoriesAct_IsAccepted"
+            ></app-form-validation-error>
+          </div>
+          <div class="col-md-6" *ngIf = "Input_Form.controls.bp_FactoriesAct_IsAccepted.value == 1">
+            <label
+              for="bp_FactoriesAct_ApprovalReferenceNum"
+              class="form-label"
+            >
+              3.7.1 (A) If yes, Give the reference number
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bp_FactoriesAct_ApprovalReferenceNum" minlength="3" maxlength="100"
+              />
+              <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('bp_FactoriesAct_ApprovalReferenceNum') }}/100</span>
+              <div *ngIf="hasExceededMaxLength('bp_FactoriesAct_ApprovalReferenceNum')" class="error-message">You have exceeded the max length of 100 characters.</div>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_FactoriesAct_ApprovalReferenceNum"
+              placeHolder="bp_FactoriesAct_ApprovalReferenceNum"
+            ></app-form-validation-error>
+          </div>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label for="bp_Constructed_IsAsPerApprovedPlans" class="form-label">
+              3.8 (B) Are the buildings constructed and plant/Machinery installed
+              according to the plans approved?
+            </label>
+            <select
+              class="form-select form-control"
+              formControlName="bp_Constructed_IsAsPerApprovedPlans"
+            >
+              <option value= 1>Yes</option>
+              <option value= 0>No</option>
+            </select>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_Constructed_IsAsPerApprovedPlans"
+              placeHolder="bp_Constructed_IsAsPerApprovedPlans"
+            ></app-form-validation-error>
+          </div>
+
+          <div class="col-md-6" *ngIf = "Input_Form.controls.bp_Constructed_IsAsPerApprovedPlans.value == 1">
+            <label
+              for="bP_FactoriesAct_ApprovalDate"
+              
+              >3.8.1 (A) If yes, Give the date of approval</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bP_FactoriesAct_ApprovalDate"
+            />
+            
+          </div>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+            <label
+              for="bp_Constructed_ChangesAsPerInspected"
+              class="form-label">
+              3.9 Specific note on changes noticed during inspection
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bp_Constructed_ChangesAsPerInspected"/>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_Constructed_ChangesAsPerInspected"
+              placeHolder="bp_Constructed_ChangesAsPerInspected"
+            ></app-form-validation-error>
+          </div>
+          <div class="col-md-6">
+            <label for="bp_Stability_IsAccepted" class="form-label">
+              3.10 Stability Certificate Is accepted
+            </label>
+            <select
+              class="form-select form-control"
+              formControlName="bp_Stability_IsAccepted"
+            >
+              <!-- <option value="" [selected]="true" disabled>
+                -- Please Select --
+              </option> -->
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+            <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+              [formGroup]="Input_Form"
+              controlName="bp_Stability_IsAccepted"
+              placeHolder="bp_Stability_IsAccepted">
+            </app-form-validation-error>
+          </div>
+        </div>
+        <div class="row form-row" *ngIf = "Input_Form.controls.bp_Stability_IsAccepted.value == 1">
+          <div class="col-md-6">
+            <label for="bp_Stability_AcceptanceReferenceNum" class="form-label">
+              3.10.1 Stability Certificate reference of acceptance
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bp_Stability_AcceptanceReferenceNum" minlength="3" maxlength="100"/>
+              <span class="character-count" style="float: right; color: blue;">{{ getCharacterCount('bp_Stability_AcceptanceReferenceNum') }}/100</span>
+              <div *ngIf="hasExceededMaxLength('bp_Stability_AcceptanceReferenceNum')" class="error-message">You have exceeded the max length of 100 characters.</div>
+              <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                [formGroup]="Input_Form"
+                controlName="bp_Stability_AcceptanceReferenceNum"
+                placeHolder="bp_Stability_AcceptanceReferenceNum">
+              </app-form-validation-error>
+            </div>
+          <div class="col-md-6">
+            <label for="bP_FactoriesAct_AcceptanceDate" class="form-label ">
+             3.10.2  Stability Certificate reference of acceptance date
+            </label>
+            <input
+              type="date"
+              class="form-control"
+              (focusout)="fillDefaultValueInRemarks($event)"
+              formControlName="bP_FactoriesAct_AcceptanceDate"/>
+          </div>
+        </div>
+
+      
+      </div>
+      <div class="col-md-12">
+        
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,83 @@
+<header class="navbar pcoded-header navbar-expand-lg headerpos-fixed header-main custom-header">
+    <!-- Left Section: Menu + Logo -->
+    <div class="header-left">
+        <a class="mobile-menu-btn" (click)="toggleNavBar()">
+            <i class="feather icon-menu"></i>
+        </a>
+        <div class="brand-wrapper">
+            <span class="brand-line"></span>
+            <span class="brand-title">SAMADHAAN <span class="divider">|</span> <span class="hindi">ਸਮਾਧਾਨ</span></span>
+            <span class="brand-line"></span>
+        </div>
+        <span class="beta-badge">Beta Version</span>
+    </div>
+
+    <!-- Switch Buttons (kept for role-based functionality) -->
+    <div class="header-switch-wrapper">
+        <a *ngIf="authService.getUserJwtDecodedInfo().RoleName == 'SPTU' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'SOTU' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'DLTU' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'LBIN' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'LBCR' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'DLFI' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ADRF' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'PSLD' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'DDRF' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ACFA' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'WBCH' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'WBDH' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'WBAO' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'WBDC'"
+           class="btn btn-switch-bocw">
+            <i class="feather icon-repeat mr-1"></i>
+        </a>
+
+        <a *ngIf="authService.getUserJwtDecodedInfo().RoleName == 'LBIN' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ALLC' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'LBCR'"
+           class="btn btn-switch-bocw"
+           (click)="OnJumpToAnotherPortel(authService.getUserJwtDecodedInfo().RoleName , 'BOCW')">
+            <i class="feather icon-repeat mr-1"></i>Switch to BOCW Board
+        </a>
+
+        <a *ngIf="authService.getUserJwtDecodedInfo().RoleName == 'LBIN' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ALLC' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ADRF' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'DDRF' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'DPLC' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'ADDF' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'LBCR' ||
+                 authService.getUserJwtDecodedInfo().RoleName == 'LB1N'"
+           class="btn btn-switch-bocw"
+           href="https://ifms.punjab.gov.in/MyOffice/auth/login" target="_blank">
+            <i class="feather icon-repeat mr-1"></i>Manage Tickets
+        </a>
+    </div>
+
+    <!-- Right Section: Language + Welcome + Profile -->
+    <div class="header-right ml-auto">
+     <a class="lang-toggle" title="Language">
+    <span class="lang-a">ਅ</span><span class="lang-b">A</span>
+    </a>
+
+        <div class="welcome-btn">
+            Welcome! {{authService.getUserJwtDecodedInfo().FullName}}
+            <span *ngIf="authService.getUserJwtDecodedInfo().RoleName != 'INDL'">
+                | {{authService.getUserJwtDecodedInfo().RoleName}}
+            </span>
+        </div>
+
+        <div class="dropdown drp-user profile-wrapper">
+            <a class="dropdown-toggle profile-avatar" data-toggle="dropdown">
+                <i class="feather icon-user"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right profile-notification">
+                <li *ngIf="authService.getUserJwtDecodedInfo().RoleName!='INDL'">
+                    <a class="dropdown-item" (click)="onLogoutClick()" style="cursor: pointer;">
+                        <i class="feather icon-log-out"></i> LogOut
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+</header>

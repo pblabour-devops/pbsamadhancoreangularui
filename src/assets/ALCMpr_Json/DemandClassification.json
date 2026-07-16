@@ -1,0 +1,114 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 3,
+      "SectionTitle": "Classification of Demand",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Personal Discharge",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Personal Dismissal",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Personal Termination",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Personal Retrenchment",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 5,
+              "LableTitle": "Total",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 6,
+              "LableTitle": "Bonus",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 7,
+              "LableTitle": "Wages",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 8,
+              "LableTitle": "Leave Holidays",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 9,
+              "LableTitle": "Working",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 10,
+              "LableTitle": "Retrenchment",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 11,
+              "LableTitle": "Uniform",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 12,
+              "LableTitle": "Miscellaneous",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 13,
+              "LableTitle": "Other",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 12,
+              "LableTitle": "Total",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

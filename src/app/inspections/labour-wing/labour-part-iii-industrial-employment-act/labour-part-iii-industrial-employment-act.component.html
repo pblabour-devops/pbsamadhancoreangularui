@@ -1,0 +1,240 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Industrial Employment (Standing Order) Act 1946</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Section-1(3)</td>
+                  <td class="inspection-back-theme1"><strong>1.1.1</strong> Is this Act applicable on establishment</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_1_3_Is_Act_Applicable_On_Establishment">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>1.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_1_3_Is_Act_Applicable_On_Establishment_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks"><strong>1.1.3</strong> Remakrs if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks" (input)="updateCharacterCount('sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks" placeHolder="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+
+
+                <tr>
+                  <td rowspan="9">Section-5</td>
+                  <td class="inspection-back-theme2"><strong>5.1.1</strong> Is establishment falling in exempted category as per notification No.21/65/2019/-4L/1098 dated 06-08-2020</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_5_Is_Establishment_Fall_In_Exempted_Category">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>5.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_5_Is_Establishment_Fall_In_Exempted_Category_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks"><strong>5.1.3</strong> Remakrs if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks" (input)="updateCharacterCount('sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks" placeHolder="sec_5_Is_Establishment_Fall_In_Exempted_Category_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>5.2.1</strong> If yes then Is establishment complying the provisions of notification No.21/65/2019/-4L/1098 dated 06-08-2020</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_5_Is_Establishment_Complying_Provission_Of_Notification">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>5.2.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_5_Is_Establishment_Complying_Provission_Of_Notification_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks"><strong>5.2.3</strong> Remakrs if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks" (input)="updateCharacterCount('sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks" placeHolder="sec_5_Is_Establishment_Complying_Provission_Of_Notification_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>5.3.1</strong> If no then Are standing orders submitted to/certified by certifying officer? </td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>5.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks"><strong>5.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks" (input)="updateCharacterCount('sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks" placeHolder="sec_5_Is_Standing_Orders_Submitted_By_Certifying_Officer_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-6</td>
+                  <td class="inspection-back-theme1"><strong>6.1.1</strong> If any appeal under this section pending with Appellate Authority?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>6.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks">6.1.3</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks" (input)="updateCharacterCount('sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks" placeHolder="sec_6_Is_Any_Appeal_Pending_With_Appellate_Authority_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Section-9</td>
+                  <td class="inspection-back-theme2"><strong>9.1.1</strong> Are Standing Orders posted by employer as per provision of this section?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_9_Is_Standing_Order_Posted_By_Employer">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>9.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_9_Is_Standing_Order_Posted_By_Employer_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_9_Is_Standing_Order_Posted_By_Employer_Remarks"><strong>9.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_9_Is_Standing_Order_Posted_By_Employer_Remarks" (input)="updateCharacterCount('sec_9_Is_Standing_Order_Posted_By_Employer_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_9_Is_Standing_Order_Posted_By_Employer_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_9_Is_Standing_Order_Posted_By_Employer_Remarks" placeHolder="sec_9_Is_Standing_Order_Posted_By_Employer_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">Section-10A</td>
+                    <td class="inspection-back-theme1"><strong>10A.1.1</strong> Is subsistence allowance being given to suspended workmen as per provision of this section?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>10A.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks"><strong>10A.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks" (input)="updateCharacterCount('sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks" placeHolder="sec_10_A_Is_Subsistence_Allowance_Given_To_Suspended_Workmen_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

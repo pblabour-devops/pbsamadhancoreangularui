@@ -1,0 +1,164 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card user-profile-list shadow">
+          <div class="card-header bg-light text-dark d-flex justify-content-between align-items-center">
+            <h5 class="mb-0" style="font-size: 18px; font-weight: 800;">Deemed Applications Status</h5>
+            <!-- <button type="button" class="btn btn-success btn-sm shadow-sm" (click)="openScrollableContent(longContent)">
+              <i class="feather icon-plus-circle"></i> Add New
+            </button> -->
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+                <div class="form-group row m-t-20 align-items-center">
+                  <div class="col-sm-3 ml-4">
+                    <select class="form-control" [(ngModel)]="dateOption" (ngModelChange)="onChange($event)">
+                        <option value="1">All Dates</option>
+                        <option value="2">Selected Date</option>
+                        <option value="3">Next Deemed Dates</option>
+                    </select>
+                  </div>
+                  <ng-container *ngIf="dateOption == '2'">
+                  <label class="col-sm-2 col-form-label ml-2">Deemed Date:</label>
+                  <div class="col-sm-3">
+                      <input class="form-control" type="date" [(ngModel)]="selectedDate" name="date" (ngModelChange)="onDateChange($event)">
+                  </div>
+                  </ng-container>
+                </div>  
+            </div>
+            <div class="col-md-2">
+               <div class="form-group row m-t-20 align-items-center">
+              <button class="btn btn-primary" (click)="exportToExcel()" title="Download Excel">
+                <i class="feather icon-download"></i> Download Excel
+              </button>
+              </div>
+
+            </div>
+          </div>
+          
+            <div class="table-scrollable">
+                <div class="table-container">
+                    <div class="col-sm-12 m-t-10">
+                        <table class="table table-bordered mt-2">
+                            <thead>
+                                <tr class="header-row text-center">
+                                  <th class="table-heading">Sr. No</th>
+                                  <!-- <th class="table-heading">Deemed Engine Id</th> -->
+                                  <th class="table-heading">Service Name</th>
+                                  <th class="table-heading">IPin<br>ApplicationID</th>
+                                  <th class="table-heading text-left col-md-2">File No<br>Establishment Name<br>Mobile No</th>
+                                  <th class="table-heading">Current Pending With</th>
+                                  <th class="table-heading col-md-2"><span class="text-danger">Submission Date</span><br>
+                                    <span class="text-primary">Deemed Initiate Date</span><br>
+                                    <span class="text-success">Deemed Date</span></th>
+                                  <th class="col-md-1 text-primary table-heading">
+                                    Total Time
+                                  </th>
+                                  <th class="col-md-1 text-success table-heading">
+                                    Total Holidays Time
+                                  </th>
+                                  <th class="col-md-1 text-info table-heading">
+                                    Total WeekEnds Time
+                                  </th>
+                                  <th class="col-md-1 text-danger table-heading">
+                                    Total Objection Time
+                                  </th>
+                                  <th class="col-md-1 text-secondary table-heading">
+                                    Deemed InTime
+                                  </th>
+                                  <th class="col-md-1 maxdeemded table-heading">
+                                    Max DeemedTime
+                                  </th>
+                                  <th class="text-center table-heading">Fee Status</th>
+                                  <th class="text-center table-heading">Deemed Status</th>
+                                </tr>
+                              </thead>
+                              
+                            <tbody *ngIf="deemedapplicationData?.length>0">
+                                    <tr *ngFor="let item of deemedapplicationData; let i = index">
+                                        <td class="text-center">{{ i + 1 }}</td>
+                                        <td class="text-left font-weight-bold">{{ item.serviceName }}</td>
+                                        <td class="text-center">{{ item.invetPunjabiPin }}<br><span class="text-left font-weight-bold">{{ item.invetPunjabiAppId }}</span></td>
+                                        <td class="text-left"><span class="font-weight-bold">{{ item.publicAppRefNum }}</span><br>
+                                              <span class="font-weight-bold" style="color: #DE3163;">{{item.establishmentName}} </span><br>
+                                               {{item.contactPersonMobileNo}}
+                                        </td>
+                                        <td>{{ item.currentPendingWith }}</td>
+                                        <td class="text-center"><span class="text-danger">{{ item.submissionDate | date:'dd-MM-yyyy hh:mm' }}</span><br>
+                                           <span class="text-primary">{{ item.initiateDeemedDate | date:'dd-MM-yyyy hh:mm' }}</span><br>
+                                          <span class="text-success">{{ item.deemedDate | date:'dd-MM-yyyy hh:mm' }}</span>
+                                        </td>
+
+                                        <td class="text-center text-primary">
+                                             {{replaceTimeNames(item.totalTime, 0)}} <span class="small-text">Days, </span> <br>
+                                             {{replaceTimeNames(item.totalTime, 1)}} <span class="small-text"> Hours </span> 
+                                        </td>
+                                        <td class="text-center text-success">
+                                           {{replaceTimeNames(item.totalHolidaysTime, 0)}} <span class="small-text">Days, </span> <br>
+                                           {{replaceTimeNames(item.totalHolidaysTime, 1)}} <span class="small-text"> Hours </span>    
+                                        </td>
+                                        <td class="text-center text-info">
+                                           {{replaceTimeNames(item.totalWeekEndsTime, 0)}} <span class="small-text">Days, </span> <br>
+                                           {{replaceTimeNames(item.totalWeekEndsTime, 1)}} <span class="small-text"> Hours </span> 
+                                        </td>
+                                        <td class="text-center text-danger">
+                                           {{replaceTimeNames(item.totalObjectionTime, 0)}} <span class="small-text">Days, </span> <br>
+                                           {{replaceTimeNames(item.totalObjectionTime, 1)}} <span class="small-text"> Hours </span> 
+                                        </td>
+                                        <td class="text-center text-secondary">
+                                           {{replaceTimeNames(item.deemedInTime, 0)}} <span class="small-text">Days, </span> <br>
+                                           {{replaceTimeNames(item.deemedInTime, 1)}} <span class="small-text"> Hours </span> 
+                                        </td>
+                                         <td class="text-center maxdeemded">
+                                           {{replaceTimeNames(item.maxDeemedTime, 0)}} <span class="small-text">Days, </span> <br>
+                                           {{replaceTimeNames(item.maxDeemedTime, 1)}} <span class="small-text"> Hours </span> 
+                                        </td>
+                                        <td class="text-center">
+                                          <span class="badge badge-light-danger" *ngIf="item.isFeeApplicable == 1">Pending</span><br>
+                                          <span class="badge badge-light-success" *ngIf="item.isFeeApplicable == 0">Paid</span>
+                                        </td>
+                                        <td class="text-center">
+                                          <span class="badge badge-light-primary" *ngIf="item.deemedProcessStatusType == 0">Pending</span>
+                                          <span class="badge badge-light-success" *ngIf="item.deemedProcessStatusType == 1">Approved</span>
+                                          <span class="badge badge-light-danger" *ngIf="item.deemedProcessStatusType == 2">Error</span>
+                                          <span class="badge badge-light-success" *ngIf="item.deemedProcessStatusType == 3">Approved By Officer</span>
+                                          <span class="badge badge-light-success" *ngIf="item.deemedProcessStatusType == 5">Action By Officer</span>
+                                        </td>
+                                    </tr>      
+                            </tbody>
+                            <tbody *ngIf="deemedapplicationData?.length==0" >
+                                    <tr><td colspan="7" class="text-danger">No record found...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- Pagination -->
+        <nav *ngIf="totalPages > 1" aria-label="Page navigation" class="m-t-10">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="changePage(currentPage - 1)" href="javascript:void(0)">
+                Previous
+              </a>
+            </li>
+            <li
+              class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="currentPage === i + 1">
+              <a class="page-link" (click)="changePage(i + 1)" href="javascript:void(0)">
+                {{ i + 1 }}
+              </a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)" href="javascript:void(0)">
+                Next
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

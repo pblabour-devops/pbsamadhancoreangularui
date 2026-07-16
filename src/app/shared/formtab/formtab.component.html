@@ -1,0 +1,47 @@
+<!-- Breadcrumb -->
+<!-- Breadcrumb -->
+
+
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <div
+        *ngFor="let tab of appSteps; let i = index"
+        class="tab-item"
+        [ngClass]="{
+           'active-tab': tab.isCurrentStep,
+           'clickable': tab.isLink,
+           'filled': tab.isFilled && !tab.isCurrentStep
+        }">
+
+        <span class="tab-label">
+          <a *ngIf="tab.isLink; else notLink"
+             [routerLink]="[tab.uiPageComponentPath]"
+             [queryParams]="{info: (encodedUrl=='' ? getEncodedUrl({
+                identityKey: tab.entityParentKeyId,
+                appRefId: tab.appRefId,
+                applicationType: tab.applicationType,
+                projectSiteRefId: tab.projectSiteRefId,
+                projectSiteVersion: tab.projectSiteVersion,
+                iPin: tab.iPin,
+                investPunjab_AppId: tab.investPunjab_AppId,
+                applicationPurposeType: tab.applicationPurposeType,
+                rootActivityRefId: tab.rootActivityRefId,
+                toDoActivityCategoryType: tab.toDoActivityCategoryType,
+                toDoActivityModeType: tab.toDoActivityModeType
+             }) : encodedUrl)}"  (click)="logroute(tab)">
+            {{ tab.stepName || tab.stepTitle }}
+          </a>
+
+          <ng-template #notLink>
+            <span>{{ tab.stepName || tab.stepTitle }}</span>
+          </ng-template>
+        </span>
+
+        <span
+          *ngIf="tab.closable"
+          class="close-btn"
+          (click)="removeTab(tab, $event)">
+          &#10005;
+        </span>
+      </div>

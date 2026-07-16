@@ -1,0 +1,441 @@
+<form [formGroup]="CommonLicence_GeneralDetail_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="establishmentRefId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    
+    <!-- commonLicenceRefId -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-58</h6>
+                    <p class="mb-0">Application for Grant / Amendment / Transfer of license as a Factory / Industrial premises for Beedi Or Cigar / Engagement of contractor</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                            </app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                                <div class="card-body">
+
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info"> Establishment & address</span></h6>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary" style="font-weight: 700;">
+                                            Application For License :
+                                        </div>
+                                        <div class="col-md-2" style="margin-left: 373px;">
+                                            <input type="checkbox" class="checkbox checkbox-success checkbox-fill d-inline" formArrayName="IsFactory" (change)="onCheckboxChange($event,'IsFactory','applicationPurposeType')"/>
+                                            <label for="checkbox-p-infill-2" class="cr" style="margin-left: 8px;"> As Factory</label>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            <input type="checkbox" formArrayName="IsEngagementOfContractor"  (change)="onCheckboxChange($event,'IsEngagementOfContractor','applicationPurposeType')"/>
+                                            <label for="checkbox-p-infill-3" class="cr" style="margin-left: 8px;"> As Contractor</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="checkbox" formArrayName="IsBeediAndCigar" (change)="onCheckboxChange($event,'IsBeediAndCigar','applicationPurposeType')"/>
+                                            <label for="checkbox-p-infill-3" class="cr" style="margin-left: 8px;"> As Beedi Or Cigar</label>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Establishment Name :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.establishmentName}}
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Establishment Addess :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.address}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Village/Town :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.villageOrTown}}
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            District :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.districtName}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Tehsil :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.tehsilName}}
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Pin Code :
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.pinCode}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Establishment Registration Number :
+                                        </div>
+                                        <div class="col-md-4">
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Establishment Registration Date : 
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Occupier / Principal Employer Details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Occupier / Principal Employer Name
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="occupierOrPE_Name">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Name" placeHolder="occupier Or PE Name"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Parmanent Address
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm " formControlName="occupierOrPE_Permanent_Address"></textarea>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Permanent_Address" placeHolder="address"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="occupierOrPE_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_VillageOrTown" placeHolder="establishment vllage/town">
+                                            </app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" (change)="getTehsilsByDistrictRefId(CommonLicence_GeneralDetail_Form.value.occupierOrPE_DistrictRefId, 'occupierOrPE_TehsilRefId')" formControlName="occupierOrPE_DistrictRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="occupierOrPE_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="occupierOrPE_PinCode"  minlength="6" formControlName="occupierOrPE_PinCode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" required>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_PinCode" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info" style="margin-top: 15px;">Local Address Details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Local Address
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm " formControlName="occupierOrPE_Local_Address"></textarea>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Local_Address" placeHolder="address"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="occupierOrPE_Local_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Local_VillageOrTown" placeHolder="establishment vllage/town">
+                                            </app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" (change)="getLocalTehsilsByDistrictRefId(CommonLicence_GeneralDetail_Form.value.occupierOrPE_Local_DistrictRefId, 'occupierOrPE_Local_TehsilRefId')" formControlName="occupierOrPE_Local_DistrictRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Local_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="occupierOrPE_Local_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Local_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="occupierOrPE_Local_PinCode"  minlength="6" formControlName="occupierOrPE_Local_PinCode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" required>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Local_PinCode" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Email
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtPinCode" email="true" class="form-control form-control-sm" formControlName="occupierOrPE_Email">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_Email" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Mobile Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtPinCode" minlength="10" class="form-control form-control-sm" formControlName="occupierOrPE_PhoneNumber">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="occupierOrPE_PhoneNumber" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Owner Details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Owner Name
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="owner_Name">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_Name" placeHolder="occupier Or PE Name"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Owner Address
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm " formControlName="owner_Address"></textarea>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_Address" placeHolder="address"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="owner_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_VillageOrTown" placeHolder="establishment vllage/town">
+                                            </app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" (change)="getOwnerTehsilsByDistrictRefId(CommonLicence_GeneralDetail_Form.value.owner_DistrictRefId, 'owner_TehsilRefId')" formControlName="owner_DistrictRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="owner_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="owner_PinCode"  minlength="6" formControlName="owner_PinCode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" required>
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_PinCode" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Partnership Share
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="owner_PartnershipShare">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="owner_PartnershipShare" placeHolder="Partnership share"></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Load & Furnish Reference Details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Core Activity
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="coreActivity">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="coreActivity" placeHolder="core Activity"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            NIC Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- <nic-code-form-control [selectedNicCodesFromParent]="CommonLicence_GeneralDetail_Form.controls.nationalIndustrialClassificationCode.value" [canEdit]="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true" (updateSelectedNicCodeToParent)="updateNicCode($event)"></nic-code-form-control> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Total no of workers to be employed in the period of license
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="totalNoWorkersToBeEmployedInLicence">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="totalNoWorkersToBeEmployedInLicence" placeHolder="establishment vllage/town">
+                                            </app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Total no of workers were employed during last calendar year
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="totalNoWorkersToBeEmployedDuringLastYear">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="totalNoWorkersToBeEmployedDuringLastYear" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Electric Load Connected <br><span class="fw-normal text-primary">(In Kilowatts and it should be minimum 1)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="electricLoadConnectedInKilowatts">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="electricLoadConnectedInKilowatts" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Approval of Building Plan Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="approvedBuildingPlanNumber">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="approvedBuildingPlanNumber" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Approval of Building Plan Date
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="date" class="form-control form-control-sm" formControlName="approvedBuildingPlanDate">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="approvedBuildingPlanDate" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Approval of Stability Certificate Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="stabilityCertificateNumber">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="stabilityCertificateNumber" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Approval of Stability Certificate Date
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="date" class="form-control form-control-sm" formControlName="dateOfStabilityCertificateApproval">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="dateOfStabilityCertificateApproval" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Disposal of Trade waste/effluents/ Hazardous/e-waste
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="disposalOfTrade">
+                                            <app-form-validation-error [formGroup]="CommonLicence_GeneralDetail_Form" controlName="disposalOfTrade" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" (click)="btnHomeClick()">Home</button>
+                        </div>
+                        {{CommonLicence_GeneralDetail_Form.value | json}}
+                        <div class="col-md-6 text-right">
+                            <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" type="submit" class="btn btn-primary" [disabled]="!CommonLicence_GeneralDetail_Form.valid">Save & Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

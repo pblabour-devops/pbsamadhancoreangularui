@@ -1,0 +1,19 @@
+/* Icon circle background colors (matching the pink/blue bell icons from the image) */
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.bg-icon-pink {
+  background-color: #fce4ec;
+}
+
+.bg-icon-blue {
+  background-color: #e3f2fd;
+}

@@ -1,0 +1,95 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId">
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">Factory Details</h4>
+          </div>
+        </div>
+        <div class="container mt-4">
+          <div class="row form-row">
+            <div class="col-md-6">
+              <label for="factoriesActLicense" class="form-label">2.1 License number under Factories Act 1948</label>
+              <input type="text" class="form-control" formControlName="license_Factory_Act" (input)="updateCharacterCount('license_Factory_Act', 30)" minlength="5" maxlength="30" />
+              <span class="character-count">{{ getCharacterCount('license_Factory_Act') }}/30</span>
+              <div *ngIf="hasExceededMaxLength('license_Factory_Act')" class="error-message">You have exceeded the max length of 30 characters.</div>
+              <div *ngIf="isMinLength('license_Factory_Act')" class="error-message">Length should be greater than 5 characters.</div>
+              <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="license_Factory_Act" placeHolder="License number under Factories Act 1948"></app-form-validation-error>
+            </div>
+            <div class="col-md-6">
+              <label for="principalEmployerReg" class="form-label">
+                2.2 Registration number of Principal Employer under The Contract
+                Labour (R &amp;A) Act 1970
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="registration_PE_Act"
+                (input)="updateCharacterCount('registration_PE_Act', 30)" minlength="5" maxlength="30" />
+                <span class="character-count">{{ getCharacterCount('registration_PE_Act') }}/30</span>
+                <div *ngIf="hasExceededMaxLength('registration_PE_Act')" class="error-message">You have exceeded the max length of 30 characters.</div>
+                <div *ngIf="isMinLength('registration_PE_Act')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="registration_PE_Act" placeHolder="\Registration number of Principal Employer under The Contract Labour (R &amp;A) Act 1970"></app-form-validation-error>
+            </div>
+          </div>
+          <div class="row form-row">
+            <div class="col-md-6">
+              <label for="contractorLicense" class="form-label">
+                2.3 License numbers of contractor(s) under The Contract Labour (R
+                &amp;A) Act 1970
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="license_CL_Act"
+                (input)="updateCharacterCount('license_CL_Act', 30)" minlength="5" maxlength="30" />
+                <span class="character-count">{{ getCharacterCount('license_CL_Act') }}/30</span>
+                <div *ngIf="hasExceededMaxLength('license_CL_Act')" class="error-message">You have exceeded the max length of 30 characters.</div>
+                <div *ngIf="isMinLength('license_CL_Act')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="license_CL_Act" placeHolder="License numbers of contractor(s) under The Contract Labour (R
+                &amp;A) Act 1970"></app-form-validation-error>
+            </div>
+            <div class="col-md-6">
+              <label for="migrantWorkmenReg" class="form-label">
+                2.4 Registration number of factory under The Inter-State Migrant
+                Workmen (RoECS) Act 1979
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="registration_ISMW_Act"
+                (input)="updateCharacterCount('registration_ISMW_Act', 30)" minlength="5" maxlength="30" />
+                <span class="character-count">{{ getCharacterCount('registration_ISMW_Act') }}/30</span>
+                <div *ngIf="hasExceededMaxLength('registration_ISMW_Act')" class="error-message">You have exceeded the max length of 30 characters.</div>
+                <div *ngIf="isMinLength('registration_ISMW_Act')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="registration_ISMW_Act" placeHolder="Registration number of factory under The Inter-State Migrant
+                Workmen (RoECS) Act 1979"></app-form-validation-error>
+            </div>
+          </div>
+          <div class="row form-row">
+            <div class="col-md-6">
+              <label for="migrantWorkmenContractor" class="form-label">
+                2.5 License number of contractor under The Inter-State Migrant Workmen
+                (RoECS) Act 1979
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="license_ISMW_Act"
+                (input)="updateCharacterCount('license_ISMW_Act', 30)" minlength="5" maxlength="30" />
+                <span class="character-count">{{ getCharacterCount('license_ISMW_Act') }}/30</span>
+                <div *ngIf="hasExceededMaxLength('license_ISMW_Act')" class="error-message">You have exceeded the max length of 30 characters.</div>
+                <div *ngIf="isMinLength('license_ISMW_Act')" class="error-message">Length should be greater than 5 characters.</div>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="license_ISMW_Act" placeHolder=" License number of contractor under The Inter-State Migrant Workmen
+                (RoECS) Act 1979"></app-form-validation-error>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

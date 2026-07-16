@@ -1,0 +1,720 @@
+<div class="premium-dashboard" style="margin-top: 50px;margin-left: 65px;">
+  <div class="dashboard-header-card">
+    <div class="dashboard-title-area">
+      <div>
+        <h2 class="dashboard-title">ADMIN DASHBOARD</h2>
+        <p class="dashboard-subtitle">
+          Search and manage complete application details
+        </p>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <form [formGroup]="Input_Form"
+          (ngSubmit)="onSubmit()"
+          class="search-form">
+
+      <div class="search-input-wrapper">
+
+        <div class="search-label">
+          Search Application
+        </div>
+
+        <div class="search-box-area">
+
+          <div class="search-icon">
+            <i class="feather icon-search"></i>
+          </div>
+
+          <input
+            formControlName="searchParams"
+            type="text"
+            class="premium-search-input"
+            placeholder="Search by Licence No / Invest Punjab Ipin / ApplicationId / AppId / Establishment Name / Username">
+
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="Input_Form.invalid"
+          class="btn-search-premium">
+          Search
+        </button>
+
+        <button
+          type="button"
+          (click)="reset()"
+          class="btn-reset-premium">
+          Reset
+        </button>
+
+      </div>
+
+      <div
+        *ngIf="formControls.searchParams.invalid && (formControls.searchParams.dirty || isSubmitted)"
+        class="validation-error">
+        Search parameter is required.
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- MAIN DATA -->
+  <div *ngIf="responseData">
+
+    <!-- USER DETAILS -->
+    <div class="premium-section-card section-green">
+
+      <div class="section-header">
+        <div class="section-strip green-strip"></div>
+        <h4>User Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.userDetails?.length; else noUserDetails">
+
+        <table class="premium-table">
+          <thead>
+          <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Mobile No</th>
+            <th>Email</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let user of responseData.userDetails">
+            <td>{{user.userName}}</td>
+            <td>{{user.fullName}}</td>
+            <td>{{user.mobileNo}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <ng-template #noUserDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- ESTABLISHMENT -->
+    <div class="premium-section-card section-cyan">
+
+      <div class="section-header">
+        <div class="section-strip cyan-strip"></div>
+        <h4>Establishment Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.establishmentDetails?.length; else noEstDetails">
+
+        <table class="premium-table">
+          <thead>
+          <tr>
+            <th>Establishment Name</th>
+            <th>Address</th>
+            <th>District</th>
+            <th>Tehsil</th>
+            <th>Circle</th>
+            <th>Project Purpose</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let est of responseData.establishmentDetails">
+            <td>{{est.establishmentName}}</td>
+            <td>{{est.address}}</td>
+            <td>{{est.districtName}}</td>
+            <td>{{est.tehsilName}}</td>
+            <td>{{est.circleName}}</td>
+            <td>{{est.projectPurpose}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <ng-template #noEstDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- APPLICATION DETAILS -->
+    <div class="premium-section-card section-orange">
+
+      <div class="section-header">
+        <div class="section-strip orange-strip"></div>
+        <h4>Application Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.applicationDetails?.length; else noAppDetails">
+
+        <table class="premium-table">
+          <thead>
+          <tr>
+            <th>AppId</th>
+            <th>File No</th>
+            <th>Service Name</th>
+            <th>Invest Punjab Ipin</th>
+            <th>Invest Punjab AppId</th>
+            <th>Created Date</th>
+            <th>Application LifeCycle</th>
+            <th>Form Status</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let app of responseData.applicationDetails">
+
+            <td>
+              <span class="app-id-badge">
+                {{app.appId}}
+              </span>
+            </td>
+
+            <td>{{app.publicAppRefNum}}</td>
+            <td>{{app.serviceName}}</td>
+            <td>{{app.investPunjab_Ipin}}</td>
+            <td>{{app.investPunjab_AppId}}</td>
+            <td>{{app.createdOnDate | date:'medium'}}</td>
+            <td>
+              <span class="status-pill" [ngClass]="lifeCycleDescription[app.applicationLifeCycleStatusType]?.class">
+                {{ lifeCycleDescription[app.applicationLifeCycleStatusType]?.text }}
+              </span>
+            </td>
+
+            <td>
+              <span
+                [ngClass]="app.formStatus == 'Unlocked' ? 'status-unlocked' : 'status-locked'">
+                {{app.formStatus}}
+              </span>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <ng-template #noAppDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- ACTIONS & LOGS -->
+    <div class="premium-section-card section-purple">
+
+      <div class="section-header">
+        <div class="section-strip purple-strip"></div>
+        <h4>Application Actions & Logs</h4>
+      </div>
+
+      <div *ngIf="groupedLogs.length">
+
+        <div class="app-group-card"
+             *ngFor="let group of groupedLogs">
+
+          <!-- APP HEADER -->
+          <div class="app-group-header">
+            <div class="app-group-left">
+              <span class="app-label">Application ID</span>
+              <span class="app-value">{{group.appId}}</span>
+            </div>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="sub-section-title">
+            Application Actions
+          </div>
+
+          <div class="table-responsive">
+            <table class="premium-table compact-table">
+              <thead>
+              <tr>
+                <th>Action Name</th>
+                <th>Sender Details</th>
+                <th>Receiver Details</th>
+                <th>Action Date</th>
+                <th class="comment-column">Remarks</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let action of responseData.applicationActions">
+                <ng-container *ngIf="action.appId == group.appId">
+                  <td>{{action.actionName}}</td>
+                  <td>{{action.senderName}} &nbsp;<span>({{action.senderUserName}})</span> </td>
+                  <td>{{action.receiverName}} &nbsp;<span>({{action.receiverUserName}})</span></td>
+                  <td>{{action.actionDate | date:'medium'}}</td>
+                  <td class="comment-column">
+                    <div class="comment-box">
+                      <div class="comment-text">
+                        {{action.comment | slice:0:120}}
+                        <span *ngIf="action.comment?.length > 120">...</span>
+                      </div>
+                      <button
+                        *ngIf="action.comment?.length > 120"
+                        class="read-more-btn"
+                        (click)="openCommentModal(commentModal, action.comment)">
+                        Read More
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- LOGS -->
+          <div class="sub-section-title logs-title">
+            Application Action Logs
+          </div>
+
+          <div class="table-responsive">
+            <table class="premium-table compact-table">
+              <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Action Name</th>
+                <th>Sender Details</th>
+                <th>Receiver Details</th>
+                <th>Action Date</th>
+                <th class="comment-column">Remarks</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let log of group.logs; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{log.actionName}}</td>
+                <td>{{log.senderName}} &nbsp;<span>({{log.senderUserName}})</span> </td>
+                <td>{{log.receiverName}} &nbsp;<span>({{log.receiverUserName}})</span></td>
+                <td>{{log.actionDate | date:'medium'}}</td>
+
+                <td class="comment-column">
+
+                  <div class="comment-box">
+
+                    <div class="comment-text">
+                      {{log.comment | slice:0:120}}
+                      <span *ngIf="log.comment?.length > 120">...</span>
+                    </div>
+
+                    <button
+                      *ngIf="log.comment?.length > 120"
+                      class="read-more-btn"
+                      (click)="openCommentModal(commentModal, log.comment)">
+                      Read More
+                    </button>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="premium-section-card section-pink">
+
+      <div class="section-header">
+        <div class="section-strip pink-strip"></div>
+        <h4>Payment Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.paymentDetails?.length; else noPaymentDetails">
+
+        <table class="premium-table">
+          <thead>
+          <tr>
+            <th>AppId</th>
+            <th>Transaction Amount</th>
+            <th>Transaction Date</th>
+            <th>Unique Transaction Id</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let payment of responseData.paymentDetails">
+
+            <td>{{payment.appId}}</td>
+
+            <td class="amount-text">
+              ₹ {{payment.transactionAmount}}
+            </td>
+
+            <td>{{payment.transactionDate | date:'medium'}}</td>
+
+            <td>{{payment.uniquePaymentGatewayTransactionId}}</td>
+
+            <td>
+              <span class="success-pill color-white">
+                {{payment.transactionStatus}}
+              </span>
+            </td>
+
+            <td>
+              <button
+                class="premium-btn-outline"
+                (click)="ViewFeeDetails(payment.appId,longContent2)">
+                Fee Details
+              </button>
+            </td>
+
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <ng-template #noPaymentDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- APPROVAL -->
+    <div class="premium-section-card section-amber">
+
+      <div class="section-header">
+        <div class="section-strip amber-strip"></div>
+        <h4>Approval Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.approvalDetails?.length; else noApprovalDetails">
+
+        <table class="premium-table">
+
+          <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>AppId</th>
+            <th>Service Name</th>
+            <th>Licence No</th>
+            <th>Approval Date</th>
+            <th>Licence Valid Upto</th>
+            <th>Licence Path</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let approval of responseData.approvalDetails">
+
+            <td>{{approval.srNo}}</td>
+            <td>{{approval.appId}}</td>
+            <td>{{approval.serviceName}}</td>
+            <td>{{approval.licenceNumber}}</td>
+            <td>{{approval.approvalDate | date:'medium'}}</td>
+            <td>{{approval.clearanceExpiredOn | date:'MMM d, y'}}</td>
+
+            <td>
+              <a *ngIf="approval.licencePath"
+                 [href]="approval.licencePath"
+                 target="_blank"
+                 class="premium-link">
+                View Licence
+              </a>
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <ng-template #noApprovalDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- WELFARE -->
+    <div class="premium-section-card section-teal">
+
+      <div class="section-header">
+        <div class="section-strip teal-strip"></div>
+        <h4>Welfare Fund Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.welfareContributionDetails?.length; else nowelfareContributionDetails">
+
+        <table class="premium-table">
+
+          <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>AppId</th>
+            <th>Financial Year</th>
+            <th>Time Slot</th>
+            <th>Amount</th>
+            <th>PWBCessCollectionId</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let lwf of responseData.welfareContributionDetails;let i=index">
+
+            <td>{{i+1}}</td>
+            <td>{{lwf.appId}}</td>
+            <td>{{lwf.financialYear}}</td>
+            <td>{{lwf.timeSlot}}</td>
+
+            <td class="amount-text">
+              ₹ {{lwf.amount}}
+            </td>
+
+            <td>{{lwf.pwbCessCollectionId}}</td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <ng-template #nowelfareContributionDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- ANNUAL RETURN -->
+    <div class="premium-section-card section-indigo">
+
+      <div class="section-header">
+        <div class="section-strip indigo-strip"></div>
+        <h4>Annual Return Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.annualReturnDetails?.length; else noAnnualReturnDetails">
+
+        <table class="premium-table">
+
+          <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>AppId</th>
+            <th>Account No</th>
+            <th>Return Year</th>
+            <th>Return Type</th>
+            <th>Return Id</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let return of responseData.annualReturnDetails;let i=index">
+
+            <td>{{i+1}}</td>
+            <td>{{return.appId}}</td>
+            <td>{{return.accNo}}</td>
+            <td>{{return.returnYear}}</td>
+            <td>{{return.returnType}}</td>
+            <td>{{return.returnID}}</td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <ng-template #noAnnualReturnDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+    <!-- INSPECTION -->
+    <div class="premium-section-card section-red">
+
+      <div class="section-header">
+        <div class="section-strip red-strip"></div>
+        <h4>Inspection Details</h4>
+      </div>
+
+      <div class="table-responsive"
+           *ngIf="responseData.inspectionDetails?.length; else noInspectionDetails">
+
+        <table class="premium-table">
+
+          <thead>
+          <tr>
+            <th>AppId</th>
+            <th>Establishment Name</th>
+            <th>Licence No</th>
+            <th>Establishment Category</th>
+            <th>Factory Wing</th>
+            <th>Labour Wing</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let insp of responseData.inspectionDetails">
+
+            <td>{{insp.appId}}</td>
+            <td>{{insp.establishmentName}}</td>
+            <td>{{insp.licenceNumber}}</td>
+            <td>{{insp.factoryHazardousCategoryType}}</td>
+
+            <td>
+              <div class="inspection-box">
+                <div class="inspection-user">
+                  {{insp.inspectionSubmittedFactoryWing}}
+                </div>
+                <div>
+                  {{insp.inspectionDoneOn_Factory_Wing | date:'medium'}}
+                </div>
+              </div>
+            </td>
+
+            <td>
+              <div class="inspection-box">
+                <div class="inspection-user">
+                  {{insp.inspectionSubmittedLabourWing}}
+                </div>
+                <div>
+                  {{insp.inspectionDoneOn_Labour_Wing | date:'medium'}}
+                </div>
+              </div>
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <ng-template #noInspectionDetails>
+        <div class="no-data-box">No information found.</div>
+      </ng-template>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- COMMENT MODAL -->
+<ng-template #commentModal let-modal>
+
+  <div class="modal-header border-0">
+    <h5 class="modal-title">
+      Full Comment
+    </h5>
+
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()">
+      ×
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="full-comment-box">
+      {{selectedComment}}
+    </div>
+  </div>
+
+</ng-template>
+
+<!-- FEE MODAL -->
+<ng-template #longContent2 let-modal>
+
+  <div class="modal-header border-0">
+    <h4 class="modal-title">Fee Details</h4>
+
+    <button type="button"
+            class="btn btn-danger"
+            (click)="modal.close('Close click')">
+      Close
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="table-responsive">
+
+      <table class="premium-table">
+
+        <thead>
+        <tr>
+          <th>Type Of Payment</th>
+          <th>Transaction/Challan No</th>
+          <th>Amount Paid</th>
+          <th>Status</th>
+          <th>Transaction Date</th>
+        </tr>
+        </thead>
+
+        <tbody *ngFor="let item of feeDetails">
+
+        <tr>
+
+          <ng-container *ngIf="feeDetails.length > 0">
+
+            <td>{{item.actName}}</td>
+
+            <td>{{item.feeType}}</td>
+
+            <td class="amount-text">
+              {{item.transactionAmount | currency:"INR":"symbol"}}
+            </td>
+
+            <td>
+              <span class="success-pill">
+                Completed
+              </span>
+            </td>
+
+            <td>{{item.transactionDate | date:'medium'}}</td>
+
+          </ng-container>
+
+        </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</ng-template>

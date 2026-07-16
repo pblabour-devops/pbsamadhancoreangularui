@@ -1,0 +1,114 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 13.1,
+      "SectionTitle": "Contract Labour (Regulation and Abolition), Act 1970",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Principal Employers Registered at the beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "No. of applications received from Principal Employer for registration",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "Principal Employers Registered during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "No. of applications on which observation raised during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 5,
+              "LableTitle": "No. of applications rejected during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 6,
+              "LableTitle": "Principal Employers Registered at the end of the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 7,
+              "LableTitle": "License issued at the Beginning of the month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 8,
+              "LableTitle": "No. of applications received from the Contractor for grant of License",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 9,
+              "LableTitle": "License Issued to Contractor During the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 10,
+              "LableTitle": "No. of applications on which observations raised during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 11,
+              "LableTitle": "No. of applications rejected during the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 12,
+              "LableTitle": "License Issued to Contractor During the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 13,
+              "LableTitle": " License Renewal During the Month",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 14,
+              "LableTitle": "Total number of licence issued till date",
+              "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+              "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" },
+              "SubLables": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

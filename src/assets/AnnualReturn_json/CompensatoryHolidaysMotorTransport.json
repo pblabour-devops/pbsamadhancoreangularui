@@ -1,0 +1,45 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 22,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Compensatory Holidays",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adoloscents", "ColumnTitle": "Adoloscents", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "8(i). No. of Workers exempted from section 19:" }
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "SameMonth", "ColumnTitle": "Same Month", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "FollowingMonth", "ColumnTitle": "Following Month", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "ThirdMonth", "ColumnTitle": "Third Month", "DataType": "Number", "IsMendatory": false }
+            ],
+            "Rows": [
+              { "category": "8(ii). No. of Workers who received holidays in the:" }
+          
+     
+              
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

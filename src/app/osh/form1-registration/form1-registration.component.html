@@ -1,0 +1,384 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="registrationId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+    <div class="main-content">
+      <div class="card col-md-8 offset-md-1 card-form">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">
+            Registration under OSH & CoSS Code 2020
+          </h4>
+          <p class="text-center purpose-type-header">(Form-1 - Establishment Registration)</p>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 5px;">
+                <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                </app-app-form-stepper-navigation-panel> -->
+        </div>
+
+        <div class="text-right text-danger mandatory-text">
+          * Mandatory fields
+        </div>
+
+        <!-- {{ownershipTypeEnum | json}} -->
+        <div class="card-body" style="margin-top: 0px;">
+          <div class="section-card">
+            <h5 class="section-title">Establishment Details</h5>
+            <!-- <div class="form-group">
+              <label>
+                Name of Establishment 
+              </label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Email <i class="info-icon">i</i></label>
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="Enter Email ID">
+                  <div class="input-group-append">
+                    <button class="btn btn-verify">Verify</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Mobile </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter Mobile">
+                  <div class="input-group-append">
+                    <button class="btn btn-verify">Verify</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <h6 class="sub-heading">
+              Location & Address of the Establishment
+            </h6>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Premise Number / Name </label>
+                <input type="text" class="form-control" placeholder="Enter Premise Number / Name">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Sub Locality / Street / Colony Name </label>
+                <input type="text" class="form-control" placeholder="Enter Sub Locality / Street / Colony Name">
+              </div>
+
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Locality / Landmark </label>
+                <input type="text" class="form-control" placeholder="Enter Locality / Landmark">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>City / Town / Village </label>
+                <input type="text" class="form-control" placeholder="Enter City / Town / Village">
+              </div>
+
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>State </label>
+                <select class="form-control">
+                  <option>Select State</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>District </label>
+                <select class="form-control">
+                  <option>Select District</option>
+                </select>
+              </div>
+
+            </div> -->
+
+            <div class="form-row">
+              <!-- <div class="form-group col-md-6">
+                <label>Pincode </label>
+                <select class="form-control">
+                  <option>Select Pincode</option>
+                </select>
+              </div> -->
+
+              <div class="form-group col-md-6">
+                <label class="required">Ownership Type/Sector </label>
+                <select class="form-control" formControlName="ownershipType">
+                  <option [selected]="true" value=''>Select Ownership Type</option>
+                  <option *ngFor="let item of ownershipTypeEnum" [value]="item.value">{{item.text}}</option>
+                </select>
+                  <div *ngIf="Input_Form.get('ownershipType').errors?.required" class="text-danger">
+                      Ownership Type is required.
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label class="required">PAN </label>
+                <input type="text" class="form-control" formControlName="panNumber">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="required">Name as on PAN </label>
+                <input type="text" class="form-control" formControlName="nameOnPan">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="required">Date of Birth (DD-MM-YYYY) </label>
+                <div class="input-group">
+                  <input type="date" class="form-control" placeholder="DD-MM-YYYY" formControlName="dateOfBirth">
+                  <div class="input-group-append">
+                    <button class="btn btn-verify">Verify</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <div class="form-row">
+               <div class="form-group col-md-6">
+                    <label class="required">Is establishment carrying any hazardous or life-threatening occupation ?</label>
+                    <i class="feather icon-eye" (click)="openScrollableContent(longContent)" style="margin-left: 10px;"></i>
+               </div>
+               <div class="form-group col-md-4">
+                  <div class="toggle-group">
+                    <label class="toggle-option">
+                      <input type="radio" name="isEstbCarryingAnyHazardousOccupation" [value]="true" formControlName="isEstbCarryingAnyHazardousOccupation">
+                      <span>Yes</span>
+                    </label>
+
+                    <label class="toggle-option">
+                      <input type="radio" name="isEstbCarryingAnyHazardousOccupation" [value]="false" formControlName="isEstbCarryingAnyHazardousOccupation">
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
+             </div>
+          </div>
+
+          <div class="section-card">
+            <h5 class="section-title required">Establishment Type</h5>
+            <div class="toggle-group flex-wrap">
+              <label class="toggle-option">
+                <input type="radio" name="estType" (change)="onTypeChange('factory')">
+                <span>Factory for the purpose of contract labour</span>
+              </label>
+              <label class="toggle-option">
+                <input type="radio" name="estType" (change)="onTypeChange('bocw')">
+                <span>Building and Other Construction Work</span>
+              </label>
+
+              <label class="toggle-option">
+                <input type="radio" name="estType" (change)="onTypeChange('motor')">
+                <span>Motor Transport</span>
+              </label>
+
+              <label class="toggle-option">
+                <input type="radio" name="estType" (change)="onTypeChange('other')">
+                <span>Any Other Establishment</span>
+              </label>
+            </div>
+
+            <div class="form-group mt-4" *ngIf="selectedEstablishmentType === 'other'">
+              <label>Select Establishment Type</label>
+              <select class="form-control custom-input" formControlName="osh_EstablishmentType">
+                <option [selected]="true" value=''>Select Establishment Type</option>
+                <option *ngFor="let item of allOtherEstablishmentType" [value]="item.id">
+                    {{ item.establishmentOtherType }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <app-form1-registration-factory-details [appRefId]="appRefId" (factoryDetailDataEvent)="factoryDetailDataEventListener($event)" *ngIf="selectedEstablishmentType === 'factory'"></app-form1-registration-factory-details>
+
+          <app-form1-registration-bocw-details [appRefId]="appRefId" (bocwDetailDataEvent)="bocwDetailDataEventListener($event)" *ngIf="selectedEstablishmentType === 'bocw'"></app-form1-registration-bocw-details>
+
+          <app-form1-registration-motor-transport-details [appRefId]="appRefId" (motorTransportDetailDataEvent)="motorTransportDetailDataEventListener($event)" *ngIf="selectedEstablishmentType === 'motor'"></app-form1-registration-motor-transport-details>
+
+          <app-form1-registration-employee-details [appRefId]="appRefId" (empDetailDataEvent)="empDetailDataEventListener($event)"></app-form1-registration-employee-details>
+          
+          <div class="section-card other-details-card" style="margin-top: 15px;">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label class="required">Maximum number of workers to be employed on any day </label>
+                <input type="text" class="form-control" formControlName="maximumNoOfWorkersToBeEmployedOnAnyDay" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)">
+              </div>
+            </div>
+
+            <h5 class="section-title">Other Details</h5>
+            <div class="coverage-wrapper">
+              <div class="coverage-box">
+                <div class="coverage-label required">
+                  Do you want voluntary coverage for EPFO?
+                </div>
+                <div class="toggle-group">
+                  <label class="toggle-option">
+                    <input type="radio" [value]="true" formControlName="doYouWantVoluntaryCoverageForEPFO">
+                    <span>Yes</span>
+                  </label>
+
+                  <label class="toggle-option">
+                    <input type="radio" [value]="false" formControlName="doYouWantVoluntaryCoverageForEPFO">
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="coverage-box">
+                <div class="coverage-label required">
+                  Do you want voluntary coverage for ESIC?
+                </div>
+
+              <div class="toggle-group">
+                <label class="toggle-option">
+                  <input type="radio" name="doYouWantVoluntaryCoverageForESIC" [value]="true" formControlName="doYouWantVoluntaryCoverageForESIC">
+                  <span>Yes</span>
+                </label>
+
+                <label class="toggle-option">
+                  <input type="radio" name="doYouWantVoluntaryCoverageForESIC" [value]="false" formControlName="doYouWantVoluntaryCoverageForESIC">
+                  <span>No</span>
+                </label>
+              </div>
+
+              </div>
+            </div>
+
+            <div class="nic-section mt-4">
+              <div class="form-group" [ngClass]="formControls.nationalIndustrialClassificationCode.invalid && (submitted || formControls.nationalIndustrialClassificationCode.dirty || formControls.nationalIndustrialClassificationCode.touched) ? 'form-validation-icon-input' : ''">
+                  <label for="nationalIndustrialClassificationCode">National Industrial Classification (NIC Code or Nature of Business)</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+            </div>
+
+            <div class="col-md-6 text-right">
+              <button type="submit" class="btn btn-primary">Save & Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
+
+
+  <ng-template #longContent let-modal>
+    <div class="modal-header">
+        <div class="col-lg-12">
+            <h4 class="modal-title form-header text-center">List of Industries involving hazardous processes</h4>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                    <span>1. Ferrous Metallurgical Industries</span>
+                     <ul>
+                        <li>Integrated Iron and Steel</li>
+                        <li>Ferro-alloys</li>
+                        <li>Special Steels</li>
+                    </ul>
+                    <span>2. Non-ferrous metallurgical Industries.</span>
+                    <ul>
+                        <li>Primary Metallurgical Industries, namely, zinc, lead, copper, manganese and aluminium.</li>
+                    </ul>
+                    <span>3. Foundries (ferrous and non-ferrous).</span>
+                    <ul>
+                        <li>Castings and forgings including cleaning or smoothening/roughening by sand and shot blasting.</li>
+                    </ul>
+                    <span>4. Coal (including coke) industries.</span>
+                    <ul>
+                        <li>Coal, Lignite, Coke and like other substances.</li>
+                        <li>Fuel Gases (including Coal Gas, Producer Gas, Water Gas).</li>
+                    </ul>
+                    <span>5. Power Generating Industries.</span>
+                    <span>6. Pulp and paper (including paper products) industries.</span>
+                    <span>7. Fertiliser Industries.</span>
+                    <ul>
+                        <li>Nitrogenous.</li>
+                        <li>Phosphatic.</li>
+                        <li>Mixed.</li>
+                    </ul>
+                    <span>8. Cement Industries.</span>
+                    <ul>
+                        <li>Portland Cement (including slag cement, puzzolona cement and their products).</li>
+                    </ul>
+                    <span>9. Petroleum Industries.</span>
+                    <ul>
+                        <li>Oil Refining.</li>
+                        <li>Lubricating Oils and Greases.</li>
+                    </ul>
+                    <span>10. Petro-chemical Industries.</span>
+                    <span>11. Drugs and Pharmaceutical Industries.</span>
+                    <ul>
+                        <li>Narcotics, Drugs and Pharmaceuticals.</li>
+                    </ul>
+                    <span>12. Fermentation Industries (Distilleries and Breweries).</span>
+                    <span>13. Rubber (Synthetic) Industries.</span>
+                    <span>14. Paints and Pigment Industries.</span>
+                    <span>15. Leather Tanning Industries.</span>
+                    <span>16. Electro-plating Industries.</span>
+                    <span>17. Chemical Industries.</span>
+                    <ul>
+                        <li>Coke Oven by-products and Coaltar Distillation products.</li>
+                        <li>Industrial Gases (nitrogen, oxygen, acetylene, argon, carbondioxide, hydrogen, sulphur dioxide, nitrous oxide, halogenated hydrocarbon, ozone, or any like gases).</li>
+                        <li>Industrial Carbon.</li>
+                        <li>Alkalies and Acids.</li>
+                        <li>Chromates and dichromates.</li>
+                        <li>Lead and its compounds.</li>
+                        <li>Electrochemicals (metallic sodium, potassium and magnesium, chlorates, perchlorates and peroxides).</li>
+                        <li>Electrothermal produces (artificial abrasive, calcium carbide).</li>
+                        <li>Nitrogenous compounds (cyanides, cyanamides and other nitrogenous compounds).</li>
+                        <li>Phosphorous and its compounds.</li>
+                        <li>Halogens and Halogenated compounds (Chlorine, Fluorine, Bromine and Iodine).</li>
+                        <li>Explosives (including industrial explosives and detonators and fuses).</li>
+                    </ul>
+                    <span>18. Insecticides, Fungicides, Herbicides and other Pesticides Industries.</span> <br>
+                    <span>19. Synthetic Resin and plastics.</span><br>
+                    <span>20. Man made Fibre (Cellulosic and non-cellulosic) industry.</span><br>
+                    <span>21. Manufacture and repair of electrical accumulators.</span><br>
+                    <span>22. Glass and Ceramics.</span><br>
+                    <span>23. Grinding or glazing of metals.</span><br>
+                    <span>24. Manufacture, handling and processing of asbestos and its products.</span><br>
+                    <span>25. Extraction of oils and fats from vegetable and animal sources.</span><br>
+                    <span>26. Manufacture, handling and use of benzene and substances containing benzene.</span><br>
+                    <span>27. Manufacturing processes and operations involving carbon disulphide.</span><br>
+                    <span>28. Dyes and Dyestuff including their intermediates.</span><br>
+                    <span>29. Highly flammable liquids and gases.</span><br>
+                    <span>30. Printing and dyeing on fabrics in textiles and plywood and laminate manufacturing process.</span><br>
+                    <span>31. Process involving usage of radium or Radioactive Substances.</span><br>
+                    <span>32. Stone Crushing industry.</span><br>
+                    <span>33. Extraction of Oil and Raw material from the scrap tyres.</span><br>
+                    <span>34. Cigarette manufacturing industry.</span><br>
+                    <span>35. Ship breaking industry.</span><br>
+                    <span>36. Hazardous waste and e-waste processing plants.</span><br>
+                    <span>37. Semiconductor manufacturing industry.</span><br>
+                    <span>38. Styrene manufacturing, handling and processing industry.</span><br>
+                    <span>39. Nano-particles utilising industry.</span><br>
+                    <span>40. Manufacturing, processing, preparation and utilisation of Mercury or Compounds of Mercury, Lead Tetra-ethyl, Manganese, Arsenic, Chrome, Aliphatic series, Beryllium, Phosgene and Isocyanates.</span>
+            </div>
+        </div>
+    </div>
+  </ng-template>

@@ -1,0 +1,11 @@
+.background-image {
+    background-image: url('../../../assets/images/icon/satyamev.png');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center center;
+    opacity: 0.90;
+}
+
+.table {
+    margin-bottom: 0px;
+}

@@ -1,0 +1,110 @@
+
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+    <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Add What's New in Portal</h4>
+                </div>
+            </div>
+            <div class="col-md-12 text-right text-danger">
+                * mandatory fields
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title" class="required">Notification Title </label>
+                                <input type="text" class="form-control" formControlName="title">
+                                <div *ngIf="Input_Form.get('title').errors?.required" class="text-danger">
+                                    Notification Title is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description" class="required">Notification Description </label>
+                                <input type="text" class="form-control" formControlName="description">
+                                <div *ngIf="Input_Form.get('description').errors?.required" class="text-danger">
+                                    Notification Description is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="modifiedDate" class="required">Notification Published On Date </label>
+                                <input type="date" class="form-control" formControlName="modifiedDate">
+                                <div *ngIf="Input_Form.get('modifiedDate').errors?.required" class="text-danger">
+                                    Notification Published Date is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="expiryDate" class="required">Notification Expiry Date </label>
+                                <input type="date" class="form-control" formControlName="expiryDate">
+                                <div *ngIf="Input_Form.get('expiryDate').errors?.required" class="text-danger">
+                                    Notification Expiry Date is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row form-row">
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usageType" class="required">Notification Usage Type</label>
+                                <select class="form-select form-select-sm form-control" formControlName="usageType">
+                                    <option [selected]="true" value=0>-- Please Select --</option>
+                                    <option value= "1"> Department </option>
+                                    <option value= "2"> Internal Purpose </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('usageType').errors?.required" class="text-danger">
+                                    Notification Usage Type is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="required">Select Role</label>
+                                <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ced4da; border-radius: 4px; padding: 8px;">
+                                    <div *ngFor="let role of allRoles" class="form-check ms-2">
+                                        <input class="form-check-input" type="checkbox" [value]="role.name"
+                                            (change)="onRoleChange($event, role.name)"
+                                            [checked]="selectedRoles.includes(role.name)">
+                                        <label class="form-check-label">
+                                            {{ role.name }} ({{ role.normalizedName }})
+                                        </label>
+                                    </div>
+                                </div>
+                                <div *ngIf="Input_Form.get('role').errors?.required" class="text-danger mt-1">
+                                    Role is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" type="submit" [disabled]="Input_Form.invalid">Add What's New</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+

@@ -1,0 +1,67 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 29,
+      "SectionTitle": "Wages and Mandays Worked",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Mandays Worked",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "8. Number of mandays worked by" }
+             
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Wages Paid",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "9. Amount of Wages Paid" }
+             
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "Wages Deductions",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "10. Amount of Deductions from wages,if any" }
+             
+              
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

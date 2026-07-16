@@ -1,0 +1,28 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 50,
+      "SectionTitle": "FORM A [See Sec.4(1) provision (a)] Core Return",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Establishment Details",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "1(a)(i)  Name of Establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "1(a)(ii) Postal Address of establishment", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "1(a)(iii)  Pin Code/Zip Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "1(b)(i)  Name of Employer", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "1(b)(ii)  Residential Address of employer", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "1(b)(iii)  Pin Code/Zip Code", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "1(c)  Name of principal employer in the case of a contractor's establishments", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "1(d)  Date of commencement of the establishment", "LableValueInfo": { "DataType": "DateTime", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "2(a)  Number of days worked during the year", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "2(b)  Number of days man-worked during the year", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 11, "LableTitle": "2(c) Day of weekly holiday", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+          ]
+        }
+
+      ]
+    }
+  }
+]

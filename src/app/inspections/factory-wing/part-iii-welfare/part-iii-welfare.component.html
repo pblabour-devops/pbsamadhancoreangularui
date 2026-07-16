@@ -1,0 +1,1140 @@
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" />
+  <div class="main-content">
+    <div class="card col-md-10 card-form">
+      <div class="col-md-12">
+        <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+      </div>
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center form-header">Welfare</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-gray">
+            <tr>
+              <th>Section/Rule</th>
+              <th>Details</th>
+              <th>Yes/No/Not Applicable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Section-42 -->
+            <!-- Section-42 -->
+            <tr>
+              <td rowspan="3">Section-42 Washing Facilities</td>
+              <td class="inspection-back-theme1"><strong>42.1.1</strong> Are washing facilities provided?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_42_WashingFacilities_Provided_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>42.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_42_WashingFacilities_Provided_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>42.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_42_WashingFacilities_Provided_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_42_WashingFacilities_Provided_Remarks"
+                  placeHolder="sec_42_WashingFacilities_Provided_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <!-- Section-43 -->
+            <tr>
+              <td rowspan="3">
+                Section-43 Facilities for storing and drying clothes
+              </td>
+              <td class="inspection-back-theme2">
+                <strong>43.1.1</strong> Are facilities for storing and drying clothes provided as
+                required under Rule 68A
+              </td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_43_StoringAndDrying_Rule68A_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>43.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_43_StoringAndDrying_Rule68A_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme2">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>43.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_43_StoringAndDrying_Rule68A_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_43_StoringAndDrying_Rule68A_Remarks"
+                  placeHolder="sec_43_StoringAndDrying_Rule68A_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-44 -->
+            <tr>
+              <td rowspan="3">Section-44 Facilities for sitting</td>
+              <td class="inspection-back-theme1"><strong>44.1.1</strong> Are sitting facilities provided?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_44_FacilitiesForSitting_Provided_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>44.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_44_FacilitiesForSitting_Provided_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>44.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_44_FacilitiesForSitting_Provided_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_44_FacilitiesForSitting_Provided_Remarks"
+                  placeHolder="sec_44_FacilitiesForSitting_Provided_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-45/Rule-69 -->
+            <tr>
+              <td rowspan="9">Section-45/Rule-69 First-Aid</td>
+              <td class="inspection-back-theme2"><strong>45.1.1</strong> Are First-Aid boxes maintained as per Rule 69?</td>
+              <td class="inspection-back-theme2"> 
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule69_FirstAid_Rule69_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>45.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule69_FirstAid_Rule69_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule69_FirstAid_Rule69_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule69_FirstAid_Rule69_Remarks"
+                  placeHolder="sec_45_Rule69_FirstAid_Rule69_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>45.2.1</strong> Are notices containing names of persons in charge of First-Aid
+                boxes and name/telephone number of nearest hospital displayed in
+                factory?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule69_NoticesContainNameOfPerson_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>45.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule69_NoticesContainNameOfPerson_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule69_NoticesContainNameOfPerson_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked" 
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule69_NoticesContainNameOfPerson_Remarks"
+                  placeHolder="sec_45_Rule69_NoticesContainNameOfPerson_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>45.3.1</strong> Is there any person trained in First-Aid? (attach certificate)
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule69_PersonTrainedInFirstAid_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>45.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule69_PersonTrainedInFirstAid_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule69_PersonTrainedInFirstAid_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule69_PersonTrainedInFirstAid_Remarks"
+                  placeHolder="sec_45_Rule69_PersonTrainedInFirstAid_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-45/Rule-70 -->
+            <tr>
+              <td rowspan="12">Section-45/Rule-70 Ambulance Room</td>
+              <td class="inspection-back-theme1"><strong>45.4.1</strong> Is ambulance room required?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_Required_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>45.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule70_AmbulanceRoom_Required_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.4.3</strong>  Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_Required_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule70_AmbulanceRoom_Required_Remarks"
+                  placeHolder="sec_45_Rule70_AmbulanceRoom_Required_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>45.5.1</strong> Is ambulance room maintained and equipped as per Rule-70</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_Rule70_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>45.5.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule70_AmbulanceRoom_Rule70_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.5.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_Rule70_Remarks"
+                ></textarea>
+                <app-form-validation-error  [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule70_AmbulanceRoom_Rule70_Remarks"
+                  placeHolder="sec_45_Rule70_AmbulanceRoom_Rule70_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+
+            <tr class="inspection-back-theme1">
+              <td><strong>45.6.1</strong> Are medical officers appointed as per requirement?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_MedicalOfficers_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>45.6.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule70_AmbulanceRoom_MedicalOfficers_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.6.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_MedicalOfficers_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule70_AmbulanceRoom_MedicalOfficers_Remarks"
+                  placeHolder="sec_45_Rule70_AmbulanceRoom_MedicalOfficers_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>45.7.1</strong> Is para medical staff provided in ambulance room?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_ParaMedicalStaff_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>45.7.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_45_Rule70_AmbulanceRoom_ParaMedicalStaff_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="3">
+                <span class="remarks_span_label"
+                  ><strong>45.7.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_45_Rule70_AmbulanceRoom_ParaMedicalStaff_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_45_Rule70_AmbulanceRoom_ParaMedicalStaff_Remarks"
+                  placeHolder="sec_45_Rule70_AmbulanceRoom_ParaMedicalStaff_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-46/Rules under this section (Canteen) -->
+            <tr>
+              <td rowspan="18">
+                Section-46/Rules under this (section) Canteen
+              </td>
+              <td class="inspection-back-theme1"><strong>46.1.1</strong> Is canteen required?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_Required_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>46.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_Required_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_Required_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_Required_Remarks"
+                  placeHolder="sec_46_Canteen_Required_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td>
+                <strong>46.2.1</strong> Is canteen maintained and equipped as per Rule-71, 72, 73?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_Rule71_72_73_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>46.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_Rule71_72_73_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_Rule71_72_73_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_Rule71_72_73_Remarks"
+                  placeHolder="sec_46_Canteen_Rule71_72_73_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>46.3.1</strong> Prices to be charged are approved from canteen committee?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_PriceToCharged_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>46.3.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_PriceToCharged_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_PriceToCharged_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_PriceToCharged_Remarks"
+                  placeHolder="sec_46_Canteen_PriceToCharged_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>46.4.1</strong> Are accounts of canteen being maintained?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_BeingMaintained_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>46.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_BeingMaintained_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_BeingMaintained_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_BeingMaintained_Remarks"
+                  placeHolder="sec_46_Canteen_BeingMaintained_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>46.5.1</strong> Is canteen committee constituted? (Attach copy)</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_CommitteeConstituted_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>46.5.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_CommitteeConstituted_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.5.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_CommitteeConstituted_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_CommitteeConstituted_Remarks"
+                  placeHolder="sec_46_Canteen_CommitteeConstituted_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>46.6.1</strong>  Is canteen staff medically examined annually?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_46_Canteen_ExaminedAnnualy_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>46.6.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_46_Canteen_ExaminedAnnualy_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>46.6.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_46_Canteen_ExaminedAnnualy_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_46_Canteen_ExaminedAnnualy_Remarks"
+                  placeHolder="sec_46_Canteen_ExaminedAnnualy_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-47/Rule-78 -->
+            <!-- Section-47/Rule-78 Shelter, Rest-Room and Lunch Room -->
+            <tr>
+              <td rowspan="6">
+                Section-47/Rule-78 Shelter, Rest-Room and Lunch Room
+              </td>
+              <td class="inspection-back-theme1"><strong>47.1.1</strong>  Are shelter/rest-room/lunch room required?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_47_RestRoom_Required_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>47.1.2</strong>{{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_47_RestRoom_Required_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>47.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_47_RestRoom_Required_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_47_RestRoom_Required_Remarks"
+                  placeHolder="sec_47_RestRoom_Required_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>47.2.1</strong> Are these as per rule-78?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_47_RestRoom_Rule78_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>47.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_47_RestRoom_Rule78_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>47.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_47_RestRoom_Rule78_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_47_RestRoom_Rule78_Remarks"
+                  placeHolder="sec_47_RestRoom_Rule78_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-48/Rule-79 Crech -->
+            <tr>
+              <td rowspan="15">Section-48/Rule-79 Crech</td>
+              <td class="inspection-back-theme1"><strong>48.1.1</strong> Is crech required?</td>
+              <td class="inspection-back-theme1">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_48_Crech_Required_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+           
+            <tr class="inspection-back-theme1">
+              <td><strong>48.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_48_Crech_Required_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>48.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_48_Crech_Required_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_48_Crech_Required_Remarks"
+                  placeHolder="sec_48_Crech_Required_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>48.2.1</strong> Is crech maintained/equipped as per rule-79?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_48_Crech_Rule79_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2"> 
+              <td><strong>48.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_48_Crech_Rule79_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>48.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_48_Crech_Rule79_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_48_Crech_Rule79_Remarks"
+                  placeHolder="sec_48_Crech_Rule79_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>48.3.1</strong> Is washroom provided in crech?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_48_Crech_WashRoom_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>48.3.2</strong>{{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_48_Crech_WashRoom_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>48.3.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_48_Crech_WashRoom_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_48_Crech_WashRoom_Remarks"
+                  placeHolder="sec_48_Crech_WashRoom_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>48.4.1</strong> Is milk and refreshment supplied in crech?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_48_Crech_MilkAndRefreshment_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>48.4.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_48_Crech_MilkAndRefreshment_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>48.4.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_48_Crech_MilkAndRefreshment_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_48_Crech_MilkAndRefreshment_Remarks"
+                  placeHolder="sec_48_Crech_MilkAndRefreshment_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td><strong>48.5.1</strong> Is a break given to the mother for feeding?</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_48_Crech_MotherFeeding_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            
+            <tr class="inspection-back-theme1">
+              <td><strong>48.5.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_48_Crech_MotherFeeding_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>48.5.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_48_Crech_MotherFeeding_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_48_Crech_MotherFeeding_Remarks"
+                  placeHolder="sec_48_Crech_MotherFeeding_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <!-- Section-49/Rules under this section Welfare Officer -->
+            <tr>
+              <td rowspan="9">
+                Section-49/Rules under this section Welfare Officer
+              </td>
+              <td class="inspection-back-theme2"><strong>49.1.1</strong> Number of welfare officer required?</td>
+              <td class="inspection-back-theme2">
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_49_WelfareOfficer_Required_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>49.1.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_49_WelfareOfficer_Required_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>49.1.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_49_WelfareOfficer_Required_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_49_WelfareOfficer_Required_Remarks"
+                  placeHolder="sec_49_WelfareOfficer_Required_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme1">
+              <td>
+                <strong>49.2.1</strong>  Is appointment of welfare officer(s) as per The Punjab Welfare
+                Officer Rules?
+              </td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_49_WelfareOfficer_PWOR_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td><strong>49.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_49_WelfareOfficer_PWOR_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme1">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>49.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_49_WelfareOfficer_PWOR_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_49_WelfareOfficer_PWOR_Remarks"
+                  placeHolder="sec_49_WelfareOfficer_PWOR_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+
+            <tr class="inspection-back-theme2">
+              <td><strong>49.2.1</strong> Any other remarks</td>
+              <td>
+                <select
+                  class="form-select form-control"
+                  formControlName="sec_49_WelfareOfficer_OtherRemarks_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1" [selected]="true">Not Applicable</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td><strong>49.2.2</strong> {{hasViolationFound}}  </td>
+              <td>
+                <select class="form-select form-control"
+                    formControlName="sec_49_WelfareOfficer_OtherRemarks_ViolationExist">
+                  <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="inspection-back-theme2">
+              <td colspan="2">
+                <span class="remarks_span_label"
+                  ><strong>49.2.3</strong> Remarks by Inspecting Officer</span
+                >
+                <textarea
+                  class="form-control"
+                  (focusout)="fillDefaultValueInRemarks($event)"
+                  formControlName="sec_49_WelfareOfficer_OtherRemarks_Remarks"
+                ></textarea>
+                <app-form-validation-error [isSubmitted]="hasSubmitClicked"
+                  [formGroup]="Input_Form"
+                  controlName="sec_49_WelfareOfficer_OtherRemarks_Remarks"
+                  placeHolder="sec_49_WelfareOfficer_OtherRemarks_Remarks"
+                ></app-form-validation-error>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12">
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</form>

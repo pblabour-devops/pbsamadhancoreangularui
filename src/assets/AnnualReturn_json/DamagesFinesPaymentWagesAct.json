@@ -1,0 +1,55 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 11,
+      "SectionTitle": "Damages and Fines",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "(47) Deduction made during the year",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "NatureOfDeduct", "ColumnTitle": "Nature of Deduction", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "NoOfCases", "ColumnTitle": "No. of Cases", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Amount", "ColumnTitle": "Amount", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "NatureOfDeduct": "A) Fines" },
+              { "NatureOfDeduct": "B) Damage or loss" },
+              { "NatureOfDeduct": "C) Breach of Contract" }
+              
+            ]
+          }
+        },
+        {
+        "SubSectionSortId": 2,
+        "SubSectionTitle": "",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "(48) Balance of fine fund at the beginning of the year",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+           {
+            "LableSortId": 2,
+            "LableTitle": "(49) Disbursement from the fine fund",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 3,
+            "LableTitle": "(50) Balance of the fine fund at the end of the year",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          }
+        ]
+    }
+      ]
+    }
+  }
+]

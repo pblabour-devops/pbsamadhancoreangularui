@@ -1,0 +1,439 @@
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card col-md-10 card-form">
+                <div class="col-md-12 m-t-20">
+                    <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                    </app-app-form-stepper-navigation-panel> -->
+                </div>
+                <h5>Establishment & address</h5>
+                <div class="col-md-12 col-sm-12 m-t-20">
+                    <!-- <app-establishment-info-card [appRefId]="appRefId"></app-establishment-info-card> -->
+                </div>  
+                <div class="col-md-12 m-t-20">
+                    <div class="register-modal-header">
+                        <h5>Application Fee Calculator</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Application fee header</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let feeHeader of genericFormModel?.formModel; let ndx = index">
+                                    <td style="vertical-align: middle;">{{ndx+1}}</td>
+                                    <td style="vertical-align: middle;">{{feeHeader.feeHeaderTitle}}</td>
+                                    <td [innerHTML]="feeHeader.description | sanitizeHtml"></td>
+                                    <td style="vertical-align: middle;">
+                                        <span *ngIf="feeHeader?.isDeduductible; else plusSign">(-)</span>
+                                        <ng-template #plusSign><span>(+)</span></ng-template>
+                                    </td>
+                                    <td style="text-align: right;vertical-align: middle;">{{feeHeader.amountCalculated}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="border-bottom-0">
+                                    <th class="text-right text-danger" colspan="4">Net calculated amount: </th>
+                                    <th class="text-right text-danger">
+                                        &#x20b9; {{netFeeCalculated}}
+                                    </th>
+                                </tr>
+                                <tr class="border-top-0">
+                                    <th colspan="5" class="text-primary font-weight-light text-right">
+                                        ({{netFeeCalculated  | numberToWord}} only)
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="alert alert-danger" *ngIf="feeHeaderId != 30">
+                            <h4 class="alert-heading">Please Note..!</h4>
+                            <p>This is a system-calculated fee payable as per the particulars provided by you in the application form. <br> In case you have any concern regarding the calculated amount, then please take a screenshot of this window and mail us at <b> elabourhelpdesk[at]gmail[dot]com </b>, and our technical team will contact you soon..! </p>
+                        </div>
+
+                        <div class="card bg-light" *ngIf="applicationType==1 || applicationType==2 || applicationType==3 || applicationType==4">
+                           <div class="card-body" *ngIf="applicationType==1">
+                                <div class="col-md-12">
+                                    <h6><span class="badge badge-light-info"> Establishment registration fees slab</span></h6>
+                                </div>
+                                <div  class="row form-row">
+                                    <table class="table table-sm table-bordered table-hover text-center">
+                                        <thead><tr><th>Maximum number of employees to be employed any day</th><th>Fee for Registration</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Up to 20</td><td>1000</td></tr>
+                                            <tr><td>20 - 50</td><td>2000</td></tr>
+                                            <tr><td>51 - 100</td><td>3000</td></tr>
+                                            <tr><td>101 - 150</td><td>5000</td></tr>
+                                            <tr><td>151 - 200</td><td>7500</td></tr>
+                                            <tr><td>201 - 250</td><td>10,000</td></tr>
+                                            <tr><td>251 - 500</td><td>12,500</td></tr>
+                                            <tr><td>501 - 750</td><td>15,000</td></tr>
+                                            <tr><td>751 - 1000</td><td>17,500</td></tr>
+                                            <tr><td>1001 - 1500</td><td>20,000</td></tr>
+                                            <tr><td>1501 - 2000</td><td>25,000</td></tr>
+                                            <tr><td>2001 - 3000</td><td>30,000</td></tr>
+                                            <tr><td>3001 - 5000</td><td>40,000</td></tr>
+                                            <tr><td>5001 & Above</td><td>50,000</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-body" *ngIf="applicationType==2">
+                                <div class="col-md-12">
+                                    <h6><span class="badge badge-light-info"> Contract Labour registration fees slab</span></h6>
+                                </div>
+                                <div  class="row form-row">
+                                    <table class="table table-sm table-bordered table-hover text-center">
+                                        <thead><tr><th>Maximum contract labour to be employed any day</th><th>Fee for Registration</th><th>Security Fee</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Up to 100</td><td>5000</td><td>50,000</td></tr>
+                                            <tr><td>101 - 150</td><td>10,000</td><td>1,00,000</td></tr>
+                                            <tr><td>151 - 200</td><td>15,000</td><td>1,50,000</td></tr>
+                                            <tr><td>201 - 250</td><td>20,000</td><td>2,00,000</td></tr>
+                                            <tr><td>251 - 500</td><td>25,000</td><td>2,50,000</td></tr>
+                                            <tr><td>501 - 750</td><td>30,000</td><td>3,00,000</td></tr>
+                                            <tr><td>751 - 1000</td><td>40,000</td><td>4,00,000</td></tr>
+                                            <tr><td>1001 - 1500</td><td>50,000</td><td>5,00,000</td></tr>
+                                            <tr><td>1501 - 2000</td><td>60,000</td><td>6,00,000</td></tr>
+                                            <tr><td>2001 & Above</td><td>75,000</td><td>7,50,000</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-body" *ngIf="applicationType==3">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-warning d-block">Please Note : Processing fee will be calculated based on the total covered area.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="applicationType==4">
+                                <div class="card table-card" style="margin-top: 12px;">
+                                    <div class="card-header">
+                                        <h5>Fee Slabs</h5>
+                                        <ul class="nav nav-pills nav-fill mt-3 border-bottom pb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="feather icon-film m-r-5"></i> SCHEDULE-I</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="feather icon-film m-r-5"></i> SCHEDULE-II</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="feather icon-film m-r-5"></i> SCHEDULE-III</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-light" *ngIf="applicationType==70 && feeHeaderId != 30">
+                            <div class="table-responsive">
+                                <div class="text-center m-t-20">
+                                    <h5>SCHEDULE - I</h5><br>
+                                    <h5>Fees for the grant of licence for a factory for one calendar year</h5>
+                                </div>
+                                <table class="table table-bordered m-t-10">
+                                    <tbody>
+                                        <tr><td></td><td></td><td class="text-center font-weight-bold text-c-blue" colspan="7">Total manpower</td></tr>
+                                        <tr>
+                                            <th rowspan="8" class="text-c-blue" style="writing-mode: vertical-rl;text-orientation: mixed; text-align: center;">Power installed (in K.W.)</th>
+                                            <th></th>
+                                            <th>Upto 20</th>
+                                            <th>From 21 to 50</th>
+                                            <th>From 51 to 100</th>
+                                            <th>From 101 to 250</th>
+                                            <th>From 251 to 500</th>
+                                            <th>From 501 to 1000</th>
+                                            <th>Above 1000</th>
+                                        </tr>
+                                
+                                        <tr>
+                                            <th>Upto 20</th>
+                                            <td>₹ 450</td>
+                                            <td>₹ 750</td>
+                                            <td>₹ 1,500</td>
+                                            <td>₹ 3,000</td>
+                                            <td>₹ 4,500</td>
+                                            <td>₹ 7,500</td>
+                                            <td>₹ 10,500</td>
+                                        </tr>
+                                        <tr>
+                                            <th>From 21 to 50</th>
+                                            <td>₹ 675</td>
+                                            <td>₹ 1,500</td>
+                                            <td>₹ 2,250</td>
+                                            <td>₹ 4,500</td>
+                                            <td>₹ 7,500</td>
+                                            <td>₹ 10,500</td>
+                                            <td>₹ 15,000</td>
+                                        </tr>
+                                        <tr>
+                                            <th>From 51 to 100</th>
+                                            <td>₹ 1,500</td>
+                                            <td>₹ 2,250</td>
+                                            <td>₹ 3,000</td>
+                                            <td>₹ 7,500</td>
+                                            <td>₹ 10,500</td>
+                                            <td>₹ 15,000</td>
+                                            <td>₹ 18,000</td>
+                                        </tr>
+                                        <tr>
+                                            <th>From 101 to 250</th>
+                                            <td>₹ 2,250</td>
+                                            <td>₹ 3,000</td>
+                                            <td>₹ 6,000</td>
+                                            <td>₹ 10,500</td>
+                                            <td>₹ 15,000</td>
+                                            <td>₹ 18,000</td>
+                                            <td>₹ 22,500</td>
+                                        </tr>
+                                        <tr>
+                                            <th>From 251 to 500</th>
+                                            <td>₹ 3,000</td>
+                                            <td>₹ 4,500</td>
+                                            <td>₹ 7,500</td>
+                                            <td>₹ 12,000</td>
+                                            <td>₹ 18,000</td>
+                                            <td>₹ 22,500</td>
+                                            <td>₹ 30,000</td>
+                                        </tr>
+                                        <tr>
+                                            <th>From 501 to 1000</th>
+                                            <td>₹ 4,500</td>
+                                            <td>₹ 6,000</td>
+                                            <td>₹ 10,500</td>
+                                            <td>₹ 15,000</td>
+                                            <td>₹ 22,500</td>
+                                            <td>₹ 30,000</td>
+                                            <td>₹ 37,500</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Above 1000</th>
+                                            <td>₹ 6,000</td>
+                                            <td>₹ 10,500</td>
+                                            <td>₹ 15,000</td>
+                                            <td>₹ 22,500</td>
+                                            <td>₹ 30,000</td>
+                                            <td>₹ 37,500</td>
+                                            <td>₹ 45,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                         </div>
+                         <div class="card-body">
+                            <div class="card bg-light" *ngIf="applicationType==35">
+                                <div class="table-responsive">
+                                    <div class="text-center m-t-20">
+                                        <h5>Fees for the grant of licence for a Bocw for one calendar year</h5>
+                                    </div>
+                                    <table class="table table-bordered m-t-10">
+                                        <tbody>
+                                            <tr>
+                                                <th>Maximum Number of workers to be employed on any day during the year</th>
+                                                <th>Fees(from 2014)</th>
+                                            </tr>
+                                            <tr style="background-color: #8fd19e;">
+                                                <th>From 0 to 100</th>
+                                                <th>₹ 1,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 101 to 500</th>
+                                                <th>₹ 4,000</th>
+                                            </tr>
+                                            <tr style="background-color: #ffdf7e;">
+                                                <th>From 501 upto 1000</th>
+                                                <th>₹ 8,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>More than 1000</th>
+                                                <th>₹ 10,000</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>
+                         </div>
+
+                           <!-- -------Fee Slab Principal Employer----- -->
+                        <div class="card-body">
+                            <div class="card bg-light" *ngIf="applicationType==37">
+                                <div class="table-responsive">
+                                    <div class="text-center m-t-20">
+                                        <h5>Fees for the grant of licence for a Principal Employer Under Contract Labour for one calendar year</h5>
+                                    </div>
+                                    <table class="table table-bordered m-t-10">
+                                        <tbody>
+                                            <tr>
+                                                <th>Maximum Number of workers to be employed on any day during the year</th>
+                                                <th>Fees</th>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <th>FFrom 50 to 200</th>
+                                                <th>₹ 6,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 201 to 400</th>
+                                                <th>₹ 12,000</th>
+                                            </tr>
+                                            <tr class="table-warning">
+                                                <th>Above 400</th>
+                                                <th>₹ 15,000</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>
+                         </div>
+
+                          <!-- -------Fee ISM Slab Principal Employer----- -->
+                        <div class="card-body">
+                            <div class="card bg-light" *ngIf="applicationType==39">
+                                <div class="table-responsive">
+                                    <div class="text-center m-t-20">
+                                        <h5>Fees for the grant of licence for a Migrant Workmen under The Interstate Migrant Principal Employer Under Contract Labour for one calendar year</h5>
+                                    </div>
+                                    <table class="table table-bordered m-t-10">
+                                        <tbody>
+                                            <tr>
+                                                <th>Maximum Number of workers to be employed on any day during the year</th>
+                                                <th>Fees</th>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <th>FFrom 5 to 50</th>
+                                                <th>₹ 300</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 51 to 100</th>
+                                                <th>₹ 600</th>
+                                            </tr>
+                                             <tr class="table-warning">
+                                                <th>FFrom 101 to 200</th>
+                                                <th>₹ 1200</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 201 to 400</th>
+                                                <th>₹ 2400</th>
+                                            </tr>
+                                             <tr class="table-primary">
+                                                <th>Above 400</th>
+                                                <th>₹ 3000</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>
+                         </div>
+
+                            <!-- -------Fee Slab Moter Transport----- -->
+                         <div class="card-body">
+                            <div class="card bg-light" *ngIf="applicationType==36">
+                                <div class="table-responsive">
+                                    <div class="text-center m-t-20">
+                                        <h5>Fees for the grant of licence for a Bocw for one calendar year</h5>
+                                    </div>
+                                    <table class="table table-bordered m-t-10">
+                                        <tbody>
+                                            <tr>
+                                                <th>Maximum Number of workers to be employed on any day during the year</th>
+                                                <th>Fees(from 2014)</th>
+                                            </tr>
+                                            <tr style="background-color: #8fd19e;">
+                                                <th>From 1 to 5</th>
+                                                <th>₹ 600</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 6 to 25</th>
+                                                <th>₹ 1,500</th>
+                                            </tr>
+                                            <tr style="background-color: #ffdf7e;">
+                                                <th>From 26 upto 50</th>
+                                                <th>₹ 3,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 51 to 100</th>
+                                                <th>₹ 6,000</th>
+                                            </tr>
+                                            <tr style="background-color: #ed969e;">
+                                                <th>From 101 upto 250</th>
+                                                <th>₹ 15,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 251 to 500</th>
+                                                <th>₹ 30,000</th>
+                                            </tr>
+                                            <tr style="background-color: #86cfda;">
+                                                <th>From 501 upto 750</th>
+                                                <th>₹ 45,000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>From 751 to 1000</th>
+                                                <th>₹ 60,000</th>
+                                            </tr>
+                                            <tr style="background-color: #8fd19e;">
+                                                <th>More Then 1000</th>
+                                                <th>₹ 90,000</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>
+                         </div>
+
+                             <!-- -------Fee Slab Contract Labour----- -->
+                             <div class="card-body">
+                                <div class="card bg-light" *ngIf="applicationType==38">
+                                    <div class="table-responsive">
+                                        <div class="text-center m-t-20">
+                                            <h5>Fees for the Grant of Licence for One Year</h5>
+                                        </div>
+                                        <table class="table table-bordered m-t-10">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Maximum Number of workers to be employed on any day during the year</th>
+                                                    <th>Fees</th>
+                                                </tr>
+                                                <tr class="table-success">
+                                                    <th>From 50 to 200</th>
+                                                    <th>₹ 1,500</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>From 201 to 400</th>
+                                                    <th>₹ 3,000</th>
+                                                </tr>
+                                                <tr class="table-warning">
+                                                    <th>Above 400</th>
+                                                    <th>₹ 4,500</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                 </div>
+                               </div>   
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" (click)="btnHomeClick(applicationType)">Home</button>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button *ngIf="netFeeCalculated>0 && genericFormModel?.isLocked" (click)="onSubmit()" class="btn btn-primary">I am agree with calculated net amount and proceed to make payment</button>
+                            <span *ngIf="!genericFormModel?.isLocked" class="font-weight-bold text-danger"><i class="icon feather icon-alert-circle"></i> Before making payment, please Confirm & Lock the application first</span>
+                            <span *ngIf="netFeeCalculated==0" class="font-weight-bold text-danger"><i class="icon feather icon-alert-circle"></i> Something went wrong. No fee calulated.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    

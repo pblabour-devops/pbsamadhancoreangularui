@@ -1,0 +1,97 @@
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card email-card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="mail-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 inbox-right">
+                                    <div class="tab-content p-0" id="v-pills-tabContent">
+                                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel">
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-primary"
+                                                    role="tabpanel" aria-labelledby="pills-primary-tab">
+                                                    <div class="customer-scroll" class="tableClass table-responsive">
+                                                        <select id="ddAllApplicationType" (click)="filterAcivitiesByApplicationType($event)">
+                                                            <option *ngFor="let applicationType of allDistinctApplicationTypes" value="{{applicationType}}">{{getApplicationTypeDesc(applicationType)}}</option>
+                                                        </select>
+                                                        <ul id="myUL">
+                                                            <li
+                                                                *ngFor="let applicationType of distinctApplicationTypes" style="padding-bottom: 10px;">
+                                                                <span class="caret text-application-name">
+                                                                    {{getApplicationTypeDesc(applicationType)}} <span class="code-type-name">[Application Type: {{applicationType}}]</span>
+                                                                </span>
+                                                                <ul class="">
+                                                                    <!-- <li>Water</li>
+                                                                <li>Coffee</li> -->
+                                                                    <li
+                                                                        *ngFor="let applicationPurposeType of getDistinctApplicationPurposeTypes(applicationType)">
+                                                                        <span
+                                                                            class="caret text-application-purpose-name">{{getApplicationTypePurposeTypeDesc(applicationType,
+                                                                            applicationPurposeType)}} <span class="code-type-name">[ApplicationPurposeType: {{applicationPurposeType}}]</span></span>
+                                                                        <ul class="">
+                                                                            <li
+                                                                                *ngFor="let activityCategoryType of getDistinctActivityCategoryTypes(applicationType, applicationPurposeType)">
+                                                                                <span
+                                                                                    class="caret text-activity-category-name">{{getActivityCategoryTypeDesc(applicationType,
+                                                                                    applicationPurposeType,
+                                                                                    activityCategoryType)}} <span class="code-type-name">[ToDoActivityCategoryType: {{activityCategoryType}}]</span></span>
+                                                                                <ul class="">
+                                                                                    <li
+                                                                                        *ngFor="let activityModeType of getDistinctActivityModeTypes(applicationType, applicationPurposeType, activityCategoryType)">
+                                                                                        <span
+                                                                                            class="caret text-activity-mode-name">{{getActivityActivityModeTypeDesc(applicationType,
+                                                                                            applicationPurposeType,
+                                                                                            activityCategoryType,
+                                                                                            activityModeType)}} <span class="code-type-name">[ToDoActivityModeType: {{activityModeType}}]</span></span>
+                                                                                            <ul class="">
+                                                                                                <li class="text-activity-code-name" *ngFor="let activityCodeType of  getDistinctActivityCodeTypes(applicationType, applicationPurposeType, activityCategoryType, activityModeType)">
+                                                                                                    {{getActivityActivityCodeTypeDesc(applicationType, applicationPurposeType, activityCategoryType, activityModeType, activityCodeType)}} <span class="code-type-name">[ToDoActivityCodeType: {{activityCodeType}}]</span>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                    </li>
+                                                                                    
+                                                                                    
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+
+
+                                                        <!-- <table class="table table-bordered table-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Application Type</th>
+                                                                    <th>Grant</th>
+                                                                    <th>Renewal</th>
+                                                                    <th>Amendment</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let applicationType of distinctApplicationTypes">
+                                                                    <td>{{getApplicationTypeDesc(applicationType)}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,46 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 3,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Details of Dangerous Operations (Section 87)",  
+          "Lables": [
+            {
+            "LableSortId": 1,
+            "LableTitle": "(16(i)) Does the factory carry any operation declared dangerous under section 87?",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+            { "LableSortId": 2, "LableTitle": "(16(ii)) If so,state average daily number of workers employed in such dangerous operation", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(17(a)) Manufacture of a erated water and Process incidental thereto,etc (Schedule I)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(17(b)) Electrolytic plating or oxidation of metal article by use of an electrolytic containing chromic acid or other chromium compounds (Schedule II) ", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(17(c)) Manufacture and repair of accumulator (Schedule III),electric", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "(17(d)) Manufacture and treatment of lead and certain compounds of lead", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "(17(e)) Liming and tanning of row hides and skins and process incidental thereto", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "(17(f)) Carrying of certain process of lead and lead material in printing process and type foundries", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "(17(g)) Chemical Works", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "(17(h)) Manufacture of pottery and ceramics", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "(17(i)) Other dangerous", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+          ]
+        }
+     ]
+    }
+  }
+]

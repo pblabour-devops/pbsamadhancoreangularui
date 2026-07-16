@@ -1,0 +1,75 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 8,
+      "SectionTitle": "Factory Closure",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "FactoryCode",
+                "ColumnTitle": "Factory Code/License Number",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "NameFactory",
+                "ColumnTitle": "Name of Factory",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "numberOfWorkersInFactory",
+                "ColumnTitle": "Total Number of Workers in Factory/Establishment",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "WorkersAffected",
+                "ColumnTitle": "Affected Number of Worker",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "FactoryCloserReason",
+                "ColumnTitle": "Reason of Factory/Establishment Closer",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+               {
+                "ColumnId": "closingDate",
+                "ColumnTitle": "Closing Date",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "closingStatement",
+                "ColumnTitle": "Closing Statement",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+               
+               
+            ],
+            "Rows": [
+              {
+                "FactoryCode": "",
+                "NameFactory": "",
+                "numberOfWorkersInFactory": "",
+                 "WorkersAffected": "",
+                "FactoryCloserReason": "",
+                "closingDate": "",
+                "closingStatement":""
+               
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,28 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 0; /* Initially collapsed */
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  transform: translateY(-100%); /* Hide initially */
+  transition: height 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  z-index: 100; /* Lower z-index compared to side navigation */
+}
+
+.drawer-open {
+  height: 30vh; /* 30% of viewport height */
+  transform: translateY(0); /* Show the drawer */
+}
+
+.drawer-header {
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.drawer-body {
+  padding: 15px;
+  overflow-y: auto;
+  height: calc(100% - 56px); /* Adjust based on header height if needed */
+}

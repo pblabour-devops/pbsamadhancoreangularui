@@ -1,0 +1,25 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 4,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "LEAVE WITH WAGES",
+          "Lables": [
+             { "LableSortId": 1, "LableTitle": "(18(a)) Total No. of employed during the year(Men)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(18(b)) Total No. of employed during the year(Women)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(19(a)) No. of workers who were entitled to annual leave with wages during the year(Men)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(19(b)) No. of workers who were entitled to annual leave with wages during the year(Women)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(20(a)) No. of workers who were granted leave during the year(Men)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "(20(b)) No. of workers who were granted leave during the year(Women)", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "(21) No. of workers discharged or dismissed from the service whose service was terminated during the year", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "(22) No. of such workers paid wages in due leave", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        }
+        ]
+    }
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 46,
+      "SectionTitle": "FORM L.M.N.O (Prescribed under section 28(2)(K) of The Maternity Benefit Act,1961 and rule 6 of the Punjab Maternity Benefit Rules,1967)",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(29) No. of women who claimed maternity benefit for actual birth", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(30(a)) No. of claims accepted and paid either fully and partially (Total)", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(30(b)) No. of claims accepted and paid either fully and partially (From the current year)", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(31) Total Medical amount maternity benefit paid (including medical bonus)", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(32) Amount of medical bonus paid", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+            
+          ]
+        }
+         
+        
+      ]
+    }
+  }
+]

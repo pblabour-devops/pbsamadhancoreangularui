@@ -1,0 +1,417 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Payment Of Wages Act 1936 </h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="3">Section-4</td>
+                <td class="inspection-back-theme1"><strong>4.1.1</strong> Is period of wages fixed?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_4_IsWagesPeriodFixed">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+            
+              <tr class="inspection-back-theme1">
+                <td><strong>4.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                          formControlName="sec_4_IsWagesPeriodFixed_ViolationExist">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme1">
+                <td colspan="2">
+                  <label for="sec_4_IsWagesPeriodFixed_Remarks"><strong>4.1.3</strong> Remarks</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_4_IsWagesPeriodFixed_Remarks" (input)="updateCharacterCount('sec_4_IsWagesPeriodFixed_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_4_IsWagesPeriodFixed_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_4_IsWagesPeriodFixed_Remarks" placeHolder="sec_4_IsWagesPeriodFixed_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+              
+              <tr>
+                <td rowspan="3">Section-5</td>
+                <td class="inspection-back-theme2"><strong>5.1.1</strong> Are wages being paid on time as specified in section-5? </td>
+                <td class="inspection-back-theme2">
+                  <select class="form-select form-control" formControlName="sec_5_IsWagesPaid_OnTime_As_Per_Section_5">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td><strong>5.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                          formControlName="sec_5_IsWagesPaid_OnTime_As_Per_Section_5_ViolationExist">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="inspection-back-theme2">
+                <td colspan="2">
+                  <label for="sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks"><strong>5.1.3</strong> Remarks if any</label>
+                  <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks" (input)="updateCharacterCount('sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks', 1000)" maxlength="1000"></textarea>
+                  <span class="character-count">{{ getCharacterCount('sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks') }}/1000</span>
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks" placeHolder="sec_5_IsWagesPaid_OnTime_As_Per_Section_5_Remarks"></app-form-validation-error>
+                </td>
+              </tr>
+              
+              <tr>
+                <td rowspan="3">Section-6</td>
+                <td class="inspection-back-theme1"><strong>6.1.1</strong> Are wages paid as prescribed in section-6 or as notified by appropriate government?</td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control" formControlName="sec_6_IsWages_Paid_As_Prescribed">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                    <option value="-1" [selected]="true">Not Applicable</option>
+                  </select>
+                </td>
+              </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>6.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_6_IsWages_Paid_As_Prescribed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_6_IsWages_Paid_As_Prescribed_Remarks"><strong>6.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_6_IsWages_Paid_As_Prescribed_Remarks" (input)="updateCharacterCount('sec_6_IsWages_Paid_As_Prescribed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_6_IsWages_Paid_As_Prescribed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_6_IsWages_Paid_As_Prescribed_Remarks" placeHolder="sec_6_IsWages_Paid_As_Prescribed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+               <tr>
+                  <td rowspan="3">Section-7</td>
+                  <td class="inspection-back-theme2"><strong>7.1.1</strong> Are deductions made only  as specified in section-7</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_7_IsDeductionMade">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>7.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_7_IsDeductionMade_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_7_IsDeductionMade_Remarks"><strong>7.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_7_IsDeductionMade_Remarks" (input)="updateCharacterCount('sec_7_IsDeductionMade_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_7_IsDeductionMade_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_7_IsDeductionMade_Remarks" placeHolder="sec_7_IsDeductionMade_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="15">Section-8</td>
+                  <td class="inspection-back-theme1"><strong>8.1.1</strong> Are fines imposed for acts and omissions with previous approval of appropriate government or prescribed authority?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_8_IsFine_Imposed_For_Acts_And_Omissions">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_8_IsFine_Imposed_For_Acts_And_Omissions_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks"><strong>8.1.3</strong> Remarks</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks" (input)="updateCharacterCount('sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks" placeHolder="sec_8_IsFine_Imposed_For_Acts_And_Omissions_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.2.1</strong> Is notice of acts and omissions displayed? </td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks"><strong>8.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks" (input)="updateCharacterCount('sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks" placeHolder="sec_8_IsNotice_Of_Acts_And_Omissions_Displayed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.3.1</strong> Is fine imposed after giving opportunity?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_IsFine_Imposed_After_Giving_Opportunity">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+              
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.3.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_8_IsFine_Imposed_After_Giving_Opportunity_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks"><strong>8.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks" (input)="updateCharacterCount('sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks" placeHolder="sec_8_IsFine_Imposed_After_Giving_Opportunity_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.4.1</strong> Is fine amount as per sub-section-8(4) and 8(5)?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.4.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks"><strong>8.4.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks" (input)="updateCharacterCount('sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks" placeHolder="sec_8_Is_Fine_Amount_As_Per_Sub_Sec_8_4_And_8_5_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.5.1</strong> Is fine being recovered as per sub-section 8(6)? </td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.5.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks"><strong>8.5.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks" (input)="updateCharacterCount('sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks" placeHolder="sec_8_Is_Fine_Recovered_As_Per_Sub_Sec_8_6_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Section-9,10,11,12,12A,13</td>
+                  <td class="inspection-back-theme2"><strong>9.1.1</strong> Are deductions made as per this section?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_9_To_13_IsDeductions_Made_AsPerSection">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.5.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_9_To_13_IsDeductions_Made_AsPerSection_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks"><strong>9.1.3</strong> Remarks if any</label>  
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks" (input)="updateCharacterCount('sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks" placeHolder="sec_9_To_13_IsDeductions_Made_AsPerSection_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="6">Section-13A</td>
+                  <td class="inspection-back-theme1"><strong>13A.1.1</strong> Are prescribed register being maintained?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_13_A_IsPrescribed_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>13A.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_13_A_IsPrescribed_Register_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_13_A_IsPrescribed_Register_Maintained_Remarks"><strong>13A.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_A_IsPrescribed_Register_Maintained_Remarks" (input)="updateCharacterCount('sec_13_A_IsPrescribed_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_13_A_IsPrescribed_Register_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_A_IsPrescribed_Register_Maintained_Remarks" placeHolder="sec_13_A_IsPrescribed_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>13A.2.1</strong> Are registered preserved for three years after date of  last entry made in therein?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="sec_13_A_IsRegister_Preserved_For_Three_Years">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>13A.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_13_A_IsRegister_Preserved_For_Three_Years_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks"><strong>13A.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks" (input)="updateCharacterCount('sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks" placeHolder="sec_13_A_IsRegister_Preserved_For_Three_Years_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Section-25</td>
+                  <td class="inspection-back-theme1"><strong>25.1.1</strong> Are notices required under this section displayed?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_25_IsNotices_Under_section_Displayed">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+          
+                <tr class="inspection-back-theme1">
+                  <td><strong>25.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="sec_25_IsNotices_Under_section_Displayed_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_25_IsNotices_Under_section_Displayed_Remarks"><strong>25.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_25_IsNotices_Under_section_Displayed_Remarks" (input)="updateCharacterCount('sec_25_IsNotices_Under_section_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('sec_25_IsNotices_Under_section_Displayed_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_25_IsNotices_Under_section_Displayed_Remarks" placeHolder="sec_25_IsNotices_Under_section_Displayed_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

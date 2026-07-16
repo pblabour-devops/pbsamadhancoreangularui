@@ -1,0 +1,152 @@
+<div style="color: maroon; font-style: italic;"><span class="font-weight-bold">Please Note:</span> As per the requirement raised by the department (Endo. No.: 630316/MISC-3/2024 Dated: 25/01/2024), addendums can be uploaded by department officials only.</div>
+<button *ngIf="isUploadOptionShown && authService.getUserJwtDecodedInfo().RoleCode!='INDL'" class="btn btn-danger" style="float:right; margin-bottom: 10px;"
+	(click)="openAddendumModal(uploadAddendumModal)">
+	<i class="feather icon-plus font-weight-bold"></i> Add new addendum
+</button>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th class="text-center">Sr. No.</th>
+      <th>Addendums</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="appFiles.length==0">
+	<tr>
+		<td colspan="4" class="text-danger font-weight-bold">No addendum found..!</td>
+	</tr>
+	</tbody>
+  	<tbody *ngIf="appFiles.length>0">
+	<tr *ngFor="let item of appFiles; let ndx = index">
+      <td class="text-center">{{ndx+1}}</td>
+      <td id="docName_{{ndx}}">
+        <table width="100%">
+          <tr>
+            <td>
+              <b>{{item.title}}</b>
+            </td>
+            <td style="text-align: right; white-space: nowrap;">
+              
+            </td>
+          </tr>
+        </table>
+        <div class="item-tags">
+          <span class="tag" (click)="previewDocument(longContent, item.attachmentName, item.title, item.lastModifiedDate)">
+            <i class="feather icon-paperclip"></i> {{item.lastModifiedDate | date:'dd/MM/y hh:mm a'}}
+          </span>
+        </div>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<!-- <div class="card-body">
+	<h5>Addendums</h5>
+	<div style="color: maroon; font-style: italic;"><span class="font-weight-bold">Please Note:</span> As per the requirement raised by the department (Endo. No.: 630316/MISC-3/2024 Dated: 25/01/2024), addendums can be uploaded by department officials only.</div>
+	<button *ngIf="isUploadOptionShown" class="btn btn-danger" style="float:right; margin-bottom: 10px;"
+		(click)="openAddendumModal(uploadAddendumModal)">
+		<i class="feather icon-plus font-weight-bold"></i> Add new addendum
+	</button>
+	<table class="table  table-sm table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Sr. No.</th>
+				<th>Document Name</th>
+				<th>Uploaded On</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody *ngIf="appFiles.length==0">
+			<tr>
+				<td colspan="4" class="text-danger font-weight-bold">No addendum found..!</td>
+			</tr>
+		</tbody>
+		<tbody *ngIf="appFiles.length>0">
+			<tr *ngFor="let item of appFiles; let ndx = index">
+				<td>{{ndx+1}}</td>
+				<td class="font-weight-bold" style="color: #0f0344;">
+					{{item.title}}
+				</td>
+				<td>
+					{{item.lastModifiedDate | date:'d/MM/y HH:mm'}}</td>
+				<td>
+					<button class="btn btn-link text-format-size "
+						(click)="previewDocument(longContent, item.attachmentName, item.title, item.lastModifiedDate)"><i class="fa fa-file-pdf"></i> View
+						file
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #longContent let-modal>
+	<div class="modal-header">
+		<h6 class="modal-title text-primary">Preview document</h6>
+	</div>
+	<div class="card-body">
+		<iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" style="min-height: 600px;"></iframe>
+	</div>
+	<div class="card-footer text-right">
+		<button type="button" class="btn  btn-danger" (click)="closePreviewModal()">Close</button>
+		<!-- <button class="btn btn-success" (click)="onApproveClick()" type="submit" style="float: right;">Approve And Generate Licence</button> -->
+	</div>
+</ng-template>
+
+
+
+<ng-template #uploadAddendumModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" style="color: black;">Add New Adendum.</h4>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="form-group col-md-12" [ngClass]="(submitted && title=='') ? 'form-validation-icon-input' : ''">
+				<label for="titleInput" class="required">Please add document title</label>
+				<input type="text" id="titleInput" class="form-control" [(ngModel)]="title">
+			</div>
+
+
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<input type="file" accept=".png, .jpg, .jpeg, .pdf" #file (change)="upload(file)">
+			</div>
+			<div *ngIf="submitted && file.files.length==0" class="col-md-12 text-danger font-weight-bold">
+				Please select a file..!
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="col-md-6 text-left">
+				<button class="btn btn-danger" (click)="closePreviewModal()">Dismiss</button>
+			</div>
+			<div class="col-md-6">
+				<button class="btn btn-success" (click)="uploadSelectedFile()">Submit</button>
+			</div>
+		</div>
+	</div>
+</ng-template>

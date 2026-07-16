@@ -1,0 +1,59 @@
+.animated.fadeIn {
+  animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+}
+
+.card {
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fs-5 {
+  font-size: 1.25rem;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.process-circle {
+  display: inline-block;
+  font-size: 30px;
+  animation: rotateEngine 3s linear infinite;
+  border: none; 
+  outline: none;
+}
+
+@keyframes rotateEngine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+

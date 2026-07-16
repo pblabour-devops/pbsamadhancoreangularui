@@ -1,0 +1,88 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 47,
+      "SectionTitle": "SCHEDULE (Prescribed under section 16 of Workmen's Compensation Act,1923 Punjab Government Notification No. 7715_IP_52_7535,dated 19th August 1952",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Accidents Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Minor", "ColumnTitle": "Minor", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "33A(i). No. of cases of Death which occurred during the year" },
+              { "category": "33A(ii). No. of cases of Permanent Disablement which occurred during the year" },
+              { "category": "33A(iii). No. of cases of Temporary Disablement which occurred during the year" }
+              
+            ]
+          }
+        },
+         {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "",
+          "Table": {
+           "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Minor", "ColumnTitle": "Minor", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "33B(i). No. of injuries in respect of which final compensation has been made during the year for death cases" },
+              { "category": "33B(ii). No. of injuries in respect of which final compensation has been made during the year for permanent disablement cases" },
+              { "category": "33B(iii). No. of injuries in respect of which final compensation has been made during the year for temporary disablement cases" }
+          
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Table": {
+           "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Minor", "ColumnTitle": "Minor", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "33C(i). Amount of Compensation paid for Death cases " },
+              { "category": "33C(ii). Amount of Compensation paid for Permanent Disablement cases" },
+              { "category": "33C(iii). Amount of Compensation paid for Temporary Disablement cases" }
+          
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Table": {
+           "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Minor", "ColumnTitle": "Minor", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "33D(i). No. of diseased cases in respect of which final compensation has been made during the year for death cases" },
+              { "category": "33D(ii). No. of diseased cases in respect of which final compensation has been made during the year for Permanent Disablement cases" },
+              { "category": "33D(iii). No. of diseased cases in respect of which final compensation has been made during the year for Temporary Disablement cases" }
+          
+     
+              
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

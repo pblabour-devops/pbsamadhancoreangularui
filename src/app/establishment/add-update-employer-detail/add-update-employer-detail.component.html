@@ -1,0 +1,155 @@
+<form [formGroup]="Establishment_EmployerDetails_Form" (ngSubmit)="onSubmit()" >
+    <input type="hidden" formControlName="establishment_EmployerDetailId">
+    <input type="hidden" formControlName="establishmentRefId">
+    <div class="pcoded-main-container">
+      <div class="pcoded-content">
+    <div class="card border-danger" style="margin: 8px;">
+      <div class="card-header text-center bg-danger text-white">
+        <h6>FORM-04</h6>
+        <h5><i class="feather icon-check"></i> Application for Registration of an Establishment (Employer Details)</h5>
+      </div>
+     
+      <div class="card-body">
+        <div class="row" >
+          <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList"></app-app-form-stepper-navigation-panel> -->
+          </div>
+            <div class="col-md-10 col-lg-10">
+              <div class="card bg-light">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <h6><span class="badge badge-info"> Employer Details & address</span></h6>
+                  </div>
+  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Employer Name
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm " formControlName="employer_Name">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_Name" placeHolder=""></app-form-validation-error>
+                    </div>
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Employer Addess
+                    </div>
+                    <div class="col-md-4">
+                      <textarea type="text" class="form-control form-control-sm " formControlName="employer_Address"></textarea>
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_Address" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+                  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Employer Village/Town
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm" formControlName="employer_VillageOrTown">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_VillageOrTown" placeHolder=""></app-form-validation-error>
+                    </div>
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      District
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-select form-select-sm" (change)="getTehsilsByDistrictRefId(Establishment_EmployerDetails_Form.value.employer_DistrictRefId, '')" formControlName="employer_DistrictRefId">
+                        <option [selected]="true" value=''>--Please Select--</option>
+                        <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                      </select>
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_DistrictRefId" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Tehsil
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-select form-select-sm" formControlName="employer_TehsilRefId">
+                        <option [selected]="true" value="">--Please Select--</option>
+                        <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                      </select>
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_TehsilRefId" placeHolder=""></app-form-validation-error>
+                    </div>
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Pin Code
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="txtPinCode" class="form-control form-control-sm" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" formControlName="employer_PinCode">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_PinCode" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+                </div>
+            </div>
+  
+            <div class="card bg-light form-section">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <h6><span class="badge badge-info">Employer Contact Details</span></h6>
+                  </div>
+  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Employer Email
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" email="true" class="form-control form-control-sm" formControlName="employer_Email">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_Email" placeHolder=""></app-form-validation-error>
+                    </div>
+  
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Employer Phone
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm" formControlName="employer_Phone" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="employer_Phone" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+                  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Max Employees To Be Employed Any Day
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm" formControlName="maxEmployeesToBeEmployedAnyDay" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 5)">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="maxEmployeesToBeEmployedAnyDay" placeHolder=""></app-form-validation-error>
+                    </div>
+  
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Max Employees Were Employed Any Day
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm" formControlName="maxEmployeesWereEmployedAnyDay" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 5)">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="maxEmployeesWereEmployedAnyDay" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+  
+                  <div class="row form-row">
+                    <div class="col-md-2 fw-bold text-end text-secondary">
+                      Date Of Commencement Of Activity In Estb
+                    </div>
+                    <div class="col-md-4">
+                      <input type="date" class="form-control form-control-sm" formControlName="dateOfCommencementOfActivityInEstb">
+                      <app-form-validation-error [formGroup]="Establishment_EmployerDetails_Form" controlName="dateOfCommencementOfActivityInEstb" placeHolder=""></app-form-validation-error>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>  
+      </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-danger" (click)="btnBackClick()">Back</button>
+          </div>
+          {{Establishment_EmployerDetails_Form.value | json}}
+          <div class="col-md-6 text-right">
+            <button type="submit"  *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" class="btn btn-primary" [disabled]="!Establishment_EmployerDetails_Form.valid">Save & Next</button>
+            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </form>
+  

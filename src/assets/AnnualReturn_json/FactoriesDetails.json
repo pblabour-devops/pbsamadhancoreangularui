@@ -1,0 +1,48 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 1,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Factory Details",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "1(a)  Factory Registration No.", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "1(b)  Factory Registration Date", "LableValueInfo": { "DataType": "DateTime", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "2(a)  Name of Factory", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(3)  Name of Occupier", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(4)  Name of Manager", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "5(a)  Phone No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "5(b)  Mobile No.", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 8, "LableTitle": "(6)  Factory Address", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 9, "LableTitle": "(7)  Pin Code", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "(8)  Nature of Manufacturing process (say exactly which is being manufactured)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 11, "LableTitle": "(9)  Total Investment Made", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+           {
+            "LableSortId": 12,
+            "LableTitle": "10(A) Sector",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Public", "Private","Joint","Co-operative"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+          ]
+        }
+        
+      ]
+    }
+  }
+]

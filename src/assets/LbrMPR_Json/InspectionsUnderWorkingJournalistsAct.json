@@ -1,0 +1,61 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 10,
+      "SectionTitle": "Inspections Under the WORKING JOURNALISTS AND OTHER NEWSPAPER EMPLOYEES (CONDITION OF SERVICE) AND MISCELLANEOUS PROVISIONS ACT, 1955 ",
+        "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Inspection Details",
+         "DynamicTableInfo": {
+  "TotalInspectionsLabel": {
+    "LableTitle": "Number of Inspections Conducted",
+    "LableValueInfo": {
+      "DataType": "Number",
+      "Value": "",
+      "IsMendatory": true,
+      "IsVisible": true,
+      "Id": ""
+    }
+  },
+  "TableColumns": [
+    {
+      "LableTitle": "Establishment Name",
+      "DataType": "Text",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Inspection Date and Time",
+      "DataType": "DateTime",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Number of Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Male Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Female Workers",
+      "DataType": "Number",
+      "IsMendatory": true
+    },
+    {
+      "LableTitle": "Violations Found",
+      "DataType": "Option",
+      "Options": ["Yes", "No"],
+      "IsMendatory": true
+    }
+  ],
+  "TableRows": []
+}
+
+        }
+      ]
+    }
+  }
+]

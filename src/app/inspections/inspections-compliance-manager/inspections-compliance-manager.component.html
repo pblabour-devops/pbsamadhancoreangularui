@@ -1,0 +1,172 @@
+<form [formGroup]="ProcessApplication_Form" (ngSubmit)="onSubmit(takeActionAlertModal)">
+    <!-- <input type="hidden" formControlName="appRefId"> -->
+    <input type="hidden" formControlName="ipAddress">
+    <input type="hidden" formControlName="latitude">
+    <input type="hidden" formControlName="longitude">
+    <div class="main-content">
+        <div class="card col-md-10 card-form">
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Inspection Compliance Manager</h4>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <!-- <app-inspection-establishment-info-card
+                        [licenceNo]="licenceNumber"></app-inspection-establishment-info-card> -->
+                </div>
+                
+                <div class="col-md-12 col-sm-12">
+
+                </div>
+
+                <ul class="feed-blog pl-0" style="margin-top: 15px;">
+                    <li>
+                        <div class="feed-user-img">
+                            <a class="btn btn-info btn-icon" role="button">I</a>
+                        </div>
+                        <h6 class="m-b-0">Actions</h6>
+                        <div class="row m-t-20">
+                            <div class="col-md-2">
+                                <label>Select Action Type </label>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-select-sm" aria-label="Default select example"
+                                    id="appActionType" formControlName="appActionType"
+                                    (change)="onChangeActionDropDown(ProcessApplication_Form.value.appActionType)">
+                                    <option [selected]="true" value=''>--Please Select--
+                                    </option>
+                                    <option *ngFor="let action of actionList" value="{{action.allowedActionCode}}">
+                                        {{action.actionName}}</option>
+                                </select>
+                                <div *ngIf="(formControls.appActionType.invalid) && (submitted || formControls.appActionType.dirty || formControls.appActionType.touched)"
+                                    class="text-danger">
+                                    <div
+                                        *ngIf="formControls.appActionType.errors.required || !formControls.appActionType.value">
+                                        Please select action type..!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label style="margin-top:5px;">Select Officer/User</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-select-sm" aria-label="Default select example"
+                                    formControlName="receiver_UserRefId">
+                                    <option [selected]="true" value="">--Please Select--
+                                    </option>
+                                    <option *ngFor="let user of usersList" value="{{user.userId}}">
+                                        {{user.userName}}-({{user.name}},
+                                        {{user.districtName}})</option>
+                                </select>
+                                <div *ngIf="(formControls.receiver_UserRefId.invalid) && (submitted || formControls.receiver_UserRefId.dirty || formControls.receiver_UserRefId.touched)"
+                                    class="text-danger">
+                                    <div
+                                        *ngIf="formControls.receiver_UserRefId.errors.required || !formControls.receiver_UserRefId.value">
+                                        Please select officer/user..!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feed-user-img">
+                            <a class="btn btn-info btn-icon" role="button">II</a>
+                        </div>
+                        <h6 class="m-b-0">Remarks</h6>
+                        <div class="form-group row">
+                            <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter
+                                Remarks</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="validation-text"
+                                    formControlName="remarks"></textarea>
+                                <div *ngIf="(formControls.remarks.invalid) && (submitted || formControls.remarks.dirty || formControls.remarks.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="formControls.remarks.errors.required || !formControls.remarks.value">
+                                        Please specify remarks..!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" *ngIf="ProcessApplication_Form.controls.appActionType.value == 404">
+                            <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Days allow to
+                                submit report</label>
+                            <div class="col-sm-3">
+                                <select class="form-select form-control" formControlName="allowedDays">
+                                    <option value="0" [selected]="true">-- Please Select --</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- <app-file-upload *ngIf="isDocumentUploadOption"
+                        [appRefId]='appRefId' [isUploadShow]='true'
+                        [deleteTempFiles]='true' [userId]="UserId"
+                        [currentActionCode]='1'
+                        [allowedActionCode]='2'
+                        [applicationaType]='applicationType'>
+                    </app-file-upload>
+                    <div *ngIf="isDocumentUploadOption && !isOptional"
+                        class="text-danger">
+                        Please upload document..!
+                    </div> -->
+
+                    <!-- <div class="tab-pane fade active"
+											[ngClass]="selMenuCode == 'ATTACHEMENTS' ? 'show' : 'hideTab'"
+											id="v-pills-home">
+											<app-inspection-file-upload [inspectionRefId]=' this.inspectionRefId' [entityPrimaryid]="7"
+												[inspectionType]="this.inspectionType" [isUploadShow]='false' [deleteTempFiles]='false' [userId]="UserId" [currentActionCode]='1'
+                                                [allowedActionCode]='2'
+												class="tableDocument">
+											</app-inspection-file-upload>
+										</div> -->
+
+
+                                     
+													<div *ngIf="isDocumentUploadOption && !isOptional"
+														class="text-danger">
+														Please upload document..!
+													</div>
+
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-success" type="submit">Submit My Action</button>
+                </div>
+
+                <div class="mt-2 row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" (click)="navigatePage()"
+                            style="cursor: pointer !important;float: right;" type="button">Back to
+                            dashboard</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<ng-template #takeActionAlertModal let-modal>
+    <!-- <div class="modal-header">
+		<h4 class="modal-title" style="color: black;">Please confirm..!</h4>
+	</div> -->
+    <div class="modal-body text-center">
+        <img src="assets/images/notification-icon.svg" class="notification-icon" alt="modal-home-icon">
+        <h6>Are you sure to take this action?</h6>
+        <p class="notification-text-account">This action cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn  btn-danger" (click)="onModelNoClick()">No</button>
+        <button type="button" (click)="onAlertModelYesClick()" class="btn  btn-success">Yes</button>
+    </div>
+
+
+</ng-template>

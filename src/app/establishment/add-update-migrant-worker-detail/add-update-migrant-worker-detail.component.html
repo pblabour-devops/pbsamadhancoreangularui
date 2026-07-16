@@ -1,0 +1,185 @@
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-V</h6>
+                    <h5><i class="feather icon-check"></i> Detail Of Inter-State Migrant Workers</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList"></app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                                <div class="tableHead">
+                                    <h6><span class="badge badge-pill badge-dark"> <i class="icon feather icon-sun text-warning"></i> You can add multiple migrant workers, To add new worker fill the below form and click on add button</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Worker Name</th>
+                                                    <th>Worker Father/Husband Name</th>
+                                                    <th>Worker Address</th>
+                                                    <th>State</th>
+                                                    <th>District</th>
+                                                    <th>Aadhar Number</th>
+                                                    <th>Mobile Number</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngIf="detailData?.length>0">
+                                                <tr *ngFor="let item of detailData">
+                                                    <td>{{item.worker_Name}}</td>
+                                                    <td>{{item.worker_Father_Husband_Name}}</td>
+                                                    <td>{{item.worker_Permanent_Address}}</td>
+                                                    <td>{{item.worker_State}}</td>
+                                                    <td>{{item.worker_District}}</td>
+                                                    <td>{{item.worker_Aadhar_Number}}</td>
+                                                    <td>{{item.worker_Mobile_Number}}</td>
+                                                    <td><button type="button" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true" class="btn btn-outline-danger" (click)="deleteMigrant(item.establishmentMigrantworkerId)"><i class="feather mr-2 icon-slash"></i>Remove</button></td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody *ngIf="detailData?.length==0">
+                                                <tr>
+                                                    <td colspan="8">No migrant worker added yet..</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light">
+                                <form [formGroup]="Establishment_MigrantWorkerDetail_Form" (ngSubmit)="onSubmit()">
+                                    <input type="hidden" formControlName="establishmentRefId">
+                                    <input type="hidden" formControlName="establishmentMigrantworkerId">
+
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info"> Inter-State Migrants Details & address</span></h6>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Worker Name
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="worker_Name">
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="worker_Name" placeHolder="worker name"></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Father/Husband Name
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="worker_father_husband_name">
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="worker_father_husband_name" placeHolder="worker father/husband name"></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Worker Permanent Addess
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm " formControlName="worker_permanent_address"></textarea>
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="worker_permanent_address" placeHolder="worker permanent address"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="worker_villageortown">
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="worker_villageortown" placeHolder="worker vllage/town"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            State
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="Worker_State">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option value="1">New Delhi</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="Worker_State" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="Worker_District">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option value="1">Mohali</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="Worker_District" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="Worker_Tehsil">
+                                                <option [selected]="true" value="">--Please Select--</option>
+                                                <option value="1">SAS Nagar</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="Worker_Tehsil" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Aadhar Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtAadharNo" class="form-control form-control-sm" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 12)" formControlName="Worker_Aadhar_Number">
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="Worker_Mobile_Number" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Mobile Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtMobileNo" class="form-control form-control-sm" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" formControlName="Worker_Mobile_Number">
+                                            <app-form-validation-error [formGroup]="Establishment_MigrantWorkerDetail_Form" controlName="Worker_Mobile_Number" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align: center;">
+                                            <button type="submit" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedAddMsg" class="btn btn-success text-center" [disabled]="!Establishment_MigrantWorkerDetail_Form.valid"><i class="feather icon-plus-circle"></i> Add Worker</button>
+                                            <ng-template #lockedAddMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger">Home</button>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" (click)="nextPage()" class="btn btn-primary">Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

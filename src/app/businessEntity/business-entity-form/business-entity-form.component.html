@@ -1,0 +1,76 @@
+<form [formGroup]="BusinessEntity_Form" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="businessEntityId" />
+  <div class="card border-danger" style="margin: 8px">
+    <div class="card-body">
+      <div class="card bg-light form-section">
+        <div class="card-body">
+
+          <div class="row form-row">
+            <div class="col-md-2 fw-bold text-end text-secondary">
+              Business Entity Name
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm " formControlName="businessEntityName">
+              <app-form-validation-error [formGroup]="BusinessEntity_Form" controlName="businessEntityName" placeHolder="business entity name"></app-form-validation-error>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <h6>
+              <span class="badge badge-light-warning">Contact details</span>
+            </h6>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-md-2 fw-bold text-end text-secondary">
+              First Name
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="contactPersonFirstName">
+              <app-form-validation-error [formGroup]="BusinessEntity_Form" controlName="contactPersonFirstName" placeHolder=""></app-form-validation-error>
+            </div>
+
+            <div class="col-md-2 fw-bold text-end text-secondary">
+              Middle Name
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="contactPersonMiddleName">
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-md-2 fw-bold text-end text-secondary">
+              Last Name
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="contactPersonLastName">
+              <app-form-validation-error [formGroup]="BusinessEntity_Form" controlName="contactPersonLastName" placeHolder=""></app-form-validation-error>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-md-2 fw-bold text-end text-secondary">
+              Phone Number
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="mobileNo">
+              <app-form-validation-error [formGroup]="BusinessEntity_Form" controlName="mobileNo" placeHolder=""></app-form-validation-error>
+            </div>
+
+            <div class="col-md-2 fw-bold text-end text-secondary">Email</div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="email">
+              <app-form-validation-error [formGroup]="BusinessEntity_Form" controlName="email" placeHolder=""></app-form-validation-error>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-success" [disabled]="!BusinessEntity_Form.valid">Save</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

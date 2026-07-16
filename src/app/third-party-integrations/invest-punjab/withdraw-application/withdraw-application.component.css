@@ -1,0 +1,82 @@
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Full viewport height */
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.waiting-container .card {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.waiting-container .loading-icon {
+    font-size: 50px; 
+    margin-bottom: 20px;
+    color: #f44336; 
+}
+
+.waiting-container .card-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.waiting-container .card-message {
+    font-size: 18px;
+    color: #444;
+    margin-top: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.not-found-container .card {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    background-color: #f8d7da;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    text-align: center;
+}
+
+.not-found-container .error-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #f44336; 
+}
+
+.not-found-container .card-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #f44336;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.not-found-container .card-message {
+    font-size: 18px;
+    color: #f44336; 
+    margin-top: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.fas.fa-spinner.fa-spin {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

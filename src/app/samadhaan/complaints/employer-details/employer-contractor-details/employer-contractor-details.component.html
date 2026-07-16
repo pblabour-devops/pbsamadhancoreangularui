@@ -1,0 +1,209 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="appRefId" />
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+  <div class="main-content">
+    <div class="card col-md-12 card-form">
+
+      <!-- Are you engaged through contractor -->
+      <div class="row form-group align-items-center">
+        <div class="col-md-12 d-flex align-items-center gap-4">
+          <label class="fw-semibold mb-0 me-3">Are you engaged through contractor</label>
+
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="engagedYes"
+              [value]="true"
+              formControlName="isEngagedThroughContractor" />
+            <label class="form-check-label" for="engagedYes">Yes</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="engagedNo"
+              [value]="false"
+              formControlName="isEngagedThroughContractor" />
+            <label class="form-check-label" for="engagedNo">No</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name and designation -->
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label class="required">Name and designation of the Employer/Contractor</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="employerORContractorNameAndDesignation"
+            [class.is-invalid]="formControls.employerORContractorNameAndDesignation.touched && formControls.employerORContractorNameAndDesignation.invalid" />
+          <div class="invalid-feedback">
+            Name and designation of the Employer/Contractor is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label class="required">Address of the Employer/Contractor</label>
+          <textarea
+            class="form-control"
+            rows="2"
+            formControlName="employerORContractorAddress"
+            [class.is-invalid]="formControls.employerORContractorAddress.touched && formControls.employerORContractorAddress.invalid">
+          </textarea>
+          <div class="invalid-feedback">
+            Address of the Employer/Contractor is required
+          </div>
+        </div>
+      </div>
+
+      <!-- State / District -->
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label class="required">State</label>
+          <select
+            class="form-control"
+            formControlName="state"
+            [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+            <option value="">Select State</option>
+            <option value="Punjab">Punjab</option>
+          </select>
+          <div class="invalid-feedback">State is required</div>
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label class="required">District</label>
+          <select
+            class="form-control"
+            formControlName="districtRefId"
+            [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid">
+            <option value="">Select District</option>
+            <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
+              {{ dist.districtName }}
+            </option>
+          </select>
+          <div class="invalid-feedback">District is required</div>
+        </div>
+      </div>
+
+      <!-- PIN Code / Mobile Number -->
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label class="required">PIN Code</label>
+            <input  type="text" class="form-control" formControlName="pinCode" maxlength="6" />
+          <div class="invalid-feedback">PIN Code is required</div>
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label class="required">Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="mobileNumber"
+            maxlength="10"
+            [class.is-invalid]="formControls.mobileNumber.touched && formControls.mobileNumber.invalid"
+            (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" />
+          <div class="invalid-feedback">Valid 10-digit mobile number required</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label>Email</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            [class.is-invalid]="formControls.email.touched && formControls.email.invalid" />
+          <div class="invalid-feedback">Enter a valid email address</div>
+        </div>
+      </div>
+
+      <!-- Upload Files -->
+      <div class="row">
+
+          <div class="d-flex align-items-center gap-3">
+            <input type="file" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-12 d-flex justify-content-between align-items-center">
+          <small class="text-success">Supporting Documents (Max size: 30MB)</small>
+        </div>
+      </div>
+
+      <!-- Add / Reset buttons -->
+      <div class="text-right mt-3">
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+        <button type="button" class="btn btn-primary ml-2" (click)="addEmployer()">Add</button>
+      </div>
+
+      <!-- Details Added table -->
+      <div *ngIf="employerList.length > 0">
+        <h6 class="details-title mt-4">Details Added</h6>
+        <table class="table table-bordered details-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Engaged Through Contractor</th>
+              <th>Name & Designation</th>
+              <th>Contact Details & Address</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of employerList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ emp.isEngagedThroughContractor ? 'Yes' : 'No' }}</td>
+              <td>{{ emp.employerORContractorNameAndDesignation }}</td>
+              <td>
+                <b>Contact:</b> {{ emp.email }}, {{ emp.mobileNumber }}<br />
+                <b>Address:</b> {{ emp.employerORContractorAddress }}, {{ emp.state }}, {{ emp.pinCode }}
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)="deleteEmployer(i)">
+                  🗑
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer m-t-10">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- <app-go-to-home-button class="btn btn-success"></app-go-to-home-button> -->
+          </div>
+          <div class="col-md-6 text-right">
+
+            <ng-template #lockedMsg>
+              <span class="font-weight-bold text-danger">
+                <i class="icon feather icon-lock"></i> Form Locked
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

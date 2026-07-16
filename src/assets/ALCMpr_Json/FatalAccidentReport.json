@@ -1,0 +1,53 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 18.1,
+      "SectionTitle": "Report of Fatal accident or non Fatal accident on dangerous occurance (A)",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "EstAccName",
+                "ColumnTitle": "Name of establishment where accident or fatal accident happened",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "AccIncident",
+                "ColumnTitle": "Incident of Accident or Fatal Accident or dangerous occurance",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "SafetyViolation",
+                "ColumnTitle": "Violation of the provisions of safety",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "AccDate",
+                "ColumnTitle": "Date and Time of accident /dangerous Occurance",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              }
+              
+              
+            ],
+            "Rows": [
+              {
+                "EstAccName": "",
+                "AccIncident": "",
+                "SafetyViolation": "",
+                "AccDate": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

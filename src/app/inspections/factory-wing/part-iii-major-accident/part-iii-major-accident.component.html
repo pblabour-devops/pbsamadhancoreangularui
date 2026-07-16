@@ -1,0 +1,1076 @@
+
+<form [formGroup]="Input_Form">
+  <input type="hidden" formControlName="inspectionRefId" />
+  <input type="hidden" formControlName="id" /> 
+  <div class="main-content">
+  <div class="card col-md-10 card-form">
+    <div class="col-md-12">
+      <!-- <app-inspections-performa-stepers (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+    </div>
+    <div class="col-md-12">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header" style="margin-top: 20px">
+          In case factory is covered under 2(cb) or Major Accident
+          Hazard(yes/no) If yes following page
+        </h4>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-md-6">
+          <label for="managerAddress" class="form-label required"> Is factory covered under 2(cb) or Major Accident?</label>
+          <select
+                class="form-select form-control"
+                formControlName="isFactoryCoverdUnderAccident">
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+              </select>
+        </div>
+      </div>
+      <table class="table table-bordered  table-striped">
+        <thead class="thead-gray">
+          <tr>
+            <!-- <th>Section/Rule</th>
+            <th>Details</th>
+            <th>Yes/No/Not Applicable</th>
+            <th>Remarks by Inspecting Officer</th> -->
+          </tr>
+        </thead>
+        <tbody *ngIf ="Input_Form.get('isFactoryCoverdUnderAccident')?.value === true">
+          <tr>
+            <td rowspan="3">A</td>
+            <td class="inspection-back-theme1"><strong>A.1.1</strong> Hazardous process</td>
+          </tr>
+          <tr>
+            <td class="inspection-back-theme1">
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="hazardousProcess" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="hazardousProcess"
+                  placeHolder="hazardousProcess"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr>
+            <td class="inspection-back-theme1">
+              <strong>A.1.2</strong> {{hasViolationFound}}
+              <select class="form-select form-control"
+                  formControlName="hazardousProcess_ViolationExist">
+                 <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="3">B</td>
+            <td class="inspection-back-theme2">
+              <strong>B.1.1</strong> Types of hazardous chemical substances Manufactured, Stored, Used
+              and Handled their quantities with the storage capacity, please
+              specify the names of the chemicals with their technical and
+              commercial names.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="typesOfHazarousChemical" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="typesOfHazarousChemical"
+                  placeHolder="typesOfHazarousChemical"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+          <td>
+            <strong>B.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="typesOfHazarousChemical_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">C</td>
+            <td class="inspection-back-theme1">
+              <strong>C.1.1</strong>  Method of storage of hazardous chemicals (specify whether in tank
+              form, above ground level or below ground level, in bullets, in
+              spheres, barrels etc.).
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="methodOfStorage" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="methodOfStorage"
+                  placeHolder="methodOfStorage"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>C.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="methodOfStorage_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">D</td>
+            <td class="inspection-back-theme2">
+              <strong>D.1.1</strong> Whether the On-site Emergency Plans have been prepared and
+              approved by the Director of Factories. If so, specify the number
+              and date.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="onSiteEmergencyPlansPrepared" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="onSiteEmergencyPlansPrepared"
+                  placeHolder="onSiteEmergencyPlansPrepared"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>D.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="onSiteEmergencyPlansPrepared_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">E</td>
+            <td class="inspection-back-theme1">
+              <strong>E.1.1</strong> Whether the On-site Emergency Plans approved have been revised, if
+              so please specify the last date of such revision and approval and
+              specify the reason for such revision and non-revision.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="onSiteEmergencyPlansApproved" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="onSiteEmergencyPlansApproved"
+                  placeHolder="onSiteEmergencyPlansApproved"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>E.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="onSiteEmergencyPlansApproved_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">F</td>
+            <td class="inspection-back-theme2">
+              <strong>F.1.1</strong> Whether the Health and Safety Policy of the factory drawn up and
+              notified.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="healthAndSafetyPolicy" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="healthAndSafetyPolicy"
+                  placeHolder="healthAndSafetyPolicy"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>F.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="healthAndSafetyPolicy_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">G</td>
+            <td class="inspection-back-theme1">
+              <strong>G.1.1</strong> Whether decontamination facility is required, if so details/types
+              of such facilities required/ provided in detail.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="decontaminationFacility" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="decontaminationFacility"
+                  placeHolder="decontaminationFacility"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>G.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="decontaminationFacility_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">H</td>
+            <td class="inspection-back-theme2">
+              <strong>H.1.1</strong> Whether the MSDS are prepared in respect of all the chemical
+              substances, manufactured, stored, used and handled in the
+              industry. If so, collect the sample copy for each chemical.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="msdsPrepared" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="msdsPrepared"
+                  placeHolder="msdsPrepared"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>H.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="msdsPrepared_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="15">I</td>
+            <td class="inspection-back-theme1">
+              <strong>I.1.1</strong> Is the safety audit, risk analysis and HAZOP studies have been
+              conducted? If so Indicate:-
+            </td>
+
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <select class="form-select form-control" formControlName="hazopStudies_Selection">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+              <option value="-1">Not Applicable</option>
+            </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            
+            <td>
+              <strong>I.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="hazopStudies_Selection_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <!-- <tr>
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="sec_67G_RailwaysInFacroty_Rule67G_Remarks" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="sec_67G_RailwaysInFacroty_Rule67G_Remarks"
+                  placeHolder="sec_67G_RailwaysInFacroty_Rule67G_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr> -->
+          <tr class="inspection-back-theme2">
+            <td><strong>I.2.1</strong> Agency which conducted such studies.</td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="agencyConductedStudies_Remarks" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="agencyConductedStudies_Remarks"
+                  placeHolder="agencyConductedStudies_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>I.2.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="agencyConductedStudies_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td><strong>I.3.1</strong> The frequency at which they are conducted.</td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="frequencyConductedStudies_Remarks" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="frequencyConductedStudies_Remarks"
+                  placeHolder="frequencyConductedStudies_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>I.3.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="frequencyConductedStudies_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>I.4.1</strong> The date on which the last such study was conducted.
+              Important findings of the study.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="dateOfLastStudyConducted_Remarks" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="dateOfLastStudyConducted_Remarks"
+                  placeHolder="dateOfLastStudyConducted_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>I.4.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="dateOfLastStudyConducted_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>I.5.1</strong> Whether such reports have been submitted to the authorities.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="reportSubmittedAuthorities_Remarks" ></textarea>
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="reportSubmittedAuthorities_Remarks"
+                  placeHolder="reportSubmittedAuthorities_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>I.5.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="reportSubmittedAuthorities_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">J</td>
+            <td class="inspection-back-theme2">
+              <strong>J.1.1</strong> Do they have a system of in house and external training programmes
+              on safety and health?
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="internalExternalTrainingProg" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="internalExternalTrainingProg"
+                  placeHolder="internalExternalTrainingProg"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>J.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="internalExternalTrainingProg_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">K</td>
+            <td class="inspection-back-theme1">
+              <strong>K.1.1</strong> How frequently the on-site emergency mock-drills are conducted?
+              How many such drills are conducted in the presence of Departmental
+              officers of Factories? (details thereof)
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="onSiteEmergencyMockDrills" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="onSiteEmergencyMockDrills"
+                  placeHolder="onSiteEmergencyMockDrills"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>K.1.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="onSiteEmergencyMockDrills_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="15">L</td>
+            <td class="inspection-back-theme2">
+              <strong>L.1.1</strong> Whether all the storage vessels, process, equipment, reaction
+              vessels, kettles, ovens, mountings etc., are tested periodically
+              to ensure their integrity and soundness? If so, indicate the
+              following details.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <select
+              class="form-select form-control"
+              formControlName="integritySoundless_Selection"
+            >
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+              <option value="-1">Not Applicable</option>
+            </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>L.1.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="integritySoundless_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>L.2.1</strong> The person/agency conducting such tests and examinations.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInTextBox($event)"
+                  formControlName="integritySoundless_AgencyConductedStudies_Remarks"
+                ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="integritySoundless_AgencyConductedStudies_Remarks"
+                  placeHolder="integritySoundless_AgencyConductedStudies_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>L.2.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="integritySoundless_AgencyConductedStudies_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td><strong>L.3.1</strong> The frequency at which they are conducted.</td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInTextBox($event)"
+                  formControlName="integritySoundless_FrequencyConductedStudies_Remarks"
+                ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="integritySoundless_FrequencyConductedStudies_Remarks"
+                  placeHolder="integritySoundless_FrequencyConductedStudies_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>L.3.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="integritySoundless_FrequencyConductedStudies_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td><strong>L.4.1</strong> The data on which the last such study was conducted.</td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInTextBox($event)"
+                  formControlName="integritySoundless_DateOfLastStudyConducted_Remarks"
+                ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="integritySoundless_DateOfLastStudyConducted_Remarks"
+                  placeHolder="integritySoundless_DateOfLastStudyConducted_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>L.4.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="integritySoundless_DateOfLastStudyConducted_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>L.5.1</strong> Furnish the critical findings noticed during such tests and
+              examinations and the corrective actions.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+                  type="text"
+                  class="form-control"
+                  (focusout)="fillDefaultValueInTextBox($event)"
+                  formControlName="integritySoundless_CriticalFindingsNoticed_Remarks"
+                ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="integritySoundless_CriticalFindingsNoticed_Remarks"
+                  placeHolder="integritySoundless_CriticalFindingsNoticed_Remarks"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>L.5.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="integritySoundless_CriticalFindingsNoticed_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">M</td>
+            <td class="inspection-back-theme1">
+              <strong>M.1.1</strong> Are there any Major Accidents in the last three years? If so, the
+              details.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="majorAccidentsInLast3Years" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="majorAccidentsInLast3Years"
+                  placeHolder="majorAccidentsInLast3Years"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>M.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="majorAccidentsInLast3Years_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="18">N</td>
+            <td class="inspection-back-theme2"><strong>N.1.1</strong> Whether the occupational Health Center is provided? If so,</td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <select
+                  class="form-select form-control"
+                  formControlName="ohcProvided_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1">Not Applicable</option>
+                </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>N.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohcProvided_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.2.1</strong> The area (size) of the OHC along with details of
+              infrastructure facilities available. Please support it by
+              furnishing a ground plan of the OHC.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="ohcArea"
+            ></textarea>
+            <app-form-validation-error
+            [formGroup]="Input_Form"
+            controlName="ohcArea"
+            placeHolder="ohcArea"
+          ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.2.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohcArea_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>N.3.1</strong>  The date on which factory medical officer was appointed.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="ohC_DateOfOfficerAppointed"
+            ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="ohC_DateOfOfficerAppointed"
+                  placeHolder="ohC_DateOfOfficerAppointed"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>N.3.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohC_DateOfOfficerAppointed_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.4.1</strong> The details of Qualification, etc, of the medical officer so
+              appointed.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="ohC_OfficerQualification"
+            ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="ohC_OfficerQualification"
+                  placeHolder="ohC_OfficerQualification"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.4.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohC_OfficerQualification_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>N.5.1</strong> Whether Para-medical staff are being appointed, if so the
+              details.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="ohC_ParaMedicalStaffAppointed"
+            ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="ohC_ParaMedicalStaffAppointed"
+                  placeHolder="ohC_ParaMedicalStaffAppointed"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>N.5.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohC_ParaMedicalStaffAppointed_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.6.1</strong> Whether an Ambulance van is provided and maintained along with
+              a driver, if so furnish the details, if not specify the reason
+              along with the alternative arrangements made
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="ohC_AmbulanceVanProvided"
+            ></textarea>
+
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="ohC_AmbulanceVanProvided"
+                  placeHolder="ohC_AmbulanceVanProvided"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>N.6.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="ohC_AmbulanceVanProvided_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="15">O</td>
+            <td class="inspection-back-theme2">
+              <strong>O.1.1</strong> Whether the employees working in Hazardous process have been
+              subjected to pre-employment and periodical medical examinations?
+              If so,
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <select
+                  class="form-select form-control"
+                  formControlName="workingInHazardousProcess_Selection"
+                >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                  <option value="-1">Not Applicable</option>
+                </select>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>O.1.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="workingInHazardousProcess_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>O.2.1</strong> The name and address of the medical officer conducting such
+              examinations.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="workingInHazardousProcess_NameAddressOfficer"
+            ></textarea>
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="workingInHazardousProcess_NameAddressOfficer"
+                  placeHolder="workingInHazardousProcess_NameAddressOfficer"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>O.2.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="workingInHazardousProcess_NameAddressOfficer_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td><strong>O.3.1</strong> No. of employees medically examined.</td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="workingInHazardousProcess_NoOfWorkersExamined"
+            ></textarea>
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="workingInHazardousProcess_NoOfWorkersExamined"
+                  placeHolder="workingInHazardousProcess_NoOfWorkersExamined"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>O.3.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="workingInHazardousProcess_NoOfWorkersExamined_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme1">
+            <td><strong>O.4.1</strong> The nature of occupational disease identified.</td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="workingInHazardousProcess_NatureOfOccDisease"
+            ></textarea>
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="workingInHazardousProcess_NatureOfOccDisease"
+                  placeHolder="workingInHazardousProcess_NatureOfOccDisease"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>O.4.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="workingInHazardousProcess_NatureOfOccDisease_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr class="inspection-back-theme2">
+            <td><strong>O.5.1</strong> Are there any noticeable diseases? If so the details</td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <textarea
+              type="text"
+              class="form-control"
+              (focusout)="fillDefaultValueInTextBox($event)"
+              formControlName="workingInHazardousProcess_AnyNoticeableDiseased"
+            ></textarea>
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="workingInHazardousProcess_AnyNoticeableDiseased"
+                  placeHolder="workingInHazardousProcess_AnyNoticeableDiseased"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>O.5.2</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="workingInHazardousProcess_AnyNoticeableDiseased_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">P</td>
+            <td class="inspection-back-theme1">
+              <strong>P.1.1</strong> Whether, a data-base on Health record are being developed, if so
+              sample copy of the same to be obtained.
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="databaseOnHealthRecordDeveloped" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="databaseOnHealthRecordDeveloped"
+                  placeHolder="databaseOnHealthRecordDeveloped"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>P.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="databaseOnHealthRecordDeveloped_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">Q</td>
+            <td class="inspection-back-theme2">
+              <strong>Q.1.1</strong> Whether the public awareness programme has been conducted in
+              inform the public outside the site who are likely to be affected
+              by a major accident
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="publicAwarenessProgConducted" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="publicAwarenessProgConducted"
+                  placeHolder="publicAwarenessProgConducted"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>Q.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="publicAwarenessProgConducted_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">R</td>
+            <td class="inspection-back-theme1">
+              <strong>R.1.1</strong> Whether the safety pamphlets have been printed and distributed to
+              the public living nearby
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="safetyPamphletsPrinted" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="safetyPamphletsPrinted"
+                  placeHolder="safetyPamphletsPrinted"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme1">
+            <td>
+              <strong>R.1.1</strong>{{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="safetyPamphletsPrinted_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+          <tr>
+            <td rowspan="3">S</td>
+            <td class="inspection-back-theme2">
+              <strong>S.1.1</strong> Are persons with suitable qualification and experience are
+              employed as supervisors
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <input type="text" (focusout)="fillDefaultValueInTextBox($event)" class="form-control" formControlName="prsonsWithSuitableSupervisors" />
+<app-form-validation-error
+                  [formGroup]="Input_Form"
+                  controlName="prsonsWithSuitableSupervisors"
+                  placeHolder="prsonsWithSuitableSupervisors"
+                ></app-form-validation-error>
+            </td>
+          </tr>
+          <tr class="inspection-back-theme2">
+            <td>
+              <strong>S.1.2</strong> {{hasViolationFound}}
+            <select class="form-select form-control"
+                formControlName="prsonsWithSuitableSupervisors_ViolationExist">
+               <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12">
+      
+    </div>
+  </div>
+</div>
+</form>

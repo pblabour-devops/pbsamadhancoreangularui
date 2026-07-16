@@ -1,0 +1,30 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 39,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Wages Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adoloscents", "ColumnTitle": "Adoloscents", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "7(i). No. of Workers who are entitled to annual leave with wages during calendar year to which this return relates" },
+              { "category": "7(ii). No. of workers who were granted leave during the year" },
+              { "category": "7(iii). No. of workers discharged or dismissed from service during The Punjab Motor Transport Workers Rule,1963" },
+              { "category": "7(iv). No. of discharged workers paid wages in lieu of leave" },
+              { "category": "7(v). Total amount of wages paid in lieu of leave" }
+              
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

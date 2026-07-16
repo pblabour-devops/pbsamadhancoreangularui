@@ -1,0 +1,65 @@
+<div class="main-content"> 
+    <div class="col-md-12">
+        <div class="register-modal-header" *ngIf="applicationType == 71">
+            <h4 class="text-center form-header">Raised Fee Details of Application for Approval of Proposed Building Plans Under The Factory Act - 1948</h4>
+        </div>
+        <div class="register-modal-header" *ngIf="applicationType == 72">
+            <h4 class="text-center form-header">Raised Fee Details of Application for Approval of Existing Building Plans Under The Factory Act - 1948</h4>
+        </div>
+        <div class="register-modal-header" *ngIf="applicationType == 73">
+            <h4 class="text-center form-header">Raised Fee Details of Application for Approval of (Addition/Amendment) Building Plans Under The Factory Act - 1948</h4>
+        </div>
+        <div class="register-modal-header" *ngIf="applicationType == 81">
+            <h4 class="text-center form-header">Raised Fee Details of Application for Approval of Combined Building Plan For PSIEC And Factories</h4>
+        </div>
+        
+        <div class="row form-row" *ngIf="distinctPaymentBatches.length !== 0">
+            <table class="table table-bordered" *ngFor="let pbc of distinctPaymentBatches">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Application fee header</th>
+                        <th>Description</th>
+                        <th class="text-center">Fee raised by officer</th>
+                        <th class="text-center">Fee already paid under In-principle approval (B)</th>
+                        <th class="text-center">Fee payable (A-B)</th>
+                    </tr>
+                </thead>
+               
+                <tbody *ngFor="let raisedFee of getBatchwisePayments(pbc); let ndx = index">
+                    <tr>
+                        <td>{{ndx+1}}</td>
+                        <td>{{raisedFee?.feesHeader?.feeHeaderTitle}}</td>
+                        <td>{{raisedFee?.description}}</td>
+                        <th class="text-center">
+                            <span>{{raisedFee?.amountRaised}}</span>
+                        </th>
+                        <td class="text-center">{{raisedFee?.amountAlreadyPaid}}</td>
+                        <th class="text-center">
+                            <span>{{raisedFee?.amountPayable}}</span>
+                        </th>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="border-bottom-0">
+                        <th class="text-right text-danger" colspan="5">Net calculated amount: </th>
+                        <th class="text-right text-danger">
+                            {{netFeeCalculated}}
+                        </th>
+                    </tr>
+                    <tr class="border-top-0">
+                        <th colspan="6" class="text-info font-weight-light text-right">
+                            ({{netFeeCalculated | numberToWord}} only)
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="row form-row" *ngIf="distinctPaymentBatches.length == 0">
+            <div class="alert alert-danger" style="margin-left: auto;margin-right: auto;">
+                <h4 class="alert-heading">The application was not discovered to have any raised fees...!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+

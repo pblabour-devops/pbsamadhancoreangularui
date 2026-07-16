@@ -1,0 +1,315 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Payment Of Bonus Act 1965 (Statutory Report)</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Rule-3</td>
+                  <td class="inspection-back-theme1"><strong>Rule-3.1.1</strong> Is any permission to change accounting year granted by labour Commissioner?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="rule_3_AnyPermission_ToChange_AccountingYear">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-3.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_3_AnyPermission_ToChange_AccountingYear_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="rule_3_AnyPermission_ToChange_AccountingYear_Remarks"><strong>Rule-3.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_3_AnyPermission_ToChange_AccountingYear_Remarks" (input)="updateCharacterCount('rule_3_AnyPermission_ToChange_AccountingYear_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_3_AnyPermission_ToChange_AccountingYear_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_3_AnyPermission_ToChange_AccountingYear_Remarks" placeHolder="rule_3_AnyPermission_ToChange_AccountingYear_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="9">Rule-4</td>
+                  <td class="inspection-back-theme2"><strong>Rule-4.1.1</strong> Is register in Form-A maintained?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="rule_4_IsForm_A_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-4.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_4_IsForm_A_Register_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="rule_4_IsForm_A_Register_Maintained_Remarks"><strong>Rule-4.1.3</strong></label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_4_IsForm_A_Register_Maintained_Remarks" (input)="updateCharacterCount('rule_4_IsForm_A_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_4_IsForm_A_Register_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_4_IsForm_A_Register_Maintained_Remarks" placeHolder="rule_4_IsForm_A_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-4.2.1</strong> Is register in Form-B maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="rule_4_IsForm_B_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-4.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_4_IsForm_B_Register_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="rule_4_IsForm_B_Register_Maintained_Remarks"><strong>Rule-4.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_4_IsForm_B_Register_Maintained_Remarks" (input)="updateCharacterCount('rule_4_IsForm_B_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_4_IsForm_B_Register_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_4_IsForm_B_Register_Maintained_Remarks" placeHolder="rule_4_IsForm_B_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-4.3.1</strong> Is register in Form-C maintained?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="rule_4_IsForm_C_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-4.3.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_4_IsForm_C_Register_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="rule_4_IsForm_C_Register_Maintained_Remarks"><strong>Rule-4.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_4_IsForm_C_Register_Maintained_Remarks" (input)="updateCharacterCount('rule_4_IsForm_C_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_4_IsForm_C_Register_Maintained_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_4_IsForm_C_Register_Maintained_Remarks" placeHolder="rule_4_IsForm_C_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Rule-5</td>
+                  <td class="inspection-back-theme1"><strong>Rule-5.1.1</strong> Is annual return in Form-D submitted?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="rule_5_IsAnnualReturn_Form_D_Submitted">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-5.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_5_IsAnnualReturn_Form_D_Submitted_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="rule_5_IsAnnualReturn_Form_D_Submitted_Remarks"><strong>Rule-5.1.3</strong></label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_5_IsAnnualReturn_Form_D_Submitted_Remarks" (input)="updateCharacterCount('rule_5_IsAnnualReturn_Form_D_Submitted_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_5_IsAnnualReturn_Form_D_Submitted_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_5_IsAnnualReturn_Form_D_Submitted_Remarks" placeHolder="rule_5_IsAnnualReturn_Form_D_Submitted_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Payment Of Bonus Act 1965 (Attachment)</h4>
+          </div>
+        </div>
+        <div class="mt-5">
+          <table class="table table-bordered table-striped text-center">
+            <thead>
+              <tr>
+                <th>Accounting Year</th>
+                <th>Total Number of Employees</th>
+                <th>Total Number of Employees Eligible For Bonus</th>
+                <th>Rate of Bonus</th>
+                <th>Number of Employees Whom Bonus Paid</th>
+                <th>Number of Employees Whom Bonus Not Paid</th>
+                <th>Any Agreement Between Employer & Employees Regarding Bonus</th>
+                <th>Total Amount Unpaid As Bonus</th>
+                <th>Employer Has Made Any Effort To Send Unpaid Bonus At Addresses of Employees</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of attachmentdata">
+                <td>{{ data.accountingYear }}</td>
+                <td>{{ data.noOfEmployees }}</td>
+                <td>{{ data.noOfEmployeesEligibleForBonus }}</td>
+                <td>{{ data.rateOfBonus }}</td>
+                <td>{{ data.noOfEmployeesWhomeBonusPaid }}</td>
+                <td>{{ data.noOfEmployeesWhomeBonusNotPaid }}</td>
+                <td>{{ data.anyAgreementOfBonousBetweenEmployerAndEmployee }}</td>
+                <td>{{ data.totalAmountUnpaidAsBonus }}</td>
+                <td>{{ data.isEmployerSendUnpaidBonusToEmployeesAddress }}</td>
+                <td>
+                  <!-- Add any actions or buttons here if needed -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <div class="row col-md-12">
+          <div class="col-md-6 float-right">
+            <button (click)="openInspectionModal(paymentBonusDetails)" class="btn btn-primary mt-4">Add Details</button>
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #paymentBonusDetails let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="dataModalLabel">Add Payment Bonus Details</h5>
+      <button type="button" class="close" (click)="closeInspectionModal()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="Attachment_InputForm" (ngSubmit)="onSubmit()">
+        <div class="row form-row">
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.accountingYear.invalid && (submitted || attachmentFormControls.accountingYear.dirty || attachmentFormControls.accountingYear.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="name">Accounting Year</label>
+                    <input type="text" class="form-control" formControlName="accountingYear">
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="accountingYear" placeHolder="accountingYear"></app-form-validation-error>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.noOfEmployees.invalid && (submitted || attachmentFormControls.noOfEmployees.dirty || attachmentFormControls.noOfEmployees.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="noOfEmployees">No Of Employees</label>
+                    <input type="text" class="form-control " formControlName="noOfEmployees" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.noOfEmployeesEligibleForBonus.invalid && (submitted || attachmentFormControls.noOfEmployeesEligibleForBonus.dirty || attachmentFormControls.noOfEmployeesEligibleForBonus.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="noOfEmployeesEligibleForBonus">Total number of employees eligible for bonus</label>
+                    <input type="text" class="form-control " formControlName="noOfEmployeesEligibleForBonus" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.rateOfBonus.invalid && (submitted || attachmentFormControls.rateOfBonus.dirty || attachmentFormControls.rateOfBonus.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="rateOfBonus">Rate Of Bonus</label>
+                    <input type="text" class="form-control" formControlName="rateOfBonus" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.noOfEmployeesWhomeBonusPaid.invalid && (submitted || attachmentFormControls.noOfEmployeesWhomeBonusPaid.dirty || attachmentFormControls.noOfEmployeesWhomeBonusPaid.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="noOfEmployeesWhomeBonusPaid">Number Of Employees To Whom Bonus Paid</label>
+                    <input type="text" class="form-control" formControlName="noOfEmployeesWhomeBonusPaid" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.noOfEmployeesWhomeBonusNotPaid.invalid && (submitted || attachmentFormControls.noOfEmployeesWhomeBonusNotPaid.dirty || attachmentFormControls.noOfEmployeesWhomeBonusNotPaid.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="noOfEmployeesWhomeBonusNotPaid">Number Of Employees To Whom Bonus Not Paid</label>
+                    <input type="text" class="form-control" formControlName="noOfEmployeesWhomeBonusNotPaid" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.anyAgreementOfBonousBetweenEmployerAndEmployee.invalid && (submitted || attachmentFormControls.anyAgreementOfBonousBetweenEmployerAndEmployee.dirty || attachmentFormControls.anyAgreementOfBonousBetweenEmployerAndEmployee.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="anyAgreementOfBonousBetweenEmployerAndEmployee">Any Agreement Between Employer And Employee Regarding Bonus</label>
+                    <select class="form-select form-select-sm" class="form-control" formControlName="anyAgreementOfBonousBetweenEmployerAndEmployee">
+                      <option [selected]="true" value="">-- Please Select --</option>
+                      <option value= "1"> Yes </option>
+                      <option value= "0"> No </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" [ngClass]="attachmentFormControls.totalAmountUnpaidAsBonus.invalid && (submitted || attachmentFormControls.totalAmountUnpaidAsBonus.dirty || attachmentFormControls.totalAmountUnpaidAsBonus.touched) ? 'form-validation-icon-input' : ''">
+                    <label for="totalAmountUnpaidAsBonus">Total Amount Unpaid As Bonus</label>
+                    <input type="text" class="form-control" formControlName="totalAmountUnpaidAsBonus" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                </div>
+            </div>
+        </div>
+        <div class="row form-row">
+          <div class="col-md-6">
+              <div class="form-group" [ngClass]="attachmentFormControls.isEmployerSendUnpaidBonusToEmployeesAddress.invalid && (submitted || attachmentFormControls.isEmployerSendUnpaidBonusToEmployeesAddress.dirty || attachmentFormControls.isEmployerSendUnpaidBonusToEmployeesAddress.touched) ? 'form-validation-icon-input' : ''">
+                  <label for="isEmployerSendUnpaidBonusToEmployeesAddress">Whether Employer Has Made Any Effort To Send Unpaid Bonus At Addresses Of Employees</label>
+                  <select class="form-select form-select-sm" class="form-control" formControlName="isEmployerSendUnpaidBonusToEmployeesAddress">
+                    <option [selected]="true" value="">-- Please Select --</option>
+                    <option value= "1"> Yes </option>
+                    <option value= "0"> No </option>
+                  </select>
+              </div>
+          </div>
+      </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" >Add Details</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  
+  

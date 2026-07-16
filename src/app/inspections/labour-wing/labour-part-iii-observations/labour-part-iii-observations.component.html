@@ -1,0 +1,454 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">Observations</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Sr No-1</td>
+                  <td class="inspection-back-theme1"><strong>1.1.1</strong> Whether spread over is being observed as prescribed under the Act and during the period of rest, the workers are free to leave the place</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="is_Spread_Over_Being_Observed_During_Rest">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>1.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Spread_Over_Being_Observed_During_Rest_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="is_Spread_Over_Being_Observed_During_Rest_Remarks"><strong>1.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Spread_Over_Being_Observed_During_Rest_Remarks" (input)="updateCharacterCount('is_Spread_Over_Being_Observed_During_Rest_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('is_Spread_Over_Being_Observed_During_Rest_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Spread_Over_Being_Observed_During_Rest_Remarks" placeHolder="is_Spread_Over_Being_Observed_During_Rest_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">Sr No-2</td>
+                    <td class="inspection-back-theme2"><strong>2.1.1</strong> Whether any child was found employed</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Any_Child_Employee_Found">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                 
+                  <tr class="inspection-back-theme2">
+                    <td><strong>2.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Any_Child_Employee_Found_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Any_Child_Employee_Found_Remarks"><strong>2.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Any_Child_Employee_Found_Remarks" (input)="updateCharacterCount('is_Any_Child_Employee_Found_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Any_Child_Employee_Found_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Any_Child_Employee_Found_Remarks" placeHolder="is_Any_Child_Employee_Found_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-3</td>
+                    <td class="inspection-back-theme1"><strong>3.1.1</strong> Whether the working hours and timings in case of young persons, women are being adhered to</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Working_Hours_Adhered_For_Women_Young_Person">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>3.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Working_Hours_Adhered_For_Women_Young_Person_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_Working_Hours_Adhered_For_Women_Young_Person_Remarks"><strong>3.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Working_Hours_Adhered_For_Women_Young_Person_Remarks" (input)="updateCharacterCount('is_Working_Hours_Adhered_For_Women_Young_Person_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Working_Hours_Adhered_For_Women_Young_Person_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Working_Hours_Adhered_For_Women_Young_Person_Remarks" placeHolder="is_Working_Hours_Adhered_For_Women_Young_Person_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-4</td>
+                    <td class="inspection-back-theme2"><strong>4.1.1</strong> Whether opening & closing hours are being observed.</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Opening_Closing_Hours_Observed">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>4.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Opening_Closing_Hours_Observed_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Opening_Closing_Hours_Observed_Remarks"><strong>4.1.3</strong> Remarks if any</label>  
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Opening_Closing_Hours_Observed_Remarks" (input)="updateCharacterCount('is_Opening_Closing_Hours_Observed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Opening_Closing_Hours_Observed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Opening_Closing_Hours_Observed_Remarks" placeHolder="is_Opening_Closing_Hours_Observed_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-5</td>
+                    <td class="inspection-back-theme1"><strong>5.1.1</strong> Whether close day is being observed, if not, whether the employees are being provided weekly holiday.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Weekly_Holiday_Provided">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr class="inspection-back-theme1">
+                    <td><strong>5.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Weekly_Holiday_Provided_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_Weekly_Holiday_Provided_Remarks"><strong>5.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Weekly_Holiday_Provided_Remarks" (input)="updateCharacterCount('is_Weekly_Holiday_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Weekly_Holiday_Provided_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Weekly_Holiday_Provided_Remarks" placeHolder="is_Weekly_Holiday_Provided_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                <tr>
+                  <td rowspan="3">Sr No-6</td>
+                  <td class="inspection-back-theme2"><strong>6.1.1</strong> Whether the employees are called for duty on National Holidays. If yes, whether they are being paid overtime wage and a compensatory holiday in lieu thereof.</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="is_Overtime_Paid_For_Holiday_Work">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>6.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Overtime_Paid_For_Holiday_Work_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="is_Overtime_Paid_For_Holiday_Work_Remarks"><strong>6.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Overtime_Paid_For_Holiday_Work_Remarks" (input)="updateCharacterCount('is_Overtime_Paid_For_Holiday_Work_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Overtime_Paid_For_Holiday_Work_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Overtime_Paid_For_Holiday_Work_Remarks" placeHolder="is_Overtime_Paid_For_Holiday_Work_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Sr No-7</td>
+                  <td class="inspection-back-theme1"><strong>7.1.1</strong> Whether any deduction from wage is being made other than specified in section 20 (2)</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="any_Deduction_Of_Wages">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>7.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="any_Deduction_Of_Wages_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="any_Deduction_Of_Wages_Remarks"><strong>7.1.3</strong></label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="any_Deduction_Of_Wages_Remarks" (input)="updateCharacterCount('any_Deduction_Of_Wages_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('any_Deduction_Of_Wages_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="any_Deduction_Of_Wages_Remarks" placeHolder="any_Deduction_Of_Wages_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">Sr No-8</td>
+                    <td class="inspection-back-theme2"><strong>8.1.1</strong> Whether any fine imposed or deduction made on account of damage or lose to the employer caused by employee has been explained to him personally and also in writing.</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="any_Fine_Imposed_For_Damage_Loss">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>8.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="any_Fine_Imposed_For_Damage_Loss_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="any_Fine_Imposed_For_Damage_Loss_Remarks"><strong>8.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="any_Fine_Imposed_For_Damage_Loss_Remarks" (input)="updateCharacterCount('any_Fine_Imposed_For_Damage_Loss_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('any_Fine_Imposed_For_Damage_Loss_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="any_Fine_Imposed_For_Damage_Loss_Remarks" placeHolder="any_Fine_Imposed_For_Damage_Loss_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-9</td>
+                    <td class="inspection-back-theme1"><strong>9.1.1</strong> Whether fine realized is being utilized in accordance with the directions of the government.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Fine_Realized_Utilized_As_Per_Gov_Guidline">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>9.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Fine_Realized_Utilized_As_Per_Gov_Guidline_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks"><strong>9.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks" (input)="updateCharacterCount('is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks" placeHolder="is_Fine_Realized_Utilized_As_Per_Gov_Guidline_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-10</td>
+                    <td class="inspection-back-theme2"><strong>10.1.1</strong> Whether the employees are being allowed casual, sick leave, Festival and Gazetted Holidays (21 in a year).</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Leaves_Given_To_Employees">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>10.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Leaves_Given_To_Employees_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Leaves_Given_To_Employees_Remarks"><strong>10.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Leaves_Given_To_Employees_Remarks" (input)="updateCharacterCount('is_Leaves_Given_To_Employees_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_Leaves_Given_To_Employees_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Leaves_Given_To_Employees_Remarks" placeHolder="is_Leaves_Given_To_Employees_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-11</td>
+                    <td class="inspection-back-theme1"><strong>11.1.1</strong> Cleanliness</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Cleanliness">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                 
+                  <tr class="inspection-back-theme1">
+                    <td><strong>11.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_Cleanliness_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_Cleanliness_Remarks"><strong>11.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Cleanliness_Remarks" (input)="updateCharacterCount('is_Cleanliness_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_Cleanliness_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Cleanliness_Remarks" placeHolder="is_Cleanliness_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td rowspan="3">Sr No-12</td>
+                    <td class="inspection-back-theme2"><strong>12.1.1</strong> Ventilation and Lighting</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_There_Ventilation_And_Lighting">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>12.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_There_Ventilation_And_Lighting_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_There_Ventilation_And_Lighting_Remarks"><strong>12.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_There_Ventilation_And_Lighting_Remarks" (input)="updateCharacterCount('is_There_Ventilation_And_Lighting_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_There_Ventilation_And_Lighting_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_There_Ventilation_And_Lighting_Remarks" placeHolder="is_There_Ventilation_And_Lighting_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-13</td>
+                    <td class="inspection-back-theme1"><strong>13.1.1</strong> Drinking Water facility.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_There_Drinking_Water_Facility">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr class="inspection-back-theme1">
+                    <td><strong>13.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="is_There_Drinking_Water_Facility_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_There_Drinking_Water_Facility_Remarks"><strong>13.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_There_Drinking_Water_Facility_Remarks" (input)="updateCharacterCount('is_There_Drinking_Water_Facility_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_There_Drinking_Water_Facility_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_There_Drinking_Water_Facility_Remarks" placeHolder="is_There_Drinking_Water_Facility_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-14</td>
+                    <td class="inspection-back-theme2"><strong>14.1.1</strong> Precaution against Fire</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="any_Precaution_Against_Fire">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>14.1.2</strong> {{hasViolationFound}}  </td>
+                    <td>
+                      <select class="form-select form-control"
+                          formControlName="any_Precaution_Against_Fire_ViolationExist">
+                        <option value="1">Yes</option>
+                          <option value="0">No</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="any_Precaution_Against_Fire_Remarks"><strong>14.1.3</strong></label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="any_Precaution_Against_Fire_Remarks" (input)="updateCharacterCount('any_Precaution_Against_Fire_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('any_Precaution_Against_Fire_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="any_Precaution_Against_Fire_Remarks" placeHolder="any_Precaution_Against_Fire_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

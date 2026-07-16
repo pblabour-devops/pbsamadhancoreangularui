@@ -1,0 +1,167 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card" >
+            <div class="m-2">
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+    <div class="title-bar">
+        Application for Your Complaint
+      </div>
+
+
+        <!-- General Information label -->
+        <div class="general-info-label">
+          General Information <span class="required">*</span>
+        </div>
+          <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+    <div class="section-card">
+
+      <!-- Discharge/Dismissal Question -->
+      <div class="form-group row">
+        <label class="col-md-12 col-form-label">
+          Whether you have been discharged or dismissed/conditions of services have been changed
+          on account of absence from work in accordance with the provisions of the Code on
+          Social Security, 2020 <span class="text-danger">*</span>
+        </label>
+        <div class="col-md-12">
+          <select
+            class="form-control"
+            formControlName="isDischargedOrDismissedDueToAbsence"
+            (change)="onDischargeStatusChange()"
+            [class.is-invalid]="formControls.isDischargedOrDismissedDueToAbsence.touched && formControls.isDischargedOrDismissedDueToAbsence.invalid">
+            <option value="">Select</option>
+            <option *ngFor="let opt of yesNoOptions" [value]="opt.id">{{ opt.text }}</option>
+          </select>
+          <div class="invalid-feedback">
+            Please specify whether you have been discharged or dismissed
+          </div>
+        </div>
+      </div>
+
+      <!-- Applicable Option Radio Buttons - Shown only when Yes is selected -->
+      <div class="form-group row" *ngIf="formControls.isDischargedOrDismissedDueToAbsence.value === true || formControls.isDischargedOrDismissedDueToAbsence.value === 'true'">
+        <div class="col-md-12 col-form-label">
+          <label class="col-form-label fw-bold">
+            Please select the applicable option: <span class="text-danger">*</span>
+          </label>
+          <div class="d-flex gap-4 mt-2">
+            <div class="form-check" *ngFor="let opt of applicableOptions">
+              <input
+                class="form-check-input"
+                type="radio"
+                [id]="'applicableOption_' + opt.value"
+                [value]="opt.value"
+                formControlName="applicableOption"
+                [class.is-invalid]="formControls.applicableOption.touched && formControls.applicableOption.invalid" />
+              <label class="form-check-label" [for]="'applicableOption_' + opt.id">
+                {{ opt.text }}
+              </label>
+            </div>
+          </div>
+          <div class="invalid-feedback d-block"
+               *ngIf="formControls.applicableOption.touched && formControls.applicableOption.invalid">
+            Please select the applicable option.
+          </div>
+        </div>
+      </div>
+
+      <!-- Amount Due -->
+      <div class="form-group row">
+        <label class="col-md-12 col-form-label fw-bold">
+          Amount Due:
+        </label>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Maternity Benefit <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="maternityBenefitAmountDue"
+              [class.is-invalid]="formControls.maternityBenefitAmountDue.touched && Input_Form.errors?.atLeastOneAmountRequired" />
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>Medical Bonus (Maternity) <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="medicalBonusMaternityAmountDue"
+              [class.is-invalid]="formControls.medicalBonusMaternityAmountDue.touched && Input_Form.errors?.atLeastOneAmountRequired" />
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>Wages for Maternity Leave <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="wagesForMaternityLeaveAmountDue"
+              [class.is-invalid]="formControls.wagesForMaternityLeaveAmountDue.touched && Input_Form.errors?.atLeastOneAmountRequired" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row" *ngIf="Input_Form.errors?.atLeastOneAmountRequired &&
+            (formControls.maternityBenefitAmountDue.touched ||
+             formControls.medicalBonusMaternityAmountDue.touched ||
+             formControls.wagesForMaternityLeaveAmountDue.touched)">
+        <div class="col-12">
+          <small class="text-danger">
+            At least one of the amount fields must be greater than zero.
+          </small>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="!Input_Form.errors?.atLeastOneAmountRequired">
+        <div class="col-12">
+          <small class="text-muted">
+            At least one of the amount fields must be greater than zero.
+          </small>
+        </div>
+      </div>
+
+      <!-- Supporting Documents -->
+      <div class="form-group row mt-3">
+        <label class="col-md-3 col-form-label">
+          Attach supporting documents, if any
+        </label>
+        <div class="col-md-9">
+          <input type="file" class="form-control" />
+          <small class="text-success d-block mt-1">Supporting Documents (Max size: 30MB)</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="button" class="btn btn-info text-white" (click)="resetForm()">Reset</button>
+      <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Next</button>
+    </div>
+
+  </form>
+    </div>
+</div>
+    </div>
+</div>

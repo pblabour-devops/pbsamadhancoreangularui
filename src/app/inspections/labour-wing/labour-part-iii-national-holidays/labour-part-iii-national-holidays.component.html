@@ -1,0 +1,180 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">National And Festival Holidays And Casual & Sick Leave Act 1965</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="9">Rule-3</td>
+                  <td class="inspection-back-theme1"><strong>Rule-3.1.1</strong> Are festival holidays being decided before  30th  November every year for the ensuing calender year?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="rule_3_IsFestivalHolidays_Decided_Before_30th_November">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+              
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-3.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_3_IsFestivalHolidays_Decided_Before_30th_November_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for=""><strong>Rule-3.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_3_IsFestivalHolidays_Decided_Before_30th_November_Remarks" (input)="updateCharacterCount('rule_3_IsFestivalHolidays_Decided_Before_30th_November_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_3_IsFestivalHolidays_Decided_Before_30th_November_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_3_IsFestivalHolidays_Decided_Before_30th_November_Remarks" placeHolder="rule_3_IsFestivalHolidays_Decided_Before_30th_November_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-3.2.1</strong> Are workers informed in Form A  before 31st  December about the festival holidays decided by exhibiting copy on notice board?</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-3.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks"><strong>Rule-3.2.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks" (input)="updateCharacterCount('rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks" placeHolder="rule_3_IsFestivalHolidays_Notification_Share_Before_31th_Dec_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="inspection-back-theme1"><strong>Rule-3.3.1</strong> Is copy of festival holidays decided in Form A  is sent to inspector before 31st  December of year?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-3.2.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks"><strong>Rule-3.3.3</strong> Remarks if any</label>  
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks" (input)="updateCharacterCount('rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks" placeHolder="rule_3_Is_Festival_Holidays_Copy_Sent_To_Inspector_Before_31th_Dec_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td rowspan="3">Rule-4</td>
+                  <td class="inspection-back-theme2"><strong>Rule-4.1.1</strong> Is election conducted as per provision of this rule? </td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="rule_4_Is_Election_Conducted">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>Rule-4.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_4_Is_Election_Conducted_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="rule_4_Is_Election_Conducted_Remarks"><strong>Rule-4.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_4_Is_Election_Conducted_Remarks" (input)="updateCharacterCount('rule_4_Is_Election_Conducted_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_4_Is_Election_Conducted_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_4_Is_Election_Conducted_Remarks" placeHolder="rule_4_Is_Election_Conducted_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Rule-7</td>
+                  <td class="inspection-back-theme1"><strong>Rule-7.1.1</strong> Is register maintained in Form B </td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="rule_7_Is_Form_B_Register_Maintained">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>Rule-7.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_7_Is_Form_B_Register_Maintained_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="rule_7_Is_Form_B_Register_Maintained_Remarks"><strong>Rule-7.1.3</strong></label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_7_Is_Form_B_Register_Maintained_Remarks" (input)="updateCharacterCount('rule_7_Is_Form_B_Register_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_7_Is_Form_B_Register_Maintained_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_7_Is_Form_B_Register_Maintained_Remarks" placeHolder="rule_7_Is_Form_B_Register_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

@@ -1,0 +1,164 @@
+<div class="main-content" style="margin-top: 60px;margin-left: 65px;">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-3 font-weight-bold">iPin</div>
+                    <div class="col-md-3 font-weight-bold">ApplicationId</div>
+                    <div class="col-md-3 font-weight-bold">Application Type</div>
+                    <div class="col-md-3 font-weight-bold">Application Purpose</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input formControlName="iPin" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <input formControlName="applicationId" type="text" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <select formControlName="applicationType" class="form-control">
+                            <option value="">--Please select--</option>
+                            <option value="5">Combined Proposed Approval of Building Plans (HUD and Factories)</option>
+                            <option value="6">Registration of Shop Licence</option>
+                            <option value="70">Factory Licence Act</option>
+                            <option value="76">Application for Stability Certificate of Building Plans Under The Factory Act - 1948 (Fresh)</option>
+                            <option value="62">Grant of Permission for Women to Work in Night Shift Under Factory Act (Fresh) (service)</option>
+                            <option value="61">Grant of Permission For Women to Work in Night Shift Under Shop Act (service)</option>
+                            <option value="71">Proposed Building Plans</option>
+                            <option value="72">Existing Building Plans</option>
+                            <option value="73">Addition-Amendment Building Plans</option>
+                            <option value="37">Registration Under Contract Labour (PE)</option>
+                            <option value="38">Licence Under Contract Labour (CL)</option>
+                            <option value="39">ISM Registration Under Principal Employer (PE)</option>
+                            <option value="40">ISM Registration Under Contract Labour (PE)</option>
+                            <option value="35">BOCW</option>
+                            <option value="81">Building Plan PSIEC</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select formControlName="applicationPurposeType" class="form-control">
+                            <option value="">--Please select--</option>
+                            <option value="1">Grant Of Licence</option>
+                            <option value="2">Renewal Of Licence</option>
+                            <option value="3">Amendment Of Licence</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-6 text-right">
+                        <input type="submit" [disabled]="!this.Input_Form.valid" value="Search" class="btn btn-success">
+                    </div>
+
+                    <div class="col-md-6 text-left">
+                        <div (click)="reset()" class="btn btn-danger">Reset</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card" *ngIf="this.isSubmitted && responseData!=null && !isSyncClicked">
+        <div class="card-body">
+            <h5 class="text-primary">Establishment & Address</h5>
+            <table class="table table-bordered table-reponsive">
+                <tbody>
+                    <tr>
+                        <th class="text-right">Application Num.</th>
+                        <th class="text-danger">{{responseData?.publicAppRefNum}}</th>
+                        <th class="text-right">AppId (Labour Department)</th>
+                        <th class="text-danger">{{responseData?.appId}}</th>
+                        <th class="text-right">AppId (Invest Punjab Department)</th>
+                        <th class="text-danger"> {{responseData?.investPunjab_AppId}}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Business Entity Name</th>
+                        <th class="text-danger" colspan="5">{{responseData?.establishmentName}}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Addess</th>
+                        <th class="text-danger" colspan="5">{{responseData?.address}}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">District</th>
+                        <th class="text-danger" colspan="2">{{responseData?.districtName}}</th>
+                        <th class="text-right">Tehsil</th>
+                        <th class="text-danger" colspan="2">{{responseData?.tehsilName}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-body">
+            <h5 class="text-primary">Current Status Information</h5>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="text-right">Current status</th>
+                        <th class="text-danger" colspan="5">{{responseData?.actionPublicName}}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Remarks</th>
+                        <th class="text-danger" colspan="5">{{responseData?.remarks}}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Action taken by</th>
+                        <th class="text-danger">{{responseData?.actionTakenBy}}<br>
+                            <span>{{responseData?.actionTakenByRoleName}}</span>
+                        </th>
+                        <th class="text-right">Action date</th>
+                        <th class="text-danger">{{responseData?.actionDate | date:'medium'}}</th>
+                        <th class="text-right">Action taken time</th>
+                        <th class="text-danger">
+                            In days: {{responseData?.actionTakenDaysCount}}<br>
+                            In hours: {{responseData?.actionTakenHoursCount}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Currenty with</th>
+                        <th class="text-danger" colspan="5">{{responseData?.currentPendingWith}}<br>
+                            <span>{{responseData?.normalizedName}}</span>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" class="text-center"><button
+                                (click)="updateStatus(responseData?.appId, formControls.applicationType.value, responseData?.appActionType)"
+                                class="btn btn-success">Sync Status with Invest Punjab</button></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" class="text-center"><button
+                                (click)="unlockApplication(responseData?.appId, formControls.applicationType.value, responseData?.appActionType)"
+                                class="btn btn-primary"> <i class="feather icon-unlock"></i> Unlock Application</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="card"  *ngIf="this.isSubmitted && responseData==null">
+        <div class="card-body text-danger text-center">
+            <h3>No information found..!</h3>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="this.isSyncClicked && shareStatusResop?.hasError">
+        <div class="card-body text-danger text-center">
+            <h3>Something went wrong..!</h3>
+            <h5>{{shareStatusResop?.errorDesc}}</h5>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="this.isSyncClicked && !shareStatusResop?.hasError">
+        <div class="card-body text-success text-center">
+            <h3>Status Shared Successfully..!</h3>
+            
+            <h5><span class="text-primary"> Reply from Invest Punjab Portal: </span> {{shareStatusResop?.responseDataModel}}</h5>
+        </div>
+    </div>
+    <div class="card" *ngIf="this.isApplicationUnlocked">
+        <div class="card-body text-success text-center">
+            <h3>Application Unlocked Successfully..!</h3>
+        </div>
+    </div>
+</div>

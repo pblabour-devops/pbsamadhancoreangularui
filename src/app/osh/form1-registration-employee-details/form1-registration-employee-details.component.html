@@ -1,0 +1,138 @@
+<form [formGroup]="Input_Form">
+<div class="section-card employee-section">
+  <h5 class="section-title">Employee Details</h5>
+  <div class="table-responsive">
+    <table class="gov-table">
+      <thead>
+        <tr>
+          <th class="col-sn">S. No.</th>
+          <th class="col-details text-left">Details</th>
+          <th>Male</th>
+          <th>Female</th>
+          <th>Others</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="main-row">
+            <td>1</td>
+            <td class="text-left">
+              Number of employees directly engaged in the establishment
+            </td>
+            <td><input type="number" formControlName="directEmployee_Male" /></td>
+            <td><input type="number" formControlName="directEmployee_Female" /></td>
+            <td><input type="number" formControlName="directEmployee_Others" /></td>
+            <td><input type="number" formControlName="directEmployee_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(a)</td>
+            <td class="text-left">
+              Number of ISMW engaged directly in the establishment
+            </td>
+            <td><input type="number" formControlName="ismwDirect_Male" /></td>
+            <td><input type="number" formControlName="ismwDirect_Female" /></td>
+            <td><input type="number" formControlName="ismwDirect_Others" /></td>
+            <td><input type="number" formControlName="ismwDirect_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(b)</td>
+            <td class="text-left">
+              Number of Casual Workers engaged directly in an establishment
+            </td>
+            <td><input type="number" formControlName="casualWorker_Male" /></td>
+            <td><input type="number" formControlName="casualWorker_Female" /></td>
+            <td><input type="number" formControlName="casualWorker_Others" /></td>
+            <td><input type="number" formControlName="casualWorker_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(c)</td>
+            <td class="text-left">
+              Number of Employees engaged under Fixed Term Employment
+            </td>
+            <td><input type="number" formControlName="fixedTerm_Male" /></td>
+            <td><input type="number" formControlName="fixedTerm_Female" /></td>
+            <td><input type="number" formControlName="fixedTerm_Others" /></td>
+            <td><input type="number" formControlName="fixedTerm_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(d)</td>
+            <td class="text-left">
+              Number of Building Workers engaged
+            </td>
+            <td><input type="number" formControlName="buildingWorker_Male" /></td>
+            <td><input type="number" formControlName="buildingWorker_Female" /></td>
+            <td><input type="number" formControlName="buildingWorker_Others" /></td>
+            <td><input type="number" formControlName="buildingWorker_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr class="main-row">
+            <td>2</td>
+            <td class="text-left">
+              Total number of contract labour engaged in the establishment
+            </td>
+            <td><input type="number" formControlName="contractLabour_Male" /></td>
+            <td><input type="number" formControlName="contractLabour_Female" /></td>
+            <td><input type="number" formControlName="contractLabour_Others" /></td>
+            <td><input type="number" formControlName="contractLabour_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(a)</td>
+            <td class="text-left">
+              Number of ISMW engaged in establishment through contractor
+            </td>
+            <td><input type="number" formControlName="ismwContractLabour_Male" /></td>
+            <td><input type="number" formControlName="ismwContractLabour_Female" /></td>
+            <td><input type="number" formControlName="ismwContractLabour_Others" /></td>
+            <td><input type="number" formControlName="ismwContractLabour_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr>
+            <td>(b)</td>
+            <td class="text-left">
+              Number of Building Workers engaged
+            </td>
+            <td><input type="number" formControlName="contractor_BuildingWorker_Male" /></td>
+            <td><input type="number" formControlName="contractor_BuildingWorker_Female" /></td>
+            <td><input type="number" formControlName="contractor_BuildingWorker_Others" /></td>
+            <td><input type="number" formControlName="contractor_BuildingWorker_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr class="main-row">
+            <td>3</td>
+            <td class="text-left">Details of Supervisor</td>
+            <td><input type="number" formControlName="supervisor_Male" /></td>
+            <td><input type="number" formControlName="supervisor_Female" /></td>
+            <td><input type="number" formControlName="supervisor_Others" /></td>
+            <td><input type="number" formControlName="supervisor_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr class="main-row">
+            <td>4</td>
+            <td class="text-left">
+              Number of Employees Engaged directly drawing wages of ₹21,000 or less
+            </td>
+            <td><input type="number" formControlName="employeeBelow21000_Male" /></td>
+            <td><input type="number" formControlName="employeeBelow21000_Female" /></td>
+            <td><input type="number" formControlName="employeeBelow21000_Others" /></td>
+            <td><input type="number" formControlName="employeeBelow21000_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr class="main-row">
+            <td>5</td>
+            <td class="text-left">
+              Number of Contract Labour Engaged drawing wages of ₹21,000 or less
+            </td>
+            <td><input type="number" formControlName="contractBelow21000_Male" /></td>
+            <td><input type="number" formControlName="contractBelow21000_Female" /></td>
+            <td><input type="number" formControlName="contractBelow21000_Others" /></td>
+            <td><input type="number" formControlName="contractBelow21000_Total" class="readonly-field" readonly /></td>
+          </tr>
+          <tr class="grand-total">
+            <td colspan="2" class="text-left font-weight-bold">
+              Total number of workers/employees
+            </td>
+            <td><input type="number" formControlName="grandTotal_Male" class="readonly-field" readonly /></td>
+            <td><input type="number" formControlName="grandTotal_Female" class="readonly-field" readonly /></td>
+            <td><input type="number" formControlName="grandTotal_Others" class="readonly-field" readonly /></td>
+            <td><input type="number" formControlName="grandTotal_All" class="readonly-field" readonly /></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</form>

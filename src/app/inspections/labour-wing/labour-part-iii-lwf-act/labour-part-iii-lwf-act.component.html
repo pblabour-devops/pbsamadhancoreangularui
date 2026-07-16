@@ -1,0 +1,151 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">Punjab Labour Welfare Fund Act 1965</h4>
+          </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <div class="row form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="isUnderRightToBusinessAct" class="required">Whether fund due on date of Inspection is paid?</label>
+                            <select class="form-select form-select-sm" class="form-control" formControlName="isLabourWelfareFund_Paid">
+                                <option  [selected]="true" [ngValue]="false"> No </option>
+                                <option   [ngValue]="true"> Yes </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-row" *ngIf="Input_Form.get('isLabourWelfareFund_Paid')?.value === true">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="depositedDate" class="required"><strong>13.1</strong> Deposited Date</label>
+                            <input type="date" class="form-control" formControlName="depositedDate">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="depositedAmount" class="required"> <strong>13.2</strong> Deposited Amount</label>
+                            <input type="text" class="form-control" formControlName="depositedAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-row" *ngIf="Input_Form.controls.isLabourWelfareFund_Paid.value == false">
+                    <div class="col-md-12">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="establishmentName" class="required"><strong>13.1</strong> Establishment Name</label>
+                                    <input type="text" class="form-control" formControlName="establishmentName">
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="period" class="required"> <strong>13.2</strong> Period</label>
+                                    <input type="text" class="form-control" formControlName="period">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="noOfWorkers" class="required"><strong>13.3</strong> No Of Workers</label>
+                                    <input type="text" class="form-control" formControlName="noOfWorkers" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contributionAmount" class="required"><strong>13.4</strong> Contribution Amount</label>
+                                    <input type="text" class="form-control" formControlName="contributionAmount" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contributionPaidAndPeriod" class="required"><strong>13.5</strong> Contribution Paid And Period</label>
+                                    <input type="text" class="form-control" formControlName="contributionPaidAndPeriod">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="unclaimedPaidAndPeriod" class="required"><strong>13.6</strong> Unclaimed Paid and Period</label>
+                                    <input type="text" class="form-control" formControlName="unclaimedPaidAndPeriod">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="contributionAmountStillPayable" class="required"><strong>13.7</strong> Contribution Amount still payable(Default Amount) </label>
+                                    <input type="text" class="form-control" formControlName="contributionAmountStillPayable">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="unpaidAccumulation" class="required"> <strong>13.1.8</strong> Unpaid Accumulation still Payable (Default Amount)</label>
+                                    <input type="text" class="form-control" formControlName="unpaidAccumulation">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="unclaimedPaidOrNot" class="required"><strong>13.9</strong> Unclaimed Paid Or Not</label>
+                                    <select class="form-select form-select-sm" class="form-control" formControlName="unclaimedPaidOrNot">
+                                        <option [selected]="true" value="">-- Please Select --</option>
+                                        <option value= "0"> No </option>
+                                        <option value= "1"> Yes </option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="remarks" class="required"><strong>13.10</strong> Remarks</label>
+                                    <input type="text" class="form-control" formControlName="remarks">
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  

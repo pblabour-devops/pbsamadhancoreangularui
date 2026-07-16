@@ -1,0 +1,168 @@
+/* ===================================================== */
+/* WORKER / EMPLOYEE SECTION – PROFESSIONAL GOV STYLE */
+/* ===================================================== */
+
+.section-card {
+  border-radius: 8px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #d9e1ea;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e2a38;
+  margin-bottom: 22px;
+}
+
+/* ===================================================== */
+/* TABLE STRUCTURE */
+/* ===================================================== */
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+/* ===================================================== */
+/* HEADER – SINGLE PROFESSIONAL COLOR */
+/* ===================================================== */
+
+.gov-table thead th {
+  background: #5c77db;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 14px 12px;
+  border: 1px solid #24313d;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.gov-table thead th:first-child,
+.gov-table thead th:nth-child(2) {
+  text-align: left;
+}
+
+/* ===================================================== */
+/* BODY CELLS */
+/* ===================================================== */
+
+.gov-table td {
+  padding: 14px 12px;
+  border: 1px solid #e3e8ef;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* S. No */
+.col-sn {
+  width: 65px;
+  text-align: center;
+  font-weight: 600;
+  color: #4a5a6a;
+  background: #f7f9fb;
+}
+
+/* Details */
+.col-details {
+  width: 42%;
+  text-align: left !important;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+/* Alternate rows */
+.gov-table tbody tr:nth-child(even) {
+  background: #fafbfd;
+}
+
+/* ===================================================== */
+/* MAIN SECTION ROWS (1,2,3,4,5) */
+/* ===================================================== */
+
+.main-row {
+  background: #eef3f8 !important;
+  font-weight: 700;
+}
+
+.main-row td:first-child {
+  border-left: 4px solid #2f75b5;
+}
+
+/* ===================================================== */
+/* TOTAL COLUMN – SUBTLE HIGHLIGHT */
+/* ===================================================== */
+
+.gov-table td:last-child {
+  background: #f4f8fc;
+  font-weight: 700;
+}
+
+/* ===================================================== */
+/* GRAND TOTAL ROW – PROFESSIONAL GREEN */
+/* ===================================================== */
+
+.grand-total td:first-child {
+  text-align: left;
+  font-size: 16px;
+}
+
+/* ===================================================== */
+/* INPUT FIELDS */
+/* ===================================================== */
+
+.gov-table input {
+  width: 80px;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid #cfd8e3;
+  background: #ffffff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.gov-table input:focus {
+  border-color: #2f75b5;
+  box-shadow: 0 0 0 2px rgba(47, 117, 181, 0.15);
+  outline: none;
+}
+
+.readonly-field {
+  background: #eef2f6 !important;
+  font-weight: 700;
+  color: #1e2a38;
+}
+
+/* ===================================================== */
+/* RESPONSIVE */
+/* ===================================================== */
+
+@media (max-width: 992px) {
+  .gov-table input {
+    width: 65px;
+    height: 34px;
+  }
+
+  .section-card {
+    padding: 18px;
+  }
+
+  .gov-table {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,625 @@
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card email-card">
+                    <div class="card-header">
+                        <!-- <app-menu-file-action-status-wise [selApplicationType]="selApplicationType"></app-menu-file-action-status-wise> -->
+
+                        <span *ngIf="selectedRecordTypeApplicationTypeCount!=undefined">
+                            <a class="b-brand">
+                                <span class="b-title text-info mb-1">{{getCurrentApplicationTypeDesc()}}</span>
+                            </a>
+                        </span>
+                        
+						<!-- <div class="col-sm-2" style="float: left;">
+                            <a class="b-brand">
+                                <div style="margin:0px;padding: 0px;" class="col-3">
+                                    <img src="assets/images/icon/checklist.png" style="width:100%">
+                                </div>
+                                <span class="b-title text-info mb-1">{{pageTitle}}</span>
+                            </a>
+						</div> -->
+						<!-- <div class="form-group row col-sm-9 float-right lblestablishmentName">
+							<label for="validation-t-sate" class="col-sm-3 col-form-label">Enter Public Application No/ Establishment Name</label>
+							<div class="col-sm-6" style="margin-top: 11px;">
+								<input type="email" class="form-control" placeholder="Enter your search...">
+							</div>
+
+							<div class="col-sm-2">
+								<button type="button" class="btn  btn-primary" style="margin-top: 11px;margin-left: 7px;">Search</button>
+							</div>
+						</div> -->
+                    </div>
+
+                    <div class="card-body">
+                        <div class="mail-body">
+                            <div class="row">
+                                <div class="reports-widget" (click)="openReports()">
+                                    <div class="reports-icon">
+                                         <i class="feather icon-file-text"></i>
+                                    </div>
+                                    <span class="reports-text">My Reports</span>
+
+                                </div>
+                                <!-- <div class="col-xl-2 col-md-3">
+                                    <ul class="mb-2 nav nav-tab flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        <li class="nav-item mail-section" *ngFor="let item of recordTypeMenuCount" class="nav-item" style="cursor: pointer;" (click)="onRecordTypeItemClick(item.headCode)">
+                                            <a class="nav-link text-left" [ngClass]="item.headCode == selRecordHeadCode ? 'active' : ''"  data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="false">
+                                                <span><i class="feather {{getIcon(item.headCode)}}"></i> {{item.recordHead}}</span>
+                                                <span class="float-right">{{item.recordCount}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            
+                                <div class="col-xl-12 col-md-12 inbox-right">
+                                    <div class="tab-content p-0" id="v-pills-tabContent">
+                                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel">
+
+                                            
+                                            <!-- <ul class="nav nav-pills nav-fill mb-0" id="pills-tab" role="tablist">
+                                                <li class="nav-item" *ngFor="let item of selectedRecordTypeApplicationTypeCount" (click)="onAppTypeOptionClick(item.applicationType)">
+                                                    <a class="nav-link" [ngClass]="item.applicationType == selApplicationType ? 'active' : ''" style="cursor: pointer;" data-toggle="pill" role="tab" aria-controls="pills-primary" aria-selected="true"><span><i class="feather icon-inbox"></i>
+                                                        {{item.applicationTypeDesc}} <label class="badge badge-pill badge-light-danger m-0">  {{item.recordCount}}</label></span></a>
+                                                </li>
+                                            </ul> -->
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="row" style="margin-top: 25px;">
+                                                    <div class="offset-6"></div>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group">
+                                                            <!-- <div class="input-group-prepend">
+                                                              <div class="input-group-text" id="btnGroupAddon2">Search</div>
+                                                            </div> -->
+                                                            <input class="form-control" type="search" (keyup)="searchKeyUp($event)" (keydown)="searchPressed($event)" placeholder="Search keyword here and press enter.." id="searchKeyword">
+                                                            <button class="btn btn-danger" *ngIf="searchText.length>0" (click)="clearSearch()" type="button">Clear</button>
+                                                            <button class="btn btn-success" (click)="onClickSearchBar()" type="submit"><i class="feather icon-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="container" style="display: none;">
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-6 col-md-12">
+                                                            <div class="recently-added-heading-main vendro-article-text-new">
+                                                                <h4>Applications</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3"></div>
+                                                        <div class="col-xl-3 col-lg-6 col-md-12">
+                                                            <div class="sorting-filter-main all-client-list-box">
+                                                                <div class="form-group">
+                                                
+                                                                    <div class="select-dropdown">
+                                                                        <select class="form-select" aria-label="Default select example" (change)="onChangeSortOrder($event)">
+                                                                            <option value="1">Ascending</option>
+                                                                            <option value="2">Descending </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tab-pane fade show active" id="pills-primary" role="tabpanel" aria-labelledby="pills-primary-tab">
+                                                    <div class="customer-scroll" class="tableClass table-responsive">
+                                                        <table class="table table-hover m-b-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Sr. No.</th>
+                                                                    <th (click)="sortByColName('PublicAppRefNum')" class="cursor">File Number
+                                                                        <i class="sort-icon feather" [ngClass]="{'icon-maximize-2': dataTableParams.sortColumn != 'PublicAppRefNum', 'icon-chevron-up': (dataTableParams.sortColumn === 'PublicAppRefNum' && dataTableParams.sortOrder==='1'), 'icon-chevron-down': (dataTableParams.sortColumn === 'PublicAppRefNum' && dataTableParams.sortOrder==='2') }"></i>
+                                                                    </th>
+                                                                    <th (click)="sortByColName('EstablishmentName')" class="cursor">Establishment Name & Address
+                                                                        <i class="sort-icon feather" [ngClass]="{'icon-maximize-2': dataTableParams.sortColumn != 'EstablishmentName', 'icon-chevron-up': (dataTableParams.sortColumn === 'EstablishmentName' && dataTableParams.sortOrder==='1'), 'icon-chevron-down': (dataTableParams.sortColumn === 'EstablishmentName' && dataTableParams.sortOrder==='2') }"></i>
+                                                                    </th>
+                                                                    <th (click)="sortByColName('ActionDate')" class="cursor">Last Action Taken By
+                                                                        <i class="sort-icon feather" [ngClass]="{'icon-maximize-2': dataTableParams.sortColumn != 'ActionDate', 'icon-chevron-up': (dataTableParams.sortColumn === 'ActionDate' && dataTableParams.sortOrder==='1'), 'icon-chevron-down': (dataTableParams.sortColumn === 'ActionDate' && dataTableParams.sortOrder==='2') }"></i>
+                                                                    </th>
+                                                                    <th (click)="sortByColName('ActionTakenBy')" class="cursor">Last Action Taken
+                                                                        <i class="sort-icon feather" [ngClass]="{'icon-maximize-2': dataTableParams.sortColumn != 'ActionTakenBy', 'icon-chevron-up': (dataTableParams.sortColumn === 'ActionTakenBy' && dataTableParams.sortOrder==='1'), 'icon-chevron-down': (dataTableParams.sortColumn === 'ActionTakenBy' && dataTableParams.sortOrder==='2') }"></i>
+                                                                    </th>
+                                                                    <th>Comments</th>
+                                                                    <th (click)="sortByColName('CurrentPendingWith')" class="cursor">Currently With
+                                                                        <i class="sort-icon feather" [ngClass]="{'icon-maximize-2': dataTableParams.sortColumn != 'CurrentPendingWith', 'icon-chevron-up': (dataTableParams.sortColumn === 'CurrentPendingWith' && dataTableParams.sortOrder==='1'), 'icon-chevron-down': (dataTableParams.sortColumn === 'CurrentPendingWith' && dataTableParams.sortOrder==='2') }"></i>
+                                                                    </th>
+                                                                    <th>
+                                                                        <!-- Max Allowed Timeline to Taking Action -->
+                                                                         Action Timelines
+                                                                    </th>
+                                                                    <th>Action</th>
+                                                                    
+                                                                </tr>
+                                                            </thead>
+                                                            <!-- {{recordsTypeList | json}} -->
+                                                            <tbody *ngIf="recordsTypeList?.length>0" >
+                                                                <tr *ngFor="let item of recordsTypeList; let i = index">
+                                                                    <td class="badge-light-danger font-weight-bold">
+                                                                        <span *ngIf="dataTableParams.pageNo == 1 else NotFirstPage" >
+                                                                            {{i+1}}
+                                                                        </span>
+                                                                        <ng-template #NotFirstPage>
+                                                                            {{ (dataTableParams.pageSize * (dataTableParams.pageNo-1) )+ i+1}}
+                                                                        </ng-template>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-link" title="View Application Detais" (click)="onShowAppDetailClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion)">{{item.publicAppRefNum}} <br>
+                                                                            <span class="badge badge-pill badge-primary" *ngIf="item.applicationPurposeType == 1">Registration</span> 
+                                                                            <span class="badge badge-pill badge-success" *ngIf="item.applicationPurposeType == 2">Renewal</span> 
+                                                                            <span class="badge badge-pill badge-info" *ngIf="item.applicationPurposeType == 3">Amendment</span> 
+                                                                        </button>
+                                                                        <br>
+                                                                        <span class="badge badge-light-success" style="margin-left: 25px; font-size: 12px;color: #fff;background-color: #FF5370;font-weight: 100;" *ngIf="item.isTimeLineFlow">TimeLine Bound</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="font-weight-bold" style="color: #DE3163;">{{item.establishmentName}} </span><br>
+                                                                        {{item.address}}<br>
+                                                                        <span class="m-b-0 d-inline-block text-c-green">{{item.districtName}}</span>
+                                                                    </td>
+                                                                    <td>{{item.actionTakenBy}} <br>
+                                                                        <span style="font-size: 12px;color: #EC7063;">{{item.actionTakenByRoleNormalizeName}}</span> <br>
+                                                                        {{item.actionDate | date:'medium'}}
+                                                                    </td>
+                                                                    <td>{{item.actionName}} <br>
+                                                                        <span class="m-b-0 d-inline-block text-c-blue"> 
+                                                                            Time Taken : 
+                                                                            <span class="m-b-0 d-inline-block text-c-green">Days: {{item.actionTakenDaysCount}} (In Hrs.: {{item.actionTakenHoursCount}}) </span> 
+                                                                            <!-- <span class="m-b-0 d-inline-block text-c-green">Hours: </span> -->
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>{{item.remarks}}</td>
+                                                                    <td>{{item.currentPendingWith}} <br>
+                                                                        <span style="font-size: 12px;color: #EC7063;">{{item.normalizedName}},</span><br>
+                                                                        <span class="m-b-0 d-inline-block text-c-green">{{item.circleName}}</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span *ngIf="item.actionCanTakenUpto; else noTimelines">
+                                                                            <!-- {{item.actionCanTakenUpto | date:'medium'}}<br> -->
+                                                                            <span style="font-size: 12px;" class="btn btn-link" (click)="openTimeLineDetails(previewTimeLineDetails, item.applicationActionLogId)">View timeline details</span>
+                                                                            <span class="badge badge-pill badge-info" *ngIf="item.appProcessPhaseType == 1"> Scrutiny Phase</span> 
+                                                                            <span class="badge badge-pill badge-primary" *ngIf="item.appProcessPhaseType == 2"> Observation Phase</span> 
+                                                                            <span class="badge badge-pill badge-success" *ngIf="item.appProcessPhaseType == 3"> Clarification Phase</span> 
+                                                                            <span class="badge badge-pill badge-warning" *ngIf="item.appProcessPhaseType == 4"> Deemed Phase</span> 
+                                                                        </span>
+                                                                        <ng-template #noTimelines>
+                                                                            <!-- <span *ngIf="((item.applicationType==71 || item.applicationType==72 || item.applicationType==73 || item.applicationType == 5 || item.applicationType == 81) && (item.actionCode=='214')); else timeLines">
+                                                                                <span *ngIf="getDateDiffrenceInDays(item.actionDate)<maxDaysAllowedForRaiseFee; else raiseFeeTimeLapsed">
+                                                                                    Total <span class="text-danger fa-2x font-weight-bold">{{maxDaysAllowedForRaiseFee - getDateDiffrenceInDays(item.actionDate)}}</span> days out of <span class="text-primary fa-2x font-weight-bold">{{maxDaysAllowedForRaiseFee}}</span> days left to take action
+                                                                                </span> 
+                                                                                <ng-template #raiseFeeTimeLapsed>
+                                                                                    <span class="text-danger font-weight-bold">Action taking time lapsed</span>
+                                                                                </ng-template>
+                                                                            </span>
+                                                                            <ng-template #timeLines> -->
+                                                                                <span  class="rts-warning">Deemed will be taken place beyond RTS act timelines</span>
+                                                                            <!-- </ng-template> -->
+                                                                        </ng-template>
+                                                                    </td>
+                                                                  
+                                                                    <td>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12" *ngIf="selRecordHeadCode=='1' || (selRecordHeadCode=='4' || selRecordHeadCode=='6' && item.applicationType==6)">
+                                                                                <div *ngIf="item.isTimeLineElapsed;else actionWithoutTimeLines">
+                                                                                    <span class="badge badge-pill badge-danger"><i class="feather icon-clock"></i> Action Timeline Elapsed</span> 
+                                                                                    
+                                                                                </div>
+                                                                                <ng-template #actionWithoutTimeLines>
+                                                                                    <button type="button" *ngIf="!(item.actionCode=='400' && item.actionTakenByRoleName=='JDRF')" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'ACTION', item.applicationActionLogId, item.isTimeLineFlow)">
+                                                                                        <i class="feather icon-activity"></i> Take Action
+                                                                                    </button>
+                                                                                </ng-template>
+
+                                                                                <button 
+                                                                                    *ngIf="item.applicationType==5 && !item.isTimeLineFlow &&
+                                                                                    (item.actionCode=='103' || item.actionCode=='6' || item.actionCode=='8' || item.actionCode=='9') && 
+                                                                                    ((item.actionTakenByRoleName=='ARHQ' || item.actionTakenByRoleName=='INDL'))"  type="button" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'RAISE_FEE',item.applicationActionLogId, item.isTimeLineFlow)">
+                                                                                    Raise Fees
+                                                                                </button>
+                                                                                
+                                                                                <!-- This Button is used to raise fee in Building Plans which is not in timeline -->
+                                                                                <button 
+                                                                                    *ngIf="(item.applicationType==71 || item.applicationType==72 || item.applicationType==73) && !item.isTimeLineFlow &&
+                                                                                    (item.actionTakenByRoleName=='ADRF' || item.actionTakenByRoleName=='DDRF' || item.actionTakenByRoleName=='INDL' || item.actionTakenByRoleName=='LBCR') && (item.actionCode=='101' || item.actionCode=='102' || item.actionCode=='6')"  type="button" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'RAISE_FEE',item.applicationActionLogId, item.isTimeLineFlow)">
+                                                                                    Raise Fees
+                                                                                </button>
+
+
+                                                                                <button
+                                                                                    *ngIf="(item.applicationType==71 || item.applicationType==72 || item.applicationType==73 || item.applicationType == 5) &&
+                                                                                    !item.isTimeLineElapsed && 
+                                                                                    item.isTimeLineFlow &&
+                                                                                    (item.actionCode=='101' && item.actionTakenByRoleName=='LBCR') || (item.actionCode=='120' && item.actionTakenByRoleName=='DLBP') || (item.actionCode=='409' && item.actionTakenByRoleName=='INDL') || (item.actionCode=='406' && item.actionTakenByRoleName=='INDL')"  
+                                                                                    type="button" class="btn btn-outline-primary text-center" 
+                                                                                    (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'RAISE_FEE',item.applicationActionLogId, item.isTimeLineFlow)">
+                                                                                    Raise Fees
+                                                                                </button>
+
+                                                                               
+
+
+                                                                                <!-- <button *ngIf="item.applicationType==5 && (item.actionCode=='103' && item.actionTakenByRoleName=='JDRF') || (item.actionCode=='6' && item.actionTakenByRoleName=='INDL') || (item.actionCode=='103' && item.actionTakenByRoleName=='ARHQ') || (item.actionCode!='103' && item.actionCode!='400' && item.actionCode!='6')"  type="button" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, 'ACTION')">Take Action</button> -->
+                                                                                <button *ngIf="item.applicationType==5 && (item.actionCode=='400' && item.actionTakenByRoleName=='JDRF')"  type="button" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'VERIFY_FEE',item.applicationActionLogId, item.isTimeLineFlow)">Verify Raised Fees</button>
+
+                                                                            </div>
+
+                                                                            <div class="col-md-12">
+                                                                                <button class="btn btn-outline-warning text-center" (click)="openScrollableContent(longContent, item.applicationRefId)"><i class="feather icon-message-circle"></i> View Logs</button>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <button *ngIf="item.actionCode=='200' || item.actionCode=='206'" class="btn btn-outline-success text-center" (click)="openPreviewClearenceContent(previewClearence, item.publicAppRefNum, item.applicationType)"><i class="feather icon-eye"></i> View Clearence</button>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <button *ngIf="item.actionCode=='205' || item.actionCode=='206'" class="btn btn-outline-success text-center" (click)="openPreviewDeemedContent(previewDeemedCalcs, item.applicationRefId)"><i class="feather icon-calendar"></i> View Deemed Details</button>
+                                                                            </div>
+                                                                             <div class="col-md-12">
+                                                                                <button  *ngIf="item.applicationType != 6 && this.headercode == 1" class="btn btn-outline-success text-center" (click)="openPreviewAllActDeemedContent(previewAllActDeemedCalcs, item.applicationRefId)"><i class="feather icon-clock"></i> Time Lapsed Details</button>
+                                                                            </div>
+                                                                            
+                                                                            <!-- <div class="col-md-12" *ngIf="(item.applicationType==71 || item.applicationType==72 || item.applicationType==73 || item.applicationType == 5 || item.applicationType == 81) 
+                                                                                                        && (item.actionCode=='214')">
+                                                                                <button type="button"  *ngIf="getDateDiffrenceInDays(item.actionDate)<maxDaysAllowedForRaiseFee" class="btn btn-outline-primary text-center" 
+                                                                                    (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName, item.projectSiteVersion, 'RAISE_FEE',item.applicationActionLogId, item.isTimeLineFlow)">
+                                                                                    Deemed Raise Fees
+                                                                                </button>
+                                                                            </div> -->
+                                                                        </div>
+
+                                                                        
+                                                                                    <!-- || (item.actionCode=='6' && item.actionTakenByRoleName=='INDL') -->
+
+                                                                        <!-- <button *ngIf="selRecordHeadCode=='1' || (selRecordHeadCode=='4' && item.applicationType==6)" type="button" class="btn btn-outline-primary text-center" (click)="onProcessClick(item.applicationRefId, item.projectSiteRefId, item.applicationType, item.actionCode, item.actionTakenByRoleName)"> 
+                                                                            <span *ngIf="item.applicationType==5; else actionBtnTitle">
+                                                                                <span *ngIf="item.actionCode=='103' || item.actionCode=='400' || item.actionCode=='6'; else takeAction">
+                                                                                    <span *ngIf="((item.actionTakenByRoleName=='DTP' || item.actionTakenByRoleName=='ARHQ'))"> 
+                                                                                        Raise Fees
+                                                                                    </span>
+                                                                                    <span *ngIf="(item.actionCode=='103' && item.actionTakenByRoleName=='JDRF') || (item.actionCode=='6' && item.actionTakenByRoleName=='INDL') || (item.actionCode=='103' && item.actionTakenByRoleName=='ARHQ')"> 
+                                                                                        Take Action
+                                                                                    </span>
+                                                                                    <span *ngIf="item.actionCode=='400' && item.actionTakenByRoleName=='JDRF'">
+                                                                                        Verify Raised Fees
+                                                                                    </span>
+                                                                                </span>
+                                                                                <ng-template #takeAction>
+                                                                                    Take Action
+                                                                                </ng-template>
+                                                                            </span>
+                                                                            <ng-template #actionBtnTitle>
+                                                                                Take Action
+                                                                            </ng-template>
+                                                                        </button> -->
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                            <tbody *ngIf="recordsTypeList?.length==0" >
+                                                                <tr><td colspan="7" class="text-danger">No record found...</td></tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" *ngIf="totalRecords > 0">
+                                                <div class="col-md-2">
+                                                    Show Results per page: 
+                                                    <select name="user-list-table_length" aria-controls="user-list-table" class="custom-select custom-select-sm form-control form-control-sm" (change)="onChangePageSize($event)">
+                                                        <option [selected]="selectedPageSize==10" value="10">10</option>
+                                                        <option [selected]="selectedPageSize==25" value="25">25</option>
+                                                        <option [selected]="selectedPageSize==50" value="50">50</option>
+                                                        <option [selected]="selectedPageSize==100" value="100">100</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div style="float: right; margin-top: 13px;">
+                                                        Page No: 
+                                                        <select  (change)="onChangePageNumber($event)" class="custom-select custom-select-sm form-control form-control-sm">
+                                                            <option [selected]="selectedPageNo == (index+1)" [value]="index+1" *ngFor="let a of fakeArray; let index = index">{{index+1}}</option>
+                                                        </select>
+                                                        <span class="text-danger current-page-total">(Total Pages: {{fakeArray.length}})</span>
+                                                        <!-- <nav aria-label="Page navigation example">
+                                                          <ul class="pagination">
+                                                            <li [ngStyle]="{'display':(dataTableParams.pageNo != 1 && totalRecords > 0) ? 'block' : 'none'}" id="footer-search_previous" class="page-item" (click)="onClickPrevPage()"><a class="page-link" href="javascript:;">Previous</a></li>
+                                                            <li *ngFor="let a of fakeArray; let index = index" class="page-item" (click)="onChangePageNumber(index+1)"><a class="page-link" href="javascript:;">{{index+1}}</a></li>
+                                                            <li  id="footer-search_next" class="page-item" [ngStyle]="{'display':(dataTableParams.pageNo < totalPages && totalRecords > 0) ? 'block' : 'none'}" (click)="onClickNextPage()"><a class="page-link" href="javascript:;">Next</a></li>
+                                                          </ul>
+                                                        </nav> -->
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Application Logs ({{publicAppRefNum}})</h4>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+    </div>
+    <div class="modal-body">
+        <div class="card-body">
+            <!-- <div class="dt-responsive table-responsive" style="margin-top: -32px;" >
+               
+                <table id="table-style-hover" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="width20">Action Date</th>
+                            <th class="width20">Action Taken By</th>
+                            <th class="width20">Action Taken</th>
+                            <th class="width40">Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let logs of applicationLogs">
+                            <td>{{logs.actionDate | date:'medium'}}</td>
+                            <td>{{logs.senderName}}</td>
+                            <td>{{logs.actionPublicName}}</td>
+                            <td>{{logs.remarks}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+        </div>
+    </div>
+  </ng-template>
+
+  <ng-template #previewClearence let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" style="color: black;">View & Download Clearence</h4>
+	</div>
+	<div class="card-body">
+		<div class="dt-responsive table-responsive">
+			  <iframe [src]="pdfPath  | safe: 'resourceUrl'" width="100%" height="500px"></iframe>
+			  <div class="card-footer text-right">
+				  <button  type="button" class="btn  btn-danger" (click)="dismissAllModals()">Dismiss</button>
+			  </div>
+		</div>
+	</div>
+</ng-template>
+
+<ng-template #previewDeemedCalcs let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" style="color: black;">View Deemed Details</h4>
+	</div>
+	<div class="card-body">
+        <div class="row">
+            <div class="col-md-2 text-right text-c-green font-weight-bold">Date of Submission:</div>
+            <div class="col-md-2 text-c-blue font-weight-bold">{{deemedDetail?.submissionDate | date:'medium'}}</div>
+            <div class="col-md-2 text-right text-right text-c-green font-weight-bold">Date of Deemed:</div>
+            <div class="col-md-2 text-c-blue font-weight-bold">{{deemedDetail?.fileDeemedDate | date:'medium'}}</div>
+            <div class="col-md-2 text-right text-right text-c-green font-weight-bold">Max Deemed Time:</div>
+            <div class="col-md-2 text-c-blue font-weight-bold">{{deemedDetail?.maxDeemedTime}} <span *ngIf="deemedDetail?.deemedTimeType=='H'; else timeInDays1">Hours</span><ng-template #timeInDays1>Days</ng-template></div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <!-- <tr>
+                    <th>Date of Subbmisssion</th>
+                    <td>{{deemedDetail?.submissionDate | date:'medium'}}</td>
+                </tr> -->
+
+                <tr>
+                    <!-- <td rowspan="5">
+                        <div class="row">
+                            <div class="col-md-6 text-right text-c-green font-weight-bold">Date of Submission:</div>
+                            <div class="col-md-6 text-c-blue font-weight-bold">{{deemedDetail?.submissionDate | date:'medium'}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 text-right text-right text-c-green font-weight-bold">Date of Deemed:</div>
+                            <div class="col-md-6 text-c-blue font-weight-bold">{{deemedDetail?.fileDeemedDate | date:'medium'}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 text-right text-right text-c-green font-weight-bold">Max Deemed Time:</div>
+                            <div class="col-md-6 text-c-blue font-weight-bold">{{deemedDetail?.maxDeemedTime}} <span *ngIf="deemedDetail?.deemedTimeType=='H'; else timeInDays1">Hours</span><ng-template #timeInDays1>Days</ng-template></div>
+                        </div>
+                    </td> -->
+                    <th class="text-right">Total Submission Time</th>
+                    <td class="text-right text-success font-weight-bold">{{deemedDetail?.totalTime}}</td>
+                    <td rowspan="5" class="font-weight-bold text-danger" style="vertical-align: middle; text-align: center; font-size: 30px;">
+                        <span style="writing-mode: vertical-rl;text-orientation: mixed;">
+                            Time in <span *ngIf="deemedDetail?.deemedTimeType=='H'; else timeInDays">Hours</span>
+                            <ng-template #timeInDays>Days</ng-template>
+                        </span>
+                    </td>
+                </tr>
+                <tr class="text-right">
+                    <th>Total Holiday Time <span class="text-danger">(less)</span></th>
+                    <td class="text-danger">{{deemedDetail?.totalHolidaysTime}}</td>
+                </tr>
+                <tr class="text-right">
+                    <th>Total Weekends Time <span class="text-danger">(less)</span></th>
+                    <td class="text-danger">{{deemedDetail?.totalWeekEndsTime}}</td>
+                </tr>
+                <tr class="text-right">
+                    <th>Total Objections Time <span class="text-danger">(less)</span></th>
+                    <td class="text-danger">{{deemedDetail?.totalObjectionTime}}</td>
+                </tr>
+                <tr class="text-right">
+                    <th>Deemed in Time</th>
+                    <td class="text-right text-success font-weight-bold" style="font-size: 25px;">{{deemedDetail?.deemedInTime}}</td>
+                </tr>
+            </thead>
+        </table>
+		
+	</div>
+    <div class="card-footer text-right">
+        <button  type="button" class="btn  btn-danger" (click)="dismissAllModals()">Dismiss</button>
+    </div>
+</ng-template>
+
+<ng-template #previewAllActDeemedCalcs let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" style="color: black;">View Time Lapsed Details</h4>
+	</div>
+	<div class="card-body" *ngIf="this.deemedAllActDetail">
+        <div class="row">
+            <div class="col-md-2 text-right text-c-green font-weight-bold">{{ deemedAllActDetail?.isTimeLineFlow == 1 ? 'Date of Scrutiny Completed' : 'Date of Submission:' }}</div>
+            <div class="col-md-2 text-c-blue font-weight-bold">{{deemedAllActDetail?.submissionDate | date:'medium'}}</div>
+
+            <div class="col-md-2 text-right text-right text-c-green font-weight-bold">Max Turnarround Time (As Per RTS):</div>
+             <div class="col-md-1 time-container text-c-blue font-weight-bold">
+                {{replaceTimeNames(deemedAllActDetail?.maxDeemedTime, 0)}} <span class="small-text">Days, </span> 
+            </div>
+            <div class="col-md-2 text-right text-right text-c-red font-weight-bold">Total Time Remaining:</div>
+             <div class="col-md-3 time-container text-c-blue font-weight-bold">
+                {{replaceTimeNames(deemedAllActDetail?.totalTimeRemains, 0)}} <span class="small-text">Days, </span> 
+                {{replaceTimeNames(deemedAllActDetail?.totalTimeRemains, 1)}} <span class="small-text"> Hours </span> 
+                <!-- {{replaceTimeNames(deemedAllActDetail?.totalTimeRemains, 2)}} <span class="small-text"> Minutes</span>  -->
+            </div>   
+        </div>
+        <div class="row" *ngIf="!isDeemedTimeExpired()"> 
+            <div class="col-md-12 text-right">
+                    <span class="badge badge-pill badge-danger">Expired Deemed Time</span>
+            </div>
+        </div>
+      <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="text-right">Total Submission Time</th>
+      <td class="text-right text-success font-weight-bold">
+        <div class="time-container">
+            {{replaceTimeNames(deemedAllActDetail?.totalTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.totalTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.totalTime, 2)}} <span class="small-text"> Minutes</span>  -->
+        </div>
+      </td>
+      <td rowspan="6" class="font-weight-bold text-danger" style="vertical-align: middle; text-align: center; font-size: 30px;">
+        <span style="writing-mode: vertical-rl;text-orientation: mixed;">
+          Time in
+          <span *ngIf="deemedAllActDetail?.deemedTimeType=='H'; else timeInDays">Hours</span>
+          <ng-template #timeInDays>Days</ng-template>
+        </span>
+      </td>
+    </tr>
+    <tr class="text-right">
+      <th>Total Holiday Time <span class="text-danger">(less)</span></th>
+      <td class="text-danger">
+        <div class="time-container">
+            {{replaceTimeNames(deemedAllActDetail?.totalHolidaysTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.totalHolidaysTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.totalHolidaysTime, 2)}} <span class="small-text"> Minutes</span>  -->
+        </div>
+      </td>
+    </tr>
+    <tr class="text-right">
+      <th>Total Weekends Time <span class="text-danger">(less)</span></th>
+      <td class="text-danger">
+         <div class="time-container">
+            {{replaceTimeNames(deemedAllActDetail?.totalWeekEndsTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.totalWeekEndsTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.totalWeekEndsTime, 2)}} <span class="small-text"> Minutes</span>  -->
+        </div>
+      </td>
+    </tr>
+    <tr class="text-right">
+      <th>Total Objections Time <span class="text-danger">(less)</span></th>
+      <td class="text-danger">
+         <div class="time-container">
+            {{replaceTimeNames(deemedAllActDetail?.totalObjectionTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.totalObjectionTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.totalObjectionTime, 2)}} <span class="small-text"> Minutes</span>  -->
+        </div>
+      </td>
+    </tr>
+    <tr class="text-right">
+      <th>Total Dormant Time <span class="text-danger">(less)</span></th>
+      <td class="text-danger">
+         <div class="time-container">
+            {{replaceTimeNames(deemedAllActDetail?.totalDormantTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.totalDormantTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.totalDormantTime, 2)}} <span class="small-text"> Minutes</span>  -->
+        </div>
+      </td>
+    </tr>
+    <tr class="text-right">
+      <th>Total Time Taken (By Department)</th>
+      <td class="text-right text-success font-weight-bold" style="font-size: 26px;">
+            {{replaceTimeNames(deemedAllActDetail?.deemedInTime, 0)}} <span class="small-text">Days, </span> 
+            {{replaceTimeNames(deemedAllActDetail?.deemedInTime, 1)}} <span class="small-text"> Hours </span> 
+            <!-- {{replaceTimeNames(deemedAllActDetail?.deemedInTime, 2)}} <span class="small-text"> Minutes</span>  -->
+      </td>
+    </tr>
+  </thead>
+</table>
+
+		
+	</div>
+    <div class="card-body" *ngIf="!this.deemedAllActDetail">
+        <div class="row">
+            <div class="col-md-12 text-c-green font-weight-bold"  style="font-size: 20px;">There is no timeline for your application at present. It is under the Scrutiny process. The timeline (as per RTS) will commence once the Scrutiny process is complete.</div>
+        </div>
+	</div>
+    <div class="card-footer text-right">
+        <button  type="button" class="btn  btn-danger" (click)="dismissAllModals()">Dismiss</button>
+    </div>
+</ng-template>
+
+<ng-template #previewTimeLineDetails let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" style="color: black;">TimeLine Details</h4>
+	</div>
+	<div class="card-body" style="overflow-y: scroll;"> 
+        <table class="table table-bordered" style="overflow-y: scroll;">
+            <thead>
+                <tr>
+                <th class="text-center">
+                    Work Slab Date<br>
+                    <span class="timelines-table-sub-head">(DD-MM-YYYY)</span>
+                </th>
+                
+                <!-- <th>Day Type</th> -->
+                <!-- <th>Day Description</th> -->
+                <th class="text-center">
+                    Working hours of the day<br>
+                    <span class="timelines-table-sub-head">(24 Hrs. Format)</span>
+                </th>
+                <!-- <th class="text-center">Work End Time</th> -->
+                <th class="text-center">
+                    Total Working Time<br>
+                    <span class="timelines-table-sub-head">(Hrs.)</span>
+
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of timeLineDetail" [ngClass]="item.slabDayType == 0 ? 'timeline-workingday' : 'timeline-offday'">
+                <td class="text-center font-weight-bold" style="color: #000080;"> 
+                    {{ item.slabDate | date:'dd-MM-yyyy' }}<br>
+                    <span [ngClass]="item.slabDayType == 0 ? 'timelines-slab-day-desc-working' : 'timelines-slab-day-desc-off'">
+                        {{item.slabDayDesc}}
+                    </span>
+                </td>
+                
+                <!-- <td>{{ item.slabDayType }}</td>  -->
+                <!-- <td>{{ item.slabDayDesc }}</td> -->
+                <!-- <td class="text-center">{{ item.workStartsTime | date:'HH:mm' }}</td> -->
+                <td class="text-center"><span style="font-weight: bold;color: #c0392b; font-size: 20px;" *ngIf="item.slabDayType == 0; else hideTimeLimits"><span style="font-size: 12px;font-weight: normal;color: #212f3d;">from</span> {{ item.workStartsTime | date:'HH:mm' }} <span style="font-size: 12px;font-weight: normal;color: #212f3d;">to</span> {{ item.workEndsTime | date:'HH:mm' }}</span><ng-template #hideTimeLimits>-</ng-template></td>
+                <td class="text-center"><span class="timelines-working-hrs">{{item.hours }}:{{item.minutes }}</span> <span class="timelines-working-hrs-title"> hrs</span></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="totalHrs>0">
+                    <td colspan="2" class="text-right">Total Hrs.:</td>
+                    <td class="text-center"><span class="timelines-working-hrs">
+                        {{totalHrs | number: '1.0-0'}}:00
+                           
+                    </span> <span class="timelines-working-hrs-title"> hrs</span></td>
+                </tr>
+                <tr *ngIf="totalHrs==0">
+                    <td colspan="2" class="text-danger">Timeline is not applicable</td>
+                </tr>
+            </tfoot>
+        </table>
+	</div>
+    <div class="card-footer text-right">
+        <button  type="button" class="btn  btn-danger" (click)="dismissAllModals()">Dismiss</button>
+    </div>
+</ng-template>

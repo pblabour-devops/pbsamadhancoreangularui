@@ -1,0 +1,31 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card" >
+            <div class="m-2">
+
+    <div class="title-bar">
+        Application for Your Complaint
+      </div>
+
+
+        <!-- General Information label -->
+        <div class="general-info-label">
+          General Information <span class="required">*</span>
+        </div>
+          <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+          <app-claim-under-code-on-wages [claimUnderCodeOnWagesApiData]="claimUnderCodeOnWagesApiData" (claimUnderCodeOnWagesDataEvent)="claimUnderCodeOnWagesDataEventListener($event)" (appSteps)="appStepInfoDataEventListener($event)"></app-claim-under-code-on-wages>
+          <app-minimum-wages-not-paid ></app-minimum-wages-not-paid>
+  
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Next</button>
+    </div>
+
+    </div>
+</div>
+    </div>
+</div>

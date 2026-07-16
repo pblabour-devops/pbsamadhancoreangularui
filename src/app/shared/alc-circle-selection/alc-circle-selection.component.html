@@ -1,0 +1,39 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th *ngIf="!isReadOnly">Select</th>
+                <th>ALC Circle Name</th>
+                <th>Jurisdiction Area</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="!isReadOnly">
+            <tr *ngFor="let item of alcCircleData">
+                <td>
+                    <div class="col-md-3" style="margin-bottom: 15px;">
+                        <div class="form-group d-inline">
+                            <div class="radio radio-success d-inline">
+                                <input [checked]="item.alcCircleId==selectedALCCircleId" type="radio"
+                                    name="labCircleOption" id="{{item.alcCircleId}}"
+                                    (click)="setALCCircle(item.alcCircleId)">
+                                <label for="{{item.alcCircleId}}" class="cr"></label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>{{item.alcCircleName}}</td>
+                <td>
+                    <p>{{item.juridictionArea}}
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="isReadOnly">
+            <tr *ngFor="let item of alcCircleData">
+                    <td *ngIf="item.alcCircleId==selectedALCCircleId">{{item.alcCircleName}}</td>
+                    <td *ngIf="item.alcCircleId==selectedALCCircleId">
+                        <p>{{item.juridictionArea}}
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

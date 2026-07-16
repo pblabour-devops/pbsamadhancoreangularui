@@ -1,0 +1,21 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 23,
+      "SectionTitle": "Punjab Labour Welfare Fund Act 1965",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Amount Received in the beginning of the Month ", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Amount Received during of Month", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "Total Received", "LableValueInfo": { "DataType":  "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+           
+          ]
+        }
+      ]
+    }
+  }
+]

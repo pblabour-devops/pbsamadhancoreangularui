@@ -1,0 +1,76 @@
+<div class="main-content"> 
+    <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+            <div class="register-modal-header">
+                <h4 class="text-center form-header">Application Raise Fee Calculator</h4>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <div class="col-md-12 col-sm-12 m-t-20">
+                </div>  
+
+                <h5 class="m-t-20">Fee Raise Calculator</h5>
+                <table class="table m-t-20">
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Application fee header</th>
+                            <th></th>
+                            <th></th>
+                            <th class="text-center">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let feeHeader of getPaymentTypeHeads(raiseFeeParms?.feeCalculatorInfoParms, false); let ndx = index">
+                            <td>{{ndx+1}}</td>
+                            <td>{{feeHeader.feeHeaderTitle}}
+                                <br><span class="text-primary">{{feeHeader.description}}</span>
+                            </td>
+                            <td></td>
+                            <td class="text-right"></td>
+                            <td>
+                                <input type="text" (keyup)="setFeeInHeader($event, feeHeader?.feeHeaderId)" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 8)" class="form-control" style="text-align: right;" value="{{feeHeader?.amountCalculated}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="border-bottom-0">
+                            <th class="text-right text-danger" colspan="4">Net calculated amount: </th>
+                            <th class="text-right text-danger">
+                                {{netFeeCalculated}}
+                            </th>
+                        </tr>
+                        <tr class="border-top-0">
+                            <th colspan="5" class="text-info font-weight-light text-right">
+                                ({{netFeeCalculated | numberToWord}} only)
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <h5 class="m-b-0 m-t-20">Remarks</h5>
+                <div class="form-group row">
+                  <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks :</label>
+                  <div class="col-sm-6">
+                    <textarea class="form-control" name="remarks" id="required" [(ngModel)]="remarks" required #remarksInput="ngModel"></textarea>
+                    <div *ngIf="remarksInput.invalid && (remarksInput.dirty || remarksInput.touched)">
+                        <div *ngIf="remarksInput.errors.required" class="text-danger">Please specify remarks..!</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <app-go-to-home-button></app-go-to-home-button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button (click)="onSubmit()" class="btn btn-primary">Submit & Raise Fee</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

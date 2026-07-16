@@ -1,0 +1,153 @@
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+
+                    <div class="card-header mt-2">
+                        <h6 class="f-20">Factory Inspection Report</h6>
+                    </div>
+                    <div class="col-md-12  text-right" *ngIf = "isLocked ==1 && authService.getUserJwtDecodedInfo().RoleName== 'LBIN'">
+                        <button class="btn btn-primary" type="submit" style="text-align: right;" (click)="downloadInspection(paramInfo.inspectionRefId,2)"><i class="feather icon-download"></i> Download Inspection</button>
+                    </div>
+                    <div class="col-md-12  text-right" *ngIf = "isLocked ==1 && (authService.getUserJwtDecodedInfo().RoleName== 'ADRF'||authService.getUserJwtDecodedInfo().RoleName== 'DDRF')">
+                        <button class="btn btn-primary" type="submit" style="text-align: right;" (click)="downloadInspection(paramInfo.inspectionRefId,1)"><i class="feather icon-download"></i> Download Inspection</button>
+                    </div>
+                    <div class="card-body">
+                       
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+                                <!-- <app-inspection-establishment-info-card [licenceNo]="licenceNo"></app-inspection-establishment-info-card> -->
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card user-profile-list">
+                                            <div class="card-body">
+                                                <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+                                                    <input type="hidden" formControlName="userRefId" />
+                                                    <input type="hidden" formControlName="inspectionRefId" />
+                                                    <div class="row form-row" >
+                                                        <div class="col-md-6">
+                                                            <div class="form-group ">
+                                                                <label for="mobileNo" class="form-label required">Alternate Mobile Number</label>
+                                                                <input type="text" class="form-control "(keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)"  formControlName="mobileNo">
+                                                                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="mobileNo" placeHolder="Alternate Mobile Number"></app-form-validation-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6" >
+                                                            <div class="form-group">
+                                                                <label for="email" class="form-label required">Alternate Email</label>
+                                                                <input type="text" class="form-control " formControlName="email">
+                                                                <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="email" placeHolder="Alternate Email"></app-form-validation-error>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    <!-- <div class="form-group row">
+                                                        <label class="col-sm-3 font-weight-bolder">Is Factory Has Been Temporarily or Seasonally Closed?</label>
+                                                        <div class="col-sm-3">
+                                                          <select class="form-select form-select-sm form-control" (change)="isTempClosedChange($event)" formControlName="isOperationalClosed">
+                                                            <option [selected]="true" value="">-- Please Select --</option>
+                                                            <option value= "false"> No </option>
+                                                            <option value= "true"> Yes </option>
+                                                          </select>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-lg-12" >
+                                                        <!-- <div class="row form-row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="noOfEmployeesWhomeBonusPaid">Factory Inspection Reported By : </label>
+                                                                    <label class="ml-2">{{authService.getUserJwtDecodedInfo().FullName}}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+
+                                                        <div class="row form-row" >
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="inspectionFactoryExistenceType" class="required">Factory Operational Status</label>
+                                                                    <select class="form-select form-select-sm form-control" formControlName="inspectionFactoryExistenceType">
+                                                                        <option [selected]="true" value="">-- Please Select -- </option>
+                                                                        <option  value="1"> Currently operational</option>
+                                                                        <option value="2"> Temporary Closed</option>
+                                                                        <option value="3"> Seasonal Closed</option>
+                                                                        <option value="4"> Permanent Closed</option>
+                                                                      </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-row" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value > 1">
+                                                            <div class="col-md-6" >
+                                                                <div class="form-group">
+                                                                    <label for="inspectionDate" class="required">Inspection Date</label>
+                                                                    <input type="datetime-local" class="form-control" formControlName="inspectionDate">
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="inspectionFactoryExistenceType" class="required">Factory Operational Status</label>
+                                                                    <select class="form-select form-select-sm form-control" formControlName="inspectionFactoryExistenceType">
+                                                                        <option [selected]="true">-- Please Select --</option>
+                                                                        <option value="1"> Permanently Closed</option>
+                                                                        <option value="1"> Temp Closed/seasonal Closed </option>
+                                                                      </select>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <div class="row form-row" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value > 1 " >
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="inspectionEstablishmentType" class="required">Establishment Type</label>
+                                                                    <select class="form-select form-control"  formControlName="inspectionEstablishmentType">
+                                                                        <option value="" >-- Please Select --</option>
+                                                                        <option value="1">Factory</option>
+                                                                        <option value="2">Rice Mill</option>
+                                                                        <option value="3">Brick Kiln</option>
+                                                                        <option value="4">Ice Factory</option>
+                                                                        <option value="5">Agricultural</option>
+                                                                      </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6" >
+                                                                <div class="form-group">
+                                                                    <label for="factoryDeRegistrationNo" class="required">Factory De-Registration Number</label>
+                                                                    <input type="text" class="form-control " formControlName="factoryDeRegistrationNo">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-row" >
+                                                            <div class="col-md-6" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value > 1">
+                                                                <div class="form-group">
+                                                                    <label for="remarks" class="required">Remarks</label>
+                                                                    <input type="text" class="form-control" formControlName="remarks">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="text-center">
+                                                            
+                                                         
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-12 text-center" *ngIf = "isLocked !==1">
+                                                        <button type="submit"  class="btn btn-success" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value > 1">Submit this inspection</button>
+                                                        <div (click)="onFillingInspectionClick( )"  class="btn btn-success" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value == 1" click="onFillingInspectionClick" >Start Filling Inspection Performa</div>
+                                                    </div>
+                                                    <div class="col-lg-12 text-center" *ngIf = "isLocked ==1">
+                                                        <div (click)="navigatePage()"  class="btn btn-success" *ngIf = "Input_Form.controls.inspectionFactoryExistenceType.value == 1"  >Next</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

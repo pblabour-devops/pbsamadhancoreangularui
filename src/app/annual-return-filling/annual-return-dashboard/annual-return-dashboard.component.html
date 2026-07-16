@@ -1,0 +1,139 @@
+<section class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card email-card">
+          <div class="card-header bg-success text-white">
+            <div class="col-sm-2" style="float: left;">
+              <a class="b-brand">
+                <div style="margin:0px;padding: 0px;" class="col-3">
+                  <img src="assets/images/icon/checklist.png" style="width:100%">
+                </div>
+                <span class="b-title text-info  font-weight-bold">Annual Return</span>
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="annualReturnForm" (ngSubmit)="onSubmitAnnualReturn()">
+
+
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label>Act Name</label>
+                  <input type="text" class="form-control" formControlName="actName" [disabled]="true">
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label>App ID</label>
+                  <input type="text" class="form-control" formControlName="appId" [disabled]="true">
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label>License No.</label>
+                  <input type="text" class="form-control" formControlName="licenceNumber" [disabled]="true">
+                </div>
+
+               <div class="form-group col-md-3">
+                 <label>Return Year</label>
+                 <select class="form-control" formControlName="financialYear">
+                  <option value="" disabled selected>Select year</option>
+                       <option>2025</option>
+                       <option>2024</option>
+                       <option>2023</option>
+                       <option>2022</option>
+                       <option>2021</option>
+                       <option>2020</option>
+                       <option>2019</option>
+                       <option>2018</option>
+                       <option>2017</option>
+                       <option>2016</option>
+                       <option>2015</option>
+                       <option>2014</option>
+                       <option>2013</option>
+                  </select>
+              </div>
+               </div>
+              <div *ngIf="requireScaleSelection" class="form-group mt-3">
+  <div class="card">
+    <div class="card-header font-weight-bold">
+      Select Scale of Factory/Establishment
+    </div>
+
+    <div class="card-body p-0">
+      <table class="table table-bordered mb-0">
+        <tbody>
+
+          <!-- Small Scale -->
+          <tr>
+            <td class="align-middle text-center" style="width: 50px;">
+              <input type="radio" class="form-check-input"
+                     name="scaleType"
+                     value="small"
+                     (change)="onScaleSelect('small')"
+                     [checked]="scaleType === 'small'">
+            </td>
+
+            <td>
+              <strong>Small Scale</strong><br>
+              <span class="text-muted">
+                [Factory / Establishment Employing not more than 19 persons are employed or were employed on any day proceeding 12 months]
+              </span>
+            </td>
+          </tr>
+
+          <!-- Large Scale -->
+          <tr>
+            <td class="align-middle text-center" style="width: 50px;">
+              <input type="radio" class="form-check-input"
+                     name="scaleType"
+                     value="large"
+                     (change)="onScaleSelect('large')"
+                     [checked]="scaleType === 'large'">
+            </td>
+
+            <td>
+              <strong>Large Scale</strong><br>
+              <span class="text-muted">
+                [Factory / Establishment Employing 20 and more persons are employed or were employed on any day proceeding 12 months]
+              </span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+              <div class="form-group mt-4" *ngIf="showActs">
+                <label class="font-weight-bold">Select Acts</label>
+                <div class="p-3 border rounded bg-light" style="max-height: 415px; overflow-y: auto;">
+                  <div class="row">
+                    <div class="col-md-6" *ngFor="let act of actList">
+                      <div class="form-check mb-2 p-2 rounded hover-effect">
+                        <input class="form-check-input" type="checkbox" [value]="act.id"
+                          (change)="onActSelection($event)">
+                        <label class="form-check-label">
+                          {{ act.name }}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <small class="form-text text-muted">You may select one or more Acts.</small>
+              </div>
+
+
+              <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-success px-4" [disabled]="annualReturnForm.invalid">
+                  <i class="feather icon-check-circle"></i> Start Filling Annual Return
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

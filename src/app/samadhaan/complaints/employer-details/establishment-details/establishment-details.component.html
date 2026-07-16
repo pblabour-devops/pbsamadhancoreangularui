@@ -1,0 +1,229 @@
+<div class="main-content">
+<div class="card col-md-12">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="id" />
+  <input type="hidden" formControlName="appRefId" />
+
+  <!-- Section Title -->
+  <div class="fw-semibold mb-3 mt-4 pt-3 border-top">
+    Establishment Details which engaged Contractor
+  </div>
+  <div class="row g-4 mb-4">
+
+    <!-- Name of Establishment -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">
+        Name of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="establishmentName"
+        class="form-control"
+        [class.is-invalid]="formControls.establishmentName.touched && formControls.establishmentName.invalid" />
+      <div class="invalid-feedback">
+        Name of Establishment is required
+      </div>
+    </div>
+
+    <!-- Address of Establishment -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">
+        Address of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
+      </label>
+      <textarea
+        formControlName="establishmentAddress"
+        class="form-control"
+        rows="2"
+        [class.is-invalid]="formControls.establishmentAddress.touched && formControls.establishmentAddress.invalid">
+      </textarea>
+      <div class="invalid-feedback">
+        Address of Establishment is required
+      </div>
+    </div>
+
+    <!-- State / District -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        State<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="state"
+        class="form-control"
+        [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+        <option value="" disabled selected>Select State</option>
+        <option value="Punjab">Punjab</option>
+      </select>
+      <div class="invalid-feedback">
+        State is required
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        District<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="districtRefId"
+        class="form-control"
+        [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid"
+        >
+        <option value="" disabled selected>Select District</option>
+        <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
+          {{ dist.districtName }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        District is required
+      </div>
+    </div>
+
+    <!-- PIN Code / Mobile Number -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        PIN Code<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="pinCode"
+        class="form-control"
+        maxlength="6"
+        [class.is-invalid]="formControls.pinCode.touched && formControls.pinCode.invalid" />
+      <div class="invalid-feedback">
+        PIN Code is required
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Mobile Number<span class="text-danger">*</span>
+      </label>
+      <input
+        type="text"
+        formControlName="mobileNumber"
+        class="form-control"
+        maxlength="10"
+        [class.is-invalid]="formControls.mobileNumber.touched && formControls.mobileNumber.invalid"
+        (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" />
+      <div class="invalid-feedback">
+        Valid 10-digit mobile number required
+      </div>
+    </div>
+
+    <!-- Email / Still working -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        [class.is-invalid]="formControls.email.touched && formControls.email.invalid" />
+      <div class="invalid-feedback">
+        Enter a valid email address
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Are you still working for the same employer/contractor
+      </label>
+      <select formControlName="isStillWorking" class="form-control">
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <!-- Nature of work / Category -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">Nature of work performed</label>
+      <input
+        type="text"
+        formControlName="natureOfWorkPerformed"
+        class="form-control" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Category<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="workerCategoryType"
+        class="form-control"
+        [class.is-invalid]="formControls.workerCategoryType.touched && formControls.workerCategoryType.invalid">
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let cat of categoryOptions" [value]="cat.value">
+          {{ cat.text }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Category is required
+      </div>
+    </div>
+
+    <!-- Employment start / end date -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Date of start of employment<span class="text-danger">*</span>
+      </label>
+      <input
+        type="date"
+        formControlName="employmentStartDate"
+        class="form-control"
+        [class.is-invalid]="formControls.employmentStartDate.touched && formControls.employmentStartDate.invalid" />
+      <div class="invalid-feedback">
+        Start date is required
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Date of end of employment<span class="text-danger">*</span>
+      </label>
+      <input
+        type="date"
+        formControlName="employmentEndDate"
+        class="form-control"
+        [class.is-invalid]="formControls.employmentEndDate.touched && formControls.employmentEndDate.invalid" />
+      <div class="invalid-feedback">
+        End date is required
+      </div>
+    </div>
+
+    <!-- Wage period / Rate of wages -->
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">
+        Wage period<span class="text-danger">*</span>
+      </label>
+      <select
+        formControlName="wagePeriod"
+        class="form-control"
+        [class.is-invalid]="formControls.wagePeriod.touched && formControls.wagePeriod.invalid">
+        <option value="" disabled selected>Select wage period</option>
+        <option *ngFor="let wp of wagePeriodOptions" [value]="wp.value">
+          {{ wp.text }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Wage period is required
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-semibold">Rate of wages</label>
+      <div class="input-group">
+        <span class="input-group-text">₹</span>
+        <input
+          type="text"
+          formControlName="wageRate"
+          class="form-control"
+          [class.is-invalid]="formControls.wageRate.touched && formControls.wageRate.invalid" />
+      </div>
+      <div class="invalid-feedback d-block" *ngIf="formControls.wageRate.touched && formControls.wageRate.invalid">
+        Rate of wages is required
+      </div>
+    </div>
+
+  </div>
+
+</form>
+</div>
+</div>

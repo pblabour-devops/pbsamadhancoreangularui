@@ -1,0 +1,398 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" id="mainForm">
+    <input type="hidden" formControlName="buildingPlanHUDId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="col-md-12">
+                <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                </app-app-form-stepper-navigation-panel> -->
+            </div>
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Combined Proposed Approval of Building Plans (HUD and Factories)</h4>
+                </div>
+            </div>
+            <div class="col-md-12 text-right text-danger">
+                * mandatory fields
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+
+                    <!-- <h5>Establishment & Address</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Business Entity Name</th>
+                                <td colspan="5">{{projectSite?.establishmentName}}</td>
+                            </tr>
+                            <tr>
+                                <th>Addess</th>
+                                <td colspan="5">{{projectSite?.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>Applicant Name</th>
+                                <td>{{projectSite?.applicantName}}</td>
+                                <th>MobileNo</th>
+                                <td>{{projectSite?.mobileNo}}</td>
+                                <th>Email</th>
+                                <td>{{projectSite?.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>District</th>
+                                <td>{{projectSite?.districtName}}</td>
+                                <th>Tehsil</th>
+                                <td>{{projectSite?.tehsilName}}</td>
+                                <th>Pin Code</th>
+                                <td>{{projectSite?.pinCode}}</td>
+                            </tr>
+                            <tr>
+                                <th>Contact Person Name</th>
+                                <td>{{projectSite?.contactPersonName}}</td>
+                                <th>Contact Person Email</th>
+                                <td>{{projectSite?.contactPersonEmail}}</td>
+                                <th>Contact Person Mobile No</th>
+                                <td>{{projectSite?.contactPersonMobileNo}}</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.isUnderRightToBusinessAct.invalid && (submitted || formControls.isUnderRightToBusinessAct.dirty || formControls.isUnderRightToBusinessAct.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="isUnderRightToBusinessAct" class="required">Have you availed in-principal approval under right to business rules</label>
+                                <select class="form-select form-select-sm" class="form-control" (change)="onPrincipalApprovalChange(formControls.isUnderRightToBusinessAct.value)" formControlName="isUnderRightToBusinessAct">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row" *ngIf="Input_Form.controls.isUnderRightToBusinessAct.value == 1">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.projectIdentificationNo.invalid && (submitted || formControls.projectIdentificationNo.dirty || formControls.projectIdentificationNo.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="projectIdentificationNo" class="required">Project identification no - RBA</label>
+                                <input type="text" class="form-control" formControlName="projectIdentificationNo" (focusout)="findPrincipalApprovalDetails(formControls.projectIdentificationNo.value, formControls.appIdRightToBusinessAct.value)">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.appIdRightToBusinessAct.invalid && (submitted || formControls.appIdRightToBusinessAct.dirty || formControls.appIdRightToBusinessAct.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="appIdRightToBusinessAct" class="required">Application id-RBA</label>
+                                <input type="text" class="form-control" formControlName="appIdRightToBusinessAct" (focusout)="findPrincipalApprovalDetails(formControls.projectIdentificationNo.value, formControls.appIdRightToBusinessAct.value)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row" *ngIf="Input_Form.controls.isUnderRightToBusinessAct.value == 1">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.dateOfPrincipalApproval.invalid && (submitted || formControls.dateOfPrincipalApproval.dirty || formControls.dateOfPrincipalApproval.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="dateOfPrincipalApproval" class="required">Date of principal approval</label>
+                                <input type="date" class="form-control" formControlName="dateOfPrincipalApproval">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.buidingPlanHUDApprovalType.invalid && (submitted || formControls.buidingPlanHUDApprovalType.dirty || formControls.buidingPlanHUDApprovalType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="buidingPlanHUDApprovalType" class="required">Buiding Plan Approval Under</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="buidingPlanHUDApprovalType">
+                                    <option [selected]="true" value="">-- Please select --</option>
+                                    <option *ngFor="let item of buidingPlanHUDApprovalTypeEnum" value="{{item.value}}">{{item.text}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.buildingType.invalid && (submitted || formControls.buildingType.dirty || formControls.buildingType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="buildingType" class="required">Type of building</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="buildingType">
+                                    <option [selected]="true" value="">-- Please select --</option>
+                                    <option *ngFor="let item of buildingTypeEnum" value="{{item.value}}">{{item.text}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h5 class="m-t-30">Establishment Owner Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.ownerName.invalid && (submitted || formControls.ownerName.dirty || formControls.ownerName.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="ownerName" class="required">Owner name </label>
+                                <input type="text" class="form-control" formControlName="ownerName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.ownerContactNo.invalid && (submitted || formControls.ownerContactNo.dirty || formControls.ownerContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="ownerContactNo" class="required">Owner contact no </label>
+                                <input type="text" class="form-control" formControlName="ownerContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.ownerEmail.invalid && (submitted || formControls.ownerEmail.dirty || formControls.ownerEmail.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="ownerEmail" class="required">Owner email </label>
+                                <input type="text" class="form-control" formControlName="ownerEmail">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <h5 class="m-t-30">Competent Person & Architect Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.buildingPlanApprovalAuthorityType.invalid && (submitted || formControls.buildingPlanApprovalAuthorityType.dirty || formControls.buildingPlanApprovalAuthorityType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="buildingPlanApprovalAuthorityType" class="required">Building plan approval from?</label>
+                                <select class="form-select form-select-sm form-control" (change)="onBuildingPlanAuthorityTypeChange($event)" formControlName="buildingPlanApprovalAuthorityType">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option *ngFor="let item of buildingPlanApprovalAuthorityTypeEnum" value="{{item.value}}">{{item.text}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competent Person Details -->
+                    <div *ngIf="selectedOption === '1'">
+                        <h5 class="m-t-30">Empaneled Competent Person Details</h5>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonUserRefId.invalid && (submitted || formControls.competentPersonUserRefId.dirty || formControls.competentPersonUserRefId.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonUserRefId" class="required">Competent person name</label>
+                                    <select class="form-select form-select-sm form-control" formControlName="competentPersonUserRefId" (change)="getCompetentPersonDetailsByName(formControls.competentPersonUserRefId)">
+                                        <option [selected]="true" value="">-- Please select --</option>
+                                        <option *ngFor="let item of competentPersonList?.competentPersonList" value="{{item.id}}">{{item.officerFullName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonContactNo.invalid && (submitted || formControls.competentPersonContactNo.dirty || formControls.competentPersonContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonContactNo" class="required">Competent person contact no</label>
+                                    <input type="text" class="form-control" formControlName="competentPersonContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.competentPersonEmail.invalid && (submitted || formControls.competentPersonEmail.dirty || formControls.competentPersonEmail.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="competentPersonEmail" class="required">Competent person email</label>
+                                    <input type="text" class="form-control" formControlName="competentPersonEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Architect Details -->
+                    <div *ngIf="selectedOption === '2'">
+                        <h5 class="m-t-30">Empaneled Architect Details</h5>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.architectName.invalid && (submitted || formControls.architectName.dirty || formControls.architectName.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="architectName" class="required">Architect name</label>
+                                    <select class="form-select form-select-sm form-control" formControlName="architectUserRefId" (change)="getArchitectDetailsByName(formControls.architectUserRefId)">
+                                        <option [selected]="true" value="">-- Please select --</option>
+                                        <option *ngFor="let item of empaneledArchitectsList?.empaneledArchitectsList" value="{{item.id}}">{{item.officerFullName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.architectContactNo.invalid && (submitted || formControls.architectContactNo.dirty || formControls.architectContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="architectContactNo" class="required">Architect contact no</label>
+                                    <input type="text" class="form-control" formControlName="architectContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.architectEmail.invalid && (submitted || formControls.architectEmail.dirty || formControls.architectEmail.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="architectEmail" class="required">Architect email</label>
+                                    <input type="text" class="form-control" formControlName="architectEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engineer Details -->
+                    <div *ngIf="selectedOption === '3'">
+                        <h5 class="m-t-30">Empaneled Engineer Details</h5>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerName.invalid && (submitted || formControls.engineerName.dirty || formControls.engineerName.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerName" class="required">Engineer name</label>
+                                    <select class="form-select form-select-sm form-control" formControlName="engineerUserRefId" (change)="getEngineersDetailsByName(formControls.engineerUserRefId)">
+                                        <option [selected]="true" value="">-- Please select --</option>
+                                        <option *ngFor="let item of empaneledEngineersList?.empaneledEngineersList" value="{{item.id}}">{{item.officerFullName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerContactNo.invalid && (submitted || formControls.engineerContactNo.dirty || formControls.engineerContactNo.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerContactNo" class="required">Engineer contact no</label>
+                                    <input type="text" class="form-control" formControlName="engineerContactNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group" [ngClass]="formControls.engineerEmail.invalid && (submitted || formControls.engineerEmail.dirty || formControls.engineerEmail.touched) ? 'form-validation-icon-input' : ''">
+                                    <label for="engineerEmail" class="required">Engineer email</label>
+                                    <input type="text" class="form-control" formControlName="engineerEmail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h5 class="m-t-20">Site Location</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="hadbustNumber">Hadbust number </label>
+                                <input type="text" class="form-control" formControlName="hadbustNumber">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.isGasOrFuelPipeLinePassWithin150Meter.invalid && (submitted || formControls.isGasOrFuelPipeLinePassWithin150Meter.dirty || formControls.isGasOrFuelPipeLinePassWithin150Meter.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="isGasOrFuelPipeLinePassWithin150Meter" class="required">Is there any gas pipeline passed with in 150 meter? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="isGasOrFuelPipeLinePassWithin150Meter">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.isHistoricalSiteIsLocatedWithin100Meter.invalid && (submitted || formControls.isHistoricalSiteIsLocatedWithin100Meter.dirty || formControls.isHistoricalSiteIsLocatedWithin100Meter.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="isHistoricalSiteIsLocatedWithin100Meter" class="required">Is there any historical site located within 100 meters of the Building? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="isHistoricalSiteIsLocatedWithin100Meter">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.isBuildingHeightMoreThen15Meter.invalid && (submitted || formControls.isBuildingHeightMoreThen15Meter.dirty || formControls.isBuildingHeightMoreThen15Meter.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="isBuildingHeightMoreThen15Meter" class="required">Is proposed height of the Building is more than 15 meters </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="isBuildingHeightMoreThen15Meter">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-10">Site Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.plotAreaSqFt.invalid && (submitted || formControls.plotAreaSqFt.dirty || formControls.plotAreaSqFt.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="plotAreaSqFt" class="required">Plot Area (in sq. ft.) </label>
+                                <input type="text" class="form-control" formControlName="plotAreaSqFt" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+                            </div>
+                        </div>
+                        <div class="col-md-6 m-t-40">
+                            <div class="form-group" [ngClass]="formControls.buildingCost.invalid && (submitted || formControls.buildingCost.dirty || formControls.buildingCost.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="buildingCost" class="required">Plot area in acres </label>
+                                <span class="m-l-20">{{getSqFtInAcres() | number: '1.2-2'}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.coveredAreaSqFt.invalid && (submitted || formControls.coveredAreaSqFt.dirty || formControls.coveredAreaSqFt.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="coveredAreaSqFt" class="required">Covered Area (in sq. ft.) </label>
+                                <input type="text" class="form-control" formControlName="coveredAreaSqFt" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.projectType.invalid && (submitted || formControls.projectType.dirty || formControls.projectType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="projectType" class="required">Building Plan Type </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="projectType">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option *ngFor="let item of projectTypeEnum" value="{{item.value}}">{{item.text}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.buildingCost.invalid && (submitted || formControls.buildingCost.dirty || formControls.buildingCost.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="buildingCost" class="required">Cost of Construction of the Building (in rs.) </label>
+                                <input type="text" class="form-control" formControlName="buildingCost" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 15)">
+                                <i class="text-primary" *ngIf="Input_Form.controls.buildingCost.value && !formControls.buildingCost.errors?.max && !formControls.buildingCost.errors?.min">In words: ({{Input_Form.controls.buildingCost.value | numberToWord}})</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-10">Industry Category</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.inspectionType.invalid && (submitted || formControls.inspectionType.dirty || formControls.inspectionType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="inspectionType" class="required">Industry Category </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="inspectionType">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option *ngFor="let item of inspectionTypeEnum" value="{{item.value}}">{{item.text}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.projectPurpose.invalid && (submitted || formControls.projectPurpose.dirty || formControls.projectPurpose.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="projectPurpose" class="required">Details of the Project (max 50 words)</label>
+                                <input type="text" class="form-control" formControlName="projectPurpose">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.industryType.invalid && (submitted || formControls.industryType.dirty || formControls.industryType.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="industryType" class="required">Type of industry as notified by PPCB</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="industryType">
+                                    <option [selected]="true" value="">-- Please select --</option>
+                                    <option *ngFor="let item of industryTypeEnum" value="{{item.value}}">{{item.text}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <!-- {{Input_Form | json}} -->
+                        <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" [disabled]="hasSubmitClicked" type="submit"  class="btn btn-primary">Save & Next</button>
+                        <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="to-top" (click)="scrollToTop()" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <img src="assets/images/arrow-top.png" class="arrow-top"/>
+  </div>
+
+<!-- <form action="https://mailthis.to/pravesh8822@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your name">
+    <input type="email" name="_replyto" placeholder="Your email">
+    <input type="submit" value="Send Email">
+</form> -->

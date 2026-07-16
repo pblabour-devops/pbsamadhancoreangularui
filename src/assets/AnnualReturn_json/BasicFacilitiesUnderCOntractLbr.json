@@ -1,0 +1,124 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 30,
+      "SectionTitle": "Basic Facilities Details",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+        "SubSectionTitle": "Whether the following have been provided",
+        "Lables": [
+          
+          
+          {
+            "LableSortId": 1,
+            "LableTitle": "11(i) Canteen",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 2,
+            "LableTitle": "11(ii) Rest Room",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+           
+          {
+            "LableSortId": 3,
+            "LableTitle": "11(iii) Drinking Water",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 4,
+            "LableTitle": "11(iv) Creches",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+         
+          {
+            "LableSortId": 5,
+            "LableTitle": "11(v) First Aid",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+        
+        ]
+        }
+      ]
+    }
+  }
+ 
+ 
+]
+   

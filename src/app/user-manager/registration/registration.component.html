@@ -1,0 +1,204 @@
+<!-- <div class="login-page">
+    <div class="mainwraper">
+        <div class="wrapper">
+            <div class="logincontainer">
+                <div class="right-panel">
+                   <div class="row"style="border-bottom: 3px solid #2141A4; padding-bottom: 10px;">
+                    <div class="col-md-2"><img src="./assets/images/gov_new.png" style="height: 90px;"></div>
+                    <div class="col-md-8 deparartment-heading">
+                        <span>DEPARTMENT OF LABOUR</span><br>
+                        <span>PUNJAB</span>
+                    </div>
+                    <div class="col-md-2"><img src="./assets/img/logo_Latest.png" style="height: 100px; float: inline-end;"></div>
+                    </div>
+
+                    <div class="row form-box" *ngIf="screenType=='LOGIN'">
+                        <div class="col-md-12">
+                            <h2 class="login-title">New User Registration</h2>
+                        </div>
+                         <div class="col-md-12 text-danger" *ngIf="hasErrorInLogin">{{loginErrorMsg}}</div>
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('FirstName')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('MiddleName')" class="form-group">
+                                <label class="form-label">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('LastName')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('Mobile')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('Email')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div *ngFor="let i of getFormField('EnteredCaptcha')" class="form-group">
+                            <label class="form-label required">
+                                {{ i.captionText }} <span class="text-danger"></span>
+                            </label>
+                            <div class="captcha-row">
+                                <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                    (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+
+                                <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
+                                <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
+                                    <img src="./assets/img/refresh.png" class="refresh-icon">    
+                                </button>
+                            </div>
+
+                            <div class="text-danger small" *ngIf="!i.isValid">
+                                {{ i.validationErrorText }}
+                            </div>
+                        </div>
+
+                        <div *ngFor="let i of getFormField('OriginalCaptcha')" class="d-none">
+                            <input [type]="getInputType(i.key)" [id]="i.key" [value]="i.value">
+                        </div>
+
+                        <button (click)="onLoginSubmit()" class="login-btn">Verify & Register <i class="feather icon-log-in"></i></button>
+                        <div class="col-md-12 links">
+                            <div>
+                                <span class="btn-link-text">Already have an account?</span> 
+                                <a href="javascript:void(0)" (click)="redirectToLogin()">
+                                    <strong class="link-button"> Login</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-box" *ngIf="screenType=='OTP'">
+                         <div class="col-md-12">
+                            <h2 class="login-title">OTP Verification</h2>
+                        </div>
+                         <div class="col-md-12 text-danger" *ngIf="hasErrorInLogin">{{loginErrorMsg}}</div>
+
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('EnteredMobileOTP')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span>
+                                </label><span class="mini-caption-text">(Sent on mobile number: <strong>{{getMashedMobileNo()}}</strong>)</span>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div *ngFor="let i of getFormField('EnteredEmailOTP')" class="form-group">
+                                <label class="form-label required">
+                                    {{i.captionText}} <span class="text-danger"></span> 
+                                </label><span class="mini-caption-text">(Sent on email address: <strong>{{getMashedEmail()}}</strong>)</span>
+                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="text-danger small" *ngIf="!i.isValid">
+                                    {{i.validationErrorText}}
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let i of getFormField('EnteredCaptcha')" class="form-group">
+                            <label class="form-label required">
+                                {{ i.captionText }} <span class="text-danger"></span>
+                            </label>
+                            <div class="captcha-row">
+                                <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                    (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+
+                                <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
+                                <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
+                                    <img src="./assets/img/refresh.png" class="refresh-icon">    
+                                </button>
+                            </div>
+
+                            <div class="text-danger small" *ngIf="!i.isValid">
+                                {{ i.validationErrorText }}
+                            </div>
+                        </div>
+
+                        <div *ngFor="let i of getFormField('OriginalCaptcha')" class="d-none">
+                            <input [type]="getInputType(i.key)" [id]="i.key" [value]="i.value">
+                        </div>
+
+                        <button class="login-btn mt-4" (click)="getMatchOtpCode()">
+                            Validate OTP <i class="feather icon-unlock"></i>
+                        </button>
+
+                        <div class="col-md-12 links">
+                            <div style="margin-bottom: 10px;">
+                                <span class="btn-link-text">Existing user?</span> 
+                                <a href="javascript:void(0)" (click)="redirectToLogin()">
+                                    <strong class="link-button"> Log In</strong>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-box" *ngIf="screenType=='USER_SUCCESS'">
+                        <div class="text-center icon-password-reset">
+                            <i class="feather icon-check-circle password-set-ok"></i>
+                        </div>
+                       
+                        <h2>User Registration Successfully</h2>
+                        <div class="success-note">
+                            A confirmation email has been sent to your registered email address. Kindly check your inbox for your username and password details.
+                            <br><br>
+                            If you do not see the email, please check your spam or junk folder.
+                        </div>
+                        <div class="col-md-12 links">
+                            <div style="margin-bottom: 10px;">
+                                <span class="btn-link-text"></span> 
+                                <a href="javascript:void(0)" (click)="redirectToLogin()">
+                                    <strong class="link-button"> Log In</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

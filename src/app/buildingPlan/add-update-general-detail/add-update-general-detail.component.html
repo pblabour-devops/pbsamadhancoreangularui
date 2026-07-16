@@ -1,0 +1,199 @@
+<form [formGroup]="BuildingPlan_GeneralDetail_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="establishmentRefId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-41</h6>
+                    <p class="mb-0">Application for Permission to Construct/Addition/Alteration/Erection/Take into user any premises as a factory</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                            </app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Applicant Details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Applicant Name
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="applicantName">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicantName" placeHolder="applicant Name"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Applicant Address
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm " formControlName="applicant_Address"></textarea>
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicant_Address" placeHolder="address"></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="applicant_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicant_VillageOrTown" placeHolder="applicant vllage/town">
+                                            </app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" (change)="getTehsilsByDistrictRefId(BuildingPlan_GeneralDetail_Form.value.applicant_DistrictRefId, '')" formControlName="applicant_DistrictRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicant_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="applicant_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicant_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="applicant_PinCode"  minlength="6" formControlName="applicant_PinCode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" required>
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicant_PinCode" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Applicant calling in relation to factory
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="applicantRelationToFactory">
+                                          <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="applicantRelationToFactory" placeHolder="Applicant Relation To Factory"></app-form-validation-error>
+                                      </div>
+                                      <div class="col-md-2 fw-bold text-end text-secondary required">
+                                        Full Name of Factory
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control form-control-sm " formControlName="nameOfFactory">
+                                      <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="nameOfFactory" placeHolder="name Of Factory"></app-form-validation-error>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Factory Location</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Factory Village/City
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.villageOrTown}}
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.districtName}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.tehsilName}}
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.pinCode}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Khasra Number <br><span class="fw-normal text-primary">(If in village)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="khasraNumber">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="khasraNumber" placeHolder="khasraNumber"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                          Street/ Mohalla/ Colony/ Bazzar/ Road/ Ward Number <span class="fw-normal text-primary">(If in city)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="wardNumber">
+                                          <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="wardNumber" placeHolder="wardNumber"></app-form-validation-error>
+                                      </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                            Plot Number <span class="fw-normal text-primary">(If in industrial focal point/industrial park)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                              <input type="text" class="form-control form-control-sm " formControlName="plotNumber">
+                                            <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="plotNumber" placeHolder="plotNumber"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary">
+                                          Floor Number <span class="fw-normal text-primary">(floor on which it is situated)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="floorNumber">
+                                          <app-form-validation-error [formGroup]="BuildingPlan_GeneralDetail_Form" controlName="floorNumber" placeHolder="floorNumber"></app-form-validation-error>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" (click)="btnHomeClick()">Home</button>
+                        </div>
+                        <!-- {{BuildingPlan_GeneralDetail_Form.value | json}} -->
+                        <div class="col-md-6 text-right">
+                            <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" type="submit" class="btn btn-primary" [disabled]="!BuildingPlan_GeneralDetail_Form.valid">Save & Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

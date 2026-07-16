@@ -1,0 +1,155 @@
+<div class="main-content" style="margin-top: 50px;margin-left: 65px;">
+  <div class="card">
+    <div class="card-body">
+      <div class="col-md-12">
+        <div class="register-modal-header">
+          <h4 class="text-center f-26" style="text-decoration: underline;">Fee Verification Manager</h4>
+        </div>
+      </div>
+      <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" class="m-t-20">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="font-weight-bold m-t-5 f-18">Search Transactions</div>
+          </div>
+          <div class="col-md-8">
+            <input formControlName="appRefId" type="number" class="form-control" placeholder="Search by AppRefId..">
+            <div *ngIf="formControls.appRefId.invalid && (formControls.appRefId.dirty || isSubmitted)" class="text-danger mt-1">
+              Search parameter is required and must be a valid number.
+            </div>
+          </div>
+          <div class="col-md-1 m-t-5">
+            <input type="submit" [disabled]="Input_Form.invalid" value="Search" class="btn btn-success">
+          </div>
+          <div class="col-md-1 m-t-5">
+            <button type="button" (click)="reset()" class="btn btn-danger">Reset</button>
+          </div>
+        </div>
+      </form>
+
+
+      <div class="table-responsive m-t-20" *ngIf="paymentDetails?.length;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Payment Verify Status</th>
+              <th>Application Action Status</th>
+              <th>TimeLine Seed Status
+                <span *ngIf="paymentDetails[0].isTimeLineFlow  == false"> (No Time Line)</span>
+                <span *ngIf="paymentDetails[0].isTimeLineFlow  == true"> (Time Line)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+              <ng-container *ngIf="paymentDetails?.length">
+                <tr>
+                   <td class="font-weight-bold">1</td>
+                   <td class="text-center">
+                    <span class="badge badge-light-success" *ngIf="paymentDetails[0].feeTransaction  > 1">Success</span>
+                    <span class="badge badge-light-danger" *ngIf="paymentDetails[0].feeTransaction  < 1 || paymentDetails[0].feeTransaction == null">Failed</span>
+                  </td>
+                  <td class="font-weight-bold">Status Code : {{ paymentDetails[0].applicationAction }}
+                    <button class="btn btn-outline-primary btn-verify" style="float: right;"
+                             *ngIf="paymentDetails[0].applicationAction < 3 && paymentDetails[0].feeTransaction  > 1"
+                            (click)="onShareStatusButtonClick(paymentDetails[0].appRefId)">Verify
+                    </button>
+                    <br>
+                    <span> Status Desc : {{ paymentDetails[0].actionDesc }}</span>
+                      
+                  </td>
+                  <td class="text-center">
+                    <span class="badge badge-light-success" *ngIf="paymentDetails[0].timeLineSeed  > 1">Success</span>
+                    <span class="badge badge-light-danger" *ngIf="paymentDetails[0].timeLineSeed  < 1 || paymentDetails[0].timeLineSeed == null">Failed</span>
+                    <button class="btn btn-outline-primary btn-verify" style="float: right;"
+                             *ngIf="paymentDetails[0].timeLineSeed  < 1 && paymentDetails[0].applicationAction > 2"
+                            (click)="onTimeLineButtonClick(paymentDetails[0].appRefId)">Verify
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive m-t-20" *ngIf="paymentDetails?.length;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Transaction Id</th>
+              <th>AppId</th>
+              <th>Fee Header Id</th>
+              <th>Transaction Amount</th>
+              <th>Unique Transaction Id</th>
+              <th>Payment Treasury Type</th>
+              <th>Transaction Date</th>
+              <th>Transaction Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="alert alert-success font-weight-bold">
+                <td colspan="10">Treasury Transactions</td>
+            </tr>
+            <ng-container *ngIf="paymentDetails">
+              <ng-container *ngFor="let payment of paymentDetails; let i = index">
+                <tr *ngIf="payment.paymentTreasuryType === 1">
+                  <td class="font-weight-bold">{{ getTreasurySrNo(i) }}</td>
+                  <td class="font-weight-bold">{{payment.appfeeTransactionId}}</td>
+                  <td class="font-weight-bold">{{ payment.appRefId }}</td>
+                  <td class="font-weight-bold">{{ payment.feeHeaderRefId }}</td>
+                  <td class="font-weight-bold">{{ payment.amountCalculated }}</td>
+                  <td class="font-weight-bold">{{ payment.uniquePaymentGatewayTransactionId }}</td>
+                  <td class="text-center font-weight-bold">Treasury Payment</td>
+                  <td class="font-weight-bold">{{ payment.transactionInitializationDate | date:'medium' }}</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-success" *ngIf="payment.transactionFinalStatusType == 1">Success</span>
+                    <span class="badge badge-light-warning" *ngIf="payment.transactionFinalStatusType == 0">Incomplete</span>
+                    <span class="badge badge-light-danger" *ngIf="payment.transactionFinalStatusType == 2">Failed</span>
+                    <span class="badge badge-light-warning" *ngIf="payment.transactionFinalStatusType == 3">Pending</span>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-primary btn-verify"
+                            *ngIf="payment.transactionFinalStatusType == 0 || payment.transactionFinalStatusType == 3 || payment.transactionFinalStatusType == -1"
+                            (click)="onVerifyButtonClick(payment.appRefId, payment.uniquePaymentGatewayTransactionId, payment.paymentTreasuryType)">
+                      Verify
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <tr class="alert alert-success font-weight-bold">
+              <td colspan="10">Non-Treasury Transactions</td>
+            </tr>
+            <ng-container *ngIf="paymentDetails">
+              <ng-container *ngFor="let payment of paymentDetails; let j = index">
+                <tr *ngIf="payment.paymentTreasuryType === 2">
+                  <td class="font-weight-bold">{{ getNonTreasurySrNo(j) }}</td>
+                  <td class="font-weight-bold">{{payment.appfeeTransactionId}}</td>
+                  <td class="font-weight-bold">{{ payment.appRefId }}</td>
+                  <td class="font-weight-bold">{{ payment.feeHeaderRefId }}</td>
+                  <td class="font-weight-bold">{{ payment.amountCalculated }}</td>
+                  <td class="font-weight-bold">{{ payment.uniquePaymentGatewayTransactionId }}</td>
+                  <td class="text-center font-weight-bold">Non-Treasury Payment</td>
+                  <td class="font-weight-bold">{{ payment.transactionInitializationDate | date:'medium' }}</td>
+                  <td class="text-center">
+                    <span class="badge badge-light-success" *ngIf="payment.transactionFinalStatusType == 1">Success</span>
+                    <span class="badge badge-light-warning" *ngIf="payment.transactionFinalStatusType == 0">Pending</span>
+                    <span class="badge badge-light-danger" *ngIf="payment.transactionFinalStatusType == 2">Failed</span>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-primary btn-verify"
+                            *ngIf="payment.transactionFinalStatusType == 0 || payment.transactionFinalStatusType == 3 || payment.transactionFinalStatusType == -1"
+                            (click)="onVerifyButtonClick(payment.appRefId, payment.uniquePaymentGatewayTransactionId, payment.paymentTreasuryType)">
+                      Verify
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

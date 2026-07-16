@@ -1,0 +1,83 @@
+[
+{
+  "Section": {
+    "SectionSortId": 17,
+    "SectionTitle": "Complaints",
+    "SubSections": [
+      {
+        "SubSectionSortId": 1,
+        "SubSectionTitle": "17.1 Complaints Summary",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "Pending at the Beginning of the Month (Auto fetched from previous MPR report)",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 2,
+            "LableTitle": "Received During the Month",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 3,
+            "LableTitle": "Settled During the Month",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 4,
+            "LableTitle": "Pending at the End of the Month",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          }
+        ]
+      },
+      {
+        "SubSectionSortId": 2,
+        "SubSectionTitle": "17.2 Classification of the Complaints",
+        "Lables": [
+          { "LableSortId": 5, "LableTitle": "Delayed Wages", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 6, "LableTitle": "Bonded Labour", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 7, "LableTitle": "Less Than Minimum Wages", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 8, "LableTitle": "Reg Bonus", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 9, "LableTitle": "Reg Retrenchment", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 10, "LableTitle": "Transfer, Promotions, Dismissals", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 11, "LableTitle": "Reg. Holidays and Working Hours", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 12, "LableTitle": "Gratuity", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] },
+          { "LableSortId": 13, "LableTitle": "Miscellaneous", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "LableRemarkInfo": {}, "SubLables": [] }
+        ]
+      },
+  
+      {
+        "SubSectionSortId": 3,
+        "SubSectionTitle": "17.3(a) New Received Complaints",
+        "Lables": [],
+        "Table": {
+          "Columns": [
+            { "ColumnId": "date", "ColumnTitle": "Date of Complaint Received", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "complainantName", "ColumnTitle": "Complainant Name", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "ownerName", "ColumnTitle": "Owner Name", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "subject", "ColumnTitle": "Subject of Complaint", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "actionTaken", "ColumnTitle": "Action Taken (Remarks)", "DataType": "Text", "IsMendatory": false }
+          ],
+          "Rows": [
+            { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+            { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+            { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+            { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+           { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+           { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" },
+            { "date": "", "complainantName": "", "ownerName": "", "subject": "", "actionTaken": "" }
+          ]
+        }
+      }
+    ]
+  }
+}
+]

@@ -1,0 +1,38 @@
+.center-header-page
+{
+  border: solid 1px;
+  padding: 7px;
+}
+.leftarrow,
+.rightarrow {
+  display: flex;
+}
+
+.arrow {
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+
+
+.custom-link {
+  color: #007bff !important;
+}
+
+.custom-link:hover {
+  color: #0056b3 !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+
+.custom-link:visited {
+  color: #007bff !important;
+}
+
+.custom-link:focus {
+  color: #0056b3 !important;
+  text-decoration: underline !important;
+}
+.btn-outline-primary {
+  color:#0052A3
+}

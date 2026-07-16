@@ -1,0 +1,608 @@
+<div *ngIf="isLoading" class="loading-spinner">
+  <div class="spinner"></div>
+</div>
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button type="button" style="font-size: 50px;margin-bottom: 30px;opacity: .5;" class="btn active" data-toggle="button" aria-pressed="true" (click)="scrollToTop()">
+    <i class="feather icon-arrow-up"></i>
+  </button>
+</div>
+
+<div class="main-content">
+  <div class="card col-md-8 card-form" id="content-to-capture">
+
+    
+    <form [formGroup]="Input_Form">
+      <input type="hidden" formControlName="id">
+      <input type="hidden" formControlName="factoryCircleRefId">
+      <div class="row form-row">
+        <div class="col-md-4">
+            <div>
+                <label class="font-weight-bold">Offcer Name : {{paramInfo?.officerName}} </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <label class="font-weight-bold">Designation : {{paramInfo?.desc}} </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+              <label class="font-weight-bold">Factory Circle Name : {{paramInfo?.officerCircleName}} </label>
+          </div>
+      </div>
+    </div>
+      <div class="row form-row">
+        <div class="col-md-6">
+          <div class="form-group"
+            [ngClass]="formControls.month.invalid && (submitted || formControls.month.dirty || formControls.month.touched) ? 'form-validation-icon-input' : ''">
+            <label for="month">Month</label>
+            <select *ngIf="!isReadOnly" (change)="checkDuplicateMonthYear()" class="form-select form-select-sm" class="form-control" formControlName="month">
+              <option [selected]="true" value="">-- Please Select --</option>
+              <option *ngIf="allowedMonth==1" [selected]="allowedMonth==1" value="1">January</option>
+              <option *ngIf="allowedMonth==2" [selected]="allowedMonth==2" value="2">February</option>
+              <option *ngIf="allowedMonth==3" [selected]="allowedMonth==3" value="3">March</option>
+              <option *ngIf="allowedMonth==4" [selected]="allowedMonth==4" value="4">April</option>
+              <option *ngIf="allowedMonth==5" [selected]="allowedMonth==5" value="5">May</option>
+              <option *ngIf="allowedMonth==6" [selected]="allowedMonth==6" value="6">June</option>
+              <option *ngIf="allowedMonth==7" [selected]="allowedMonth==7" value="7">July</option>
+              <option *ngIf="allowedMonth==8" [selected]="allowedMonth==8" value="8">August</option>
+              <option *ngIf="allowedMonth==9" [selected]="allowedMonth==9" value="9">September</option>
+              <option *ngIf="allowedMonth==10" [selected]="allowedMonth==10" value="10">October</option>
+              <option *ngIf="allowedMonth==11" [selected]="allowedMonth==11" value="11">November</option>
+              <option *ngIf="allowedMonth==12" [selected]="allowedMonth==12" value="12">December</option>
+            </select>
+            <div *ngIf="isReadOnly"  class="form-control">{{getMonthNameByCode(Input_Form.controls.month.value)}}</div>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group"
+            [ngClass]="formControls.year.invalid && (submitted || formControls.year.dirty || formControls.year.touched) ? 'form-validation-icon-input' : ''">
+            <label for="year">Year</label>
+            <select *ngIf="!isReadOnly" (change)="checkDuplicateMonthYear()" class="form-select form-select-sm" class="form-control" formControlName="year">
+              <option [selected]="true" value="">-- Please Select --</option>
+              <ng-container *ngFor="let item of getYearRange()">
+                <option *ngIf="item==allowedYear" [value]="item">{{item}}</option>
+              </ng-container>
+              
+            </select>
+            <div *ngIf="isReadOnly"  class="form-control">{{Input_Form.controls.year.value}}</div>
+          </div>
+        </div>
+        <div class="floating-btn-container">
+          <button type="submit" *ngIf="!isReadOnly" (click)="onSubmit(1)" class="btn btn-primary">Save as draft</button>
+          <button type="submit" *ngIf="!isReadOnly" (click)="onSubmit(0)" class="btn btn-success">Save as lock</button>
+          <button class="btn btn-outline-secondary" (click)="backToDashboard()">Back to home</button>
+          <button  *ngIf="isReadOnly" (click)="generatePDFFromJSON()" class="btn btn-success">Download PDF</button>
+        </div>
+      </div>
+    </form>
+
+
+
+    <div class="col-md-12">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let sectionObj of data">
+            <form id="qwdfwef">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <button type="button" (click)="value(sectionObj)" class="btn btn-info float-end">Save in draft</button> -->
+                  <h6 class="text-primary">{{ sectionObj.Section.SectionSortId }} {{sectionObj.Section.SectionTitle }}
+                  </h6>
+                </div>
+              </div>
+              <div class="col-md-12" *ngFor="let subSectionObj of sectionObj.Section.SubSections">
+
+                <span *ngIf="subSectionObj.SubSectionTitle!='-1'"
+                  class="text-info">{{subSectionObj.SubSectionTitle}}</span>
+                <table class="table table-bordered" *ngFor="let lableObj of subSectionObj.Lables">
+
+                  <tr>
+                    <td class="font-weight-bold">{{lableObj.LableTitle}}</td>
+                    <td [style.display]="lableObj.LableValueInfo.IsVisible ? 'block' : 'none'">
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Value</label>
+                        <input *ngIf="!isReadOnly && lableObj.LableValueInfo.IsVisible"
+                          (change)="setOnChange(sectionObj.Section.SectionSortId, subSectionObj.SubSectionSortId, lableObj.LableSortId, 0,'v', $event)"
+                          [id]="lableObj.LableValueInfo.Id" class="form-control" type="text"
+                          [value]="lableObj.LableValueInfo.Value">
+                        <div *ngIf="isReadOnly && lableObj.LableValueInfo.IsVisible">
+                          {{lableObj.LableValueInfo.Value}}
+                        </div>
+                      </div>
+
+
+                    </td>
+                    <td [style.display]="lableObj.LableRemarkInfo.IsVisible ? 'block' : 'none'">
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Remarks</label>
+                        <input *ngIf="!isReadOnly && lableObj.LableRemarkInfo?.IsVisible"
+                          (change)="setOnChange(sectionObj.Section.SectionSortId, subSectionObj.SubSectionSortId,lableObj.LableSortId, 0,'r',$event)"
+                          [id]="lableObj.LableRemarkInfo.Id" class="form-control" type="text"
+                          [value]="lableObj.LableRemarkInfo?.Value">
+
+                        <div *ngIf="isReadOnly && lableObj.LableRemarkInfo?.IsVisible">
+                          {{lableObj.LableRemarkInfo?.Value}}
+                        </div>
+                      </div>
+
+
+
+                    </td>
+                  </tr>
+                  <tr *ngIf="lableObj.SubLables.length > 0">
+                    <td colspan="3">
+                      <table style="width: 100%;">
+                        <!-- <tr>
+                            <td></td>
+                            <td class="text-center text-primary font-weight-bold">Value</td>
+                            <td class="text-center text-primary font-weight-bold">Remarks</td>
+                          </tr> -->
+                        <tr *ngFor="let subLablesObj of lableObj.SubLables">
+                          <td class="font-weight-bold">{{subLablesObj.SubLableTitle}}</td>
+                          <td>
+                            <div *ngIf="subLablesObj.SubLableValueInfo.IsVisible" class="form-group">
+                              <label for="exampleInputEmail1">Value</label>
+                              <input *ngIf="!isReadOnly"
+                                (change)="setOnChange(sectionObj.Section.SectionSortId, subSectionObj.SubSectionSortId, lableObj.LableSortId, subLablesObj.SubLableSortId,'v',$event)"
+                                [id]="subLablesObj.SubLableValueInfo.Id" class="form-control" type="text"
+                                [value]="subLablesObj.SubLableValueInfo.Value">
+
+                              <div *ngIf="isReadOnly">
+                                {{subLablesObj.SubLableValueInfo.Value}}
+                              </div>
+
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngIf="subLablesObj.SubLableRemarkInfo?.IsVisible" class="form-group">
+                              <label for="exampleInputEmail1">Remarks</label>
+                              <input *ngIf="!isReadOnly"
+                                (change)="setOnChange(sectionObj.Section.SectionSortId, subSectionObj.SubSectionSortId, lableObj.LableSortId, subLablesObj.SubLableSortId,'r',$event)"
+                                [id]="subLablesObj.SubLableRemarkInfo.Id" class="form-control" type="text"
+                                [value]="subLablesObj.SubLableRemarkInfo?.Value">
+                              <div *ngIf="isReadOnly">
+                                {{subLablesObj.SubLableRemarkInfo?.Value}}
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+          </div>
+
+
+          <!-- <div class="row">
+            <div class="col-md-12">
+            
+            </div>
+          </div> -->
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <span class="text-primary font-weight-bold">Accidents(Fatal/Non-Fatal/Dangerous occurrence)</span>
+              <table class="table table-bordered">
+                <thead>
+                  <!-- <tr>
+                    <th>Type of accident</th>
+                    <th>Number of workers(s) injured/died/loss due to dangerous occurrence</th>
+                    <th>Name and address of the factory</th>
+                    <th>Date and time of accident/dangerous occurrence</th>
+                    <th>Date on which inquiry report submitted</th>
+                    <th></th>
+                  </tr> -->
+                  <tr>
+                    <th>Type of accident</th>
+                    <th>Number of workers(s) injured/died/loss due to dangerous occurrence</th>
+                     <th>Name of Worker</th>
+                    <th>Name and address of the factory</th>
+                    <th>Date and time of accident/dangerous occurrence</th>
+                   <th>Brief of Accident</th>
+                    <th>Date on which inquiry report submitted</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="accidenInfoList?.length>0">
+                  <tr *ngFor="let item of accidenInfoList; let ndx = index">
+                    <td>
+                      <span *ngIf="item.accidentType == 1">Fatal</span>
+                      <span *ngIf="item.accidentType == 2">Non-Fatal</span>
+                      <span *ngIf="item.accidentType == 3">Dangerous Occurrence</span>
+                    </td>
+                    <td>{{item.noOfWorkersAffected}}</td>
+                    <td>{{item.nameOfWorker}}</td>
+                    <td>{{item.nameAndAddressOfEstb}}</td>
+                    <td>{{item.dateAndTimeOfAccident}}</td>
+                     <td>{{item.briefofAccident}}</td>
+                    <td>{{item.dateOfInquiryReportSubmitted}}</td>
+                    <td>
+                      <div class="btn btn-danger" (click)="removeAccidentItem(ndx)" *ngIf="!isReadOnly">Remove</div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="!accidenInfoList">
+                  <tr>
+                    <td colspan="5" class="text-danger">No record found...</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td colspan="7" class="text-center"><button class="btn btn-primary"
+                        (click)="openAddAccidentModal(addAccidentModal)" *ngIf="!isReadOnly">Add new accident record</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <span class="text-primary font-weight-bold">Court Cases (Contested Only)</span>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Court/Commission</th>
+                    <th>Title of case</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="courtCaseInfoList?.length>0">
+                  <tr *ngFor="let item of courtCaseInfoList; let ndx = index">
+                    <td>
+                      <span *ngIf="item.courtType == 1">Supreme Court/High Court</span>
+                      <span *ngIf="item.courtType == 2">District Court</span>
+                      <span *ngIf="item.courtType == 3">Commission</span>
+                    </td>
+                    <td>{{item.titleOfCase}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                      <div class="btn btn-danger" *ngIf="!isReadOnly" (click)="removeCourtCaseItem(ndx)">Remove</div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="!courtCaseInfoList">
+                  <tr>
+                    <td colspan="4" class="text-danger">No record found...</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td colspan="4" class="text-center"><button class="btn btn-primary"
+                        (click)="openAddCourtCaseModal(addCourtCaseModal)" *ngIf="!isReadOnly">Add new court case record</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+
+
+
+              <span class="text-primary font-weight-bold">Head-Quarter/District Administration Duties</span>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name of duty</th>
+                    <th>Period of duty</th>
+                    <th>Remarks</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="adminDutyInfoList?.length>0">
+                  <tr *ngFor="let item of adminDutyInfoList; let ndx = index">
+                    <td>{{item.nameOfDuty}}</td>
+                    <td>{{item.periodOfDuty}}</td>
+                    <td>{{item.remarks}}</td>
+                    <td>
+                      <div class="btn btn-danger" *ngIf="!isReadOnly" (click)="removeAdminDutyItem(ndx)">Remove</div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="!adminDutyInfoList">
+                  <tr>
+                    <td colspan="4" class="text-danger">No record found...</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td colspan="4" class="text-center"><button class="btn btn-primary"
+                        (click)="openAddAdminDutyModal(addAdminDutyModal)" *ngIf="!isReadOnly">Add new duty info record</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <span class="text-primary font-weight-bold">Training/Workshop/Seminar/Meeting Attended</span>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name of Training/Workshop/Seminar/Meeting</th>
+                    <th>Period</th>
+                    <th>Remarks</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="trainingInfoList?.length>0">
+                  <tr *ngFor="let item of trainingInfoList; let ndx = index">
+                    <td>{{item.nameOfTraining}}</td>
+                    <td>{{item.period}}</td>
+                    <td>{{item.remarks}}</td>
+                    <td>
+                      <div class="btn btn-danger" *ngIf="!isReadOnly" (click)="removeTrainingItem(ndx)">Remove</div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="!trainingInfoList">
+                  <tr>
+                    <td colspan="4" class="text-danger">No record found...</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td colspan="4" class="text-center"><button class="btn btn-primary"
+                        (click)="openAddTrainingModal(addTrainingModal)" *ngIf="!isReadOnly">Add new record</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #addAccidentModal let-modal>
+  <form [formGroup]="Input_Form_Accident">
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Add accident information</h4>
+    </div>
+    <div class="card-body" style="overflow: auto; max-height: 65vh;">
+      <div class="dt-responsive table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>Type of accident</th>
+            <td>
+              <select class="form-control" formControlName="accidentType">
+                <option value="">--Please Select--</option>
+                <option value="1">Fatal</option>
+                <option value="2">Non-Fatal</option>
+                <option value="3">Dangerous Occurrence</option>
+              </select>
+              <div class="text-danger" *ngIf="formControlsAccident.accidentType.invalid && (submittedAccidentForm || formControlsAccident.accidentType.dirty || formControlsAccident.accidentType.touched)">
+                Please select...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Number of workers(s) injured/died/loss due to dangerous occurrence</th>
+            <td>
+              <input formControlName="noOfWorkersAffected" class="form-control" type="number">
+              <div class="text-danger" *ngIf="formControlsAccident.noOfWorkersAffected.invalid && (submittedAccidentForm || formControlsAccident.noOfWorkersAffected.dirty || formControlsAccident.noOfWorkersAffected.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Name of Worker</th>
+            <td>
+              <input formControlName="nameOfWorker" class="form-control" type="text">
+              <div class="text-danger" *ngIf="formControlsAccident.nameOfWorker.invalid && (submittedAccidentForm || formControlsAccident.nameOfWorker.dirty || formControlsAccident.nameOfWorker.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Name and address of the factory</th>
+            <td>
+              <textarea formControlName="nameAndAddressOfEstb" class="form-control"></textarea>
+              <div class="text-danger" *ngIf="formControlsAccident.nameAndAddressOfEstb.invalid && (submittedAccidentForm || formControlsAccident.nameAndAddressOfEstb.dirty || formControlsAccident.nameAndAddressOfEstb.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Date and time of accident/dangerous occurrence</th>
+            <td>
+              <input formControlName="dateAndTimeOfAccident" class="form-control" type="datetime">
+              <div class="text-danger" *ngIf="formControlsAccident.dateAndTimeOfAccident.invalid && (submittedAccidentForm || formControlsAccident.dateAndTimeOfAccident.dirty || formControlsAccident.dateAndTimeOfAccident.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Brief of Accident</th>
+            <td>
+              <input formControlName="briefofAccident" class="form-control" type="datetime">
+              <div class="text-danger" *ngIf="formControlsAccident.briefofAccident.invalid && (submittedAccidentForm || formControlsAccident.briefofAccident.dirty || formControlsAccident.briefofAccident.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Date on which inquiry report submitted</th>
+            <td>
+              <input formControlName="dateOfInquiryReportSubmitted" class="form-control" type="date">
+              <div class="text-danger" *ngIf="formControlsAccident.dateOfInquiryReportSubmitted.invalid && (submittedAccidentForm || formControlsAccident.dateOfInquiryReportSubmitted.dirty || formControlsAccident.dateOfInquiryReportSubmitted.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" (click)="onSubmitAccidentRecord()">Add this record</button>
+        <div class="btn btn-danger" (click)="dismissModal()">close</div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+<ng-template #addCourtCaseModal let-modal>
+  <form [formGroup]="Input_Form_CourtCase">
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Add court case information</h4>
+    </div>
+    <div class="card-body" style="overflow: auto;">
+      <div class="dt-responsive table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>Court/Commission</th>
+            <td>
+              <select class="form-control" formControlName="courtType">
+                <option value="">--Please Select--</option>
+                <option value="1">Supreme Court / High Court</option>
+                <option value="2">District Court</option>
+                <option value="3">Commission</option>
+              </select>
+              <div class="text-danger" *ngIf="formControlsCourtCase.courtType.invalid && (submittedCourtCaseForm || formControlsCourtCase.courtType.dirty || formControlsCourtCase.courtType.touched)">
+                Please select...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Title of case</th>
+            <td>
+              <input formControlName="titleOfCase" class="form-control">
+              <div class="text-danger" *ngIf="formControlsCourtCase.titleOfCase.invalid && (submittedCourtCaseForm || formControlsCourtCase.titleOfCase.dirty || formControlsCourtCase.titleOfCase.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>
+              <textarea formControlName="status" class="form-control"></textarea>
+              <div class="text-danger" *ngIf="formControlsCourtCase.status.invalid && (submittedCourtCaseForm || formControlsCourtCase.status.dirty || formControlsCourtCase.status.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" (click)="onSubmitCourtCaseRecord()">Add this record</button>
+        <div class="btn btn-danger" (click)="dismissModal()">close</div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+
+
+
+<ng-template #addAdminDutyModal let-modal>
+  <form [formGroup]="Input_Form_AdminDuty">
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Add duty information</h4>
+    </div>
+    <div class="card-body" style="overflow: auto;">
+      <div class="dt-responsive table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>Name of duty</th>
+            <td>
+              <input formControlName="nameOfDuty" class="form-control">
+              <div class="text-danger" *ngIf="formControlsAdminDuty.nameOfDuty.invalid && (submittedAdminDutyForm || formControlsAdminDuty.nameOfDuty.dirty || formControlsAdminDuty.nameOfDuty.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Period of duty</th>
+            <td>
+              <input formControlName="periodOfDuty" class="form-control">
+              <div class="text-danger" *ngIf="formControlsAdminDuty.periodOfDuty.invalid && (submittedAdminDutyForm || formControlsAdminDuty.periodOfDuty.dirty || formControlsAdminDuty.periodOfDuty.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Remarks</th>
+            <td>
+              <textarea formControlName="remarks" class="form-control"></textarea>
+              <div class="text-danger" *ngIf="formControlsAdminDuty.remarks.invalid && (submittedAdminDutyForm || formControlsAdminDuty.remarks.dirty || formControlsAdminDuty.remarks.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" (click)="onSubmitAdminDutyRecord()">Add this record</button>
+        <div class="btn btn-danger" (click)="dismissModal()">close</div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+
+<ng-template #addTrainingModal let-modal>
+  <form [formGroup]="Input_Form_Training">
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;">Add training information</h4>
+    </div>
+    <div class="card-body" style="overflow: auto;">
+      <div class="dt-responsive table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>Name of training/workshop/seminar/meeting</th>
+            <td>
+              <input formControlName="nameOfTraining" class="form-control">
+              <div class="text-danger" *ngIf="formControlsTraining.nameOfTraining.invalid && (submittedTrainingForm || formControlsTraining.nameOfTraining.dirty || formControlsTraining.nameOfTraining.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Period</th>
+            <td>
+              <input formControlName="period" class="form-control">
+              <div class="text-danger" *ngIf="formControlsTraining.period.invalid && (submittedTrainingForm || formControlsTraining.period.dirty || formControlsTraining.period.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Remarks</th>
+            <td>
+              <textarea formControlName="remarks" class="form-control"></textarea>
+              <div class="text-danger" *ngIf="formControlsTraining.remarks.invalid && (submittedTrainingForm || formControlsTraining.remarks.dirty || formControlsTraining.remarks.touched)">
+                Please fill detail...!
+              </div>
+            </td>
+          </tr>
+          
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" (click)="onSubmitTrainingRecord()">Add this record</button>
+        <div class="btn btn-danger" (click)="dismissModal()">close</div>
+      </div>
+    </div>
+  </form>
+</ng-template>

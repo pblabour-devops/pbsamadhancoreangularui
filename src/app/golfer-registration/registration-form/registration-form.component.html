@@ -1,0 +1,179 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        <div class="card shadow-sm">
+
+          <div class="card-header bg-primary text-white text-center">
+            <h5 class="text-center form-header" style="font-size: 22px; font-weight: 800; text-align: center; color: white;">Golf for Purpose</h5>
+          </div>
+
+          <div class="card-body">
+                <span class="font-weight-bold float-right">
+                    Date Of Tournament : <span class="text-danger">17/12/2025 (7 AM – 11 AM)</span>
+                </span>
+
+                <form [formGroup]="InputForm" (ngSubmit)="onSubmit()" class="mt-3">
+
+                    <div class="form-row mb-3">
+                        <div class="col-md-3 d-flex align-items-center font-weight-bold required">
+                            Name of Participant
+                        </div>
+                        <div class="col-md-6" style="margin-left: 80px;">
+                            <input type="text" class="form-control" formControlName="nameOfTheParticipants">
+                            <small *ngIf="formControls.nameOfTheParticipants.invalid && formControls.nameOfTheParticipants.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Address</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" rows="2" formControlName="address"></textarea>
+                            <small *ngIf="formControls.address.invalid && formControls.address.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Mobile & Email -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Mobile No</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" formControlName="mobileNo" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                            <small *ngIf="formControls.mobileNo.invalid && formControls.mobileNo.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+
+                        <label class="col-md-3 col-form-label font-weight-bold required">Email</label>
+                        <div class="col-md-3">
+                            <input type="email" class="form-control" formControlName="email">
+                            <small *ngIf="formControls.email.invalid && formControls.email.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Membership of Club -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">
+                            Are you a member of Chandigarh Golf Club?
+                        </label>
+                        <div class="col-md-3">
+                            <select class="form-control" formControlName="areYouMemberOfChdClub">
+                                <option value="">--Please Select--</option>
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                            <small *ngIf="formControls.areYouMemberOfChdClub.invalid && formControls.areYouMemberOfChdClub.touched"
+                                class="text-danger">
+                                Please select an option.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Membership Details – Visible Only if YES -->
+                    <div class="form-row mb-3" *ngIf="formControls.areYouMemberOfChdClub.value === 'YES'">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Membership Type</label>
+                        <div class="col-md-3">
+                            <select class="form-control" formControlName="membershipType">
+                                <option value="">--Please Select--</option>
+                                <option value="PERMANENT">Permanent</option>
+                                <option value="MID-WEEK">Mid-Week</option>
+                                <option value="GREEN-CARD">Green Card</option>
+                                <option value="DEPENDENT">Dependent</option>
+                                <option value="SPOUSE">Spouse</option>
+                            </select>
+                        </div>
+
+                        <label class="col-md-3 col-form-label font-weight-bold required">Membership Number</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" formControlName="membershipNumber">
+                             <small *ngIf="formControls.membershipNumber.invalid && formControls.membershipNumber.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Handicap -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Handicap</label>
+                        <div class="col-md-3">
+                            <input type="number" class="form-control" formControlName="handicap" min="1" max="24">
+                            <span class="text-primary">Please fill a value between 1 to 24.</span> <br>
+                             <small *ngIf="formControls.handicap.invalid && formControls.handicap.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info -->
+                    <div class="alert alert-success col-md-12">
+                        <strong>Payment of ₹2500/- must be made through UPI at: <span style="font-size: 18px; font-weight: 800;">akhil03m&#64;oksbi</span> (Mobile No: 98153-54680) </strong>
+                    </div>
+
+                    <!-- Fee Paid -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Have you paid the registration fee?</label>
+                        <div class="col-md-3">
+                            <select class="form-control" formControlName="isFeePaid">
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                             <small *ngIf="formControls.isFeePaid.invalid && formControls.isFeePaid.touched"
+                                class="text-danger">
+                                Please select an option.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Declaration -->
+                    <div class="alert alert-danger col-md-12">
+                        I hereby submit this information to participate in the Golf for Purpose Tournament.
+                    </div>
+
+                    <!-- Registration Date & Signature -->
+                    <div class="form-row mb-3">
+                        <label class="col-md-3 col-form-label font-weight-bold required">Registration Date</label>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" formControlName="registrationDate">
+                              <small *ngIf="formControls.registrationDate.invalid && formControls.registrationDate.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+
+                        <label class="col-md-3 col-form-label font-weight-bold required">Signature</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" formControlName="signature" placeholder="Type full name">
+                            <small *ngIf="formControls.signature.invalid && formControls.signature.touched"
+                                class="text-danger">
+                                Please fill value.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success px-5">
+                            Submit Registration
+                        </button>
+                    </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

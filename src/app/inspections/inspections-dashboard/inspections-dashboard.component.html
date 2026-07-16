@@ -1,0 +1,499 @@
+<div class="main-content">
+  <div class="card col-md-10 card-form">
+
+
+    <div class="col-md-12">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header">Inspection (Process Dashboard)</h4>
+      </div>
+    </div>
+
+
+
+
+    <!--end::View component-->
+    <div class="col-md-12">
+      <table class="table table-bordered table-danger">
+        <thead>
+          <tr class="text-center">
+            <th class="head-tbl-row">Month</th>
+            <th class="head-tbl-row">Year</th>
+            <th class="head-tbl-row">Randomization #</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td class="head-tbl-row">{{ getMonthName(month) }}</td>
+            <td class="head-tbl-row">{{year}}</td>
+            <td class="head-tbl-row">#{{randomizationId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="mt-5">
+      <table class="table table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th rowspan="2">Inspection  #</th>
+            <th rowspan="2">Establishment/License No.</th>
+            <th rowspan="2">Labour Circle Name</th>
+
+            <th colspan="2" class="col-dark">Labour-wing</th>
+            <!-- <th  class="col-dark">Time Taken<br>(Labour-wing)<br>(In Hours)</th> -->
+
+            <th colspan="2" class="col-dark1">Factory-wing</th>
+            <!-- <th class="col-dark1">Time Taken<br>(Factory-wing)<br>(In Hours)</th> -->
+            <th rowspan="2"></th>
+          </tr>
+          <tr>
+            <th class="col-dark">Has Submitted</th>
+            <th class="col-dark">Time Taken<br>(In Hrs)</th>
+            <th class="col-dark1">Has Submitted</th>
+            <th class="col-dark1">Time Taken<br>(In Hrs)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="inspectionLockedData?.length>0 ; else noinspectionLockedData">
+            <tr *ngFor="let data of inspectionLockedData" class="tableRow">
+              <td class="align-middle">#{{data.inspectionId}}</td>
+              <td class="align-middle">{{ data.establishmentName}} <ng-container
+                  *ngIf="data.isTransfered === 1 &&  data.transferedReceiverUserId == authService.getUserJwtDecodedInfo().UserId ">
+                  <h6 class="badge bg-warning text-light f-12" style="margin-left: inherit;" (click)="getInspectionTransferLogs(data.inspectionId,transferLogs)">
+                    Transferred
+                  </h6>
+                </ng-container> <br>
+                {{ data.establishmentAddress}}<br>
+                {{ data.email}}<br>
+                {{ data.contactNumber}}<br>
+                ({{data.licenceNumber}})
+              </td>
+              <td class="align-middle center-header-page form-header"
+                (click)="getLabourCircleUserDetails(data.labourCircleRefId, data.labourWingProfileRefId)">
+                <a type="button" class="custom-link" data-toggle="tooltip" data-placement="top" title=""
+                  data-original-title="tooltip on top">
+                  {{ data.labourCircleName}}
+                </a><i class="feather icon-info" style="color: #0052A3; cursor: pointer;"></i>
+              </td>
+
+
+
+              <td class="align-middle col-light">
+                <span *ngIf="data.isSubmitted_Labour_Wing; else labourWingNotSubmitted">
+                  <i class="fa fa-check-circle icon-yes text-success" aria-hidden="true"></i>
+                  <hr>
+                  <span style="white-space: nowrap;color: #C0392B;">Inspection On</span><br>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.inspectionDoneOn_Labour_Wing |
+                    date: 'medium'}}</span>
+                  <hr>
+                  <span style="white-space: nowrap;color: #C0392B;">Submission On</span><br>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.inspectionSubmitOn_Labour_Wing
+                    | date: 'medium'}}</span>
+
+                </span>
+                <ng-template #labourWingNotSubmitted>
+                  <span class="text-danger">Not submitted yet..!</span>
+                </ng-template>
+              </td>
+              <td class="align-middle col-light">
+                <span *ngIf="data.isSubmitted_Labour_Wing">
+                  <span class="time-taken-value"
+                  [ngClass]="(data.totalTimeTaken_Hours_Labour - (data.totalHolidays_Labour + data.totalWeekends_Labour))>48 ? 'text-danger font-weight-bold' : 'text-success font-weight-bold'">{{(data.totalTimeTaken_Hours_Labour - (data.totalHolidays_Labour + data.totalWeekends_Labour))
+                    }}</span><span class="font-weight-bold">/48</span> Hours
+                  <hr>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.submittedByName_LabourWing}}</span><br>
+                  <span style="color: #C0392B;">{{data.submittedByRole_LabourWing}}</span>
+                </span>
+              </td>
+
+              <td class="align-middle col-light1">
+                <span *ngIf="data.isSubmitted_Factory_Wing; else factoryWingNotSubmitted">
+                  <i class="fa fa-check-circle icon-yes text-success" aria-hidden="true"></i>
+                  <hr>
+                  <span style="white-space: nowrap;color: #C0392B;">Inspection On</span><br>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.inspectionDoneOn_Factory_Wing |
+                    date: 'medium'}}</span>
+                  <hr>
+                  <span style="white-space: nowrap;color: #C0392B;">Submission On</span><br>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.inspectionSubmitOn_Factory_Wing
+                    | date: 'medium'}}</span>
+
+                </span>
+                <ng-template #factoryWingNotSubmitted>
+                  <span class="text-danger">Not submitted yet..!</span>
+                </ng-template>
+              </td>
+
+              <td class="align-middle col-light1">
+                <span *ngIf="data.isSubmitted_Factory_Wing">
+                  <span class="time-taken-value"
+                   [ngClass]="(data.totalTimeTaken_Hours_Factory -(data.totalHolidays_Factory + data.totalWeekends_Factory) )>48 ? 'text-danger font-weight-bold' : 'text-success font-weight-bold'">{{(data.totalTimeTaken_Hours_Factory -(data.totalHolidays_Factory + data.totalWeekends_Factory) )
+                    }}</span><span class="font-weight-bold">/48</span> Hours
+                  <hr>
+                  <span
+                    style="white-space: nowrap;color: #A93226;font-weight: bold;">{{data.submittedByName_FactoryWing}}</span><br>
+                  <span style="color: #C0392B;">{{data.submittedByRole_FactoryWing}}</span>
+                </span>
+              </td>
+
+              <td
+                *ngIf="authService.getUserJwtDecodedInfo().RoleName== 'ADRF' || authService.getUserJwtDecodedInfo().RoleName=='DDRF'">
+                <div *ngIf="(!data.isSubmitted_Factory_Wing && !showInspectionFreezeMessage ) || (!data.isSubmitted_Factory_Wing && data.inspectionId == 46802)">
+                  <button class="btn btn-link align-middle"
+                    (click)="navigatePage('operational-status',data.inspectionId, data.establishmentName, data.licenceNumber,0,data.appId,data.isLegacy)">
+                    Start filling inspection performa
+                  </button>
+                </div>
+
+                <div *ngIf="data.isSubmitted_Factory_Wing">
+                  <button class="btn btn-link align-middle" *ngIf = "((year < 2024) || (year ==2024 && month <=9))"
+                    (click)="loadIframe(data.inspectionId)">
+                    View filled inspection
+                  </button>
+                   <button class="btn btn-link align-middle" *ngIf = "((year > 2024) || (year ==2024 && month >9))"
+                    (click)="navigatePage('operational-status',data.inspectionId, data.establishmentName, data.licenceNumber,1,data.appId,data.isLegacy)">
+                    View filled inspection
+                  </button>
+                  <hr>
+                  <button class="btn btn-link" *ngIf="data.factoryCurrentStatus"
+                    (click)="downloadViolationReport(data.inspectionId,1)">
+                    Download Violation Report
+                  </button>
+                  <hr *ngIf="data.factoryCurrentStatus">
+                  <button class="btn btn-link"
+                    (click)="navigatePage('licencewise-inspection',data.inspectionId, data.establishmentName, data.licenceNumber,1,data.appId,data.isLegacy)">
+                    Compliance Report
+                  </button>
+                </div>
+
+                <div *ngIf="!data.isSubmitted_Factory_Wing && showInspectionFreezeMessage"
+                  (click)="showinspectionFreezDetails(year,month)" style="color:#e22d19; font-weight: bold;">
+                  <a type="button" class="custom-link" data-toggle="tooltip" data-placement="align-middle" title=""
+                    data-original-title="tooltip on top">
+                    Inspection freezed
+                  </a><i class="feather icon-info" style="color:#e22d19; cursor: pointer;"></i>
+                </div>
+
+              </td>
+
+              <td *ngIf="authService.getUserJwtDecodedInfo().RoleName== 'LBIN'">
+
+                <div *ngIf="(!data.isSubmitted_Labour_Wing && !showInspectionFreezeMessage ) || (!data.isSubmitted_Labour_Wing && data.inspectionId == 46802)">
+                  <button class="btn btn-link"
+                    (click)="navigatePage('operational-status', data.inspectionId, data.establishmentName, data.licenceNumber, 0,data.appId,data.isLegacy)">
+                    Start filling inspection performa
+                  </button>
+                  <hr>
+
+                  <button class="btn btn-link" *ngIf="!data.isSubmitted_Labour_Wing"
+                    (click)="inspectionTransferClick(previewTransferOficers, data)">
+                    Transfer
+                  </button>
+                </div>
+
+                <div *ngIf="data.isSubmitted_Labour_Wing">
+                  <button class="btn btn-link"
+                    (click)="navigatePage('operational-status',data.inspectionId, data.establishmentName, data.licenceNumber,1,data.appId,data.isLegacy)">
+                    View filled inspection
+                  </button>
+                  <hr>
+                  <button class="btn btn-link" *ngIf="data.factoryCurrentStatus"
+                    (click)="downloadViolationReport(data.inspectionId,2)">
+                    Download Violation Report
+                  </button>
+                  <hr *ngIf="data.factoryCurrentStatus">
+                  <button class="btn btn-link"
+                    (click)="navigatePage('licencewise-inspection',data.inspectionId, data.establishmentName, data.licenceNumber,2,data.appId,data.isLegacy)">
+
+                    Compliance Report
+                  </button>
+                </div>
+
+                <div *ngIf="!data.isSubmitted_Labour_Wing && showInspectionFreezeMessage"
+                  (click)="showinspectionFreezDetails(year,month)" style="color:#C0392B; font-weight: bold;">
+                  <a type="button" class="custom-link" data-toggle="tooltip" data-placement="align-middle" title=""
+                    data-original-title="tooltip on top">
+                    Inspection freezed
+                  </a><i class="feather icon-info" style="color: #C0392B; cursor: pointer;"></i>
+                </div>
+              </td>
+
+              <td>
+                <button class="btn btn-link"
+                  *ngIf="data.isSubmitted_Labour_Wing && authService.getUserJwtDecodedInfo().RoleName== 'ALLC'"
+                  (click)="navigatePage('operational-status',data.inspectionId, data.establishmentName, data.licenceNumber,1,data.appId,data.isLegacy)">View
+                  filled inspection</button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #noinspectionLockedData>
+            <section class="m-t-30">
+              <span class="text-danger font-weight-bold">No Inspections assigned to you ..!</span>
+            </section>
+          </ng-template>
+          <ng-template #inspectionLocked>
+            <section class="m-t-30">
+
+            </section>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="mt-2 row">
+      <!-- <div class="col-md-6">
+          <button class="btn btn-primary" style="cursor: pointer !important;" type="button" (click)="navigatePage('part-i-general-detail')">Edit</button>
+        </div> -->
+      <div class="col-md-12">
+        <button class="btn btn-primary" style="cursor: pointer !important;float: right;" type="button"
+          (click)="navigatePage('randomization',null, null, null,0,0,false)">Back to dashboard</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<ng-template #previewTransferOficers let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Transfer Inspection To Another Officer..!</h4>
+  </div>
+  <div class="card-body custom-modal-body" style="overflow: auto;">
+    <form [formGroup]="Input_Form3">
+      <input type="hidden" formControlName="inspectionId">
+      <ul class="feed-blog pl-0" style="margin-top: 15px;">
+        <li>
+          <div class="feed-user-img">
+            <a class="btn btn-info btn-icon" role="button">I</a>
+          </div>
+          <h6 class="m-b-0">Transfer To</h6>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Labour Circle Name</th>
+                      <th>Officer Name</th>
+                      <!-- <th>Juridiction Area</th> -->
+                      <th>ALC Circle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of usersInfoList">
+                      <td>
+                        <div class="col-md-3" style="margin-bottom: 15px;">
+                          <div class="form-group d-inline">
+                            <div class="radio radio-success d-inline">
+                              <input type="radio" name="labCircleOption" id="{{item.circleId}}"
+                                (click)="setReceiverDetails(item.circleId, item.userRefId,item.roleId,item.userProfileRefId)">
+                              <label for="{{item.circleId}}" class="cr"></label>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{item.circleName}}</td>
+                      <td>{{item.firstName}} {{item.lastName}}</td>
+                      <!-- <td>
+                                                <p>{{item.juridictionArea}}
+                                            </td> -->
+                      <td>{{item.userName}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                *ngIf="(formControls.circleId.invalid) && (submitted || formControls.circleId.dirty || formControls.circleId.touched)"
+                class="text-danger">
+                <div *ngIf="formControls.circleId.errors.required || !formControls.circleId.value">
+                  Please select officer..!
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="feed-user-img">
+            <a class="btn btn-info btn-icon" role="button">II</a>
+          </div>
+          <h6 class="m-b-0">Remarks</h6>
+          <div class="form-group row">
+            <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks</label>
+            <div class="col-sm-6">
+              <textarea class="form-control" name="validation-text" formControlName="remarks"></textarea>
+              <div
+                *ngIf="(formControls.remarks.invalid) && (submitted || formControls.remarks.dirty || formControls.remarks.touched)"
+                class="text-danger">
+                <div *ngIf="formControls.remarks.errors.required || !formControls.remarks.value">
+                  Please specify remarks..!
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="card-footer text-center">
+    <button type="button" class="btn btn-success" (click)="transferInspection()">Transfer this file to selected
+      officer</button>
+    <button type="button" class="btn  btn-danger float-right" (click)="dismissAllModals()">Dismiss</button>
+  </div>
+</ng-template>
+
+<ng-template #longContent3 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Inspection Form</h4>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <iframe [src]="iframeUrl" id="iframeInspection" *ngIf="isLocalStorageSet"
+        style="width: 100%; height: 800px;"></iframe>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Compliance Report Logs</h4>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <ul class="feed-blog pl-0">
+        <li *ngIf="!notingLogs || notingLogs.length === 0">
+          <section class="m-t-30">
+            <span class="text-danger font-weight-bold">No data found..!</span>
+          </section>
+        </li>
+        <li *ngFor="let item of notingLogs">
+          <div class="feed-user-img">
+            <img src="assets/images/email.png" class="img-radius" alt="User-Profile-Image">
+          </div>
+          <h6>
+            <span class="badge badge-info">{{item.statusDate | date:'medium'}}</span>
+            <!-- <span style="float: right; color: #2C3E50;"> 
+                            Time Taken : 
+                            <span style="color: #A93226;">Days: {{item.actionTakenDaysCount}} (In Hrs.: {{item.actionTakenHoursCount}}) </span> 
+                        </span> -->
+          </h6>
+          <div class="row">
+            <div class="col-md-12 border-bottom">
+              <div class="row font-weight-bold" style="margin-top:10px; font-size: 14px;">
+                <div class="col-md-6">
+                  <i class="fas fa-user"></i> Action taken by
+                </div>
+                <div class="col-md-6 text-right font-weight-bold text-primary">
+                  Noting Log #: <span style="font-size: 20px; font-style: italic;">{{item.appPBIPActionLogId}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <span style="margin-left: 10px;" class="officename" style="color: rgb(118 35 35);">
+                    {{item.officerName}} </span>
+                  <br>
+                  <span style="margin-left: 10px;" class="officename"> {{item.name}} </span>
+                </div>
+
+                <div class="col-md-6 text-right">
+                  <span class="font-weight-bold">Action : </span> <br> {{item.statusDesc}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row rounded"
+                style="margin: 10px 0px 0px 3px; border: 4px solid #dbdddd;margin-top: 15px; padding-top: 10px;padding-bottom: 10px;">
+                <div class="col-md-12 font-weight-bold">Comments (If any)</div>
+                <div class="col-md-12" style="margin-bottom: 10px;">
+                  {{item.remarks }}
+                </div>
+                <div class="col-md-12 border-top text-primary">
+                  <ng-template>
+                    <span class="text-info">No</span>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #transferLogs let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Inspection Transfer Logs</h4>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Close</button>
+  </div>
+  <div class="modal-body">
+      <div class="card-body">
+          <ul class="feed-blog pl-0">
+              <li *ngIf="!notingLogs || notingLogs.length === 0">
+                  <section class="m-t-30">
+                      <span class="text-danger font-weight-bold">No data found..!</span>
+                    </section>
+              </li>
+              <li *ngFor="let item of notingLogs">
+                  <div class="feed-user-img">
+                      <img src="assets/images/email.png" class="img-radius" alt="User-Profile-Image">
+                  </div>
+                  <h6>
+                      <span class="badge badge-info">{{item.statusDate | date:'medium'}}</span>
+                      <!-- <span style="float: right; color: #2C3E50;"> 
+                          Time Taken : 
+                          <span style="color: #A93226;">Days: {{item.actionTakenDaysCount}} (In Hrs.: {{item.actionTakenHoursCount}}) </span> 
+                      </span> -->
+                  </h6>
+                  <div class="row">
+                      <div class="col-md-12 border-bottom">
+                          <div class="row font-weight-bold" style="margin-top:10px; font-size: 14px;">
+                              <div class="col-md-6">
+                                  <i class="fas fa-user"></i> Action taken by
+                              </div>
+                              <div class="col-md-6 text-right font-weight-bold text-primary">
+                                  Noting Log #: <span style="font-size: 20px; font-style: italic;">{{item.appPBIPActionLogId}}</span>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                              <span style="margin-left: 10px;" class="officename" style="color: rgb(118 35 35);"> {{item.officerName }} ({{item.userName}})</span>	
+                                  <!-- <br> 
+                              <span style="margin-left: 10px;" class="officename"> {{item.normalizedName}} </span> -->
+                              </div>
+                              
+                              <div class="col-md-6 text-right">
+                                  <span class="font-weight-bold">Action : </span> <br> {{item.actionName}}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="row rounded" style="margin: 10px 0px 0px 3px; border: 4px solid #dbdddd;margin-top: 15px; padding-top: 10px;padding-bottom: 10px;">
+                              <div class="col-md-12 font-weight-bold">Comments (If any)</div>
+                              <div class="col-md-12" style="margin-bottom: 10px;">
+                                  {{item.remarks }}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
+</ng-template>

@@ -1,0 +1,54 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 10,
+      "SectionTitle": "Form No.4 [Prescribed under section 26(3)(d) of the payment of wages act,1936 and Rule 18 of the Punjab Payment of Wages Rules,1937] (Information may be given in respect of only those workers whose average monthly wages are less than Rs 18000 per month",
+      "SubSections": [
+        {
+        "SubSectionSortId": 1,
+        "SubSectionTitle": "Workers Details",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "(43) No. of days worked during the year",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          }
+        ]
+    },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "Workers Details(Workers with wages upto 18000)",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "44. No. of mandays worked the year(total attendance)" },
+              { "category": "45. Average daily No. of persons employed during the year" },
+              { "category": "46. Total Wages Paid" },
+              { "category": "46. a) Basic Wages" },
+              { "category": "46. b) Dearness and Other Allowances" },
+              { "category": "46. c) Areas of pay in respect of previous year paid during the year" },
+              { "category": "46. d) Amount of Bonus" },
+              { "category": " At the rate of" },
+              { "category": "46. d(i) Under Bonus Act/Agreement" },
+              { "category": "46. d(ii) Incentive Bonus" },
+              { "category": "46. d(iii) Profit Sharing Bonus" },
+              { "category": "46. d(iv) Profit Sharing Bonus" },
+              { "category": "46. e) Amount of Leave with wages paid to workers dismissed,dicharges/terminated" },
+              { "category": "46. f) Amount of overtime wages paid" },
+              { "category": "46. g) Money value of concession" },
+              { "category": "46. h) Amount of deduction made" },
+              { "category": "46. i) Grand Total of columns (a) to (i)" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,46 @@
+.special-note{
+    font-size: small;
+    font-weight: bold;
+}
+
+.btn-primary{
+    border-radius: 25px !important;
+}
+.btn-outline-primary{
+    border-radius: 25px !important;
+}
+.btn-date{
+    border-radius: 0px !important;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #0000;
+    background-image: url(data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>);
+    background-repeat: no-repeat;
+    background-position-x: 97%;
+    background-position-y: 4px;
+    border: 2px solid #dfdfdf;
+    border-radius: 2px;
+    margin-right: 2rem;
+    padding: 1rem 3rem 1rem 1rem;
+    border-radius: 25px !important;
+}
+
+.badge {
+    border-radius: 18px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+    line-height: 1.2;
+}
+h5{
+    font-size: 18px;
+    color: #136ecd;
+}
+.badge-primary {
+    color: #fff;
+    background-color: #136ecd;
+}

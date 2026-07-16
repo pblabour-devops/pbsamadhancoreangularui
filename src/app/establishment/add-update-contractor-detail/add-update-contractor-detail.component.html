@@ -1,0 +1,184 @@
+    
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-04</h6>
+                    <h5><i class="feather icon-check"></i> Application for Registration of an Establishment</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList"></app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                                <div class="tableHead">
+                                    <h6><span class="badge badge-pill badge-dark"> <i class="icon feather icon-sun text-warning"></i> You can add multiple contractors, To add new contractor fill the below form and click on add contract button</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Contractor Name</th>
+                                                    <th>Contractor Address</th>
+                                                    <th>Contractor Phone</th>
+                                                    <th>Contractor Email</th>
+                                                    <th>Number Of Contract Labour</th>
+                                                    <th>Nature Of Work</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody  *ngIf="detailData?.length>0">
+                                                <tr *ngFor="let item of detailData">
+                                                    <td>{{item.contractor_Name}}</td>
+                                                    <td>{{item.contractor_Address}}</td>
+                                                    <td>{{item.contractor_Phone}}</td>
+                                                    <td>{{item.contractor_Email}}</td>
+                                                    <td>{{item.numberOfContractLabourToBeEmployed}}</td>
+                                                    <td>{{item.natureOfWorkContractLabour}}</td>
+                                                    <td>
+                                                        <button type="button" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true" class="btn btn-outline-danger" (click)="deleteContractor(item.establishment_ContractorDetailId)"><i class="feather mr-2 icon-slash"></i>Remove</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody  *ngIf="detailData?.length==0">
+                                                <tr>
+                                                    <td colspan="7">No contractor added yet..</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <form [formGroup]="Establishment_ContractorDetail_Form" (ngSubmit)="onSubmit()">
+                                <input type="hidden" formControlName="establishmentRefId">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                            <h6><span class="badge badge-info"> Contractor Details & address</span></h6>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Contractor Name
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control form-control-sm " formControlName="contractor_Name">
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_Name" placeHolder="contractor name"></app-form-validation-error>
+                                            </div>
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Contractor Addess
+                                            </div>
+                                            <div class="col-md-4">
+                                                <textarea type="text" class="form-control form-control-sm " formControlName="contractor_Address"></textarea>
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_Address" placeHolder="contractor address"></app-form-validation-error>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Village/Town
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control form-control-sm" formControlName="contractor_VillageOrTown">
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_VillageOrTown" placeHolder="contractor vllage/town"></app-form-validation-error>
+                                            </div>
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                District
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-select form-select-sm" aria-label="Default select example" (change)="getTehsilsByDistrictRefId(Establishment_ContractorDetail_Form.value.contractor_DistrictRefId, '')" formControlName="contractor_DistrictRefId">
+                                                    <option [selected]="true" value=''>--Please Select--</option>
+                                                    <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                                </select>
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Tehsil
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-select form-select-sm" aria-label="Default select example" formControlName="contractor_TehsilRefId">
+                                                    <option [selected]="true" value="">--Please Select--</option>
+                                                    <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                                </select>
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                            </div>
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Pin Code
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtPinCode" class="form-control form-control-sm" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" formControlName="contractor_PinCode">
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_PinCode" placeHolder=""></app-form-validation-error>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Contractor Email
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtPinCode" email="true" class="form-control form-control-sm" formControlName="contractor_Email">
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_Email" placeHolder=""></app-form-validation-error>
+                                            </div>
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Contractor Phone
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtPinCode" class="form-control form-control-sm" formControlName="contractor_Phone" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="contractor_Phone" placeHolder=""></app-form-validation-error>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Number Of Contract Labour To Be Employed
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control form-control-sm" id="validationTooltip01" formControlName="numberOfContractLabourToBeEmployed" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 5)" required>
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="numberOfContractLabourToBeEmployed" placeHolder="no of contractor"></app-form-validation-error>
+                                            </div>
+
+                                            <div class="col-md-2 fw-bold text-end text-secondary">
+                                                Nature Of Work Contract Labour
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control form-control-sm" id="validationTooltip01" formControlName="natureOfWorkContractLabour" required>
+                                                <app-form-validation-error [formGroup]="Establishment_ContractorDetail_Form" controlName="natureOfWorkContractLabour" placeHolder="nature of work"></app-form-validation-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <button type="submit" *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedAddContractorMsg" class="btn btn-success text-center" [disabled]="!Establishment_ContractorDetail_Form.valid"><i class="feather icon-plus-circle"></i> Add Contractors</button>
+                                                <ng-template #lockedAddContractorMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger">Home</button>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" (click)="nextPage()" class="btn btn-primary" [disabled]="detailData.length==0">Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </form> -->

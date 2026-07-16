@@ -1,0 +1,166 @@
+.time-out-reminder-box{
+    background: #44403B;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    opacity: 0.60;
+    overflow-y: hidden;
+    top: 0px;
+    
+}
+.progress-bar-box{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    justify-items: center;
+    margin-top: 200px;
+}
+
+
+.progress-bar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, #292524 95%, transparent 80% 100%),
+    conic-gradient(#F54927 var(--progress-value), pink 0);    
+}
+/* .progress-bar::after {
+  content: "76";
+  font-size: 50px;
+  font-weight: bold;
+  color: #292524;
+}
+.progress-bar::before {
+  content: "Logout in";
+  font-size: 20px;
+  font-weight: bold;
+  color: #292524;
+} */
+
+.remain-time-counter{
+  font-size: 60px;
+    font-weight: bold;
+    color: #F54927;
+}
+
+.logout-time-text{
+    font-weight: bold;
+    color: #FFFF8A;
+}
+.stay-loggedin{
+  border: 3px solid #F54927;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background: #FFFF8A;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    color: #F54927;
+}
+
+.location-loading{
+  padding-top: 100px;
+  text-align: center;
+  width: 100%;
+}
+/* .my-element {
+  background-color: var(--dynamic-color);
+  padding: 10px;
+} */
+
+.main-container {
+  /* width: 100vw;
+  height: 100vh; */
+  position: relative;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+button {
+  /* margin: 10px; */
+  padding: 0px 2px;
+  cursor: pointer;
+}
+
+.pdf-window {
+  width: 50%;
+  height: 95%;
+  position: fixed;
+  background: white;
+  border: 2px solid 79716B;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 15px 15px 12px rgba(0,0,0,0.3);
+  overflow: auto; 
+  resize: both; 
+  border: 2px solid #D6D3D1;
+  display: flex;
+  flex-direction: column;
+
+}
+.pdf-window embed {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+.header {
+  height: 40px;
+  background: #F5F5F4;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  cursor: move;
+  user-select: none;
+  align-items: flex-start;
+}
+
+.close-btn {
+  /* background: red; */
+  color: #F54927;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+iframe {
+  border: none;
+}
+
+.document-title{
+  color: #440E03;
+  font-weight: bold;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.document-uploaded-on{
+  color: #0D542B;
+  font-size: 12px;
+  font-style: italic;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-section {
+  flex: 1;
+  min-width: 0; /* Important for ellipsis in flex layouts */
+}
+
+.content-collapsed {
+    margin-left: -232px;
+}

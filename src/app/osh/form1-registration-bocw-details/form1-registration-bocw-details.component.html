@@ -1,0 +1,50 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+  <div class="section-card">
+    <h5 class="section-title">
+      Building & Other Construction Work Details
+    </h5>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">Name of Construction Work</label>
+        <input type="text" class="form-control" formControlName="nameOfConstructionWork">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Name of Principal Employer Establishment</label>
+        <input type="number" class="form-control" formControlName="nameOfPrincipalEmployer">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">Probable period of the commencement of work (DD-MM-YYYY) <span class="text-danger">*</span></label>
+        <input type="date" class="form-control" formControlName="dateOfCommencementOfWork">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Expected period for completion of work (DD-MM-YYYY)</label>
+        <input type="date" class="form-control" formControlName="dateOfCompletionOfWork">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="required">Details of approval of local authority <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="approvalDetailsByLocalAuthority">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="required">Principal Employer Registration Number</label>
+        <input type="number" class="form-control" formControlName="registrationNoOfPrincipalEmployer">
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,48 @@
+
+
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card border-danger" style="margin: 8px;">
+            <div class="card-header text-center bg-danger text-white">
+
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                        
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <input [(ngModel)]="userName" />
+                                <button (click)="getQRCodeDataByUserName()">Generate QR Code</button>
+                                <qr-code value="{{qrCodeData}}" size="300" errorCorrectionLevel="M"></qr-code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-danger">Home</button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <!-- *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true"  -->
+                        <!-- [disabled]="!Establishment_GeneralDetail_Form.valid" -->
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

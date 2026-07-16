@@ -1,0 +1,389 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">Building and Other Construction Workers Act, 1996 and Rules, 2007</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Sr No-1</td>
+                  <td class="inspection-back-theme1"> <strong>1.1.1</strong> Whether the construction establishment is duly registered under the Act.</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="is_Construction_Establishment_Registered_Under_Act">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>1.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="is_Construction_Establishment_Registered_Under_Act_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="is_Construction_Establishment_Registered_Under_Act_Remarks"><strong>1.1.3</strong> Remarks if any </label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Construction_Establishment_Registered_Under_Act_Remarks" (input)="updateCharacterCount('is_Construction_Establishment_Registered_Under_Act_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('is_Construction_Establishment_Registered_Under_Act_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Construction_Establishment_Registered_Under_Act_Remarks" placeHolder="is_Construction_Establishment_Registered_Under_Act_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Sr No-2</td>
+                    <td class="inspection-back-theme2"><strong>2.1.1</strong> Whether the workers engaged therein registered under the Act.</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Engaged_Workers_Registered_Under_Act">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr class="inspection-back-theme2">
+                    <td><strong>2.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Engaged_Workers_Registered_Under_Act_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Engaged_Workers_Registered_Under_Act_Remarks"><strong>2.1.3</strong> Remarks if any </label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Engaged_Workers_Registered_Under_Act_Remarks" (input)="updateCharacterCount('is_Engaged_Workers_Registered_Under_Act_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Engaged_Workers_Registered_Under_Act_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Engaged_Workers_Registered_Under_Act_Remarks" placeHolder="is_Engaged_Workers_Registered_Under_Act_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">Sr No-3</td>
+                    <td class="inspection-back-theme1"><strong>3.1.1</strong> Whether the employer of the construction establishment submitted the Notice of commencement and completion of the construction work.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Employer_Submitted_Commencement_Completion_Notice">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>3.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Employer_Submitted_Commencement_Completion_Notice_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for=""><strong>3.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Employer_Submitted_Commencement_Completion_Notice_Remarks" (input)="updateCharacterCount('is_Employer_Submitted_Commencement_Completion_Notice_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Employer_Submitted_Commencement_Completion_Notice_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Employer_Submitted_Commencement_Completion_Notice_Remarks" placeHolder="is_Employer_Submitted_Commencement_Completion_Notice_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td rowspan="3">Sr No-4</td>
+                    <td class="inspection-back-theme2"><strong>4.1.1</strong> Whether the employer of the construction establishment Submission of information in Form No-I to the Assessing officer within 30 days of commencement of work.</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td><strong>4.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks"><strong>4.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks" (input)="updateCharacterCount('is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks" placeHolder="is_Employer_Submitted_Form_I_Within_30Days_Commencement_Of_Work_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    
+                    <td rowspan="3">Sr No-5</td>
+                    <td class="inspection-back-theme1"><strong>5.1.1</strong> Whether the establishment paid 1% Cess on the total cost of construction.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_One_Percent_Cess_Being_Paid_Of_Total_Cost">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td><strong>5.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_One_Percent_Cess_Being_Paid_Of_Total_Cost_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks"><strong>5.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks" (input)="updateCharacterCount('is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks" placeHolder="is_One_Percent_Cess_Being_Paid_Of_Total_Cost_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                <tr>
+                  <td rowspan="9">Sr No-6</td>
+                  <td class="inspection-back-theme2"><strong>6.1.1</strong> Whether the establishment maintained the Muster Roll in Form No.XVI.</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="is_Establishment_Maintained_Muster_Roll_In_Form_XVI">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>6.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="is_Establishment_Maintained_Muster_Roll_In_Form_XVI_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks"><strong>6.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks" (input)="updateCharacterCount('is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks" placeHolder="is_Establishment_Maintained_Muster_Roll_In_Form_XVI_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr class="inspection-back-theme1">
+                  <td><strong>6.2.1</strong> Whether the establishment maintained the Register of Wages in Form No. XVII</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="is_Establishment_Maintained_Wages_Register_In_Form_XVII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="inspection-back-theme1"><strong>6.2.2</strong> {{hasViolationFound}}  </td>
+                <td class="inspection-back-theme1">
+                  <select class="form-select form-control"
+                      formControlName="is_Establishment_Maintained_Wages_Register_In_Form_XVII_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks"><strong>6.2.3</strong> Remarks if any </label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks" (input)="updateCharacterCount('is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks" placeHolder="is_Establishment_Maintained_Wages_Register_In_Form_XVII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>6.3.1</strong> Whether the establishment maintained the Register of Overtime in Form No. XXII</td>
+                  <td>
+                    <select class="form-select form-control" formControlName="is_Establishment_Maintained_Overtime_Register_In_Form_XXII">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td><strong>6.3.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="is_Establishment_Maintained_Overtime_Register_In_Form_XXII_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks"><strong>6.3.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks" (input)="updateCharacterCount('is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks', 1000)" maxlength="1000"></textarea>
+                    <span class="character-count">{{ getCharacterCount('is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks') }}/1000</span>
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks" placeHolder="is_Establishment_Maintained_Overtime_Register_In_Form_XXII_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Sr No-7</td>
+                  <td class="inspection-back-theme1"><strong>7.1.1</strong> Whether employer of the construction establishment Provided the working conditions to the workers such as working hours, drinking water, Washrooms, free accommodation, crèches and first aid facilities.</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="is_Employer_Provide_Working_Conditions_To_Workers">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td><strong>7.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="is_Employer_Provide_Working_Conditions_To_Workers_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1"> 
+                  <td colspan="2">
+                    <label for="is_Employer_Provide_Working_Conditions_To_Workers_Remarks"><strong>7.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Employer_Provide_Working_Conditions_To_Workers_Remarks" (input)="updateCharacterCount('is_Employer_Provide_Working_Conditions_To_Workers_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Employer_Provide_Working_Conditions_To_Workers_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Employer_Provide_Working_Conditions_To_Workers_Remarks" placeHolder="is_Employer_Provide_Working_Conditions_To_Workers_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">Sr No-8</td>
+                  <td class="inspection-back-theme2"><strong>8.1.1</strong> Whether the employer submitted Annual Return.</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="is_Employer_Submitted_Annual_Return">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>8.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="is_Employer_Submitted_Annual_Return_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="is_Employer_Submitted_Annual_Return_Remarks"><strong>8.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Employer_Submitted_Annual_Return_Remarks" (input)="updateCharacterCount('is_Employer_Submitted_Annual_Return_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('is_Employer_Submitted_Annual_Return_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Employer_Submitted_Annual_Return_Remarks" placeHolder="is_Employer_Submitted_Annual_Return_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">Sr No-9</td>
+                    <td class="inspection-back-theme1"><strong>9.1.1</strong> Whether the employer of the construction establishment ensured the safety measures such as Fire protection equipments, Fencing of Motors, Eye protection, safety helmets and shoes etc.</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="is_Employer_Ensured_Safety_Measures">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                  
+                  <tr class="inspection-back-theme1">
+                    <td><strong>9.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Employer_Ensured_Safety_Measures_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme1">
+                    <td colspan="2">
+                      <label for="is_Employer_Ensured_Safety_Measures_Remarks"><strong>9.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Employer_Ensured_Safety_Measures_Remarks" (input)="updateCharacterCount('is_Employer_Ensured_Safety_Measures_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_Employer_Ensured_Safety_Measures_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Employer_Ensured_Safety_Measures_Remarks" placeHolder="is_Employer_Ensured_Safety_Measures_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td rowspan="3">Sr No-10</td>
+                    <td class="inspection-back-theme2"><strong>10.1.1</strong> Nature of violation, if any found during the inspection</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="is_Any_Nature_Of_Violation_Found">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                  </tr>
+                 
+                  <tr class="inspection-back-theme2">
+                    <td><strong>10.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="is_Any_Nature_Of_Violation_Found_ViolationExist">
+                       <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                  </tr>
+                  <tr class="inspection-back-theme2">
+                    <td colspan="2">
+                      <label for="is_Any_Nature_Of_Violation_Found_Remarks"> <strong>10.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="is_Any_Nature_Of_Violation_Found_Remarks" (input)="updateCharacterCount('is_Any_Nature_Of_Violation_Found_Remarks', 1000)" maxlength="1000"></textarea>
+                        <span class="character-count">{{ getCharacterCount('is_Any_Nature_Of_Violation_Found_Remarks') }}/1000</span>
+                        <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="is_Any_Nature_Of_Violation_Found_Remarks" placeHolder="is_Any_Nature_Of_Violation_Found_Remarks"></app-form-validation-error>
+                    </td>
+                  </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

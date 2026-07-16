@@ -1,0 +1,122 @@
+<div class="main-content">
+    <div class="card col-md-8 card-form">
+        <div class="card-body">
+            <h5>Establishment & address</h5>
+            <div class="col-md-12 col-sm-12 m-t-20">
+                <!-- <app-establishment-info-card [appRefId]="appRefId"></app-establishment-info-card> -->
+            </div>
+
+            <h5 class="m-t-20">Details of fees raised and payable calculations</h5>
+            <div class="row m-t-20">
+                <!-- <div class="col-md-12" *ngFor="let payPart of paymentPartDetail?.appPaymentParts"> -->
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Application fee header</th>
+                                <th>Description</th>
+                                <th class="text-center">Fee raised by officer (A)</th>
+                                <th class="text-center">Fee already paid under In-principle approval (B)</th>
+                                <th class="text-center">Fee payable (A-B)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <h5>Section-I</h5> <br> 
+                                    <span class="text-danger font-weight-bold">(Payable via online mode)</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngFor="let raisedFee of raisedFeeList; let ndx = index">
+                            <tr>
+                                <td>{{ndx+1}}</td>
+                                <td>{{raisedFee?.feesHeader.feeHeaderTitle}}</td>
+                                <td>{{raisedFee?.description}}</td>
+                                <!-- <td class="text-right">
+                                <span *ngIf="feeHeader?.isDeduductible; else plusSign">(-)</span>
+                                <ng-template #plusSign><span>(+)</span></ng-template>
+                            </td> -->
+                                <!-- <td>
+                                <input type="text" (keyup)="setFeeInHeader($event, feeHeader?.feeHeaderId)" class="form-control" value="{{feeHeader?.amountCalculated}}">
+                            </td> -->
+                                <th>
+                                    <span style="float: right;">{{raisedFee?.amountRaised}}</span>
+                                </th>
+                                <td>
+                                    {{raisedFee?.amountAlreadyPaid}}
+                                </td>
+                                <th>
+                                    <span style="float: right;">{{raisedFee?.amountPayable}}</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="6" *ngIf="ndx==2 || ndx==4" class="text-center">
+                                    <h5><span *ngIf="ndx==2">Section-II</span>
+                                        <span *ngIf="ndx==4">Section-III</span>
+                                    </h5>
+                                    <span class="text-danger font-weight-bold">(Payable via online mode)</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-right text-danger" colspan="5">Net fee payable (Section-I + Section-II + Section-III): </th>
+                                <th class="text-right text-danger">
+                                    {{netFeeCalculated}}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="6" class="text-danger font-weight-light text-right">
+                                    <span *ngIf="netFeeCalculated>0">({{netFeeCalculated | numberToWord}} only)</span>
+                                    <span *ngIf="netFeeCalculated<=0">Total fee payable: NILL</span>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                <!-- </div> -->
+            </div>
+
+
+            <h5 class="m-t-20">Online Make Payment</h5>
+            <div class="row m-t-20">
+                <div class="col-md-12" *ngFor="let payPart of paymentPartDetail?.appPaymentParts">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fee Title</th>
+                                <th class="text-right">Amount (Payments payable via online mode only)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let payDetail of getPartDetail(payPart?.paymentPartCounter)">
+                                <td>{{getPaymentHeadTitle(payDetail?.feeHeaderRefId)}}</td>
+                                <td class="text-right">{{payDetail?.amount | currency:"INR":"symbol"}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-right font-weight-bold text-danger">Total:</th>
+                                <th class="text-right font-weight-bold text-danger">
+                                    {{getPaymentPartTotal(payPart?.paymentPartCounter) | currency:"INR":"symbol"}}</th>
+                            </tr>
+                            <tr>
+
+                                <th *ngIf="payPart?.transactionFinalStatusType!='1'" colspan="2" class="text-right">
+                                    <button class="btn btn-primary"
+                                        (click)="sendToMakePaymentPage(payPart?.paymentPartCounter)">Make
+                                        Payment</button> </th>
+                                <th *ngIf="payPart?.transactionFinalStatusType=='1'" colspan="2"
+                                    class="text-success text-right">
+                                    <h5> <i class="feather icon-check-circle"></i> This part of payment has been paid
+                                    </h5>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

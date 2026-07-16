@@ -1,0 +1,71 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 5,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Canteen Facilities in the Factory",
+          "Lables": [ 
+           
+            { "LableSortId": 1, "LableTitle": "(23) No. of canteens providing", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(23(i)) Cooked food and Refreshment", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(23(ii)) Cooked Food only", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":4, "LableTitle": "(23(iii)) Refreshment and tea only", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":5 , "LableTitle": "(23(iv)) Tea only", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":6 , "LableTitle": "(23(v)) State reasons for not maintaining the canteen", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 7, "LableTitle": "(23(vi)) Approximate average no. of workers using daily", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":8 , "LableTitle": "(23(vii)) State reasons for not maintaining the canteen", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId":9 , "LableTitle": "(23(viii))  Approximate average no. of workers using daily", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 10, "LableTitle": "(23(ix)) Is the canteen run/managed departmently or through a contractor?", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            {
+            "LableSortId": 11,
+            "LableTitle": "(23(x)) Is the canteen running on NO PROFIT basis as required under the Punjab factory Rules, 1952 ?",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+            { "LableSortId":12 , "LableTitle": "(23(xi)) Item of expenditure borne by the occupier stating separately the total expenditure bourne by the occupier in subsiding sale of food stuff or in otherwise selling food stuff below cost price", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 13, "LableTitle": "(23(xii)) Please state if a common canteen is being shared with some other factory", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+           {
+            "LableSortId": 14,
+            "LableTitle": "(23(xiii)) Whether provision for cooling drinking water has been made?",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+           
+
+          ]
+        }
+     ]
+    }
+  }
+]

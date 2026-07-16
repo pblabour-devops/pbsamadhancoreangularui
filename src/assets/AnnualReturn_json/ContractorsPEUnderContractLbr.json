@@ -1,0 +1,93 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 14,
+      "SectionTitle": "Particulars of Contractors and Contract Labour",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "contractorName",
+                "ColumnTitle": "Name of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "mobileNo",
+                "ColumnTitle": "Mobile No. of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "aadhaarNo",
+                "ColumnTitle": "Aadhaar No of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "ContractorAddress",
+                "ColumnTitle": "Address of Contractor",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "WorkNature",
+                "ColumnTitle": "Nature of Work in which contract labour is employed or is to be employed",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "ContractLbrMax",
+                "ColumnTitle": "Maximum no. of contract labourer to be employed on any day through each contractor",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "CommencementDate",
+                "ColumnTitle": "Estimated Date of Commencement of each contract work under each contractor",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "TerminationDate",
+                "ColumnTitle": "Estimated Date of Termination of employment of contract labourer under contractor",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "NoOfDays",
+                "ColumnTitle": "Contractor No. of days",
+                "DataType": "Number",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "NoOfMandays",
+                "ColumnTitle": "Contractor No. of Man-days",
+                "DataType": "Number",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "contractorName": "",
+                "mobileNo": "",
+                "aadhaarNo": "",
+                "ContractorAddress": "",
+                "WorkNature": "",
+                "ContractLbrMax": "",
+                "CommencementDate": "",
+                "TerminationDate": "",
+                "NoOfDays": "",
+                "NoOfMandays": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
+

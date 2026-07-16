@@ -1,0 +1,175 @@
+<div *ngIf="hasEmptyRequestStr" class="txt-danger">
+	Invalid request...!
+</div>
+
+
+<div *ngIf="serviceGatewayResponse && serviceGatewayResponse.isOtpVerificationRequired && !hasEmptyRequestStr"
+	class="auth-wrapper">
+	<div class="auth-content">
+		<div *ngIf="!isLicenseVerified" class="card text-center">
+			<div class="card-body">
+				<!-- <h3 class="mb-3">Welcome to <span class="text-c-blue">eLabour</span> otp verification.</h3> -->
+				<p class="text-danger">Sorry, we could not find your existing license information for the requested
+					service..!</p>
+				<p>Please enter your exiting license number and we will verify your license details with your registered
+					mobile number.</p>
+				<div class="toggle-block">
+					<div class="input-group mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="feather icon-file-text"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Enter License number"
+							[(ngModel)]="existingLicenceNo">
+					</div>
+					<button (click)="verifyLicenseNo()" class="btn  btn-outline-primary mb-4 toggle-btn">Verify License
+						no. & Send OTP</button>
+					<button (click)="moveToHomepage()" class="btn  btn-outline-danger mb-4 toggle-btn">Cancel and back
+						to homepage</button>
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="isLicenseVerified" class="card text-center">
+			<div class="card-body">
+				<!-- <h3 class="mb-3">Welcome to <span class="text-c-blue">eLabour</span> otp verification.</h3> -->
+				<p>We have sent an OTP on your mobile (<span class="text-c-blue">XXXXXX9815</span>)</p>
+				<div class="toggle-block">
+					<div class="input-group mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="feather icon-smartphone"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="otp">
+					</div>
+					<button (click)="verifyOtp()" class="btn btn-outline-primary mb-4 toggle-btn">Verify OTP</button>
+					<button (click)="moveToHomepage()" class="btn btn-outline-danger mb-4 toggle-btn"> Cancel and back
+						to homepage</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="card col-md-8 card-form alert"
+			*ngIf="serviceGatewayResponse && !serviceGatewayResponse.isOtpVerificationRequired && !hasEmptyRequestStr && isStatusDiffreceShow">
+			<div class="row">
+				<div class="col-md-12">
+					Dear Applicant, <br>
+					As per the Department of Labour, the status of your application is - <br><br>
+					<h4 class="alert-heading">{{actionPublicName}} </h4>
+					<div *ngIf="appActionType==404">{{actionRemarks}}</div>
+					<br>
+					<a class="btn btn-primary" *ngIf='routerValue?.length>0 && appActionType !=411' (click)="navigateToFoundRoute()"
+						href="javascript:;">
+						Click here to proceed
+					</a>
+					<hr>
+
+					<!-- <div *ngIf="serviceGatewayResponse && !serviceGatewayResponse.isOtpVerificationRequired && !hasEmptyRequestStr && isStatusDiffreceShow">
+						Dear Applicant, <br><br>
+						As per the Department of Labour, the status of your application is {{actionPublicName}} <br>
+						<a class="btn btn-primary" *ngIf='routerValue?.length>0' (click)="navigateToFoundRoute()" href="javascript:;">
+							Click here  
+						</a>
+					</div> -->
+					<button (click)="moveToHomepage()" class="btn btn-outline-danger mb-4 toggle-btn"> Back to
+						homepage</button>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- <div class="card col-md-8 card-form alert"
+			*ngIf="serviceGatewayResponse && !serviceGatewayResponse.canApply && serviceGatewayResponse.hasOpenedTickets">
+			<div class="row">
+				<div class="col-md-12">
+					Dear Applicant, <br>
+					<p>Thank you for visiting on the eLabour portal. Our system observed that you had faced some issues
+						while performing some actions on the portal.
+						Our system has created and assigned a ticket to the concerned technical team and which are
+						under process</p>
+
+					<p>We apologize for the inconvenience caused to you, and we assure you that as soon as possible, the
+						issue will be resolved. Our helpdesk team will inform you of the further action.</p>
+
+					<p>For more information, kindly contact the helpdesk team.</p>
+
+					<p>We appreciate your time and patience.</p>
+					<p>Raised tickets:</p>
+					<table class="table table-bordered">
+						<tr>
+							<th>Ticket#</th>
+							<th>Service</th>
+							<th>Created On</th>
+							<th>Status</th>
+						</tr>
+						<tr *ngFor="let ticket of serviceGatewayResponse?.toDoTickets">
+							<td>{{ticket.rootActivityRefId}}</td>
+							<td>{{ticket.applicationTypeDesc}}<br>{{ticket.applicationPurposeTypeDesc}}</td>
+							<td>{{ticket.createdOn | date:'medium'}}</td>
+							<td>OPEN</td>
+						</tr>
+					</table>
+
+
+					<button (click)="moveToHomepage()" class="btn btn-outline-danger mb-4 toggle-btn"> Back to
+						homepage</button>
+				</div>
+			</div>
+
+		</div> -->
+
+
+
+
+		<div class="container" *ngIf="serviceGatewayResponse && !serviceGatewayResponse.canApply && serviceGatewayResponse.hasOpenedTickets">
+			<p class="header">Dear Applicant,</p>
+			<p class="subheader">Thank you for visiting and applying for service on the eLabour portal. Our system observed
+				that you had faced some issues while performing some actions on the portal. Our system has created and
+				assigned tickets to the concerned
+				technical team.</p>
+		
+			<p>We apologize for the inconvenience caused to you, and we assure you that as soon as possible, the issue will
+				be resolved. Our helpdesk team will inform you of the further action.</p>
+		
+			<p>For more information, kindly contact the helpdesk team.</p>
+		
+			<p>We appreciate your time and patience.</p>
+
+			<p>Raised tickets:</p>
+			<table class="table table-bordered">
+				<tr>
+					<th>Ticket#</th>
+					<th>Service</th>
+					<th>Created On</th>
+					<th>Status</th>
+				</tr>
+				<tr *ngFor="let ticket of serviceGatewayResponse?.toDoTickets">
+					<td>{{ticket.rootActivityRefId}}</td>
+					<td>{{ticket.applicationTypeDesc}}<br>{{ticket.applicationPurposeTypeDesc}}</td>
+					<td>{{ticket.createdOn | date:'medium'}}</td>
+					<td>OPEN</td>
+				</tr>
+			</table>
+		
+			<div class="signature">
+				<p>HelpDesk Contact Details,<br />
+					<i class="feather icon-phone-call"></i> +91-9814551313<br />
+					<i class="feather icon-mail"></i> elabourhelpdesk[at]gmail[dot]com<br />
+			</div>
+		
+			<div class="text-center">
+				<button (click)="moveToHomepage()" class="btn btn-outline-danger mb-4 toggle-btn"> Back to Invest
+					Punjab</button>
+			</div>
+		</div>
+
+
+	</div>
+</div>

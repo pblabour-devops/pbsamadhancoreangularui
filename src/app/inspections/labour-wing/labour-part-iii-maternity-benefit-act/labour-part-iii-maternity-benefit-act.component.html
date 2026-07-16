@@ -1,0 +1,362 @@
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="inspectionRefId" />
+    <input type="hidden" formControlName="id" />
+    <div class="main-content">
+      <div class="card col-md-10 card-form">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <div class="register-modal-header">
+            <h4 class="text-center form-header">The Maternity Benefit Act 1961</h4>
+          </div>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-gary">
+              <tr>
+                <th>Section/Rule</th>
+                <th>Details</th>
+                <th>Yes/No/Not Applicable</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3">Section-8 Rule-6(4)</td>
+                  <td class="inspection-back-theme1"><strong>8.1.1</strong> Is payment of medical bonus made?</td>
+                  <td class="inspection-back-theme1">
+                    <select class="form-select form-control" formControlName="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>8.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks"><strong>8.1.3</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks" (input)="updateCharacterCount('sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks" placeHolder="sec_8_Rule_6_4_Is_Payment_Of_Medical_Bonus_Paid_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Section-9</td>
+                  <td class="inspection-back-theme2"><strong>9.1.1</strong> Is leave for miscarriage granted?</td>
+                  <td class="inspection-back-theme2">
+                    <select class="form-select form-control" formControlName="sec_9_Is_Leave_For_Miscarriage_Granted">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                      <option value="-1" [selected]="true">Not Applicable</option>
+                    </select>
+                  </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>9.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_9_Is_Leave_For_Miscarriage_Granted_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_9_Is_Leave_For_Miscarriage_Granted_Remarks"><strong>9.1.2</strong> Remarks if any</label>
+                    <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_9_Is_Leave_For_Miscarriage_Granted_Remarks" (input)="updateCharacterCount('sec_9_Is_Leave_For_Miscarriage_Granted_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_9_Is_Leave_For_Miscarriage_Granted_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_9_Is_Leave_For_Miscarriage_Granted_Remarks" placeHolder="sec_9_Is_Leave_For_Miscarriage_Granted_Remarks"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Section-9A</td>
+                    <td class="inspection-back-theme1"><strong>9A.1.1</strong> Is leave with wages in case of tubectomy granted?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>9A.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for=""><strong>9A.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_Remarks" (input)="updateCharacterCount('sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_Remarks" placeHolder="sec_9_A_Is_Leave_with_Wages_Granted_In_Case_Of_tubectomy_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Section-10 Rule-6(6)</td>
+                    <td class="inspection-back-theme2"><strong>10.1.1</strong> Is leave for illness arising out of pregnancy, delivery, premature birth of child, or miscarriage granted?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>10.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks"><strong>10.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks" (input)="updateCharacterCount('sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks" placeHolder="sec_10_Role_6_Is_Leave_Granted_For_Illness_Arising_Out_Of_Pregnancy_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Section-11, Rule-7</td>
+                    <td class="inspection-back-theme1"><strong>11.1.1</strong> Are nursing breaks of 20 minutes given?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+                
+                <tr class="inspection-back-theme1">
+                  <td><strong>11.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks"><strong>11.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks" (input)="updateCharacterCount('sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks" placeHolder="sec_11_Role_7_Is_Nursing_Breaks_Given_Of_20_Minutes_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Section-11 A</td>
+                    <td class="inspection-back-theme2"><strong>11A.1.1</strong> Is creche facility provide? </td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="sec_11_A_Is_Creche_Facility_Provided">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+               
+                <tr class="inspection-back-theme2">
+                  <td><strong>11.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_11_A_Is_Creche_Facility_Provided_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_11_A_Is_Creche_Facility_Provided_Remarks"><strong>11A.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_11_A_Is_Creche_Facility_Provided_Remarks" (input)="updateCharacterCount('sec_11_A_Is_Creche_Facility_Provided_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_11_A_Is_Creche_Facility_Provided_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_11_A_Is_Creche_Facility_Provided_Remarks" placeHolder="sec_11_A_Is_Creche_Facility_Provided_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Section-12</td>
+                    <td class="inspection-back-theme1"><strong>12.1.1</strong> Is there any dismissal during absence of pregnancy?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+              
+                <tr class="inspection-back-theme1">
+                  <td><strong>12.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks"><strong>12.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks" (input)="updateCharacterCount('sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks" placeHolder="sec_12_Is_Any_Dismissal_During_Absence_Of_Pregnancy_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Section-19, Rule-15</td>
+                    <td class="inspection-back-theme2"><strong>19.1.1</strong> Is abstract of Act and rules in Form K displayed?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+                
+                <tr class="inspection-back-theme2">
+                  <td><strong>19.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks"><strong>19.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks" (input)="updateCharacterCount('sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks" placeHolder="sec_19_Role_15_Is_Act_And_Rules_In_Form_K_Displayed_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+
+                <tr>
+                    <td rowspan="3">Section-20 Rule-3</td>
+                    <td class="inspection-back-theme1"><strong>20.1.1</strong> Is muster roll maintained in Form A</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+               
+                <tr class="inspection-back-theme1">
+                  <td><strong>20.1.2</strong> {{hasViolationFound}}  </td>
+                <td>
+                  <select class="form-select form-control"
+                      formControlName="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_ViolationExist">
+                     <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                  <label for="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks"><strong>20.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks" (input)="updateCharacterCount('sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks" placeHolder="sec_20_Rule_3_IsMusterRoll_Form_A_Maintained_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Rule-14</td>
+                    <td class="inspection-back-theme2"><strong>Rule-14.1.1</strong> Is record preserved for three years after date of  last entry made in therein?</td>
+                    <td class="inspection-back-theme2">
+                      <select class="form-select form-control" formControlName="rule_14_Is_Record_Preserved_For_Three_Years">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+             
+                <tr class="inspection-back-theme2">
+                  <td><strong>14.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_14_Is_Record_Preserved_For_Three_Years_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme2">
+                  <td colspan="2">
+                    <label for=""><strong>Rule-14.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_14_Is_Record_Preserved_For_Three_Years_Remarks" (input)="updateCharacterCount('rule_14_Is_Record_Preserved_For_Three_Years_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_14_Is_Record_Preserved_For_Three_Years_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_14_Is_Record_Preserved_For_Three_Years_Remarks" placeHolder="rule_14_Is_Record_Preserved_For_Three_Years_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+                <tr>
+                    <td rowspan="3">Rule-16</td>
+                    <td class="inspection-back-theme1"><strong>Rule-16.1.1</strong> Is annual return in Form L,M,N and O are submitted?</td>
+                    <td class="inspection-back-theme1">
+                      <select class="form-select form-control" formControlName="rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                        <option value="-1" [selected]="true">Not Applicable</option>
+                      </select>
+                    </td>
+                </tr>
+          
+                <tr class="inspection-back-theme1">
+                  <td><strong>16.1.2</strong> {{hasViolationFound}}  </td>
+                  <td>
+                    <select class="form-select form-control"
+                        formControlName="rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_ViolationExist">
+                      <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="inspection-back-theme1">
+                  <td colspan="2">
+                    <label for=""><strong>Rule-16.1.3</strong> Remarks if any</label>
+                      <textarea type="text" class="form-control" (focusout)="fillDefaultValueInRemarks($event)" formControlName="rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_Remarks" (input)="updateCharacterCount('rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_Remarks', 1000)" maxlength="1000"></textarea>
+                      <span class="character-count">{{ getCharacterCount('rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_Remarks') }}/1000</span>
+                      <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_Remarks" placeHolder="rule_16_Is_Annual_Return_Form_L_M_N_O_Submitted_Remarks"></app-form-validation-error>
+                  </td>
+              </tr>
+
+          </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  

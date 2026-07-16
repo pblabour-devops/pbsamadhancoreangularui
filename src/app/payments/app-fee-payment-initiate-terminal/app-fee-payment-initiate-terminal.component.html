@@ -1,0 +1,52 @@
+<div class="main-content"> 
+    <div class="card col-md-8 card-form">
+        <div class="col-md-12">
+            <div class="register-modal-header">
+                <h4 class="text-center form-header">{{this.appFeeConfigDetails?.applicationTypeName}}</h4>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+
+                <h5>Establishment & address</h5>
+                <div class="col-md-12 col-sm-12 m-t-20">
+                    <!-- <app-establishment-info-card [appRefId]="appRefId"></app-establishment-info-card> -->
+                </div>  
+
+                <h5>Online Make Payment</h5>
+                <table class="table table-bordered">
+                    <!-- <tr>
+                        <th class="table-td-heading-text">Application ref. no.:</th>
+                        <td>ABC</td>
+                        <th class="table-td-heading-text">Appied for:</th>
+                        <td> {{this.appFeeConfigDetails?.applicationTypeName}}</td>
+                    </tr> -->
+                    <tr>
+                        <th class="table-td-heading-text">Application type:</th>
+                        <td>{{currentDate | date:'medium'}}</td>
+                        <th class="table-td-heading-text">Total amount payable (In Rs.):</th>
+                        <td><h3 class="text-primary">{{this.paramInfo.netFeeCalculated  | currency:"INR":"symbol"}}/-</h3>
+                            <p>({{this.paramInfo.netFeeCalculated | numberToWord}})</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <!-- <form name='form1' action='{{appFeeConfigDetails?.paymentGatewayTargetUrl}}' method='post'> -->
+                    <form name='form1' ngNoForm action={{appFeeConfigDetails?.paymentGatewayClientFormInputDetail?.paymentGatewayTargetUrl}} method='post'>
+                        <input *ngFor="let inputProp of appFeeConfigDetails?.paymentGatewayClientFormInputDetail?.paymentGatewayClientFormInputList" type='hidden' name='{{inputProp.formInputName}}' value='{{inputProp.formInputValue}}' />
+                        <input id="makePaymentSubmitButton" style="display: none;" type="submit" value="Submit">
+                    </form>
+                    <!-- <button *ngIf="paymentOptions?.isMakePaymentOptionShown"  class="btn btn-primary" (click)="logPaymentTransactionAndTriggerMakePayment()">Make Payment</button> -->
+                    <button class="btn btn-primary" (click)="logPaymentTransactionAndTriggerMakePayment()">Make Payment</button>
+                    <!-- <button *ngIf="paymentOptions?.isFeeReVelidationOptionShown"  class="btn btn-primary" (click)="onReverificationPaymentClick()">Re-Verify already made payments</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

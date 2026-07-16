@@ -1,0 +1,137 @@
+<!-- <app-loginslider></app-loginslider> -->
+<!-- 
+<div class="vs-checkout-area">
+    <div style="padding-top: 30px;">
+        <section class="gradient-overlay work-process-layout3 headerClass" data-overlay="primary">
+            <div class="section-title3 pb-0">
+                <img src="assets/images/icon/logo.png" class="zoom imageClass" />
+                <h2 class="heading1 text-white pl-xl-220">eLabour Punjab</h2>
+            </div>
+        </section>
+    </div>
+    <section class="vs-blog-wrapper blog-single-layout1 pb-lg-90">
+        <div class="container">
+            <div class="blog-content">
+                <div class="row">
+                    <div class="col-xl-7">
+                    </div>
+                    <div class="col-xl-5">
+                        <section class="vs-product-wrapper product-details-layout1">
+                            <div style="padding: 10px;">
+                                <ul class="nav product-tab-style1 mb-3 pt-lg-5 pt-4" role="tablist" id="productTab">
+                                    <li>
+                                        <a id="IdPwd-tab" data-toggle="tab" href="#IdPwd" role="tab" aria-controls="IdPwd" aria-selected="false" class="active" style="color: white;">
+                                            <h4 class="inner-title mb-lg-40" style="color: white;">User Name & Password
+                                            </h4>
+                                        </a>
+                                    </li>
+                                 
+                                </ul>
+                                <div class="tab-content" id="productDetailsTab">
+                                    <div class="tab-pane show active" id="IdPwd" aria-labelledby="IdPwd-tab">
+                                        <div class="inner-list">
+                                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                                <div class="col-lg-12">
+                                                    <div class="vs-blog format-standard has-post-thumbnail">
+                                                        <div class="vs-comment-form comments-form-layout1 pb-10">
+                                                            <div action="#" class="comment-form">
+                                                                <div class="col-12 form-group">
+                                                                    <input class="form-control" type="text" formControlName="userName" Placeholder="User Name" autocomplete="off">
+                                                                </div>
+                                                                <div class="col-12 form-group">
+                                                                    <input class="form-control" type="password" autocomplete="false" autofocus="false" (focusout)="onPasswordFocusOut()" (focus)='onPasswordFocusIn()' formControlName="password" placeholder="Password" autocomplete="off">
+                                                                </div>
+                                                                <div class="col-12 form-group d-flex align-items-center">
+                                                                    <input class="form-control me-2" type="text" formControlName="recaptcha" placeholder="Captcha" autocomplete="off" maxlength="6" minlength="6" />
+                                                                    <div class="captcha">
+                                                                      <img [src]="imageUrl" alt="CaptchaImage" style="height: 57px;"/>
+                                                                    </div>
+                                                                    <div>
+                                                                        <i (click)="getCaptcha()" class="fas fa-refresh"></i>
+                                                                        <i class="fa fa-refresh fa-spin" style="font-size:24px"></i>
+                                                                    </div>
+                                                                    
+                                                                  </div>
+                                                                  
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="col-md-6" style="float: left;">
+                                                                            <button type="submit" class="vs-btn style2 col-12" type="submit" [disabled]="!loginForm.valid"><span
+                                                                            class="btn-text">Login <i
+                                                                                class="fas fa-comments"></i></span><span
+                                                                            class="btn-bg"
+                                                                            style="top: -3.0625px; left: 233px;"></span></button></div>
+                                                                        <div class="col-md-6" style="float: left;">  <div class="err" *ngIf="isloginError">
+                                                                            <p style="color: red; font-size: 18px; ">
+                                                                                Invalid Username or Password
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="err" *ngIf="!loginForm.controls.userName?.valid && (loginForm.controls.userName?.dirty ||loginForm.controls.userName?.touched)">
+                                                                            <p style="color: red; font-size: 18px; ">
+                                                                                User Name is required
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="err" *ngIf="!loginForm.controls.password?.valid && (loginForm.controls.password?.dirty ||loginForm.controls.password?.touched)">
+                                                                            <p style="color: red; font-size: 18px; ">
+                                                                                Password is required
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="err" *ngIf="!loginForm.controls.recaptcha?.valid && (loginForm.controls.recaptcha?.dirty ||loginForm.controls.recaptcha?.touched)">
+                                                                            <p style="color: red; font-size: 18px; ">
+                                                                                Captcha is required
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="qr" aria-labelledby="qr-tab">
+                                        <div class="inner-list">
+                                            <div class="container">
+                                                <div class="row gutters-40 justify-content-center">
+                                                    <div class="col-lg-11">
+                                                        <div class="vs-blog format-standard has-post-thumbnail">
+                                                            <div class="vs-comment-form comments-form-layout1 pb-10">
+                                                                <div action="#" class="comment-form">
+                                                                    <div class="row gutters-20">
+                                                                        <qr-code style="margin-left: auto; margin-right: auto;" value="{{signalRConnectionId}}" size="250" errorCorrectionLevel="H"></qr-code>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="about-content"><span class="d-block mb-10 text-primary2 text-20 text-white"><strong>
+                                                                        <a routerLink="/quick">Help ?
+                                                                        </a></strong></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div> -->
+
+
+ 
+
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="userName" Placeholder="User Name" autocomplete="off">
+    <input  type="password" autocomplete="false" autofocus="false" (focusout)="onPasswordFocusOut()" (focus)='onPasswordFocusIn()' formControlName="password" placeholder="Password" autocomplete="off">
+    <button type="submit"  type="submit" [disabled]="!loginForm.valid">Login</button>
+ 
+</form>

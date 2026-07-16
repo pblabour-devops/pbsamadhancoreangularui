@@ -1,0 +1,19 @@
+.btn-primary{
+    border-radius: 25px;
+}
+.badge {
+    border-radius: 18px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+    line-height: 1.2;
+}
+h5{
+    font-size: 18px;
+    color: #136ecd;
+}
+.badge-primary {
+    color: #fff;
+    background-color: #136ecd;
+}

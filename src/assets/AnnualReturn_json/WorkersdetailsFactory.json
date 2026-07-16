@@ -1,0 +1,111 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 2,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "(11) Average daily Number of workers Employed",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Adults", "ColumnTitle": "Adults", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": false },
+             { "ColumnId": "Women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adoloscent", "ColumnTitle": "Adoloscent", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false }
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. For Perennial factories:" },
+              { "category": "2. Seasonal Factories (Working Season):" },
+              { "category": "3.Seasonal Factories (Off Season):" }
+     
+              
+            ]
+          }
+        },
+        
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "(12) Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "PerennialFac", "ColumnTitle": "For Perennial Factories", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SeasonalFacWS", "ColumnTitle": "Seasonal Factories(During Working Season)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SeasonalFacOS", "ColumnTitle": "Seasonal Factories(During Off Season)", "DataType": "Number", "IsMendatory": false }
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. No. of days worked in the year:" }
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "(13) Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "PerennialFac", "ColumnTitle": "For Perennial Factories", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SeasonalFacWS", "ColumnTitle": "Seasonal Factories(During Working Season)", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "SeasonalFacOS", "ColumnTitle": "Seasonal Factories(During Off Season)", "DataType": "Number", "IsMendatory": false }
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. No. of mandays worked during the year(total attendances):" }
+     
+              
+            ]
+          }
+        },
+         {
+          "SubSectionSortId": 4,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "(14) Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+    
+              
+              
+            ],
+            "Rows": [
+              { "category": "1. Total Number of man hours worked(including overtime)" }
+     
+              
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 5,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "(15) Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Men", "ColumnTitle": "Men", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Women", "ColumnTitle": "Women", "DataType": "Number", "IsMendatory": false }
+               ],
+            "Rows": [
+              { "category": "1. Normal hours worked per week)" }
+     
+              
+            ]
+          }
+        }
+     ]
+    }
+  }
+]

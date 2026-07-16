@@ -1,0 +1,91 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+<div class="row">
+<div class="col-sm-12">
+<div class="container-fluid p-0">
+
+  <!-- Top gray strip -->
+  <div class="bg-body-secondary" style="height: 8px;"></div>
+
+  <div class="bg-white p-4 border border-top-0">
+
+    <!-- File application for -->
+    <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+
+      <span class="bg-body-secondary px-3 py-2 fw-bold">
+        File application for:
+      </span>
+
+      <div class="form-check" *ngFor="let type of filingTypes">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="filingType"
+          [id]="type"
+          [value]="type"
+          [(ngModel)]="selectedFilingType">
+        <label class="form-check-label text-primary fw-semibold" [for]="type">
+          {{ type }}
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Instructions -->
+    <p class="fw-semibold mb-1">
+      Please select issues from the list below (You can tick more than one option):
+    </p>
+    <p class="mb-3">
+      अपनी समस्या दर्ज करे (एक से ज़्यादा भी दर्ज कर सकते है )
+    </p>
+
+    <hr class="mb-4">
+
+    <!-- Category Cards -->
+    <div class="row g-4">
+      <div class="col-md-6" *ngFor="let category of categories">
+        <div class="border h-100">
+
+          <div class="category-header text-white fw-semibold px-3 py-2">
+            {{ category.title }}
+          </div>
+
+          <div class="p-3">
+            <div class="form-check mb-2" *ngFor="let issue of category.issues">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [id]="issue.id"
+                [checked]="check(issue.id)"
+                (change)="toggleIssue(issue.id)">
+              <label class="form-check-label small" [for]="issue.id">
+                {{ issue.label }}
+                <span
+                  *ngIf="issue.hasInfo"
+                  class="info-icon"
+                  [title]="issue.info || issue.label">i</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <!-- Next Button -->
+    <button
+      type="button"
+      class="btn btn-primary px-4"
+      (click)="selectedissue()"
+      >
+      Next
+    </button>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,200 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 35,
+      "SectionTitle": "Basic Facilities Details",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+        "SubSectionTitle": "Whether the following have been provided",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "Residential Accomodation",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 2,
+            "LableTitle": "Protective Clothing",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 3,
+            "LableTitle": "Canteen",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 4,
+            "LableTitle": "Rest Room",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+           {
+            "LableSortId": 5,
+            "LableTitle": "Latrine And Urinals",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 6,
+            "LableTitle": "Drinking Water",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 7,
+            "LableTitle": "Creche",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 8,
+            "LableTitle": "Medical Facilities",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 9,
+            "LableTitle": "First Aid",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No", "Not Applicable"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+        
+        ]
+        }
+      ]
+    }
+  }
+ 
+ 
+]
+   

@@ -1,0 +1,11 @@
+.text-uppercase{
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: -20px;
+}
+
+.table-scroll{
+    max-height: 430px; 
+    overflow-y:scroll;
+    margin-top: 30px;
+}

@@ -1,0 +1,17 @@
+.col-dark{
+    background-color: #FCF3CF;
+}
+.col-light{
+    background-color: #FEF9E7;
+}
+
+.col-dark1{
+    background-color: #FDEBD0;
+}
+.col-light1{
+    background-color: #FEF5E7;
+}
+
+tr td{
+    vertical-align: middle !important;
+}

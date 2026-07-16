@@ -1,0 +1,66 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 19,
+      "SectionTitle": "Inspections of Agriculture Farms",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "FarmName",
+                "ColumnTitle": "Name of Agriculture Farm",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "InspDate",
+                "ColumnTitle": "Date of Inspection",
+                "DataType": "DateTime",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "ActName",
+                "ColumnTitle": "Under which Act (PWA or MWA or NFHA or ISMW or PBA or CLA etc.)",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "violationDetail",
+                "ColumnTitle": "Detail of Violations",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "Action",
+                "ColumnTitle": "Action Taken",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "remaks",
+                "ColumnTitle": "remarks",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+              
+            ],
+            "Rows": [
+              {
+                "FarmName": "",
+                "InspDate": "",
+                "ActName": "",
+                "violationDetail": "",
+                "Action": "",
+                "remaks": ""
+               
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

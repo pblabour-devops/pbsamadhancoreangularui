@@ -1,0 +1,43 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 30,
+      "SectionTitle": "Head Quarter/District Administration Duties",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              {
+                "ColumnId": "dutyName",
+                "ColumnTitle": "Name of duty",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "periodOfDuty",
+                "ColumnTitle": "Period of duty",
+                "DataType": "Text",
+                "IsMendatory": false
+              },
+              {
+                "ColumnId": "remark",
+                "ColumnTitle": "Remarks",
+                "DataType": "Text",
+                "IsMendatory": false
+              }
+            ],
+            "Rows": [
+              {
+                "dutyName": "",
+                "periodOfDuty": "",
+                "remark": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

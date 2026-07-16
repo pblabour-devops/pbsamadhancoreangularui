@@ -1,0 +1,427 @@
+<div class="main-content">
+  <div class="card col-md-10 card-form">
+    <div class="col-md-12">
+      <!-- <app-inspections-performa-stepers  (saveFormEvent)="saveAndNext($event)"></app-inspections-performa-stepers> -->
+    </div>
+<!-- mustor details -->
+
+    <div class="col-md-12">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header">Details as per mustor roll</h4>
+      </div>
+    </div>
+    <div class="mt-5">
+      <table class="table table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th colspan="2" rowspan="2">Shift Time</th>
+            <!-- <th>Shift Time To</th> -->
+            <th colspan="2"  rowspan="2">Adult</th>
+            <!-- <th>Adult Female</th> -->
+            <th colspan="2"  rowspan="2">Adolescent</th>
+            <!-- <th>Adolescent Female</th> -->
+            <th  colspan="2"  rowspan="2">Children</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>From</td>
+          <td>To</td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <tr *ngFor="let data of savedData">
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.shiftTime_From }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.shiftTime_To }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Adult_Male }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Adult_FeMale }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Adolescent_Male }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Adolescent_FeMale }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Children_Male }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1">{{ data.count_Children_FeMale }}</td>
+            <td *ngIf="data.inspectionMusterRollType === 1 && isLocked === 0">
+              <i class="fas fa-trash-alt" style="color: red; cursor: pointer !important;" (click)="removeMustorRoleDetails(data.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" *ngIf = "isLocked === 0">
+      <div class="col-md-12 text-center">
+        <button (click)="openInspectionModal(mustorshift)" class="btn btn-primary mt-4">
+          Add new shift record
+        </button>
+      </div>
+    </div>
+<hr>
+    <!-- inspection worker details -->
+    <div class="col-md-12">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header">Details as per inspection</h4>
+      </div>
+    </div>
+    <div class="mt-5">
+      <table class="table table-bordered table-striped text-center ">
+        <thead>
+          <tr>
+            <th colspan="2" rowspan="2">Shift Time</th>
+            <!-- <th>Shift Time To</th> -->
+            <th colspan="2"  rowspan="2">Adult</th>
+            <!-- <th>Adult Female</th> -->
+            <th colspan="2"  rowspan="2">Adolescent</th>
+            <!-- <th>Adolescent Female</th> -->
+            <th  colspan="2"  rowspan="2">Children</th>
+            <!-- <th>Children Female</th> -->
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>From</td>
+          <td>To</td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <td>
+            Male
+          </td>
+          <td>
+           Female
+          </td>
+          <tr *ngFor="let data of savedData">
+
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.shiftTime_From }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.shiftTime_To }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Adult_Male }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Adult_FeMale }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Adolescent_Male }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Adolescent_FeMale }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Children_Male }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2">{{ data.count_Children_FeMale }}</td>
+              <td *ngIf="data.inspectionMusterRollType === 2 && isLocked === 0">
+                <i class="fas fa-trash-alt" style="color: red; cursor: pointer !important;" (click)="removeMustorRoleDetails(data.id)"></i>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" *ngIf = "isLocked === 0">
+      <div class="col-md-12 text-center">
+        <button
+        (click)="openInspectionModal(workerdetails)"
+        class="btn btn-primary mt-4">Add new shift record</button>
+      </div>
+       
+    </div>
+    <div class="col-md-12">
+      <!--  -->
+    </div>
+  </div>
+</div>
+
+<ng-template #mustorshift let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="dataModalLabel">Add shift record as per mustor roll</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="closeInspectionModal()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="Input_Form" (ngSubmit)="onSubmit(1)">
+      <div class="col-md-12" >
+        <div class="row form-row">
+          <div class="container ">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Male</th>
+                  <th>Female</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Shift Time</td>
+                  <td>
+                    from
+                    <input
+                      type="time"
+                      class="form-control"
+                      formControlName="shiftTime_From"
+                    />
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="shiftTime_From" placeHolder="Time From"></app-form-validation-error>
+                  </td>
+                  <td>
+                    to
+                    <input
+                      type="time"
+                      class="form-control"
+                      formControlName="shiftTime_To"
+                    />
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="shiftTime_To" placeHolder="Time To"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr *ngIf="Input_Form.errors?.timeError">
+                  <td colspan="3" class="alert-danger text-center">Invalid time selection..!
+                  </td>
+                </tr>
+                <tr *ngIf="this.totalCountError">
+                  <td colspan="3" class="alert-danger text-center">
+                    At least one value should be greater than 0.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adult</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adult_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="count_Adult_Male" placeHolder="Adult Male"></app-form-validation-error>
+
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adult_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="count_Adult_FeMale" placeHolder="Adult Female"></app-form-validation-error>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Adolescent</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adolescent_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adolescent_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Children</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Children_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Children_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button
+              style="float: right"
+              type="submit"
+              class="btn btn-primary mt-4">
+            Add this shift
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #workerdetails let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="dataModalLabel">Add shift record as per inspection</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="closeInspectionModal()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="Input_Form" (ngSubmit)="onSubmit(2)">
+      <div class="col-md-12">
+        <div class="row form-row">
+          <div class="container mt-1">
+            <table class="table table-bordered mt-2">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Male</th>
+                  <th>Female</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Shift Time</td>
+                  <td>
+                    from
+                    <input
+                      type="time"
+                      class="form-control"
+                      formControlName="shiftTime_From"
+                    />
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="shiftTime_From" placeHolder="Time From"></app-form-validation-error>
+                  </td>
+                  <td>
+                    to
+                    <input
+                      type="time"
+                      class="form-control"
+                      formControlName="shiftTime_To"
+                    />
+                    <app-form-validation-error [isSubmitted]="hasSubmitClicked" [formGroup]="Input_Form" controlName="shiftTime_To" placeHolder="Time To"></app-form-validation-error>
+                  </td>
+                </tr>
+                <tr *ngIf="Input_Form.errors?.timeError">
+                  <td colspan="3" class="alert-danger text-center">Invalid time selection..!
+                  </td>
+                </tr>
+                <tr *ngIf="this.totalCountError">
+                  <td colspan="3" class="alert-danger text-center">
+                    At least one value should be greater than 0.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adult</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adult_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adult_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adolescent</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adolescent_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Adolescent_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Children</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Children_Male"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="count_Children_FeMale"
+                      value="0"
+(focusout)="checkInput($event)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button
+              style="float: right"
+              type="submit"
+              class="btn btn-primary mt-4">
+            Add this shift
+            </button>
+          </div>
+        </div>
+        
+      </div>
+      
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeInspectionModal()"
+    >
+      Close
+    </button>
+  </div> -->
+</ng-template>
+

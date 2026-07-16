@@ -1,0 +1,25 @@
+.invoive-info h6{
+    color: black !important;
+}
+.invoive-info h6 {
+    margin-bottom: 20px;
+    text-transform: none;
+}
+.main-heading{
+    font-size: 15px;
+    margin-top: -25px;
+    margin-bottom: -25px;
+}
+.txtamount{
+    color: #30D2BE;
+}
+
+.invoice-total.table {
+    background: #f3f3f3;
+    padding: 0px;
+}
+
+
+
+/* New CSS Start here */
+

@@ -1,0 +1,29 @@
+/* Slide-in animation from the right */
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* You can customize these classes for different slide effects */
+  .swal2-slide-in {
+    animation: slideInFromRight 0.5s ease-out;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 99999999999;
+  }
+  a {
+    color: rgb(19, 140, 221);
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+  

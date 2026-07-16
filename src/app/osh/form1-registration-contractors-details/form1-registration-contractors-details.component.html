@@ -1,0 +1,218 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+  <div class="main-content">
+    <div class="card col-md-8 card-form">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header">
+          Registration under OSH & CoSS Code 2020
+        </h4>
+        <p class="text-center purpose-type-header">(Registration)</p>
+      </div>
+
+      <div class="col-md-12" style="margin-top: 5px;">
+        <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList"></app-app-form-stepper-navigation-panel> -->
+      </div>
+      
+      <div class="col-md-12 text-right text-danger">
+        * mandatory fields
+      </div>
+
+      <div class="section-card">
+        <label><b>If the Establishment has engaged a Contractor?</b></label><br>
+        <label class="mr-3">
+          <input type="radio" [value]="true" formControlName="isEstablishmentEngagedContractor"> Yes
+        </label>
+        <label>
+          <input type="radio" [value]="false" formControlName="isEstablishmentEngagedContractor"> No
+        </label>
+      </div>
+
+      <div *ngIf="Input_Form.get('isEstablishmentEngagedContractor')?.value">
+        <input type="hidden" formControlName="id">
+        <input type="hidden" formControlName="appRefId">
+
+        <!-- Contractor Form Fields (same as your HTML) -->
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Select Principal Employer</label>
+            <select class="form-control" formControlName="principalEmployerName">
+              <option value="">--Select--</option>
+              <option>ABC Employer</option>
+              <option>XYZ Employer</option>
+              <option>JKL Employer</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Name of contractor</label>
+            <input type="text" class="form-control" formControlName="contractorName" placeholder="Enter contractor name">
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label class="required">Name & Location of Work</label>
+            <input type="text" class="form-control" formControlName="nameAndLocationOfWork" placeholder="Name and location of work">
+          </div>
+        </div>
+
+        <h5 class="sub-title">Address of the Contractor</h5>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Premise Number / Name</label>
+            <input type="text" class="form-control" formControlName="premiseName" placeholder="Enter Premise Name">
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="required">Sub Locality / Street / Colony Name</label>
+            <input type="text" class="form-control" formControlName="subLocality_OR_Street_OR_ColonyName" placeholder="Enter Sub Locality / Street">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Locality / Landmark</label>
+            <input type="text" class="form-control" formControlName="locality_OR_Landmark" placeholder="Enter Locality / Landmark">
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="required">City / Town / Village</label>
+            <input type="text" class="form-control" formControlName="villageOrTown" placeholder="Enter City / Town / Village">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">State</label>
+            <select class="form-control" formControlName="state">
+              <option value="">Select State</option>
+              <option value="Punjab">Punjab</option>
+            </select>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="required">District</label>
+            <select class="form-control" formControlName="districtRefId" (change)="getTehsilsByDistrictRefId(Input_Form.value.districtRefId)">
+              <option value="">Select District</option>
+              <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">{{ dist.districtName }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Tehsil</label>
+            <select class="form-control" formControlName="tehsilRefId">
+              <option value="">Select Tehsil</option>
+              <option *ngFor="let teh of allTehsil" [value]="teh.id">{{ teh.text }}</option>
+            </select>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="required">Pincode</label>
+            <input type="text" class="form-control" formControlName="pinCode" placeholder="Enter Pincode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group d-flex">
+            <div class="flex-grow-1">
+              <label class="required">Email</label>
+              <input type="email" class="form-control" formControlName="email" placeholder="Enter Email ID">
+            </div>
+          </div>
+          <div class="col-md-6 form-group d-flex">
+            <div class="flex-grow-1">
+              <label class="required">Mobile</label>
+              <input type="text" class="form-control" formControlName="mobileNo" placeholder="Enter Mobile" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+            </div>
+          </div>
+        </div>
+
+        <!-- PAN, Name on PAN, DOB, Max Labour, Dates of Work -->
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label class="required">PAN</label>
+            <input type="text" class="form-control" formControlName="panNumber" placeholder="Enter PAN">
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="required">Name as on PAN</label>
+            <input type="text" class="form-control" formControlName="nameOnPan" placeholder="Enter Name as on PAN">
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="required">Date of Birth</label>
+            <input type="date" class="form-control" formControlName="dateOfBirth" placeholder="Enter Date of Birth">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Maximum number of contract labour to be employed through this contractor on any day</label>
+            <input type="number" class="form-control" formControlName="maxNoOfContractLabourToBeEmployed" placeholder="Enter Number of Labour" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="required">Date of Commencement of Work</label>
+            <input type="date" class="form-control" formControlName="dateOfCommencementOfWork" placeholder="Enter Date of Commencement">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="required">Probable date of completion of Work</label>
+            <input type="date" class="form-control" formControlName="dateOfCompletionOfWork" placeholder="Enter Date of Completion">
+          </div>
+        </div>
+
+        <div class="text-right mt-3">
+          <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+          <button type="button" class="btn btn-primary ml-2" (click)="addEmployer()">Add Contractor</button>
+        </div>
+
+        <!-- Contractor List Table -->
+        <div *ngIf="employerList.length > 0">
+          <h5 class="sub-title">Details of Contractors Added</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>S No.</th>
+                <th>Principal Employer</th>
+                <th>Contractor Name</th>
+                <th>Contact & Address & PAN & DOB</th>
+                <th>Name of Work</th>
+                <th>Date of Commencement</th>
+                <th>Probable Completion Date</th>
+                <th>No. of Contract Labour</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employer of employerList; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ employer.principalEmployerName }}</td>
+                <td>{{ employer.contractorName }}</td>
+                <td>
+                  {{ employer.premiseName }}, {{ employer.subLocality_OR_Street_OR_ColonyName }}, {{ employer.locality_OR_Landmark }},
+                  {{ employer.villageOrTown }}, {{ employer.state }}, {{ employer.districtRefId }}, {{ employer.pinCode }},
+                  {{ employer.email }}, {{ employer.mobileNo }}, {{ employer.panNumber }}, {{ employer.nameOnPan }},
+                  {{ employer.dateOfBirth | date:'dd-MM-yyyy' }}
+                </td>
+                <td>{{ employer.nameAndLocationOfWork }}</td>
+                <td>{{ employer.dateOfCommencementOfWork | date:'dd-MM-yyyy' }}</td>
+                <td>{{ employer.dateOfCompletionOfWork | date:'dd-MM-yyyy' }}</td>
+                <td>{{ employer.maxNoOfContractLabourToBeEmployed }}</td>
+                <td><button class="btn btn-danger" (click)="deleteEmployer(i)">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer m-t-10">
+          <div class="row">
+            <div class="col-md-6">
+              <app-go-to-home-button class="btn btn-success"></app-go-to-home-button>
+            </div>
+            <div class="col-md-6 text-right">
+              <button type="submit" class="btn btn-primary">Save & Next</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,8 @@
+<div *ngIf="control.invalid && (isSubmitted || control.dirty || control.touched)" class="text-danger errMsgText">
+    <div *ngIf="control.errors?.maxlength">
+        Max length {{placeHolder}} is allowed {{control.errors?.maxlength?.requiredLength}}..!
+    </div>
+    <div [hidden]="!control.errors?.required">
+     <span class="errMsg"> This field is required..!</span>
+    </div>
+  </div>

@@ -1,0 +1,268 @@
+<form [formGroup]="Establishment_GeneralDetail_Form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="establishmentId">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="card border-danger" style="margin: 8px;">
+                <div class="card-header text-center bg-danger text-white">
+                    <h6>FORM-04</h6>
+                    <p class="mb-0">Application for Registration of an Establishment</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 border-end border-light-greay border-1">
+                            <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                            </app-app-form-stepper-navigation-panel> -->
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info"> Establishment & address</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Establishment Name
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.establishmentName}}
+
+
+                                            <!-- <input type="text" class="form-control form-control-sm " formControlName="establishmentName">
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="establishmentName" placeHolder="establishment name"></app-form-validation-error> -->
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Establishment Addess
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.address}}
+                                            <!-- <textarea type="text" class="form-control form-control-sm " formControlName="estb_Address"></textarea>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="estb_Address" placeHolder="establishment address"></app-form-validation-error> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.villageOrTown}}
+                                            <!-- <input type="text" class="form-control form-control-sm" formControlName="estb_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="estb_VillageOrTown" placeHolder="establishment vllage/town">
+                                            </app-form-validation-error> -->
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.districtName}}
+                                            <!-- <select class="form-select form-select-sm" aria-label="Default select example" formControlName="estb_DistrictRefId" (change)="getTehsilsByDistrictRefId(Establishment_GeneralDetail_Form.value.estb_DistrictRefId, 'estb_TehsilRefId')">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="estb_DistrictRefId" placeHolder=""></app-form-validation-error> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.tehsilName}}
+                                            <!-- <select class="form-select form-select-sm" aria-label="Default select example" formControlName="estb_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Estb_Tehsils')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="estb_TehsilRefId" placeHolder=""></app-form-validation-error> -->
+                                        </div>
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{projectSite?.pinCode}}
+                                            <!-- <input type="text" id="txtPinCode" class="form-control form-control-sm" formControlName="estb_PinCode">
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="estb_PinCode" placeHolder=""></app-form-validation-error> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            PAN Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm " formControlName="gstNumber" (focusout)="findDuplicateGst(Establishment_GeneralDetail_Form.value.gstNumber)">
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="gstNumber" placeHolder="gst number"></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Communication address</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Communication Addess
+                                        </div>
+                                        <div class="col-md-4">
+                                            <textarea type="text" class="form-control form-control-sm" id="Comm_VillageOrTown" formControlName="comm_Address" required></textarea>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="comm_Address" placeHolder=""></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Village/Town
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" name="validation-email" formControlName="comm_VillageOrTown">
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="comm_VillageOrTown" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            District
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" (change)="getTehsilsByDistrictRefId(Establishment_GeneralDetail_Form.value.comm_DistrictRefId, 'tehsilRefId')" formControlName="comm_DistrictRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of filterListTemplate('Districts')" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="comm_DistrictRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Tehsil
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="comm_TehsilRefId">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of tehsilsList" value="{{item.id}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="comm_TehsilRefId" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Pin Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="Comm_PinCode"  minlength="6" formControlName="comm_PinCode" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)" required>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="comm_PinCode" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-light form-section">
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <h6><span class="badge badge-info">Establishment's other details</span></h6>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Type Of Establishment
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="establishmentType">
+                                                <option [selected]="true" value="">--Please Select--</option>
+                                                <option *ngFor="let item of establishmentTypeEnum" value="{{item.value}}">{{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="establishmentType" placeHolder="Type of establishment"></app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Labour Identification Number
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" id="validationTooltip01" formControlName="labourIdentificationNum" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" required>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="labourIdentificationNum" placeHolder="labour identification number">
+                                            </app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Electric Load Connected <br><span class="fw-normal text-primary">(In Kilowatts and it should be minimum 1)</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control form-control-sm" formControlName="electricLoadConnectedInKilowatts" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 4)" required>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="electricLoadConnectedInKilowatts" placeHolder="electric load connected">
+                                            </app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Establishment Constitution Type
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="establishmentConstitutionType">
+                                                <option [selected]="true" value="">--Please Select--</option>
+                                                <option *ngFor="let item of establishmentConstitutionTypeEnum" value="{{item.value}}">
+                                                {{item.text}}</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="establishmentConstitutionType" placeHolder="Establishment constitution type">
+                                            </app-form-validation-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Establishment Building Type
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="establishmentBuildingType">
+                                                <option [selected]="true" value=''>--Please Select--</option>
+                                                <option *ngFor="let item of establishmentBuildingTypeEnum" value="{{item.value}}">{{item.text}}
+                                                </option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="establishmentBuildingType" placeHolder="Establishment building bype">
+                                            </app-form-validation-error>
+                                        </div>
+
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            Is Employing InterState Migrant Workers ?
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-select form-select-sm" aria-label="Default select example" formControlName="isEmployingInterStateMigrantWorkers">
+                                                <option [selected]="true" value="">--Please Select--</option>
+                                                <option value=true selected>Yes</option>
+                                                <option value=false selected>No</option>
+                                            </select>
+                                            <app-form-validation-error [formGroup]="Establishment_GeneralDetail_Form" controlName="isEmployingInterStateMigrantWorkers" placeHolder=""></app-form-validation-error>
+                                        </div>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 fw-bold text-end text-secondary required">
+                                            National Industrial Classification Code
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- <nic-code-form-control [selectedNicCodesFromParent]="Establishment_GeneralDetail_Form.controls.nationalIndustrialClassificationCode.value" [canEdit]="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true" (updateSelectedNicCodeToParent)="updateNicCode($event)"></nic-code-form-control> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" (click)="btnHomeClick()">Home</button>
+                        </div>
+                        <!-- {{Establishment_GeneralDetail_Form.value | json}} -->
+                        <div class="col-md-6 text-right">
+                            <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" type="submit" class="btn btn-primary" [disabled]="!Establishment_GeneralDetail_Form.valid">Save & Next</button>
+                            <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

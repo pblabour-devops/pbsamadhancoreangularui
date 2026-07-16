@@ -1,0 +1,21 @@
+/* Category header color (matches image's teal/blue headers) */
+.category-header {
+  background-color: #1a6f8f;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}

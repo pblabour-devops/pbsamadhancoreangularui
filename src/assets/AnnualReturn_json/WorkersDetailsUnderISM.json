@@ -1,0 +1,25 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 16,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Work Details",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(5) Nature of work/operations on which migrant workman was employed", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(6) Total Number of Days during the year on which migrant workman was employed", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(7) Total number of mandays worked for by migrant workman during the year", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "(8) Maximum number of workmen employed directly on any day during the year", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "(9) Total Number of days during the year on which direct labour was employed", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "(10) Total number of mandays worked by directly employed workmen", "LableValueInfo": { "DataType": "Number", "Value": "0", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+             { "LableSortId":7, "LableTitle": "(11) Change,if any,in the management of the establishment,its location,or any other particulars furnished to the registering officer in the application for Registration indicating also the dates", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+           
+          ]
+        }
+        
+      ]
+    }
+  }
+]

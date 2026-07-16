@@ -1,0 +1,462 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card user-profile-list shadow">
+          <div class="card-header bg-light text-dark d-flex justify-content-between align-items-center">
+            <h5 class="mb-0" style="font-size: 18px; font-weight: 800;">Manage Users</h5>
+            <!-- <button type="button" class="btn btn-success btn-sm shadow-sm" (click)="openScrollableContent(longContent)"> 
+              <i class="feather icon-plus-circle"></i> Add New
+            </button> -->
+          </div>
+          
+
+          <div class="form-group row m-t-20 align-items-center">
+
+  <!-- Filter by Role label -->
+  <label class="col-sm-2 col-form-label text-sm-right">
+    Filter by Role:
+  </label>
+
+  <!-- Role dropdown -->
+  <div class="col-sm-3">
+    <select class="form-control"
+            [(ngModel)]="selectedRole"
+            (change)="onRoleChange(selectedRole)">
+      <option value="">-- Select Role --</option>
+      <option *ngFor="let role of roles" [value]="role.code">
+        {{ role.description }}
+      </option>
+    </select>
+  </div>
+
+  <!-- OR -->
+  <div class="col-sm-1 text-center">
+    <span class="or-text">| OR |</span>
+  </div>
+
+  <!-- Search label -->
+  <label class="col-sm-1 col-form-label text-sm-right">
+    Search:
+  </label>
+
+  <!-- Search input -->
+  <div class="col-sm-3">
+    <input type="text"
+           class="form-control"
+           placeholder="Search by name, email or mobile no"
+           [(ngModel)]="searchTerm"
+           (input)="onSearchChange()">
+  </div>
+
+  <!-- Search button -->
+  <div class="col-sm-2 d-flex align-items-center">
+  <button class="btn btn-primary w-100 search-btn"
+          (click)="onSearchButtonClick(searchTerm)">
+    <i class="feather icon-search"></i> Search
+  </button>
+</div>
+      </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Sr. No</th>
+                  <th (click)="sortBy('officerFullName')" style="cursor:pointer">
+                    User Details
+                    <span *ngIf="sortColumn === 'officerFullName'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                  <th (click)="sortBy('designation')" style="cursor:pointer">
+                    Profile Detailss
+                    <span *ngIf="sortColumn === 'designation'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                  <th (click)="sortBy('designation')" style="cursor:pointer">
+                    Designation
+                    <span *ngIf="sortColumn === 'designation'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                  <th>Email</th>
+                  <th>Contact No</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of displayedData ; index as i">
+                  <td><strong>{{ (currentPage - 1) * pageSize + i + 1 }}</strong></td>
+                  <td>
+                    <strong>UserName : {{ item.username }}</strong> <br>
+                    <span>Circle Name : {{item.circleName}}</span>
+                  </td>
+                  <td><strong>Profile Name : {{ item.userProfileName }}</strong> <br>
+                    Profile Id : {{item.userProfileId}} 
+                  </td>
+                  <td>{{ item.designation || '-' }}, {{item.circleName}}</td>
+                  <td>{{ item.email || '-' }}</td>
+                  <td>{{ item.contactNo || '-' }}</td>
+                  <td class="text-center">
+                    <button *ngIf="item.designation !== 'Industry User'" class="btn btn-primary btn-sm" (click)="onTransferClick(transferContent, item)">
+                      <i class="feather icon-repeat"></i> Transfer
+                    </button><br>
+                    <!-- <button class="btn btn-danger btn-sm mt-2" (click)="onResetPasswordClick(passwordContent, item)">
+                      <i class="feather icon-repeat"></i> Reset Password
+                    </button> <br>
+                    <button class="btn btn-success btn-sm mt-2" (click)="onEditClick(editModel,item)">
+                      <i class="feather icon-edit"></i> Edit
+                    </button> -->
+                    <button class="btn btn-success btn-sm mt-2" (click)="onEditClick(editModel,item)" *ngIf="item.designation == 'Industry User'">
+                      <i class="feather icon-edit"></i> Edit
+                    </button>
+                  </td>
+
+                </tr>
+                <tr *ngIf="displayedData.length === 0">
+                  <td colspan="5" class="text-center text-danger">No records found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <nav *ngIf="totalPages > 1" aria-label="Page navigation" class="m-t-10">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="changePage(currentPage - 1)" href="javascript:void(0)">
+                Previous
+              </a>
+            </li>
+            <li
+              class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="currentPage === i + 1">
+              <a class="page-link" (click)="changePage(i + 1)" href="javascript:void(0)">
+                {{ i + 1 }}
+              </a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)" href="javascript:void(0)">
+                Next
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #transferContent let-modal>
+  <div class="modal-header bg-primary text-white">
+    <h4 class="modal-title font-weight-bold">Transfer Official</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card user-profile-list mb-4">
+          <div class="card-header">
+            <h5>Current Official Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <p><strong>User Name:</strong> {{ currentOfficial?.username }}</p>
+              </div>
+              <div class="col-md-6 mb-2">
+                <p><strong>Official Name:</strong> {{ currentOfficial?.userProfileName }}</p>
+              </div>
+              <div class="col-md-6 mb-2">
+                <p><strong>Profile Id:</strong> {{ currentOfficial?.userProfileId }}</p>
+              </div>
+              <div class="col-md-6 mb-2">
+                <p><strong>Designation:</strong> {{ currentOfficial?.designation }}</p>
+              </div>
+              <div class="col-md-6 mb-2">
+                <p><strong>Mobile No:</strong> {{ currentOfficial?.contactNo }}</p>
+              </div>
+              <div class="col-md-6 mb-2">
+                <p><strong>Email:</strong> {{ currentOfficial?.email }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form [formGroup]="InputForm" (ngSubmit)="onTransferOfficialClick()">
+          <div class="card user-profile-list mb-4">
+            <div class="card-header">
+              <h5>Select Transfer To Official</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="col-form-label">Transfer Official</label>
+                <select class="form-control"  (change)="onOfficialChange($event)">
+                  <option value="">-- Please Select --</option>
+                  <option *ngFor="let official of departmentOfficialList" [value]="official.userProfileId">
+                    {{ official.officerName }} - ProfileId: {{ official.userProfileId }} - Mobile No: {{ official.mobileNo }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="selectedOfficial" class="card user-profile-list mb-4">
+            <div class="card-header">
+              <h5>Transfer User Details</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-6 mb-2">
+                      <p><strong>Official Name:</strong> {{ selectedOfficial?.officerName }}</p>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <p><strong>Profile Id:</strong> {{ selectedOfficial?.userProfileId }}</p>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <p><strong>Designation:</strong> {{ selectedOfficial?.designation }}</p>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <p><strong>Mobile No:</strong> {{ selectedOfficial?.mobileNo }}</p>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <p><strong>Email:</strong> {{ selectedOfficial?.email }}</p>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-2">
+                  <img  [src]="selectedOfficial?.signature" style="width: 70%;">
+                </div>            
+              </div>
+            </div>
+          </div>
+
+           <div *ngIf="selectedOfficial" class="card user-profile-list mb-4">
+            <div class="card-header">
+              <h5>Transfer</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <p><strong>Remarks:</strong>
+                        <input class="form-control" formControlName="remarks">
+                         <div *ngIf="InputForm.get('remarks').touched && InputForm.get('remarks').errors?.required" class="text-danger">
+                              Remarks is required.
+                         </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <p><strong>Attachmant:</strong>
+                          <input class="form-control" type="file"  accept = "application/pdf" (change)="onFileSelected($event)">
+                    </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">
+              Dismiss
+            </button>
+            <button type="submit" class="btn btn-success px-4">
+              Transfer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- <ng-template #passwordContent let-modal>
+    <div class="modal-header bg-primary text-white">
+      <h4 class="modal-title font-weight-bold">Reset Password</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <form [formGroup]="InputFormPassword" (ngSubmit)="onSubmit()">
+                  <div class="row justify-content-md-center">
+                    <div class="col-md-10 mb-3">
+                      <label>User Name<span style="color:red"><sup><strong>*</strong></sup></span></label>
+                        <input class="form-control" type="text"  formControlName="username"  readonly>
+                    </div>
+                  </div>
+                     <div class="row justify-content-md-center text-left captcha">
+                      <div class="col-md-10 mb-3">
+                        <label>New Password<span style="color:red"><sup><strong>*</strong></sup></span></label>
+                          <input class="form-control" type="password" formControlName="password"  placeholder="New Password">         
+                        <div class="error-messages">
+                          <ng-container *ngFor="let error of error_messages.password">
+                            <div class="error-message"
+                              *ngIf="InputFormPassword.get('password').hasError(error.type) && (InputFormPassword.get('password').dirty || InputFormPassword.get('password').touched)">
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-md-center text-left captcha">
+                      <div class="col-md-10">                 
+                          <label>Confirm Password<span style="color:red"><sup><strong>*</strong></sup></span></label>
+                            <input class="form-control" type="password" formControlName="cofrmPassword" maxlength="30" autocomplete="off">       
+                          <div class="error-messages">
+                            <ng-container>
+                              <div class="error-message"
+                                *ngIf="InputFormPassword.hasError('notSame') && (InputFormPassword.get('cofrmPassword').dirty || InputFormPassword.get('cofrmPassword').touched)">
+                                Passwords do not match
+                              </div>
+                            </ng-container>
+                          </div>
+                      </div>
+                    </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-success mt-5">Submit</button>
+                  </div>
+                </form>
+
+                <button type="submit" class="btn btn-danger float-right" (click)="modal.close('Close click')">Dismiss</button>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add New User</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <form [formGroup]="InputForm" (ngSubmit)="onSubmitEmployeeData()">
+                     <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.gender.invalid && (submitted || formControls.gender.dirty || formControls.gender.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="gender">Empanelled user type</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="gender">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "1"> Competent Person </option>
+                                    <option value= "2"> Empanelled Architect </option>
+                                    <option value= "3"> Empanelled Engineer </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.dateOfBirth.invalid && (submitted || formControls.dateOfBirth.dirty || formControls.dateOfBirth.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="dateOfBirth">Username (Username is generated automatically..!)</label>
+                                <input type="text" class="form-control" formControlName="dateOfBirth">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-4">
+                            <div class="form-group" [ngClass]="formControls.name.invalid && (submitted || formControls.name.dirty || formControls.name.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="name">First Name</label>
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" [ngClass]="formControls.fatherOrHusbandName.invalid && (submitted || formControls.fatherOrHusbandName.dirty || formControls.fatherOrHusbandName.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="fatherOrHusbandName">Middle Name</label>
+                                <input type="text" class="form-control " formControlName="fatherOrHusbandName">
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="form-group" [ngClass]="formControls.fatherOrHusbandName.invalid && (submitted || formControls.fatherOrHusbandName.dirty || formControls.fatherOrHusbandName.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="fatherOrHusbandName">Last Name</label>
+                                <input type="text" class="form-control " formControlName="fatherOrHusbandName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.name.invalid && (submitted || formControls.name.dirty || formControls.name.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="name">Contact No</label>
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.fatherOrHusbandName.invalid && (submitted || formControls.fatherOrHusbandName.dirty || formControls.fatherOrHusbandName.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="fatherOrHusbandName">Email</label>
+                                <input type="text" class="form-control " formControlName="fatherOrHusbandName">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.gender.invalid && (submitted || formControls.gender.dirty || formControls.gender.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="gender">District</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="gender">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "1"> Competent Person </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="formControls.gender.invalid && (submitted || formControls.gender.dirty || formControls.gender.touched) ? 'form-validation-icon-input' : ''">
+                                <label for="gender">Tehsil</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="gender">
+                                    <option [selected]="true" value="">-- Please Select --</option>
+                                    <option value= "1"> Competent Person </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Add Empanelled Person</button>
+                    </div>
+                </form>
+                <button type="submit" class="btn btn-danger float-right" (click)="modal.close('Close click')">Dismiss</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #editModel let-modal>
+    <div class="register-modal-header">
+        <h4 class="text-center form-header m-t-20">Edit Profile Details</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+              <div class="card-body pro-det-edit">
+                  <form #userForm="ngForm">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Full Name :</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" placeholder="Full Name" [(ngModel)]="selectedUser.userProfileName" name="officerFullName"/>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Email :</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" placeholder="Email" [(ngModel)]="selectedUser.email" name="email"/>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Mobile :</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" placeholder="Mobile" [(ngModel)]="selectedUser.contactNo" name="contactNo"/>
+                        </div>
+                      </div>
+
+                      <div class="card-footer d-flex justify-content-between">
+                        <div class="w-100 d-flex justify-content-center">
+                          <button type="submit" class="btn btn-success px-4" (click)="onUpdateProfileDetailClick(selectedUser,modal)">
+                            Update Details
+                          </button>
+                        </div>
+                      </div>
+                  </form>
+                <button type="submit" class="btn btn-danger float-right" (click)="modal.close('Close click')">Dismiss</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-template>

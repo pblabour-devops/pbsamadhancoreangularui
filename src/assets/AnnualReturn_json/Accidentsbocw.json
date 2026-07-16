@@ -1,0 +1,23 @@
+ [
+  {
+    "Section": {
+      "SectionSortId": 25,
+      "SectionTitle": "",
+      "SubSections": [
+ {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "Total number of Accidents", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "Number of Accidents resulting in disablement of building workers for less than 48 hours,the number of building workers involved and number of mandays lost", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "The number of accident resulting in disablement of building workers beyond 48 hours,but not resulting in any permanent partial or permanent total disablement ,the number of building workers involved and the number of man-days lost on account of such accidents", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 4, "LableTitle": "The number of accidents resulting in permanent partial or permanent total disablement,the number of building workers involved, and the number of mandays lost on account of such accidents", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 5, "LableTitle": "Number of Accidents resulting in deaths of building workers and the number of resultant deaths", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 6, "LableTitle": "Changes,if any,the management of the stablishment,its locations,or any other particulars furnished to the registering officers in application for Registration indicating also dates", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] }
+            
+          ]
+        }
+      ]
+    }
+  }
+]

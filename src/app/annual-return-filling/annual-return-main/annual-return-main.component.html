@@ -1,0 +1,209 @@
+<div class="form-wrapper p-4" *ngIf="formJson">
+  <h5 class="section-heading mb-3">{{ formJson[0].Section.SectionTitle }}</h5>
+
+
+  <div *ngIf="(isTablesSection() || isSimpleTableSection()) && !isSignatureSection(); else defaultFormLayout">
+    <h6 class="sub-heading mb-3">{{ formJson[0].Section.SubSections[0].SubSectionTitle }}</h6>
+
+    
+    <div class="mb-3 col-md-6" *ngIf="isTablesSection()">
+      <label class="form-label small fw-semibold">
+        Number of Inspections Conducted <span class="text-danger">*</span>
+      </label>
+      <input type="number" class="form-control form-control-sm"
+             [(ngModel)]="totalInspectionsValue"
+             [disabled]="isLockStep"
+             [ngClass]="{'input-invalid': isSubmitted && !totalInspectionsValue}">
+    </div>
+
+    
+    <div class="table-responsive mb-3">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th *ngFor="let col of dynamicTableColumns">{{ col.LableTitle || col.ColumnTitle }}</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dynamicTableRows; let rowIndex = index">
+            <td *ngFor="let col of dynamicTableColumns">
+              <input *ngIf="col.DataType === 'Text' || col.DataType === 'Number'"
+                     [type]="col.DataType === 'Number' ? 'number' : 'text'"
+                     class="form-control form-control-sm"
+                     [(ngModel)]="row[col.LableTitle || col.ColumnId]"
+                     [disabled]="isLockStep" />
+
+              <input *ngIf="col.DataType === 'DateTime'"
+                     type="datetime-local"
+                     class="form-control form-control-sm"
+                     [(ngModel)]="row[col.LableTitle || col.ColumnId]"
+                     [disabled]="isLockStep" />
+
+              <select *ngIf="col.DataType === 'Option'"
+                      class="form-select form-select-sm"
+                      [(ngModel)]="row[col.LableTitle || col.ColumnId]"
+                      [disabled]="isLockStep">
+                <option *ngFor="let opt of col.Options" [value]="opt">{{ opt }}</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="btn btn-sm btn-danger"
+                      (click)="removeTableRow(rowIndex)"
+                      [disabled]="isLockStep || dynamicTableRows.length === 1">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button type="button" class="btn btn-sm btn-primary"
+            (click)="isSimpleTableSection() ? addSimpleTableRow() : addTableRow()"
+            [disabled]="isLockStep">
+      + Add Row
+    </button>
+  </div>
+
+ 
+  <div *ngIf="isSignatureSection()">
+    <div *ngFor="let sub of formJson[0].Section.SubSections" class="mb-4">
+      <div class="col-md-6 mb-3" *ngFor="let label of sub.Lables">
+        <label class="form-label small fw-semibold">
+          {{ label.LableTitle }}
+          <span *ngIf="label.LableValueInfo?.IsMendatory" class="text-danger">*</span>
+        </label>
+
+        <input *ngIf="label.LableValueInfo.DataType === 'File'"
+               type="file"
+               accept="image/*,.pdf"
+               class="form-control form-control-sm"
+               (change)="onFileSelected($event, label)"
+               [disabled]="isLockStep" />
+
+        <div *ngIf="label.LableValueInfo.Value" class="mt-2 text-center">
+          <img *ngIf="isImage(label.LableValueInfo.Value)"
+               [src]="label.LableValueInfo.Value"
+               style="max-height: 100px; border:1px solid #ccc; padding:4px;" />
+          <a *ngIf="!isImage(label.LableValueInfo.Value)"
+             [href]="label.LableValueInfo.Value" target="_blank">View File</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <ng-template #defaultFormLayout>
+    <div *ngIf="!isSignatureSection()">
+      <div *ngFor="let sub of formJson[0].Section.SubSections" class="mb-4">
+        <h6 class="sub-heading mb-3">{{ sub.SubSectionTitle }}</h6>
+
+        
+        <div class="row" *ngIf="sub.Lables?.length > 0">
+          <div class="col-md-6 mb-3" *ngFor="let label of sub.Lables">
+            <label class="form-label small fw-semibold">
+              {{ label.LableTitle }}
+              <span *ngIf="label.LableValueInfo?.IsMendatory" class="text-danger">*</span>
+            </label>
+
+            <input *ngIf="label.LableValueInfo.DataType === 'Text' || label.LableValueInfo.DataType === 'Number'"
+                   [type]="label.LableValueInfo.DataType === 'Number' ? 'number' : 'text'"
+                   class="form-control form-control-sm"
+                   [(ngModel)]="label.LableValueInfo.Value"
+                   [disabled]="isLockStep" />
+
+            <input *ngIf="label.LableValueInfo.DataType === 'DateTime'"
+                   type="datetime-local"
+                   class="form-control form-control-sm"
+                   [(ngModel)]="label.LableValueInfo.Value"
+                   [disabled]="isLockStep" />
+
+            <select *ngIf="label.LableValueInfo.DataType === 'Option'"
+                    class="form-select form-select-sm"
+                    [(ngModel)]="label.LableValueInfo.Value"
+                    [disabled]="isLockStep">
+              <option *ngFor="let opt of label.LableValueInfo.Options" [value]="opt">{{ opt }}</option>
+            </select>
+
+            <input *ngIf="label.LableValueInfo.DataType === 'File'"
+                   type="file"
+                   accept="image/*,.pdf"
+                   class="form-control form-control-sm"
+                   (change)="onFileSelected($event, label)"
+                   [disabled]="isLockStep" />
+          </div>
+        </div>
+
+        
+        <div *ngIf="sub.Table">
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm">
+              <thead class="table-light">
+                <tr>
+                  <th *ngFor="let col of sub.Table.Columns">{{ col.ColumnTitle }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of sub.Table.Rows">
+                  <td *ngFor="let col of sub.Table.Columns"
+                      [ngStyle]="{ 'min-width': col.ColumnId === 'category' ? '300px' : '90px' }"
+                      [style.wordBreak]="'break-word'">
+                    <input [type]="col.DataType === 'Number' ? 'number' : 'text'"
+                           class="form-control form-control-sm"
+                           [(ngModel)]="row[col.ColumnId]"
+                           [disabled]="isLockStep || (col.ColumnId === 'category')"
+                           [required]="col.IsMendatory"
+                           [ngStyle]="{ 'min-width': col.ColumnId === 'category' ? '480px' : '80px' }" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+
+<div
+  *ngIf="hiddenPrintHtmlRendered && formJson"
+  #printSection
+  style="position: absolute; left: -9999px; top: -9999px; width: 1000px; background: white;"
+>
+  <div class="form-wrapper p-4">
+    <h4 class="text-center mb-3">MPR (Labour Wing)</h4>
+    <h5 class="section-heading mb-3">{{ formJson[0]?.Section?.SectionTitle }}</h5>
+
+    <div *ngFor="let sub of formJson[0]?.Section?.SubSections" class="mb-4">
+      <h6 class="sub-heading mb-3">{{ sub?.SubSectionTitle }}</h6>
+
+      <div *ngIf="sub?.Lables?.length" class="row">
+        <div *ngFor="let label of sub.Lables" class="col-md-6 mb-3">
+          <label>{{ label.LableTitle }}</label>
+          <div>{{ label.LableValueInfo?.Value || '-' }}</div>
+        </div>
+      </div>
+
+      <div *ngIf="sub?.Table?.Rows?.length">
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th *ngFor="let col of sub.Table.Columns">{{ col.ColumnTitle }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of sub.Table.Rows">
+              <td *ngFor="let col of sub.Table.Columns">
+                {{ row[col.ColumnId] || '-' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,87 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 52,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Wages Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Adolescent", "ColumnTitle": "Adolescent", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false }
+
+            ],
+            "Rows": [
+              { "category": "1. Rate of wages--category wise" }
+
+
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 2,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "InCash", "ColumnTitle": "In Cash", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "InKind", "ColumnTitle": "In Kind", "DataType": "Number", "IsMendatory": false }
+
+
+            ],
+            "Rows": [
+              { "category": "1. Gross Wages Paid" }
+
+
+            ]
+          }
+        },
+        {
+          "SubSectionSortId": 3,
+          "SubSectionTitle": "",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Fines", "ColumnTitle": "Fines", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "DamagesOrLoss", "ColumnTitle": "Deductions for damages or loss", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "OtherDeductions", "ColumnTitle": "Deductions for damages or loss", "DataType": "Number", "IsMendatory": false }
+
+
+            ],
+            "Rows": [
+              { "category": "1. Deductions" }
+
+
+            ]
+          }
+        },
+        {
+        "SubSectionSortId": 4,
+        "SubSectionTitle": "",
+        "Lables": [
+          {
+            "LableSortId": 1,
+            "LableTitle": "(7) Number of workers who have granted leave with wages during the year",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          },
+          {
+            "LableSortId": 2,
+            "LableTitle": "(8) Number of Welfare amenities provided:Statutory (specify the Statute)",
+            "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": true, "IsVisible": true, "Id": "" },
+            "LableRemarkInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": false, "Id": "" },
+            "SubLables": []
+          }
+        ]
+    }
+
+      ]
+    }
+  }
+]

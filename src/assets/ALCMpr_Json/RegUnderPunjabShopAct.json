@@ -1,0 +1,208 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 19,
+      "SectionTitle": "Registrations under Punjab Shops and Commercial Establishment Act, 1958",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Registration Details",
+          "Lables": [
+            {
+              "LableSortId": 1,
+              "LableTitle": "Registration beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "",
+               "IsMendatory": true, 
+               "IsVisible": true, 
+               "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 2,
+              "LableTitle": "Number of Workers beginning of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 3,
+              "LableTitle": "No. of registration applied during the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text",
+               "Value": "", 
+               "IsMendatory": false,
+                "IsVisible": true, 
+                "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 4,
+              "LableTitle": "Registered During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 5,
+              "LableTitle": "Number Of Workers During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 6,
+              "LableTitle": "De-Register During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 7,
+              "LableTitle": "De-Number Of Workers During the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 8,
+              "LableTitle": "Total Shops end of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 9,
+              "LableTitle": "Total Workers end of the Month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+             {
+              "LableSortId": 10,
+              "LableTitle": "Number of Registration issued within Time Limit prescribed in this month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            },
+            {
+              "LableSortId": 11,
+              "LableTitle": "Deemed registration in this month",
+              "LableValueInfo": { "DataType": "Number", 
+              "Value": "", 
+              "IsMendatory": true, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "LableRemarkInfo": { "DataType": "Text", 
+              "Value": "", 
+              "IsMendatory": false, 
+              "IsVisible": true, 
+              "Id": "" 
+            },
+              "SubLables": []
+            }
+         
+          ]
+        }
+       
+      ]
+    }
+  }
+ 
+ 
+]
+   

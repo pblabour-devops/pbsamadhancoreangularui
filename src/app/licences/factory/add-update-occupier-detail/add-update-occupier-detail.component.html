@@ -1,0 +1,293 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" id="mainForm">
+    <input type="hidden" formControlName="occupierAndManagerDetailId">
+    <input type="hidden" formControlName="factoryLicenceRefId">
+    <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="col-md-12">
+                <!-- <app-app-form-stepper-navigation-panel [appSteps]="appFormStepsList">
+                </app-app-form-stepper-navigation-panel> -->
+            </div>
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center">Factory License under Punjab Factory Rules 1952. <br> The Factories Act, 1948</h4>
+                    <p class="text-center purpose-type-header">
+                        <!-- {{common.getApplicationPurposeTypeDesc(Input_Form.controls.applicationPurposeType.value)}} -->
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12 text-right text-danger">
+                * mandatory fields
+            </div>
+            <div class="col-md-12">
+                <div class="card-body">
+                    <!-- <app-project-site-snapshot [injectionType]="'public'"  [projectSiteRefId]="projectSiteRefId" [appRefId]="appRefId" [projectSiteVersion]="projectSiteVersion" [isEditAllowed] = "isEditAllowed"></app-project-site-snapshot> -->
+                    
+                    <!-- <h5>Establishment & address</h5>
+                    <div class="col-md-12 col-sm-12 m-t-20">
+                        <app-establishment-info-card [appRefId]="appRefId"></app-establishment-info-card>
+                    </div>  -->
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">2.</span>&nbsp; Manager Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <!-- [ngClass]="formControls.managerFullName.invalid && (submitted || formControls.managerFullName.dirty || formControls.managerFullName.touched) ? 'form-validation-icon-input' : ''" -->
+                            <div class="form-group">
+                                <label for="managerFullName" class="required">2.1. Manager Full Name </label>
+                                <input type="text" class="form-control" formControlName="managerFullName">
+                                <div *ngIf="Input_Form.get('managerFullName').errors?.required" class="text-danger">
+                                    Manager full name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="managerFatherName" class="required">2.2. Manager Father Name </label>
+                                <input type="text" class="form-control" formControlName="managerFatherName">
+                                <div *ngIf="Input_Form.get('managerFatherName').errors?.required" class="text-danger">
+                                    Manager father name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="managerFullAddress" class="required">2.3. Manager Full Address </label>
+                                <input type="text" class="form-control" formControlName="managerFullAddress">
+                                <div *ngIf="Input_Form.get('managerFullAddress').errors?.required" class="text-danger">
+                                    Manager full address is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="managerMobile" class="required">2.4. Manager Mobile No </label>
+                                <input type="text" class="form-control" formControlName="managerMobile" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('managerMobile').errors?.required" class="text-danger">
+                                    Manager mobile is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="managerEmail" class="required">2.5. Manager Email </label>
+                                <input type="text" class="form-control" formControlName="managerEmail">
+                                <div *ngIf="Input_Form.get('managerEmail').errors?.required" class="text-danger">
+                                    Manager email is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="managerResidentialAddress" class="required">2.6. Manager Residential Address </label>
+                                <input type="text" class="form-control" formControlName="managerResidentialAddress">
+                                <div *ngIf="Input_Form.get('managerResidentialAddress').errors?.required" class="text-danger">
+                                    Manager residential address is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <h5 class="m-t-30"><span class="badge badge-primary">3.</span>&nbsp; Occupier Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierFullName" class="required">3.1. Occupier Full Name </label>
+                                <input type="text" class="form-control" formControlName="occupierFullName">
+                                <div *ngIf="Input_Form.get('occupierFullName').errors?.required" class="text-danger">
+                                    Occupier Full name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierFatherName" class="required">3.2. Occupier Father Name </label>
+                                <input type="text" class="form-control" formControlName="occupierFatherName">
+                                <div *ngIf="Input_Form.get('occupierFatherName').errors?.required" class="text-danger">
+                                    Occupier father name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierFullAddress" class="required">3.3. Occupier Full Address </label>
+                                <input type="text" class="form-control" formControlName="occupierFullAddress">
+                                <div *ngIf="Input_Form.get('occupierFullAddress').errors?.required" class="text-danger">
+                                    Occupier full address is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierMobile" class="required">3.4. Occupier Mobile No </label>
+                                <input type="text" class="form-control" formControlName="occupierMobile" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                                <div *ngIf="Input_Form.get('occupierMobile').errors?.required" class="text-danger">
+                                    Occupier mobile is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierEmail" class="required">3.5. Occupier Email </label>
+                                <input type="text" class="form-control" formControlName="occupierEmail">
+                                <div *ngIf="Input_Form.get('occupierEmail').errors?.required" class="text-danger">
+                                    Occupier email is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="occupierResidentialAddress" class="required">3.6. Occupier Residential Address </label>
+                                <input type="text" class="form-control" formControlName="occupierResidentialAddress">
+                                <div *ngIf="Input_Form.get('occupierResidentialAddress').errors?.required" class="text-danger">
+                                    Occupier residential address is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">4.</span>&nbsp; Owner Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ownerName" class="required">4.1. Owner Name </label>
+                                <input type="text" class="form-control" formControlName="ownerName">
+                                <div *ngIf="Input_Form.get('ownerName').errors?.required" class="text-danger">
+                                    Owner name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ownerPremisesAddress" class="required">4.2. Owner Premises Address </label>
+                                <input type="text" class="form-control" formControlName="ownerPremisesAddress">
+                                <div *ngIf="Input_Form.get('ownerPremisesAddress').errors?.required" class="text-danger">
+                                    Owner premises address is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">5.</span>&nbsp; Stability Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="stabilityCertificateNumber" class="required">5.1. Stability Certificate Number </label>
+                                <input type="text" class="form-control" formControlName="stabilityCertificateNumber">
+                                <div *ngIf="Input_Form.get('stabilityCertificateNumber').errors?.required" class="text-danger">
+                                    Stability certificate number is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="stabilityCertificateDate" class="required">5.2. Stability Certificate Date <span class="text-primary" style="font-size: x-small;margin-left: 2px;">(mm/dd/yyyy)</span></label>
+                                <input type="date" class="form-control" formControlName="stabilityCertificateDate">
+                                <div *ngIf="Input_Form.get('stabilityCertificateDate').errors?.required" class="text-danger">
+                                    Stability Certificate Date is required.
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="stabilityCertificateDate" class="required">Stability Certificate Date <span class="text-primary" style="font-size: x-small;margin-left: 2px;">(mm/dd/yyyy)</span></label>
+                                <div class="input-group">
+                                    <input class="form-control" formControlName="stabilityCertificateDate" placeholder="yyyy-mm-dd" name="stabilityCertificateDate" ngbDatepicker #stabilityCertificateDate="ngbDatepicker">
+                                    <div class="btn btn-outline-info" (click)="stabilityCertificateDate.toggle()"> <i class="feather icon-calendar"></i></div>
+                                </div>
+                                <div *ngIf="Input_Form.get('stabilityCertificateDate').errors?.required" class="text-danger">
+                                    Stability Certificate Date is required.
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="stabilityDOFNumber" class="required">5.3. Stability DOF Number </label>
+                                <input type="text" class="form-control" formControlName="stabilityDOFNumber">
+                                <div *ngIf="Input_Form.get('stabilityDOFNumber').errors?.required" class="text-danger">
+                                    Stability DOF number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="m-t-30"><span class="badge badge-primary">6.</span>&nbsp; Other Details</h5>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checklist_IsBuildingPlanApproved" class="required">6.1. Is Building Plan Approved ? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="checklist_IsBuildingPlanApproved">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('checklist_IsBuildingPlanApproved').errors?.required" class="text-danger">
+                                    Is building plan approved is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checklist_IsLabourWelfareFundPaid" class="required">6.2. Is Labour Welfare Fund Paid ?</label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="checklist_IsLabourWelfareFundPaid">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('checklist_IsLabourWelfareFundPaid').errors?.required" class="text-danger">
+                                    Is labour welfare fund paid is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checklist_IsAnnualReturnFiled" class="required">6.3. Is Annual Return Filed ? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="checklist_IsAnnualReturnFiled">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('checklist_IsAnnualReturnFiled').errors?.required" class="text-danger">
+                                    Is annual return filled is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checklist_IsStabilityCertificateAttached" class="required">6.4. Is Stability Certificate Attached ? </label>
+                                <select class="form-select form-select-sm" class="form-control" formControlName="checklist_IsStabilityCertificateAttached">
+                                    <option [selected]="true" value="">-- Select --</option>
+                                    <option value= "0"> No </option>
+                                    <option value= "1"> Yes </option>
+                                </select>
+                                <div *ngIf="Input_Form.get('checklist_IsStabilityCertificateAttached').errors?.required" class="text-danger">
+                                    Is stability certificate attached is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- <app-go-to-home-button class="btn btn-outline-primary" style="border-radius: 25px;"></app-go-to-home-button> -->
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button *ngIf="genericFormData?.isLocked==false || genericFormData?.isEditAllowed==true; else lockedMsg" [disabled]="hasSubmitClicked" type="submit"  class="btn btn-primary">Save & Next</button>
+                        <ng-template #lockedMsg><span class="font-weight-bold text-danger"><i class="icon feather icon-lock"></i> Form Locked</span></ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

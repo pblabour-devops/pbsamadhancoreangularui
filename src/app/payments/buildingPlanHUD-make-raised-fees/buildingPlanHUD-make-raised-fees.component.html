@@ -1,0 +1,150 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card">
+            <div class="card-header text-center">
+                <span class="f-20 f-w-600 form-header">Combined Proposed Approval of Building Plans (HUD and Factories)</span>
+            </div>
+            <div class="card-body">
+                    <h5>Establishment & address</h5>
+                    <div class="col-md-12 col-sm-12 m-t-20">
+                        <!-- <app-establishment-info-card [appRefId]="appRefId"></app-establishment-info-card> -->
+                    </div>  
+            
+                    <div class="card bg-light" *ngIf="feesUnderRTB.length>0">
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <h6><span class="badge badge-light-info"> Fees already been paid under In-Principal approval. </span></h6>
+                                <a>This applicant has already been paid some fees component under Right-To-Business Act.</a>
+                            </div>
+                            <div  class="row form-row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Application fee header</th>
+                                            <th class="text-center">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of feesUnderRTB; let ndx = index">
+                                            <td>{{ndx+1}}</td>
+                                            <td>{{item.bifurcationname}}</td>
+                                            <td class="text-center">{{item.bifurcationamount | number : '1.2-2'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <h5 class="m-t-20">Raised Fee Details</h5>
+                    <div class="row form-row">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Application fee header</th>
+                                    <th>Description</th>
+                                    <th class="text-center">Fee raised by officer (A)</th>
+                                    <th class="text-center">Fee already paid under In-principle approval (B)</th>
+                                    <th class="text-center">Fee payable (A-B)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="6" class="text-center alert alert-pink"><h5>Section-I</h5></td></tr>
+                            </tbody>
+                            <tbody *ngFor="let raisedFee of raisedFeeList; let ndx = index">
+                                <tr>
+                                    <td>{{ndx+1}}</td>
+                                    <td>{{raisedFee?.feesHeader.feeHeaderTitle}}</td>
+                                    <td>{{raisedFee?.description}}</td>
+                                    <!-- <td class="text-right">
+                                        <span *ngIf="feeHeader?.isDeduductible; else plusSign">(-)</span>
+                                        <ng-template #plusSign><span>(+)</span></ng-template>
+                                    </td> -->
+                                    <!-- <td>
+                                        <input type="text" (keyup)="setFeeInHeader($event, feeHeader?.feeHeaderId)" class="form-control" value="{{feeHeader?.amountCalculated}}">
+                                    </td> -->
+                                    <th>
+                                        <span style="float: right;">{{raisedFee?.amountRaised}}</span>
+                                    </th>
+                                    <td>
+                                        <input type="text" (change)="onAlreadyFeePaidChange($event, ndx, raisedFee?.feeHeaderRefId)" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 8)" (keyup)="setFeeInHeader($event, raisedFee?.feeHeaderRefId)" class="form-control" style="text-align: right;" value="{{raisedFee?.amountAlreadyPaid}}">
+                                    </td>
+                                    <th>
+                                        <span style="float: right;">{{raisedFee?.amountPayable}}</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" *ngIf="ndx==2 || ndx==4" class="text-center alert alert-pink">
+                                        <h5><span *ngIf="ndx==2">Section-II</span>
+                                        <span *ngIf="ndx==4">Section-III</span></h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="text-right text-danger" colspan="5">Net fee payable: </th>
+                                    <th class="text-right text-danger">
+                                        {{netFeeCalculated}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6" class="text-danger font-weight-light text-right">
+                                        <span *ngIf="netFeeCalculated>0">({{netFeeCalculated | numberToWord}} only)</span>
+                                        <span *ngIf="netFeeCalculated<=0">Total fee payable: NILL</span>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+            
+                    <div class="row">  
+                        <div class="col-md-12">
+                            <app-file-upload *ngIf="isDocumentUploadOption && appRefId" [appRefId]='appRefId' [isUploadShow]='true' [deleteTempFiles]='true' [userId]="userId" [currentActionCode]='400' [allowedActionCode]='7' [applicationaType]='5'></app-file-upload>
+                        </div>
+                        <div *ngIf="isSubmited && isDocumentUploadOption && !isOptional" class="text-danger">
+                            Please upload document (Fee receipt (In principal Approval under Right to Business Rules))..!
+                        </div>
+                    </div>
+            
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-12 text-danger font-weight-bold" *ngIf="netFeeCalculated==0" >
+                                As per information provided, you have already paid all raised fees by officer and there is no any fee pending under raised fees. Please follow the below instructions:
+                                <ul>
+                                    <li>Please create a single pdf file of all related payment receipt proofs and upload before submit.</li>
+                                    <li>In case, you submit the application with this information, the system will assume there is none of the fee need to pay and the application will be move to the department directly for further actions.</li>
+                                    <li>Once you submit the application, the taken action will not be undone.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-danger">Home</button>
+                            </div>
+                            <div *ngIf="pageCode==1" class="col-md-6 text-right">
+                                <button *ngIf="netFeeCalculated>0" (click)="onSubmit(true)" [disabled]="actionTaken" class="btn btn-primary">Make Payment</button>
+                                <button *ngIf="netFeeCalculated==0" [disabled]="actionTaken" (click)="onSubmitToDepartment(takeActionAlertModal)" class="btn btn-primary">Submit to department</button>
+                                <!-- <span *ngIf="netFeeCalculated==0" class="font-weight-bold text-danger"><i class="icon feather icon-alert-circle"></i> Something went wrong. No fee calulated.</span> -->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #takeActionAlertModal let-modal>
+	<!-- <div class="modal-header">
+		<h4 class="modal-title" style="color: black;">Please confirm..!</h4>
+	</div> -->
+	<div class="modal-body text-center">
+		<img src="assets/images/notification-icon.svg" class="notification-icon" alt="modal-home-icon">
+		<h6>Are you sure to take this action?</h6>
+		<p class="notification-text-account">This action cannot be undone</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn  btn-danger"  (click)="onModelNoClick()">No</button>
+		<button type="button" (click)="onAlertModelYesClick()" class="btn  btn-success" >Yes</button>
+	</div>
+
+</ng-template>

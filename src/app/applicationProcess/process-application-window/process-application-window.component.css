@@ -1,0 +1,363 @@
+.icon-float {
+    position: fixed;
+    right: 0px;
+    top: 35%;
+    z-index: 999;
+}
+
+.icon-float ul {
+    padding: 0px;
+}
+
+.icon-float ul li {
+    list-style-type: none;
+}
+
+.icon-float ul li a {
+    display: block;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    padding: 0px;
+}
+.icon-float ul li{
+    margin-top: 0.5px;
+}
+
+.icon-float ul li a i {
+    padding: 8px;
+    width: 45px;
+    height: 100px;
+    text-align: center;
+    color: #fff;
+}
+
+.icon-float ul li a:hover {
+    transform: rotateY(180deg);
+}
+
+.icon-float ul li a:hover i {
+    transform: rotateY(180deg);
+}
+
+.sh {
+    background: #fff;
+    padding: 10px 0px;
+    font-size: 11px;
+    text-align: center;
+    color: #333;
+    border-top-left-radius: 5px;
+}
+
+.sh1 {
+    background: #333;
+    border-bottom-left-radius: 5px;
+}
+
+.tw1 {
+    background: #1da1f2;
+}
+
+.wa1 {
+    background: #34af23;
+}
+
+.sh {
+    background: #fff;
+    padding: 10px 0px;
+    font-size: 11px;
+    text-align: center;
+    color: #333;
+    border-top-left-radius: 5px;
+}
+
+.sh1 {
+    background: #333;
+    border-bottom-left-radius: 5px;
+}
+.h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #130e0e;
+    font-weight: 600;
+}
+.icon-float ul li a i
+{
+    padding: 5px;
+    font-size: 18px;
+    width: 40px;
+    color: #fff;
+    writing-mode: tb-rl;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: auto;
+}
+
+/* model popup */
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog{
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog{
+    left: 0;
+}
+    
+/*Right*/
+.modal.right.fade .modal-dialog {
+    right: -320px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+.modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-header {
+    border-bottom-color: #EEEEEE;
+    background-color: #FAFAFA;
+}
+
+/* ----- v CAN BE DELETED v ----- */
+body {
+background-color: #78909C;
+}
+
+.demo {
+padding-top: 60px;
+padding-bottom: 110px;
+}
+
+.btn-demo {
+margin: 15px;
+padding: 10px 15px;
+border-radius: 0;
+font-size: 16px;
+background-color: #FFFFFF;
+}
+
+.btn-demo:focus {
+outline: 0;
+}
+
+.demo-footer {
+position: fixed;
+bottom: 0;
+width: 100%;
+padding: 15px;
+background-color: #212121;
+text-align: center;
+}
+
+.demo-footer > a {
+text-decoration: none;
+font-weight: bold;
+font-size: 16px;
+color: #fff;
+}
+/* model close */
+.optionTab{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.menuItemTab{
+    top: 0;
+    position: absolute;
+}
+.tableDocument{
+    margin-top: -29px;
+    width: 156%;
+}
+.hideTab{
+    display: none;
+}
+.officename{
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+}
+
+.m-b-0{
+    font-weight: bold;
+}
+.card-border-c-green {
+    border-top: 4px solid #22a932;
+    background-color: #f9f9f9;
+}
+.alert alert-info{
+    margin-top: 20px;
+}
+.badge {
+    font-size: 100%;
+    padding: 0.35em 0.6em;
+    font-weight: 600;
+    margin: 0px;
+}
+.media-body {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+.mt-0, .my-0 {
+    margin-top: 0 !important;
+}
+.chat-card .received-chat .msg {
+    background: #d9ebff;
+    border-radius: 0 5px 5px 5px;
+}
+.chat-card .received-chat .msg {
+    background-color: #d9ebff;
+}
+.chat-card .msg {
+    margin-bottom: 5px;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+}
+
+.chat-card .msg {
+    padding: 3px 7px;
+    margin: 5px 0;
+    display: inline-block;
+}
+.m-t-10 {
+    margin-top: 10px;
+}
+p {
+    font-size: 14px;
+}
+.feed-blog li .feed-user-img {
+    color: #fff;
+}
+
+.card:hover {
+    box-shadow: 0 0 25px -5px #9e9c9e;
+}
+
+.email-card .nav-pills>li .nav-link.active, .email-card .nav-pills>li .show>.nav-link {
+    font-weight: 600;
+    border-color: rgba(255, 83, 112, 0.1);
+    font-size: 14px;
+}
+
+/* .card-border-d-gradient {
+    border-top: 4px solid #aeafaf;
+} */
+
+.card .bg-danger{
+    background: linear-gradient(45deg, #FF5370, #ff869a) !important;
+}
+.tableHead{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+}
+.bgLightGreen{
+    background-color: #dcf7f3;
+    color: #473B7B !important;
+}
+
+.uploadDocument{
+    margin-top: 10px;
+}
+.uploadDocumentRow{
+    margin-top: 25px;
+}
+.marginTop10{
+    margin-top: 10px;
+}
+
+.img-radius{
+    height: 65px;
+    width: 70px;
+}
+
+.email-card .nav-pills > li .nav-link {
+    font-weight: 600;
+    border-color: rgba(255, 83, 112, 0.1);
+    font-size: 14px;
+    padding: 7px 10px 15px 12px;
+    margin-left: -24px;
+    margin-top: 5px;
+}
+
+.list_div{
+    display: -webkit-inline-box;
+}
+
+.email-card .nav-pills>li .nav-link {
+    border-radius: 26px !important;
+    padding: 6px 62px 5px 44px!important;
+    border-left: none;
+    background-color: #D6D3D1;
+    color: #57534D;
+}
+
+
+.email-card .nav-pills>li .nav-link.active{
+    background: #3085e7;
+    color: white;
+}
+
+.navigation-icon{
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 31px;
+    height: 35px !important;
+    width: 35px;
+    margin-left: 10px;
+    margin-top: 4px;
+    padding: 1px 0px 0px 7px;
+    background: #525252;
+    cursor: pointer;
+    color: white;
+}
+
+.project-site{
+    background: #e4e8ed;
+    padding-left: 0;
+    padding-right: 0;
+}

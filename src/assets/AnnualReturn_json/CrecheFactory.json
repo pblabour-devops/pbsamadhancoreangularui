@@ -1,0 +1,61 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 7,
+      "SectionTitle": "FORM NO. 21 [Prescribed Under Section 110 of the Factories Act and Rule 107(1) of the Punjab Factory Rules,1952]",
+      "SubSections": [
+{
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "CRECHE (Only for those factories which are employing more than 30 women workers)",
+          "Lables": [
+            { "LableSortId": 1, "LableTitle": "(25) No. of creches provided", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 2, "LableTitle": "(26) Approximate average daily attendance of children at the creche", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+            { "LableSortId": 3, "LableTitle": "(27(A) No. of labour welfare officers (having prescribed qualification) appointed", "LableValueInfo": { "DataType": "Number", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+             {
+            "LableSortId": 4,
+            "LableTitle": "(27(B)) Whether ambulance room is provided ?",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          },
+            { "LableSortId": 5, "LableTitle": "(27(C)) State reasons for not appointing such officers not keeping ambulance room SAFETY OFFICER (only for those factories which are employing 1000 or more workers)", "LableValueInfo": { "DataType": "Text", "Value": "", "IsMendatory": false, "IsVisible": true, "Id": "" }, "SubLables": [] },
+             {
+            "LableSortId": 6,
+            "LableTitle": "(28) Wheather qualified Safety Officer is appointing?",
+            "LableValueInfo": {
+              "DataType": "Option",
+              "Options": ["Yes", "No"],
+              "Value": "",
+              "IsMendatory": true,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "LableRemarkInfo": {
+              "DataType": "Text",
+              "Value": "",
+              "IsMendatory": false,
+              "IsVisible": true,
+              "Id": ""
+            },
+            "SubLables": []
+          }
+            
+          ]
+        }
+     ]
+    }
+  }
+]

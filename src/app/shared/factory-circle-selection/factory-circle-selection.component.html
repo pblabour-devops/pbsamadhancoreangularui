@@ -1,0 +1,76 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th *ngIf="!isReadOnly">Select</th>
+                <th>Factory Circle Name</th>
+                <th>Jurisdiction Area</th>
+            </tr>
+        </thead>
+
+        <!-- <tbody *ngIf="!isReadOnly">
+            <tr *ngFor="let item of factoryCircleData">
+                <td [ngClass]="item.factoryCircleId==selectedFactoryCircleId ? 'bg-warning' : ''">
+                    <div class="col-md-3" style="margin-bottom: 15px;">
+                        <div class="form-group d-inline">
+                            <div class="radio radio-success d-inline">
+                                <input [checked]="item.factoryCircleId==selectedFactoryCircleId" type="radio"
+                                    name="labCircleOption" id="{{item.factoryCircleId}}"
+                                    (click)="setFactoryCircle(item.factoryCircleId)">
+                                <label for="{{item.factoryCircleId}}" class="cr"></label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td [ngClass]="item.factoryCircleId==selectedFactoryCircleId ? 'bg-warning' : ''">{{item.factoryCircleName}}</td>
+                <td [ngClass]="item.factoryCircleId==selectedFactoryCircleId ? 'bg-warning' : ''">
+                    <p>{{item.juridictionArea}}
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="isReadOnly">
+            <tr *ngFor="let item of factoryCircleData">
+                <td *ngIf="item.factoryCircleId==selectedFactoryCircleId">{{item.factoryCircleName}}</td>
+                <td *ngIf="item.factoryCircleId==selectedFactoryCircleId">
+                    <p>{{item.juridictionArea}}
+                </td>
+            </tr>
+        </tbody> -->
+
+         <tbody *ngIf="!isReadOnly">
+            <tr *ngFor="let item of factoryCircleData">
+                <td>
+                    <div class="col-md-3" style="margin-bottom: 15px;">
+                        <div class="form-group d-inline">
+                            <div class="radio radio-success d-inline">
+                                <input [checked]="item.factoryCircleId==selectedFactoryCircleId" type="radio"
+                                    name="labCircleOption" id="{{item.factoryCircleId}}"
+                                    (click)="setFactoryCircle(item.factoryCircleId)">
+                                <label for="{{item.factoryCircleId}}" class="cr"></label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>{{item.factoryCircleName}}</td>
+                <td>
+                    <p>{{item.juridictionArea}}
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="isReadOnly">
+            <tr *ngFor="let item of factoryCircleData">
+                <td *ngIf="item.factoryCircleId==selectedFactoryCircleId">{{item.factoryCircleName}}</td>
+                <td *ngIf="item.factoryCircleId==selectedFactoryCircleId">
+                    <p>{{item.juridictionArea}}
+                </td>
+            </tr>
+        </tbody>
+
+
+
+
+
+
+
+    </table>
+</div>

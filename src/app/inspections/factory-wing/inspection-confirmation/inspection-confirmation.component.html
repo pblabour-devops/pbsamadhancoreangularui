@@ -1,0 +1,238 @@
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <button type="button" style="font-size: 50px;margin-bottom: 30px;opacity: .5;" class="btn active" data-toggle="button" aria-pressed="true" (click)="scrollToTop()">
+    <i class="feather icon-arrow-up"></i>
+  </button>
+</div>
+<div class="main-content">
+  <div class="card col-md-10 card-form">
+    <div class="col-md-12">
+      <div class="register-modal-header">
+        <h4 class="text-center form-header">Inspection Confirmation</h4>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Total Inspection</th>
+            <th>Total assigned  (To labour wing)</th>
+            <th>Pending assigned  (To labour wing)</th>
+            <th>Randomization Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ getMonthName(paramInfo.month) }}</td>
+            <td>{{ paramInfo.year}}</td>
+            <td>{{ randomizationMasterData?.length}}</td>
+            <td>{{ assignedData?.length}}</td>
+            <td>{{ unAssignedDataCount}}</td>
+            <td>{{ paramInfo.timestemp  | date:'medium'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            
+
+            <div class="row m-t-10">
+              <div class="col-md-4">
+                  <p class="badge-light-primary lbl-card text-center align-middle" style="padding: 0px 20px 26px 0px;"><span class="m-t-30 f-18"><i class="feather icon-shopping-cart"></i> Total un-assigned inspections : {{unAssignedDataCount}}</span></p>
+              </div>
+              <div class="col-md-8">
+                <p class="badge-light-success lbl-card" style="padding: 0px 0px 0px 10px;"><span class="f-18">Please Note : After assigning each inspection to their respective labour inspector, lock option will be enabled automatically..!</span></p>
+              </div>
+            </div>
+            <div class="testing_data">
+              <div class="alert" role="alert">
+                <table class="table table-bordered responsive">
+                  <thead>
+                    <tr>
+                      <th>Sr. No</th>
+                      <th class="text-left">Establishment Name</th>
+                      <th class="text-left">Establishment Address</th>
+                      <th>Inspection Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>  
+                  <tbody>
+                    <tr *ngFor="let data of randomizationMasterData ; let i = index">
+                      <td class="verticle">{{i + 1}}</td>
+                      <td class="text-left">{{data.establishmentName}} <ng-container *ngIf="data.isTransfered === 1">
+                        <h6 class="badge bg-warning text-light f-12" style="margin-left: inherit;">
+                            Transferred
+                        </h6>
+                        </ng-container></td>
+                      <td class="text-left">{{ data.establishmentAddress}}</td>
+                      <td>
+                        <span class="badge badge-light-warning" *ngIf="!data.hasAssignedLabourCircle">UnAssigned</span> <br>
+                        
+                        <span class="badge badge-light-success" *ngIf="data.hasAssignedLabourCircle">Assigned </span><br> 
+                        <span *ngIf="data.hasAssignedLabourCircle">{{data.labourCircleName}} </span>
+                      </td>
+                      <td>
+                        <button class="btn btn-outline-success text-center" *ngIf="!data.hasAssignedLabourCircle" (click)="viewLabourCircleClick(previewLabourInspectors, data)"> Assign</button>
+                        <hr *ngIf="!data.hasAssignedLabourCircle">
+                        <button class="btn btn-outline-primary text-center" *ngIf="data.hasAssignedLabourCircle" (click)="viewLabourCircleClick(previewLabourInspectors, data)">Re-Assign</button>
+                        <hr *ngIf="data.hasAssignedLabourCircle">
+                        <button  class="btn  btn-outline-danger text-center" *ngIf="!data.isSubmitted_Labour_Wing" (click)="inspectionTransferClick(previewTransferOficers,data)">Transfer</button>
+                      </td>
+                      
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="unAssignedDataCount === 0" class="text-center">
+            <div class="alert alert-info" role="alert">
+              All the inspections have been assigned to the respective labor inspections. Please click on the lock inspections button to take further action.
+            </div>
+            <button class="btn btn-primary mb-2" [disabled]="!assignedAndLockedButton" style="cursor: pointer !important;" type="button" (click)="lockInspectionInfo()">Lock Inspections</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #previewLabourInspectors let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" style="color: black;">Assign Inspection To Labour Wing</h4>
+	</div>
+    <div class="card-body custom-modal-body">
+      <div class="alert alert-info alert-dismissible fade show">
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Establishment Name : </strong> {{inspectionData.establishmentName}}
+          </div>
+          <div class="col-md-6">
+            <strong>Establishment Address : </strong> {{inspectionData.establishmentAddress}}
+          </div>
+        </div>
+      </div>
+      {{labourCircleUserDetails | json}}
+      <table class="table table-bordered responsive">
+        <thead>
+          <tr>
+            <th class="text-center">Sr. No</th>
+            <th>Labour Circle Name</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of labourCircleData ; let i = index">
+            <td class="text-center font-weight-bold verticle">{{i + 1}}</td>
+            <td>{{item.labourCircleName}} <br> 
+              <span class="font-weight-bold">Officer Name :</span>  {{item.officerName}} <br>
+              <span class="font-weight-bold">Designation :</span>  {{item.designation}} <br>
+              <span class="font-weight-bold">Mobile No : </span> {{item.mobileNo}} <br>
+              <span class="font-weight-bold">Email : </span> {{item.email}} <br>
+            </td>
+            <td class="text-center verticle">
+              <button class="btn btn-outline-success text-center" (click)="assignToLabourWing(item.labourCircleId,item.userProfileId)"><i class="far fa-calendar-check"></i> Assign</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-right">
+        <button  type="button" class="btn  btn-danger" (click)="dismissAllModals()">Dismiss</button>
+    </div>
+</ng-template>
+
+<ng-template #previewTransferOficers let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: black;">Transfer Inspection To Another Officer..!</h4>
+  </div>
+    <div class="card-body custom-modal-body">
+      <form [formGroup]="Input_Form">
+        <input type="hidden" formControlName="inspectionId">
+          <ul class="feed-blog pl-0" style="margin-top: 15px;">
+              <li>
+                  <div class="feed-user-img">
+                      <a class="btn btn-info btn-icon" role="button">I</a>
+                  </div>
+                  <h6 class="m-b-0">Transfer To</h6>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="table-responsive">
+                              <table class="table table-bordered">
+                                  <thead>
+                                      <tr>
+                                          <th>Select</th>
+                                          <th>Labour Circle Name</th>
+                                          <th>Officer Name</th>
+                                          <th>Juridiction Area</th>
+                                          <th>ALC Circle</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let item of usersInfoList">
+                                          <td>
+                                              <div class="col-md-3" style="margin-bottom: 15px;">
+                                                  <div class="form-group d-inline">
+                                                      <div class="radio radio-success d-inline">
+                                                          <input type="radio"
+                                                              name="labCircleOption" id="{{item.circleId}}"
+                                                              (click)="setReceiverDetails(item.circleId, item.userRefId,item.roleId,item.userProfileRefId)">
+                                                          <label for="{{item.circleId}}" class="cr"></label>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </td>
+                                          <td>{{item.circleName}}</td>
+                                          <td>{{item.firstName}} {{item.lastName}}</td>
+                                          <td>
+                                              <p>{{item.juridictionArea}}
+                                          </td>
+                                          <td>{{item.userName}}</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+      
+                          <div *ngIf="(formControls.circleId.invalid) && (submitted || formControls.circleId.dirty || formControls.circleId.touched)" class="text-danger">
+                              <div *ngIf="formControls.circleId.errors.required || !formControls.circleId.value">
+                                  Please select officer..!
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              <li>
+                  <div class="feed-user-img">
+                      <a class="btn btn-info btn-icon" role="button">II</a>
+                  </div>
+                  <h6 class="m-b-0">Remarks</h6>
+                  <div class="form-group row">
+                      <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks</label>
+                      <div class="col-sm-6">
+                          <textarea class="form-control" name="validation-text" formControlName="remarks"></textarea>
+                          <div *ngIf="(formControls.remarks.invalid) && (submitted || formControls.remarks.dirty || formControls.remarks.touched)" class="text-danger">
+                              <div *ngIf="formControls.remarks.errors.required || !formControls.remarks.value">
+                                  Please specify remarks..!
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+        <button type="button" class="btn btn-success" (click)="transferInspection()">Transfer this file to selected officer</button>
+        <button type="button" class="btn  btn-danger float-right" (click)="dismissAllModals()">Dismiss</button>
+    </div>
+</ng-template>
+
+
+

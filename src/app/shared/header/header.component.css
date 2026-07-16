@@ -1,0 +1,217 @@
+/* ===== Main Header ===== */
+.custom-header {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    padding: 0 25px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+/* ===== Left Section ===== */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mobile-menu-btn {
+    color: #333 !important;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+}
+
+.mobile-menu-btn:hover {
+    color: #6a1b4d;
+}
+
+/* ===== Brand / Logo ===== */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-line {
+    width: 35px;
+    height: 3px;
+    background: linear-gradient(to right, #f5a623, #e85d04);
+    border-radius: 2px;
+}
+
+.brand-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6a1b4d;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.brand-title .divider {
+    color: #f5a623;
+    font-weight: 400;
+    margin: 0 4px;
+}
+
+.brand-title .hindi {
+    color: #6a1b4d;
+    font-weight: 600;
+}
+
+/* ===== Beta Badge ===== */
+.beta-badge {
+    background-color: #e63946;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* ===== Right Section ===== */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Language toggle */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+}
+.lang-toggle .lang-a {
+    color: #6a1b4d;
+    font-size: 22px;
+}
+.lang-toggle .lang-b {
+    color: #f5a623;
+    font-size: 16px;
+    align-self: flex-end;
+    margin-left: -3px;
+}
+
+/* Welcome button */
+.welcome-btn {
+    background: linear-gradient(135deg, #6a1b4d, #8b2c67);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: default;
+    box-shadow: 0 2px 6px rgba(106, 27, 77, 0.25);
+    white-space: nowrap;
+}
+
+/* Profile Avatar */
+.profile-wrapper {
+    position: relative;
+}
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #d0d0d0;
+    transition: all 0.3s ease;
+}
+.profile-avatar:hover {
+    background-color: #6a1b4d;
+    color: #fff;
+    border-color: #6a1b4d;
+}
+.profile-avatar::after {
+    display: none; /* remove bootstrap dropdown arrow */
+}
+
+/* Dropdown */
+.dropdown-menu.profile-notification {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 6px 0;
+    min-width: 160px;
+}
+.dropdown-menu.profile-notification .dropdown-item {
+    padding: 8px 16px;
+    color: #333;
+}
+.dropdown-menu.profile-notification .dropdown-item:hover {
+    background-color: #f5e6ee;
+    color: #6a1b4d;
+}
+
+/* ===== Switch Buttons (retained) ===== */
+.header-switch-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.btn-switch-bocw {
+    color: #6a1b4d;
+    border: 2px solid #6a1b4d;
+    background-color: transparent;
+    border-radius: 25px;
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+.btn-switch-bocw:hover {
+    background-color: #6a1b4d;
+    color: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991px) {
+    .custom-header {
+        padding: 0 12px;
+        flex-wrap: wrap;
+        height: auto;
+    }
+    .brand-title {
+        font-size: 16px;
+    }
+    .brand-line {
+        width: 20px;
+    }
+    .welcome-btn {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+    .beta-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    .header-switch-wrapper {
+        width: 100%;
+        justify-content: center;
+        margin: 6px 0;
+    }
+    .header-switch-wrapper .btn {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+}
+

@@ -1,0 +1,30 @@
+[
+  {
+    "Section": {
+      "SectionSortId": 27,
+      "SectionTitle": "",
+      "SubSections": [
+        {
+          "SubSectionSortId": 1,
+          "SubSectionTitle": "Contract Labour Details",
+          "Table": {
+            "Columns": [
+              { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": true },
+              { "ColumnId": "Male", "ColumnTitle": "Male", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Female", "ColumnTitle": "Female", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Children", "ColumnTitle": "Children", "DataType": "Number", "IsMendatory": false },
+              { "ColumnId": "Total", "ColumnTitle": "Total", "DataType": "Number", "IsMendatory": false }
+              
+            ],
+            "Rows": [
+              { "category": "6. Maximum number of contract labour employed on any day during the half year:" }
+     
+              
+            ]
+          }
+        }
+       
+      ]
+    }
+  }
+]

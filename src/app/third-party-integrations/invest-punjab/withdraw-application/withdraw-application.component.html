@@ -1,0 +1,80 @@
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()" *ngIf="isInitialCheckFinishes && isApplicationFound">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="appId">
+    <input type="hidden" formControlName="applicationType">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+    
+    <div class="main-content"> 
+        <div class="card col-md-8 card-form">
+            <div class="col-md-12">
+                <div class="register-modal-header">
+                    <h4 class="text-center form-header">Application Withdraw.</h4>
+                </div>
+            </div>
+            <div class="col-md-12">
+            </div>
+
+            <div class="alert alert-danger" role="alert">
+                Dear Applicant, Please Note : In case of withdrawal of this application by you, neither request for refund of application fee will not be entertained nor will this application will be reactivated. So please be careful before withdrawn of your application
+			</div>
+
+            <div class="col-md-12">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="validation-text" formControlName="remarks"></textarea>
+                            <div *ngIf="Input_Form.get('remarks').touched && Input_Form.get('remarks').errors?.required" class="text-danger">
+                                     Remarks is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn  btn-success" (click)="backToHome()">Home</button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button type="submit" class="btn btn-primary">Withdraw Application</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="!isInitialCheckFinishes" class="card-container waiting-container">
+    <div class="card">
+        <div class="card-body">
+            <div class="loading-icon">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <h3 class="card-title">Please Wait..</h3>
+            <p class="card-message">We are fetching your application data. Please do not refresh or close this window..!</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isInitialCheckFinishes && !isApplicationFound" class="card-container not-found-container">
+    <div class="card">
+        <div class="card-body">
+            <div class="error-icon">
+                <img src="assets/images/icon/not-found.png" style="width:50%">
+            </div>
+            <h3 class="card-title">Application Not Found</h3>
+            <p class="card-message">Sorry, we couldn't find your application. Please check again or contact support.</p>
+            <button type="button" class="btn  btn-success" (click)="backToHome()">Home</button>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,83 @@
+[
+	{
+		"partHeading":"PART-I",
+		"partSubHeading":"General",
+		"uiPageUrl":"part-i-general-detail",
+		"isCompleted":false,
+		"stepCode":"PART-I"
+	},
+	{
+		"partHeading":"PART-II",
+		"partSubHeading":"Detail of Factory",
+		"uiPageUrl":"part-ii-factory-detail",
+		"isCompleted":false,
+		"stepCode":"PART-II"
+	},
+	{
+		"partHeading":"PART-III",
+		"partSubHeading":"Inspection Report",
+		"uiPageUrl":"part-iii-inspection-report-main",
+		"isCompleted":false,
+		"stepCode":"PART-III",
+		"items":[
+			{
+				"itemHeading":"Workers Details",
+				"itemSubHeading": "A. Details as per muster roll",
+				"uiPageUrl":"part-iii-worker-detail-muster-roll",
+				"isCompleted":false,
+				"stepCode":"WORKER_DETAIL"
+			},
+			
+			{
+				"itemHeading":"Health",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-health",
+				"isCompleted":false,
+				"stepCode":"HEALTH"
+			},
+			{
+				"itemHeading":"Safety",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-safty",
+				"isCompleted":false,
+				"stepCode":"SAFETY"
+			},
+			{
+				"itemHeading":"Welfare",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-welfare",
+				"isCompleted":false,
+				"stepCode":"WELFARE"
+			},
+			{
+				"itemHeading":"General",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-general",
+				"isCompleted":false,
+				"stepCode":"GENERAL"
+			},
+			{
+				"itemHeading":"Dangerous operation (As per rule-102)",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-dangerous-operation",
+				"isCompleted":false,
+				"stepCode":"DAN_OPS"
+			},
+			{
+				"itemHeading":"Factory covered under 2(b) or major accident hazard",
+				"itemSubHeading": "",
+				"uiPageUrl":"part-iii-major-accident",
+				"isCompleted":false,
+				"stepCode":"ACC_HAZ"
+			}
+
+		]
+	},
+	{
+		"partHeading":"Confirm & Lock",
+		"partSubHeading":"",
+		"uiPageUrl":"confirm-lock",
+		"isCompleted":false,
+		"stepCode":"LOCk"
+	}
+]

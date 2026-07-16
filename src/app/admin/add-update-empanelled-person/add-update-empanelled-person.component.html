@@ -1,0 +1,305 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card user-profile-list shadow">
+          <div class="card-header bg-light text-dark d-flex justify-content-between align-items-center">
+            <h5 class="mb-0" style="font-size: 18px; font-weight: 800;">Empanelled Person Details</h5>
+            <button type="button" class="btn btn-success btn-sm shadow-sm" (click)="openScrollableContent(longContent)">
+              <i class="feather icon-plus-circle"></i> Add New
+            </button>
+          </div>
+          <div class="form-group row m-t-20 align-items-center">
+            <label class="col-sm-2 col-form-label text-sm-right">Filter by Role:</label>
+            <div class="col-sm-3">
+              <select class="form-control" [(ngModel)]="selectedRole" (change)="onRoleChange(selectedRole)">
+                <option value="">-- Select Role --</option>
+                <option *ngFor="let role of roles" [value]="role.code">{{ role.description }}</option>
+              </select>
+            </div>
+
+            <label class="col-sm-2 col-form-label text-sm-right">Search:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" placeholder="Search by name, email or mobile no" [(ngModel)]="searchTerm" (input)="onSearchChange()"/>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Sr. No</th>
+                  <th (click)="sortBy('officerFullName')" style="cursor:pointer">
+                    Name & Designation
+                    <span *ngIf="sortColumn === 'officerFullName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                  </th>
+                   <th (click)="sortBy('registrationNumber')" style="cursor:pointer">
+                    Registration No
+                    <span *ngIf="sortColumn === 'registrationNumber'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                  </th>
+                  <th (click)="sortBy('registrationIssuedOn')" style="cursor:pointer">
+                    Registration Issued On
+                    <span *ngIf="sortColumn === 'registrationIssuedOn'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                   <th (click)="sortBy('registrationValidUpto')" style="cursor:pointer">
+                    Registration Valid Upto
+                    <span *ngIf="sortColumn === 'registrationValidUpto'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                  <th>Contact Details</th>
+                  <th (click)="sortBy('status')" style="cursor:pointer">
+                    Status
+                    <span *ngIf="sortColumn === 'status'">
+                      {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                    </span>
+                  </th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of displayedData ; index as i">
+                  <td><strong>{{ (currentPage - 1) * pageSize + i + 1 }}</strong></td>
+                  <td> <i class="feather icon-user"></i> <strong>{{ item.officerFullName }}</strong> <br> <i class="feather icon-award"></i> <span class="m-b-0 d-inline-block text-c-green"> {{ item.designation}}</span></td>
+                  <td> <i class="feather icon-feather"></i> <strong> {{ item.registrationNumber }}</strong></td>
+                  <td> <i class="feather icon-calendar"></i> {{ item.registrationIssuedOn | date:'dd-MM-yyyy hh:mm' }}</td>
+                  <td> <i class="feather icon-calendar"></i> {{ item.registrationValidUpto | date:'dd-MM-yyyy hh:mm' }}</td>
+                  <td> <i class="feather icon-mail"></i> {{ item.email}} <br> <i class="feather icon-smartphone"></i> {{ item.contactNo}}</td>
+                  <td>
+                    <span class="badge" 
+                      [ngClass]="{
+                        'badge-success': item.status === 'Active',
+                        'badge-danger': item.status === 'In-Active' || item.status === 'Inactive'
+                      }" (click)="onStatusClick(item)">
+                      {{ item.status || '-' }}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" (click)="onEditClick(editModel,item)">
+                      <i class="feather icon-edit"></i> Edit
+                    </button>
+                  </td>
+
+                </tr>
+                <tr *ngIf="displayedData.length === 0">
+                  <td colspan="5" class="text-center text-danger">No records found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <!-- Pagination -->
+        <nav *ngIf="totalPages > 1" aria-label="Page navigation" class="m-t-10">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="changePage(currentPage - 1)" href="javascript:void(0)">
+                Previous
+              </a>
+            </li>
+            <li
+              class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="currentPage === i + 1">
+              <a class="page-link" (click)="changePage(i + 1)" href="javascript:void(0)">
+                {{ i + 1 }}
+              </a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)" href="javascript:void(0)">
+                Next
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #longContent let-modal>
+     <div class="register-modal-header">
+          <h4 class="text-center form-header m-t-20">Registration of Empanelment with Department of Labour, Punjab</h4>
+      </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <form [formGroup]="InputForm" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="userRefId">
+                    <input type="hidden" formControlName="registrationNumber_DOF">
+                    <div class="col-md-12 text-right text-danger">
+                      * mandatory fields
+                    </div>
+                    <div class="form-row row m-t-10">
+                      <div class="form-group col-md-6">
+                          <label for="empanelledType" class="required">Empanelled Person Type</label>
+                          <select class="form-select form-select-sm" class="form-control" formControlName="empanelledType">
+                            <option [selected]="true" value="">--Please Select --</option>
+                            <option value='1' selected>Empanelled Competent Person</option>
+                            <option value='2' selected>Empanelled Architect</option>
+                            <option value='3' selected>Empanelled Engineer</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-row row m-t-10">
+                      <div class="form-group col-md-6">
+                          <label for="architectName" class="required">Empanelled Person Name</label>
+                          <input type="text" class="form-control" formControlName="Enter empanelled person name" [ngClass]="{ 'is-invalid': formControls.architectName.invalid && (submitted || formControls.architectName.touched) }"
+                          placeholder="Enter Architect Name">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                          <label for="architectfatherName" class="required">Empanelled Person Father Name</label>
+                          <input type="text" class="form-control" formControlName="Enter empanelled person father name" [ngClass]="{ 'is-invalid': formControls.architectfatherName.invalid && (submitted || formControls.architectfatherName.touched) }"
+                          placeholder="Enter Father’s Name">
+                      </div>
+                    </div>
+
+                    <div class="form-row row">
+                      <div class="form-group col-md-12">
+                          <label for="communicationAddress" class="required">Correspondence Address</label>
+                          <input type="text" class="form-control" formControlName="communicationAddress" placeholder="Enter Address" [ngClass]="{ 'is-invalid': formControls.communicationAddress.invalid && (submitted || formControls.communicationAddress.touched) }">
+                      </div>
+                    </div>
+
+                    <div class="form-row row">
+                      <div class="form-group col-md-6">
+                          <label for="contactNumber" class="required">Contact No</label>
+                          <input type="text" class="form-control" formControlName="contactNumber" placeholder="Enter Contact Number" [ngClass]="{ 'is-invalid': formControls.contactNumber.invalid && (submitted || formControls.contactNumber.touched) }" (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                          <label for="email" class="required">Email</label>
+                          <input type="email" class="form-control" formControlName="email" placeholder="Enter Email" [ngClass]="{ 'is-invalid': formControls.email.invalid && (submitted || formControls.email.touched) }">
+                      </div>
+                    </div>
+
+                    <div class="form-row row">
+                      <div class="form-group col-md-6">
+                          <label for="registrationNumber_COA" class="required">Registration No (Council of Architects)</label>
+                          <input type="text" class="form-control" formControlName="registrationNumber_COA" placeholder="Enter Registration Number" [ngClass]="{ 'is-invalid': formControls.registrationNumber_COA.invalid && (submitted || formControls.registrationNumber_COA.touched) }">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                          <label for="registrationIssuedOn_COA" class="required">Registration Issued Date</label>
+                          <input type="date" class="form-control" formControlName="registrationIssuedOn_COA" [ngClass]="{ 'is-invalid': formControls.registrationIssuedOn_COA.invalid && (submitted || formControls.registrationIssuedOn_COA.touched) }">
+                      </div>
+                    </div>
+
+                    <div class="form-row row">
+                      <div class="form-group col-md-6">
+                          <label for="registrationValidUpto_COA" class="required">Registration Valid Upto</label>
+                          <input type="date" class="form-control" formControlName="registrationValidUpto_COA" placeholder="Enter Validity Date" [ngClass]="{ 'is-invalid': formControls.registrationValidUpto_COA.invalid && (submitted || formControls.registrationValidUpto_COA.touched) }">
+                      </div>
+                    </div>
+                    <!-- File Upload Section -->
+                    <div class="form-row row">
+                        <div class="form-group col-md-6">
+                        <label for="councilOfArchitectApproval" class="required">Copy of certificate from Council of architect</label>
+                        <input type="file" class="form-control" formControlName="councilOfArchitectApproval" accept=".pdf" (change)="onPdfFileChange($event)" [ngClass]="{ 'is-invalid': formControls.councilOfArchitectApproval.invalid && (submitted || formControls.councilOfArchitectApproval.touched) }">
+                        
+                        <!-- PDF File Link -->
+                        <a *ngIf="pdfFileUrl" [href]="pdfFileUrl" target="_blank" class="mt-2 d-block" style="color: #007bff;">Click here to view PDF</a>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                        <label for="specimenSignature" class="required">Specimen signature</label>
+                        <input type="file" class="form-control" formControlName="specimenSignature" accept="image/*"
+                            (change)="onSignatureImageChange($event)" [ngClass]="{ 'is-invalid': formControls.specimenSignature.invalid && (submitted || formControls.specimenSignature.touched) }">
+                        
+                        <!-- Display Signature Image -->
+                        <div *ngIf="signatureImageUrl" class="mt-2">
+                            <img [src]="signatureImageUrl" alt="Signature" style="max-width: 150px; max-height: 100px;">
+                        </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="form-group">
+                    <h6>Terms & Conditions</h6>
+
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="termAndCondition1" formControlName="termAndCondition1">
+                        <label class="form-check-label required" for="termAndCondition1">
+                        I hereby submit that I will abide by the terms and conditions of the Labour Department
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="termAndCondition2" formControlName="termAndCondition2">
+                        <label class="form-check-label required" for="termAndCondition2">
+                        I hereby declare that the information given above is true to the best of my knowledge and nothing has been concealed there in.
+                        </label>
+                    </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <div class="w-100 d-flex justify-content-center">
+                          <button type="submit" class="btn btn-success px-4">Register Empanelled Person</button>
+                        </div>
+                    </div>
+                </form>
+                <button type="submit" class="btn btn-danger float-right" (click)="modal.close('Close click')">Dismiss</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #editModel let-modal>
+    <div class="register-modal-header">
+        <h4 class="text-center form-header m-t-20">Edit Profile Details</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+              <div class="card-body pro-det-edit">
+                  <form #userForm="ngForm">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Full Name :</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" placeholder="Full Name" [(ngModel)]="selectedUser.officerFullName" name="officerFullName"/>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Email :</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" placeholder="Email" [(ngModel)]="selectedUser.email" name="email"/>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Mobile :</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" placeholder="Mobile" [(ngModel)]="selectedUser.contactNo" name="contactNo"/>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Registration Issued On :</label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" placeholder="registrationIssuedOn" [(ngModel)]="selectedUser.registrationIssuedOn" name="registrationIssuedOn"/>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label font-weight-bolder">Registration Valid Upto :</label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" placeholder="registrationValidUpto" [(ngModel)]="selectedUser.registrationValidUpto" name="registrationValidUpto"/>
+                        </div>
+                      </div>
+
+
+                      <div class="card-footer d-flex justify-content-between">
+                        <div class="w-100 d-flex justify-content-center">
+                          <button type="submit" class="btn btn-success px-4" (click)="onUpdateProfileDetailClick(selectedUser,modal)">
+                            Update Details
+                          </button>
+                        </div>
+                      </div>
+                  </form>
+                <button type="submit" class="btn btn-danger float-right" (click)="modal.close('Close click')">Dismiss</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-template>

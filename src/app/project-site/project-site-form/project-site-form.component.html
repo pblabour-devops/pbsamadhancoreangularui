@@ -1,0 +1,191 @@
+<form [formGroup]="ProjectSite_Form" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="projectSiteId">
+  <input type="hidden" formControlName="factoryCircleRefId">
+  <input type="hidden" formControlName="labourCircleRefId">
+  <div class="pcoded-main-container">
+    <div class="pcoded-content">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="col-md-12">
+              <div class="card-body">
+                <ul class="feed-blog pl-0">
+                  <li>
+                    <div class="feed-user-img">
+                      <a class="btn btn-info btn-icon" href="#!" role="button">I</a>
+                    </div>
+                    <h6 class="m-b-0">Basic Information</h6>
+                    <span style="float: right; color: red;"> (*) Indicates a mandatory field</span>
+                    <form [formGroup]="ProjectSite_Form" (ngSubmit)="onSubmit()">
+                      <input type="hidden" formControlName="projectSiteId">
+                      <input type="hidden" formControlName="factoryCircleRefId">
+                      <input type="hidden" formControlName="labourCircleRefId">
+                      <div class="card-body">
+                        <div class="col-md-12">
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Establishment Name
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="establishmentName">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="establishmentName" placeHolder="establishment name"></app-form-validation-error>
+                            </div>
+                  
+                            <div class="col-md-2 text-right required">
+                              Address
+                            </div>
+                            <div class="col-sm-4">
+                              <textarea class="form-control" name="validation-text" formControlName="address">
+                                <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="address" placeHolder="address"></app-form-validation-error>
+                              </textarea>
+                            </div>
+                          </div>
+                  
+                          <div class="row form-row">
+                            <div class="col-md-2  required">
+                              District
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select form-select-sm" aria-label="Default select example" formControlName="districtRefId" (change)="getTehsilsByDistrictRefId(ProjectSite_Form.value.districtRefId, 'tehsilRefId')">
+                                    <option [selected]="true" value=''>--Please Select--</option>
+                                    <option *ngFor="let alldist of allDistricts; let i = index;" value={{alldist.districtLgdId}}>{{alldist.districtName}}</option>
+                                </select>
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="districtRefId" placeHolder=""></app-form-validation-error>
+                            </div>
+                  
+                            <div class="col-md-2 text-right required">
+                              Tehsil
+                            </div>
+                            <div class="col-md-4">
+                              <select class="form-select form-select-sm" aria-label="Default select example" formControlName="tehsilRefId">
+                                <option [selected]="true" value="">--Please Select--</option>
+                                <option *ngFor="let allteh of allTehsil; let i = index;" value={{allteh.id}}>{{allteh.text}}</option>
+                              </select>
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="tehsilRefId" placeHolder=""></app-form-validation-error>
+                            </div>
+                          </div>
+                  
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Pin Code
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" id="txtPinCode" minlength="6" class="form-control form-control-sm" formControlName="pinCode"  (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 6)">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="pinCode" placeHolder=""></app-form-validation-error>
+                            </div>
+
+                            <div class="col-md-2 text-right required">
+                              Village/Town
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="villageOrTown">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="villageOrTown" placeHolder=""></app-form-validation-error>
+                            </div>
+                          </div>
+
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Contact Person First Name
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="contactPersonFirstName">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="contactPersonFirstName" placeHolder="Contact Person First Name"></app-form-validation-error>
+                            </div>
+                  
+                            <div class="col-md-2 text-right">
+                              Contact Person Middle Name
+                            </div>
+                            <div class="col-sm-4">
+                              <textarea class="form-control" name="validation-text" formControlName="contactPersonMiddleName">
+                                <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="contactPersonMiddleName" placeHolder="Contact Person Middle Name"></app-form-validation-error>
+                              </textarea>
+                            </div>
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Contact Person Last Name
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="contactPersonLastName">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="contactPersonLastName" placeHolder="Contact Person Last Name"></app-form-validation-error>
+                            </div>
+<!--                   
+                            <div class="col-md-2 text-right required">
+                              Contact Person Address
+                            </div>
+                            <div class="col-sm-4">
+                              <textarea class="form-control" name="validation-text" formControlName="address">
+                                <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="address" placeHolder="address"></app-form-validation-error>
+                              </textarea>
+                            </div> -->
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Contact Person Mobile No
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="contactPersonMobileNo">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="contactPersonMobileNo" placeHolder="Contact Person Mobile No"></app-form-validation-error>
+                            </div>
+                  
+                            <div class="col-md-2 text-right required">
+                              Contact Person Email
+                            </div>
+                            <div class="col-sm-4">
+                              <textarea class="form-control" name="validation-text" formControlName="contactPersonEmail">
+                                <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="contactPersonEmail" placeHolder="Contact Person Email"></app-form-validation-error>
+                              </textarea>
+                            </div>
+                          </div>
+
+                          <div class="row form-row">
+                            <div class="col-md-2 required">
+                              Project Purpose
+                            </div>
+                            <div class="col-md-4">
+                              <input type="text" class="form-control form-control-sm" formControlName="projectPurpose">
+                              <app-form-validation-error [formGroup]="ProjectSite_Form" controlName="projectPurpose" placeHolder="Project Purpose"></app-form-validation-error>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </form> 
+                  </li>
+                  <li >
+                    <div class="feed-user-img">
+                      <a class="btn btn-info btn-icon" href="#!" role="button">II</a>
+                    </div>
+                    <h6 class="m-b-0 required">Choose Your ALC Circle</h6>
+                    <div class="alert alert-warning d-block text-left" style="margin-top: 20px;"><i class="feather icon-check-circle mr-2"></i>Kindly Select District & Tehsil To Populate Circle</div>
+                      <div  class="">
+                        <app-alc-circle-selection (circleOptionsEvent)="onCircleOptionChange($event)" [districRefId]="districtRefId"></app-alc-circle-selection>
+                      </div>
+                  </li>
+                  <!-- <li >
+                    <div class="feed-user-img">
+                      <a class="btn btn-info btn-icon" href="#!" role="button">III</a>
+                    </div>
+                    <h6 class="m-b-0 required">Choose Your Labour Circle</h6>
+                      <div class="" style="margin-top: 10px;">
+                        <app-labour-circle-selection (circleOptionsEvent)="onLabourCircleOptionChange($event)" [districRefId]="districtRefId"></app-labour-circle-selection>
+                      </div>
+                  </li> -->
+                </ul>
+  
+                <div class="card-footer">
+                  <div style="text-align: center;">
+                    <button (click)="CancelButtonClick()" type="button" class="btn  btn-danger">Cancel</button>
+                    <!-- {{ProjectSite_Form.value | json}} -->
+                    <button type="submit" class="btn btn-success">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,58 @@
+[
+{
+  "Section": {
+    "SectionSortId": 17,
+    "SectionTitle": "Order / Award",
+    "SubSections": [
+      {
+        "SubSectionSortId": 17.1,
+        "SubSectionTitle": "17.1 Order / Award Summary",
+        "Lables": [],
+        "Table": {
+          "Columns": [
+            { "ColumnId": "category", "ColumnTitle": "Category", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "pendingStart", "ColumnTitle": "Pending at the beginning of the month", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "received", "ColumnTitle": "Received during the month", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "implemented", "ColumnTitle": "Implemented or report submitted to ALC/LCO during the Month", "DataType": "Number", "IsMendatory": false },
+            { "ColumnId": "pendingEnd", "ColumnTitle": "Pending at the end of the Month", "DataType": "Number", "IsMendatory": false }
+          ],
+          "Rows": [
+            { "category": "Award under section 10-A of ID Act", "pendingStart": "", "received": "", "implemented": "", "pendingEnd": "" },
+            { "category": "Award U/S 33-A", "pendingStart": "", "received": "", "implemented": "", "pendingEnd": "" },
+            { "category": "Award U/S 33-C(2)", "pendingStart": "", "received": "", "implemented": "", "pendingEnd": "" },
+            { "category": "Order", "pendingStart": "", "received": "", "implemented": "", "pendingEnd": "" },
+            { "category": "Agreements", "pendingStart": "", "received": "", "implemented": "", "pendingEnd": "" }
+          ]
+        }
+      },
+      {
+        "SubSectionSortId": 17.2,
+        "SubSectionTitle": "17.2(a) New Received Order / Award",
+        "Lables": [],
+        "Table": {
+          "Columns": [
+            { "ColumnId": "orderType", "ColumnTitle": "Order or Award", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "dateReceived", "ColumnTitle": "Date of Order / Award Received", "DataType": "DateTime", "IsMendatory": false },
+            { "ColumnId": "applicantName", "ColumnTitle": "Applicant / Worker Name", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "ownerName", "ColumnTitle": "Owner Name", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "reliefDetails", "ColumnTitle": "Detail of Relief by Industrial Tribunal in Brief", "DataType": "Text", "IsMendatory": false },
+            { "ColumnId": "remarks", "ColumnTitle": "Remarks", "DataType": "Text", "IsMendatory": false }
+          ],
+          "Rows": [
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" },
+            { "orderType": "", "dateReceived": "", "applicantName": "", "ownerName": "", "reliefDetails": "", "remarks": "" }
+          ]
+        }
+      }
+    ]
+  }
+}
+]
