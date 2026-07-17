@@ -173,14 +173,14 @@ export class WorkerDetailsComponent {
   onSubmit(): void {
     if (this.Input_Form.valid) {
         this.Input_Form.controls.applicationPurposeType.patchValue(0);
-        this.Input_Form.controls.iPin.patchValue(0);
-        this.Input_Form.controls.investPunjab_AppId.patchValue(0);
+        // this.Input_Form.controls.iPin.patchValue(0);
+        // this.Input_Form.controls.investPunjab_AppId.patchValue(0);
         this.Input_Form.controls.projectSiteVersion.patchValue(1);
-        this.Input_Form.controls.factoryCircleRefId.patchValue(1); // Static FactoryCircleRefId
+        // this.Input_Form.controls..patchValue(1); // Static FactoryCircleRefId
         this.Input_Form.controls.toDoActivityModeType.patchValue(1);
         this.Input_Form.controls.rootActivityRefId.patchValue('Default');
         this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
-        this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
+        // this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
         this.Input_Form.controls.id.patchValue(0);
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {

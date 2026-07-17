@@ -1,3 +1,8 @@
 export const applicationTypeEnum = {
 SAMADHAN_COMPLAINTS : 100001
 }
+
+export const categoryTypeEnum = {
+    INDIVIDUAL_COMPLAINT_WAGES_WEEKLY_PERIOD_AMOUNT : 2009,
+    INDIVIDUAL_COMPLAINT_WAGES_WEEKLY : 2010 
+}

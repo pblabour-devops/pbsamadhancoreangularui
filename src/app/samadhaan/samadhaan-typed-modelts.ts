@@ -241,3 +241,38 @@ export interface IComplaint_MinimumWagesNotPaid {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_Wages_WkDay {
+  id: number;
+  appRefId: number;
+  totalReliefSought: number;
+  compensationSought: number;
+  detailAboutTheClaim: string;
+
+  wagesWeeklyPeriodAmtDetails: IComplaint_Wages_WkDay_PeriodAmt[];
+
+  // Not Mapped Properties
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_Wages_WkDay_PeriodAmt {
+  id: number;
+  appRefId: number;
+
+  fromDate: string;
+  toDate: string;
+  amount: number;
+
+  // Not Mapped Properties
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}

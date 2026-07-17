@@ -14,10 +14,11 @@ import { RecoverOfMoneyComponent } from './complaints/recover-of-money/recover-o
 import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-code-on-wages/claim-under-code-on-wages.component';
 import { WagesComponent } from './complaints/wages/wages.component';
 import { MinimumWagesNotPaidComponent } from './complaints/wages/minimum-wages-not-paid/minimum-wages-not-paid.component';
+import { WagesWeeklydayComponent } from './complaints/wages/wages-weeklyday/wages-weeklyday.component';
 
 
 @NgModule({
-  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent],
+  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

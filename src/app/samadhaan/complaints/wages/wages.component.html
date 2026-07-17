@@ -15,8 +15,8 @@
           <app-formtab [appSteps]="appFormStepsList"></app-formtab>
 
           <app-claim-under-code-on-wages [claimUnderCodeOnWagesApiData]="claimUnderCodeOnWagesApiData" (claimUnderCodeOnWagesDataEvent)="claimUnderCodeOnWagesDataEventListener($event)"></app-claim-under-code-on-wages>
-          <app-minimum-wages-not-paid (minimumWagesDataEvent)="minimumWagesDataDataEventListener($event)" ></app-minimum-wages-not-paid>
-  
+          <app-minimum-wages-not-paid [minimumWagesApiData]="minimumWagesApiData" [minimumWagesPeriodApiData]="minimumWagesPeriodApiData" (minimumWagesDataEvent)="minimumWagesDataDataEventListener($event)" ></app-minimum-wages-not-paid>
+          <app-wages-weeklyday [wagesWeeklyApiData]="wagesWeeklyApiData" (wagesWeeklyDayDataEvent)="wagesWeeklyDayEventListener($event)"></app-wages-weeklyday>
 
     <!-- Action Buttons -->
     <div class="d-flex justify-content-end gap-2 mt-4">

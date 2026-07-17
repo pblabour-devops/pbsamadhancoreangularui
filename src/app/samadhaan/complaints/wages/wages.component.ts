@@ -6,10 +6,12 @@ import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
-import { IComplaint_Claim_CodeOnWage, IComplaint_MinimumWagesNotPaid } from '../../samadhaan-typed-modelts';
+import { IComplaint_Claim_CodeOnWage, IComplaint_MinimumWagesNotPaid, IComplaint_Wages_WkDay, IComplaint_Wages_WkDay_PeriodAmt } from '../../samadhaan-typed-modelts';
 import { ClaimUnderCodeOnWagesComponent } from './claim-under-code-on-wages/claim-under-code-on-wages.component';
 import Swal from 'sweetalert2';
 import { MinimumWagesNotPaidComponent } from './minimum-wages-not-paid/minimum-wages-not-paid.component';
+import { WagesWeeklydayComponent } from './wages-weeklyday/wages-weeklyday.component';
+import { categoryTypeEnum } from 'src/app/shared.data';
 
 @Component({
   selector: 'app-wages',
@@ -23,53 +25,40 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   claimCodeOnWagesComponent: ClaimUnderCodeOnWagesComponent;
   @ViewChild(MinimumWagesNotPaidComponent)
   MinimumWagesNotPaidComponent: MinimumWagesNotPaidComponent;
+  @ViewChild(WagesWeeklydayComponent)
+  WagesWeeklydayComponent: WagesWeeklydayComponent;
   minimumWagesDetailData : IComplaint_MinimumWagesNotPaid
+  wagesWeeklyDayDetailData : IComplaint_Wages_WkDay
   public appFormStepsList: any[] = [];
   public paramInfo: any;
   public parmamEncodedinfo: string;
   codeOnWagesDetailData : IComplaint_Claim_CodeOnWage
-
   genericFormData: GenericFormModel<IComplaint_Claim_CodeOnWage>;
   claimUnderCodeOnWagesApiData:any
+  minimumWagesApiData : any
+  minimumWagesPeriodApiData : any
+  wagesWeeklyApiData : GenericFormModel<IComplaint_Wages_WkDay>
 
-  allowanceType : any[] = [];
-  placeOfWorkTypeA : any[] = [];
-  placeOfWorkTypeB : any[] = [];
 
-  // NEW: Options for the conditional radio buttons
-  applicableOptions : any
   constructor(  
     private fb: UntypedFormBuilder,
     private appHttpRequestHandlerService: AppHttpRequestHandlerService,
     private route: ActivatedRoute,
-    private router: Router,
     public commonOpsService: CommonOpsService
   ) {}
-
-  Input_Form: TForm<IComplaint_Claim_CodeOnWage> = this.fb.group(
-    {
-      id: [0, Validators.required],
-      allowanceType: ['', Validators.required],
-      placeOfWorkTypeA: ['', Validators.required],
-      placeOfWorkTypeB: ['', [Validators.required, Validators.min(0)]],
-      placeofWorkNameC: ['', [Validators.required, Validators.min(0)]],
-    }
-  ) as TForm<IComplaint_Claim_CodeOnWage>;
-
-  get formControls() {
-    return this.Input_Form.controls;
-  }
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.route.queryParams.subscribe((params) => {
       this.parmamEncodedinfo = params.info;
-
       this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
         this.paramInfo = info;
         console.log('info', this.paramInfo)
         this.getClaimUnderCodeOnWagesData();
+        this.getMinimumWagesData();
+        this.getMinumWagesPeriodData();
+        this.getWeeklyDayWagesData();
         // this.getClai
         // this.get
       });
@@ -86,12 +75,39 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     })
   }
 
+  getMinimumWagesData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getMinimumWagesNotPaidDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_MinimumWagesNotPaid>) => {
+      this.minimumWagesApiData = data;
+    })
+  }
+
+
+  getMinumWagesPeriodData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getMinimumWagesNotPaidPeriodAmountDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_MinimumWagesNotPaid>) => {
+      this.minimumWagesPeriodApiData = data;
+
+    })
+  }
+
+  getWeeklyDayWagesData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages_WkDay>) => {
+      this.wagesWeeklyApiData = data;
+    })
+  }
+
 
 
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
   }
 
   onBack(): void {
@@ -103,11 +119,16 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //   Swal.fire({ icon: 'warning', text: 'Please fill Claim Under code on wages completely.' });
   //   return;
   //  }
-   if(!this.MinimumWagesNotPaidComponent?.isFormValid()){
-    Swal.fire({ icon: 'warning', text: 'Please fill Minimum Wages completely.' });
+  //  if(!this.MinimumWagesNotPaidComponent?.isFormValid()){
+  //   Swal.fire({ icon: 'warning', text: 'Please fill Minimum Wages completely.' });
+  //   return;
+  //  }
+    if(!this.WagesWeeklydayComponent?.isFormValid()){
+    Swal.fire({ icon: 'warning', text: 'Please fill Wages Weekly completely.' });
     return;
    }
-   console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+
+   // FOR CLAIM UNDER CODE ON WAGES
   //  this.codeOnWagesDetailData.appRefId = this.paramInfo?.appRefId;
   //  this.codeOnWagesDetailData.projectSiteRefId=this.paramInfo?.projectSiteRefId;
   //  this.codeOnWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
@@ -125,22 +146,62 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //     .httpPost(this.codeOnWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_Claim_CodeOnWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //       next: () => {
 
-        this.minimumWagesDetailData.appRefId = this.paramInfo?.appRefId;
-        this.minimumWagesDetailData.projectSiteRefId=this.paramInfo?.projectSiteRefId;
-        this.minimumWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
-        this.minimumWagesDetailData.iPin=this.paramInfo?.iPin;
-        this.minimumWagesDetailData.investPunjab_AppId=this.paramInfo?.investPunjab_AppId;
-        this.minimumWagesDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
-        this.minimumWagesDetailData.toDoActivityModeType=1;
-        this.minimumWagesDetailData.rootActivityRefId='default value';
-        this.minimumWagesDetailData.toDoActivityCategoryType=2007;
-        this.minimumWagesDetailData.applicationType = this.paramInfo.applicationType;
-        delete this.minimumWagesDetailData.Complaint_MinimumWagesNotPaidDetails;
-        console.log('minimumWagesDetailData', this.minimumWagesDetailData)
-        this.appHttpRequestHandlerService.httpPost(this.minimumWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_MinimumWagesNotPaid','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
-         next: () => {
 
+    // FOR MINIMUM WAGES
+
+      // this.minimumWagesDetailData.Complaint_MinimumWagesNotPaidDetails.forEach(data => {
+      //   data.appRefId = this.paramInfo?.appRefId;
+      //   data.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+      //   data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+      //   // data.toDoActivityModeType=1;
+      //   data.rootActivityRefId='default value';
+      //   data.toDoActivityCategoryType=2007;
+      //   data.applicationType = this.paramInfo.app
+      //   console.log('data', data)
+      //   this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_MinimumWagesPeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+      //   next: () => {
+      //   this.minimumWagesDetailData.appRefId = this.paramInfo?.appRefId;
+      //   this.minimumWagesDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+      //   this.minimumWagesDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+      //   this.minimumWagesDetailData.rootActivityRefId='default value';
+      //   this.minimumWagesDetailData.toDoActivityCategoryType=2008;
+      //   this.minimumWagesDetailData.applicationType = this.paramInfo.applicationType;
+      //   console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+      //   this.appHttpRequestHandlerService.httpPost(this.minimumWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_MinimumWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+      //    next: () => {
+          
+      //    }})
+
+      //   }})
+
+      // })
+
+      // FOR WEEKLY DAT OF REST 
+       this.wagesWeeklyDayDetailData.wagesWeeklyPeriodAmtDetails.forEach(data => {
+        data.appRefId = this.paramInfo?.appRefId;
+        data.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        // data.toDoActivityModeType=1;
+        data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_WEEKLY_PERIOD_AMOUNT;
+        data.applicationType = this.paramInfo.applicationType
+        this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_WkDay_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        next: () => {
+        this.wagesWeeklyDayDetailData.appRefId = this.paramInfo?.appRefId;
+        this.wagesWeeklyDayDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        this.wagesWeeklyDayDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        this.wagesWeeklyDayDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_WEEKLY;
+        this.wagesWeeklyDayDetailData.applicationType = this.paramInfo.applicationType;
+        console.log('wagesWeeklyDayDetailData', this.wagesWeeklyDayDetailData)
+        this.appHttpRequestHandlerService.httpPost(this.wagesWeeklyDayDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_WkDay','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+         next: () => {
+          
          }})
+
+        }})
+
+      })
+
+       
       
         
          
@@ -157,6 +218,11 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   minimumWagesDataDataEventListener(data: IComplaint_MinimumWagesNotPaid){
     console.log('data',data)
     this.minimumWagesDetailData = data
+  }
+
+  wagesWeeklyDayEventListener(data: IComplaint_Wages_WkDay){
+    console.log('data',data)
+    this.wagesWeeklyDayDetailData = data
   }
 
 
