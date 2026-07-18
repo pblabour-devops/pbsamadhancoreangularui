@@ -19,6 +19,8 @@
           <app-wages-weeklyday [wagesWeeklyApiData]="wagesWeeklyApiData" [wagesWeeklyPeriodAmtApiData]="wagesWeeklyPeriodAmtApiData" (wagesWeeklyDayDataEvent)="wagesWeeklyDayEventListener($event)"></app-wages-weeklyday>
           <app-wages-working-overtime [wagesApiData]="wagesWeeklyApiData" [wagesPeriodAmtApiData]="wagesWeeklyPeriodAmtApiData" (wagesDataEvent)="wagesWorkingOvertimeEventListener($event)"></app-wages-working-overtime>
           <app-wages-not-paid-at-all [wagesApiData]="wagesNotPaidAtAllApiData" [wagesPeriodAmtApiData]="wagesNotPaidAtAllPeriodAmtApiData" (wagesDataEvent)="wagesNotPaidAtAllEventListener($event)"></app-wages-not-paid-at-all>
+          <app-wages-unauthorised-deduction [wagesApiData]="wageUnauthDedApiData" [wagesPeriodAmtApiData]="wageUnauthDedPeriodAmtApiData" (wagesDataEvent)="wagesUnauthDedEventListener($event)"></app-wages-unauthorised-deduction>
+          <app-non-payment-bonus [wagesApiData]="nonPayBonusApiData" [wagesPeriodAmtApiData]="nonPayBonusPeriodAmtApiData" (wagesDataEvent)="nonPayBonusEventListener($event)"></app-non-payment-bonus>
     <!-- Action Buttons -->
     <div class="d-flex justify-content-end gap-2 mt-4">
       <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
