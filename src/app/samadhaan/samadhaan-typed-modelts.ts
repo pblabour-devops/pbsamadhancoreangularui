@@ -242,14 +242,14 @@ export interface IComplaint_MinimumWagesNotPaid {
   rootActivityRefId: string;
 }
 
-export interface IComplaint_Wages_WkDay {
+export interface IComplaint_Wages {
   id: number;
   appRefId: number;
   totalReliefSought: number;
   compensationSought: number;
   detailAboutTheClaim: string;
 
-  wagesWeeklyPeriodAmtDetails: IComplaint_Wages_WkDay_PeriodAmt[];
+  wagesWeeklyPeriodAmtDetails: IComplaint_Wages_PeriodAmt[];
 
   // Not Mapped Properties
   applicationPurposeType: number;
@@ -260,7 +260,7 @@ export interface IComplaint_Wages_WkDay {
   rootActivityRefId: string;
 }
 
-export interface IComplaint_Wages_WkDay_PeriodAmt {
+export interface IComplaint_Wages_PeriodAmt {
   id: number;
   appRefId: number;
 

@@ -15,10 +15,11 @@ import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-c
 import { WagesComponent } from './complaints/wages/wages.component';
 import { MinimumWagesNotPaidComponent } from './complaints/wages/minimum-wages-not-paid/minimum-wages-not-paid.component';
 import { WagesWeeklydayComponent } from './complaints/wages/wages-weeklyday/wages-weeklyday.component';
-
+import { WagesWorkingOvertimeComponent } from './complaints/wages/wages-working-overtime/wages-working-overtime.component';
+import { WagesNotPaidAtAllComponent } from './complaints/wages/wages-not-paid-at-all/wages-not-paid-at-all.component';
 
 @NgModule({
-  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent],
+  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

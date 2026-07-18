@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
-import { IComplaint_Claim_CodeOnWage, IComplaint_MinimumWagesNotPaid, IComplaint_Wages_WkDay, IComplaint_Wages_WkDay_PeriodAmt } from '../../samadhaan-typed-modelts';
+import { IComplaint_Claim_CodeOnWage, IComplaint_MinimumWagesNotPaid, IComplaint_Wages, IComplaint_Wages_PeriodAmt } from '../../samadhaan-typed-modelts';
 import { ClaimUnderCodeOnWagesComponent } from './claim-under-code-on-wages/claim-under-code-on-wages.component';
 import Swal from 'sweetalert2';
 import { MinimumWagesNotPaidComponent } from './minimum-wages-not-paid/minimum-wages-not-paid.component';
@@ -28,7 +28,9 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   @ViewChild(WagesWeeklydayComponent)
   WagesWeeklydayComponent: WagesWeeklydayComponent;
   minimumWagesDetailData : IComplaint_MinimumWagesNotPaid
-  wagesWeeklyDayDetailData : IComplaint_Wages_WkDay
+  wagesWeeklyDayDetailData : IComplaint_Wages
+  wagesWorkingOverTimeDetailData : IComplaint_Wages
+  wagesNotPaidAtAllDetailData : IComplaint_Wages
   public appFormStepsList: any[] = [];
   public paramInfo: any;
   public parmamEncodedinfo: string;
@@ -37,8 +39,12 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   claimUnderCodeOnWagesApiData:any
   minimumWagesApiData : any
   minimumWagesPeriodApiData : any
-  wagesWeeklyApiData : GenericFormModel<IComplaint_Wages_WkDay>
-  wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_WkDay_PeriodAmt>
+  wagesWeeklyApiData : GenericFormModel<IComplaint_Wages>
+  wagesNotPaidAtAllApiData : GenericFormModel<IComplaint_Wages>
+  wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
+  wagesOverTimeApiData : GenericFormModel<IComplaint_Wages>
+  wagesOverTimePeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
+  wagesNotPaidAtAllPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
 
 
   constructor(  
@@ -61,6 +67,8 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
         this.getMinumWagesPeriodData();
         this.getWeeklyDayWagesData();
         this.getWeeklyDayWagesPeriodData();
+        this.getNotPaidAtAllWagesData();
+        this.getOverTimeWagesPeriodAmtData()
         // this.getClai
         // this.get
       });
@@ -101,7 +109,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     this.appHttpRequestHandlerService
     .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
     .pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe((data: GenericFormModel<IComplaint_Wages_WkDay>) => {
+    .subscribe((data: GenericFormModel<IComplaint_Wages>) => {
       this.wagesWeeklyApiData = data;
     })
   }
@@ -111,8 +119,47 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     this.appHttpRequestHandlerService
     .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
     .pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe((data: GenericFormModel<IComplaint_Wages_WkDay_PeriodAmt>) => {
+    .subscribe((data: GenericFormModel<IComplaint_Wages_PeriodAmt>) => {
       this.wagesWeeklyPeriodAmtApiData = data;
+    })
+  }
+
+
+  getOverTimeWagesData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages>) => {
+      this.wagesOverTimeApiData = data;
+    })
+  }
+
+
+   getOverTimeWagesPeriodAmtData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages_PeriodAmt>) => {
+      this.wagesOverTimePeriodAmtApiData = data;
+    })
+  }
+
+  getNotPaidAtAllWagesData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages>) => {
+      this.wagesNotPaidAtAllApiData = data;
+    })
+  }
+
+
+  getNotPaidAtAllWagesPeriodAmtData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages_PeriodAmt>) => {
+      this.wagesNotPaidAtAllPeriodAmtApiData = data;
     })
   }
 
@@ -230,9 +277,17 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     this.minimumWagesDetailData = data
   }
 
-  wagesWeeklyDayEventListener(data: IComplaint_Wages_WkDay){
+  wagesWeeklyDayEventListener(data: IComplaint_Wages){
     console.log('data',data)
     this.wagesWeeklyDayDetailData = data
+  }
+  wagesWorkingOvertimeEventListener(data: IComplaint_Wages){
+    console.log('data',data)
+    this.wagesWorkingOverTimeDetailData = data
+  }
+  
+  wagesNotPaidAtAllEventListener(data: IComplaint_Wages){
+    this.wagesNotPaidAtAllDetailData = data
   }
 
 

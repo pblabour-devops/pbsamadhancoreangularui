@@ -6,15 +6,15 @@ import { IComplaint_Wages, IComplaint_Wages_PeriodAmt } from 'src/app/samadhaan/
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 
 @Component({
-  selector: 'app-wages-weeklyday',
-  templateUrl: './wages-weeklyday.component.html',
-  styleUrl: './wages-weeklyday.component.css',
-  standalone : false
+  selector: 'app-wages-working-overtime',
+  standalone: false,
+  templateUrl: './wages-working-overtime.component.html',
+  styleUrl: './wages-working-overtime.component.css',
 })
-export class WagesWeeklydayComponent {
-  @Output() wagesWeeklyDayDataEvent  = new EventEmitter<IComplaint_Wages>();
-  @Input() wagesWeeklyApiData :any
-  @Input() wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
+export class WagesWorkingOvertimeComponent {
+  @Output() wagesDataEvent  = new EventEmitter<IComplaint_Wages>();
+  @Input() wagesApiData :any
+  @Input() wagesPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -33,7 +33,7 @@ export class WagesWeeklydayComponent {
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
       detailAboutTheClaim: [''],
-      wagesWeeklyPeriodAmtDetails: this.fb.array([]),
+      periodAmtDetails: this.fb.array([]),
       applicationPurposeType : [0, Validators.required],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
@@ -48,17 +48,17 @@ export class WagesWeeklydayComponent {
 
   ngOnChanges(changes : any){
     console.log('chags', changes)
-    if(changes.wagesWeeklyApiData){
-    this.Input_Form.patchValue(this.wagesWeeklyApiData.formModel)
+    if(changes.wagesApiData){
+    this.Input_Form.patchValue(this.wagesApiData.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
-    } else if(changes.wagesWeeklyPeriodAmtApiData){
-    const details = this.wagesWeeklyPeriodAmtApiData.formModel;
+    } else if(changes.wagesPeriodAmtApiData){
+    const details = this.wagesPeriodAmtApiData.formModel;
     Object.keys(details).forEach(key => {
       if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
         details[key] = details[key].split('T')[0];
       }
     });
-    const formArray = this.Input_Form.get('wagesWeeklyPeriodAmtDetails') as FormArray;
+    const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
     formArray.clear();
     this.addMore(details)
     }
@@ -68,7 +68,7 @@ export class WagesWeeklydayComponent {
     this.addMore();
       this.Input_Form.valueChanges.subscribe(value => {
       console.log('asdf')
-      this.wagesWeeklyDayDataEvent.emit(value);
+      this.wagesDataEvent.emit(value);
     });
 
      this.complaintDetails.valueChanges.subscribe((rows: any[]) => {
@@ -86,7 +86,7 @@ export class WagesWeeklydayComponent {
   }
 
   get complaintDetails(): FormArray {
-    return this.Input_Form.get('wagesWeeklyPeriodAmtDetails') as FormArray;
+    return this.Input_Form.get('periodAmtDetails') as FormArray;
   }
 
   createComplaintDetail(data?:any): FormGroup {
@@ -94,6 +94,7 @@ export class WagesWeeklydayComponent {
       id: [data?.id || 0],
       fromDate: [data?.fromDate || '', Validators.required],
       toDate: [data?.toDate || '', Validators.required],
+      overTimeHours : [data?.overTimeHours || '', Validators.required],
       amount: [data?.amount || '', [Validators.required, Validators.min(0.01)]],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [data ? 2 : 1, Validators.required],
@@ -107,7 +108,7 @@ export class WagesWeeklydayComponent {
 
   public isFormValid(): boolean {
     return this.Input_Form.valid;
-}
+  }
 
 
   removeRow(index: number): void {
