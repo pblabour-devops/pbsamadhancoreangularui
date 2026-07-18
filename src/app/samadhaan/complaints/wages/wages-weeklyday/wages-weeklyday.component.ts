@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
-import { IComplaint_Wages_WkDay } from 'src/app/samadhaan/samadhaan-typed-modelts';
+import { IComplaint_Wages_WkDay, IComplaint_Wages_WkDay_PeriodAmt } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 
 @Component({
@@ -14,7 +14,7 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 export class WagesWeeklydayComponent {
   @Output() wagesWeeklyDayDataEvent  = new EventEmitter<IComplaint_Wages_WkDay>();
   @Input() wagesWeeklyApiData :any
-  @Input() wagesWeeklyDayPeriodApiData : any
+  @Input() wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_WkDay_PeriodAmt>
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -51,8 +51,8 @@ export class WagesWeeklydayComponent {
     if(changes.wagesWeeklyApiData){
     this.Input_Form.patchValue(this.wagesWeeklyApiData.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
-    } else if(changes.wagesWeeklyDayPeriodApiData){
-    const details = this.wagesWeeklyDayPeriodApiData.formModel;
+    } else if(changes.wagesWeeklyPeriodAmtApiData){
+    const details = this.wagesWeeklyPeriodAmtApiData.formModel;
     Object.keys(details).forEach(key => {
       if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
         details[key] = details[key].split('T')[0];

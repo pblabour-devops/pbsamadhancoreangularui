@@ -38,6 +38,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   minimumWagesApiData : any
   minimumWagesPeriodApiData : any
   wagesWeeklyApiData : GenericFormModel<IComplaint_Wages_WkDay>
+  wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_WkDay_PeriodAmt>
 
 
   constructor(  
@@ -59,6 +60,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
         this.getMinimumWagesData();
         this.getMinumWagesPeriodData();
         this.getWeeklyDayWagesData();
+        this.getWeeklyDayWagesPeriodData();
         // this.getClai
         // this.get
       });
@@ -105,6 +107,14 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
 
+   getWeeklyDayWagesPeriodData(){
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages_WkDay_PeriodAmt>) => {
+      this.wagesWeeklyPeriodAmtApiData = data;
+    })
+  }
 
 
   onSaveDraft(): void {
