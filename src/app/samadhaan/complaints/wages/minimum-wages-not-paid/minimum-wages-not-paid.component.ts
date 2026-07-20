@@ -41,7 +41,8 @@ export class MinimumWagesNotPaidComponent {
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
       rootActivityRefId: [''],
-      toDoActivityCategoryType: [0, Validators.required]
+      toDoActivityCategoryType: [0, Validators.required],
+      appRefId : [0, Validators.required]
     }
   ) as TForm<IComplaint_MinimumWagesNotPaid>;
 
@@ -51,7 +52,7 @@ export class MinimumWagesNotPaidComponent {
 
   ngOnChanges(changes : any){
     if(changes.minimumWagesApiData){
-    this.Input_Form.patchValue(this.minimumWagesApiData.formModel)
+    this.Input_Form.patchValue(this.minimumWagesApiData?.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
     } else if(changes.minimumWagesPeriodApiData){
     const details = this.minimumWagesPeriodApiData.formModel;

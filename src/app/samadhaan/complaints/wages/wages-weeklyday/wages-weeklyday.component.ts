@@ -38,7 +38,8 @@ export class WagesWeeklydayComponent {
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
       rootActivityRefId: [''],
-      toDoActivityCategoryType: [0, Validators.required]
+      toDoActivityCategoryType: [0, Validators.required],
+      appRefId : [0, Validators.required]
     }
   ) as TForm<IComplaint_Wages>;
 
@@ -49,7 +50,7 @@ export class WagesWeeklydayComponent {
   ngOnChanges(changes : any){
     console.log('chags', changes)
     if(changes.wagesWeeklyApiData){
-    this.Input_Form.patchValue(this.wagesWeeklyApiData.formModel)
+    this.Input_Form.patchValue(this.wagesWeeklyApiData?.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
     } else if(changes.wagesWeeklyPeriodAmtApiData){
     const details = this.wagesWeeklyPeriodAmtApiData.formModel;

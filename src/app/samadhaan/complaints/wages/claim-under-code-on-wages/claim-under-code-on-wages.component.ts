@@ -80,9 +80,9 @@ export class ClaimUnderCodeOnWagesComponent {
   }
 
   ngOnChanges(){
-    this.allowanceType = this.claimUnderCodeOnWagesApiData.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
-    this.placeOfWorkTypeA = this.claimUnderCodeOnWagesApiData.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
-    this.placeOfWorkTypeB = this.claimUnderCodeOnWagesApiData.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
+    this.allowanceType = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
+    this.placeOfWorkTypeA = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
+    this.placeOfWorkTypeB = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
   }
 
 
