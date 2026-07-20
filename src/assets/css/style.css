@@ -21368,7 +21368,7 @@ pre[class*=language-]:before {
     position: relative;
 }
 
-.pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu:after {
+/* .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu:after {
     content: "";
     position: absolute;
     top: 0;
@@ -21376,13 +21376,13 @@ pre[class*=language-]:before {
     width: 1px;
     height: calc(100% - 36px);
     background: rgba(185, 199, 212, 0.2);
-}
+} */
 
 .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li {
     position: relative;
 }
 
-.pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li:after {
+/* .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li:after {
     content: "";
     position: absolute;
     top: 20px;
@@ -21390,7 +21390,7 @@ pre[class*=language-]:before {
     width: 20px;
     height: 1px;
     background: rgba(185, 199, 212, 0.2);
-}
+} */
 
 .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li>a {
     text-align: left;

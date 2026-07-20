@@ -471,10 +471,10 @@ body {
     height: calc(100% - 30px);
 }
 
-.pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li:after {
+/* .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li:after {
     left: auto;
     right: 26px;
-}
+} */
 
 .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu li > a {
     text-align: right;
