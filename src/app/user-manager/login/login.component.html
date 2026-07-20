@@ -1,15 +1,75 @@
+<div class="top-bar">
+    <!-- <div class="top-left">
+        <a href="javascript:void(0)">Government of India</a>
+        <a href="javascript:void(0)">M/o Labour &amp; Employment</a>
+        <a href="javascript:void(0)">Skip to main content</a>
+        <a href="javascript:void(0)">Screen Reader Access</a>
+    </div>
+    <div class="top-right">
+        <button style="background:#fff;">&#9633;</button>
+        <button class="dark">&#9632;</button>
+        <button>A-</button>
+        <button>A</button>
+        <button>A+</button>
+        <button class="lang-toggle">अ / A</button>
+    </div> -->
+</div>
+
+<!-- ===================== MAIN HEADER ===================== -->
+<div class="main-header">
+    <div class="gov-emblem-block">
+        <img src="./assets/images/logo_black-C6oBWieK.png" alt="Emblem of India">
+        <div>
+            <p class="gov-text-punjabi">ਕਿਰਤ ਵਿਭਾਗ</p>
+            <p class="gov-text-sub">Department of Labour</p>
+            <p class="gov-text-sub">Government of Punjab</p>
+        </div>
+    </div>
+
+    <div class="title-block">
+        <div class="samadhan-title">
+            <span class="s-orange">eSAMADHAN</span>
+            <!-- <span class="beta-badge">Beta Version</span> -->
+        </div>
+        <p class="tagline">Justice for Workmen made Simple, Easy &amp; Quick</p>
+        <!-- <p class="test-notice">(This website is for testing purpose only)</p> -->
+    </div>
+
+    
+<div class="flag-emblem-custom" title="India Flag Emblem">
+    <div class="stripe saffron"></div>
+    <div class="stripe white">
+        <div class="ashoka-chakra">
+            <div class="ashoka-chakra-spokes"></div>
+        </div>
+    </div>
+    <div class="stripe green"></div>
+</div>
+</div>
+
+<!-- ===================== NAVIGATION BAR ===================== -->
+<div class="nav-bar">
+    <!-- <a href="javascript:void(0)" class="nav-item"><i class="feather icon-home"></i></a>
+    <a href="javascript:void(0)" class="nav-item">About Us <i class="feather icon-chevron-down"></i></a>
+    <a href="javascript:void(0)" class="nav-item">CSC <i class="feather icon-chevron-down"></i></a>
+    <a href="javascript:void(0)" class="nav-item">Track your Application</a>
+    <a href="javascript:void(0)" class="nav-item">FAQs</a> -->
+</div>
+
 <div class="login-page">
+    <!-- HEADER  -->
+     
     <div class="mainwraper">
         <div class="wrapper">
             <div class="logincontainer">
                 <div class="left-panel">
                     <div class="row">
                         <div class="col-md-12 text-align">
-                            <h2 style="font-weight: bold; color: black">Welcome on Samadhan Portal!</h2><br>
-                             <h2 style="font-weight: bold;color: black">(PUNJAB)</h2>
+                            <h2 style="font-weight: bold;">Welcome to eSamadhan Portal!</h2><br>
+                             <h2 style="font-weight: bold;">(PUNJAB)</h2>
                         </div>
                         <div class="col-md-12 text-align">
-                            <img src="assets/images/icon/govt-of-punjab.png" alt="Invest Punjab Logo" />
+                            <img src="assets/img/logo_Latest.png" alt="Invest Punjab Logo" />
                         </div>
                         <!-- <div class="col-md-12 text-align">
                             <span style="font-size: 20px; color: yellow;"><u>Helpdesk Support</u></span><br>
@@ -19,10 +79,10 @@
                     </div>
                 </div>
                 <div class="right-panel">
-                   <div class="row"style="border-bottom: 3px solid #2141A4; padding-bottom: 10px;">
+                   <div class="row" style="border-bottom: 3px solid #2141A4; padding-bottom: 104px;">
                         <div class="col-md-12">
-                            <div class="col-md-12">
-                                <img src="./assets/images/gov_new.png" style="height: 90px;">
+                            <div class="col-md-12" style="text-align:center;">
+                                <img src="./assets/images/gov_new.png" style="height: 70px;">
                                 <!-- <img src="./assets/img/logo_Latest.png" style="height: 100px; float: inline-end;"> -->
                             </div>
                         </div>
@@ -38,7 +98,10 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-user"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)" placeholder="Enter User Name">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -49,20 +112,27 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-lock"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)" placeholder="Enter Password">
+                                    <i class="feather icon-eye eye-icon"></i>
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
                             </div>
                         </div>
 
-                        <div *ngFor="let i of getFormField('EnteredCaptcha')" class="form-group">
+                        <div *ngFor="let i of getFormField('EnteredCaptcha')" class="col-md-12">
                             <label class="form-label required">
                                 {{ i.captionText }} <span class="text-danger"></span>
                             </label>
                             <div class="captcha-row">
-                                <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
-                                    (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon captcha-input-wrap">
+                                    <i class="feather icon-shield"></i>
+                                    <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                        (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
 
                                 <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
                                 <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
@@ -108,7 +178,10 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-key"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)" placeholder="Enter OTP">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -147,7 +220,10 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-user"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)" placeholder="Enter User Name">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -159,8 +235,11 @@
                                 </label>
 
                                 <div class="captcha-row">
-                                    <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
-                                        (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                    <div class="input-with-icon captcha-input-wrap">
+                                        <i class="feather icon-shield"></i>
+                                        <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                            (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                    </div>
 
                                     <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
                                     <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
@@ -208,7 +287,11 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-lock"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)" placeholder="Enter New Password">
+                                    <i class="feather icon-eye eye-icon"></i>
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -219,7 +302,11 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <i class="feather icon-lock"></i>
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)" placeholder="Confirm New Password">
+                                    <i class="feather icon-eye eye-icon"></i>
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -231,8 +318,11 @@
                                 </label>
 
                                 <div class="captcha-row">
-                                    <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
-                                        (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                    <div class="input-with-icon captcha-input-wrap">
+                                        <i class="feather icon-shield"></i>
+                                        <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                            (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                    </div>
 
                                     <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
                                     <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
@@ -291,4 +381,20 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<!-- <div class="footer-bar">
+    <a href="javascript:void(0)">Disclaimer</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">Bhashini Disclaimer</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">Website Policies</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">User Manual</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">Contact Us</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">Web Information Manager</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">FAQs</a> <span class="sep">|</span>
+    <a href="javascript:void(0)">Sitemap</a>
+</div> -->
+
+<div class="copyright-bar">
+    ©2026 Department of Labour. All rights reserved.
 </div>
