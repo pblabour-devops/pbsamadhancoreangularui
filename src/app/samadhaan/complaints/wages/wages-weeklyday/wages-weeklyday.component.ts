@@ -13,8 +13,8 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 })
 export class WagesWeeklydayComponent {
   @Output() wagesWeeklyDayDataEvent  = new EventEmitter<IComplaint_Wages>();
-  @Input() wagesWeeklyApiData :any
-  @Input() wagesWeeklyPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
+  @Input() wagesApiData :any
+  @Input() wagesPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt[]>
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -33,7 +33,7 @@ export class WagesWeeklydayComponent {
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
       detailAboutTheClaim: [''],
-      wagesWeeklyPeriodAmtDetails: this.fb.array([]),
+      periodAmtDetails: this.fb.array([]),
       applicationPurposeType : [0, Validators.required],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
@@ -49,19 +49,22 @@ export class WagesWeeklydayComponent {
 
   ngOnChanges(changes : any){
     console.log('chags', changes)
-    if(changes.wagesWeeklyApiData){
-    this.Input_Form.patchValue(this.wagesWeeklyApiData?.formModel)
+    if(changes.wagesApiData){
+    this.Input_Form.patchValue(this.wagesApiData?.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
-    } else if(changes.wagesWeeklyPeriodAmtApiData){
-    const details = this.wagesWeeklyPeriodAmtApiData.formModel;
-    Object.keys(details).forEach(key => {
-      if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
-        details[key] = details[key].split('T')[0];
+    } else if(changes.wagesPeriodAmtApiData){
+    const details = this.wagesPeriodAmtApiData.formModel;
+    console.log('detials', details)
+    const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
+    formArray.clear();
+    details.forEach(detail =>{
+    Object.keys(detail).forEach(key => {
+      if (detail[key] && typeof detail[key] === 'string' && detail[key].includes('T')) {
+        detail[key] = detail[key].split('T')[0];
       }
     });
-    const formArray = this.Input_Form.get('wagesWeeklyPeriodAmtDetails') as FormArray;
-    formArray.clear();
-    this.addMore(details)
+      this.addMore(detail)
+    })
     }
   }
 
@@ -87,7 +90,7 @@ export class WagesWeeklydayComponent {
   }
 
   get complaintDetails(): FormArray {
-    return this.Input_Form.get('wagesWeeklyPeriodAmtDetails') as FormArray;
+    return this.Input_Form.get('periodAmtDetails') as FormArray;
   }
 
   createComplaintDetail(data?:any): FormGroup {

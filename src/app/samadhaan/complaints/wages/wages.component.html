@@ -16,8 +16,8 @@
 
           <app-claim-under-code-on-wages [claimUnderCodeOnWagesApiData]="claimUnderCodeOnWagesApiData" (claimUnderCodeOnWagesDataEvent)="claimUnderCodeOnWagesDataEventListener($event)"></app-claim-under-code-on-wages>
           <app-minimum-wages-not-paid [minimumWagesApiData]="minimumWagesApiData" [minimumWagesPeriodApiData]="minimumWagesPeriodApiData" (minimumWagesDataEvent)="minimumWagesDataDataEventListener($event)" ></app-minimum-wages-not-paid>
-          <app-wages-weeklyday [wagesWeeklyApiData]="wagesWeeklyApiData" [wagesWeeklyPeriodAmtApiData]="wagesWeeklyPeriodAmtApiData" (wagesWeeklyDayDataEvent)="wagesWeeklyDayEventListener($event)"></app-wages-weeklyday>
-          <app-wages-working-overtime [wagesApiData]="wagesWeeklyApiData" [wagesPeriodAmtApiData]="wagesWeeklyPeriodAmtApiData" (wagesDataEvent)="wagesWorkingOvertimeEventListener($event)"></app-wages-working-overtime>
+          <app-wages-weeklyday [wagesApiData]="wagesWeeklyApiData" [wagesPeriodAmtApiData]="wagesWeeklyPeriodAmtApiData" (wagesWeeklyDayDataEvent)="wagesWeeklyDayEventListener($event)"></app-wages-weeklyday>
+          <app-wages-working-overtime [wagesApiData]="wagesOverTimeApiData" [wagesPeriodAmtApiData]="wagesOverTimePeriodAmtApiData" (wagesDataEvent)="wagesWorkingOvertimeEventListener($event)"></app-wages-working-overtime>
           <app-wages-not-paid-at-all [wagesApiData]="wagesNotPaidAtAllApiData" [wagesPeriodAmtApiData]="wagesNotPaidAtAllPeriodAmtApiData" (wagesDataEvent)="wagesNotPaidAtAllEventListener($event)"></app-wages-not-paid-at-all>
           <app-wages-unauthorised-deduction [wagesApiData]="wageUnauthDedApiData" [wagesPeriodAmtApiData]="wageUnauthDedPeriodAmtApiData" (wagesDataEvent)="wagesUnauthDedEventListener($event)"></app-wages-unauthorised-deduction>
           <app-non-payment-bonus [wagesApiData]="nonPayBonusApiData" [wagesPeriodAmtApiData]="nonPayBonusPeriodAmtApiData" (wagesDataEvent)="nonPayBonusEventListener($event)"></app-non-payment-bonus>

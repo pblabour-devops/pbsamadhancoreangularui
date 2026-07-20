@@ -249,7 +249,7 @@ export interface IComplaint_Wages {
   compensationSought: number;
   detailAboutTheClaim: string;
 
-  wagesWeeklyPeriodAmtDetails: IComplaint_Wages_PeriodAmt[];
+  periodAmtDetails: IComplaint_Wages_PeriodAmt[];
 
   // Not Mapped Properties
   applicationPurposeType: number;

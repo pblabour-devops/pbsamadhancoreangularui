@@ -14,7 +14,7 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 export class WagesWorkingOvertimeComponent {
   @Output() wagesDataEvent  = new EventEmitter<IComplaint_Wages>();
   @Input() wagesApiData :any
-  @Input() wagesPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt>
+  @Input() wagesPeriodAmtApiData : GenericFormModel<IComplaint_Wages_PeriodAmt[]>
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -54,14 +54,17 @@ export class WagesWorkingOvertimeComponent {
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
-    Object.keys(details).forEach(key => {
-      if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
-        details[key] = details[key].split('T')[0];
-      }
-    });
+    console.log('detials', details)
     const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
     formArray.clear();
-    this.addMore(details)
+    details.forEach(detail =>{
+    Object.keys(detail).forEach(key => {
+      if (detail[key] && typeof detail[key] === 'string' && detail[key].includes('T')) {
+        detail[key] = detail[key].split('T')[0];
+      }
+    });
+      this.addMore(detail)
+    })
     }
   }
 
