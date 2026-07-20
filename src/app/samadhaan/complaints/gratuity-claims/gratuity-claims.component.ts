@@ -193,7 +193,6 @@ export class GratuityClaimsComponent {
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2005);
     this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
     this.Input_Form.controls.id.patchValue(0);
-    console.log('input form', this.Input_Form.value);
     this.appHttpRequestHandlerService
       .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
         next: () => {

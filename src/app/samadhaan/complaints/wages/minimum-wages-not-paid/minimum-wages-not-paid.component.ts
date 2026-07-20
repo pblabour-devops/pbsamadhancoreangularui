@@ -70,7 +70,6 @@ export class MinimumWagesNotPaidComponent {
   ngOnInit(){
     this.addMore();
       this.Input_Form.valueChanges.subscribe(value => {
-      console.log('asdf')
       this.minimumWagesDataEvent.emit(value);
     });
   }

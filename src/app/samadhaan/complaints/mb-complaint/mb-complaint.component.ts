@@ -80,7 +80,6 @@ export class MbComplaintComponent {
 
       this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
         this.paramInfo = info;
-        console.log('info', this.paramInfo)
         this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);
 
         this.appHttpRequestHandlerService

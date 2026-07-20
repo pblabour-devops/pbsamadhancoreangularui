@@ -69,7 +69,6 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
       this.parmamEncodedinfo = params.info;
       this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
         this.paramInfo = info;
-        console.log('info', this.paramInfo)
         this.getClaimUnderCodeOnWagesData();
         this.getMinimumWagesData();
         this.getMinumWagesPeriodData();
@@ -320,7 +319,6 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
         this.wagesWorkingOverTimeDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WORKING_OVERTIME;
         this.wagesWorkingOverTimeDetailData.applicationType = this.paramInfo.applicationType;
         this.wagesWorkingOverTimeDetailData.rootActivityRefId = ''
-        console.log('wagesWeeklyDayDetailData', this.wagesWorkingOverTimeDetailData)
         this.appHttpRequestHandlerService.httpPost(this.wagesWorkingOverTimeDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_OT','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
          next: () => {
           debugger;
@@ -349,21 +347,17 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
   claimUnderCodeOnWagesDataEventListener(data:IComplaint_Claim_CodeOnWage){
-  console.log('data', data)
   this.codeOnWagesDetailData = data
   }
 
   minimumWagesDataDataEventListener(data: IComplaint_MinimumWagesNotPaid){
-    console.log('data',data)
     this.minimumWagesDetailData = data
   }
 
   wagesWeeklyDayEventListener(data: IComplaint_Wages){
-    console.log('data',data)
     this.wagesWeeklyDayDetailData = data
   }
   wagesWorkingOvertimeEventListener(data: IComplaint_Wages){
-    console.log('data',data)
     this.wagesWorkingOverTimeDetailData = data
   }
   

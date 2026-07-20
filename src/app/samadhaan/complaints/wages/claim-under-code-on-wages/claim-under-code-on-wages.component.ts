@@ -74,7 +74,6 @@ export class ClaimUnderCodeOnWagesComponent {
 
   ngOnInit(): void {
     this.Input_Form.valueChanges.subscribe(value => {
-      console.log('asdf')
       this.claimUnderCodeOnWagesDataEvent.emit(value);
     });
   }

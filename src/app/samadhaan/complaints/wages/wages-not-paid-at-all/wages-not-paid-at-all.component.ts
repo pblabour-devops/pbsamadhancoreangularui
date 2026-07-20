@@ -48,17 +48,15 @@ export class WagesNotPaidAtAllComponent {
   }
 
   ngOnChanges(changes : any){
-    console.log('chags', changes)
-    console.log('chags', changes)
     if(changes.wagesApiData){
     this.Input_Form.patchValue(this.wagesApiData?.formModel)
     this.Input_Form.controls.toDoActivityModeType.patchValue(2);
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
-    console.log('detials', details)
+    if(details){
     const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
     formArray.clear();
-    details.forEach(detail =>{
+    details?.forEach(detail =>{
     Object.keys(detail).forEach(key => {
       if (detail[key] && typeof detail[key] === 'string' && detail[key].includes('T')) {
         detail[key] = detail[key].split('T')[0];
@@ -68,11 +66,11 @@ export class WagesNotPaidAtAllComponent {
     })
     }
   }
+  }
 
   ngOnInit(){
     this.addMore();
       this.Input_Form.valueChanges.subscribe(value => {
-      console.log('asdf')
       this.wagesDataEvent.emit(value);
     });
 

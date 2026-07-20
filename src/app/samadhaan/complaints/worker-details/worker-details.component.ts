@@ -84,7 +84,6 @@ export class WorkerDetailsComponent {
       .subscribe(params => {
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
           this.paramInfo = info;
-          console.log('paraminfor', this.paramInfo);
           this.appHttpRequestHandlerService.httpGet({appRefId : this.Input_Form.controls.appRefId.value , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((data: GenericFormModel<any>) => {
               this.appFormStepsList = data.appFormStepsList;

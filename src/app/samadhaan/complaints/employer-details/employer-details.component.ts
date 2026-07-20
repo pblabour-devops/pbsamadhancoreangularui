@@ -130,7 +130,6 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
           this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
             this.paramInfo = info;
             this.appId = this.paramInfo.appId;
-            console.log('paraminfor', this.paramInfo);
             // this.appHttpRequestHandlerService.httpGet({appRefId : this.paramInfo?.appRefId , projectSiteId: 0}, "Complaints", "getEmployerDetails").pipe(takeUntil(this.ngUnsubscribe))
             //   .subscribe((data: GenericFormModel<any>) => {
             //     this.appFormStepsList = data.appFormStepsList;
@@ -192,12 +191,10 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
     // Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
     // Emit event / navigate to Worker Details tab
   }
 
