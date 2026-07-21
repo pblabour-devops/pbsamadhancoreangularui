@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CommonService} from '../../common/common.service'
 import * as $ from 'jquery';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AppHttpRequestHandlerService } from '../app-http-request-handler.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonOpsService } from '../common-ops-service';
@@ -80,6 +80,7 @@ export class SideNavBarComponent implements OnInit {
   isMenuItemExpanded:boolean = true;
   isMenuItemDashboardExpanded:boolean = true;
   isMenuItemEPFOExpanded:boolean = false;
+  currentUrl: string = '';
   constructor(public CS: CommonService,private route: ActivatedRoute,
     private router: Router,
     private activeRoute: ActivatedRoute,
@@ -104,7 +105,18 @@ export class SideNavBarComponent implements OnInit {
   }
   if("INDL,LB1N,DEVTEAM,HELPDESK,ACFA,WBCH,WBDH,WBAO,WBDC,TRN_RPT".indexOf(this.roleName)==-1)
     this.loadDashboadData(1, this.selApplicationType);
+  
+   this.currentUrl = this.router.url;
+    this.router.events.pipe(takeUntil(this.ngUnsubscribe)).subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.urlAfterRedirects;
+      }
+    });
   }
+
+  isActiveRoute(route: string): boolean {
+  return this.currentUrl.startsWith(route);
+}
 
     ngAfterViewInit() {
     

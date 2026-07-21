@@ -35,19 +35,19 @@
 						<span style="max-width: 180px;" class="pcoded-mtext">Dashboards</span>
 					</a> -->
 					<ul class="pcoded-submenu" [ngStyle]="{'display':isMenuItemDashboardExpanded ? 'block' : 'none'}" style="background-color: #0275a4;">
-													<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+													<li class="nav-link" *ngIf="roleName =='WORKER_INDL'" [ngClass]="{'active-menu-item': isActiveRoute('/dashboard/applicantdashboard')}">
 							<a style="color : white" (click)="onDashboardClick()" href="javascript:void(0);">Dashboard</a>
 						</li>
-						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'" [ngClass]="{'active-menu-item': isActiveRoute('/dashboard/file-application')}">
 							<a style="color : white" (click)="onFileApplicationClick()" href="javascript:void(0);">File Application</a>
 						</li>
-							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'" [ngClass]="{'active-menu-item': isActiveRoute('/dashboard/track-application')}">
 							<a style="color : white" (click)="onTrackApplicationClick()" href="javascript:void(0);">Track Application</a>
 						</li>
-							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'" [ngClass]="{'active-menu-item': isActiveRoute('/dashboard/draft-application')}">
 							<a style="color : white" (click)="onDraftApplicationClick()" href="javascript:void(0);">Draft Application</a>
 						</li>
-							<li class="nav-link" *ngIf="roleName =='WORKER_INDL'">
+						<li class="nav-link" *ngIf="roleName =='WORKER_INDL'" [ngClass]="{'active-menu-item': isActiveRoute('/dashboard/help')}">
 							<a style="color : white" (click)="onHelpClick()" href="javascript:void(0);">Help</a>
 						</li>
 					</ul>

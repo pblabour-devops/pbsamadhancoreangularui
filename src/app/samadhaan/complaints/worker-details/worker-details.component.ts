@@ -32,7 +32,7 @@ export class WorkerDetailsComponent {
   constructor(
   private fb: FormBuilder, 
   private route : ActivatedRoute, 
-  private commonOpsService : CommonOpsService,
+  public commonOpsService : CommonOpsService,
   private appHttpRequestHandlerService : AppHttpRequestHandlerService,
   private router : Router ) {}
 

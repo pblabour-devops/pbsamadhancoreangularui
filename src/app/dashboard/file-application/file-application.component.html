@@ -1,78 +1,75 @@
 <div class="pcoded-main-container">
   <div class="pcoded-content">
-<div class="row">
-<div class="col-sm-12">
-<div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container-fluid p-0">
 
-  <!-- Top gray strip -->
-  <div class="bg-body-secondary" style="height: 8px;"></div>
+          <!-- Top gray strip -->
+          <div class="bg-body-secondary" style="height: 8px;"></div>
 
-  <div class="bg-white p-4 border border-top-0">
+          <div class="bg-white p-4 border border-top-0">
 
-    <!-- File application for -->
-    <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+            <!-- File application for -->
+            <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
 
-      <span class="bg-body-secondary px-3 py-2 fw-bold">
-        File application for:
-      </span>
+              <span class="bg-body-secondary py-2 fw-bold">
+                File application for:
+              </span>
 
-      <div class="form-check" *ngFor="let type of filingTypes">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="filingType"
-          [id]="type"
-          [value]="type"
-          [(ngModel)]="selectedFilingType">
-        <label class="form-check-label text-primary fw-semibold" [for]="type">
-          {{ type }}
-        </label>
-      </div>
+              <div class="toggle-group flex-wrap" role="radiogroup" aria-labelledby="filingTypeLabel" style="padding-left: 20px;">
+                <label class="toggle-option" *ngFor="let type of filingTypes">
+                  <input
+                    type="radio"
+                    name="filingType"
+                    [id]="type"
+                    [value]="type"
+                    [(ngModel)]="selectedFilingType">
+                  <span>{{ type }}</span>
+                </label>
+              </div>
 
-    </div>
+            </div> <!-- ✅ ADDED: properly close d-flex wrapper here -->
 
-    <!-- Instructions -->
-    <p class="fw-semibold mb-1">
-      Please select issues from the list below (You can tick more than one option):
-    </p>
-    <p class="mb-3">
-      अपनी समस्या दर्ज करे (एक से ज़्यादा भी दर्ज कर सकते है )
-    </p>
+            <!-- Instructions -->
+            <p class="fw-semibold mb-1">
+              Please select issues from the list below (You can tick more than one option):
+            </p>
+            <hr class="mb-4">
 
-    <hr class="mb-4">
-    @if(selectedFilingType == 'Self'){
-    <app-self (selectedIssueEventEmitter)="setSelectedIssues($event)"></app-self>
-    } 
-     @if(selectedFilingType == 'Nominee'){
-    <app-nominee></app-nominee>
-    } 
-     @if(selectedFilingType == 'Legal Heir'){
-    <app-legal-heir></app-legal-heir>
-    } 
-     @if(selectedFilingType == 'Legal Representative'){
-    <app-legal-representative></app-legal-representative>
-    } 
-     @if(selectedFilingType == 'Authorized Representative'){
-    <app-authorized-representative></app-authorized-representative>
-    } 
-     @if(selectedFilingType == 'Group of Workers'){
-    <app-group-of-workers></app-group-of-workers>
-    } 
+            @if(selectedFilingType == 'Self'){
+              <app-self (selectedIssueEventEmitter)="setSelectedIssues($event)"></app-self>
+            }
+            @if(selectedFilingType == 'Nominee'){
+              <app-nominee></app-nominee>
+            }
+            @if(selectedFilingType == 'Legal Heir'){
+              <app-legal-heir></app-legal-heir>
+            }
+            @if(selectedFilingType == 'Legal Representative'){
+              <app-legal-representative></app-legal-representative>
+            }
+            @if(selectedFilingType == 'Authorized Representative'){
+              <app-authorized-representative></app-authorized-representative>
+            }
+            @if(selectedFilingType == 'Group of Workers'){
+              <app-group-of-workers></app-group-of-workers>
+            }
 
-    <hr class="my-4">
+            <hr class="my-4">
 
-    <!-- Next Button -->
-    <button
-      type="button"
-      class="btn btn-primary px-4"
-      (click)="selectedissue()"
-      >
-      Next
-    </button>
+            <div class="d-flex justify-content-end">
+              <!-- Next Button -->
+              <button
+                type="button"
+                class="btn btn-primary px-4"
+                (click)="selectedissue()">
+                Next
+              </button>
+            </div>
 
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+          </div> <!-- closes bg-white -->
+        </div> <!-- closes container-fluid -->
+      </div> <!-- closes col-sm-12 -->
+    </div> <!-- closes row -->
+  </div> <!-- closes pcoded-content -->
+</div> <!-- closes pcoded-main-container -->

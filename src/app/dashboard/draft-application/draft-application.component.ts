@@ -8,12 +8,13 @@ import { ApplicationSummary } from '../dashboard-typed-models';
   standalone: false
 })
 export class DraftApplicationComponent {
-applicationSummaries: ApplicationSummary[] = [
+  applicationSummaries: ApplicationSummary[] = [
     {
       title: 'Individual Application',
       total: 0,
       pending: 0,
       disposed: 0,
+      icon: 'icon-file-text',
       iconBg: 'bg-icon-pink'
     },
     {
@@ -21,6 +22,7 @@ applicationSummaries: ApplicationSummary[] = [
       total: 0,
       pending: 0,
       disposed: 0,
+      icon: 'icon-users',
       iconBg: 'bg-icon-blue'
     }
   ];

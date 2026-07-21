@@ -81,3 +81,12 @@
 .nav-link{
     cursor: pointer;
 }
+
+.active-menu-item {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.active-menu-item > a {
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}

@@ -101,6 +101,7 @@
         formControlName="mobileNumber"
         class="form-control"
         maxlength="10"
+        (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)"
        />
        <div
         class="text-danger"

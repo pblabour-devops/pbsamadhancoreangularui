@@ -30,6 +30,7 @@ export class SelfComponent {
     this.appHttpRequestHandlerService.httpGet(
       {}, "Complaints", "getComplaintsCategories").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: GenericFormModel<ComplaintCategory[]>) => {
+        console.log('data', data)
 
         const categoryNames: { [key: number]: string } = {
           1: 'Payment Related',
@@ -38,7 +39,7 @@ export class SelfComponent {
           4: 'Penalty/Composition'
         };
 
-        const groupedCategories: Category[] = [];
+        const groupedCategories: any[] = [];
 
         Object.keys(categoryNames).forEach(key => {
 
@@ -51,7 +52,8 @@ export class SelfComponent {
               .map(x => ({
                 id: x.id,
                 label: x.complaintTitle,
-                hasInfo: true
+                hasInfo: true,
+                info : x.info
               }))
           });
 

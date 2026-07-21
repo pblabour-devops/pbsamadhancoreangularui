@@ -1092,6 +1092,7 @@ export interface Issue {
 export interface Category {
   title: string;
   issues: Issue[];
+  // info : string
 }
 
 export interface ApplicationSummary {
@@ -1100,6 +1101,7 @@ export interface ApplicationSummary {
   pending: number;
   disposed: number;
   iconBg: string;
+  icon : string;
 }
 
 export interface FAQ {
@@ -1112,6 +1114,7 @@ export interface ComplaintCategory {
   id: number;
   complaintTitle: string;
   complaintCategoryType: number;
+  info : string
 }
 
 export interface Issue {

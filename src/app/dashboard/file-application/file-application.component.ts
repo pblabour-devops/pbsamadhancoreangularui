@@ -22,7 +22,6 @@ export class FileApplicationComponent {
     'Legal Heir',
     'Legal Representative',
     'Authorized Representative',
-    'Group of Workers'
   ];
 
 

@@ -9,20 +9,22 @@ import { ApplicationSummary } from '../dashboard-typed-models';
 })
 export class TrackApplicationComponent {
 
-  applicationSummaries: ApplicationSummary[] = [
+  applicationSummaries = [
     {
       title: 'Individual Application',
       total: 0,
       pending: 0,
       disposed: 0,
-      iconBg: 'bg-icon-pink'
+      icon: 'icon-bell',
+      iconBg: 'icon-bg-pink'
     },
     {
       title: 'Group of worker application',
       total: 0,
       pending: 0,
       disposed: 0,
-      iconBg: 'bg-icon-blue'
+      icon: 'icon-users',
+      iconBg: 'icon-bg-blue'
     }
-  ];
+  ]
 }
