@@ -21,6 +21,12 @@ import {TrackApplicationComponent} from "./track-application/track-application.c
 import { DraftApplicationComponent } from "./draft-application/draft-application.component";
 import { HelpComponent } from "./help/help.component";
 import { WorkerDetailsComponent } from "../samadhaan/complaints/worker-details/worker-details.component";
+import { SelfComponent } from './file-application/self/self.component';
+import { NomineeComponent } from './file-application/nominee/nominee.component';
+import { LegalHeirComponent } from './file-application/legal-heir/legal-heir.component';
+import { LegalRepresentativeComponent } from './file-application/legal-representative/legal-representative.component';
+import { AuthorizedRepresentativeComponent } from './file-application/authorized-representative/authorized-representative.component';
+import { GroupOfWorkersComponent } from './file-application/group-of-workers/group-of-workers.component';
 @NgModule({
     imports: [
     RouterModule,
@@ -46,6 +52,12 @@ import { WorkerDetailsComponent } from "../samadhaan/complaints/worker-details/w
                    DraftApplicationComponent,
                    HelpComponent,
                    WorkerDetailsComponent,
+                   SelfComponent,
+                   NomineeComponent,
+                   LegalHeirComponent,
+                   LegalRepresentativeComponent,
+                   AuthorizedRepresentativeComponent,
+                   GroupOfWorkersComponent,
                    ],
     providers:[UntypedFormBuilder, DashboardService]
 })

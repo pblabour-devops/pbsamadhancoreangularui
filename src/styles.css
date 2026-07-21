@@ -238,4 +238,80 @@
 }
 /* end  */
 
+
+/* File Application css */
+.category-header {
+  background-color: #1a6f8f;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #2141A4;
+  color: #fff;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 2px); /* keeps it close to the icon */
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: normal;
+  white-space: pre-line; /* preserves line breaks & indentation from info text */
+  width: 280px;
+  max-width: 90vw;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 999;
+  max-height: 280px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  overflow-y: scroll ;
+}
+
+/* Small arrow pointing down to the icon */
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1a1a1a transparent transparent transparent;
+}
+
+/* Show tooltip on hover of icon OR while hovering the tooltip itself (sticky) */
+.tooltip-wrapper:hover .tooltip-content,
+.tooltip-content:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* File Appilcation end */
+
   

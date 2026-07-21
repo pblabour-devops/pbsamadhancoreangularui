@@ -12,6 +12,7 @@
 
   <div class="main-content">
     <div class="card col-md-12 card-form">
+        <h5 class="section-title">Employer/Contractor Details</h5>
 
       <!-- Are you engaged through contractor -->
       <div class="row form-group align-items-center">
@@ -42,32 +43,34 @@
 
       <!-- Name and designation -->
       <div class="row">
-        <div class="col-md-12 form-group">
-          <label class="required">Name and designation of the Employer/Contractor</label>
+        <div class="col-md-6 form-group">
+      <label class="required">
+        Name and designation of the
+        {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}
+      </label>
           <input
             type="text"
             class="form-control"
             formControlName="employerORContractorNameAndDesignation"
-            [class.is-invalid]="formControls.employerORContractorNameAndDesignation.touched && formControls.employerORContractorNameAndDesignation.invalid" />
-          <div class="invalid-feedback">
-            Name and designation of the Employer/Contractor is required
-          </div>
+          />
+           <div
+            class="text-danger"
+            *ngIf="Input_Form.get('employerORContractorNameAndDesignation')?.invalid && Input_Form.get('employerORContractorNameAndDesignation')?.touched">
+            Required
+            </div>
         </div>
-      </div>
-
-      <!-- Address -->
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <label class="required">Address of the Employer/Contractor</label>
-          <textarea
+        <div class="col-md-6 form-group">
+          <label class="required">Address of the {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}</label>
+          <input
             class="form-control"
             rows="2"
             formControlName="employerORContractorAddress"
-            [class.is-invalid]="formControls.employerORContractorAddress.touched && formControls.employerORContractorAddress.invalid">
-          </textarea>
-          <div class="invalid-feedback">
-            Address of the Employer/Contractor is required
-          </div>
+           />
+            <div
+            class="text-danger"
+            *ngIf="Input_Form.get('employerORContractorAddress')?.invalid && Input_Form.get('employerORContractorAddress')?.touched">
+            Required
+            </div>
         </div>
       </div>
 
@@ -78,11 +81,15 @@
           <select
             class="form-control"
             formControlName="state"
-            [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+           >
             <option value="">Select State</option>
             <option value="Punjab">Punjab</option>
           </select>
-          <div class="invalid-feedback">State is required</div>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+          Required
+        </div>
         </div>
 
         <div class="col-md-6 form-group">
@@ -90,13 +97,17 @@
           <select
             class="form-control"
             formControlName="districtRefId"
-            [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid">
+           >
             <option value="">Select District</option>
             <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
               {{ dist.districtName }}
             </option>
           </select>
-          <div class="invalid-feedback">District is required</div>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('districtRefId')?.invalid && Input_Form.get('districtRefId')?.touched">
+          Required
+        </div>
         </div>
       </div>
 
@@ -105,7 +116,11 @@
         <div class="col-md-6 form-group">
           <label class="required">PIN Code</label>
             <input  type="text" class="form-control" formControlName="pinCode" maxlength="6" />
-          <div class="invalid-feedback">PIN Code is required</div>
+          <div
+  class="text-danger"
+  *ngIf="Input_Form.get('pinCode')?.invalid && Input_Form.get('pinCode')?.touched">
+  Required
+</div>
         </div>
 
         <div class="col-md-6 form-group">
@@ -115,9 +130,12 @@
             class="form-control"
             formControlName="mobileNumber"
             maxlength="10"
-            [class.is-invalid]="formControls.mobileNumber.touched && formControls.mobileNumber.invalid"
             (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" />
-          <div class="invalid-feedback">Valid 10-digit mobile number required</div>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('mobileNumber')?.invalid && Input_Form.get('mobileNumber')?.touched">
+          Required
+        </div>
         </div>
       </div>
 
@@ -129,13 +147,17 @@
             type="text"
             class="form-control"
             formControlName="email"
-            [class.is-invalid]="formControls.email.touched && formControls.email.invalid" />
-          <div class="invalid-feedback">Enter a valid email address</div>
+            />
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('email')?.errors?.email && Input_Form.get('email')?.touched">
+          Enter a valid email address
+        </div>
         </div>
       </div>
 
       <!-- Upload Files -->
-      <div class="row">
+      <!-- <div class="row">
 
           <div class="d-flex align-items-center gap-3">
             <input type="file" class="form-control" />
@@ -146,7 +168,7 @@
         <div class="col-md-12 d-flex justify-content-between align-items-center">
           <small class="text-success">Supporting Documents (Max size: 30MB)</small>
         </div>
-      </div>
+      </div> -->
 
       <!-- Add / Reset buttons -->
       <div class="text-right mt-3">

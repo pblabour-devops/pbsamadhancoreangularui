@@ -19,11 +19,13 @@
         formControlName="workplaceAddress"
         class="form-control"
         rows="2"
-        [class.is-invalid]="formControls.workplaceAddress.touched && formControls.workplaceAddress.invalid">
+        >
       </textarea>
-      <div class="invalid-feedback">
-        Address of Workplace is required
-      </div>
+     <div
+      class="text-danger"
+      *ngIf="Input_Form.get('workplaceAddress')?.invalid && Input_Form.get('workplaceAddress')?.touched">
+      Required
+    </div>
     </div>
 
     <!-- State of Workplace -->
@@ -34,13 +36,15 @@
       <select
         formControlName="state"
         class="form-control"
-        [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+        >
         <option value="" disabled selected>Select State</option>
         <option value="Punjab">Punjab</option>
       </select>
-      <div class="invalid-feedback">
-        State of Workplace is required
-      </div>
+     <div
+  class="text-danger"
+  *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+  Required
+</div>
     </div>
 
     <!-- District of Workplace -->
@@ -51,16 +55,18 @@
       <select
         formControlName="districtRefId"
         class="form-control"
-        [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid"
+       
         >
         <option value="" disabled selected>Select District</option>
         <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
           {{ dist.districtName }}
         </option>
       </select>
-      <div class="invalid-feedback">
-        District of Workplace is required
-      </div>
+     <div
+      class="text-danger"
+      *ngIf="Input_Form.get('districtRefId')?.invalid && Input_Form.get('districtRefId')?.touched">
+      Required
+    </div>
     </div>
 
     <!-- PIN Code of Workplace -->
@@ -74,10 +80,18 @@
         class="form-control"
         placeholder="Enter PIN Code"
         maxlength="6"
-        [class.is-invalid]="formControls.pinCode.touched && formControls.pinCode.invalid">
-      <div class="invalid-feedback">
-        PIN Code of Workplace is required
-      </div>
+        >
+      <div
+      class="text-danger"
+      *ngIf="Input_Form.get('pinCode')?.errors?.required && Input_Form.get('pinCode')?.touched">
+      Required
+    </div>
+
+    <div
+      class="text-danger"
+      *ngIf="Input_Form.get('pinCode')?.errors?.pattern && Input_Form.get('pinCode')?.touched">
+      Enter a valid 6-digit PIN Code
+    </div>
     </div>
 
   </div>

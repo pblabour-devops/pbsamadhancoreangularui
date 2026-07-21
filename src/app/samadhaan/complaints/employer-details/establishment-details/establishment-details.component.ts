@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -9,6 +9,8 @@ import { IComplaint_EstablishmentDetail } from 'src/app/samadhaan/samadhaan-type
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import Swal from 'sweetalert2';
+import { EmployerContractorDetailsComponent } from '../employer-contractor-details/employer-contractor-details.component';
+import { WorkplaceDetailsComponent } from '../workplace-details/workplace-details.component';
 
 @Component({
   selector: 'app-establishment-details',
@@ -17,8 +19,8 @@ import Swal from 'sweetalert2';
   styleUrl: './establishment-details.component.css',
 })
 export class EstablishmentDetailsComponent {
-  @Output() establishmentDetailDataEvent= new EventEmitter<any>();
-  @Output() formStepperDataEvent= new EventEmitter<any>();
+@Output() establishmentDetailDataEvent= new EventEmitter<any>();
+@Output() formStepperDataEvent= new EventEmitter<any>();
 
 protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -112,8 +114,20 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
             ?.selectListItems ?? [];
             this.formStepperDataEvent.emit(data.appFormStepsList)
             if (data.formModel) {
-              // this.Input_Form.patchValue(data.formModel);
+              const formData = data.formModel;
+                Object.keys(formData).forEach(key => {
+                  if (
+                    formData[key] &&
+                    typeof formData[key] === 'string' &&
+                    formData[key].includes('T')
+                  ) {
+                    formData[key] = formData[key].split('T')[0];
+                  }
+                });
 
+                this.Input_Form.patchValue(formData);
+                this.Input_Form.patchValue({ toDoActivityModeType: 2});
+                this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
               // if (data.formModel.districtRefId) {
               //   this.getPinCodesByDistrictRefId(data.formModel.districtRefId, 'pinCode');
               // }
@@ -122,14 +136,18 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
       });
     });
 
-    this.appHttpRequestHandlerService
-      .httpGet(null, 'CommonApis', 'getalldistrict')
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data: GenericFormModel<ProjectSite>) => {
-        this.allDistricts = data.formModel as any;
-      });
+    this.getDistricts();
   }
 
+  getDistricts(): void {
+  this.appHttpRequestHandlerService.httpGet(null, "CommonApis", "getalldistrict")
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<any>) => {
+      this.allDistricts = data.formModel.filter(
+        district => district.stateRefId === 3
+      );
+    });
+  }
   resetForm() {
     this.Input_Form.reset({
       isStillWorking: false,
@@ -206,5 +224,9 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
           });
         },
       });
+  }
+
+   public isFormValid(): boolean {
+    return this.Input_Form.valid;
   }
 }

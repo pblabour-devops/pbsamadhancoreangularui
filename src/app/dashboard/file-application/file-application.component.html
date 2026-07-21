@@ -40,37 +40,24 @@
     </p>
 
     <hr class="mb-4">
-
-    <!-- Category Cards -->
-    <div class="row g-4">
-      <div class="col-md-6" *ngFor="let category of categories">
-        <div class="border h-100">
-
-          <div class="category-header text-white fw-semibold px-3 py-2">
-            {{ category.title }}
-          </div>
-
-          <div class="p-3">
-            <div class="form-check mb-2" *ngFor="let issue of category.issues">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                [id]="issue.id"
-                [checked]="check(issue.id)"
-                (change)="toggleIssue(issue.id)">
-              <label class="form-check-label small" [for]="issue.id">
-                {{ issue.label }}
-                <span
-                  *ngIf="issue.hasInfo"
-                  class="info-icon"
-                  [title]="issue.info || issue.label">i</span>
-              </label>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    @if(selectedFilingType == 'Self'){
+    <app-self (selectedIssueEventEmitter)="setSelectedIssues($event)"></app-self>
+    } 
+     @if(selectedFilingType == 'Nominee'){
+    <app-nominee></app-nominee>
+    } 
+     @if(selectedFilingType == 'Legal Heir'){
+    <app-legal-heir></app-legal-heir>
+    } 
+     @if(selectedFilingType == 'Legal Representative'){
+    <app-legal-representative></app-legal-representative>
+    } 
+     @if(selectedFilingType == 'Authorized Representative'){
+    <app-authorized-representative></app-authorized-representative>
+    } 
+     @if(selectedFilingType == 'Group of Workers'){
+    <app-group-of-workers></app-group-of-workers>
+    } 
 
     <hr class="my-4">
 

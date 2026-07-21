@@ -44,7 +44,7 @@ import Swal from 'sweetalert2';
     workplaceAddress: ['', [Validators.required, Validators.maxLength(500)]],
     state: ['', Validators.required],
     districtRefId: ['', Validators.required],
-    pinCode: ['', [Validators.required, Validators.maxLength(10)]],
+    pinCode: ['', [Validators.required, Validators.maxLength(6)]],
 
     // NotMapped — application context fields
     projectSiteRefId: [0, Validators.required],
@@ -77,27 +77,46 @@ import Swal from 'sweetalert2';
         this.paramInfo = info;
         this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);
 
-        // this.appHttpRequestHandlerService
-        //   .httpGet({ id: this.paramInfo?.appRefId }, 'Complaint', 'getComplaintWorkplaceDetail')
-        //   .pipe(takeUntil(this.ngUnsubscribe))
-        //   .subscribe((data: GenericFormModel<IComplaint_WorkplaceDetail>) => {
-        //     this.genericFormData = data;
-        //     this.appFormStepsList = data.appFormStepsList;
+        this.appHttpRequestHandlerService
+          .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintWorkplaceDetail')
+          .pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: GenericFormModel<IComplaint_WorkplaceDetail>) => {
+            this.genericFormData = data;
+            this.appFormStepsList = data.appFormStepsList;
 
-        //     if (data.formModel) {
-        //       this.Input_Form.patchValue(data.formModel);
-        //     }
-        //   });
+            if (data.formModel) {
+                 const formData = data.formModel;
+                Object.keys(formData).forEach(key => {
+                  if (
+                    formData[key] &&
+                    typeof formData[key] === 'string' &&
+                    formData[key].includes('T')
+                  ) {
+                    formData[key] = formData[key].split('T')[0];
+                  }
+                });
+
+                this.Input_Form.patchValue(formData);
+                this.Input_Form.patchValue({ toDoActivityModeType: 2});
+                this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
+            }
+          });
       });
     });
 
-    this.appHttpRequestHandlerService
-      .httpGet(null, 'CommonApis', 'getalldistrict')
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data: GenericFormModel<ProjectSite>) => {
-        this.allDistricts = data.formModel as any;
-      });
+    this.getDistricts();
   }
+
+  
+  getDistricts(): void {
+  this.appHttpRequestHandlerService.httpGet(null, "CommonApis", "getalldistrict")
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<any>) => {
+      this.allDistricts = data.formModel.filter(
+        district => district.stateRefId === 3
+      );
+    });
+}
 
 
   resetForm() {
@@ -175,4 +194,9 @@ import Swal from 'sweetalert2';
         },
       });
   }
+
+   public isFormValid(): boolean {
+    return this.Input_Form.valid;
+  }
+  
   }

@@ -34,8 +34,10 @@
         formControlName="name"
         class="form-control"
        />
-        <div class="invalid-feedback">
-            Name is required
+         <div
+            class="text-danger"
+            *ngIf="Input_Form.get('name')?.invalid && Input_Form.get('name')?.touched">
+            Required
         </div>
     </div>
 
@@ -46,13 +48,15 @@
       <select
         formControlName="gender"
         class="form-control"
-        [class.is-invalid]="Input_Form.get('gender')?.touched && Input_Form.get('gender')?.invalid">
+       >
         <option value="" disabled selected>Select</option>
         <option *ngFor="let g of genderOptions" [value]="g">{{ g }}</option>
       </select>
-      <div class="invalid-feedback">
-        Gender is required
-      </div>
+      <div
+        class="text-danger"
+        *ngIf="Input_Form.get('gender')?.invalid && Input_Form.get('gender')?.touched">
+        Required
+        </div>
     </div>
     </div>
 
@@ -65,10 +69,12 @@
         type="text"
         formControlName="designation"
         class="form-control"
-        [class.is-invalid]="Input_Form.get('designation')?.touched && Input_Form.get('designation')?.invalid" />
-      <div class="invalid-feedback">
-        Designation is required
-      </div>
+       />
+       <div
+        class="text-danger"
+        *ngIf="Input_Form.get('designation')?.invalid && Input_Form.get('designation')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -77,6 +83,11 @@
         <option value="" disabled selected>Select</option>
         <option *ngFor="let m of maritalStatusOptions" [value]="m">{{ m }}</option>
       </select>
+       <div
+        class="text-danger"
+        *ngIf="Input_Form.get('maritalStatus')?.invalid && Input_Form.get('maritalStatus')?.touched">
+        Required
+        </div>
     </div>
     </div>
 
@@ -90,23 +101,30 @@
         formControlName="mobileNumber"
         class="form-control"
         maxlength="10"
-        [class.is-invalid]="Input_Form.get('mobileNumber')?.touched && Input_Form.get('mobileNumber')?.invalid" />
-      <div class="invalid-feedback">
-        Valid 10-digit mobile number required
-      </div>
+       />
+       <div
+        class="text-danger"
+        *ngIf="Input_Form.get('mobileNumber')?.invalid && Input_Form.get('mobileNumber')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">Email</label>
       <input type="email" formControlName="email" class="form-control mb-2" />
-      <button
+      <!-- <button
         type="button"
         class="btn btn-sm"
         [ngClass]="isEmailVerified ? 'btn-success' : 'btn-secondary'"
         (click)="verifyEmail()">
         <span *ngIf="isEmailVerified">&#10003; Verified</span>
         <span *ngIf="!isEmailVerified">Verify</span>
-      </button>
+      </button> -->
+        <div
+        class="text-danger"
+        *ngIf="Input_Form.get('email')?.invalid && Input_Form.get('email')?.touched">
+        Required
+        </div>
     </div>
   </div>
   </div>
@@ -126,6 +144,11 @@
         Address :<span class="text-danger">*</span>
       </label>
       <input formControlName="permanentAddress" class="form-control" rows="2">
+        <div
+        class="text-danger"
+        *ngIf="Input_Form.get('permanentAddress')?.invalid && Input_Form.get('permanentAddress')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -135,6 +158,11 @@
       <select formControlName="permanentCountry" class="form-control">
         <option *ngFor="let c of countryOptions" [value]="c">{{ c }}</option>
       </select>
+          <div
+        class="text-danger"
+        *ngIf="Input_Form.get('permanentCountry')?.invalid && Input_Form.get('permanentCountry')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -145,6 +173,11 @@
         <option value="">Select State</option>
         <option value="Punjab">Punjab</option>
     </select>     
+      <div
+        class="text-danger"
+        *ngIf="Input_Form.get('permanentState')?.invalid && Input_Form.get('permanentState')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -155,6 +188,11 @@
           <option value="">Select District</option>
           <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">{{ dist.districtName }}</option>
         </select>
+          <div
+        class="text-danger"
+        *ngIf="Input_Form.get('permanentDistrictRefId')?.invalid && Input_Form.get('permanentDistrictRefId')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -166,6 +204,11 @@
         formControlName="permanentPincode"
         class="form-control"
         maxlength="6" />
+              <div
+        class="text-danger"
+        *ngIf="Input_Form.get('permanentPincode')?.invalid && Input_Form.get('permanentPincode')?.touched">
+        Required
+        </div>
     </div>
 
   </div>
@@ -191,6 +234,11 @@
     <div class="col-12">
       <label class="form-label fw-semibold">Address :</label>
       <input formControlName="correspondenceAddress" class="form-control" rows="2">
+             <div
+        class="text-danger"
+        *ngIf="Input_Form.get('correspondenceAddress')?.invalid && Input_Form.get('correspondenceAddress')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -200,6 +248,11 @@
       <select formControlName="correspondenceCountry" class="form-control">
         <option *ngFor="let c of countryOptions" [value]="c">{{ c }}</option>
       </select>
+           <div
+        class="text-danger"
+        *ngIf="Input_Form.get('correspondenceCountry')?.invalid && Input_Form.get('correspondenceCountry')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -210,6 +263,11 @@
         <option value="">Select State</option>
         <option value="Punjab">Punjab</option>
     </select>     
+           <div
+        class="text-danger"
+        *ngIf="Input_Form.get('correspondenceState')?.invalid && Input_Form.get('correspondenceState')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -220,6 +278,11 @@
           <option value="">Select District</option>
           <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">{{ dist.districtName }}</option>
         </select>
+          <div
+        class="text-danger"
+        *ngIf="Input_Form.get('correspondenceDistrictRefId')?.invalid && Input_Form.get('correspondenceDistrictRefId')?.touched">
+        Required
+        </div>
     </div>
 
     <div class="col-md-6 mb-4">
@@ -231,6 +294,11 @@
         formControlName="correspondencePincode"
         class="form-control"
         maxlength="6" />
+          <div
+        class="text-danger"
+        *ngIf="Input_Form.get('correspondencePincode')?.invalid && Input_Form.get('correspondencePincode')?.touched">
+        Required
+        </div>
     </div>
 
   </div>
@@ -238,12 +306,12 @@
 
   <!-- Action Buttons -->
   <div class="d-flex justify-content-end mt-4 pt-3 border-top">
-    <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+    <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
       Reset
     </button>
     <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
       Save as Draft
-    </button>
+    </button> -->
     <button type="submit" class="btn btn-primary">
       Next
     </button>

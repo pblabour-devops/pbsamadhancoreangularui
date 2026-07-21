@@ -7,6 +7,7 @@ import { MbComplaintComponent } from './complaints/mb-complaint/mb-complaint.com
 import { RecoverOfMoneyComponent } from './complaints/recover-of-money/recover-of-money.component';
 import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-code-on-wages/claim-under-code-on-wages.component';
 import { WagesComponent } from './complaints/wages/wages.component';
+import { DetailsComponent } from './complaints/details/details.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
    {path : 'mb-complaint',component : MbComplaintComponent},
    {path : 'recovery-of-money',component : RecoverOfMoneyComponent},
    {path : 'wages',component : WagesComponent},
+   {path : 'details',component : DetailsComponent},
+
 ];
 
 @NgModule({

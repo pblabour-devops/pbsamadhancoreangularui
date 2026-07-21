@@ -41,7 +41,7 @@ export class WorkerDetailsComponent {
     name: ['', Validators.required],
     gender: ['', Validators.required],
     designation: ['', Validators.required],
-    maritalStatus: [''],
+    maritalStatus: ['', Validators.required],
     mobileNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
     email: ['', [Validators.email]],
     permanentAddress: ['', Validators.required],
@@ -84,29 +84,39 @@ export class WorkerDetailsComponent {
       .subscribe(params => {
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
           this.paramInfo = info;
-          this.appHttpRequestHandlerService.httpGet({appRefId : this.Input_Form.controls.appRefId.value , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
+          this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((data: GenericFormModel<any>) => {
               this.appFormStepsList = data.appFormStepsList;
-              // this.projectSite = data.formModel;
-              // this.appHttpRequestHandlerService.httpGet({ id: this.paramInfo?.identityKey, projectSiteId: this.paramInfo?.projectSiteRefId }, "BuildingPlan", "getbuildingplandetail").pipe(takeUntil(this.ngUnsubscribe))
-              //   .subscribe((data: GenericFormModel<BuildingPlan_GeneralDetail>) => {
-              //     this.initFormData(data)
-              //     this.BuildingPlan_GeneralDetail_Form.controls.projectSiteRefId.patchValue(this.paramInfo?.projectSiteRefId);
-              //     this.BuildingPlan_GeneralDetail_Form.controls.establishmentRefId.patchValue(this.paramInfo?.establishmentRefId);
-              //     this.BuildingPlan_GeneralDetail_Form.controls.applicationPurposeType.patchValue(this.paramInfo?.applicationPurposeType);
-              //   });
+                if (data.formModel) {
+                 const formData = data.formModel;
+                Object.keys(formData).forEach(key => {
+                  if (
+                    formData[key] &&
+                    typeof formData[key] === 'string' &&
+                    formData[key].includes('T')
+                  ) {
+                    formData[key] = formData[key].split('T')[0];
+                  }
+                });
+
+                this.Input_Form.patchValue(formData);
+                this.Input_Form.patchValue({ toDoActivityModeType: 2});
+                this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
+              }
             });
         });
       });
   }
 
-  getDistricts(): void {
-      this.appHttpRequestHandlerService.httpGet(null, "CommonApis", "getalldistrict")
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe((data: GenericFormModel<ProjectSite>) => {
-          this.allDistricts = data.formModel;
-        });
-  }
+ getDistricts(): void {
+  this.appHttpRequestHandlerService.httpGet(null, "CommonApis", "getalldistrict")
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<any>) => {
+      this.allDistricts = data.formModel.filter(
+        district => district.stateRefId === 3
+      );
+    });
+}
 
   toggleCorrespondenceAddress(checked: boolean): void {
 
@@ -183,7 +193,12 @@ export class WorkerDetailsComponent {
         this.Input_Form.controls.id.patchValue(0);
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-          this.mapCategories(data);
+            debugger;
+          // if(this.Input_Form.value.appRefId !=0){
+            this.navigateToNextStep(data);
+          // } else {
+          // this.mapCategories(data);
+          // }
             // this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='EPFO').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( {
             //   identityKey: data.entityKeyId, 
             //   appRefId: data.appId, 

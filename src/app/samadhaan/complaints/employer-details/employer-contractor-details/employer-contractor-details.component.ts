@@ -81,20 +81,44 @@ export class EmployerContractorDetailsComponent {
           .subscribe((data: GenericFormModel<IComplaint_EmployerDetail>) => {
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
-            if (data.formModel) {
-              // this.Input_Form.patchValue(data.formModel);
+             if (data.formModel && Array.isArray(data.formModel)) {
+
+              this.employerList = [];
+
+              data.formModel.forEach((item: any) => {
+                const formData = { ...item };
+                Object.keys(formData).forEach(key => {
+                  if (
+                    formData[key] &&
+                    typeof formData[key] === 'string' &&
+                    formData[key].includes('T')
+                  ) {
+                    formData[key] = formData[key].split('T')[0];
+                  }
+                });
+
+                this.Input_Form.patchValue(formData);
+                this.Input_Form.patchValue({ toDoActivityModeType: 2});
+                this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
+                this.addEmployer();
+              });
             }
           });
       });
     });
 
-    this.appHttpRequestHandlerService
-      .httpGet(null, 'CommonApis', 'getalldistrict')
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data: GenericFormModel<ProjectSite>) => {
-        this.allDistricts = data.formModel as any;
-      });
+    this.getDistricts();
   }
+
+  getDistricts(): void {
+  this.appHttpRequestHandlerService.httpGet(null, "CommonApis", "getalldistrict")
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<any>) => {
+      this.allDistricts = data.formModel.filter(
+        district => district.stateRefId === 3
+      );
+    });
+}
 
   // ---------- Supporting Documents (FormArray) ----------
 
@@ -230,5 +254,9 @@ export class EmployerContractorDetailsComponent {
           });
         },
       });
+  }
+
+    public isFormValid(): boolean {
+    return this.employerList.length > 0;
   }
 }

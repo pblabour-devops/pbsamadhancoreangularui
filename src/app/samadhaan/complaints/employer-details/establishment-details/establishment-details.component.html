@@ -11,7 +11,7 @@
   <div class="row g-4 mb-4">
 
     <!-- Name of Establishment -->
-    <div class="col-12">
+    <div class="col-6">
       <label class="form-label fw-semibold">
         Name of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
       </label>
@@ -19,14 +19,16 @@
         type="text"
         formControlName="establishmentName"
         class="form-control"
-        [class.is-invalid]="formControls.establishmentName.touched && formControls.establishmentName.invalid" />
-      <div class="invalid-feedback">
-        Name of Establishment is required
-      </div>
+ />
+      <div
+    class="text-danger"
+    *ngIf="Input_Form.get('establishmentName')?.invalid && Input_Form.get('establishmentName')?.touched">
+    Required
+  </div>
     </div>
 
     <!-- Address of Establishment -->
-    <div class="col-12">
+    <div class="col-6">
       <label class="form-label fw-semibold">
         Address of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
       </label>
@@ -34,11 +36,13 @@
         formControlName="establishmentAddress"
         class="form-control"
         rows="2"
-        [class.is-invalid]="formControls.establishmentAddress.touched && formControls.establishmentAddress.invalid">
+      >
       </textarea>
-      <div class="invalid-feedback">
-        Address of Establishment is required
-      </div>
+      <div
+  class="text-danger"
+  *ngIf="Input_Form.get('establishmentAddress')?.invalid && Input_Form.get('establishmentAddress')?.touched">
+  Required
+</div>
     </div>
 
     <!-- State / District -->
@@ -49,13 +53,15 @@
       <select
         formControlName="state"
         class="form-control"
-        [class.is-invalid]="formControls.state.touched && formControls.state.invalid">
+        >
         <option value="" disabled selected>Select State</option>
         <option value="Punjab">Punjab</option>
       </select>
-      <div class="invalid-feedback">
-        State is required
-      </div>
+     <div
+  class="text-danger"
+  *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+  Required
+</div>
     </div>
 
     <div class="col-md-6">
@@ -65,16 +71,18 @@
       <select
         formControlName="districtRefId"
         class="form-control"
-        [class.is-invalid]="formControls.districtRefId.touched && formControls.districtRefId.invalid"
+       
         >
         <option value="" disabled selected>Select District</option>
         <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
           {{ dist.districtName }}
         </option>
       </select>
-      <div class="invalid-feedback">
-        District is required
-      </div>
+     <div
+  class="text-danger"
+  *ngIf="Input_Form.get('districtRefId')?.invalid && Input_Form.get('districtRefId')?.touched">
+  Required
+</div>
     </div>
 
     <!-- PIN Code / Mobile Number -->
@@ -87,10 +95,18 @@
         formControlName="pinCode"
         class="form-control"
         maxlength="6"
-        [class.is-invalid]="formControls.pinCode.touched && formControls.pinCode.invalid" />
-      <div class="invalid-feedback">
-        PIN Code is required
-      </div>
+         />
+   <div
+  class="text-danger"
+  *ngIf="Input_Form.get('pinCode')?.errors?.required && Input_Form.get('pinCode')?.touched">
+  Required
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="Input_Form.get('pinCode')?.errors?.pattern && Input_Form.get('pinCode')?.touched">
+  Enter a valid 6-digit PIN Code
+</div>
     </div>
 
     <div class="col-md-6">
@@ -102,10 +118,18 @@
         formControlName="mobileNumber"
         class="form-control"
         maxlength="10"
-        [class.is-invalid]="formControls.mobileNumber.touched && formControls.mobileNumber.invalid"
+       
         (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" />
-      <div class="invalid-feedback">
-        Valid 10-digit mobile number required
+        <div
+        class="text-danger"
+        *ngIf="Input_Form.get('mobileNumber')?.errors?.required && Input_Form.get('mobileNumber')?.touched">
+        Required
+      </div>
+
+      <div
+        class="text-danger"
+        *ngIf="Input_Form.get('mobileNumber')?.errors?.pattern && Input_Form.get('mobileNumber')?.touched">
+        Enter a valid 10-digit mobile number
       </div>
     </div>
 
@@ -116,10 +140,17 @@
         type="email"
         formControlName="email"
         class="form-control"
-        [class.is-invalid]="formControls.email.touched && formControls.email.invalid" />
-      <div class="invalid-feedback">
-        Enter a valid email address
-      </div>
+         />
+      <div
+      class="text-danger"
+      *ngIf="Input_Form.get('email')?.errors?.required && Input_Form.get('email')?.touched">
+      Required
+    </div>
+    <div
+  class="text-danger"
+  *ngIf="Input_Form.get('email')?.errors?.email && Input_Form.get('email')?.touched">
+  Enter a valid email address
+</div>
     </div>
 
     <div class="col-md-6">
@@ -130,6 +161,11 @@
         <option [ngValue]="true">Yes</option>
         <option [ngValue]="false">No</option>
       </select>
+      <div
+  class="text-danger"
+  *ngIf="Input_Form.get('workerCategoryType')?.invalid && Input_Form.get('workerCategoryType')?.touched">
+  Required
+</div>
     </div>
 
     <!-- Nature of work / Category -->
@@ -139,6 +175,11 @@
         type="text"
         formControlName="natureOfWorkPerformed"
         class="form-control" />
+        <div
+  class="text-danger"
+  *ngIf="Input_Form.get('natureOfWorkPerformed')?.invalid && Input_Form.get('natureOfWorkPerformed')?.touched">
+  Required
+</div>
     </div>
 
     <div class="col-md-6">
@@ -148,15 +189,17 @@
       <select
         formControlName="workerCategoryType"
         class="form-control"
-        [class.is-invalid]="formControls.workerCategoryType.touched && formControls.workerCategoryType.invalid">
+       >
         <option value="" disabled selected>Select</option>
         <option *ngFor="let cat of categoryOptions" [value]="cat.value">
           {{ cat.text }}
         </option>
       </select>
-      <div class="invalid-feedback">
-        Category is required
-      </div>
+        <div
+  class="text-danger"
+  *ngIf="Input_Form.get('workerCategoryType')?.invalid && Input_Form.get('workerCategoryType')?.touched">
+  Required
+</div>
     </div>
 
     <!-- Employment start / end date -->
@@ -168,10 +211,12 @@
         type="date"
         formControlName="employmentStartDate"
         class="form-control"
-        [class.is-invalid]="formControls.employmentStartDate.touched && formControls.employmentStartDate.invalid" />
-      <div class="invalid-feedback">
-        Start date is required
-      </div>
+        />
+          <div
+  class="text-danger"
+  *ngIf="Input_Form.get('employmentStartDate')?.invalid && Input_Form.get('employmentStartDate')?.touched">
+  Required
+</div>
     </div>
 
     <div class="col-md-6">
@@ -182,10 +227,12 @@
         type="date"
         formControlName="employmentEndDate"
         class="form-control"
-        [class.is-invalid]="formControls.employmentEndDate.touched && formControls.employmentEndDate.invalid" />
-      <div class="invalid-feedback">
-        End date is required
-      </div>
+        />
+      <div
+      class="text-danger"
+      *ngIf="Input_Form.get('employmentEndDate')?.invalid && Input_Form.get('employmentEndDate')?.touched">
+      Required
+    </div>
     </div>
 
     <!-- Wage period / Rate of wages -->
@@ -196,15 +243,17 @@
       <select
         formControlName="wagePeriod"
         class="form-control"
-        [class.is-invalid]="formControls.wagePeriod.touched && formControls.wagePeriod.invalid">
+       >
         <option value="" disabled selected>Select wage period</option>
         <option *ngFor="let wp of wagePeriodOptions" [value]="wp.value">
           {{ wp.text }}
         </option>
       </select>
-      <div class="invalid-feedback">
-        Wage period is required
-      </div>
+      <div
+  class="text-danger"
+  *ngIf="Input_Form.get('wagePeriod')?.invalid && Input_Form.get('wagePeriod')?.touched">
+  Required
+</div>
     </div>
 
     <div class="col-md-6">
@@ -215,11 +264,14 @@
           type="text"
           formControlName="wageRate"
           class="form-control"
-          [class.is-invalid]="formControls.wageRate.touched && formControls.wageRate.invalid" />
+          (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)"
+           />
       </div>
-      <div class="invalid-feedback d-block" *ngIf="formControls.wageRate.touched && formControls.wageRate.invalid">
-        Rate of wages is required
-      </div>
+     <div
+  class="text-danger"
+  *ngIf="Input_Form.get('wageRate')?.invalid && Input_Form.get('wageRate')?.touched">
+  Required
+</div>
     </div>
 
   </div>

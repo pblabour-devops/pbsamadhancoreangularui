@@ -19,9 +19,9 @@ import { WagesWorkingOvertimeComponent } from './complaints/wages/wages-working-
 import { WagesNotPaidAtAllComponent } from './complaints/wages/wages-not-paid-at-all/wages-not-paid-at-all.component';
 import { WagesUnauthorisedDeductionComponent } from './complaints/wages/wages-unauthorised-deduction/wages-unauthorised-deduction.component';
 import { NonPaymentBonusComponent } from './complaints/wages/non-payment-bonus/non-payment-bonus.component';
-
+import { DetailsComponent } from './complaints/details/details.component';
 @NgModule({
-  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent],
+  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, RecoverOfMoneyComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

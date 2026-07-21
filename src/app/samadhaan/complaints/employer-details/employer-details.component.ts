@@ -1,13 +1,17 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel } from 'src/app/generic-implementation/generic-form-builder.type';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { IComplaint_EstablishmentDetail, IComplaint_WorkplaceDetail } from '../../samadhaan-typed-modelts';
 import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
+import { EmployerContractorDetailsComponent } from './employer-contractor-details/employer-contractor-details.component';
+import { EstablishmentDetailsComponent } from './establishment-details/establishment-details.component';
+import { WorkplaceDetailsComponent } from './workplace-details/workplace-details.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employer-details',
@@ -16,6 +20,12 @@ import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-ty
   styleUrl: './employer-details.component.css',
 })
 export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
+    @ViewChild(EmployerContractorDetailsComponent)
+  EmployerContractorDetailsComponent: EmployerContractorDetailsComponent;
+  @ViewChild(WorkplaceDetailsComponent)
+  WorkplaceDetailsComponent: WorkplaceDetailsComponent;
+    @ViewChild(EstablishmentDetailsComponent)
+  EstablishmentDetailsComponent: EstablishmentDetailsComponent;
 
   Input_Form!: FormGroup;
   appFormStepsList : any
@@ -223,55 +233,98 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
     this.establishmentDetailData=data;
   }
 
-   onSubmit(): void {
-    this.employerOrContractorData.forEach(element => {
-      this.appHttpRequestHandlerService.httpPost(element, "pbsamadhannetcoreapi.Models.Complaint_EmployerORContractorDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((empFormRspData: ICRUD_CreateUpdateOperationResponse) => {
-    this.workPlaceDetailData.appRefId = this.paramInfo?.appRefId;
-    this.workPlaceDetailData.projectSiteRefId=388263;
-    this.workPlaceDetailData.applicationPurposeType=0;
-    this.workPlaceDetailData.iPin=0;
-    this.workPlaceDetailData.investPunjab_AppId=0;
-    this.workPlaceDetailData.projectSiteVersion=1;
-    this.workPlaceDetailData.rootActivityRefId='defaultValue';
-    this.workPlaceDetailData.toDoActivityCategoryType=2002;
-    this.workPlaceDetailData.applicationType=100001;
-      this.appHttpRequestHandlerService.httpPost(this.workPlaceDetailData, "pbsamadhannetcoreapi.Models.Complaint_WorkplaceDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe((empFormRspData: ICRUD_CreateUpdateOperationResponse) => {
-    this.establishmentDetailData.appRefId = this.paramInfo?.appRefId;
-    this.establishmentDetailData.projectSiteRefId= 388263;
-    this.establishmentDetailData.applicationPurposeType=0;
-    this.establishmentDetailData.iPin=0;
-    this.establishmentDetailData.investPunjab_AppId=0;
-    this.establishmentDetailData.projectSiteVersion=1;
-    this.establishmentDetailData.rootActivityRefId='defaultValue';
-    this.establishmentDetailData.toDoActivityCategoryType=2003;
-    this.establishmentDetailData.applicationType=100001;
-      this.appHttpRequestHandlerService.httpPost(this.establishmentDetailData, "pbsamadhannetcoreapi.Models.Complaint_EstablishmentDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe((empFormRspData: ICRUD_CreateUpdateOperationResponse) => {
-          debugger;
-          this.router.navigate(
-            [this.appFormStepsList.find((x) => x.stepCode == 'EED')?.uiNextPageComponentPath],
-            {
-              queryParams: {
-                info: this.commonOpsService.encodeQueryParamsInBase64({
-                  appRefId: empFormRspData?.appId,
-                  applicationType: 200001,
-                  projectSiteRefId: this.paramInfo?.projectSiteRefId,
-                  applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                  investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-                  iPin: this.paramInfo?.iPin,
-                  projectSiteVersion: this.paramInfo?.projectSiteVersion,
-                }),
-              },
-            }
-          );
-      });
-      });
-    })
-    });
-
+  onSubmit(): void {
+  if (!this.EmployerContractorDetailsComponent?.isFormValid()) {
+    Swal.fire({ icon: 'warning', text: 'Please fill Employer contractor detail completely.' });
+    return;
   }
+
+  if (!this.WorkplaceDetailsComponent?.isFormValid()) {
+    Swal.fire({ icon: 'warning', text: 'Please fill Workplace detail completely.' });
+    return;
+  }
+
+  if (!this.EstablishmentDetailsComponent?.isFormValid()) {
+    Swal.fire({ icon: 'warning', text: 'Please fill Establishment detail completely.' });
+    return;
+  }
+
+  // ---------- Step 1: Save Workplace Detail (ONCE) ----------
+  this.workPlaceDetailData.appRefId = this.paramInfo?.appRefId;
+  this.workPlaceDetailData.projectSiteRefId = 388263;
+  this.workPlaceDetailData.applicationPurposeType = 0;
+  this.workPlaceDetailData.iPin = 0;
+  this.workPlaceDetailData.investPunjab_AppId = 0;
+  this.workPlaceDetailData.projectSiteVersion = 1;
+  this.workPlaceDetailData.rootActivityRefId = 'defaultValue';
+  this.workPlaceDetailData.toDoActivityCategoryType = 2002;
+  this.workPlaceDetailData.applicationType = 100001;
+
+  this.appHttpRequestHandlerService
+    .httpPost(this.workPlaceDetailData, "pbsamadhannetcoreapi.Models.Complaint_WorkplaceDetail", "Crud", "CreateUpdate")
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((workplaceRspData: ICRUD_CreateUpdateOperationResponse) => {
+
+      // ---------- Step 2: Save Establishment Detail (ONCE) ----------
+      this.establishmentDetailData.appRefId = this.paramInfo?.appRefId;
+      this.establishmentDetailData.projectSiteRefId = 388263;
+      this.establishmentDetailData.applicationPurposeType = 0;
+      this.establishmentDetailData.iPin = 0;
+      this.establishmentDetailData.investPunjab_AppId = 0;
+      this.establishmentDetailData.projectSiteVersion = 1;
+      this.establishmentDetailData.rootActivityRefId = 'defaultValue';
+      this.establishmentDetailData.toDoActivityCategoryType = 2003;
+      this.establishmentDetailData.applicationType = 100001;
+
+      this.appHttpRequestHandlerService
+        .httpPost(this.establishmentDetailData, "pbsamadhannetcoreapi.Models.Complaint_EstablishmentDetail", "Crud", "CreateUpdate")
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((establishmentRspData: ICRUD_CreateUpdateOperationResponse) => {
+
+          // ---------- Step 3: Save ALL Employer/Contractor records LAST ----------
+          if (!this.employerOrContractorData || this.employerOrContractorData.length === 0) {
+            this.navigateToNextStep(establishmentRspData);
+            return;
+          }
+
+          const employerSaveRequests$ = this.employerOrContractorData.map((element) =>
+            this.appHttpRequestHandlerService.httpPost(
+              element,
+              "pbsamadhannetcoreapi.Models.Complaint_EmployerORContractorDetail",
+              "Crud",
+              "CreateUpdate"
+            )
+          );
+
+          // Wait for ALL employer/contractor saves (however many there are) to complete
+          forkJoin(employerSaveRequests$)
+            .pipe(takeUntil(this.ngUnsubscribe))
+            .subscribe((empFormRspDataArray: any) => {
+              // ✅ All employer/contractor records saved successfully — navigate ONCE
+              this.navigateToNextStep(establishmentRspData);
+            });
+        });
+    });
+}
+
+private navigateToNextStep(rspData: ICRUD_CreateUpdateOperationResponse): void {
+  this.router.navigate(
+    [this.appFormStepsList.find((x) => x.stepCode == 'EED')?.uiNextPageComponentPath],
+    {
+      queryParams: {
+        info: this.commonOpsService.encodeQueryParamsInBase64({
+          appRefId: rspData?.appId,
+          applicationType: 200001,
+          projectSiteRefId: this.paramInfo?.projectSiteRefId,
+          applicationPurposeType: this.paramInfo?.applicationPurposeType,
+          investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
+          iPin: this.paramInfo?.iPin,
+          projectSiteVersion: this.paramInfo?.projectSiteVersion,
+        }),
+      },
+    }
+  );
+}
 
   formStepperDataEventListener(data:any){
   this.appFormStepsList = data;
