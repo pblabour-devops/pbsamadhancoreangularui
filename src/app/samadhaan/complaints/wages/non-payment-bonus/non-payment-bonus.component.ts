@@ -50,7 +50,7 @@ export class NonPaymentBonusComponent {
   ngOnChanges(changes : any){
       if(changes.wagesApiData){
     this.Input_Form.patchValue(this.wagesApiData?.formModel)
-    this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+    this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
     const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;

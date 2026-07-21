@@ -13,8 +13,8 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 })
 export class MinimumWagesNotPaidComponent {
   @Output() minimumWagesDataEvent  = new EventEmitter<IComplaint_MinimumWagesNotPaid>();
-  @Input() minimumWagesApiData :any
-  @Input() minimumWagesPeriodApiData : any
+  @Input() wagesApiData :any
+  @Input() wagesPeriodAmtApiData : any
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -51,11 +51,11 @@ export class MinimumWagesNotPaidComponent {
   }
 
   ngOnChanges(changes : any){
-    if(changes.minimumWagesApiData){
-    this.Input_Form.patchValue(this.minimumWagesApiData?.formModel)
-    this.Input_Form.controls.toDoActivityModeType.patchValue(2);
-    } else if(changes.minimumWagesPeriodApiData){
-    const details = this.minimumWagesPeriodApiData.formModel;
+    if(changes.wagesApiData){
+    this.Input_Form.patchValue(this.wagesApiData?.formModel)
+    this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
+    } else if(changes.wagesPeriodAmtApiData){
+    const details = this.wagesPeriodAmtApiData.formModel;
     Object.keys(details).forEach(key => {
       if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
         details[key] = details[key].split('T')[0];

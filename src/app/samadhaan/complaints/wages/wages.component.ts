@@ -13,6 +13,8 @@ import { MinimumWagesNotPaidComponent } from './minimum-wages-not-paid/minimum-w
 import { WagesWeeklydayComponent } from './wages-weeklyday/wages-weeklyday.component';
 import { categoryTypeEnum } from 'src/app/shared.data';
 import { WagesWorkingOvertimeComponent } from './wages-working-overtime/wages-working-overtime.component';
+import { WagesNotPaidAtAllComponent } from './wages-not-paid-at-all/wages-not-paid-at-all.component';
+import { WagesUnauthorisedDeductionComponent } from './wages-unauthorised-deduction/wages-unauthorised-deduction.component';
 
 @Component({
   selector: 'app-wages',
@@ -30,10 +32,15 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   WagesWeeklydayComponent: WagesWeeklydayComponent;
   @ViewChild(WagesWorkingOvertimeComponent)
   WagesWorkingOvertimeComponent: WagesWorkingOvertimeComponent;
+  @ViewChild(WagesNotPaidAtAllComponent)
+  WagesNotPaidAtAllComponent: WagesNotPaidAtAllComponent;
+  @ViewChild(WagesUnauthorisedDeductionComponent)
+  WagesUnauthorisedDeductionComponent: WagesUnauthorisedDeductionComponent;
   minimumWagesDetailData : IComplaint_MinimumWagesNotPaid
   wagesWeeklyDayDetailData : IComplaint_Wages
   wagesWorkingOverTimeDetailData : IComplaint_Wages
   wagesNotPaidAtAllDetailData : IComplaint_Wages
+  wagesUnauthDedDetailData : IComplaint_Wages
   nonPayBonusDetailData
   public appFormStepsList: any[] = [];
   public paramInfo: any;
@@ -76,6 +83,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
         this.getWeeklyDayWagesPeriodData();
         this.getOverTimeWagesData();
         this.getNotPaidAtAllWagesData();
+        this.getNotPaidAtAllWagesPeriodAmtData();
         this.getOverTimeWagesPeriodAmtData();
         this.getUnAuthorisedDedWagesData();
         this.getUnAuthorisedDedWagesPeriodAmtData()
@@ -155,22 +163,22 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
   getNotPaidAtAllWagesData(){
-    // this.appHttpRequestHandlerService
-    // .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
-    // .pipe(takeUntil(this.ngUnsubscribe))
-    // .subscribe((data: GenericFormModel<IComplaint_Wages>) => {
-    //   this.wagesNotPaidAtAllApiData = data;
-    // })
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages>) => {
+      this.wagesNotPaidAtAllApiData = data;
+    })
   }
 
 
   getNotPaidAtAllWagesPeriodAmtData(){
-    // this.appHttpRequestHandlerService
-    // .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidWeekDayDetail')
-    // .pipe(takeUntil(this.ngUnsubscribe))
-    // .subscribe((data: GenericFormModel<IComplaint_Wages_PeriodAmt>) => {
-    //   this.wagesNotPaidAtAllPeriodAmtApiData = data;
-    // })
+    this.appHttpRequestHandlerService
+    .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getWagesNotPaidPerAmtDetail')
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((data: GenericFormModel<IComplaint_Wages_PeriodAmt[]>) => {
+      this.wagesNotPaidAtAllPeriodAmtApiData = data;
+    })
   }
 
   getUnAuthorisedDedWagesData(){
@@ -233,10 +241,20 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //   return;
   //  }
 
-   if(!this.WagesWorkingOvertimeComponent?.isFormValid()){
-    Swal.fire({ icon: 'warning', text: 'Please fill Wages Working Overtime completely.' });
+  //  if(!this.WagesWorkingOvertimeComponent?.isFormValid()){
+  //   Swal.fire({ icon: 'warning', text: 'Please fill Wages Working Overtime completely.' });
+  //   return;
+  //  }
+
+    // if(!this.WagesNotPaidAtAllComponent?.isFormValid()){
+    // Swal.fire({ icon: 'warning', text: 'Please fill Wages Not Paid At All completely.' });
+    // return;
+    // }
+
+    if(!this.WagesUnauthorisedDeductionComponent?.isFormValid()){
+    Swal.fire({ icon: 'warning', text: 'Please fill Unauthorised Deduction completely.' });
     return;
-   }
+    }
 
    // FOR CLAIM UNDER CODE ON WAGES
   //  this.codeOnWagesDetailData.appRefId = this.paramInfo?.appRefId;
@@ -313,23 +331,74 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
         // FOR WORKING OVERTIME
     
-        this.wagesWorkingOverTimeDetailData.appRefId = this.paramInfo?.appRefId;
-        this.wagesWorkingOverTimeDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
-        this.wagesWorkingOverTimeDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
-        this.wagesWorkingOverTimeDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WORKING_OVERTIME;
-        this.wagesWorkingOverTimeDetailData.applicationType = this.paramInfo.applicationType;
-        this.wagesWorkingOverTimeDetailData.rootActivityRefId = ''
-        this.appHttpRequestHandlerService.httpPost(this.wagesWorkingOverTimeDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_OT','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        // this.wagesWorkingOverTimeDetailData.appRefId = this.paramInfo?.appRefId;
+        // this.wagesWorkingOverTimeDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        // this.wagesWorkingOverTimeDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        // this.wagesWorkingOverTimeDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WORKING_OVERTIME;
+        // this.wagesWorkingOverTimeDetailData.applicationType = this.paramInfo.applicationType;
+        // this.wagesWorkingOverTimeDetailData.rootActivityRefId = ''
+        // this.appHttpRequestHandlerService.httpPost(this.wagesWorkingOverTimeDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_OT','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        //  next: () => {
+        //   debugger;
+        // this.wagesWorkingOverTimeDetailData.periodAmtDetails.forEach(data => {
+        // data.appRefId = this.paramInfo?.appRefId;
+        // data.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        // data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        // // data.toDoActivityModeType=1;
+        // data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WORKING_OVERTIME_PERIOD_AMOUNT;
+        // data.applicationType = this.paramInfo.applicationType
+        // this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_OT_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        // next: () => {
+          
+
+        // }})})
+        //  }})
+
+        // FOR WAGES NOT PAID AT ALL 
+
+        // this.wagesNotPaidAtAllDetailData.appRefId = this.paramInfo?.appRefId;
+        // this.wagesNotPaidAtAllDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        // this.wagesNotPaidAtAllDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        // this.wagesNotPaidAtAllDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_NOT_PAID;
+        // this.wagesNotPaidAtAllDetailData.applicationType = this.paramInfo.applicationType;
+        // this.wagesNotPaidAtAllDetailData.rootActivityRefId = ''
+        // this.appHttpRequestHandlerService.httpPost(this.wagesNotPaidAtAllDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_Not_Paid','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        //  next: () => {
+        // this.wagesNotPaidAtAllDetailData.periodAmtDetails.forEach(data => {
+        // data.appRefId = this.paramInfo?.appRefId;
+        // data.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        // data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        // // data.toDoActivityModeType=1;
+        // data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_NOT_PAID_PERIOD_AMOUNT         ;
+        // data.applicationType = this.paramInfo.applicationType
+        // console.log('data', data);
+        // this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_Not_Paid_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        // next: () => {
+          
+
+        // }})})
+        //  }})
+
+        // FOR UNAUTHORISED DECUTION OF WAGES 
+        this.wagesUnauthDedDetailData.appRefId = this.paramInfo?.appRefId;
+        this.wagesUnauthDedDetailData.applicationPurposeType=this.paramInfo?.applicationPurposeType;
+        this.wagesUnauthDedDetailData.projectSiteVersion=this.paramInfo?.projectSiteVersion;
+        this.wagesUnauthDedDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_UNAUTHDED;
+        this.wagesUnauthDedDetailData.applicationType = this.paramInfo.applicationType;
+        this.wagesUnauthDedDetailData.rootActivityRefId = ''
+        console.log('wagesUnauthDedDetailData', this.wagesUnauthDedDetailData)
+        return;
+        this.appHttpRequestHandlerService.httpPost(this.wagesUnauthDedDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_Unauth_Deduct','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
          next: () => {
-          debugger;
-        this.wagesWorkingOverTimeDetailData.periodAmtDetails.forEach(data => {
+        this.wagesNotPaidAtAllDetailData.periodAmtDetails.forEach(data => {
         data.appRefId = this.paramInfo?.appRefId;
         data.applicationPurposeType=this.paramInfo?.applicationPurposeType;
         data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
         // data.toDoActivityModeType=1;
-        data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WORKING_OVERTIME_PERIOD_AMOUNT;
+        data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_UNAUTHDED_PERIOD_AMOUNT         ;
         data.applicationType = this.paramInfo.applicationType
-        this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_OT_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+        console.log('data', data);
+        this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_Unauth_Deduct_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
         next: () => {
           
 
@@ -366,7 +435,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
   wagesUnauthDedEventListener(data: IComplaint_Wages){
-    this.wagesNotPaidAtAllDetailData = data
+    this.wagesUnauthDedDetailData = data
   }
 
   nonPayBonusEventListener(data){

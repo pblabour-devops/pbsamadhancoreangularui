@@ -50,7 +50,7 @@ export class WagesNotPaidAtAllComponent {
   ngOnChanges(changes : any){
     if(changes.wagesApiData){
     this.Input_Form.patchValue(this.wagesApiData?.formModel)
-    this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+    this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
     if(details){
@@ -97,7 +97,6 @@ export class WagesNotPaidAtAllComponent {
       id: [data?.id || 0],
       fromDate: [data?.fromDate || '', Validators.required],
       toDate: [data?.toDate || '', Validators.required],
-      overTimeHours : [data?.overTimeHours || '', Validators.required],
       amount: [data?.amount || '', [Validators.required, Validators.min(0.01)]],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [data ? 2 : 1, Validators.required],
