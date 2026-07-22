@@ -104,6 +104,7 @@ export class GratuityClaimsComponent {
           .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getGratuityClaimDetails')
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_GratuityClaim>) => {
+            console.log('data', data)
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
             this.basisOfClaimOptions = data.enumTemplateLists
@@ -115,9 +116,23 @@ export class GratuityClaimsComponent {
             ?.selectListItems ?? [];
 
             if (data.formModel) {
-              this.Input_Form.patchValue(data.formModel);
-              this.calculateContinuousService();
-              this.calculateTotalServicePeriod();
+               const formData = data.formModel;
+                Object.keys(formData).forEach(key => {
+                  if (
+                    formData[key] &&
+                    typeof formData[key] === 'string' &&
+                    formData[key].includes('T')
+                  ) {
+                    formData[key] = formData[key].split('T')[0];
+                  }
+                });
+
+                this.Input_Form.patchValue(formData);
+                console.log('form fater ptach', this.Input_Form.value)
+                this.Input_Form.patchValue({ toDoActivityModeType: 2});
+                this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
+                this.calculateContinuousService();
+                this.calculateTotalServicePeriod();
             }
           });
       });
@@ -184,29 +199,21 @@ export class GratuityClaimsComponent {
     if (this.Input_Form.valid) {
 
     this.Input_Form.controls.applicationPurposeType.patchValue(0);
-    this.Input_Form.controls.iPin.patchValue(0);
-    this.Input_Form.controls.investPunjab_AppId.patchValue(0);
     this.Input_Form.controls.projectSiteVersion.patchValue(1);
-    this.Input_Form.controls.factoryCircleRefId.patchValue(1); // Static FactoryCircleRefId
-    this.Input_Form.controls.toDoActivityModeType.patchValue(1);
     this.Input_Form.controls.rootActivityRefId.patchValue('Default');
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2005);
-    this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
-    this.Input_Form.controls.id.patchValue(0);
+    this.Input_Form.controls.applicationType.patchValue(100001);
     this.appHttpRequestHandlerService
       .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
         next: () => {
           this.router.navigate(
-            [this.appFormStepsList.find((x) => x.stepCode == 'GRA')?.uiNextPageComponentPath],
+            [this.appFormStepsList.find((x) => x.stepCode == 'GC')?.uiNextPageComponentPath],
             {
               queryParams: {
                 info: this.commonOpsService.encodeQueryParamsInBase64({
                   appRefId: this.paramInfo?.appRefId,
-                  applicationType: 101,
-                  projectSiteRefId: this.paramInfo?.projectSiteRefId,
+                  applicationType: 100001,
                   applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                  investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-                  iPin: this.paramInfo?.iPin,
                   projectSiteVersion: this.paramInfo?.projectSiteVersion,
                 }),
               },

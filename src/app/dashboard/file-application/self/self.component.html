@@ -14,8 +14,8 @@
             type="checkbox"
             (change)="toggleIssue(issue.id)"
             [id]="issue.id"
-            >
-          <label class="form-check-label small" [for]="issue.id">
+            [disabled]="issue.disabled">
+          <label class="form-check-label small" [for]="issue.id" [class.text-muted]="issue.disabled">
             {{ issue.label }}
             <span class="tooltip-wrapper" *ngIf="issue.hasInfo">
               <span class="info-icon">i</span>

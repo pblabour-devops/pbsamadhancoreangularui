@@ -13,16 +13,16 @@ import { Subject } from 'rxjs';
 })
 export class SelfComponent {
   @Output() selectedIssueEventEmitter = new EventEmitter()
-  categories: Category[] = [];
+  categories: any[] = [];
   selectedIssues: number[] = [];
   ngUnsubscribe = new Subject<void>();
 
   constructor(
-  private appHttpRequestHandlerService: AppHttpRequestHandlerService, 
-  ){}
+    private appHttpRequestHandlerService: AppHttpRequestHandlerService,
+  ) {}
 
   ngOnInit(): void {
-    this.getComplaintCategories();  
+    this.getComplaintCategories();
   }
 
   getComplaintCategories(): void {
@@ -40,6 +40,7 @@ export class SelfComponent {
         };
 
         const groupedCategories: any[] = [];
+        let isFirstIssueAssigned = false;   // ✅ track first issue globally
 
         Object.keys(categoryNames).forEach(key => {
 
@@ -49,12 +50,21 @@ export class SelfComponent {
             title: categoryNames[type],
             issues: data.formModel
               .filter(x => x.complaintCategoryType === type)
-              .map(x => ({
-                id: x.id,
-                label: x.complaintTitle,
-                hasInfo: true,
-                info : x.info
-              }))
+              .map(x => {
+                const issue = {
+                  id: x.id,
+                  label: x.complaintTitle,
+                  hasInfo: true,
+                  info: x.info,
+                  disabled: isFirstIssueAssigned   
+                };
+
+                if (!isFirstIssueAssigned) {
+                  isFirstIssueAssigned = true;   
+                }
+
+                return issue;
+              })
           });
 
         });
@@ -63,11 +73,11 @@ export class SelfComponent {
         console.log('Fetched Complaint Categories:', this.categories);
 
       });
-}
+  }
 
   toggleIssue(id: number): void {
     console.log('this is working')
-  const index = this.selectedIssues.indexOf(id);
+    const index = this.selectedIssues.indexOf(id);
 
     if (index > -1) {
       this.selectedIssues.splice(index, 1);
@@ -79,9 +89,8 @@ export class SelfComponent {
   }
 
   check(id: number): boolean {
-  return this.selectedIssues.includes(id);
-}
-
+    return this.selectedIssues.includes(id);
+  }
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();

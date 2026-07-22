@@ -1114,7 +1114,8 @@ export interface ComplaintCategory {
   id: number;
   complaintTitle: string;
   complaintCategoryType: number;
-  info : string
+  info : string,
+  hasInfo: boolean
 }
 
 export interface Issue {
