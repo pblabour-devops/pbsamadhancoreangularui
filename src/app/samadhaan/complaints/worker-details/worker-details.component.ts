@@ -193,7 +193,6 @@ export class WorkerDetailsComponent {
         this.Input_Form.controls.id.patchValue(0);
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-            debugger;
           // if(this.Input_Form.value.appRefId !=0){
             this.navigateToNextStep(data);
           // } else {
