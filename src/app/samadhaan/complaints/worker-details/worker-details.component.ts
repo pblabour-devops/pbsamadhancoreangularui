@@ -119,17 +119,16 @@ export class WorkerDetailsComponent {
 }
 
   toggleCorrespondenceAddress(checked: boolean): void {
-
   const permanentAddress = this.Input_Form.get('permanentAddress')?.value;
   const permanentCountry = this.Input_Form.get('permanentCountry')?.value;
   const permanentState = this.Input_Form.get('permanentState')?.value;
-  const permanentDistrict = this.Input_Form.get('permanentDistrict')?.value;
+  const permanentDistrict = this.Input_Form.get('permanentDistrictRefId')?.value;
   const permanentPincode = this.Input_Form.get('permanentPincode')?.value;
 
   const correspondenceAddress = this.Input_Form.get('correspondenceAddress');
   const correspondenceCountry = this.Input_Form.get('correspondenceCountry');
   const correspondenceState = this.Input_Form.get('correspondenceState');
-  const correspondenceDistrict = this.Input_Form.get('correspondenceDistrict');
+  const correspondenceDistrict = this.Input_Form.get('correspondenceDistrictRefId');
   const correspondencePincode = this.Input_Form.get('correspondencePincode');
 
   if (checked) {
@@ -139,17 +138,17 @@ export class WorkerDetailsComponent {
     correspondenceDistrict?.setValue(permanentDistrict, { emitEvent: false });
     correspondencePincode?.setValue(permanentPincode, { emitEvent: false });
 
-    correspondenceAddress?.disable({ emitEvent: false });
-    correspondenceCountry?.disable({ emitEvent: false });
-    correspondenceState?.disable({ emitEvent: false });
-    correspondenceDistrict?.disable({ emitEvent: false });
-    correspondencePincode?.disable({ emitEvent: false });
+    // correspondenceAddress?.disable({ emitEvent: false });
+    // correspondenceCountry?.disable({ emitEvent: false });
+    // correspondenceState?.disable({ emitEvent: false });
+    // correspondenceDistrict?.disable({ emitEvent: false });
+    // correspondencePincode?.disable({ emitEvent: false });
   } else {
-    correspondenceAddress?.enable({ emitEvent: false });
-    correspondenceCountry?.enable({ emitEvent: false });
-    correspondenceState?.enable({ emitEvent: false });
-    correspondenceDistrict?.enable({ emitEvent: false });
-    correspondencePincode?.enable({ emitEvent: false });
+    // correspondenceAddress?.enable({ emitEvent: false });
+    // correspondenceCountry?.enable({ emitEvent: false });
+    // correspondenceState?.enable({ emitEvent: false });
+    // correspondenceDistrict?.enable({ emitEvent: false });
+    // correspondencePincode?.enable({ emitEvent: false });
   }
 
 }
@@ -189,6 +188,7 @@ export class WorkerDetailsComponent {
         this.Input_Form.controls.rootActivityRefId.patchValue('Default');
         this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
         this.Input_Form.controls.applicationType.patchValue(100001);
+        this.Input_Form.controls.toDoActivityModeType.patchValue(1);
         // this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
@@ -249,10 +249,7 @@ export class WorkerDetailsComponent {
         identityKey: regFormRspData.entityKeyId,
         appRefId: regFormRspData.appId,
         applicationType: 100001,
-        projectSiteRefId: 388263,
         applicationPurposeType: 0,
-        investPunjab_AppId: 0,
-        iPin: 0,
         projectSiteVersion: 1,
       })
     }});
