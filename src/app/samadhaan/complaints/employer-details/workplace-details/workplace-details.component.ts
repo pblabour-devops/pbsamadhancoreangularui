@@ -47,11 +47,8 @@ import Swal from 'sweetalert2';
     pinCode: ['', [Validators.required, Validators.maxLength(6)]],
 
     // NotMapped — application context fields
-    projectSiteRefId: [0, Validators.required],
     applicationPurposeType: [1, Validators.required],
     applicationType: [101, Validators.required],
-    iPin: [0, Validators.required],
-    investPunjab_AppId: [0, Validators.required],
     factoryCircleRefId: [1, Validators.required],
     projectSiteVersion: [0, Validators.required],
     toDoActivityModeType: [1, Validators.required],
@@ -141,10 +138,7 @@ import Swal from 'sweetalert2';
 
     const payload = {
       ...this.Input_Form.value,
-      projectSiteRefId: this.paramInfo?.projectSiteRefId,
       applicationPurposeType: this.paramInfo?.applicationPurposeType,
-      iPin: this.paramInfo?.iPin,
-      investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
       projectSiteVersion: this.paramInfo?.projectSiteVersion,
       factoryCircleRefId: 1,
       toDoActivityModeType: 1,
@@ -176,10 +170,7 @@ import Swal from 'sweetalert2';
                 info: this.commonOpsService.encodeQueryParamsInBase64({
                   appRefId: this.paramInfo?.appRefId,
                   applicationType: 101,
-                  projectSiteRefId: this.paramInfo?.projectSiteRefId,
                   applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                  investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-                  iPin: this.paramInfo?.iPin,
                   projectSiteVersion: this.paramInfo?.projectSiteVersion,
                 }),
               },

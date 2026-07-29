@@ -47,7 +47,7 @@ export class GratuityClaimsComponent {
     basisOfClaim: ['', Validators.required],
     employmentStartDate: [''],
     employmentEndDate: [''],
-    yearsOfContinuousService: [0],
+    yearsOfContinuousService: ['', Validators.required],
     isApplicationMadeToEmployer: ['', Validators.required],
     disputeDetails: ['', Validators.maxLength(2000)],
 
@@ -157,16 +157,32 @@ export class GratuityClaimsComponent {
   }
 
   private calculateContinuousService(): void {
-    // const start = this.formControls.employmentStartDate.value;
-    // const end = this.formControls.employmentEndDate.value;
+    const startDateValue = this.formControls.employmentStartDate.value;
+    const endDateValue = this.formControls.employmentEndDate.value;
 
-    // if (start && end) {
-    //   const days = this.commonOpsService.getDaysDifference
-    //     ? this.commonOpsService.getDaysDifference(start, end)
-    //     : Math.round((new Date(end).getTime() - new Date(start).getTime()) / (1000 * 60 * 60 * 24));
+    if (!startDateValue || !endDateValue) {
+      this.formControls.yearsOfContinuousService.setValue('', { emitEvent: false });
+      return;
+    }
 
-    //   this.formControls.yearsOfContinuousService.setValue(days, { emitEvent: false });
-    // }
+    const startDate = new Date(startDateValue);
+    const endDate = new Date(endDateValue);
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime()) || startDate > endDate) {
+      this.formControls.yearsOfContinuousService.setValue('', { emitEvent: false });
+      return;
+    }
+
+    const yearDifference = endDate.getFullYear() - startDate.getFullYear();
+    const monthDifference = endDate.getMonth() - startDate.getMonth();
+    const dayDifference = endDate.getDate() - startDate.getDate();
+
+    const completedYears =
+      monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)
+        ? yearDifference - 1
+        : yearDifference;
+
+    this.formControls.yearsOfContinuousService.setValue(completedYears, { emitEvent: false });
   }
 
   private calculateTotalServicePeriod(): void {

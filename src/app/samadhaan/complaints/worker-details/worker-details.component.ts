@@ -37,7 +37,7 @@ export class WorkerDetailsComponent {
   private router : Router ) {}
 
   Input_Form : TForm<WorkerFormModel> = this.fb.group({
-    id : [],
+    id : [0, Validators.required],
     name: ['', Validators.required],
     gender: ['', Validators.required],
     designation: ['', Validators.required],
@@ -87,7 +87,7 @@ export class WorkerDetailsComponent {
           this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((data: GenericFormModel<any>) => {
               this.appFormStepsList = data.appFormStepsList;
-                if (data.formModel) {
+                if (data.formModel.id > 0) {
                  const formData = data.formModel;
                 Object.keys(formData).forEach(key => {
                   if (
@@ -188,7 +188,6 @@ export class WorkerDetailsComponent {
         this.Input_Form.controls.rootActivityRefId.patchValue('Default');
         this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
         this.Input_Form.controls.applicationType.patchValue(100001);
-        this.Input_Form.controls.toDoActivityModeType.patchValue(1);
         // this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {

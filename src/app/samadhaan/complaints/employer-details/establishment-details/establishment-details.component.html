@@ -11,7 +11,7 @@
   <div class="row g-4 mb-4">
 
     <!-- Name of Establishment -->
-    <div class="col-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Name of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
       </label>
@@ -28,16 +28,14 @@
     </div>
 
     <!-- Address of Establishment -->
-    <div class="col-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Address of Establishment (Principal Employer) which engaged Contractor<span class="text-danger">*</span>
       </label>
-      <textarea
+      <input
         formControlName="establishmentAddress"
         class="form-control"
-        rows="2"
-      >
-      </textarea>
+      />
       <div
   class="text-danger"
   *ngIf="Input_Form.get('establishmentAddress')?.invalid && Input_Form.get('establishmentAddress')?.touched">
@@ -46,7 +44,7 @@
     </div>
 
     <!-- State / District -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         State<span class="text-danger">*</span>
       </label>
@@ -64,7 +62,7 @@
 </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         District<span class="text-danger">*</span>
       </label>
@@ -86,7 +84,7 @@
     </div>
 
     <!-- PIN Code / Mobile Number -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         PIN Code<span class="text-danger">*</span>
       </label>
@@ -109,7 +107,7 @@
 </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Mobile Number<span class="text-danger">*</span>
       </label>
@@ -134,7 +132,7 @@
     </div>
 
     <!-- Email / Still working -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">Email</label>
       <input
         type="email"
@@ -153,7 +151,7 @@
 </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Are you still working for the same employer/contractor
       </label>
@@ -169,7 +167,7 @@
     </div>
 
     <!-- Nature of work / Category -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">Nature of work performed</label>
       <input
         type="text"
@@ -182,7 +180,7 @@
 </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Category<span class="text-danger">*</span>
       </label>
@@ -203,7 +201,7 @@
     </div>
 
     <!-- Employment start / end date -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Date of start of employment<span class="text-danger">*</span>
       </label>
@@ -219,7 +217,7 @@
 </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Date of end of employment<span class="text-danger">*</span>
       </label>
@@ -236,7 +234,7 @@
     </div>
 
     <!-- Wage period / Rate of wages -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         Wage period<span class="text-danger">*</span>
       </label>

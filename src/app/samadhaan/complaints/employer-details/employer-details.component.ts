@@ -147,7 +147,6 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
             //     // this.appHttpRequestHandlerService.httpGet({ id: this.paramInfo?.identityKey, projectSiteId: this.paramInfo?.projectSiteRefId }, "BuildingPlan", "getbuildingplandetail").pipe(takeUntil(this.ngUnsubscribe))
             //     //   .subscribe((data: GenericFormModel<BuildingPlan_GeneralDetail>) => {
             //     //     this.initFormData(data)
-            //     //     this.BuildingPlan_GeneralDetail_Form.controls.projectSiteRefId.patchValue(this.paramInfo?.projectSiteRefId);
             //     //     this.BuildingPlan_GeneralDetail_Form.controls.establishmentRefId.patchValue(this.paramInfo?.establishmentRefId);
             //     //     this.BuildingPlan_GeneralDetail_Form.controls.applicationPurposeType.patchValue(this.paramInfo?.applicationPurposeType);
             //     //   });
@@ -235,7 +234,7 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
 
   onSubmit(): void {
   if (!this.EmployerContractorDetailsComponent?.isFormValid()) {
-    Swal.fire({ icon: 'warning', text: 'Please fill Employer contractor detail completely.' });
+    Swal.fire({ icon: 'warning', text: 'Please Add or fill Employer contractor detail completely.' });
     return;
   }
 
@@ -251,10 +250,7 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
 
   // ---------- Step 1: Save Workplace Detail (ONCE) ----------
   this.workPlaceDetailData.appRefId = this.paramInfo?.appRefId;
-  this.workPlaceDetailData.projectSiteRefId = 388263;
   this.workPlaceDetailData.applicationPurposeType = 0;
-  this.workPlaceDetailData.iPin = 0;
-  this.workPlaceDetailData.investPunjab_AppId = 0;
   this.workPlaceDetailData.projectSiteVersion = 1;
   this.workPlaceDetailData.rootActivityRefId = 'defaultValue';
   this.workPlaceDetailData.toDoActivityCategoryType = 2002;
@@ -267,10 +263,7 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
 
       // ---------- Step 2: Save Establishment Detail (ONCE) ----------
       this.establishmentDetailData.appRefId = this.paramInfo?.appRefId;
-      this.establishmentDetailData.projectSiteRefId = 388263;
       this.establishmentDetailData.applicationPurposeType = 0;
-      this.establishmentDetailData.iPin = 0;
-      this.establishmentDetailData.investPunjab_AppId = 0;
       this.establishmentDetailData.projectSiteVersion = 1;
       this.establishmentDetailData.rootActivityRefId = 'defaultValue';
       this.establishmentDetailData.toDoActivityCategoryType = 2003;
@@ -315,10 +308,7 @@ private navigateToNextStep(rspData: ICRUD_CreateUpdateOperationResponse): void {
         info: this.commonOpsService.encodeQueryParamsInBase64({
           appRefId: rspData?.appId,
           applicationType: 200001,
-          projectSiteRefId: this.paramInfo?.projectSiteRefId,
           applicationPurposeType: this.paramInfo?.applicationPurposeType,
-          investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-          iPin: this.paramInfo?.iPin,
           projectSiteVersion: this.paramInfo?.projectSiteVersion,
         }),
       },

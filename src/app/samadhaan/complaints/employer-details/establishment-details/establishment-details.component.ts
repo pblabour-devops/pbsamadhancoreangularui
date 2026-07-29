@@ -70,11 +70,8 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     wageRate: ['', [Validators.required]],
 
     // NotMapped — application context fields
-    projectSiteRefId: [0, Validators.required],
     applicationPurposeType: [1, Validators.required],
     applicationType: [101, Validators.required],
-    iPin: [0, Validators.required],
-    investPunjab_AppId: [0, Validators.required],
     factoryCircleRefId: [1, Validators.required],
     projectSiteVersion: [0, Validators.required],
     toDoActivityModeType: [1, Validators.required],
@@ -172,10 +169,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
     const payload = {
       ...this.Input_Form.value,
-      projectSiteRefId: this.paramInfo?.projectSiteRefId,
       applicationPurposeType: this.paramInfo?.applicationPurposeType,
-      iPin: this.paramInfo?.iPin,
-      investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
       projectSiteVersion: this.paramInfo?.projectSiteVersion,
       factoryCircleRefId: 1,
       toDoActivityModeType: 1,
@@ -207,10 +201,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
                 info: this.commonOpsService.encodeQueryParamsInBase64({
                   appRefId: this.paramInfo?.appRefId,
                   applicationType: 101,
-                  projectSiteRefId: this.paramInfo?.projectSiteRefId,
                   applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                  investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-                  iPin: this.paramInfo?.iPin,
                   projectSiteVersion: this.paramInfo?.projectSiteVersion,
                 }),
               },

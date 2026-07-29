@@ -12,16 +12,15 @@
   <div class="row g-4 mb-4">
 
     <!-- Address of Workplace -->
-    <div class="col-12">
+    <div class="col-12 mb-4">
       <label class="form-label fw-semibold">
         Address of Workplace<span class="text-danger">*</span>
       </label>
-      <textarea
+      <input
         formControlName="workplaceAddress"
         class="form-control"
         rows="2"
-        >
-      </textarea>
+        />
      <div
       class="text-danger"
       *ngIf="Input_Form.get('workplaceAddress')?.invalid && Input_Form.get('workplaceAddress')?.touched">
@@ -30,7 +29,7 @@
     </div>
 
     <!-- State of Workplace -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4 ">
       <label class="form-label fw-semibold">
         State of Workplace<span class="text-danger">*</span>
       </label>
@@ -49,7 +48,7 @@
     </div>
 
     <!-- District of Workplace -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         District of Workplace<span class="text-danger">*</span>
       </label>
@@ -71,7 +70,7 @@
     </div>
 
     <!-- PIN Code of Workplace -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-4">
       <label class="form-label fw-semibold">
         PIN Code of Workplace<span class="text-danger">*</span>
       </label>

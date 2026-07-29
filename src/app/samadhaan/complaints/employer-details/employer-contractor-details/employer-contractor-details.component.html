@@ -1,10 +1,7 @@
 <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="id" />
     <input type="hidden" formControlName="appRefId" />
-    <input type="hidden" formControlName="projectSiteRefId">
     <input type="hidden" formControlName="applicationPurposeType">
-    <input type="hidden" formControlName="iPin">
-    <input type="hidden" formControlName="investPunjab_AppId">
     <input type="hidden" formControlName="projectSiteVersion">
     <input type="hidden" formControlName="toDoActivityModeType">
     <input type="hidden" formControlName="rootActivityRefId">
@@ -15,35 +12,96 @@
         <h5 class="section-title">Employer/Contractor Details</h5>
 
       <!-- Are you engaged through contractor -->
-      <div class="row form-group align-items-center">
-        <div class="col-md-12 d-flex align-items-center gap-4">
-          <label class="fw-semibold mb-0 me-3">Are you engaged through contractor</label>
+       <div class="row">
+        <div class="col-md-12">
+  <label class="fw-semibold mb-2 d-block">
+    Working in Establishment Coming Under-
+  </label>
 
-          <div class="form-check form-check-inline">
+  <div
+    class="toggle-group flex-wrap"
+    role="radiogroup"
+    aria-labelledby="establishmentTypeLabel"
+  >
+    <label class="toggle-option">
+      <input
+        type="radio"
+        id="centralGovYes"
+        [value]="true"
+        formControlName="isEstablishmentCentralGovernment"
+      />
+      <span>Central Government</span>
+    </label>
+
+    <label class="toggle-option">
+      <input
+        type="radio"
+        id="centralGovNo"
+        [value]="false"
+        formControlName="isEstablishmentCentralGovernment"
+      />
+      <span>State Government</span>
+    </label>
+  </div>
+</div>
+       </div>
+
+       @if(Input_Form.get("isEstablishmentCentralGovernment").value){
+       <div class="row">
+          <div class="col-md-6 mb-4">
+          <label class="required">Establishment Type</label>
+          <select
+            class="form-control"
+            formControlName="establishmentTypEnum"
+           >
+            <option value="">Select</option>
+            <option *ngFor="let establishment of establishments" [value]="establishment.value">
+              {{ establishment.text }}
+            </option>
+          </select>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+          Required
+        </div>
+        </div>
+       </div>
+      }
+      <div class="row mb-4 align-items-center">
+      <div class="col-md-12">
+        <label class="fw-semibold mb-2 d-block">
+          Are you engaged through contractor
+        </label>
+
+        <div
+          class="toggle-group flex-wrap"
+          role="radiogroup"
+          aria-labelledby="engagedThroughContractorLabel"
+        >
+          <label class="toggle-option">
             <input
               type="radio"
-              class="form-check-input"
               id="engagedYes"
               [value]="true"
               formControlName="isEngagedThroughContractor" />
-            <label class="form-check-label" for="engagedYes">Yes</label>
-          </div>
+            <span>Yes</span>
+          </label>
 
-          <div class="form-check form-check-inline">
+          <label class="toggle-option">
             <input
               type="radio"
-              class="form-check-input"
               id="engagedNo"
               [value]="false"
               formControlName="isEngagedThroughContractor" />
-            <label class="form-check-label" for="engagedNo">No</label>
-          </div>
+            <span>No</span>
+          </label>
         </div>
       </div>
+    </div>
 
       <!-- Name and designation -->
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-6  mb-4">
       <label class="required">
         Name and designation of the
         {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}
@@ -59,7 +117,7 @@
             Required
             </div>
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-6 mb-4">
           <label class="required">Address of the {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}</label>
           <input
             class="form-control"
@@ -76,7 +134,7 @@
 
       <!-- State / District -->
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-6  mb-4">
           <label class="required">State</label>
           <select
             class="form-control"
@@ -92,7 +150,7 @@
         </div>
         </div>
 
-        <div class="col-md-6 form-group">
+        <div class="col-md-6 mb-4">
           <label class="required">District</label>
           <select
             class="form-control"
@@ -113,7 +171,7 @@
 
       <!-- PIN Code / Mobile Number -->
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-6 mb-4">
           <label class="required">PIN Code</label>
             <input  type="text" class="form-control" formControlName="pinCode" maxlength="6" />
           <div
@@ -123,7 +181,7 @@
 </div>
         </div>
 
-        <div class="col-md-6 form-group">
+        <div class="col-md-6 mb-4">
           <label class="required">Mobile Number</label>
           <input
             type="text"
@@ -141,7 +199,7 @@
 
       <!-- Email -->
       <div class="row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-6 mb-4">
           <label>Email</label>
           <input
             type="text"

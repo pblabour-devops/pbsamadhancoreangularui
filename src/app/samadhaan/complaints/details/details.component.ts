@@ -21,6 +21,7 @@ export class DetailsComponent {
   detailData:any
   basisOfClaimOptions:any[]=[]
   maritalStatusOptions:any[]=[]
+  workerCategoryOptions: any[]= []
   constructor(private commonOpsService : CommonOpsService, private route : ActivatedRoute, private appHttpRequestHandlerService : AppHttpRequestHandlerService){}
 
   ngOnInit(){
@@ -40,6 +41,7 @@ export class DetailsComponent {
                 this.detailData = data.formModel
                 this.basisOfClaimOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'GratuityClaimBasisTypeEnum').selectListItems
                 this.maritalStatusOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'MaritalStatusTypeEnum').selectListItems
+                this.workerCategoryOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'WorkerCategoryTypeEnum').selectListItems
                 console.log('detial data', this.detailData)
               });
           });
@@ -67,6 +69,11 @@ getBasisOfClaimText(value: number): string {
 
   getMaritalStatusText(value: number): string {
     const found = this.maritalStatusOptions.find(x => x.value == value);
+    return found ? found.text : '-';
+  }
+
+  getworkerText(value : number) : string {
+    const found = this.workerCategoryOptions.find(x => x.value == value);
     return found ? found.text : '-';
   }
 

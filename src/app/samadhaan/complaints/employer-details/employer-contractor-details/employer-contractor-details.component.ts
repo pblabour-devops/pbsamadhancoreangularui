@@ -27,6 +27,7 @@ export class EmployerContractorDetailsComponent {
 
   employerList: IComplaint_EmployerDetail[] = [];
   genericFormData: GenericFormModel<IComplaint_EmployerDetail>;
+  establishments : any[]=[]
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,8 @@ export class EmployerContractorDetailsComponent {
     id: [0, Validators.required],
     appRefId: [0, Validators.required],
     isEngagedThroughContractor: [true, Validators.required],
+    isEstablishmentCentralGovernment : [true, Validators.required],
+    establishmentTypEnum : [''],
     employerORContractorNameAndDesignation: ['', [Validators.required, Validators.maxLength(300)]],
     employerORContractorAddress: ['', [Validators.required, Validators.maxLength(500)]],
     state: ['', Validators.required],
@@ -47,12 +50,8 @@ export class EmployerContractorDetailsComponent {
     pinCode: ['', [Validators.required, Validators.maxLength(10)]],
     mobileNumber: ['', [Validators.required, Validators.maxLength(10)]],
     email: ['', [Validators.email, Validators.maxLength(200)]],
-    projectSiteRefId: [0, Validators.required],
     applicationPurposeType: [1, Validators.required],
     applicationType: [101, Validators.required],
-    iPin: [0, Validators.required],
-    investPunjab_AppId: [0, Validators.required],
-    factoryCircleRefId: [1, Validators.required],
     projectSiteVersion: [0, Validators.required],
     toDoActivityModeType: [1, Validators.required],
     toDoActivityCategoryType: [1017, Validators.required],
@@ -81,6 +80,7 @@ export class EmployerContractorDetailsComponent {
           .subscribe((data: GenericFormModel<IComplaint_EmployerDetail>) => {
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
+            this.establishments = data.enumTemplateLists.find(e => e.selectListTypeCode == 'SamadhaanEstablishmentTypeEnum').selectListItems
              if (data.formModel && Array.isArray(data.formModel)) {
 
               this.employerList = [];
@@ -134,14 +134,9 @@ export class EmployerContractorDetailsComponent {
   addEmployer() {
     this.Input_Form.patchValue({
       appRefId: this.paramInfo?.appRefId,
-      projectSiteRefId: 388263,
       applicationType: 100001,
       applicationPurposeType: 0,
-      iPin: 0,
-      investPunjab_AppId: 0,
-      factoryCircleRefId: 1,
       projectSiteVersion: 1,
-      toDoActivityModeType: 1,
       rootActivityRefId: 'defaultValue',
       toDoActivityCategoryType: 2001,
     });
@@ -150,18 +145,16 @@ export class EmployerContractorDetailsComponent {
 
     this.employerList.push({ ...this.Input_Form.value });
 
+    console.log('employer list', this.employerList)
     this.employerOrContractorDetailDataEvent.emit(this.employerList)
 
     this.Input_Form.reset({
       id: 0,
       isEngagedThroughContractor: true,
+      isEstablishmentCentralGovernment : true,
       appRefId: this.paramInfo?.appRefId,
-      projectSiteRefId: 0,
       applicationType: 100001,
       applicationPurposeType: 0,
-      iPin: 0,
-      investPunjab_AppId: 0,
-      factoryCircleRefId: 1,
       projectSiteVersion: 1,
       toDoActivityModeType: 1,
       rootActivityRefId: 'defaultValue',
@@ -231,10 +224,7 @@ export class EmployerContractorDetailsComponent {
             info: this.commonOpsService.encodeQueryParamsInBase64({
               appRefId: this.paramInfo?.appRefId,
               applicationType: 101,
-              projectSiteRefId: this.paramInfo?.projectSiteRefId,
               applicationPurposeType: this.paramInfo?.applicationPurposeType,
-              investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-              iPin: this.paramInfo?.iPin,
               projectSiteVersion: this.paramInfo?.projectSiteVersion,
             }),
           },
@@ -257,6 +247,7 @@ export class EmployerContractorDetailsComponent {
   }
 
     public isFormValid(): boolean {
+    console.log('employerlist', this.employerList)
     return this.employerList.length > 0;
   }
 }

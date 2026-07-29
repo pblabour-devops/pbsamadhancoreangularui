@@ -19,6 +19,7 @@ export interface IComplaint_EmployerDetail {
   toDoActivityModeType: number;
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
+  establishmentTypEnum : string;
 }
 
 export interface IComplaint_WorkplaceDetail {
