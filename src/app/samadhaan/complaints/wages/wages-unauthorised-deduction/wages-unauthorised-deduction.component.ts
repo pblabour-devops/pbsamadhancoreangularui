@@ -53,6 +53,7 @@ export class WagesUnauthorisedDeductionComponent {
         this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
+    if(details){
     const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
     formArray.clear();
     details.forEach(detail =>{
@@ -64,6 +65,7 @@ export class WagesUnauthorisedDeductionComponent {
       this.addMore(detail)
     })
     }
+  }
   }
 
   ngOnInit(){

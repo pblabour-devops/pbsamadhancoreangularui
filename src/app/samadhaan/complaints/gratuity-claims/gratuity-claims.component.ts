@@ -104,7 +104,6 @@ export class GratuityClaimsComponent {
           .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getGratuityClaimDetails')
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_GratuityClaim>) => {
-            console.log('data', data)
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
             this.basisOfClaimOptions = data.enumTemplateLists
@@ -128,7 +127,6 @@ export class GratuityClaimsComponent {
                 });
 
                 this.Input_Form.patchValue(formData);
-                console.log('form fater ptach', this.Input_Form.value)
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
                 this.calculateContinuousService();
@@ -203,13 +201,11 @@ export class GratuityClaimsComponent {
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.valid) {
@@ -243,8 +239,7 @@ export class GratuityClaimsComponent {
         const control = this.Input_Form.get(key);
     
         if (control?.invalid) {
-          console.log(`${key} is invalid`, control.errors);
-        }
+}
       });
     }
   }

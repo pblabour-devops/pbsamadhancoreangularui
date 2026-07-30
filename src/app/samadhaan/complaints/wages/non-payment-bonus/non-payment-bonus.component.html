@@ -20,41 +20,18 @@
         [formGroupName]="i">
 
         <div class="col">
-        <label>From</label>
-        <input type="date" class="form-control" formControlName="fromDate">
+        <label>Accounting year for which bonus not paid/short paid</label>
+        <input type="number" class="form-control" formControlName="accountingYear">
 
         <div
             class="text-danger"
-            *ngIf="group.get('fromDate')?.invalid && group.get('fromDate')?.touched">
+            *ngIf="group.get('accountingYear')?.invalid && group.get('accountingYear')?.touched">
             Required
         </div>
         </div>
 
         <div class=" col">
-        <label >To</label>
-        <input type="date" class="form-control" formControlName="toDate">
-
-        <div
-            class="text-danger"
-            *ngIf="group.get('toDate')?.invalid && group.get('toDate')?.touched">
-            Required
-        </div>
-        </div>
-
-        
-        <div class=" col">
-        <label >Overtime Hours</label>
-        <input type="number" class="form-control" formControlName="overTimeHours">
-
-        <div
-            class="text-danger"
-            *ngIf="group.get('overTimeHours')?.invalid && group.get('overTimeHours')?.touched">
-            Required
-        </div>
-        </div>
-
-        <div class=" col">
-        <label >Amount</label>
+        <label >Amount of unpaid Bonus</label>
         <input type="number" class="form-control" formControlName="amount">
 
         <div
@@ -63,6 +40,27 @@
             Required
         </div>
         </div>
+
+        
+    <div class="col">
+    <label>Basis of bonus claimed</label>
+
+    <select class="form-control" formControlName="bonusClaimType">
+        <option value="" disabled selected>Select</option>
+
+        @for (option of bonusClaimOptions; track option.value) {
+            <option [value]="option.value">
+                {{ option.text }}
+            </option>
+        }
+    </select>
+
+    <div
+        class="text-danger"
+        *ngIf="group.get('bonusClaimType')?.invalid && group.get('bonusClaimType')?.touched">
+        Required
+    </div>
+</div>
 
         <div class=" col d-flex align-items-end">
 

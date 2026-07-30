@@ -122,13 +122,11 @@ import Swal from 'sweetalert2';
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.invalid) {

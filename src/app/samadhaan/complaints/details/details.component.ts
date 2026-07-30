@@ -32,7 +32,6 @@ export class DetailsComponent {
   this.route.queryParams
         .subscribe(params => {
           this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
-            console.log('param inof', info)
             this.paramInfo = info;
             this.appId = this.paramInfo.appId;
               this.appHttpRequestHandlerService.httpGet({id : this.paramInfo?.appRefId}, "Complaints", "getComplaintDetail").pipe(takeUntil(this.ngUnsubscribe))
@@ -42,7 +41,6 @@ export class DetailsComponent {
                 this.basisOfClaimOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'GratuityClaimBasisTypeEnum').selectListItems
                 this.maritalStatusOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'MaritalStatusTypeEnum').selectListItems
                 this.workerCategoryOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'WorkerCategoryTypeEnum').selectListItems
-                console.log('detial data', this.detailData)
               });
           });
         });

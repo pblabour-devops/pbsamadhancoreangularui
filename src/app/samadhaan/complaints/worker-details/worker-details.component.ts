@@ -175,8 +175,7 @@ export class WorkerDetailsComponent {
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.valid) {
@@ -213,10 +212,7 @@ export class WorkerDetailsComponent {
     const control = this.Input_Form.get(key);
 
     if (control?.invalid) {
-      console.log(`Field: ${key}`);
-      console.log('Value:', control.value);
-      console.log('Errors:', control.errors);
-    }
+}
   });
     }
   }
@@ -232,8 +228,7 @@ export class WorkerDetailsComponent {
   "pbsamadhannetcoreapi.Models.AppComplaintTypeMapping","Complaints","createAppComplaintTypeMapping")
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-      console.log(`Issue ${issueId} mapped successfully`);
-      if(!data.hasExceptions){
+if(!data.hasExceptions){
       this.navigateToNextStep(regFormRspData);
       }
     }); 

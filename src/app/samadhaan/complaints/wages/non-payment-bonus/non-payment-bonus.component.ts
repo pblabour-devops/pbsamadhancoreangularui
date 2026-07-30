@@ -21,6 +21,7 @@ export class NonPaymentBonusComponent {
   public parmamEncodedinfo: string;
   genericFormData: GenericFormModel<IComplaint_Wages>;
   applicableOptions : any
+  bonusClaimOptions : any[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,7 @@ export class NonPaymentBonusComponent {
       id: [0, Validators.required],
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
-      detailAboutTheClaim: [''],
+      details: [''],
       periodAmtDetails: this.fb.array([]),
       applicationPurposeType : [0, Validators.required],
       projectSiteVersion: [1, Validators.required],
@@ -48,11 +49,13 @@ export class NonPaymentBonusComponent {
   }
 
   ngOnChanges(changes : any){
-      if(changes.wagesApiData){
+    if(changes.wagesApiData){
     this.Input_Form.patchValue(this.wagesApiData?.formModel)
     this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
     } else if(changes.wagesPeriodAmtApiData){
+    this.bonusClaimOptions = this.wagesPeriodAmtApiData.enumTemplateLists.find(e => e.selectListTypeCode == 'BonusClaimTypeEnum').selectListItems
     const details = this.wagesPeriodAmtApiData.formModel;
+    if(details){
     const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
     formArray.clear();
     details.forEach(detail =>{
@@ -64,6 +67,7 @@ export class NonPaymentBonusComponent {
       this.addMore(detail)
     })
     }
+  }
   }
 
   ngOnInit(){
@@ -93,10 +97,9 @@ export class NonPaymentBonusComponent {
   createComplaintDetail(data?:any): FormGroup {
     return this.fb.group({
       id: [data?.id || 0],
-      fromDate: [data?.fromDate || '', Validators.required],
-      toDate: [data?.toDate || '', Validators.required],
-      overTimeHours : [data?.overTimeHours || '', Validators.required],
+      accountingYear: [data?.accountingYear || '', Validators.required],
       amount: [data?.amount || '', [Validators.required, Validators.min(0.01)]],
+      bonusClaimType: [data?.bonusClaimType || '', Validators.required],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [data ? 2 : 1, Validators.required],
       rootActivityRefId: [''],

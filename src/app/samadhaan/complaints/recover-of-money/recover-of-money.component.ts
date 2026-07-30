@@ -141,13 +141,11 @@ export class RecoverOfMoneyComponent {
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onPreview(): void {
     if (this.Input_Form.invalid) {

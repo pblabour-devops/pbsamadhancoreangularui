@@ -5,10 +5,7 @@
 <form [formGroup]="Input_Form">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
-    <input type="hidden" formControlName="projectSiteRefId">
     <input type="hidden" formControlName="applicationPurposeType">
-    <input type="hidden" formControlName="iPin">
-    <input type="hidden" formControlName="investPunjab_AppId">
     <input type="hidden" formControlName="projectSiteVersion">
     <input type="hidden" formControlName="toDoActivityModeType">
     <input type="hidden" formControlName="rootActivityRefId">
@@ -62,15 +59,15 @@
                 type="radio"
                 [id]="'applicableOption_' + opt.value"
                 [value]="opt.value"
-                formControlName="applicableOption"
-                [class.is-invalid]="formControls.applicableOption.touched && formControls.applicableOption.invalid" />
+                formControlName="MaternityDischargeType"
+                [class.is-invalid]="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid" />
               <label class="form-check-label" [for]="'applicableOption_' + opt.id">
                 {{ opt.text }}
               </label>
             </div>
           </div>
           <div class="invalid-feedback d-block"
-               *ngIf="formControls.applicableOption.touched && formControls.applicableOption.invalid">
+               *ngIf="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid">
             Please select the applicable option.
           </div>
         </div>
@@ -139,16 +136,7 @@
         </div>
       </div>
 
-      <!-- Supporting Documents -->
-      <div class="form-group row mt-3">
-        <label class="col-md-3 col-form-label">
-          Attach supporting documents, if any
-        </label>
-        <div class="col-md-9">
-          <input type="file" class="form-control" />
-          <small class="text-success d-block mt-1">Supporting Documents (Max size: 30MB)</small>
-        </div>
-      </div>
+ 
 
     </div>
 

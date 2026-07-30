@@ -96,9 +96,7 @@ export class EmployerContractorDetailsComponent {
                     formData[key] = formData[key].split('T')[0];
                   }
                 });
-                console.log('data', data)
                 this.Input_Form.patchValue(formData);
-                console.log('formdat', this.Input_Form.value)
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
                 this.addEmployer();
@@ -146,7 +144,6 @@ export class EmployerContractorDetailsComponent {
 
     this.employerList.push({ ...this.Input_Form.value });
 
-    console.log('employer list', this.employerList)
     this.employerOrContractorDetailDataEvent.emit(this.employerList)
 
     this.Input_Form.reset({
@@ -248,7 +245,6 @@ export class EmployerContractorDetailsComponent {
   }
 
     public isFormValid(): boolean {
-    console.log('employerlist', this.employerList)
     return this.employerList.length > 0;
   }
 }

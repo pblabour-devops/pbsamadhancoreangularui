@@ -32,7 +32,7 @@ export class WagesNotPaidAtAllComponent {
       id: [0, Validators.required],
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
-      detailAboutTheClaim: [''],
+      reason: [''],
       periodAmtDetails: this.fb.array([]),
       applicationPurposeType : [0, Validators.required],
       projectSiteVersion: [1, Validators.required],

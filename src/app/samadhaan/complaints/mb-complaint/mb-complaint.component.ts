@@ -46,7 +46,7 @@ export class MbComplaintComponent {
       isDischargedOrDismissedDueToAbsence: ['', Validators.required],
 
       // NEW: Conditional field - no static validator, handled dynamically
-      applicableOption: [null],
+      MaternityDischargeType: [null],
 
       maternityBenefitAmountDue: [0, [Validators.required, Validators.min(0)]],
       medicalBonusMaternityAmountDue: [0, [Validators.required, Validators.min(0)]],
@@ -54,15 +54,11 @@ export class MbComplaintComponent {
 
       // application context (NotMapped)
       appRefId: [0, Validators.required],
-      projectSiteRefId: [0, Validators.required],
       applicationType: [100001, Validators.required],
-      applicationPurposeType: [1, Validators.required],
-      iPin: [0, Validators.required],
-      investPunjab_AppId: [0, Validators.required],
-      factoryCircleRefId: [1, Validators.required],
+      applicationPurposeType: [0, Validators.required],
       projectSiteVersion: [0, Validators.required],
       toDoActivityModeType: [1, Validators.required],
-      rootActivityRefId: ['defaultValue', Validators.required],
+      rootActivityRefId: ['defaultValue'],
       toDoActivityCategoryType: [1017, Validators.required],
     }
   ) as TForm<IComplaint_MaternityBenefitComplaint>;
@@ -86,12 +82,13 @@ export class MbComplaintComponent {
           .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getMaternityBenefitsComplaintDetails')
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_MaternityBenefitComplaint>) => {
-            this.applicableOptions = data.enumTemplateLists.find(e => e.selectListTypeCode === 'MaternityDischargeOptionEnum').selectListItems
+            this.applicableOptions = data.enumTemplateLists.find(e => e.selectListTypeCode === 'MaternityDischargeTypeEnum').selectListItems
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
 
             if (data.formModel) {
               this.Input_Form.patchValue(data.formModel);
+              this.Input_Form.controls.toDoActivityModeType.patchValue(2);
               // Ensure conditional validator state is set correctly after patch
               this.onDischargeStatusChange();
             }
@@ -106,7 +103,7 @@ export class MbComplaintComponent {
    */
   onDischargeStatusChange(): void {
     const isDischarged = this.formControls.isDischargedOrDismissedDueToAbsence.value;
-    const applicableOptionControl = this.formControls.applicableOption;
+    const applicableOptionControl = this.formControls.MaternityDischargeType;
 
     const isYes = isDischarged === true || isDischarged === 'true';
 
@@ -127,36 +124,26 @@ export class MbComplaintComponent {
       applicableOption: null,
     });
     this.Input_Form.patchValue({ id: 0, appRefId: this.paramInfo?.appRefId });
-    this.formControls.applicableOption.clearValidators();
-    this.formControls.applicableOption.updateValueAndValidity();
+    this.formControls.MaternityDischargeType.clearValidators();
+    this.formControls.MaternityDischargeType.updateValueAndValidity();
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
+    console.log('input form value', this.Input_Form.value);
     if (this.Input_Form.valid) {
 
     this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo?.applicationPurposeType);
-    this.Input_Form.controls.iPin.patchValue(this.paramInfo?.iPin);
-    this.Input_Form.controls.investPunjab_AppId.patchValue(this.paramInfo?.appRefId);
     this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo?.projectSiteVersion);
-    this.Input_Form.controls.projectSiteRefId.patchValue(this.paramInfo?.projectSiteRefId); // static 
-    this.Input_Form.controls.factoryCircleRefId.patchValue(1); // Static FactoryCircleRefId
-    this.Input_Form.controls.toDoActivityModeType.patchValue(1);
     this.Input_Form.controls.rootActivityRefId.patchValue('Default');
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2006);
-    this.Input_Form.controls.id.patchValue(0);
-    console.log('input form', this.Input_Form.value);
-
-    this.appHttpRequestHandlerService
-      .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_MaternityBenefitComplaint','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+    this.appHttpRequestHandlerService.httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_MaternityBenefitComplaint','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
         next: () => {
           this.router.navigate(
             [this.appFormStepsList.find((x) => x.stepCode == 'GRA')?.uiNextPageComponentPath],
@@ -182,8 +169,8 @@ export class MbComplaintComponent {
         const control = this.Input_Form.get(key);
     
         if (control?.invalid) {
-          console.log(`${key} is invalid`, control.errors);
-        }
+          console.log('invli', control.invalid)
+}
       });
     }
   }
