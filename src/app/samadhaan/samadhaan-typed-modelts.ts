@@ -19,7 +19,8 @@ export interface IComplaint_EmployerDetail {
   toDoActivityModeType: number;
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
-  establishmentTypEnum : string;
+  establishmentTyp : string;
+  isEstablishmentCentralGovernment : boolean
 }
 
 export interface IComplaint_WorkplaceDetail {

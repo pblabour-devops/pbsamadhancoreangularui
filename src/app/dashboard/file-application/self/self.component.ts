@@ -54,7 +54,7 @@ export class SelfComponent {
                 const issue = {
                   id: x.id,
                   label: x.complaintTitle,
-                  hasInfo: true,
+                  hasInfo: x.hasInfo,
                   info: x.info,
                   disabled: ![5].includes(x.id)
                 };

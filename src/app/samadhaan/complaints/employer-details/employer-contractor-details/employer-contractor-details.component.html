@@ -13,16 +13,17 @@
 
       <!-- Are you engaged through contractor -->
        <div class="row">
-        <div class="col-md-12">
-  <label class="fw-semibold mb-2 d-block">
-    Working in Establishment Coming Under-
-  </label>
+        <div class="col-md-12 mb-4">
 
   <div
-    class="toggle-group flex-wrap"
+    class="toggle-group flex-wrap align-items-center"
     role="radiogroup"
     aria-labelledby="establishmentTypeLabel"
   >
+    <label class="fw-semibold mb-2 d-block">
+    Working in Establishment Coming Under : 
+  </label>
+
     <label class="toggle-option">
       <input
         type="radio"
@@ -52,7 +53,7 @@
           <label class="required">Establishment Type</label>
           <select
             class="form-control"
-            formControlName="establishmentTypEnum"
+            formControlName="establishmentTyp"
            >
             <option value="">Select</option>
             <option *ngFor="let establishment of establishments" [value]="establishment.value">
@@ -69,15 +70,15 @@
       }
       <div class="row mb-4 align-items-center">
       <div class="col-md-12">
-        <label class="fw-semibold mb-2 d-block">
-          Are you engaged through contractor
-        </label>
 
         <div
-          class="toggle-group flex-wrap"
+          class="toggle-group flex-wrap align-items-center"
           role="radiogroup"
           aria-labelledby="engagedThroughContractorLabel"
         >
+                <label class="fw-semibold mb-2 d-block">
+          Are you engaged through contractor
+        </label>
           <label class="toggle-option">
             <input
               type="radio"

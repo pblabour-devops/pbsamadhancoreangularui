@@ -42,7 +42,7 @@ export class EmployerContractorDetailsComponent {
     appRefId: [0, Validators.required],
     isEngagedThroughContractor: [true, Validators.required],
     isEstablishmentCentralGovernment : [true, Validators.required],
-    establishmentTypEnum : [''],
+    establishmentTyp : [''],
     employerORContractorNameAndDesignation: ['', [Validators.required, Validators.maxLength(300)]],
     employerORContractorAddress: ['', [Validators.required, Validators.maxLength(500)]],
     state: ['', Validators.required],
@@ -96,8 +96,9 @@ export class EmployerContractorDetailsComponent {
                     formData[key] = formData[key].split('T')[0];
                   }
                 });
-
+                console.log('data', data)
                 this.Input_Form.patchValue(formData);
+                console.log('formdat', this.Input_Form.value)
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
                 this.addEmployer();
