@@ -62,7 +62,7 @@ export class WorkerDetailsComponent {
     iPin: [0, Validators.required],
     investPunjab_AppId: [0, Validators.required],
     factoryCircleRefId: [1, Validators.required],
-    projectSiteVersion: [0, Validators.required],
+    projectSiteVersion: [1, Validators.required],
     toDoActivityModeType: [1, Validators.required],
     rootActivityRefId: ['defaultValue', Validators.required],
     toDoActivityCategoryType: [1017, Validators.required]

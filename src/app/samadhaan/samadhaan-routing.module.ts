@@ -4,17 +4,17 @@ import { WorkerDetailsComponent } from './complaints/worker-details/worker-detai
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details.component';
 import { GratuityClaimsComponent } from './complaints/gratuity-claims/gratuity-claims.component';
 import { MbComplaintComponent } from './complaints/mb-complaint/mb-complaint.component';
-import { RecoverOfMoneyComponent } from './complaints/recover-of-money/recover-of-money.component';
 import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-code-on-wages/claim-under-code-on-wages.component';
 import { WagesComponent } from './complaints/wages/wages.component';
 import { DetailsComponent } from './complaints/details/details.component';
+import { RecoveryOfMoneyComponent } from './complaints/recovery-of-money/recovery-of-money.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
    {path : 'employer-details',component : EmployerDetailsComponent},
    {path : 'gratuity-claims',component : GratuityClaimsComponent},
    {path : 'mb-complaint',component : MbComplaintComponent},
-   {path : 'recovery-of-money',component : RecoverOfMoneyComponent},
+   {path : 'recovery-of-money',component : RecoveryOfMoneyComponent},
    {path : 'wages',component : WagesComponent},
    {path : 'details',component : DetailsComponent},
 

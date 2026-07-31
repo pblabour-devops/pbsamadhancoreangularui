@@ -278,3 +278,17 @@ export interface IComplaint_Wages_PeriodAmt {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_RecOfMon_GeneralDetail {
+  id: number;
+  appRefId: number;
+  DemandNoticeServedDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}

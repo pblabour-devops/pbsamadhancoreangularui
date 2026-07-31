@@ -1,0 +1,88 @@
+<div class="pcoded-main-container">
+<div class="pcoded-content">
+<div class="card" >
+<div class="m-2">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+
+     <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+   <!-- Title bar -->
+  <div class="title-bar">
+    Application for Your Complaint
+  </div>
+
+
+    <!-- General Information label -->
+    <div class="general-info-label">
+      General Information <span class="required">*</span>
+    </div>
+      <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+
+  <!-- Basic / General Info -->
+  <div class="card-body" style="margin-top: 0px;">
+
+
+
+ <div class="section-card">
+    <h5 class="section-title">Worker Details</h5>
+    <div class="row">
+    <div class="col-md-6 mb-4 ">
+      <label class="form-label fw-semibold">
+        Date of Demand Notice Served To The Employer *<span class="text-danger">*</span>
+      </label>
+      <input
+        type="date"
+        formControlName="DemandNoticeServedDate"
+        class="form-control"
+       />
+         <div
+            class="text-danger"
+            *ngIf="Input_Form.get('DemandNoticeServedDate')?.invalid && Input_Form.get('DemandNoticeServedDate')?.touched">
+            Required
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 ">
+      <label class="form-label fw-semibold">
+        Money Due on Account of(Multiple Checkbox Selection)<span class="text-danger">*</span>
+      </label>
+      <select  class="form-control" multiple>
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let option of moneyDueOptions" [value]="option.value">{{ option.text }}</option>
+      </select>
+      <!-- <div
+        class="text-danger"
+        *ngIf="Input_Form.get('gender')?.invalid && Input_Form.get('gender')?.touched">
+        Required
+        </div> -->
+    </div>
+    </div>
+
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+    <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+      Reset
+    </button>
+    <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
+      Save as Draft
+    </button> -->
+    <button type="submit" class="btn btn-primary">
+      Next
+    </button>
+  </div>
+    </div>
+
+  </div>
+</form>
+</div>
+</div>
+  </div>
+</div>
