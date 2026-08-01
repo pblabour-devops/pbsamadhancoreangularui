@@ -1,0 +1,88 @@
+
+<div class="card">
+    <div class="m-2">
+        <form [formGroup]="Input_Form">
+
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="appRefId">
+            <input type="hidden" formControlName="applicationPurposeType">
+            <input type="hidden" formControlName="projectSiteVersion">
+            <input type="hidden" formControlName="toDoActivityModeType">
+            <input type="hidden" formControlName="rootActivityRefId">
+            <input type="hidden" formControlName="toDoActivityCategoryType">
+
+            <!-- Basic / General Info -->
+            <div class="card-body" style="margin-top: 0px;">
+
+
+
+                <div>
+                    <h5 class="section-title">Retrenchment/Closure Compensation Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                               Date of Joining
+                            </label>
+                            <input type="date" formControlName="dateOfJoining" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('dateOfJoining')?.invalid && Input_Form.get('dateOfJoining')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                               Date of Retrenchment/Closure of establishment  
+                            </label>
+                            <input type="date" formControlName="dateOfRetrenchmentOrClosure" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('dateOfRetrenchmentOrClosure')?.invalid && Input_Form.get('dateOfRetrenchmentOrClosure')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="toggle-group flex-wrap align-items-center col-md-12" role="radiogroup"
+                            aria-labelledby="establishmentTypeLabel">
+                            <label class="fw-semibold mb-2 d-block">
+                                Total Length of Service
+                            </label>
+
+                           <input type="number" formControlName="totalLengthOfServiceDays"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('totalLengthOfServiceDays')?.invalid && Input_Form.get('totalLengthOfServiceDays')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Amount due on account of non-payment of Retrenchment/Closure Compensation
+                            </label>
+                            <input type="number" formControlName="compensationAmountDue"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('compensationAmountDue')?.invalid && Input_Form.get('compensationAmountDue')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                               Date from which Retrenchment/Closure Compensation became due
+                            </label>
+                            <input type="date" formControlName="compensationDueFromDate"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('compensationDueFromDate')?.invalid && Input_Form.get('compensationDueFromDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

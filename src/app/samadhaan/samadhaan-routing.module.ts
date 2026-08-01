@@ -24,5 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SamadhaanRoutingModule { 
+export class SamadhaanRoutingModule {   
 }

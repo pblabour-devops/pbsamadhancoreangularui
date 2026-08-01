@@ -20,8 +20,13 @@ import { WagesUnauthorisedDeductionComponent } from './complaints/wages/wages-un
 import { NonPaymentBonusComponent } from './complaints/wages/non-payment-bonus/non-payment-bonus.component';
 import { DetailsComponent } from './complaints/details/details.component';
 import { RecoveryOfMoneyComponent } from './complaints/recovery-of-money/recovery-of-money.component';
+import { SettlementDetailsComponent } from './complaints/recovery-of-money/settlement-details/settlement-details.component';
+import { AwardDetailsComponent } from './complaints/recovery-of-money/award-details/award-details.component';
+import { NoticePayDetailsComponent } from './complaints/recovery-of-money/notice-pay-details/notice-pay-details.component';
+import { RetrenchmentCompensationDetailsComponent } from './complaints/recovery-of-money/retrenchment-compensation-details/retrenchment-compensation-details.component';
+import { LayOffDetailsComponent } from './complaints/recovery-of-money/lay-off-details/lay-off-details.component';
 @NgModule({
-  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent],
+  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

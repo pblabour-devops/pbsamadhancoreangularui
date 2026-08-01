@@ -4,7 +4,7 @@
 <div class="m-2">
 <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
 
-     <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
     <input type="hidden" formControlName="applicationPurposeType">
     <input type="hidden" formControlName="projectSiteVersion">
@@ -31,7 +31,6 @@
 
 
  <div class="section-card">
-    <h5 class="section-title">Worker Details</h5>
     <div class="row">
     <div class="col-md-6 mb-4 ">
       <label class="form-label fw-semibold">
@@ -80,6 +79,22 @@
   </div>
     </div>
 
+    <!-- SETTLEMENT DETAILS -->
+
+    <app-settlement-details></app-settlement-details>
+
+    <!-- AWARD DETAILS -->
+     <app-award-details></app-award-details>
+
+     <!-- NOTICE PAY DETAILS -->
+
+     <app-notice-pay-details></app-notice-pay-details>
+
+     <!-- RETRENCHMENT DETAILS -->
+      <app-retrenchment-compensation-details></app-retrenchment-compensation-details>
+
+      <!-- LAY OF DETAILS -->
+      <app-lay-off-details></app-lay-off-details>
   </div>
 </form>
 </div>
