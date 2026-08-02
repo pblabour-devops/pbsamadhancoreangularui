@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppFormStepsInfo, GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
-import { IComplaint_RecOfMon_GeneralDetail } from '../../samadhaan-typed-modelts';
+import { IComplaint_RecOfMon_AwardDetail, IComplaint_RecOfMon_GeneralDetail, IComplaint_RecOfMon_LayOffCompDetail, IComplaint_RecOfMon_LayOffDetail, IComplaint_RecOfMon_NoticePayDetail, IComplaint_RecOfMon_RetrenchmentCompDetail, IComplaint_RecOfMon_SettlementDetail } from '../../samadhaan-typed-modelts';
 import { ActivatedRoute } from '@angular/router';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { AppHttpInterceptor } from 'src/app/shared/app-http.interceptor';
@@ -9,6 +9,14 @@ import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-ha
 import { takeUntil } from 'rxjs/operators';
 import { IOSH_Form_1_Registration } from 'src/app/osh/osh-code-typed-models';
 import { Subject } from 'rxjs';
+import { categoryTypeEnum } from 'src/app/shared.data';
+import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
+import { SettlementDetailsComponent } from './settlement-details/settlement-details.component';
+import Swal from 'sweetalert2';
+import { AwardDetailsComponent } from './award-details/award-details.component';
+import { NoticePayDetailsComponent } from './notice-pay-details/notice-pay-details.component';
+import { RetrenchmentCompensationDetailsComponent } from './retrenchment-compensation-details/retrenchment-compensation-details.component';
+import { LayOffDetailsComponent } from './lay-off-details/lay-off-details.component';
 
 @Component({
   selector: 'app-recovery-of-money',
@@ -17,6 +25,18 @@ import { Subject } from 'rxjs';
   styleUrl: './recovery-of-money.component.css',
 })
 export class RecoveryOfMoneyComponent {
+  
+    @ViewChild(SettlementDetailsComponent)
+    settlementDetailsComponent: SettlementDetailsComponent;
+    @ViewChild(AwardDetailsComponent)
+    awardDetailsComponent: AwardDetailsComponent;
+    @ViewChild(NoticePayDetailsComponent)
+    noticePayDetailsComponent: NoticePayDetailsComponent;
+    @ViewChild(RetrenchmentCompensationDetailsComponent)
+    retrenchmentCompensationDetailsComponent: RetrenchmentCompensationDetailsComponent;
+    @ViewChild(LayOffDetailsComponent)
+    layOffDetailsComponent: LayOffDetailsComponent;
+
 
     public appFormStepsList: AppFormStepsInfo[];
     public moneyDueOptions : any[]
@@ -26,20 +46,29 @@ export class RecoveryOfMoneyComponent {
     public projectSiteVersion : any;
     public isEditAllowed : boolean;
     protected ngUnsubscribe: Subject<void> = new Subject<void>();
-
-
-
+    public settlementDetailData : IComplaint_RecOfMon_GeneralDetail
+    public awardDetailData : IComplaint_RecOfMon_AwardDetail
+    public noticePaydDetailData : IComplaint_RecOfMon_NoticePayDetail
+    public retrenchmentDetailData : IComplaint_RecOfMon_RetrenchmentCompDetail
+    public layOffDetailData :IComplaint_RecOfMon_LayOffDetail
+    public settlementDetailsApiData: GenericFormModel<IComplaint_RecOfMon_SettlementDetail>
+    public awardDetailsApiData : GenericFormModel<IComplaint_RecOfMon_AwardDetail>
+    public noticePayApiData : GenericFormModel<IComplaint_RecOfMon_NoticePayDetail>
+    public retrenchmentDetailApiData : GenericFormModel<IComplaint_RecOfMon_RetrenchmentCompDetail>
+    public layOffDetailApiData : GenericFormModel<IComplaint_RecOfMon_LayOffDetail>
+    public layOffCompDetailApiData : GenericFormModel<IComplaint_RecOfMon_LayOffCompDetail[]>
 
     constructor(private fb : FormBuilder, private route : ActivatedRoute, private commonOpsService : CommonOpsService, private appHttpRequestHandlerService : AppHttpRequestHandlerService, private cdr : ChangeDetectorRef){}
 
     Input_Form : TForm<IComplaint_RecOfMon_GeneralDetail> = this.fb.group({
       id : [0, Validators.required],
-      DemandNoticeServedDate: ['', Validators.required],
+      demandNoticeServedDate: ['', Validators.required],
       appRefId: ['', Validators.required],
+      applicationType : ['', Validators.required],
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
       applicationPurposeType : [0, Validators.required],
-      rootActivityRefId: ['defaultValue', Validators.required],
+      rootActivityRefId: ['defaultValue'],
       toDoActivityCategoryType: [1017, Validators.required]
       })as TForm<IComplaint_RecOfMon_GeneralDetail>;
 
@@ -49,9 +78,13 @@ export class RecoveryOfMoneyComponent {
       .subscribe(params => {
         this.parmamEncodedinfo=params.info;
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info)=>{
+
         this.paramInfo = info;
+        console.log('paraminof', this.paramInfo);
         this.appRefId = this.paramInfo.appRefId;
         this.projectSiteVersion = this.paramInfo.projectSiteVersion;
+        this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);
+        this.Input_Form.controls.applicationType.patchValue(this.paramInfo?.applicationType);
         this.appHttpRequestHandlerService.httpGet({ id: this.paramInfo?.appRefId }, "Complaints", "getComplaintRecOfMonGeneralDetail").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IOSH_Form_1_Registration>) => { 
             this.appFormStepsList = data.appFormStepsList
@@ -60,55 +93,199 @@ export class RecoveryOfMoneyComponent {
             this.isEditAllowed = data.isEditAllowed;
           });
         });
+        this.getSettilementDetailData();
+        this.getAwardDetailData();
+        this.getNoticePayDetailData();
+        this.getRetrenchmentDetailData();
+        this.getLayOffDetailData();
+        this.getLayOffCompDetailData();
       });
   }
 
    initFormData(genericFormData: GenericFormModel<IOSH_Form_1_Registration>) {
-      console.log('generfic formdata', genericFormData);
+    if(genericFormData.formModel){
+      const formData = { ...genericFormData.formModel };
+     Object.keys(formData).forEach(key => {
+        if (formData[key] && typeof formData[key] === 'string' && formData[key].includes('T')) {
+          formData[key] = formData[key].split('T')[0];
+        }
+      });
+      this.Input_Form.patchValue(formData);
+      this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+    }
 
       this.cdr.detectChanges();
     }
 
+    getSettilementDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonSettlementDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_SettlementDetail>) => {
+          this.settlementDetailsApiData = data
+          this.appFormStepsList = data.appFormStepsList
+        })
+      }
+    
+      getAwardDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonAwardDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_AwardDetail>) => {
+          this.awardDetailsApiData = data;
+        })
+      }
+    
+    
+      getNoticePayDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonNoticePayDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_NoticePayDetail>) => {
+          this.noticePayApiData = data;
+    
+        })
+      }
+    
+      getRetrenchmentDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonRetrenchmentCompDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_RetrenchmentCompDetail>) => {
+          this.retrenchmentDetailApiData = data;
+        })
+      }
+    
+    
+       getLayOffDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonLayOffDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_LayOffDetail>) => {
+          this.layOffDetailApiData = data;
+        })
+      }
+
+        getLayOffCompDetailData(){
+        this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonLayOffCompDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_LayOffCompDetail[]>) => {
+          this.layOffCompDetailApiData = data;
+        })
+      }
 
       onSubmit(): void {
-      //     if (this.Input_Form.valid) {
-      //         this.Input_Form.controls.applicationPurposeType.patchValue(0);
-      //         // this.Input_Form.controls.iPin.patchValue(0);
-      //         // this.Input_Form.controls.investPunjab_AppId.patchValue(0);
-      //         this.Input_Form.controls.projectSiteVersion.patchValue(1);
-      //         // this.Input_Form.controls..patchValue(1); // Static FactoryCircleRefId
-      //         this.Input_Form.controls.rootActivityRefId.patchValue('Default');
-      //         this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
-      //         this.Input_Form.controls.applicationType.patchValue(100001);
-      //         // this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
-      //         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
-      //           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-      //           // if(this.Input_Form.value.appRefId !=0){
-      //             this.navigateToNextStep(data);
-      //           // } else {
-      //           // this.mapCategories(data);
-      //           // }
-      //             // this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='EPFO').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( {
-      //             //   identityKey: data.entityKeyId, 
-      //             //   appRefId: data.appId, 
-      //             //   applicationType: 101, 
-      //             //   projectSiteRefId: this.paramInfo?.projectSiteRefId,
-      //             //   applicationPurposeType: this.paramInfo?.applicationPurposeType,
-      //             //   investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-      //             //   iPin: this.paramInfo?.iPin,
-      //             //   projectSiteVersion: this.projectSiteVersion
-      //             // })}});
-      //         });
-      //     } else {
-      //       this.Input_Form.markAllAsTouched();
-      //       Object.keys(this.Input_Form.controls).forEach(key => {
-      //     const control = this.Input_Form.get(key);
-      
-      //     if (control?.invalid) {
-      // }
-      //   });
-      //     }
+        
+        console.log('recovery of money details', this.Input_Form.value);
+        console.log('settilement details', this.settlementDetailData);
+        console.log('award details', this.awardDetailData);
+        console.log("notice pay details", this.noticePaydDetailData);
+        console.log('retrenchment detail', this.retrenchmentDetailData);
+        console.log('lay off detail', this.layOffDetailData);
+        if(!this.settlementDetailsComponent?.isFormValid()){
+        Swal.fire({ icon: 'warning', text: 'Please fill Settlement Details completely.' });
+        return;
         }
+
+        if(!this.awardDetailsComponent?.isFormValid()){
+        Swal.fire({ icon: 'warning', text: 'Please fill Award Details completely.' });
+        return;
+        }
+
+        if(!this.noticePayDetailsComponent?.isFormValid()){
+        Swal.fire({ icon: 'warning', text: 'Please fill Notice Pay Details completely.' });
+        return;
+        }
+
+
+        if(!this.retrenchmentCompensationDetailsComponent?.isFormValid()){
+        Swal.fire({ icon: 'warning', text: 'Please fill Retrenchment Compensation Details completely.' });
+        return;
+        }
+
+        if(!this.layOffDetailsComponent?.isFormValid()){
+        Swal.fire({ icon: 'warning', text: 'Please fill Lay Off Details completely.' });
+        return;
+        }
+
+          if (this.Input_Form.valid) {
+          this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo.applicationPurposeType);
+          this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo.projectSiteVersion);
+          this.Input_Form.controls.rootActivityRefId.patchValue('');
+          this.Input_Form.controls.applicationType.patchValue(100001);
+          this.Input_Form.controls.toDoActivityCategoryType.patchValue(categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_GEN_DETAILS);
+          this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_GeneralDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.settlementDetailData.appRefId = this.paramInfo.appRefId;
+          this.settlementDetailData.applicationPurposeType = this.paramInfo.applicationPurposeType;
+          this.settlementDetailData.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          this.settlementDetailData.rootActivityRefId= '';
+          this.settlementDetailData.applicationType= 100001;
+          this.settlementDetailData.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_SETTLEMENT_DETAILS;
+          this.appHttpRequestHandlerService.httpPost(this.settlementDetailData, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_SettlementDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.awardDetailData.appRefId = this.paramInfo.appRefId;
+          this.awardDetailData.applicationPurposeType = this.paramInfo.applicationPurposeType;
+          this.awardDetailData.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          this.awardDetailData.rootActivityRefId= '';
+          this.awardDetailData.applicationType= 100001;
+          this.awardDetailData.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_AWARD_DETAILS;
+          this.appHttpRequestHandlerService.httpPost(this.awardDetailData, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_AwardDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.noticePaydDetailData.appRefId = this.paramInfo.appRefId;
+          this.noticePaydDetailData.applicationPurposeType = this.paramInfo.applicationPurposeType;
+          this.noticePaydDetailData.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          this.noticePaydDetailData.rootActivityRefId= '';
+          this.noticePaydDetailData.applicationType= 100001;
+          this.noticePaydDetailData.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_NOTICE_PAY_DETAILS;
+          this.appHttpRequestHandlerService.httpPost(this.noticePaydDetailData, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_NoticePayDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.retrenchmentDetailData.appRefId = this.paramInfo.appRefId;
+          this.retrenchmentDetailData.applicationPurposeType = this.paramInfo.applicationPurposeType;
+          this.retrenchmentDetailData.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          this.retrenchmentDetailData.rootActivityRefId= '';
+          this.retrenchmentDetailData.applicationType= 100001;
+          this.retrenchmentDetailData.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_RETRENCHMENT_DETAILS;
+          this.appHttpRequestHandlerService.httpPost(this.retrenchmentDetailData, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_RetrenchmentCompDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.layOffDetailData.appRefId = this.paramInfo.appRefId;
+          this.layOffDetailData.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          this.layOffDetailData.rootActivityRefId= '';
+          this.layOffDetailData.applicationType= 100001;
+          this.layOffDetailData.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_LAY_OFF_DETAILS;
+          this.appHttpRequestHandlerService.httpPost(this.layOffDetailData, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_LayOffDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.layOffDetailData.complaint_RecOfMon_LayOffCompDetail.forEach(data =>{
+          data.appRefId = this.paramInfo.appRefId;
+          data.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          data.projectSiteVersion= this.paramInfo.projectSiteVersion;
+          data.rootActivityRefId= '';
+          data.applicationType= 100001;
+          data.toDoActivityCategoryType= categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_LAY_OFF_COMPDETAILS;
+          this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_LayOffCompDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+
+          });
+          })
+          });
+          });
+          });
+          });
+          });
+          });
+          } else {
+          this.Input_Form.markAllAsTouched();
+          Swal.fire({ icon: 'warning', text: 'Please Fill General Details completely.' });
+
+          Object.keys(this.Input_Form.controls).forEach(key => {
+            const control = this.Input_Form.get(key);
+            if (control?.invalid) {
+              console.log('Invalid control:', key, '| Value:', control.value, '| Errors:', control.errors);
+            }
+          });
+        }
+          }
 
         
     ngOnDestroy() {
@@ -116,5 +293,25 @@ export class RecoveryOfMoneyComponent {
       this.ngUnsubscribe.complete();
     }
 
+    settlementDetailDataEventListener(data:IComplaint_RecOfMon_GeneralDetail){
+    this.settlementDetailData = data;
+    }
+
+    awardDetailDataEventListener(data:IComplaint_RecOfMon_AwardDetail){
+    this.awardDetailData = data;
+    }
+
+    noticePayDetailDataEventListener(data:IComplaint_RecOfMon_NoticePayDetail){
+    this.noticePaydDetailData = data;
+    }
+
+    retrenchmentDetailDataEventListener(data:IComplaint_RecOfMon_RetrenchmentCompDetail){
+    this.retrenchmentDetailData = data;
+    }
+
+    layOffDetailDataEventListener(data:IComplaint_RecOfMon_LayOffDetail){
+      console.log('retrentment detail data', data);
+    this.layOffDetailData = data;
+    }
 
 }

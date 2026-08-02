@@ -34,15 +34,14 @@
                             <label class="required">
                                Name of CGIT/Arbitrator which gave the award 
                             </label>
-                            <input type="date" formControlName="cGITOrArbitratorName" class="form-control" />
+                            <input type="text" formControlName="cgitOrArbitratorName" class="form-control" />
                             <div class="text-danger"
-                                *ngIf="Input_Form.get('cGITOrArbitratorName')?.invalid && Input_Form.get('cGITOrArbitratorName')?.touched">
+                                *ngIf="Input_Form.get('cgitOrArbitratorName')?.invalid && Input_Form.get('cgitOrArbitratorName')?.touched">
                                 Required
                             </div>
                         </div>
 
-                        <div class="toggle-group flex-wrap align-items-center col-md-12" role="radiogroup"
-                            aria-labelledby="establishmentTypeLabel">
+                        <div class="col-md-6 mb-4">
                             <label class="fw-semibold mb-2 d-block">
                                 Award Number
                             </label>
@@ -72,8 +71,8 @@
                             <label class="required">
                                Money due from which terms of Award 
                             </label>
-                            <input type="text" formControlName="awardTerms"
-                                class="form-control" />
+                            <input type="number" formControlName="awardTerms"
+                                class="form-control" min="0"/>
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('awardTerms')?.invalid && Input_Form.get('awardTerms')?.touched">
                                 Required
@@ -84,7 +83,7 @@
                             <label class="required">
                                 Date from which award money become due 
                             </label>
-                            <input type="text" formControlName="amountDueFromDate" class="form-control" />
+                            <input type="date" formControlName="amountDueFromDate" class="form-control" />
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('amountDueFromDate')?.invalid && Input_Form.get('amountDueFromDate')?.touched">
                                 Required

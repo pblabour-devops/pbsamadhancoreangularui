@@ -48,7 +48,7 @@
                             </label>
 
                            <input type="number" formControlName="totalLengthOfServiceDays"
-                                class="form-control" />
+                                class="form-control" min="0"/>
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('totalLengthOfServiceDays')?.invalid && Input_Form.get('totalLengthOfServiceDays')?.touched">
                                 Required
@@ -60,7 +60,7 @@
                                 Amount due on account of non-payment of Retrenchment/Closure Compensation
                             </label>
                             <input type="number" formControlName="compensationAmountDue"
-                                class="form-control" />
+                                class="form-control" min="0"/>
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('compensationAmountDue')?.invalid && Input_Form.get('compensationAmountDue')?.touched">
                                 Required

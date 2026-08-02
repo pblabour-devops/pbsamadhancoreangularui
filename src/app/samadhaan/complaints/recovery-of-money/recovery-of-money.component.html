@@ -2,7 +2,7 @@
 <div class="pcoded-content">
 <div class="card" >
 <div class="m-2">
-<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+<form [formGroup]="Input_Form">
 
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
@@ -33,17 +33,17 @@
  <div class="section-card">
     <div class="row">
     <div class="col-md-6 mb-4 ">
-      <label class="form-label fw-semibold">
-        Date of Demand Notice Served To The Employer *<span class="text-danger">*</span>
+      <label class="required">
+        Date of Demand Notice Served To The Employer
       </label>
       <input
         type="date"
-        formControlName="DemandNoticeServedDate"
+        formControlName="demandNoticeServedDate"
         class="form-control"
        />
          <div
             class="text-danger"
-            *ngIf="Input_Form.get('DemandNoticeServedDate')?.invalid && Input_Form.get('DemandNoticeServedDate')?.touched">
+            *ngIf="Input_Form.get('demandNoticeServedDate')?.invalid && Input_Form.get('demandNoticeServedDate')?.touched">
             Required
         </div>
     </div>
@@ -63,8 +63,27 @@
         </div> -->
     </div>
     </div>
+    </div>
 
+    <!-- SETTLEMENT DETAILS -->
 
+    <app-settlement-details (settlementDetailDataEvent)="settlementDetailDataEventListener($event)" [settlementDetailsApiData]="settlementDetailsApiData"></app-settlement-details>
+
+    <!-- AWARD DETAILS -->
+     <app-award-details  (awardDetailDataEvent)="awardDetailDataEventListener($event)" [awardDetailsApiData]="awardDetailsApiData"></app-award-details>
+
+     <!-- NOTICE PAY DETAILS -->
+
+     <app-notice-pay-details (noticePayDetailDataEvent)="noticePayDetailDataEventListener($event)" [noticePayApiData]="noticePayApiData"></app-notice-pay-details>
+
+     <!-- RETRENCHMENT DETAILS -->
+      <app-retrenchment-compensation-details (retrenchmentDetailDataEvent)="retrenchmentDetailDataEventListener($event)" [retrenchmentDetailApiData]="retrenchmentDetailApiData"></app-retrenchment-compensation-details>
+
+      <!-- LAY OF DETAILS -->
+      <app-lay-off-details  (layOffDetailDataEvent)="layOffDetailDataEventListener($event)" [layOffDetailApiData]="layOffDetailApiData" [layOffCompDetailApiData]="layOffCompDetailApiData"></app-lay-off-details>
+  </div>
+</form>
+</div>
   <!-- Action Buttons -->
   <div class="d-flex justify-content-end mt-4 pt-3 border-top">
     <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
@@ -73,31 +92,11 @@
     <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
       Save as Draft
     </button> -->
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">
       Next
     </button>
   </div>
-    </div>
-
-    <!-- SETTLEMENT DETAILS -->
-
-    <app-settlement-details></app-settlement-details>
-
-    <!-- AWARD DETAILS -->
-     <app-award-details></app-award-details>
-
-     <!-- NOTICE PAY DETAILS -->
-
-     <app-notice-pay-details></app-notice-pay-details>
-
-     <!-- RETRENCHMENT DETAILS -->
-      <app-retrenchment-compensation-details></app-retrenchment-compensation-details>
-
-      <!-- LAY OF DETAILS -->
-      <app-lay-off-details></app-lay-off-details>
-  </div>
-</form>
 </div>
-</div>
+
   </div>
 </div>

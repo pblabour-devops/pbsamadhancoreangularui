@@ -41,23 +41,25 @@
                             </div>
                         </div>
 
-                        <div class="toggle-group flex-wrap align-items-center col-md-12" role="radiogroup"
-                            aria-labelledby="establishmentTypeLabel">
-                            <label class="fw-semibold mb-2 d-block">
-                                Whether Settlement is:
-                            </label>
+                <div class="toggle-group flex-wrap align-items-center col-md-12" role="radiogroup"
+                        aria-labelledby="establishmentTypeLabel">
 
-                            <label class="toggle-option">
-                                <input type="radio" [value]="true" formControlName="settlementType" />
-                                <span>Bipartite</span>
-                            </label>
+                    <label class="fw-semibold mb-2 d-block">
+                        Whether Settlement is:
+                    </label>
 
-                            <label class="toggle-option">
-                                <input type="radio" formControlName="settlementType" />
-                                <span>Tripartite</span>
-                            </label>
-                        </div>
+                    <label class="toggle-option" *ngFor="let option of settlementTypeOptions">
+                        <input
+                        type="radio"
+                        [value]="option.value"
+                        formControlName="settlementType"
+                        />
+                        <span>{{ option.text }}</span>
+                    </label>
 
+                    </div>
+
+                    @if(+Input_Form.get('settlementType').value === SettlementTypeEnum.Tripartite){
                         <div class="col-md-6 mb-4 ">
                             <label class="required">
                                 Name & Designation of the conciliation officer before whom settlement was signed
@@ -82,12 +84,13 @@
                                 Required
                             </div>
                         </div>
+                    }
 
                         <div class="col-md-6 mb-4 ">
                             <label class="required">
                                 Money Due from which terms of Settlement
                             </label>
-                            <input type="text" formControlName="moneyDueTerms" class="form-control" />
+                            <input type="number" formControlName="moneyDueTerms" class="form-control" min="0" />
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('moneyDueTerms')?.invalid && Input_Form.get('moneyDueTerms')?.touched">
                                 Required
@@ -98,7 +101,7 @@
                             <label class="required">
                                 Amount of Money due
                             </label>
-                            <input type="text" formControlName="amountDue" class="form-control" />
+                            <input type="number" formControlName="amountDue" class="form-control" min="0" />
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('amountDue')?.invalid && Input_Form.get('amountDue')?.touched">
                                 Required

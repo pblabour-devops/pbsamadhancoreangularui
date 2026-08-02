@@ -9,7 +9,7 @@
             <input type="hidden" formControlName="rootActivityRefId">
             <input type="hidden" formControlName="toDoActivityCategoryType">
 
-            <div class="section-card">
+            <div class="card-body" style="margin-top: 0px;">
 
                 <h5 class="required">Lay Off Details</h5>
 
@@ -18,7 +18,7 @@
 
                     <div class=" col">
                         <label class="required">Date of Joining</label>
-                        <input type="date" class="form-control" formControlName="dateOfJoining" readonly />
+                        <input type="date" class="form-control" formControlName="dateOfJoining" />
                         <div *ngIf="Input_Form.get('dateOfJoining').errors?.required && Input_Form.get('dateOfJoining').touched"
                             class="text-danger">
                             Required
@@ -27,7 +27,7 @@
 
                     <div class=" col">
                         <label>Date of Lay-Off</label>
-                        <input type="number" class="form-control" formControlName="dateOfLayOff" />
+                        <input type="date" class="form-control" formControlName="dateOfLayOff" />
                         <div *ngIf="Input_Form.get('dateOfLayOff').errors?.required && Input_Form.get('dateOfLayOff').touched"
                             class="text-danger">
                             Required
@@ -65,7 +65,7 @@
                         <!-- Compensation Amount -->
                         <div class="col">
                             <label class="required">Amount of Compensation</label>
-                            <input type="number" class="form-control" formControlName="compensationAmount">
+                            <input type="number" class="form-control" formControlName="compensationAmount" min="0">
                             <div class="text-danger"
                                 *ngIf="group.get('compensationAmount')?.invalid && group.get('compensationAmount')?.touched">
                                 Required

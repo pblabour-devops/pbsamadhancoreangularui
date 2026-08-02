@@ -59,7 +59,7 @@
                                 Amount of money due for non-payment of Notice Pay
                                 
                             </label>
-                            <input type="number" formControlName="amountDue" class="form-control" />
+                            <input type="number" formControlName="amountDue" class="form-control" min="0" />
                             <div class="text-danger"
                                 *ngIf="Input_Form.get('amountDue')?.invalid && Input_Form.get('amountDue')?.touched">
                                 Required
