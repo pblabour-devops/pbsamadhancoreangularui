@@ -1,10 +1,6 @@
 <div class="pcoded-main-container">
   <div class="pcoded-content">
 
-    <div class="mb-2">
-      <a routerLink="/dashboard" class="text-primary">Dashboard</a> / List Of Complaints
-    </div>
-
     <div class="card">
       <div class="m-3">
 
@@ -17,7 +13,7 @@
         </div>
 
         <!-- Search -->
-        <div class="d-flex justify-content-end mb-3">
+        <!-- <div class="d-flex justify-content-end mb-3">
           <input
             type="text"
             class="form-control search-box"
@@ -25,7 +21,7 @@
             [(ngModel)]="searchText"
             (ngModelChange)="onSearchChange()"
           />
-        </div>
+        </div> -->
 
         <!-- Table -->
         <div class="table-responsive" *ngIf="!isLoading">
@@ -52,12 +48,13 @@
                 <td>{{ getApplicationCategory(app) }}</td>
                 <td>
                   <span class="status-badge">
-                    {{ getStatusText(app.applicationLifeCycleStatusType) }}
+                    {{ app.isLocked ? "Locked" : "Draft" }}
                   </span>
                 </td>
                 <td>-</td>
                 <td>
-                  <button class="btn btn-sm btn-outline-primary" (click)="onFeedback(app)">Feedback</button>
+                  --
+                  <!-- <button class="btn btn-sm btn-outline-primary" (click)="onFeedback(app)">Feedback</button> -->
                 </td>
                 <!-- <td>
                   <button class="btn btn-sm btn-primary" (click)="onView(app)">View</button>

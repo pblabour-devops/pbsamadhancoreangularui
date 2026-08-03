@@ -47,7 +47,7 @@ export class MbComplaintComponent {
       isDischargedOrDismissedDueToAbsence: ['', Validators.required],
 
       // NEW: Conditional field - no static validator, handled dynamically
-      MaternityDischargeType: [null],
+      maternityDischargeType: [null],
 
       maternityBenefitAmountDue: [0, [Validators.required, Validators.min(0)]],
       medicalBonusMaternityAmountDue: [0, [Validators.required, Validators.min(0)]],
@@ -86,10 +86,11 @@ export class MbComplaintComponent {
             this.applicableOptions = data.enumTemplateLists.find(e => e.selectListTypeCode === 'MaternityDischargeTypeEnum').selectListItems
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
-
             if (data.formModel) {
               this.Input_Form.patchValue(data.formModel);
+              console.log('input value 1',this.Input_Form.value)
               this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+              console.log('input value 2',this.Input_Form.value)
               // Ensure conditional validator state is set correctly after patch
               this.onDischargeStatusChange();
             }
@@ -104,7 +105,7 @@ export class MbComplaintComponent {
    */
   onDischargeStatusChange(): void {
     const isDischarged = this.formControls.isDischargedOrDismissedDueToAbsence.value;
-    const applicableOptionControl = this.formControls.MaternityDischargeType;
+    const applicableOptionControl = this.formControls.maternityDischargeType;
 
     const isYes = isDischarged === true || isDischarged === 'true';
 
@@ -125,8 +126,8 @@ export class MbComplaintComponent {
       applicableOption: null,
     });
     this.Input_Form.patchValue({ id: 0, appRefId: this.paramInfo?.appRefId });
-    this.formControls.MaternityDischargeType.clearValidators();
-    this.formControls.MaternityDischargeType.updateValueAndValidity();
+    this.formControls.maternityDischargeType.clearValidators();
+    this.formControls.maternityDischargeType.updateValueAndValidity();
   }
 
   onSaveDraft(): void {

@@ -83,16 +83,6 @@ import Swal from 'sweetalert2';
 
             if (data.formModel) {
                  const formData = data.formModel;
-                Object.keys(formData).forEach(key => {
-                  if (
-                    formData[key] &&
-                    typeof formData[key] === 'string' &&
-                    formData[key].includes('T')
-                  ) {
-                    formData[key] = formData[key].split('T')[0];
-                  }
-                });
-
                 this.Input_Form.patchValue(formData);
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});

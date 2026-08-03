@@ -21,6 +21,7 @@ export class ListApplicationsComponent {
   currentPage = 1;
   totalCount = 0;
   pageSizeOptions = [10, 25, 50, 100];
+  disposedCount : number
 
   isLoading = true;
 
@@ -42,6 +43,7 @@ export class ListApplicationsComponent {
           this.allApplications = data?.responseDataModel || [];
           this.filteredApplications = [...this.allApplications];
           this.totalCount = this.filteredApplications.length;
+          this.disposedCount = this.totalCount;
           this.setPage(1);
           this.isLoading = false;
         },
@@ -52,12 +54,6 @@ export class ListApplicationsComponent {
       });
   }
 
-  get disposedCount(): number {
-    return 0;
-    // return this.allApplications.filter(
-    //   x => x.applicationLifeCycleStatusType === ApplicationLifeCycleStatusTypeEnum.DISPOSED
-    // ).length;
-  }
 
   onSearchChange(): void {
     // const term = this.searchText.trim().toLowerCase();
@@ -118,11 +114,6 @@ export class ListApplicationsComponent {
   getApplicationCategory(app: any): string {
     // ⚠️ Static/placeholder — see note below
     return '-';
-  }
-
-  getStatusText(statusType: number): any {
-    if(statusType === 1) return 'Pending';
-    else if(statusType === -1) return 'Locked';
   }
 
   getStatusBadgeClass(statusType: number): any {

@@ -17,7 +17,7 @@ export class DraftComplaintComponent {
       total: 0,
       pending: 0,
       disposed: 0,
-      icon: 'icon-file-text',
+      icon: 'icon-bell',
       iconBg: 'bg-icon-pink'
     },
     {
@@ -25,7 +25,7 @@ export class DraftComplaintComponent {
       total: 0,
       pending: 0,
       disposed: 0,
-      icon: 'icon-users',
+      icon: 'icon-file-text',
       iconBg: 'bg-icon-blue'
     }
   ];
@@ -34,8 +34,9 @@ export class DraftComplaintComponent {
 
   ngAfterViewInit(): void {
     this.appHttpRequestHandlerService.httpGet({}, "Complaints", "getComplaintsDraftApplication")
-      .subscribe((data: GenericFormModel<any[]>) => {
+      .subscribe((data: any) => {
         console.log('data', data)
+        this.applicationSummaries[0].total = data.responseDataModel.length
         // this.applicationSummaries = data.formModel;
       });
   }

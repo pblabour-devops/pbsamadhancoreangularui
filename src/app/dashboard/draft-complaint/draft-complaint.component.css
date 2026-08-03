@@ -1,0 +1,36 @@
+.title-bar-header {
+  background-color: #1a6cad;
+  color: #fff;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.summary-card {
+  border-radius: 8px;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-circle i {
+  font-size: 26px;
+}
+
+.icon-circle.bg-light-pink {
+  background-color: #f3e5f5;
+  color: #9c27b0;
+}
+
+.icon-circle.bg-light-blue {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}

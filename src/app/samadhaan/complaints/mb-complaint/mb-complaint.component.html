@@ -57,14 +57,14 @@
             <input
               type="radio"
               [id]="'applicableOption_' + opt.value"
-              [value]="opt.value"
-              formControlName="MaternityDischargeType"
-              [class.is-invalid]="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid" />
+              [value]="+opt.value"
+              formControlName="maternityDischargeType"
+              [class.is-invalid]="formControls.maternityDischargeType.touched && formControls.maternityDischargeType.invalid" />
             <span>{{ opt.text }}</span>
           </label>
         </div>
           <div class="invalid-feedback d-block"
-               *ngIf="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid">
+               *ngIf="formControls.maternityDischargeType.touched && formControls.maternityDischargeType.invalid">
             Please select the applicable option.
           </div>
         </div>
