@@ -27,6 +27,8 @@ import { LegalHeirComponent } from './file-application/legal-heir/legal-heir.com
 import { LegalRepresentativeComponent } from './file-application/legal-representative/legal-representative.component';
 import { AuthorizedRepresentativeComponent } from './file-application/authorized-representative/authorized-representative.component';
 import { GroupOfWorkersComponent } from './file-application/group-of-workers/group-of-workers.component';
+import { DraftComplaintComponent } from './draft-complaint/draft-complaint.component';
+import { ListApplicationsComponent } from './list-applications/list-applications.component';
 @NgModule({
     imports: [
     RouterModule,
@@ -58,6 +60,8 @@ import { GroupOfWorkersComponent } from './file-application/group-of-workers/gro
                    LegalRepresentativeComponent,
                    AuthorizedRepresentativeComponent,
                    GroupOfWorkersComponent,
+                   DraftComplaintComponent,
+                   ListApplicationsComponent,
                    ],
     providers:[UntypedFormBuilder, DashboardService]
 })

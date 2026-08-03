@@ -395,7 +395,7 @@ getStatusClass(status: string): string {
   }
 
   onDraftApplicationClick(){
-    this.router.navigate(['/dashboard/draft-application'])
+    this.router.navigate(['/dashboard/draft-complaint'])
   }
 
   onHelpClick(){

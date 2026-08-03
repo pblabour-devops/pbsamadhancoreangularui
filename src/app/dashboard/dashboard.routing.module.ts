@@ -9,6 +9,8 @@ import { TrackApplicationComponent } from "./track-application/track-application
 import { HelpComponent } from "./help/help.component";
 import { DraftApplicationComponent } from "./draft-application/draft-application.component";
 import { WorkerDetailsComponent } from "../samadhaan/complaints/worker-details/worker-details.component";
+import { DraftComplaintComponent } from "./draft-complaint/draft-complaint.component";
+import { ListApplicationsComponent } from "./list-applications/list-applications.component";
 
 
 const appRoutes: Routes=[
@@ -20,9 +22,12 @@ const appRoutes: Routes=[
     { path:'applicantdashboard', component: ApplicantDashboardComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
     { path:'file-application', component: FileApplicationComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
     { path:'track-application', component: TrackApplicationComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
+    { path:'draft-complaint', component: DraftComplaintComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
     { path:'draft-application', component: DraftApplicationComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
     { path:'help', component: HelpComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
     { path:'worker-details', component: WorkerDetailsComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
+    { path:'list-of-complaints', component: ListApplicationsComponent, canActivate:[AuthGuard], data:{allowedRoles:['WORKER_INDL'], notAllowedRoles:['']}},
+
 ];
 @NgModule({
     imports:[

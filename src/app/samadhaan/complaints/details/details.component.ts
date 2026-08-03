@@ -38,7 +38,7 @@ export class DetailsComponent {
           this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
             console.log('decoded info', info)
             this.paramInfo = info;
-            this.appId = this.paramInfo.appId;
+            this.appId = this.paramInfo.appRefId;
               this.appHttpRequestHandlerService.httpGet({id : this.paramInfo?.appRefId}, "Complaints", "getComplaintDetail").pipe(takeUntil(this.ngUnsubscribe))
               .subscribe((data: GenericFormModel<any>) => {
                 this.appFormStepsList = data.appFormStepsList;
@@ -116,6 +116,15 @@ getBonusClaimTypeText(value: number): string {
   if (value === null || value === undefined) return '-';
   const found = this.bonusClaimTypeOptions?.find(x => +x.value === +value);
   return found ? found.text : '-';
+}
+
+lockApplication(){
+  console.log('Locking application with ID:', this.appId);
+  this.appHttpRequestHandlerService.httpGet({id : this.appId},"Complaints", "lockComplaintsApplication")
+  .pipe(takeUntil(this.ngUnsubscribe))
+  .subscribe((data: GenericFormModel<any>) => {
+    console.log('Application locked successfully', data);
+  });
 }
 
 }

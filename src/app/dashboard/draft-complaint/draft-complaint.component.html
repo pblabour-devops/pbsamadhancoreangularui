@@ -28,20 +28,23 @@
                       <div class="fw-bold fs-6">
                         Total : {{ summary.total }}
                       </div>
+                        <a routerLink="/dashboard/draft-application" class="text-primary text-decoration-none small">
+                      More Info <i class="feather icon-arrow-right"></i>
+                    </a>
                     </div>
                   </div>
 
                   <hr class="my-3">
 
                   <!-- Bottom row: Pending + Disposed -->
-                  <div class="d-flex justify-content-between align-items-center">
+                  <!-- <div class="d-flex justify-content-between align-items-center">
                     <a href="javascript:void(0)" class="text-primary text-decoration-none small">
                       Pending : {{ summary.pending }} <i class="feather icon-arrow-right"></i>
                     </a>
-                    <a routerLink="/dashboard/list-of-complaints" class="text-primary text-decoration-none small">
+                    <a href="javascript:void(0)" class="text-primary text-decoration-none small">
                       Disposed : {{ summary.disposed }} <i class="feather icon-arrow-right"></i>
                     </a>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
