@@ -56,7 +56,7 @@ export class SelfComponent {
                   label: x.complaintTitle,
                   hasInfo: x.hasInfo,
                   info: x.info,
-                  disabled: ![5].includes(x.id)
+                  disabled: ![1,2,3,4,5,6,7,9,10].includes(x.id)
                 };
 
                 if (!isFirstIssueAssigned) {

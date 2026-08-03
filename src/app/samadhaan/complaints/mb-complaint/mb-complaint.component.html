@@ -52,20 +52,17 @@
           <label class="col-form-label fw-bold">
             Please select the applicable option: <span class="text-danger">*</span>
           </label>
-          <div class="d-flex gap-4 mt-2">
-            <div class="form-check" *ngFor="let opt of applicableOptions">
-              <input
-                class="form-check-input"
-                type="radio"
-                [id]="'applicableOption_' + opt.value"
-                [value]="opt.value"
-                formControlName="MaternityDischargeType"
-                [class.is-invalid]="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid" />
-              <label class="form-check-label" [for]="'applicableOption_' + opt.id">
-                {{ opt.text }}
-              </label>
-            </div>
-          </div>
+          <div class="toggle-group flex-wrap" role="radiogroup" aria-labelledby="maternityDischargeTypeLabel" style="padding-left: 20px;">
+          <label class="toggle-option" *ngFor="let opt of applicableOptions">
+            <input
+              type="radio"
+              [id]="'applicableOption_' + opt.value"
+              [value]="opt.value"
+              formControlName="MaternityDischargeType"
+              [class.is-invalid]="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid" />
+            <span>{{ opt.text }}</span>
+          </label>
+        </div>
           <div class="invalid-feedback d-block"
                *ngIf="formControls.MaternityDischargeType.touched && formControls.MaternityDischargeType.invalid">
             Please select the applicable option.
@@ -142,9 +139,9 @@
 
     <!-- Action Buttons -->
     <div class="d-flex justify-content-end gap-2 mt-4">
-      <button type="button" class="btn btn-info text-white" (click)="resetForm()">Reset</button>
+      <!-- <button type="button" class="btn btn-info text-white" (click)="resetForm()">Reset</button>
       <button type="button" class="btn btn-primary" (click)="onSaveDraft()">Save as Draft</button>
-      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button>
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Back</button> -->
       <button type="button" class="btn btn-primary" (click)="onSubmit()">Next</button>
     </div>
 

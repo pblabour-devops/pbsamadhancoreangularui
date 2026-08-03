@@ -8,6 +8,7 @@ import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-ha
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import Swal from 'sweetalert2';
 import { IComplaint_MaternityBenefitComplaint } from '../../samadhaan-typed-modelts';
+import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
 
 @Component({
   selector: 'app-mb-complaint',
@@ -143,26 +144,33 @@ export class MbComplaintComponent {
     this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo?.projectSiteVersion);
     this.Input_Form.controls.rootActivityRefId.patchValue('Default');
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2006);
-    this.appHttpRequestHandlerService.httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_MaternityBenefitComplaint','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
-        next: () => {
-          this.router.navigate(
-            [this.appFormStepsList.find((x) => x.stepCode == 'GRA')?.uiNextPageComponentPath],
-            {
-              queryParams: {
-                info: this.commonOpsService.encodeQueryParamsInBase64({
-                  appRefId: this.paramInfo?.appRefId,
-                  applicationType: this.paramInfo.applicationType,
-                  projectSiteRefId: this.paramInfo?.projectSiteRefId,
-                  applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                  investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-                  iPin: this.paramInfo?.iPin,
-                  projectSiteVersion: this.paramInfo?.projectSiteVersion,
-                }),
-              },
-            }
-          );
-        }
-      });
+    this.appHttpRequestHandlerService
+  .httpPost(
+    this.Input_Form.value,
+    'pbsamadhannetcoreapi.Models.Complaint_MaternityBenefitComplaint',
+    'Crud',
+    'CreateUpdate'
+  )
+  .pipe(takeUntil(this.ngUnsubscribe))
+  .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+    debugger;
+    console.log('API Response:', data);
+
+    this.router.navigate(
+      [this.appFormStepsList.find(x => x.stepCode === 'MBC')?.uiNextPageComponentPath],
+      {
+        queryParams: {
+          info: this.commonOpsService.encodeQueryParamsInBase64({
+            identityKey: data.entityKeyId,
+            appRefId: this.paramInfo.appRefId,
+            applicationType: 100001,
+            applicationPurposeType: 0,
+            projectSiteVersion: 1,
+          }),
+        },
+      }
+    );
+  });
     } else {
       this.Input_Form.markAllAsTouched();
       Object.keys(this.Input_Form.controls).forEach(key => {

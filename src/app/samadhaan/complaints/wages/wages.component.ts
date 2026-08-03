@@ -16,6 +16,7 @@ import { WagesWorkingOvertimeComponent } from './wages-working-overtime/wages-wo
 import { WagesNotPaidAtAllComponent } from './wages-not-paid-at-all/wages-not-paid-at-all.component';
 import { WagesUnauthorisedDeductionComponent } from './wages-unauthorised-deduction/wages-unauthorised-deduction.component';
 import { NonPaymentBonusComponent } from './non-payment-bonus/non-payment-bonus.component';
+import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
 
 @Component({
   selector: 'app-wages',
@@ -69,7 +70,8 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     private fb: UntypedFormBuilder,
     private appHttpRequestHandlerService: AppHttpRequestHandlerService,
     private route: ActivatedRoute,
-    public commonOpsService: CommonOpsService
+    public commonOpsService: CommonOpsService,
+    private router : Router
   ) {}
 
   ngOnInit(): void {}
@@ -608,6 +610,7 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
                               data.rootActivityRefId = ''
 this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Non_Pay_Bonus_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
                               next: () => {
+                                      this.navigateToNextStep(data);
 
                               }})
                               })
@@ -637,6 +640,19 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
     });
 
 }
+
+  navigateToNextStep(regFormRspData : ICRUD_CreateUpdateOperationResponse){
+    this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='CCOW').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( 
+      { 
+        identityKey: regFormRspData.entityKeyId,
+        appRefId: this.paramInfo.appRefId,
+        applicationType: 100001,
+        applicationPurposeType: 0,
+        projectSiteVersion: 1,
+      })
+    }});
+  }
+
 
   claimUnderCodeOnWagesDataEventListener(data:IComplaint_Claim_CodeOnWage){
   console.log('daa')

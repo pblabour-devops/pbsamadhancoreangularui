@@ -7,6 +7,7 @@ import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { IComplaint_GratuityClaim } from '../../samadhaan-typed-modelts';
+import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
 
 @Component({
   selector: 'app-gratuity-claims',
@@ -216,14 +217,21 @@ export class GratuityClaimsComponent {
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2005);
     this.Input_Form.controls.applicationType.patchValue(100001);
     this.appHttpRequestHandlerService
-      .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
-        next: () => {
+        .httpPost(
+          this.Input_Form.value,
+          'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim',
+          'Crud',
+          'CreateUpdate'
+        )
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
           this.router.navigate(
-            [this.appFormStepsList.find((x) => x.stepCode == 'GC')?.uiNextPageComponentPath],
+            [this.appFormStepsList.find(x => x.stepCode === 'GC')?.uiNextPageComponentPath],
             {
               queryParams: {
                 info: this.commonOpsService.encodeQueryParamsInBase64({
-                  appRefId: this.paramInfo?.appRefId,
+                  identityKey: data.entityKeyId,
+                  appRefId:this.paramInfo.appRefId,
                   applicationType: 100001,
                   applicationPurposeType: this.paramInfo?.applicationPurposeType,
                   projectSiteVersion: this.paramInfo?.projectSiteVersion,
@@ -231,8 +239,7 @@ export class GratuityClaimsComponent {
               },
             }
           );
-        }
-      });
+        });
     } else {
       this.Input_Form.markAllAsTouched();
       Object.keys(this.Input_Form.controls).forEach(key => {

@@ -306,8 +306,9 @@ private navigateToNextStep(rspData: ICRUD_CreateUpdateOperationResponse): void {
     {
       queryParams: {
         info: this.commonOpsService.encodeQueryParamsInBase64({
+          identityKey: rspData.entityKeyId,
           appRefId: rspData?.appId,
-          applicationType: 200001,
+          applicationType: 100001,
           applicationPurposeType: this.paramInfo?.applicationPurposeType,
           projectSiteVersion: this.paramInfo?.projectSiteVersion,
         }),

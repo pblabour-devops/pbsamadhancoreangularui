@@ -22,6 +22,10 @@ export class DetailsComponent {
   basisOfClaimOptions:any[]=[]
   maritalStatusOptions:any[]=[]
   workerCategoryOptions: any[]= []
+  applicableOptions : any[] = []
+  allowanceType : any[] = []
+  placeOfWorkType : any[] = []
+  bonusClaimTypeOptions : any[] = []
   constructor(private commonOpsService : CommonOpsService, private route : ActivatedRoute, private appHttpRequestHandlerService : AppHttpRequestHandlerService){}
 
   ngOnInit(){
@@ -32,6 +36,7 @@ export class DetailsComponent {
   this.route.queryParams
         .subscribe(params => {
           this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
+            console.log('decoded info', info)
             this.paramInfo = info;
             this.appId = this.paramInfo.appId;
               this.appHttpRequestHandlerService.httpGet({id : this.paramInfo?.appRefId}, "Complaints", "getComplaintDetail").pipe(takeUntil(this.ngUnsubscribe))
@@ -41,6 +46,10 @@ export class DetailsComponent {
                 this.basisOfClaimOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'GratuityClaimBasisTypeEnum').selectListItems
                 this.maritalStatusOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'MaritalStatusTypeEnum').selectListItems
                 this.workerCategoryOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'WorkerCategoryTypeEnum').selectListItems
+                this.applicableOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'MaternityDischargeTypeEnum').selectListItems
+                this.allowanceType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'AllowanceTypeEnum').selectListItems
+                this.placeOfWorkType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'PlaceOfWorkTypeEnum').selectListItems
+                this.bonusClaimTypeOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == 'BonusClaimTypeEnum').selectListItems
               });
           });
         });
@@ -79,5 +88,34 @@ getBasisOfClaimText(value: number): string {
     if (value === null || value === undefined) return '-';
     return value ? 'Yes' : 'No';
   }
+
+  getMaternityDischargeTypeText(value: number): string {
+  const found = this.applicableOptions?.find(x => +x.value === +value);
+    return found ? found.text : '-';
+  }
+
+  getAllowanceTypeText(value: number): string {
+  if (value === null || value === undefined) return '-';
+  const found = this.allowanceType?.find(x => +x.value === +value);
+  return found ? found.text : '-';
+}
+
+getPlaceOfWorkTypeAText(value: number): string {
+  if (value === null || value === undefined) return '-';
+  const found = this.placeOfWorkType?.find(x => +x.value === +value);
+  return found ? found.text : '-';
+}
+
+getPlaceOfWorkTypeBText(value: number): string {
+  if (value === null || value === undefined) return '-';
+  const found = this.placeOfWorkType?.find(x => +x.value === +value);
+  return found ? found.text : '-';
+}
+
+getBonusClaimTypeText(value: number): string {
+  if (value === null || value === undefined) return '-';
+  const found = this.bonusClaimTypeOptions?.find(x => +x.value === +value);
+  return found ? found.text : '-';
+}
 
 }

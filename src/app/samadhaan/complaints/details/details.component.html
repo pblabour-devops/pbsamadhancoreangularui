@@ -386,7 +386,364 @@
               </div>
 
             </ng-container>
+        <!-- ===================== MATERNITY BENEFIT CLAIM (shown only if applicable) ===================== -->
+<ng-container *ngIf="detailData?.complaint_MaternityBenefitComplaints as maternity">
 
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-heart"></i> Maternity Benefit Claim Information
+  </div>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-12 mb-4">
+      <div class="detail-label">
+        Whether discharged/dismissed or conditions of service changed due to absence from work (Code on Social Security, 2020)
+      </div>
+      <div class="detail-value">
+        <span class="badge-chip" [ngClass]="maternity.isDischargedOrDismissedDueToAbsence ? 'badge-yes' : 'badge-no'">
+          {{ getYesNoText(maternity.isDischargedOrDismissedDueToAbsence) }}
+        </span>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4" *ngIf="maternity.isDischargedOrDismissedDueToAbsence">
+      <div class="detail-label">Applicable Option</div>
+      <div class="detail-value">{{ getMaternityDischargeTypeText(maternity.maternityDischargeType) }}</div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Maternity Benefit Amount Due</div>
+      <div class="detail-value">₹ {{ maternity.maternityBenefitAmountDue ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Medical Bonus (Maternity) Amount Due</div>
+      <div class="detail-value">₹ {{ maternity.medicalBonusMaternityAmountDue ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Wages for Maternity Leave Amount Due</div>
+      <div class="detail-value">₹ {{ maternity.wagesForMaternityLeaveAmountDue ?? '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== CLAIM(S) UNDER CODE ON WAGES (shown only if applicable) ===================== -->
+<ng-container *ngIf="detailData?.complaint_Claim_CodeOnWages as codeOnWages">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-dollar-sign"></i> Claim(s) under Code on Wages
+  </div>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-12 mb-4">
+      <div class="detail-label">Additional Wages/Allowance (if entitled)</div>
+      <div class="detail-value">{{ getAllowanceTypeText(codeOnWages.allowanceType) }}</div>
+    </div>
+  </div>
+
+  <div class="detail-label fw-bold mb-2">Place of Work (Applicable rate of minimum wages)</div>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Area A</div>
+      <div class="detail-value">{{ getPlaceOfWorkTypeAText(codeOnWages.placeOfWorkTypeA) }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Area B</div>
+      <div class="detail-value">{{ getPlaceOfWorkTypeBText(codeOnWages.placeOfWorkTypeB) }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Area C</div>
+      <div class="detail-value">{{ codeOnWages.placeofWorkNameC || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== MINIMUM WAGES CLAIM (shown only if applicable) ===================== -->
+<ng-container *ngIf="detailData?.complaint_MinimumWage as minWage">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-credit-card"></i> A. Claim period for which minimum wages not paid
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_MinimumWagesPeriodAmts?.length; else noPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_MinimumWagesPeriodAmts">
+          <td>{{ period.fromDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.toDate | date:'dd-MM-yyyy' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noPeriodData>
+    <div class="text-muted small mb-4">No period/amount details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ minWage.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ minWage.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Details about the claim(s) (if any)</div>
+      <div class="detail-value">{{ minWage.detailAboutTheClaim || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== CLAIM WAGES NOT PAID ON WEEKLY DAY OF REST (shown only if applicable) ===================== -->
+<ng-container *ngIf="detailData?.complaint_Wages_WkDay as wkDay">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-calendar"></i>B. Claim wages not paid for on weekly day of rest
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_Wages_WkDay_PeriodAmts?.length; else noWkDayPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_Wages_WkDay_PeriodAmts">
+          <td>{{ period.fromDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.toDate | date:'dd-MM-yyyy' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noWkDayPeriodData>
+    <div class="text-muted small mb-4">No period/amount details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ wkDay.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ wkDay.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Details about the claim(s) (if any)</div>
+      <div class="detail-value">{{ wkDay.detailAboutTheClaim || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== C. WAGES NOT PAID FOR WORKING OVERTIME (shown only if applicable) ===================== -->
+<ng-container *ngIf="detailData?.complaint_Wages_OT as wagesOT">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-clock"></i> C. Wages not paid for working overtime
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_Wages_OT_PeriodAmts?.length; else noOTPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Overtime Hours</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_Wages_OT_PeriodAmts">
+          <td>{{ period.fromDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.toDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.overTimeHours ?? '-' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noOTPeriodData>
+    <div class="text-muted small mb-4">No period/amount details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ wagesOT.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ wagesOT.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Details about the claim(s) (if any)</div>
+      <div class="detail-value">{{ wagesOT.detailAboutTheClaim || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== D. WAGES NOT PAID AT ALL ===================== -->
+<ng-container *ngIf="detailData?.complaint_Wages_Not_Paid as wagesNotPaid">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-alert-circle"></i> D. Wages not paid at all
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_Wages_Not_Paid_PeriodAmts?.length; else noWagesNotPaidPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_Wages_Not_Paid_PeriodAmts">
+          <td>{{ period.fromDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.toDate | date:'dd-MM-yyyy' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noWagesNotPaidPeriodData>
+    <div class="text-muted small mb-4">No period/amount details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ wagesNotPaid.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ wagesNotPaid.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Reason for wages not paid at all</div>
+      <div class="detail-value">{{ wagesNotPaid.reason || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== E. UNAUTHORISED DEDUCTION FROM WAGES ===================== -->
+<ng-container *ngIf="detailData?.complaint_Wages_Unauth_Deduct as unauthorisedDeduct">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-minus-circle"></i> E. Unauthorised deduction from wages and the concerned wage period(s)
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_Wages_Unauth_Deduct_PeriodAmts?.length; else noUnauthorisedDeductPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_Wages_Unauth_Deduct_PeriodAmts">
+          <td>{{ period.fromDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ period.toDate | date:'dd-MM-yyyy' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noUnauthorisedDeductPeriodData>
+    <div class="text-muted small mb-4">No period/amount details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ unauthorisedDeduct.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ unauthorisedDeduct.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Details about the claim(s) (if any)</div>
+      <div class="detail-value">{{ unauthorisedDeduct.reason || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
+
+<!-- ===================== F. NON PAYMENT OF BONUS ===================== -->
+<ng-container *ngIf="detailData?.complaint_Non_Pay_Bonus as nonPayBonus">
+
+  <div class="section-title mt-4 pt-3 border-top">
+    <i class="feather icon-award"></i> F. Non Payment of Bonus
+  </div>
+
+  <div class="table-responsive mb-4" *ngIf="detailData?.complaint_Non_Pay_Bonus_PeriodAmts?.length; else noBonusPeriodData">
+    <table class="table table-bordered table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Accounting Year</th>
+          <th>Amount of Unpaid Bonus</th>
+          <th>Basis of Bonus Claimed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of detailData.complaint_Non_Pay_Bonus_PeriodAmts">
+          <td>{{ period.accountingYear ?? '-' }}</td>
+          <td>₹ {{ period.amount ?? '-' }}</td>
+          <td>{{ getBonusClaimTypeText(period.bonusClaimType) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noBonusPeriodData>
+    <div class="text-muted small mb-4">No bonus period details available.</div>
+  </ng-template>
+
+  <div class="row g-4 mb-2">
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Total Relief Sought</div>
+      <div class="detail-value">₹ {{ nonPayBonus.totalReliefSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Compensation Sought</div>
+      <div class="detail-value">₹ {{ nonPayBonus.compensationSought ?? '-' }}</div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="detail-label">Details about the claim(s) (if any)</div>
+      <div class="detail-value">{{ nonPayBonus.details || '-' }}</div>
+    </div>
+  </div>
+
+</ng-container>
   </div>
 
   <!-- Loader / Empty state -->
