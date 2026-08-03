@@ -8,6 +8,7 @@ import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-c
 import { WagesComponent } from './complaints/wages/wages.component';
 import { DetailsComponent } from './complaints/details/details.component';
 import { RecoveryOfMoneyComponent } from './complaints/recovery-of-money/recovery-of-money.component';
+import { ReviewComponent } from './complaints/review/review.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
    {path : 'recovery-of-money',component : RecoveryOfMoneyComponent},
    {path : 'wages',component : WagesComponent},
    {path : 'details',component : DetailsComponent},
+   {path : 'review',component : ReviewComponent},
 
 ];
 

@@ -402,3 +402,20 @@ export interface IComplaint_RecOfMon_LayOffCompDetail {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+
+export interface IComplaint_Review_GeneralDetail {
+  id: number;
+  appRefId: number;
+  orderNumber: number;
+  orderDate: string | Date;
+  remarks: string;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
