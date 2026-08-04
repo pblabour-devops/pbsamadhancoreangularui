@@ -79,8 +79,8 @@ import Swal from 'sweetalert2';
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_WorkplaceDetail>) => {
             this.genericFormData = data;
-            this.appFormStepsList = data.appFormStepsList;
-
+            // this.appFormStepsList = data.appFormStepsList;
+            // console.log('appFormStepsList data for workplace',this.appFormStepsList);
             if (data.formModel) {
                  const formData = data.formModel;
                 this.Input_Form.patchValue(formData);

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SamadhaanRoutingModule } from './samadhaan-routing.module';
-import { EmployerContractorDetailsComponent } from './complaints/employer-details/employer-contractor-details/employer-contractor-details.component';
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -27,7 +26,7 @@ import { RetrenchmentCompensationDetailsComponent } from './complaints/recovery-
 import { LayOffDetailsComponent } from './complaints/recovery-of-money/lay-off-details/lay-off-details.component';
 import { ReviewComponent } from './complaints/review/review.component';
 @NgModule({
-  declarations: [EmployerContractorDetailsComponent, EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent],
+  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

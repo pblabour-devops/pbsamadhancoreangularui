@@ -7,7 +7,7 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { AppHttpInterceptor } from 'src/app/shared/app-http.interceptor';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { takeUntil } from 'rxjs/operators';
-import { IOSH_Form_1_Registration } from 'src/app/osh/osh-code-typed-models';
+import { IComplaint_RecOfMon_DueDetail, IOSH_Form_1_Registration } from 'src/app/osh/osh-code-typed-models';
 import { Subject } from 'rxjs';
 import { categoryTypeEnum } from 'src/app/shared.data';
 import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
@@ -69,7 +69,8 @@ export class RecoveryOfMoneyComponent {
       toDoActivityModeType: [1, Validators.required],
       applicationPurposeType : [0, Validators.required],
       rootActivityRefId: ['defaultValue'],
-      toDoActivityCategoryType: [1017, Validators.required]
+      toDoActivityCategoryType: [1017, Validators.required],
+      moneyDueOptions: ['', Validators.required]
       })as TForm<IComplaint_RecOfMon_GeneralDetail>;
 
 
@@ -93,6 +94,7 @@ export class RecoveryOfMoneyComponent {
             this.isEditAllowed = data.isEditAllowed;
           });
         });
+        this.getComplaintRecOfMonMoneyDueDetails();
         this.getSettilementDetailData();
         this.getAwardDetailData();
         this.getNoticePayDetailData();
@@ -100,6 +102,22 @@ export class RecoveryOfMoneyComponent {
         this.getLayOffDetailData();
         this.getLayOffCompDetailData();
       });
+  }
+
+  getComplaintRecOfMonMoneyDueDetails(){
+      this.appHttpRequestHandlerService
+        .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonDueDetail')
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<IComplaint_RecOfMon_DueDetail[]>) => {
+          console.log('Money Due Details:', data);
+          if(data.formModel && data.formModel.length > 0){
+            data.formModel.forEach((value: IComplaint_RecOfMon_DueDetail) => {
+              this.moneyDueReasonArray.push(value.moneyDueReasonType);
+            })
+          }
+          this.Input_Form.controls.moneyDueOptions.patchValue(this.moneyDueReasonArray);
+          console.log('Money Due Reason Array:', this.Input_Form.value);
+        })
   }
 
    initFormData(genericFormData: GenericFormModel<IOSH_Form_1_Registration>) {
@@ -178,11 +196,11 @@ export class RecoveryOfMoneyComponent {
       onSubmit(): void {
         
         console.log('recovery of money details', this.Input_Form.value);
-        console.log('settilement details', this.settlementDetailData);
-        console.log('award details', this.awardDetailData);
-        console.log("notice pay details", this.noticePaydDetailData);
-        console.log('retrenchment detail', this.retrenchmentDetailData);
-        console.log('lay off detail', this.layOffDetailData);
+        // console.log('settilement details', this.settlementDetailData);
+        // console.log('award details', this.awardDetailData);
+        // console.log("notice pay details", this.noticePaydDetailData);
+        // console.log('retrenchment detail', this.retrenchmentDetailData);
+        // console.log('lay off detail', this.layOffDetailData);
         if(!this.settlementDetailsComponent?.isFormValid()){
         Swal.fire({ icon: 'warning', text: 'Please fill Settlement Details completely.' });
         return;
@@ -208,7 +226,9 @@ export class RecoveryOfMoneyComponent {
         Swal.fire({ icon: 'warning', text: 'Please fill Lay Off Details completely.' });
         return;
         }
-
+        
+          this.saveMoneyDueDetails();
+          return;
           if (this.Input_Form.valid) {
           this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo.applicationPurposeType);
           this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo.projectSiteVersion);
@@ -286,6 +306,29 @@ export class RecoveryOfMoneyComponent {
           });
         }
           }
+
+    moneyDueReasonArray : any[] = [];
+    saveMoneyDueDetails(){
+      const moneyDueOptions = this.Input_Form.get('moneyDueOptions')?.value as string[];
+
+      moneyDueOptions.forEach((value: string) => {
+      const data: any = {};
+      data.id = 0;
+      data.appRefId = this.paramInfo.appRefId;
+      data.applicationPurposeType = this.paramInfo.applicationPurposeType;
+      data.projectSiteVersion =this.paramInfo.projectSiteVersion
+      data.rootActivityRefId  = '';
+      data.applicationType = 100001;
+      data.toDoActivityCategoryType = categoryTypeEnum.INDIVIDUAL_COMPLAINT_REC_OF_MON_DUE;
+      data.todoActivityModeType = this.moneyDueReasonArray.length > 0 ? 2 : 1;
+      data.moneyDueReasonType = Number(value);
+      debugger;
+      this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_MoneyDueDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+       console.log('Money Due Details saved successfully for value:', value);
+      });
+    })
+  }
 
         
     ngOnDestroy() {

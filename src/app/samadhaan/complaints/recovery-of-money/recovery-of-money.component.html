@@ -52,9 +52,9 @@
       <label class="form-label fw-semibold">
         Money Due on Account of(Multiple Checkbox Selection)<span class="text-danger">*</span>
       </label>
-      <select  class="form-control" multiple>
+      <select  class="form-control" formControlName="moneyDueOptions" multiple>
         <option value="" disabled selected>Select</option>
-        <option *ngFor="let option of moneyDueOptions" [value]="option.value">{{ option.text }}</option>
+        <option *ngFor="let option of moneyDueOptions" [value]="+option.value">{{ option.text }}</option>
       </select>
       <!-- <div
         class="text-danger"
@@ -66,21 +66,22 @@
     </div>
 
     <!-- SETTLEMENT DETAILS -->
-
+    @if(Input_Form.value.moneyDueOptions.includes(1)){
     <app-settlement-details (settlementDetailDataEvent)="settlementDetailDataEventListener($event)" [settlementDetailsApiData]="settlementDetailsApiData"></app-settlement-details>
-
+    } @if(Input_Form.value.moneyDueOptions.includes(2)){
     <!-- AWARD DETAILS -->
      <app-award-details  (awardDetailDataEvent)="awardDetailDataEventListener($event)" [awardDetailsApiData]="awardDetailsApiData"></app-award-details>
-
+    } @if(Input_Form.value.moneyDueOptions.includes(3)){
      <!-- NOTICE PAY DETAILS -->
 
      <app-notice-pay-details (noticePayDetailDataEvent)="noticePayDetailDataEventListener($event)" [noticePayApiData]="noticePayApiData"></app-notice-pay-details>
-
+     } @if(Input_Form.value.moneyDueOptions.includes(4)){
      <!-- RETRENCHMENT DETAILS -->
       <app-retrenchment-compensation-details (retrenchmentDetailDataEvent)="retrenchmentDetailDataEventListener($event)" [retrenchmentDetailApiData]="retrenchmentDetailApiData"></app-retrenchment-compensation-details>
-
+    } @if(Input_Form.value.moneyDueOptions.includes(5)){
       <!-- LAY OF DETAILS -->
       <app-lay-off-details  (layOffDetailDataEvent)="layOffDetailDataEventListener($event)" [layOffDetailApiData]="layOffDetailApiData" [layOffCompDetailApiData]="layOffCompDetailApiData"></app-lay-off-details>
+    }
   </div>
 </form>
 </div>
