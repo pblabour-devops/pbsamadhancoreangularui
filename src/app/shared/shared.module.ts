@@ -22,7 +22,6 @@ import { AddendumComponent } from './addendum/addendum.component';
 import { ExcelUploadComponent } from './excel-upload/excel-upload.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RaisedFeeDetailsComponent } from '../payments/raised-fee-details/raised-fee-details.component';
-import { SanitizeHtmlPipe } from '../pipes/sanitize-html.pipe';
 import { AlcCircleSelectionComponent } from './alc-circle-selection/alc-circle-selection.component';
 import { AppRaisedFeeDetailsComponent } from '../payments/app-raised-fee-details/app-raised-fee-details.component';
 import { ToastsContainer } from './global-toast/toasts-container.component';
@@ -30,9 +29,10 @@ import { NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
 import { WorkerDetailsComponent } from './complaint-forms/worker-details/worker-details.component';
 import { EmployerDetailsComponent } from './complaint-forms/employer-details/employer-details.component';
 import { FormtabComponent } from './formtab/formtab.component';
+import { CommonAppformDetailPageComponent } from './application-forms-detail-pages/common-appform-detail-page/common-appform-detail-page.component';
+import { SamadhaanComplaintsDetailsComponent } from './application-forms-detail-pages/samadhaan-complaints-details/samadhaan-complaints-details.component';
 
-
-
+    
  @NgModule({
    declarations: [
     FormValidationErrorComponent,
@@ -55,7 +55,9 @@ import { FormtabComponent } from './formtab/formtab.component';
     ToastsContainer,
     WorkerDetailsComponent,
     EmployerDetailsComponent,
-    FormtabComponent
+    FormtabComponent,
+    CommonAppformDetailPageComponent,
+    SamadhaanComplaintsDetailsComponent
   ],
    imports: [
     RouterModule,
@@ -87,7 +89,8 @@ import { FormtabComponent } from './formtab/formtab.component';
     ToastsContainer,
     WorkerDetailsComponent,
     EmployerDetailsComponent,
-    FormtabComponent
+    FormtabComponent,
+    CommonAppformDetailPageComponent
    ],
    providers: [HttpLoaderService, CommonOpsService]
  })

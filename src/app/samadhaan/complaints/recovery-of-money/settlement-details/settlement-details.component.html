@@ -51,7 +51,7 @@
                     <label class="toggle-option" *ngFor="let option of settlementTypeOptions">
                         <input
                         type="radio"
-                        [value]="option.value"
+                        [value]="+option.value"
                         formControlName="settlementType"
                         />
                         <span>{{ option.text }}</span>
