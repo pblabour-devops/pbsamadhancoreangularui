@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecoverOfMoneyComponent } from './recover-of-money.component';
+import { DraftComplaintComponent } from './draft-complaint.component';
 
-describe('RecoverOfMoneyComponent', () => {
-  let component: RecoverOfMoneyComponent;
-  let fixture: ComponentFixture<RecoverOfMoneyComponent>;
+describe('DraftComplaintComponent', () => {
+  let component: DraftComplaintComponent;
+  let fixture: ComponentFixture<DraftComplaintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RecoverOfMoneyComponent]
+      declarations: [DraftComplaintComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RecoverOfMoneyComponent);
+    fixture = TestBed.createComponent(DraftComplaintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

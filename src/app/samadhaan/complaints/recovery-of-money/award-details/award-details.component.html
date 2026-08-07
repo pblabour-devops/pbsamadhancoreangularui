@@ -1,0 +1,98 @@
+
+<div class="card">
+    <div class="m-2">
+        <form [formGroup]="Input_Form">
+
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="appRefId">
+            <input type="hidden" formControlName="applicationPurposeType">
+            <input type="hidden" formControlName="projectSiteVersion">
+            <input type="hidden" formControlName="toDoActivityModeType">
+            <input type="hidden" formControlName="rootActivityRefId">
+            <input type="hidden" formControlName="toDoActivityCategoryType">
+
+            <!-- Basic / General Info -->
+            <div class="card-body" style="margin-top: 0px;">
+
+
+
+                <div>
+                    <h5 class="section-title">Award Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Name of the Parties to the Award
+                            </label>
+                            <input type="text" formControlName="partiesName" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('partiesName')?.invalid && Input_Form.get('partiesName')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                               Name of CGIT/Arbitrator which gave the award 
+                            </label>
+                            <input type="text" formControlName="cgitOrArbitratorName" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('cgitOrArbitratorName')?.invalid && Input_Form.get('cgitOrArbitratorName')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <label class="fw-semibold mb-2 d-block">
+                                Award Number
+                            </label>
+
+                           <input type="text" formControlName="awardNumber"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('awardNumber')?.invalid && Input_Form.get('awardNumber')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Date of award 
+                                
+                            </label>
+                            <input type="date" formControlName="awardDate"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('awardDate')?.invalid && Input_Form.get('awardDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                               Money due from which terms of Award 
+                            </label>
+                            <input type="number" formControlName="awardTerms"
+                                class="form-control" min="0"/>
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('awardTerms')?.invalid && Input_Form.get('awardTerms')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Date from which award money become due 
+                            </label>
+                            <input type="date" formControlName="amountDueFromDate" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('amountDueFromDate')?.invalid && Input_Form.get('amountDueFromDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

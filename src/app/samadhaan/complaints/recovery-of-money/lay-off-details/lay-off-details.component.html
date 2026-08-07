@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="m-2">
+        <form [formGroup]="Input_Form">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="appRefId">
+            <input type="hidden" formControlName="applicationPurposeType">
+            <input type="hidden" formControlName="projectSiteVersion">
+            <input type="hidden" formControlName="toDoActivityModeType">
+            <input type="hidden" formControlName="rootActivityRefId">
+            <input type="hidden" formControlName="toDoActivityCategoryType">
+
+            <div class="card-body" style="margin-top: 0px;">
+
+                <h5 class="required">Lay Off Details</h5>
+
+                <div class="row">
+
+
+                    <div class=" col">
+                        <label class="required">Date of Joining</label>
+                        <input type="date" class="form-control" formControlName="dateOfJoining" />
+                        <div *ngIf="Input_Form.get('dateOfJoining').errors?.required && Input_Form.get('dateOfJoining').touched"
+                            class="text-danger">
+                            Required
+                        </div>
+                    </div>
+
+                    <div class=" col">
+                        <label>Date of Lay-Off</label>
+                        <input type="date" class="form-control" formControlName="dateOfLayOff" />
+                        <div *ngIf="Input_Form.get('dateOfLayOff').errors?.required && Input_Form.get('dateOfLayOff').touched"
+                            class="text-danger">
+                            Required
+                        </div>
+                    </div>
+
+                </div>
+
+                <div formArrayName="complaint_RecOfMon_LayOffCompDetail">
+
+                    <div class="row mb-4"
+                        *ngFor="let group of complaint_RecOfMon_LayOffCompDetail.controls; let i = index"
+                        [formGroupName]="i">
+
+                        <!-- Lay-off From Date -->
+                        <div class="col">
+                            <label class="required">Lay-off from which date</label>
+                            <input type="date" class="form-control" formControlName="layOffFromDate">
+                            <div class="text-danger"
+                                *ngIf="group.get('layOffFromDate')?.invalid && group.get('layOffFromDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <!-- Lay-off To Date -->
+                        <div class="col">
+                            <label class="required">Lay-off to which date</label>
+                            <input type="date" class="form-control" formControlName="layOffToDate">
+                            <div class="text-danger"
+                                *ngIf="group.get('layOffToDate')?.invalid && group.get('layOffToDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <!-- Compensation Amount -->
+                        <div class="col">
+                            <label class="required">Amount of Compensation</label>
+                            <input type="number" class="form-control" formControlName="compensationAmount" min="0">
+                            <div class="text-danger"
+                                *ngIf="group.get('compensationAmount')?.invalid && group.get('compensationAmount')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <!-- Compensation Due From Date -->
+                        <div class="col">
+                            <label class="required">Date from which Lay-off Compensation became due</label>
+                            <input type="date" class="form-control" formControlName="compensationDueFromDate">
+                            <div class="text-danger"
+                                *ngIf="group.get('compensationDueFromDate')?.invalid && group.get('compensationDueFromDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col d-flex align-items-end">
+                            <button *ngIf="i === 0" type="button" class="btn btn-primary me-2" (click)="addMore()">
+                                Add More
+                            </button>
+                            <button *ngIf="i > 0" type="button" class="btn btn-danger" (click)="removeRow(i)">
+                                Delete
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

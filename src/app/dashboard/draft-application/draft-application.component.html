@@ -1,55 +1,68 @@
 <div class="pcoded-main-container">
   <div class="pcoded-content">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="container-fluid p-4">
 
-          <!-- Breadcrumb -->
-          <nav class="mb-3">
-            <a href="javascript:void(0)" class="text-primary text-decoration-none fw-medium">Dashboard</a>
-          </nav>
+    <div class="card">
+      <div class="m-2">
 
-          <!-- Summary Cards -->
-          <div class="row g-4">
-            <div class="col-md-6" *ngFor="let summary of applicationSummaries">
-              <div class="card border-0 shadow-sm h-100">
-                <div class="card-body p-4">
+        <!-- Title bar -->
+        <div class="title-bar">
+          Status of All Activities - Individual Application
+        </div>
 
-                  <!-- Top row: Icon + Title + Total -->
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <div class="icon-circle" [ngClass]="summary.iconBg">
-                      <i class="feather" [ngClass]="summary.icon"></i>
-                    </div>
+        <!-- Table -->
+        <div class="table-responsive" *ngIf="!isLoading">
+          <table class="table table-bordered mb-0">
+            <thead>
+              <tr class="table-header-row">
+                <th style="width: 60px;">Sr No</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th style="width: 160px;">Application Draft Date</th>
+                <th style="width: 140px;">Remarks</th>
+                <th style="width: 180px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let app of pagedApplications; let i = index">
+                <td>{{ startRecord + i }}</td>
+                <td>{{ getCategory(app) }}</td>
+                <td>{{ getSubCategory(app) }}</td>
+                <td>{{ app.createdOnDate | date:'dd/MM/yyyy' }}</td>
+                <td>-</td>
+                <td class="action-buttons-cell">
+                    <button class="btn btn-primary btn-sm mr-2" (click)="onEdit(app)">EDIT</button>
+                    <button class="btn btn-danger btn-sm" (click)="onDelete(app)">DELETE</button>
+                    </td>
+              </tr>
 
-                    <div class="text-end">
-                      <a href="javascript:void(0)" class="text-primary text-decoration-none fw-medium d-block mb-1">
-                        {{ summary.title }}
-                      </a>
-                      <div class="fw-bold fs-6">
-                        Total : {{ summary.total }}
-                      </div>
-                    </div>
-                  </div>
+              <tr *ngIf="pagedApplications.length === 0">
+                <td colspan="6" class="text-center text-muted py-4">No draft applications found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-                  <hr class="my-3">
-
-                  <!-- Bottom row: Pending + Disposed -->
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a href="javascript:void(0)" class="text-primary text-decoration-none small">
-                      Pending : {{ summary.pending }} <i class="feather icon-arrow-right"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="text-primary text-decoration-none small">
-                      Disposed : {{ summary.disposed }} <i class="feather icon-arrow-right"></i>
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+        <!-- Pagination Footer -->
+        <div class="d-flex justify-content-end align-items-center gap-3 mt-3" *ngIf="!isLoading && totalCount > 0">
+          <div class="d-flex align-items-center gap-2">
+            <label class="mb-0 fw-semibold">Limit :</label>
+            <select class="form-select form-select-sm" style="width: 70px;" [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+              <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+            </select>
           </div>
 
+          <span class="text-muted">{{ startRecord }}–{{ endRecord }} of {{ totalCount }}</span>
+
+          <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === 1" (click)="prevPage()">
+            &lt;
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages" (click)="nextPage()">
+            &gt;
+          </button>
         </div>
+
       </div>
     </div>
+
   </div>
 </div>

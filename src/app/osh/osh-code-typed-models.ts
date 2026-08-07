@@ -273,3 +273,18 @@ export type OSH_Form_1_RegistrationDetailViewModel= {
     isLocked: boolean,
     isFeeApplicable: boolean,
 };
+
+export interface IComplaint_RecOfMon_DueDetail {
+    id : number,
+    appRefId : number,
+    application?: any,
+    moneyDueReasonType : number,
+
+    // Not-mapped / helper fields
+    applicationPurposeType?: number,
+    applicationType?: number,
+    projectSiteVersion?: number,
+    toDoActivityModeType?: number,
+    toDoActivityCategoryType?: number,
+    rootActivityRefId?: string,
+}

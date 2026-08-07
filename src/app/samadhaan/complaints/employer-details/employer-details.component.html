@@ -12,44 +12,305 @@
 
     <!-- General Information label -->
     <div class="general-info-label">
-      General Information <span class="required">*</span>
+      General Information <span class="required"></span>
     </div>
       <app-formtab [appSteps]="appFormStepsList"></app-formtab>
 
+    <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="appRefId" />
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
 
+  <div class="main-content">
+    <div class="card col-md-12 card-form">
+        <h5 class="section-title">Employer/Contractor Details</h5>
 
-  <!-- Working in Establishment coming under -->
-  <!-- <div class="row g-4 mb-4 align-items-center">
-    <div class="col-md-6">
-      <label class="form-label fw-semibold mb-2">Working in Establishment coming under</label>
-      <div class="d-flex gap-4">
-        <div class="form-check">
-          <input
-            type="radio"
-            class="form-check-input"
-            id="govtCentral"
-            value="Central Government"
-            formControlName="workingUnderGovt" />
-          <label class="form-check-label" for="govtCentral">Central Government</label>
+      <!-- Are you engaged through contractor -->
+       <div class="row">
+        <div class="col-md-12 mb-4">
+
+  <div
+    class="toggle-group flex-wrap align-items-center"
+    role="radiogroup"
+    aria-labelledby="establishmentTypeLabel"
+  >
+    <label class="fw-semibold mb-2 d-block">
+    Working in Establishment Coming Under : 
+  </label>
+
+    <label class="toggle-option">
+      <input
+        type="radio"
+        id="centralGovYes"
+        [value]="true"
+        formControlName="isEstablishmentCentralGovernment"
+      />
+      <span>Central Government</span>
+    </label>
+
+    <label class="toggle-option">
+      <input
+        type="radio"
+        id="centralGovNo"
+        [value]="false"
+        formControlName="isEstablishmentCentralGovernment"
+      />
+      <span>State Government</span>
+    </label>
+  </div>
+</div>
+       </div>
+
+       @if(Input_Form.get("isEstablishmentCentralGovernment").value){
+       <div class="row">
+          <div class="col-md-6 mb-4">
+          <label class="required">Establishment Type</label>
+          <select
+            class="form-control"
+            formControlName="establishmentTyp"
+           >
+            <option value="">Select</option>
+            <option *ngFor="let establishment of establishments" [value]="establishment.value">
+              {{ establishment.text }}
+            </option>
+          </select>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+          Required
         </div>
-        <div class="form-check">
-          <input
-            type="radio"
-            class="form-check-input"
-            id="govtState"
-            value="State Government"
-            formControlName="workingUnderGovt" />
-          <label class="form-check-label" for="govtState">State Government</label>
+        </div>
+       </div>
+      }
+      <div class="row mb-4 align-items-center">
+      <div class="col-md-12">
+
+        <div
+          class="toggle-group flex-wrap align-items-center"
+          role="radiogroup"
+          aria-labelledby="engagedThroughContractorLabel"
+        >
+                <label class="fw-semibold mb-2 d-block">
+          Are you engaged through contractor
+        </label>
+          <label class="toggle-option">
+            <input
+              type="radio"
+              id="engagedYes"
+              [value]="true"
+              formControlName="isEngagedThroughContractor" />
+            <span>Yes</span>
+          </label>
+
+          <label class="toggle-option">
+            <input
+              type="radio"
+              id="engagedNo"
+              [value]="false"
+              formControlName="isEngagedThroughContractor" />
+            <span>No</span>
+          </label>
         </div>
       </div>
     </div>
-  </div> -->
 
- <app-employer-contractor-details (employerOrContractorDetailDataEvent)="employerOrContractorDetailDataEventListener($event)"></app-employer-contractor-details>
+      <!-- Name and designation -->
+      <div class="row">
+        <div class="col-md-6  mb-4">
+      <label class="required">
+        Name and designation of the
+        {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}
+      </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="employerORContractorNameAndDesignation"
+          />
+           <div
+            class="text-danger"
+            *ngIf="Input_Form.get('employerORContractorNameAndDesignation')?.invalid && Input_Form.get('employerORContractorNameAndDesignation')?.touched">
+            Required
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <label class="required">Address of the {{ Input_Form.get('isEngagedThroughContractor')?.value ? 'Employer/Contractor' : 'Employer' }}</label>
+          <input
+            class="form-control"
+            rows="2"
+            formControlName="employerORContractorAddress"
+           />
+            <div
+            class="text-danger"
+            *ngIf="Input_Form.get('employerORContractorAddress')?.invalid && Input_Form.get('employerORContractorAddress')?.touched">
+            Required
+            </div>
+        </div>
+      </div>
+
+      <!-- State / District -->
+      <div class="row">
+        <div class="col-md-6  mb-4">
+          <label class="required">State</label>
+          <select
+            class="form-control"
+            formControlName="state"
+           >
+            <option value="">Select State</option>
+            <option value="Punjab">Punjab</option>
+          </select>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+          Required
+        </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <label class="required">District</label>
+          <select
+            class="form-control"
+            formControlName="districtRefId"
+           >
+            <option value="">Select District</option>
+            <option *ngFor="let dist of allDistricts" [value]="dist.districtLgdId">
+              {{ dist.districtName }}
+            </option>
+          </select>
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('districtRefId')?.invalid && Input_Form.get('districtRefId')?.touched">
+          Required
+        </div>
+        </div>
+      </div>
+
+      <!-- PIN Code / Mobile Number -->
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <label class="required">PIN Code</label>
+            <input  type="text" class="form-control" formControlName="pinCode" maxlength="6" />
+          <div
+  class="text-danger"
+  *ngIf="Input_Form.get('pinCode')?.invalid && Input_Form.get('pinCode')?.touched">
+  Required
+</div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <label class="required">Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="mobileNumber"
+            maxlength="10"
+            (keypress)="commonOpsService.RestrictNumericValuesOnly($event, 10)" />
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('mobileNumber')?.invalid && Input_Form.get('mobileNumber')?.touched">
+          Required
+        </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <label>Email</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            />
+          <div
+          class="text-danger"
+          *ngIf="Input_Form.get('email')?.errors?.email && Input_Form.get('email')?.touched">
+          Enter a valid email address
+        </div>
+        </div>
+      </div>
+
+      <!-- Upload Files -->
+      <!-- <div class="row">
+
+          <div class="d-flex align-items-center gap-3">
+            <input type="file" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-12 d-flex justify-content-between align-items-center">
+          <small class="text-success">Supporting Documents (Max size: 30MB)</small>
+        </div>
+      </div> -->
+
+      <!-- Add / Reset buttons -->
+      <div class="text-right mt-3">
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+        <button type="button" class="btn btn-primary ml-2" (click)="addEmployer()">Add</button>
+      </div>
+
+      <!-- Details Added table -->
+      <div *ngIf="employerList.length > 0">
+        <h6 class="details-title mt-4">Details Added</h6>
+        <table class="table table-bordered details-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Engaged Through Contractor</th>
+              <th>Name & Designation</th>
+              <th>Contact Details & Address</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of employerList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ emp.isEngagedThroughContractor ? 'Yes' : 'No' }}</td>
+              <td>{{ emp.employerORContractorNameAndDesignation }}</td>
+              <td>
+                <b>Contact:</b> {{ emp.email }}, {{ emp.mobileNumber }}<br />
+                <b>Address:</b> {{ emp.employerORContractorAddress }}, {{ emp.state }}, {{ emp.pinCode }}
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)="deleteEmployer(i)">
+                  🗑
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer m-t-10">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- <app-go-to-home-button class="btn btn-success"></app-go-to-home-button> -->
+          </div>
+          <div class="col-md-6 text-right">
+
+            <ng-template #lockedMsg>
+              <span class="font-weight-bold text-danger">
+                <i class="icon feather icon-lock"></i> Form Locked
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+
+ <!-- <app-employer-contractor-details (employerOrContractorDetailDataEvent)="employerOrContractorDetailDataEventListener($event)"></app-employer-contractor-details> -->
 
  <app-workplace-details (workPlaceDataEvent)="workPlaceDetailDataEventListener($event)"></app-workplace-details>
 
-  <app-establishment-details (formStepperDataEvent)="formStepperDataEventListener($event)" (establishmentDetailDataEvent)="establishmentDetailDataEventListener($event)"></app-establishment-details>
+  <app-establishment-details (establishmentDetailDataEvent)="establishmentDetailDataEventListener($event)"></app-establishment-details>
 
   <!-- Action Buttons -->
   <div class="d-flex justify-content-end gap-3 mt-4 pt-3 border-top">

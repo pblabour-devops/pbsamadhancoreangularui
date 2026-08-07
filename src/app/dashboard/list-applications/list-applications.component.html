@@ -1,0 +1,94 @@
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+
+    <div class="card">
+      <div class="m-3">
+
+        <h4 class="page-title">List of complaints</h4>
+        <hr>
+
+        <!-- Disposed tab/badge -->
+        <div class="mb-3">
+          <button class="btn btn-disposed-tab">Disposed ({{ disposedCount }})</button>
+        </div>
+
+        <!-- Search -->
+        <!-- <div class="d-flex justify-content-end mb-3">
+          <input
+            type="text"
+            class="form-control search-box"
+            placeholder="Search by Application ID, Name, Status..."
+            [(ngModel)]="searchText"
+            (ngModelChange)="onSearchChange()"
+          />
+        </div> -->
+
+        <!-- Table -->
+        <div class="table-responsive" *ngIf="!isLoading">
+          <table class="table table-bordered mb-0">
+            <thead>
+              <tr class="table-header-row">
+                <th style="width: 50px;">Sr.</th>
+                <th>Application ID</th>
+                <th>Date Of Application</th>
+                <th>Non Applicant</th>
+                <th>Application Category</th>
+                <th>Status</th>
+                <th>Remark</th>
+                <th>Feedback</th>
+                <!-- <th>Action</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let app of pagedApplications; let i = index">
+                <td>{{ startRecord + i }}</td>
+                <td>{{ app.publicAppRefNum }}</td>
+                <td>{{ app.createdOnDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ getApplicantName(app) }}</td>
+                <td>{{ getApplicationCategory(app) }}</td>
+                <td>
+                  <span class="status-badge">
+                    {{ app.isLocked ? "Locked" : "Draft" }}
+                  </span>
+                </td>
+                <td>-</td>
+                <td>
+                  --
+                  <!-- <button class="btn btn-sm btn-outline-primary" (click)="onFeedback(app)">Feedback</button> -->
+                </td>
+                <!-- <td>
+                  <button class="btn btn-sm btn-primary" (click)="onView(app)">View</button>
+                </td> -->
+              </tr>
+
+              <tr *ngIf="pagedApplications.length === 0">
+                <td colspan="9" class="text-center text-muted py-5">No rows</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Footer -->
+        <div class="d-flex justify-content-end align-items-center gap-3 mt-3" *ngIf="!isLoading">
+          <div class="d-flex align-items-center gap-2">
+            <label class="mb-0 fw-semibold">Limit :</label>
+            <select class="form-select form-select-sm" style="width: 70px;" [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+              <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+            </select>
+          </div>
+
+          <span class="text-muted">{{ startRecord }}–{{ endRecord }} of {{ totalCount }}</span>
+
+          <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === 1" (click)="prevPage()">
+            &lt;
+          </button>
+          <button class="btn btn-sm btn-outline-secondary" [disabled]="currentPage === totalPages" (click)="nextPage()">
+            &gt;
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

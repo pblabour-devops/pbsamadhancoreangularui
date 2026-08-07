@@ -1,0 +1,63 @@
+<div class="main-content">
+  <div class="card col-md-8 card-form">
+    <div class="col-md-12">
+      <!-- <app-app-form-stepper-navigation-panel *ngIf="!isStepperHidden" [appSteps]="appFormStepsList">
+      </app-app-form-stepper-navigation-panel> -->
+        <app-formtab *ngIf="!isStepperHidden" [appSteps]="appFormStepsList"></app-formtab>
+
+
+      <!-- <app-form1-registration-details *ngIf="applicationType==101" [appRefId]="appRefId"
+        [entityPrimaryid]="entityPrimaryid" [applicationType]="applicationType" [projectSiteRefId]="projectSiteRefId" [projectSiteVersion]="projectSiteVersion"
+        (appFormStepsListEvent)="appFormStepsListEventListener($event)"></app-form1-registration-details> -->
+
+         <app-samadhaan-complaints-details *ngIf="applicationType==100001" [appRefId]="appRefId" [entityPrimaryid]="entityPrimaryid" [applicationType]="applicationType"
+        (appFormStepsListEvent)="appFormStepsListEventListener($event)"></app-samadhaan-complaints-details>
+    </div>
+    <div class="col-md-12" *ngIf="applicationType!=35 && applicationType!=62 && applicationType!=37 && applicationType!=38 && applicationType!=36 && applicationType!=71 && applicationType!=72 && applicationType!=73 && applicationType!=8 && applicationType!=39 && applicationType!=40"> 
+      <app-addendum [isUploadOptionShown]="false" [appRefId]="appRefId"></app-addendum>
+    </div>
+    <div class="card-footer">
+
+      <!-- <div>
+        <textarea [(ngModel)]="remarks"></textarea>
+      </div> -->
+
+      <div *ngIf="applicationLifeCycleStatusType == 3">
+        <h5 class="m-b-0 m-t-20">Remarks</h5>
+        <div class="form-group row">
+          <label for="validation-t-sate" class="col-sm-3 col-form-label text-right">Enter Remarks :</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" name="remarks" id="required" [(ngModel)]="remarks" required
+              #remarksInput="ngModel"></textarea>
+            <div *ngIf="remarksInput.invalid && (remarksInput.dirty || remarksInput.touched)">
+              <div *ngIf="remarksInput.errors.required" class="text-danger">Please specify remarks..!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-outline-primary" (click)="btnHomeClick(applicationType)">Home</button>
+        </div>
+        <div class="col-md-6 text-right">
+          <button [disabled]="hasSubmitClicked"
+            *ngIf="isReadyToLock && !isLocked && !(applicationLifeCycleStatusType?.toString().indexOf('3') >= 0 || applicationLifeCycleStatusType?.toString().indexOf('7') >= 0)"
+            class="btn btn-primary" (click)="onSubmit(0)">Confirm & Lock</button>
+
+          <button [disabled]="hasSubmitClicked" *ngIf="isReadyToLock && applicationLifeCycleStatusType== 3"
+            class="btn btn-primary" (click)="onSubmit(6)">Resolve Objection & Re-submit Application</button>
+            <!-- 
+            <button [disabled]="hasSubmitClicked" *ngIf="isReadyToLock && applicationLifeCycleStatusType== 7"
+            class="btn btn-primary" (click)="onSubmit(7)">Resolve Objection & Pay Balance Fees</button> -->
+
+          <span *ngIf="isLocked && !isAllowEdit" class="font-weight-bold text-danger"><i
+              class="icon feather icon-lock"></i> Form Locked</span>
+          <span *ngIf="!isReadyToLock" class="font-weight-bold text-danger"><i class="icon feather icon-info"></i>
+            Before lock, please fill complete application form</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

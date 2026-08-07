@@ -79,20 +79,10 @@ import Swal from 'sweetalert2';
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_WorkplaceDetail>) => {
             this.genericFormData = data;
-            this.appFormStepsList = data.appFormStepsList;
-
+            // this.appFormStepsList = data.appFormStepsList;
+            // console.log('appFormStepsList data for workplace',this.appFormStepsList);
             if (data.formModel) {
                  const formData = data.formModel;
-                Object.keys(formData).forEach(key => {
-                  if (
-                    formData[key] &&
-                    typeof formData[key] === 'string' &&
-                    formData[key].includes('T')
-                  ) {
-                    formData[key] = formData[key].split('T')[0];
-                  }
-                });
-
                 this.Input_Form.patchValue(formData);
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
@@ -122,13 +112,11 @@ import Swal from 'sweetalert2';
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.invalid) {

@@ -1,0 +1,127 @@
+
+<div class="card">
+    <div class="m-2">
+        <form [formGroup]="Input_Form">
+
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="appRefId">
+            <input type="hidden" formControlName="applicationPurposeType">
+            <input type="hidden" formControlName="projectSiteVersion">
+            <input type="hidden" formControlName="toDoActivityModeType">
+            <input type="hidden" formControlName="rootActivityRefId">
+            <input type="hidden" formControlName="toDoActivityCategoryType">
+
+            <!-- Basic / General Info -->
+            <div class="card-body" style="margin-top: 0px;">
+
+
+
+                <div>
+                    <h5 class="section-title">Settlement Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Name of the Parties to the Settlement
+                            </label>
+                            <input type="text" formControlName="partiesName" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('partiesName')?.invalid && Input_Form.get('partiesName')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Date from which settlement money become due
+                            </label>
+                            <input type="date" formControlName="settlementDate" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('settlementDate')?.invalid && Input_Form.get('settlementDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                <div class="toggle-group flex-wrap align-items-center col-md-12" role="radiogroup"
+                        aria-labelledby="establishmentTypeLabel">
+
+                    <label class="fw-semibold mb-2 d-block">
+                        Whether Settlement is:
+                    </label>
+
+                    <label class="toggle-option" *ngFor="let option of settlementTypeOptions">
+                        <input
+                        type="radio"
+                        [value]="+option.value"
+                        formControlName="settlementType"
+                        />
+                        <span>{{ option.text }}</span>
+                    </label>
+
+                    </div>
+
+                    @if(+Input_Form.get('settlementType').value === SettlementTypeEnum.Tripartite){
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Name & Designation of the conciliation officer before whom settlement was signed
+                               
+                            </label>
+                            <input type="text" formControlName="conciliationOfficerNameAndDesignation"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('conciliationOfficerNameAndDesignation')?.invalid && Input_Form.get('conciliationOfficerNameAndDesignation')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Address of the conciliation officer<span class="text-danger">*</span>
+                            </label>
+                            <input type="text" formControlName="conciliationOfficerAddress"
+                                class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('conciliationOfficerAddress')?.invalid && Input_Form.get('conciliationOfficerAddress')?.touched">
+                                Required
+                            </div>
+                        </div>
+                    }
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Money Due from which terms of Settlement
+                            </label>
+                            <input type="number" formControlName="moneyDueTerms" class="form-control" min="0" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('moneyDueTerms')?.invalid && Input_Form.get('moneyDueTerms')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Amount of Money due
+                            </label>
+                            <input type="number" formControlName="amountDue" class="form-control" min="0" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('amountDue')?.invalid && Input_Form.get('amountDue')?.touched">
+                                Required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 ">
+                            <label class="required">
+                                Date from which settlement money become due
+                            </label>
+                            <input type="date" formControlName="amountDueFromDate" class="form-control" />
+                            <div class="text-danger"
+                                *ngIf="Input_Form.get('amountDueFromDate')?.invalid && Input_Form.get('amountDueFromDate')?.touched">
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

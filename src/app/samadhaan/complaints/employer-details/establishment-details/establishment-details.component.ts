@@ -4,13 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
-import { ProjectSite } from 'src/app/project-site/project-site-typed-module';
 import { IComplaint_EstablishmentDetail } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import Swal from 'sweetalert2';
-import { EmployerContractorDetailsComponent } from '../employer-contractor-details/employer-contractor-details.component';
-import { WorkplaceDetailsComponent } from '../workplace-details/workplace-details.component';
 
 @Component({
   selector: 'app-establishment-details',
@@ -20,7 +17,6 @@ import { WorkplaceDetailsComponent } from '../workplace-details/workplace-detail
 })
 export class EstablishmentDetailsComponent {
 @Output() establishmentDetailDataEvent= new EventEmitter<any>();
-@Output() formStepperDataEvent= new EventEmitter<any>();
 
 protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -102,14 +98,14 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_EstablishmentDetail>) => {
             this.genericFormData = data;
-            this.appFormStepsList = data.appFormStepsList;
+            // this.appFormStepsList = data.appFormStepsList;
+            // console.log('appFormStepsList data for establishment',this.appFormStepsList);
             this.categoryOptions = data.enumTemplateLists
               ?.find(x => x.selectListTypeCode === 'ComplaintCategoryTypeEnum')
               ?.selectListItems ?? [];
             this.wagePeriodOptions = data.enumTemplateLists
             ?.find(x => x.selectListTypeCode === 'WagePeriodtypeEnum')
             ?.selectListItems ?? [];
-            this.formStepperDataEvent.emit(data.appFormStepsList)
             if (data.formModel) {
               const formData = data.formModel;
                 Object.keys(formData).forEach(key => {
@@ -153,13 +149,11 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.invalid) {

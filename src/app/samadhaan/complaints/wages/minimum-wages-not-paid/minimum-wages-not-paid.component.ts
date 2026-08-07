@@ -33,7 +33,7 @@ export class MinimumWagesNotPaidComponent {
       totalReliefSought: ['', Validators.required],
       compensationSought: ['', Validators.required],
       detailAboutTheClaim: [''],
-      Complaint_MinimumWagesNotPaidDetails: this.fb.array([]),
+      periodAmtDetails: this.fb.array([]),
       projectSiteRefId : [0, Validators.required],
       applicationPurposeType : [0, Validators.required],
       iPin: [0, Validators.required],
@@ -56,14 +56,19 @@ export class MinimumWagesNotPaidComponent {
     this.wagesApiData?.formModel ? this.Input_Form.controls.toDoActivityModeType.patchValue(2) : '';
     } else if(changes.wagesPeriodAmtApiData){
     const details = this.wagesPeriodAmtApiData.formModel;
-    Object.keys(details).forEach(key => {
-      if (details[key] && typeof details[key] === 'string' && details[key].includes('T')) {
-        details[key] = details[key].split('T')[0];
+     if(details){
+    const formArray = this.Input_Form.get('periodAmtDetails') as FormArray;
+    formArray.clear();
+    details?.forEach(detail =>{
+    Object.keys(detail).forEach(key => {
+      if (detail[key] && typeof detail[key] === 'string' && detail[key].includes('T')) {
+        detail[key] = detail[key].split('T')[0];
       }
     });
-    const formArray = this.Input_Form.get('Complaint_MinimumWagesNotPaidDetails') as FormArray;
-    formArray.clear();
-    this.addMore(details)
+      this.addMore(detail)
+    })
+    console.log('input form', this.Input_Form.value)
+    }
     }
   }
 
@@ -75,7 +80,7 @@ export class MinimumWagesNotPaidComponent {
   }
 
   get complaintDetails(): FormArray {
-    return this.Input_Form.get('Complaint_MinimumWagesNotPaidDetails') as FormArray;
+    return this.Input_Form.get('periodAmtDetails') as FormArray;
   }
 
   createComplaintDetail(data?:any): FormGroup {

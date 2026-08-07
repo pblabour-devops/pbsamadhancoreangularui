@@ -50,8 +50,8 @@ export class ClaimUnderCodeOnWagesComponent {
       iPin: [0, Validators.required],
       investPunjab_AppId: [0, Validators.required],
       projectSiteVersion: [0, Validators.required],
-      toDoActivityModeType: [0, Validators.required],
-      rootActivityRefId: [0, Validators.required],
+      toDoActivityModeType: [1, Validators.required],
+      rootActivityRefId: [''],
       toDoActivityCategoryType: [0, Validators.required],
       appRefId : [0,Validators.required]
     },
@@ -82,6 +82,11 @@ export class ClaimUnderCodeOnWagesComponent {
     this.allowanceType = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
     this.placeOfWorkTypeA = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
     this.placeOfWorkTypeB = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
+    console.log("claimUnderCodeOnWagesApiData", this.claimUnderCodeOnWagesApiData);
+    if(this.claimUnderCodeOnWagesApiData.formModel){
+    this.Input_Form.patchValue(this.claimUnderCodeOnWagesApiData.formModel);
+    this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+    }
   }
 
 
@@ -100,8 +105,28 @@ export class ClaimUnderCodeOnWagesComponent {
   }    
 
 
-  public isFormValid(): boolean {
-    return this.Input_Form.valid;
+public isFormValid(): boolean {
+  const logInvalidControls = (control: any, path: string = ''): void => {
+    if (control.controls) {
+      Object.keys(control.controls).forEach(key => {
+        const child = control.controls[key];
+        const childPath = path ? `${path}.${key}` : key;
+
+        if (child.controls) {
+          logInvalidControls(child, childPath);
+        } else if (child.invalid) {
+          console.log(`${childPath}:`, child.errors);
+        }
+      });
+    }
+  };
+
+  if (this.Input_Form.invalid) {
+    logInvalidControls(this.Input_Form);
+    return false;
+  }
+
+  return true;
 }
 
   ngOnDestroy(): void {

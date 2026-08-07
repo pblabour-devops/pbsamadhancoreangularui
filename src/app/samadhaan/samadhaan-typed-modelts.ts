@@ -278,3 +278,144 @@ export interface IComplaint_Wages_PeriodAmt {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_RecOfMon_GeneralDetail {
+  id: number;
+  appRefId: number;
+  DemandNoticeServedDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_SettlementDetail {
+  id: number;
+  appRefId: number;
+  partiesName: string;
+  settlementDate: string | Date;
+  settlementType: number;
+  conciliationOfficerNameAndDesignation: string;
+  conciliationOfficerAddress: string;
+  moneyDueTerms: string;
+  amountDue: number;
+  amountDueFromDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_AwardDetail {
+  id: number;
+  appRefId: number;
+  partiesName: string;
+  cGITOrArbitratorName: string;
+  awardNumber: string;
+  awardDate: string | Date;
+  awardTerms: string;
+  amountDueFromDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_NoticePayDetail {
+  id: number;
+  appRefId: number;
+  dateOfJoining: string | Date;
+  dateOfTermination: string | Date;
+  noticePayPeriodType: number;
+  amountDue: number;
+  amountDueFromDate: string | Date;
+
+    // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_RetrenchmentCompDetail {
+  id: number;
+  appRefId: number;
+  dateOfJoining: string | Date;
+  DateOfRetrenchmentOrClosure: string | Date;
+  TotalLengthOfServiceDays: number;
+  CompensationAmountDue: number;
+  CompensationDueFromDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_LayOffDetail {
+  id: number;
+  appRefId: number;
+  dateOfJoining: string | Date;
+  dateOfLayOff: string | Date;
+  details: string;
+
+  // Child collection (nested FormArray)
+  complaint_RecOfMon_LayOffCompDetail: IComplaint_RecOfMon_LayOffCompDetail[];
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_RecOfMon_LayOffCompDetail {
+  id: number;
+  appRefId: number;
+  layOffFromDate: string | Date;
+  layOffToDate: string | Date;
+  compensationAmount: number;
+  compensationDueFromDate: string | Date;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+
+export interface IComplaint_Review_GeneralDetail {
+  id: number;
+  appRefId: number;
+  orderNumber: number;
+  orderDate: string | Date;
+  remarks: string;
+
+  // NotMapped / ToDoActivity related fields
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}

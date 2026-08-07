@@ -7,6 +7,7 @@ import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { IComplaint_GratuityClaim } from '../../samadhaan-typed-modelts';
+import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
 
 @Component({
   selector: 'app-gratuity-claims',
@@ -104,7 +105,6 @@ export class GratuityClaimsComponent {
           .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getGratuityClaimDetails')
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_GratuityClaim>) => {
-            console.log('data', data)
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
             this.basisOfClaimOptions = data.enumTemplateLists
@@ -128,7 +128,6 @@ export class GratuityClaimsComponent {
                 });
 
                 this.Input_Form.patchValue(formData);
-                console.log('form fater ptach', this.Input_Form.value)
                 this.Input_Form.patchValue({ toDoActivityModeType: 2});
                 this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
                 this.calculateContinuousService();
@@ -203,13 +202,11 @@ export class GratuityClaimsComponent {
   }
 
   onSaveDraft(): void {
-    console.log('Saved as Draft:', this.Input_Form.value);
-    // Call save-draft API service here
+// Call save-draft API service here
   }
 
   onBack(): void {
-    console.log('Navigate back to previous tab');
-  }
+}
 
   onSubmit(): void {
     if (this.Input_Form.valid) {
@@ -220,14 +217,21 @@ export class GratuityClaimsComponent {
     this.Input_Form.controls.toDoActivityCategoryType.patchValue(2005);
     this.Input_Form.controls.applicationType.patchValue(100001);
     this.appHttpRequestHandlerService
-      .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
-        next: () => {
+        .httpPost(
+          this.Input_Form.value,
+          'pbsamadhannetcoreapi.Models.Complaint_GratuityClaim',
+          'Crud',
+          'CreateUpdate'
+        )
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
           this.router.navigate(
-            [this.appFormStepsList.find((x) => x.stepCode == 'GC')?.uiNextPageComponentPath],
+            [this.appFormStepsList.find(x => x.stepCode === 'GC')?.uiNextPageComponentPath],
             {
               queryParams: {
                 info: this.commonOpsService.encodeQueryParamsInBase64({
-                  appRefId: this.paramInfo?.appRefId,
+                  identityKey: data.entityKeyId,
+                  appRefId:this.paramInfo.appRefId,
                   applicationType: 100001,
                   applicationPurposeType: this.paramInfo?.applicationPurposeType,
                   projectSiteVersion: this.paramInfo?.projectSiteVersion,
@@ -235,16 +239,14 @@ export class GratuityClaimsComponent {
               },
             }
           );
-        }
-      });
+        });
     } else {
       this.Input_Form.markAllAsTouched();
       Object.keys(this.Input_Form.controls).forEach(key => {
         const control = this.Input_Form.get(key);
     
         if (control?.invalid) {
-          console.log(`${key} is invalid`, control.errors);
-        }
+}
       });
     }
   }

@@ -212,75 +212,9 @@ export class FileUploadComponent implements OnInit {
   }
   redirectToNextPath () {
     var detailPagePath='';
-    if (this.applicationType == 1) {
-      detailPagePath='/establishment/detail';
+    if (this.applicationType == 100001) {
+      detailPagePath='/samadhaan/details';
       }
-    else if (this.applicationType == 2) {
-      detailPagePath='/contractor/detail';
-      }
-    else if (this.applicationType == 4) {
-      detailPagePath='/commonLicence/detail';
-      }
-    else if (this.applicationType == 3) {
-      detailPagePath='/buildingPlan/detail';
-      }
-    else if (this.applicationType == 5) {
-      detailPagePath='/building-plan-hud/detail';
-      }
-    else if (this.applicationType == 6) {
-      detailPagePath='/licence/shopdetail';
-      }
-    else if (this.applicationType == 70) {
-      detailPagePath='/licence/factorylicencedetail';
-    }
-    else if (this.applicationType == 61) {
-      detailPagePath='/licence/WomenInNightShiftFormDetail';
-    }
-    else if (this.applicationType == 76) {
-      detailPagePath='/licence/declarationstabilitycertificateFormDetail';
-    }
-
-    else if (this.applicationType == 35) {
-      detailPagePath='/licence/bocwactdetail';
-    }
-    else if (this.applicationType == 62) {
-      detailPagePath='/licence/factoryWomenInNightShiftFormDetail';
-    }
-    else if (this.applicationType == 39) {
-      detailPagePath='/licence/ismdetail';
-    }
-    else if (this.applicationType == 37) {
-      detailPagePath='/licence/contractlabourPEDetail';
-    }
-    else if (this.applicationType == 38) {
-      detailPagePath='/licence/contractlabourDetail';
-    }
-    else if (this.applicationType == 36) {
-      detailPagePath='/licence/motortransportdetail';
-    }
-
-    else if (this.applicationType == 71) {
-      detailPagePath='/licence/proposedbuildingplandetail';
-    }
-    else if (this.applicationType == 72) {
-      detailPagePath='/licence/existingbuildingplandetail';
-    }
-    else if (this.applicationType == 73) {
-      detailPagePath='/licence/additionamendmentbuildingplandetail';
-    }
-
-    else if (this.applicationType == 81) {
-      detailPagePath='/licence/psiecbuildingplandetail';
-    }
-    else if (this.applicationType == 8) {
-      detailPagePath='/licence/tradeuniondetail';
-    }
-    else if (this.applicationType == 40) {
-      detailPagePath='/licence/ismcontractlabourDetail';
-    }
-    else if (this.applicationType == 101) {
-      detailPagePath='/oshForm/form-1-registration-details';
-    }
     
     this.router.navigate([detailPagePath], {
       queryParams: {
