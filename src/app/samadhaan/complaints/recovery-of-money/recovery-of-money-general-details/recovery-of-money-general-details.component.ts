@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
 import { IOSH_Form_1_Registration, IComplaint_RecOfMon_DueDetail } from 'src/app/osh/osh-code-typed-models';
-import { IComplaint_RecOfMon_GeneralDetail, IComplaint_RecOfMon_AwardDetail, IComplaint_RecOfMon_NoticePayDetail, IComplaint_RecOfMon_RetrenchmentCompDetail, IComplaint_RecOfMon_LayOffDetail, IComplaint_RecOfMon_SettlementDetail, IComplaint_RecOfMon_LayOffCompDetail } from 'src/app/samadhaan/samadhaan-typed-modelts';
+import { IComplaint_RecOfMon_GeneralDetail, IComplaint_RecOfMon_AwardDetail, IComplaint_RecOfMon_NoticePayDetail, IComplaint_RecOfMon_RetrenchmentCompDetail, IComplaint_RecOfMon_LayOffDetail, IComplaint_RecOfMon_SettlementDetail, IComplaint_RecOfMon_LayOffCompDetail, IComplaint_RecoveryOfMoneyUnderIRCode } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { categoryTypeEnum } from 'src/app/shared.data';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
@@ -34,6 +34,8 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
     retrenchmentCompensationDetailsComponent: RetrenchmentCompensationDetailsComponent;
     @ViewChild(LayOffDetailsComponent)
     layOffDetailsComponent: LayOffDetailsComponent;
+    genericFormData: GenericFormModel<IComplaint_RecoveryOfMoneyUnderIRCode>;
+    
 
 
     public appFormStepsList: any[];
@@ -85,7 +87,8 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
         this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);
         this.Input_Form.controls.applicationType.patchValue(this.paramInfo?.applicationType);
         this.appHttpRequestHandlerService.httpGet({ id: this.paramInfo?.appRefId }, "Complaints", "getComplaintRecOfMonGeneralDetail").pipe(takeUntil(this.ngUnsubscribe))
-          .subscribe((data: GenericFormModel<IOSH_Form_1_Registration>) => { 
+          .subscribe((data: GenericFormModel<any>) => { 
+            this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList
             this.moneyDueOptions = data.enumTemplateLists.find(e => e.selectListTypeCode == "MoneyDueReasonTypeEnum").selectListItems
             this.initFormData(data)
@@ -108,6 +111,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((data: GenericFormModel<IComplaint_RecOfMon_DueDetail[]>) => {
           console.log('Money Due Details:', data);
+
           if(data.formModel && data.formModel.length > 0){
             data.formModel.forEach((value: IComplaint_RecOfMon_DueDetail) => {
               this.moneyDueReasonArray.push(value.moneyDueReasonType);

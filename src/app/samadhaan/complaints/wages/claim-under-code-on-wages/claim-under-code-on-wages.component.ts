@@ -155,8 +155,8 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getClaimUnderCodeOnWagesDetails')
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: GenericFormModel<IComplaint_Claim_CodeOnWage>) => {
-      this.claimUnderCodeOnWagesApiData = data
-       this.allowanceType = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
+      this.genericFormData = data;
+      this.allowanceType = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
       this.placeOfWorkTypeA = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
       this.placeOfWorkTypeB = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
       this.appFormStepsList = data.appFormStepsList

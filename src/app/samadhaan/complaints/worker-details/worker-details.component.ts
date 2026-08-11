@@ -28,6 +28,7 @@ export class WorkerDetailsComponent {
   allDistricts: any = [];
   paramInfo : any
   appFormStepsList : any
+  genericFormData: GenericFormModel<WorkerFormModel>;
 
   constructor(
   private fb: FormBuilder, 
@@ -82,6 +83,7 @@ export class WorkerDetailsComponent {
           this.paramInfo = info;
           this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((data: GenericFormModel<any>) => {
+              this.genericFormData = data;
               this.appFormStepsList = data.appFormStepsList;
                 if (data.formModel.id > 0) {
                  const formData = data.formModel;
