@@ -56,7 +56,8 @@ export class SelfComponent {
                   label: x.complaintTitle,
                   hasInfo: x.hasInfo,
                   info: x.info,
-                  disabled: ![1,2,3,4,5,6,7,9,10].includes(x.id)
+                  disabled: 0,
+                  complaintCategoryType : x.complaintCategoryType
                 };
 
                 if (!isFirstIssueAssigned) {
@@ -75,14 +76,14 @@ export class SelfComponent {
       });
   }
 
-  toggleIssue(id: number): void {
-    console.log('this is working')
-    const index = this.selectedIssues.indexOf(id);
+  toggleIssue(issue: any): void {
+    console.log('issue', issue);
+    const index = this.selectedIssues.indexOf(issue.id);
 
     if (index > -1) {
       this.selectedIssues.splice(index, 1);
     } else {
-      this.selectedIssues.push(id);
+      this.selectedIssues.push(issue);
       console.log('selected issue in child', this.selectedIssues)
       this.selectedIssueEventEmitter.emit(this.selectedIssues)
     }

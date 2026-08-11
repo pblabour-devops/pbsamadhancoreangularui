@@ -56,12 +56,8 @@ export class WorkerDetailsComponent {
     correspondenceDistrictRefId: ['', Validators.required],
     correspondencePincode: ['', Validators.required],
     appRefId: [0, Validators.required],
-    projectSiteRefId: [0, Validators.required],
     applicationType: [applicationTypeEnum.SAMADHAN_COMPLAINTS, Validators.required],
     applicationPurposeType: [0, Validators.required],
-    iPin: [0, Validators.required],
-    investPunjab_AppId: [0, Validators.required],
-    factoryCircleRefId: [1, Validators.required],
     projectSiteVersion: [1, Validators.required],
     toDoActivityModeType: [1, Validators.required],
     rootActivityRefId: ['defaultValue', Validators.required],
@@ -180,31 +176,13 @@ export class WorkerDetailsComponent {
   onSubmit(): void {
     if (this.Input_Form.valid) {
         this.Input_Form.controls.applicationPurposeType.patchValue(0);
-        // this.Input_Form.controls.iPin.patchValue(0);
-        // this.Input_Form.controls.investPunjab_AppId.patchValue(0);
         this.Input_Form.controls.projectSiteVersion.patchValue(1);
-        // this.Input_Form.controls..patchValue(1); // Static FactoryCircleRefId
         this.Input_Form.controls.rootActivityRefId.patchValue('Default');
         this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
         this.Input_Form.controls.applicationType.patchValue(100001);
-        // this.Input_Form.controls.projectSiteRefId.patchValue(388263); // static 
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-          // if(this.Input_Form.value.appRefId !=0){
             this.navigateToNextStep(data);
-          // } else {
-          // this.mapCategories(data);
-          // }
-            // this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='EPFO').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( {
-            //   identityKey: data.entityKeyId, 
-            //   appRefId: data.appId, 
-            //   applicationType: 101, 
-            //   projectSiteRefId: this.paramInfo?.projectSiteRefId,
-            //   applicationPurposeType: this.paramInfo?.applicationPurposeType,
-            //   investPunjab_AppId: this.paramInfo?.investPunjab_AppId,
-            //   iPin: this.paramInfo?.iPin,
-            //   projectSiteVersion: this.projectSiteVersion
-            // })}});
         });
     } else {
       this.Input_Form.markAllAsTouched();
@@ -221,14 +199,10 @@ export class WorkerDetailsComponent {
   const issueIds = this.paramInfo.selectedIssues.split(',').map((x: string) => Number(x.trim()));
 
   issueIds.forEach((issueId: number) => {
-    this.appHttpRequestHandlerService.httpPost(  {
-    appRefId: regFormRspData.appId,
-    complaintsCategoryRefId: issueId
-  },
-  "pbsamadhannetcoreapi.Models.AppComplaintTypeMapping","Complaints","createAppComplaintTypeMapping")
-    .pipe(takeUntil(this.ngUnsubscribe))
+    this.appHttpRequestHandlerService.httpPost({appRefId: regFormRspData.appId,complaintsCategoryRefId: issueId},
+ "pbsamadhannetcoreapi.Models.AppComplaintTypeMapping","Complaints","createAppComplaintTypeMapping").pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-if(!data.hasExceptions){
+      if(!data.hasExceptions){
       this.navigateToNextStep(regFormRspData);
       }
     }); 

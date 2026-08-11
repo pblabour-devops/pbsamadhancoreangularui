@@ -25,8 +25,9 @@ import { NoticePayDetailsComponent } from './complaints/recovery-of-money/notice
 import { RetrenchmentCompensationDetailsComponent } from './complaints/recovery-of-money/retrenchment-compensation-details/retrenchment-compensation-details.component';
 import { LayOffDetailsComponent } from './complaints/recovery-of-money/lay-off-details/lay-off-details.component';
 import { ReviewComponent } from './complaints/review/review.component';
+import { AppealComponent } from './complaints/appeal/appeal.component';
 @NgModule({
-  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent],
+  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

@@ -32300,8 +32300,8 @@ new-task label input[type=checkbox] {
 
 .section-card {
     border: 1px solid #e6eaf0;
-    padding: 25px;
-    margin-bottom: 30px;
+    padding: 12px;
+    margin-bottom: 10px;
     border-radius: 12px;
     background: #ffffff;
     transition: all 0.25s ease;

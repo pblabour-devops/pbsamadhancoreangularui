@@ -9,6 +9,7 @@ import { WagesComponent } from './complaints/wages/wages.component';
 import { DetailsComponent } from './complaints/details/details.component';
 import { RecoveryOfMoneyComponent } from './complaints/recovery-of-money/recovery-of-money.component';
 import { ReviewComponent } from './complaints/review/review.component';
+import { AppealComponent } from './complaints/appeal/appeal.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
    {path : 'wages',component : WagesComponent},
    {path : 'details',component : DetailsComponent},
    {path : 'review',component : ReviewComponent},
+   {path : 'appeal',component : AppealComponent},
 
 ];
 

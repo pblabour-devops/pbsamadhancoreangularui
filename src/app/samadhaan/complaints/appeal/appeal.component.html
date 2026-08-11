@@ -1,0 +1,179 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card">
+            <div class="m-2">
+                <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="appRefId">
+                    <input type="hidden" formControlName="applicationPurposeType">
+                    <input type="hidden" formControlName="projectSiteVersion">
+                    <input type="hidden" formControlName="toDoActivityModeType">
+                    <input type="hidden" formControlName="rootActivityRefId">
+                    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+                    <!-- Title bar -->
+                    <div class="title-bar">
+                        Application for Your Complaint
+                    </div>
+
+
+                    <!-- General Information label -->
+                    <div class="general-info-label">
+                        General Information <span class="required"></span>
+                    </div>
+                    <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+
+                    <!-- Basic / General Info -->
+                    <div class="card-body" style="margin-top: 0px;">
+
+
+
+                        <div class="section-card">
+                            <div class="row mb-2">
+                                <div class="col-md-6 ">
+                                    <label class="required">Order No against which appeal is being filled
+                                    </label>
+                                      <select formControlName="orderNumType" class="form-control">
+                                        <option value="" disabled selected>Select</option>
+                                        <option *ngFor="let type of orderNumTypes" [value]="type.value">{{ type.text }}</option>
+                                    </select>
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('orderNumType')?.invalid && Input_Form.get('orderNumType')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="required">Date of the Order</label>
+                                    <input type="date" formControlName="orderDate" class="form-control" />
+                                    <div class="text-danger" *ngIf="Input_Form.get('orderDate')?.invalid && Input_Form.get('orderDate')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Name of the Authority having passed the order</label>
+                                    <input type="text" formControlName="nameOfAuthority" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('nameOfAuthority')?.invalid && Input_Form.get('nameOfAuthority')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="required">Address of the Authority having passed the order</label>
+                                    <input type="text" formControlName="addressOfAuthority" class="form-control"/>
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('addressOfAuthority')?.invalid && Input_Form.get('addressOfAuthority')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Name of the Appellant</label>
+                                    <input type="text" formControlName="nameOfAppellant" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('nameOfAppellant')?.invalid && Input_Form.get('nameOfAppellant')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="required">Address of the Appellant</label>
+                                    <input type="email" formControlName="addressOfAppellant" class="form-control mb-2" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('addressOfAppellant')?.invalid && Input_Form.get('addressOfAppellant')?.touched">
+                                        Required
+                                    </div>  
+                                </div>
+                            </div>
+
+                                <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Name of the Respondent</label>
+                                    <input type="text" formControlName="nameOfRespondent" class="form-control"/>
+                                        <div class="text-danger"
+                                        *ngIf="Input_Form.get('nameOfRespondent')?.invalid && Input_Form.get('nameOfRespondent')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="required">Address of the Respondent</label>
+                                    <input type="email" formControlName="addressOfRespondent" class="form-control mb-2" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('addressOfRespondent')?.invalid && Input_Form.get('addressOfRespondent')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                               <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Facts of Case </label>
+                                    <input type="text" formControlName="factsOfCase" class="form-control" />
+                                        <div class="text-danger"
+                                        *ngIf="Input_Form.get('factsOfCase')?.invalid && Input_Form.get('factsOfCase')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Grounds of Appeal</label>
+                                    <input type="text" formControlName="groundOfAppeal" class="form-control" />
+                                        <div class="text-danger"
+                                        *ngIf="Input_Form.get('groundOfAppeal')?.invalid && Input_Form.get('groundOfAppeal')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="required">Relief Sought </label>
+                                    <input type="text" formControlName="reliefsought" class="form-control mb-2" />
+                                    <div class="text-danger" *ngIf="Input_Form.get('reliefsought')?.invalid && Input_Form.get('reliefsought')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label class="required">Remarks, if any</label>
+                                    <input type="text" formControlName="remarks" class="form-control" />
+                                        <div class="text-danger"
+                                        *ngIf="Input_Form.get('remarks')?.invalid && Input_Form.get('remarks')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                            <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+                            Reset
+                            </button>
+                            <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
+                            Save as Draft
+                            </button> -->
+                            <button type="submit" class="btn btn-primary">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

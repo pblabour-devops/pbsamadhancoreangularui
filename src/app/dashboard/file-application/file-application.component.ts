@@ -14,7 +14,7 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
   standalone: false
 })
 export class FileApplicationComponent {
-  selectedIssues: number[] = [];
+  selectedIssues!: any
 
  filingTypes: string[] = [
     'Self',
@@ -39,7 +39,28 @@ export class FileApplicationComponent {
       alert('Please select at least one issue before proceeding.');
       return;
     }
-    this.router.navigate(['/samadhaan/worker-details'], {queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64({ selectedIssues: this.selectedIssues.join(',') }) } });
+    console.log('Selected Issues:', this.selectedIssues);
+    if (this.selectedIssues.some(
+      x => x.complaintCategoryType === 1 ||
+          x.complaintCategoryType === 2 ||
+          x.complaintCategoryType === 4
+    )) {
+      this.router.navigate(['/samadhaan/worker-details'], {
+        queryParams: {
+          info: this.commonOpsService.encodeQueryParamsInBase64({
+            selectedIssues: this.selectedIssues.map(x => x.id).join(',')
+          })
+        }
+      });
+    } else {
+      this.router.navigate(['/samadhaan/appeal'], {
+        queryParams: {
+          info: this.commonOpsService.encodeQueryParamsInBase64({
+            selectedIssues: this.selectedIssues.map(x => x.id).join(',')
+          })
+        }
+      });
+    }
   }
 
   setSelectedIssues(event){

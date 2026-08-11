@@ -419,3 +419,26 @@ export interface IComplaint_Review_GeneralDetail {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_Appeal {
+  id: number;
+  orderNumType: any;
+  orderDate: string | Date;
+  nameOfAuthority: string;
+  addressOfAuthority: string;
+  nameOfAppellant: string;
+  addressOfAppellant: string;
+  nameOfRespondent: string;
+  addressOfRespondent: string;
+  factsOfCase: string;
+  groundOfAppeal: string;
+  reliefsought: string;
+  remarks: string;
+  appRefId: number;
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}

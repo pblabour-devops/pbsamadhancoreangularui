@@ -12,7 +12,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            (change)="toggleIssue(issue.id)"
+            (change)="toggleIssue(issue)"
             [id]="issue.id"
             [disabled]="issue.disabled">
           <label class="form-check-label small" [for]="issue.id" [class.text-muted]="issue.disabled">

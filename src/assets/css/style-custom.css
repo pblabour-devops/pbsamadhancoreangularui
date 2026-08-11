@@ -31,13 +31,12 @@
 }
 
 .form-control{    
-    min-height: 50px;
+    min-height: 38px;
     border: 1px solid #b4d1ee;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: #707070;
-    border-radius: 25px;
 }   
 
 .form-group label{
