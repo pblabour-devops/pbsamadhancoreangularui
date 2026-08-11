@@ -1,32 +1,30 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AppFormStepsInfo, GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
-import { IComplaint_RecOfMon_AwardDetail, IComplaint_RecOfMon_GeneralDetail, IComplaint_RecOfMon_LayOffCompDetail, IComplaint_RecOfMon_LayOffDetail, IComplaint_RecOfMon_NoticePayDetail, IComplaint_RecOfMon_RetrenchmentCompDetail, IComplaint_RecOfMon_SettlementDetail } from '../../samadhaan-typed-modelts';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonOpsService } from 'src/app/shared/common-ops-service';
-import { AppHttpInterceptor } from 'src/app/shared/app-http.interceptor';
-import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
-import { takeUntil } from 'rxjs/operators';
-import { IComplaint_RecOfMon_DueDetail, IOSH_Form_1_Registration } from 'src/app/osh/osh-code-typed-models';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
+import { IOSH_Form_1_Registration, IComplaint_RecOfMon_DueDetail } from 'src/app/osh/osh-code-typed-models';
+import { IComplaint_RecOfMon_GeneralDetail, IComplaint_RecOfMon_AwardDetail, IComplaint_RecOfMon_NoticePayDetail, IComplaint_RecOfMon_RetrenchmentCompDetail, IComplaint_RecOfMon_LayOffDetail, IComplaint_RecOfMon_SettlementDetail, IComplaint_RecOfMon_LayOffCompDetail } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { categoryTypeEnum } from 'src/app/shared.data';
+import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
+import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
-import { SettlementDetailsComponent } from './settlement-details/settlement-details.component';
 import Swal from 'sweetalert2';
-import { AwardDetailsComponent } from './award-details/award-details.component';
-import { NoticePayDetailsComponent } from './notice-pay-details/notice-pay-details.component';
-import { RetrenchmentCompensationDetailsComponent } from './retrenchment-compensation-details/retrenchment-compensation-details.component';
-import { LayOffDetailsComponent } from './lay-off-details/lay-off-details.component';
+import { AwardDetailsComponent } from '../award-details/award-details.component';
+import { LayOffDetailsComponent } from '../lay-off-details/lay-off-details.component';
+import { NoticePayDetailsComponent } from '../notice-pay-details/notice-pay-details.component';
+import { RetrenchmentCompensationDetailsComponent } from '../retrenchment-compensation-details/retrenchment-compensation-details.component';
+import { SettlementDetailsComponent } from '../settlement-details/settlement-details.component';
 
 @Component({
-  selector: 'app-recovery-of-money',
+  selector: 'app-recovery-of-money-general-details',
   standalone: false,
-  templateUrl: './recovery-of-money.component.html',
-  styleUrl: './recovery-of-money.component.css',
+  templateUrl: './recovery-of-money-general-details.component.html',
+  styleUrl: './recovery-of-money-general-details.component.css',
 })
-export class RecoveryOfMoneyComponent {
-  
-    @ViewChild(SettlementDetailsComponent)
+export class RecoveryOfMoneyGeneralDetailsComponent {
+  @ViewChild(SettlementDetailsComponent)
     settlementDetailsComponent: SettlementDetailsComponent;
     @ViewChild(AwardDetailsComponent)
     awardDetailsComponent: AwardDetailsComponent;
