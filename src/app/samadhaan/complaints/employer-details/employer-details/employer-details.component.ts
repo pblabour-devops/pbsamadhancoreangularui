@@ -4,13 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppFormStepsInfo, GenericFormModel, TForm } from 'src/app/generic-implementation/generic-form-builder.type';
+import { IComplaint_EmployerDetail, IComplaint_WorkplaceDetail, IComplaint_EstablishmentDetail } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
-import { IComplaint_EmployerDetail, IComplaint_EstablishmentDetail, IComplaint_WorkplaceDetail } from '../../samadhaan-typed-modelts';
 import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
-import { EstablishmentDetailsComponent } from './establishment-details/establishment-details.component';
-import { WorkplaceDetailsComponent } from './workplace-details/workplace-details.component';
 import Swal from 'sweetalert2';
+import { EstablishmentDetailsComponent } from '../establishment-details/establishment-details.component';
+import { WorkplaceDetailsComponent } from '../workplace-details/workplace-details.component';
 
 @Component({
   selector: 'app-employer-details',

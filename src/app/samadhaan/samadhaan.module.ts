@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SamadhaanRoutingModule } from './samadhaan-routing.module';
-import { EmployerDetailsComponent } from './complaints/employer-details/employer-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { WorkplaceDetailsComponent } from './complaints/employer-details/workplace-details/workplace-details.component';
@@ -10,7 +9,6 @@ import { EstablishmentDetailsComponent } from './complaints/employer-details/est
 import { GratuityClaimsComponent } from './complaints/gratuity-claims/gratuity-claims.component';
 import { MbComplaintComponent } from './complaints/mb-complaint/mb-complaint.component';
 import { ClaimUnderCodeOnWagesComponent } from './complaints/wages/claim-under-code-on-wages/claim-under-code-on-wages.component';
-import { WagesComponent } from './complaints/wages/wages.component';
 import { MinimumWagesNotPaidComponent } from './complaints/wages/minimum-wages-not-paid/minimum-wages-not-paid.component';
 import { WagesWeeklydayComponent } from './complaints/wages/wages-weeklyday/wages-weeklyday.component';
 import { WagesWorkingOvertimeComponent } from './complaints/wages/wages-working-overtime/wages-working-overtime.component';
@@ -26,8 +24,9 @@ import { RetrenchmentCompensationDetailsComponent } from './complaints/recovery-
 import { LayOffDetailsComponent } from './complaints/recovery-of-money/lay-off-details/lay-off-details.component';
 import { ReviewComponent } from './complaints/review/review.component';
 import { AppealComponent } from './complaints/appeal/appeal.component';
+import { EmployerDetailsComponent } from './complaints/employer-details/employer-details/employer-details.component';
 @NgModule({
-  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, WagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent],
+  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, RecoveryOfMoneyComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,
