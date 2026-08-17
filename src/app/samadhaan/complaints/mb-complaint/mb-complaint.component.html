@@ -2,7 +2,7 @@
     <div class="pcoded-content">
         <div class="card" >
             <div class="m-2">
-<form [formGroup]="Input_Form">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
     <input type="hidden" formControlName="applicationPurposeType">
@@ -81,7 +81,6 @@
         <div class="form-group col-md-4">
           <label>Maternity Benefit <span class="text-danger">*</span></label>
           <div class="input-group">
-            <span class="input-group-text">₹</span>
             <input
               type="number"
               class="form-control"
@@ -93,7 +92,6 @@
         <div class="form-group col-md-4">
           <label>Medical Bonus (Maternity) <span class="text-danger">*</span></label>
           <div class="input-group">
-            <span class="input-group-text">₹</span>
             <input
               type="number"
               class="form-control"
@@ -105,7 +103,6 @@
         <div class="form-group col-md-4">
           <label>Wages for Maternity Leave <span class="text-danger">*</span></label>
           <div class="input-group">
-            <span class="input-group-text">₹</span>
             <input
               type="number"
               class="form-control"

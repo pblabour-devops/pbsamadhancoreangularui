@@ -48,7 +48,7 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
     appRefId: [0, Validators.required],
     isEngagedThroughContractor: [true, Validators.required],
     isEstablishmentCentralGovernment: [true, Validators.required],
-    establishmentTyp: [''],
+    establishmentType: [''],
     employerORContractorNameAndDesignation: ['', [Validators.required, Validators.maxLength(300)]],
     employerORContractorAddress: ['', [Validators.required, Validators.maxLength(500)]],
     state: ['', Validators.required],

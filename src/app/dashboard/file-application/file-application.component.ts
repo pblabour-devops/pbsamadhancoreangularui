@@ -33,7 +33,6 @@ export class FileApplicationComponent {
     private router : Router, 
     private commonOpsService: CommonOpsService){}
 
-
   selectedissue(){
     if(this.selectedIssues.length === 0) {
       alert('Please select at least one issue before proceeding.');

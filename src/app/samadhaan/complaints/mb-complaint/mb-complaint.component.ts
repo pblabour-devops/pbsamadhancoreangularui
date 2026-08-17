@@ -154,9 +154,6 @@ export class MbComplaintComponent {
   )
   .pipe(takeUntil(this.ngUnsubscribe))
   .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-    debugger;
-    console.log('API Response:', data);
-
     this.router.navigate(
       [this.appFormStepsList.find(x => x.stepCode === 'MBC')?.uiNextPageComponentPath],
       {

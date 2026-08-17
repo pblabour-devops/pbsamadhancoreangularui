@@ -45,7 +45,7 @@ export class GratuityClaimsComponent {
     id: [0, Validators.required],
 
     // Claim Information
-    basisOfClaim: ['', Validators.required],
+    basisOfClaimType: ['', Validators.required],
     employmentStartDate: [''],
     employmentEndDate: [''],
     yearsOfContinuousService: ['', Validators.required],
@@ -246,6 +246,7 @@ export class GratuityClaimsComponent {
         const control = this.Input_Form.get(key);
     
         if (control?.invalid) {
+          
 }
       });
     }

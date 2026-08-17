@@ -3,7 +3,7 @@
         <div class="card" >
             <div class="m-2">
 
-  <form [formGroup]="Input_Form">
+  <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
     <input type="hidden" formControlName="applicationPurposeType">

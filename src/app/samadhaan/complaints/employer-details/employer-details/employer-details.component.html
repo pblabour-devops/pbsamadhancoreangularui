@@ -70,7 +70,7 @@
           <label class="required">Establishment Type</label>
           <select
             class="form-control"
-            formControlName="establishmentTyp"
+            formControlName="establishmentType"
            >
             <option value="">Select</option>
             <option *ngFor="let establishment of establishments" [value]="establishment.value">
@@ -79,7 +79,7 @@
           </select>
           <div
           class="text-danger"
-          *ngIf="Input_Form.get('state')?.invalid && Input_Form.get('state')?.touched">
+          *ngIf="Input_Form.get('establishmentType')?.invalid && Input_Form.get('establishmentType')?.touched">
           Required
         </div>
         </div>

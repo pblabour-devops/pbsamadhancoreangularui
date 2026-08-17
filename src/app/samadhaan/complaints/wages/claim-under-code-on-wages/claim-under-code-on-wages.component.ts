@@ -156,9 +156,9 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: GenericFormModel<IComplaint_Claim_CodeOnWage>) => {
       this.genericFormData = data;
-      this.allowanceType = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
-      this.placeOfWorkTypeA = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
-      this.placeOfWorkTypeB = this.claimUnderCodeOnWagesApiData?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
+      this.allowanceType = data?.enumTemplateLists.find(e => e.selectListTypeCode === 'AllowanceTypeEnum').selectListItems;
+      this.placeOfWorkTypeA = data?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
+      this.placeOfWorkTypeB = data?.enumTemplateLists.find(e => e.selectListTypeCode === 'PlaceOfWorkTypeEnum').selectListItems
       this.appFormStepsList = data.appFormStepsList
       if(data.formModel){
       this.Input_Form.patchValue(data.formModel);

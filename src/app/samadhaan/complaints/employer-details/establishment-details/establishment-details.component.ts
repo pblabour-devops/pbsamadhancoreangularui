@@ -62,7 +62,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
     employmentStartDate: ['', Validators.required],
     employmentEndDate: ['', Validators.required],
 
-    wagePeriod: ['', Validators.required],
+    wagePeriodType: ['', Validators.required],
     wageRate: ['', [Validators.required]],
 
     // NotMapped — application context fields

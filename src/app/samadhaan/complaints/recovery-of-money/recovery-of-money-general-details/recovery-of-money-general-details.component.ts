@@ -323,7 +323,6 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
           }
     
     navigateToNextStep(data: ICRUD_CreateUpdateOperationResponse, stepNumber: number) {
-    debugger;
     if(this.Input_Form.value.moneyDueOptions.at(-1) === stepNumber){
     this.router.navigate(
           [this.appFormStepsList.find(x => x.stepCode === 'RM')?.uiNextPageComponentPath],

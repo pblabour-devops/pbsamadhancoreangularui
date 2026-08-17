@@ -2,7 +2,7 @@
     <div class="pcoded-content">
         <div class="card" >
             <div class="m-2">
-<form [formGroup]="Input_Form">
+<form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
     <input type="hidden" formControlName="projectSiteRefId">
@@ -34,8 +34,8 @@
           <label>Select basis of claim <span class="text-danger">*</span></label>
           <select
             class="form-control"
-            formControlName="basisOfClaim"
-            [class.is-invalid]="formControls.basisOfClaim.touched && formControls.basisOfClaim.invalid">
+            formControlName="basisOfClaimType"
+            [class.is-invalid]="formControls.basisOfClaimType.touched && formControls.basisOfClaimType.invalid">
             <option value="">Select</option>
             <option *ngFor="let b of basisOfClaimOptions" [value]="b.value">{{ b.text }}</option>
           </select>
