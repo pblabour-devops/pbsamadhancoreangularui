@@ -16,16 +16,10 @@ import { CommonOpsService } from 'src/app/shared/common-ops-service';
 export class FileApplicationComponent {
   selectedIssues!: any
 
- filingTypes: string[] = [
-    'Self',
-    'Nominee',
-    'Legal Heir',
-    'Legal Representative',
-    'Authorized Representative',
-  ];
+ filingTypes: any[]
 
 
-  selectedFilingType = 'Self';
+  selectedFilingType = 1;
 
   protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -39,6 +33,7 @@ export class FileApplicationComponent {
   ngAfterViewInit() {
     this.appHttpRequestHandlerService.httpGet({}, "Complaints", "getSelfComplaints").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: GenericFormModel<IComplainantTypeComplaintTypeMapping>) => { 
+        this.filingTypes = data.enumTemplateLists.find(e => e.selectListTypeCode == 'ComplainantTypeEnum').selectListItems
         console.log('data', data);
       });
   }

@@ -21,10 +21,10 @@
                   <input
                     type="radio"
                     name="filingType"
-                    [id]="type"
-                    [value]="type"
+                    [id]="type.value"
+                    [value]="+type.value"
                     [(ngModel)]="selectedFilingType">
-                  <span>{{ type }}</span>
+                  <span>{{ type.text }}</span>
                 </label>
               </div>
 
@@ -36,7 +36,37 @@
             </p>
             <hr class="mb-4">
 
-            @if(selectedFilingType == 'Self'){
+            <div class="row g-4">
+        <div class="col-md-6" *ngFor="let category of categories">
+          <div class="border h-100">
+
+            <div class="category-header text-white fw-semibold px-3 py-2">
+              {{ category.title }}
+            </div>
+
+            <div class="p-3">
+              <div class="form-check mb-2" *ngFor="let issue of category.issues">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  (change)="toggleIssue(issue)"
+                  [id]="issue.id"
+                  [disabled]="issue.disabled">
+                <label class="form-check-label small" [for]="issue.id" [class.text-muted]="issue.disabled">
+                  {{ issue.label }}
+                  <span class="tooltip-wrapper" *ngIf="issue.hasInfo">
+                    <span class="info-icon">i</span>
+                    <span class="tooltip-content">{{ issue.info || issue.label }}</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+            <!-- @if(selectedFilingType == 'Self'){
               <app-self (selectedIssueEventEmitter)="setSelectedIssues($event)"></app-self>
             }
             @if(selectedFilingType == 'Nominee'){
@@ -53,7 +83,7 @@
             }
             @if(selectedFilingType == 'Group of Workers'){
               <app-group-of-workers></app-group-of-workers>
-            }
+            } -->
 
             <hr class="my-4">
 
