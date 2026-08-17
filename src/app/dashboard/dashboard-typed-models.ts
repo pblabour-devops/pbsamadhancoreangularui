@@ -1169,5 +1169,10 @@ export interface FAQ {
   isOpen: boolean;
 }
 
+export interface IComplainantTypeComplaintTypeMapping {
+  id: number;
+  complainantType: number;
+  complaintType: number;
+}
 
   // End 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, ComplaintCategory } from '../dashboard-typed-models';
+import { Category, ComplaintCategory, IComplainantTypeComplaintTypeMapping } from '../dashboard-typed-models';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { GenericFormModel } from 'src/app/generic-implementation/generic-form-builder.type';
 import { takeUntil } from 'rxjs/operators';
@@ -27,11 +27,21 @@ export class FileApplicationComponent {
 
   selectedFilingType = 'Self';
 
+  protected ngUnsubscribe: Subject<void> = new Subject<void>();
 
 
   constructor(
     private router : Router, 
-    private commonOpsService: CommonOpsService){}
+    private commonOpsService: CommonOpsService,
+    private appHttpRequestHandlerService : AppHttpRequestHandlerService){}
+
+    
+  ngAfterViewInit() {
+    this.appHttpRequestHandlerService.httpGet({}, "Complaints", "getSelfComplaints").pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: GenericFormModel<IComplainantTypeComplaintTypeMapping>) => { 
+        console.log('data', data);
+      });
+  }
 
   selectedissue(){
     if(this.selectedIssues.length === 0) {
@@ -66,5 +76,10 @@ export class FileApplicationComponent {
   this.selectedIssues = event;
   console.log('selected issue', this.selectedIssues)
   }
+
+  ngOnDestroy() {
+      this.ngUnsubscribe.next();
+      this.ngUnsubscribe.complete();
+    }
 
 }
