@@ -9,6 +9,7 @@ import { ReviewComponent } from './complaints/review/review.component';
 import { AppealComponent } from './complaints/appeal/appeal.component';
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details/employer-details.component';
 import { RecoveryOfMoneyGeneralDetailsComponent } from './complaints/recovery-of-money/recovery-of-money-general-details/recovery-of-money-general-details.component';
+import { IndustrialDisputesComponent } from './complaints/industrial-disputes/industrial-disputes.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
    {path : 'details',component : DetailsComponent},
    {path : 'review',component : ReviewComponent},
    {path : 'appeal',component : AppealComponent},
+   {path : 'industrial-disputes',component : IndustrialDisputesComponent},
 
 ];
 

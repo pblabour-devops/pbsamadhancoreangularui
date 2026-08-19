@@ -442,3 +442,54 @@ export interface IComplaint_Appeal {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_IndustrialDispute {
+  id: number;
+
+  industrialDisputeType: number | string;
+
+  dateOfAppointment: string | Date;
+  dateOfAction: string | Date;
+
+  industrialDisputeDetails: string;
+  otherReason: string;
+  otherRelief: string;
+  reliefSought: string;
+
+  addressOfRespondent: string;
+  remarks: string;
+
+  appRefId: number;
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_IndustrialDisputeReasonMapping {
+  id: number;
+  appRefId: number;
+  industrialDisputesReasonType: number;
+
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_IndustrialDisputeReliefSoughtMapping {
+  id: number;
+  appRefId: number;
+  industrialDisputesReliefSoughtType: number;
+
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}

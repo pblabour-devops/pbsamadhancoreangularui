@@ -35,7 +35,8 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
     @ViewChild(LayOffDetailsComponent)
     layOffDetailsComponent: LayOffDetailsComponent;
     genericFormData: GenericFormModel<IComplaint_RecoveryOfMoneyUnderIRCode>;
-    
+    moneyDueReasonArray : any[] = [];
+
 
 
     public appFormStepsList: any[];
@@ -341,7 +342,6 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
       }
     }
 
-    moneyDueReasonArray : any[] = [];
     saveMoneyDueDetails(){
       const moneyDueOptions = this.Input_Form.get('moneyDueOptions')?.value as string[];
 

@@ -1,0 +1,148 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card">
+            <div class="m-2">
+                <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="appRefId">
+                    <input type="hidden" formControlName="applicationPurposeType">
+                    <input type="hidden" formControlName="projectSiteVersion">
+                    <input type="hidden" formControlName="toDoActivityModeType">
+                    <input type="hidden" formControlName="rootActivityRefId">
+                    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+                    <!-- Title bar -->
+                    <div class="title-bar">
+                        Application for Your Complaint
+                    </div>
+
+
+                    <!-- General Information label -->
+                    <div class="general-info-label">
+                        General Information <span class="required"></span>
+                    </div>
+                    <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+
+                    <!-- Basic / General Info -->
+                    <div class="card-body" style="margin-top: 0px;">
+
+
+
+                        <div class="section-card">
+                            <div class="row mb-2">
+                                <div class="col-md-4">
+                                    <label class="required">Industrial Dispute Type 
+                                    </label>
+                                      <select formControlName="orderNumType" class="form-control">
+                                        <option value="" disabled selected>Select</option>
+                                        <option *ngFor="let type of industrialDisputeTypes" [value]="type.value">{{ type.text }}</option>
+                                    </select>
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('industrialDisputeType')?.invalid && Input_Form.get('industrialDisputeType')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                  <div class="col-md-4">
+                                    <label class="required">Date of Appointment </label>
+                                    <input type="date" formControlName="dateOfAppointment" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('dateOfAppointment')?.invalid && Input_Form.get('dateOfAppointment')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-4">
+                                    <label class="required">Date of Termination </label>
+                                    <input type="date" formControlName="dateOfAction" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('dateOfAction')?.invalid && Input_Form.get('dateOfAction')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                 <div class="col-md-6 mb-4 ">
+                                <label class="form-label fw-semibold">
+                                    State reasons as to why the action is illegal in your opinion:<span class="text-danger">*</span>
+                                </label>
+                                <select  class="form-control" multiple formControlName="industrialDisputeReasonTypes">
+                                    <option value="" disabled selected>Select</option>
+                                    <option *ngFor="let option of industrialDisputeReasonTypes" [value]="+option.value">{{ option.text }}</option>
+                                </select>
+                                <div
+                                    class="text-danger"
+                                    *ngIf="Input_Form.get('industrialDisputeReasonTypes')?.invalid && Input_Form.get('industrialDisputeReasonTypes')?.touched">
+                                    Required
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-6 mb-4 ">
+                                <label class="form-label fw-semibold">
+                                   Relief Sought (Select the applicable options):<span class="text-danger">*</span>
+                                </label>
+                                <select  class="form-control"  multiple formControlName="industrialDisputeReliefSoughtTypes">
+                                    <option value="" disabled selected>Select</option>
+                                    <option *ngFor="let option of reliefSoughtTypes" [value]="+option.value">{{ option.text }}</option>
+                                </select>
+                                <div
+                                    class="text-danger"
+                                    *ngIf="Input_Form.get('industrialDisputeReliefSoughtTypes')?.invalid && Input_Form.get('industrialDisputeReliefSoughtTypes')?.touched">
+                                    Required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+
+                                <div class="col-md-6">
+                                    <label class="required">State Reason (if selected any other reason):</label>
+                                    <input type="email" formControlName="otherReason" class="form-control mb-2" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('otherReason')?.invalid && Input_Form.get('otherReason')?.touched">
+                                        Required
+                                    </div>  
+                                </div>
+                                        <div class="col-md-6">
+                                    <label class="required">State Relief (if selected any other relief):</label>
+                                    <input type="text" formControlName="otherRelief" class="form-control"/>
+                                        <div class="text-danger"
+                                        *ngIf="Input_Form.get('otherRelief')?.invalid && Input_Form.get('otherRelief')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="row mb-2">
+
+                                <div class="col-md-6">
+                                    <input type="checkbox"  class="form-control mb-2" />
+                                    <label class="required">I hereby declare that the information provided by me is true and correct to the best of my knowledge and belief. I understand that any false information may lead to legal consequences.</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                            <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+                            Reset
+                            </button>
+                            <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
+                            Save as Draft
+                            </button> -->
+                            <button type="submit" class="btn btn-primary">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
