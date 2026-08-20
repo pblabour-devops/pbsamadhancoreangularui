@@ -35,7 +35,7 @@
                                 <div class="col-md-4">
                                     <label class="required">Industrial Dispute Type 
                                     </label>
-                                      <select formControlName="orderNumType" class="form-control">
+                                      <select formControlName="industrialDisputeType" class="form-control">
                                         <option value="" disabled selected>Select</option>
                                         <option *ngFor="let type of industrialDisputeTypes" [value]="type.value">{{ type.text }}</option>
                                     </select>
@@ -45,6 +45,7 @@
                                     </div>
                                 </div>
 
+                                
                                   <div class="col-md-4">
                                     <label class="required">Date of Appointment </label>
                                     <input type="date" formControlName="dateOfAppointment" class="form-control" />
@@ -116,10 +117,11 @@
                                 </div>
                             </div>
 
-                                <div class="row mb-2">
-
-                                <div class="col-md-6">
-                                    <input type="checkbox"  class="form-control mb-2" />
+                                <div class="d-flex">
+                                <div>
+                                    <input type="checkbox" />
+                                    </div>
+                                    <div class="ml-2">
                                     <label class="required">I hereby declare that the information provided by me is true and correct to the best of my knowledge and belief. I understand that any false information may lead to legal consequences.</label>
                                 </div>
                             </div>

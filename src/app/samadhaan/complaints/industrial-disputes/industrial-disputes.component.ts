@@ -35,7 +35,7 @@ export class IndustrialDisputesComponent {
 
       Input_Form : TForm<IComplaint_IndustrialDispute> = this.fb.group({
       id : [0, Validators.required],
-      industrialDisputeType: ['1'],
+      industrialDisputeType: ['', Validators.required],
       dateOfAppointment: ['', Validators.required],
       dateOfAction: ['', Validators.required],
       industrialDisputeReasonTypes : ['', Validators.required],
@@ -50,7 +50,7 @@ export class IndustrialDisputesComponent {
       projectSiteVersion: [1, Validators.required],
       toDoActivityModeType: [1, Validators.required],
       rootActivityRefId: [''],
-      toDoActivityCategoryType: [1, Validators.required]
+      toDoActivityCategoryType: [2029, Validators.required]
     })as TForm<IComplaint_IndustrialDispute>;
 
   ngAfterViewInit(){
@@ -65,6 +65,11 @@ export class IndustrialDisputesComponent {
                  
                   if (data.formModel) {
                    const formData = data.formModel;
+                    Object.keys(formData).forEach(key => {
+                    if (formData[key] && typeof formData[key] === 'string' && formData[key].includes('T')) {
+                      formData[key] = formData[key].split('T')[0];
+                    }
+                  });
                   this.Input_Form.patchValue(formData);
                   this.Input_Form.patchValue({ toDoActivityModeType: 2});
                   this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
@@ -113,17 +118,6 @@ export class IndustrialDisputesComponent {
     onSubmit(): void {
       if (this.Input_Form.valid) {
           this.saveIndustrailDisputeReasonDetails();
-          return;
-          this.saveIndustrailDisputeReliefSoughtDetails()
-          this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo.applicationPurposeType);
-          this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo.projectSiteVersion);
-          this.Input_Form.controls.rootActivityRefId.patchValue(this.paramInfo.rootActivityRefId);
-          this.Input_Form.controls.toDoActivityCategoryType.patchValue(categoryTypeEnum.INDIVIDUAL_COMPLAINT_INDUSTRIAL_DISPUTES);
-          this.Input_Form.controls.applicationType.patchValue(this.paramInfo.applicationType);
-          console.log('input form value', this.Input_Form.value);
-          this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDispute", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
-            .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-          });
       } else {
           this.Input_Form.markAllAsTouched();
          console.log('input form', this.Input_Form.value);
@@ -151,7 +145,7 @@ export class IndustrialDisputesComponent {
 
    saveIndustrailDisputeReasonDetails(){
       const industrialDisputeReasonOptions = this.Input_Form.get('industrialDisputeReasonTypes')?.value as string[];
-
+      console.log('industrialDisputeReasonOptions', industrialDisputeReasonOptions)
       industrialDisputeReasonOptions.forEach((value: string) => {
       const data: any = {};
       data.id = 0;
@@ -167,6 +161,7 @@ export class IndustrialDisputesComponent {
       this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDisputeReasonMapping", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
        console.log('Money Due Details saved successfully for value:', value);
+       this.saveIndustrailDisputeReliefSoughtDetails();
       });
     })
   }
@@ -180,27 +175,42 @@ export class IndustrialDisputesComponent {
       data.appRefId = this.paramInfo.appRefId;
       data.applicationPurposeType = this.paramInfo.applicationPurposeType;
       data.projectSiteVersion =this.paramInfo.projectSiteVersion
-      data.rootActivityRefId  = '';
-      data.applicationType = 100001;
+      data.rootActivityRefId  = this.paramInfo.rootActivityRefId;
+      data.applicationType = this.paramInfo.applicationType;
       data.toDoActivityCategoryType = categoryTypeEnum.INDIVIDUAL_COMPLAINT_IND_DIS_REL_SOU;
       data.todoActivityModeType = this.industrialDisputeReliefSoughtArray.length > 0 ? 2 : 1;
       data.IndustrialDisputesReliefSoughtType = Number(value);
       this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDisputeReliefSoughtMapping", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
        console.log('Money Due Details saved successfully for value:', value);
+       this.saveIndustrialDisputeForm();
       });
     })
   }
 
+  saveIndustrialDisputeForm(){
+      this.Input_Form.controls.appRefId.patchValue(this.paramInfo.appRefId)
+      this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo.applicationPurposeType);
+      this.Input_Form.controls.projectSiteVersion.patchValue(this.paramInfo.projectSiteVersion);
+      this.Input_Form.controls.rootActivityRefId.patchValue(this.paramInfo.rootActivityRefId);
+      this.Input_Form.controls.toDoActivityCategoryType.patchValue(categoryTypeEnum.INDIVIDUAL_COMPLAINT_INDUSTRIAL_DISPUTES);
+      this.Input_Form.controls.applicationType.patchValue(this.paramInfo.applicationType);
+      console.log('input form value', this.Input_Form.value);
+      this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDispute", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+          this.navigateToNextStep(data);
+      });
+  }
+
 
      navigateToNextStep(regFormRspData : ICRUD_CreateUpdateOperationResponse){
-        this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='AP').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( 
+        this.router.navigate([this.appFormStepsList.find(x=>x.stepCode=='ID').uiNextPageComponentPath],{queryParams: { info: this.commonOpsService.encodeQueryParamsInBase64( 
         { 
           identityKey: regFormRspData.entityKeyId,
           appRefId: regFormRspData.appId,
-          applicationType: 100001,
-          applicationPurposeType: 0,
-          projectSiteVersion: 1,
+          applicationType: this.paramInfo?.applicationType,
+          applicationPurposeType: this.paramInfo?.applicationPurposeType,
+          projectSiteVersion: this.paramInfo?.projectSiteVersion
         })
       }});
   }
