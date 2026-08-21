@@ -36,7 +36,7 @@
                                     <label class="required">Industrial Dispute Type 
                                     </label>
                                       <select formControlName="industrialDisputeType" class="form-control">
-                                        <option value="" disabled selected>Select</option>
+                                        <option value="" selected>Select</option>
                                         <option *ngFor="let type of industrialDisputeTypes" [value]="type.value">{{ type.text }}</option>
                                     </select>
                                     <div class="text-danger"
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
 
-                                
+                                @if(Input_Form.get('industrialDisputeType').value && Input_Form.get('industrialDisputeType')?.value != 5){
                                   <div class="col-md-4">
                                     <label class="required">Date of Appointment </label>
                                     <input type="date" formControlName="dateOfAppointment" class="form-control" />
@@ -56,17 +56,23 @@
                                 </div>
 
                                     <div class="col-md-4">
-                                    <label class="required">Date of Termination </label>
-                                    <input type="date" formControlName="dateOfAction" class="form-control" />
+                                <label class="required">
+                                Date of
+                                {{Input_Form.get('industrialDisputeType')?.value == 1 ? 'Dismissal' : Input_Form.get('industrialDisputeType')?.value == 2 ? 'Discharge' : Input_Form.get('industrialDisputeType')?.value == 3 ? 'Retrenchment' : Input_Form.get('industrialDisputeType')?.value == 4 ? 'Termination' : ''
+                                }}
+                                </label>
+                                <input type="date" formControlName="dateOfAction" class="form-control" />
                                     <div class="text-danger"
                                         *ngIf="Input_Form.get('dateOfAction')?.invalid && Input_Form.get('dateOfAction')?.touched">
                                         Required
                                     </div>
                                 </div>
+                            }
                             </div>
 
+                            @if(Input_Form.get('industrialDisputeType')?.value !=5){
                             <div class="row mb-2">
-                                 <div class="col-md-6 mb-4 ">
+                                 <div class="col-md-6">
                                 <label class="form-label fw-semibold">
                                     State reasons as to why the action is illegal in your opinion:<span class="text-danger">*</span>
                                 </label>
@@ -81,7 +87,7 @@
                                     </div>
                                 </div>
 
-                                 <div class="col-md-6 mb-4 ">
+                                 <div class="col-md-6">
                                 <label class="form-label fw-semibold">
                                    Relief Sought (Select the applicable options):<span class="text-danger">*</span>
                                 </label>
@@ -96,9 +102,11 @@
                                     </div>
                                 </div>
                             </div>
+                        }
 
                             <div class="row mb-2">
 
+                                @if(Input_Form.get('industrialDisputeReasonTypes').value.includes(5)){
                                 <div class="col-md-6">
                                     <label class="required">State Reason (if selected any other reason):</label>
                                     <input type="email" formControlName="otherReason" class="form-control mb-2" />
@@ -107,6 +115,8 @@
                                         Required
                                     </div>  
                                 </div>
+                            }
+                            @if(Input_Form.get('industrialDisputeReliefSoughtTypes').value.includes(6)){
                                         <div class="col-md-6">
                                     <label class="required">State Relief (if selected any other relief):</label>
                                     <input type="text" formControlName="otherRelief" class="form-control"/>
@@ -115,7 +125,39 @@
                                         Required
                                     </div>
                                 </div>
+                            }
                             </div>
+
+                            @if(Input_Form.get('industrialDisputeType')?.value ==5){
+                             <div class="row mb-2">
+                                 <div class="col-md-6">
+                                <label class="required">State the Industrial disputes</label>
+                                <input type="email" formControlName="industrialDisputeDetails" class="form-control mb-2" />
+                                <div class="text-danger"
+                                    *ngIf="Input_Form.get('industrialDisputeDetails')?.invalid && Input_Form.get('industrialDisputeDetails')?.touched">
+                                    Required
+                                </div>  
+                                </div>
+
+                                 <div class="col-md-6">
+                                   <label class="required">Relief Sought</label>
+                                    <input type="email" formControlName="reliefSought" class="form-control mb-2" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('reliefSought')?.invalid && Input_Form.get('reliefSought')?.touched">
+                                        Required
+                                    </div>  
+                                </div>
+
+                                 <div class="col-md-6 mb-4 ">
+                                   <label>Remarks</label>
+                                    <input type="email" formControlName="remarks" class="form-control mb-2" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('remarks')?.invalid && Input_Form.get('remarks')?.touched">
+                                        Required
+                                    </div>  
+                                </div>
+                            </div>
+                        }
 
                                 <div class="d-flex">
                                 <div>

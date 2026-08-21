@@ -33,17 +33,18 @@ export class IndustrialDisputesComponent {
     private appHttpRequestHandlerService : AppHttpRequestHandlerService,
     private router : Router ) {}
 
-      Input_Form : TForm<IComplaint_IndustrialDispute> = this.fb.group({
-      id : [0, Validators.required],
+      Input_Form: TForm<IComplaint_IndustrialDispute> = this.fb.group({
+      id: [0, Validators.required],
       industrialDisputeType: ['', Validators.required],
-      dateOfAppointment: ['', Validators.required],
-      dateOfAction: ['', Validators.required],
-      industrialDisputeReasonTypes : ['', Validators.required],
-      industrialDisputeReliefSoughtTypes : ['', Validators.required],
-      industrialDisputeDetails: ['asdf', Validators.required],
-      otherReason: ['', [Validators.required]],
-      otherRelief: ['', [Validators.required]],
-      remarks: ['asdf', Validators.required],
+      dateOfAppointment: [''],            
+      dateOfAction: [''],                      
+      industrialDisputeReasonTypes: [''],      
+      industrialDisputeReliefSoughtTypes: [''],
+      industrialDisputeDetails: [''],          
+      otherReason: [''],                      
+      otherRelief: [''],                       
+      reliefSought: [''],                      
+      remarks: [''],
       appRefId: [0, Validators.required],
       applicationType: [applicationTypeEnum.SAMADHAN_COMPLAINTS, Validators.required],
       applicationPurposeType: [0, Validators.required],
@@ -51,7 +52,93 @@ export class IndustrialDisputesComponent {
       toDoActivityModeType: [1, Validators.required],
       rootActivityRefId: [''],
       toDoActivityCategoryType: [2029, Validators.required]
-    })as TForm<IComplaint_IndustrialDispute>;
+    }) as TForm<IComplaint_IndustrialDispute>;
+
+  ngOnInit(){
+    this.setUpCustomValidator();
+    this.Input_Form.controls.industrialDisputeType.valueChanges.subscribe(value =>{
+      if(value == 5){
+        this.Input_Form.controls.industrialDisputeReasonTypes.patchValue('');
+        this.Input_Form.controls.industrialDisputeReliefSoughtTypes.patchValue('');
+      }
+    })
+  }
+
+  setUpCustomValidator(){
+     this.Input_Form.controls.industrialDisputeType.valueChanges.subscribe(value => {
+    const dateOfAppointment = this.Input_Form.controls.dateOfAppointment;
+    const dateOfAction = this.Input_Form.controls.dateOfAction;
+    const reasonTypes = this.Input_Form.controls.industrialDisputeReasonTypes;
+    const reliefTypes = this.Input_Form.controls.industrialDisputeReliefSoughtTypes;
+    const disputeDetails = this.Input_Form.controls.industrialDisputeDetails;
+    const reliefSought = this.Input_Form.controls.reliefSought;
+    const otherReason = this.Input_Form.controls.otherReason;
+    const otherRelief = this.Input_Form.controls.otherRelief;
+
+    if (value == 5) {
+      [dateOfAppointment, dateOfAction, reasonTypes, reliefTypes, otherReason, otherRelief]
+        .forEach(ctrl => {
+          ctrl.clearValidators();
+          ctrl.patchValue('');
+          ctrl.updateValueAndValidity();
+        });
+
+      disputeDetails.setValidators([Validators.required]);
+      reliefSought.setValidators([Validators.required]);
+      disputeDetails.updateValueAndValidity();
+      reliefSought.updateValueAndValidity();
+
+    } else if (value) {
+      dateOfAppointment.setValidators([Validators.required]);
+      dateOfAction.setValidators([Validators.required]);
+      reasonTypes.setValidators([Validators.required]);
+      reliefTypes.setValidators([Validators.required]);
+      dateOfAppointment.updateValueAndValidity();
+      dateOfAction.updateValueAndValidity();
+      reasonTypes.updateValueAndValidity();
+      reliefTypes.updateValueAndValidity();
+
+      disputeDetails.clearValidators();
+      reliefSought.clearValidators();
+      disputeDetails.patchValue('');
+      reliefSought.patchValue('');
+      disputeDetails.updateValueAndValidity();
+      reliefSought.updateValueAndValidity();
+    } else {
+      [dateOfAppointment, dateOfAction, reasonTypes, reliefTypes, disputeDetails, reliefSought, otherReason, otherRelief]
+        .forEach(ctrl => {
+          ctrl.clearValidators();
+          ctrl.updateValueAndValidity();
+        });
+    }
+  });
+
+  this.Input_Form.controls.industrialDisputeReasonTypes.valueChanges.subscribe(value => {
+    const otherReason = this.Input_Form.controls.otherReason;
+    const reasons = (value as number[]) || [];
+
+    if (reasons.includes(5)) {
+      otherReason.setValidators([Validators.required]);
+    } else {
+      otherReason.clearValidators();
+      otherReason.patchValue('');
+    }
+    otherReason.updateValueAndValidity();
+  });
+
+  this.Input_Form.controls.industrialDisputeReliefSoughtTypes.valueChanges.subscribe(value => {
+    const otherRelief = this.Input_Form.controls.otherRelief;
+    const reliefs = (value as number[]) || [];
+
+    if (reliefs.includes(6)) {
+      otherRelief.setValidators([Validators.required]);
+    } else {
+      otherRelief.clearValidators();
+      otherRelief.patchValue('');
+    }
+    otherRelief.updateValueAndValidity();
+  });
+  }
 
   ngAfterViewInit(){
       this.route.queryParams
