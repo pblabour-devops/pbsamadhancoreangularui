@@ -17,7 +17,7 @@ import { IComplaint_IndustrialDispute, IComplaint_IndustrialDisputeReasonMapping
   styleUrl: './industrial-disputes.component.css',
 })
 export class IndustrialDisputesComponent {
-  paramInfo : any
+    paramInfo : any
     appFormStepsList : any
     ngUnsubscribe = new Subject<void>();
     industrialDisputeTypes : any[]

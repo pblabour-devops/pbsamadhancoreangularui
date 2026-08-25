@@ -26,8 +26,12 @@ import { AppealComponent } from './complaints/appeal/appeal.component';
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details/employer-details.component';
 import { RecoveryOfMoneyGeneralDetailsComponent } from './complaints/recovery-of-money/recovery-of-money-general-details/recovery-of-money-general-details.component';
 import { IndustrialDisputesComponent } from './complaints/industrial-disputes/industrial-disputes.component';
+import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
+import { ContraventionIrCodeComponent } from './complaints/penality-code-on-wages/contravention-ir-code/contravention-ir-code.component';
 @NgModule({
-  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent, RecoveryOfMoneyGeneralDetailsComponent, IndustrialDisputesComponent],
+  declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent, RecoveryOfMoneyGeneralDetailsComponent, IndustrialDisputesComponent,
+    PenalityCodeOnWagesBreachComponent, ContraventionIrCodeComponent
+  ],
   imports: [
     CommonModule,
     SamadhaanRoutingModule,

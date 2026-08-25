@@ -1,0 +1,59 @@
+
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="projectSiteRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="iPin">
+    <input type="hidden" formControlName="investPunjab_AppId">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+  
+    <div class="section-card">
+    
+  
+      <!-- Claim Information -->
+      <div class="row mb-4">
+   
+        <div class="col-md-4">
+          <label>Specify the contravention</label>
+          <input type="date" class="form-control" formControlName="StandingOrderContravention" />
+        </div>
+  
+        <div class="col-md-4">
+          <label>Specify the Clause</label>
+          <input type="date" class="form-control" formControlName="StandingOrderClause" />
+        </div>
+      </div>
+      </div>
+
+           <div class="text-right mt-3">
+        <button type="button" class="btn btn-primary ml-2" (click)="addContravention()">Add</button>
+      </div>
+
+      <div *ngIf="contraventionList.length > 0">
+        <h6 class="details-title">Details Added</h6>
+        <table class="table table-bordered details-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Contravention</th>
+              <th>Clause</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of contraventionList; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{emp.standingOrderContravention}}</td>
+              <td>{{emp.standingOrderClause}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+  </form>

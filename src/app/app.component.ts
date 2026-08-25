@@ -5,7 +5,7 @@ import {  CommonService} from './common/common.service'
 import { AuthService } from './auth/auth.service';
 import { GlobalStateManagerService } from './shared/global-state-manager-service';
 import { UserIdleService } from 'angular-user-idle';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpLoaderService } from './shared/http-loader.service';
 import { Subject, Subscription } from 'rxjs';
@@ -18,6 +18,8 @@ import { CommonModule } from '@angular/common';
 import { ResizeDirective } from './custom-directives/resize.directive';
 import { DragDirective } from './custom-directives/drag.directive';
 import { takeUntil } from 'rxjs/operators';
+import { AppHttpRequestHandlerService } from './shared/app-http-request-handler.service';
+import { CommonOpsService } from './shared/common-ops-service';
 
 @Component({
     selector: 'app-root',
@@ -56,7 +58,10 @@ export class AppComponent {
     public toastService: ToastService,
     public signalEventsService: SignalEventsService,
     private renderer: Renderer2,
-    private CS : CommonService) {
+    private CS : CommonService,
+    private route : ActivatedRoute,
+    private commonOpsService : CommonOpsService,
+    private appHttpRequestHandlerService : AppHttpRequestHandlerService) {
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           if(event.url=='/' || event.url.toLowerCase().includes('Login') || event.url.toLowerCase().includes('UserRegistration')){
@@ -128,6 +133,15 @@ export class AppComponent {
   }
   title = 'pbsamadhancoreangularui';
   ngOnInit(): void {
+ this.route.queryParams
+        .subscribe(params => {
+          this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
+            console.log('decoded info', info)
+          });
+        });
+
+
+
      this.isNavOpen = this.CS.getNavBarState();
     this.CS.navBarState$obs
       .pipe(takeUntil(this.ngUnsubscribe))

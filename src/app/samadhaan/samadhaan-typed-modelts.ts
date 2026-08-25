@@ -493,3 +493,40 @@ export interface IComplaint_IndustrialDisputeReliefSoughtMapping {
   toDoActivityCategoryType: number;
   rootActivityRefId: string;
 }
+
+export interface IComplaint_PenaltyImpositionIndustrialRelationCode {
+  id: number;
+  appRefId: number;
+  breachSectionType: number;
+  isSection70Breach_WagesInLieuOfNotice: boolean;
+  isSection70Breach_RetrenchmentCompensation: boolean;
+  isSection70Breach_RetrenchmentNoticeToGovt: boolean;
+  specifyUnfairLabourPracticePartyType?: number;
+  unfairLabourPracticeType?: number;
+  unfairLabourPracticeSubCategoryType?: number;
+  isBreachOfSection30: boolean;
+  isBreachOfSection35: boolean;
+  applicationPurposeType: number;
+  applicationType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  toDoActivityCategoryType: number;
+  rootActivityRefId: string;
+}
+
+export interface IComplaint_StandingOrderContraventionIRCode {
+  id: number;
+  StandingOrderContravention: string;
+  StandingOrderClause: string;
+  appRefId: number;
+  projectSiteRefId: number;
+  applicationType: number;
+  applicationPurposeType: number;
+  iPin: number;
+  investPunjab_AppId: number;
+  factoryCircleRefId: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  rootActivityRefId: string;
+  toDoActivityCategoryType: number;
+}

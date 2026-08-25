@@ -19,9 +19,9 @@ import { SettlementDetailsComponent } from '../settlement-details/settlement-det
 
 @Component({
   selector: 'app-recovery-of-money-general-details',
-  standalone: false,
   templateUrl: './recovery-of-money-general-details.component.html',
   styleUrl: './recovery-of-money-general-details.component.css',
+    standalone: false,
 })
 export class RecoveryOfMoneyGeneralDetailsComponent {
   @ViewChild(SettlementDetailsComponent)
