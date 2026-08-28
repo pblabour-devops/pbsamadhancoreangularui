@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TForm, GenericFormModel } from 'src/app/generic-implementation/generic-form-builder.type';
-import { IComplaint_PenaltyImpositionIndustrialRelationCode } from 'src/app/samadhaan/samadhaan-typed-modelts';
+import { IComplaint_OtherStandingOrderContraventionIRCode, IComplaint_PenaltyImpositionIndustrialRelationCode, IComplaint_StandingOrderContraventionIRCode } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { applicationTypeEnum, categoryTypeEnum } from 'src/app/shared.data';
 import { AppHttpRequestHandlerService } from 'src/app/shared/app-http-request-handler.service';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-typed-models';
+import { ContraventionIrCodeComponent } from '../contravention-ir-code/contravention-ir-code.component';
+import { OtherContraventionIrCodeComponent } from '../other-contravention-ir-code/other-contravention-ir-code.component';
 
 @Component({
   selector: 'app-penality-code-on-wages-breach',
@@ -17,7 +19,11 @@ import { ICRUD_CreateUpdateOperationResponse } from 'src/app/typed-model/crud-ty
   standalone:false
 })
 export class PenalityCodeOnWagesBreachComponent {
- breachSectionType : any[]
+  @ViewChild(ContraventionIrCodeComponent) ContraventionIrCodeComponent!: ContraventionIrCodeComponent;
+  @ViewChild(OtherContraventionIrCodeComponent) OtherContraventionIrCodeComponent!: OtherContraventionIrCodeComponent;
+  contraventionIrCodeData : IComplaint_StandingOrderContraventionIRCode[]
+  otherContraventionIrCodeData : IComplaint_OtherStandingOrderContraventionIRCode[]
+  breachSectionType : any[]
   appFormStepsList : any[]
   specifyUnfairLabourPracticeTypes : any[]
   unfairLabourPracticeType : any[]
@@ -72,26 +78,48 @@ export class PenalityCodeOnWagesBreachComponent {
             this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
               this.paramInfo = info;
               console.log('paraminfo', this.paramInfo);
-              this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId}, "Complaints", "getPenaltyImpositionIndustrialRelationCodeDetail").pipe(takeUntil(this.ngUnsubscribe))
-                .subscribe((data: GenericFormModel<IComplaint_PenaltyImpositionIndustrialRelationCode>) => {
-                  this.breachSectionType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'PenaltyBreachSectionEnum').selectListItems
-                  this.specifyUnfairLabourPracticeTypes = data.enumTemplateLists.find(e => e.selectListTypeCode == 'SpecifyUnfairLabourPracticeTypeEnum').selectListItems
-                  this.allUnfairLabourPracticeType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeTypeEnum').selectListItems
-                  this.allUnfairLabourPracticeSubCategoryType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeSubCategoryTypeEnum').selectListItems
-
-                  this.appFormStepsList = data.appFormStepsList;
-                    console.log("formodle", data.formModel);
-                    if (data.formModel) {
-                     const formData = data.formModel;
-                    this.Input_Form.patchValue(formData);
-                    this.Input_Form.patchValue({ toDoActivityModeType: 2});
-                    this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
-                  }
-                });
+              this.getPenalityCodeOnWagesData();
+              this.getContraventionIrCodeData();
+              this.getOtherContraventionIrCodeData();
             });
           });
       }
   
+  getPenalityCodeOnWagesData(){
+    this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId}, "Complaints", "getPenaltyImpositionIndustrialRelationCodeDetail").pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: GenericFormModel<IComplaint_PenaltyImpositionIndustrialRelationCode>) => {
+        this.breachSectionType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'PenaltyBreachSectionEnum').selectListItems
+        this.specifyUnfairLabourPracticeTypes = data.enumTemplateLists.find(e => e.selectListTypeCode == 'SpecifyUnfairLabourPracticeTypeEnum').selectListItems
+        this.allUnfairLabourPracticeType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeTypeEnum').selectListItems
+        this.allUnfairLabourPracticeSubCategoryType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeSubCategoryTypeEnum').selectListItems
+
+        this.appFormStepsList = data.appFormStepsList;
+          if (data.formModel) {
+          const formData = data.formModel;
+          this.Input_Form.patchValue(formData);
+          this.Input_Form.patchValue({ toDoActivityModeType: 2});
+          this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
+        }
+      });
+  }
+
+  getContraventionIrCodeData(){
+      this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId}, "Complaints", "getComplaintStandingOrderContraventionIRCodeDetail").pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: GenericFormModel<IComplaint_StandingOrderContraventionIRCode[]>) => {
+            if(data.formModel && data.formModel.length > 0){
+            this.contraventionIrCodeData = data.formModel
+            }
+      })
+  }
+
+  getOtherContraventionIrCodeData(){
+     this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId}, "Complaints", "getComplaintOtherContraventionProvisionIRCodeDetail").pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data: GenericFormModel<IComplaint_OtherStandingOrderContraventionIRCode[]>) => {
+        if(data.formModel && data.formModel.length > 0){
+            this.otherContraventionIrCodeData = data.formModel
+            }
+      })
+  }
 
   onSubmit(){
    if (this.Input_Form.valid) {
@@ -105,20 +133,33 @@ export class PenalityCodeOnWagesBreachComponent {
            .httpPost(this.Input_Form.value,'pbsamadhannetcoreapi.Models.Complaint_PenaltyImpositionIndustrialRelationCode','Crud','CreateUpdate')
            .pipe(takeUntil(this.ngUnsubscribe))
            .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-             this.router.navigate(
-               [this.appFormStepsList.find(x => x.stepCode === 'PCOW')?.uiNextPageComponentPath],
-               {
-                 queryParams: {
-                   info: this.commonOpsService.encodeQueryParamsInBase64({
-                     identityKey: data.entityKeyId,
-                     appRefId:this.paramInfo.appRefId,
-                     applicationType: this.paramInfo.applicationType,
-                     applicationPurposeType: this.paramInfo?.applicationPurposeType,
-                     projectSiteVersion: this.paramInfo?.projectSiteVersion,
-                   }),
-                 },
-               }
-             );
+             if(this.ContraventionIrCodeComponent.contraventionList.length > 0){
+              this.ContraventionIrCodeComponent.contraventionList.forEach(contraventionData =>{
+                contraventionData.appRefId = this.paramInfo.appRefId
+                contraventionData.applicationPurposeType = this.paramInfo.applicationPurposeType
+                contraventionData.projectSiteVersion = this.paramInfo.projectSiteVersion
+                contraventionData.rootActivityRefId = this.paramInfo.rootActivityRefId
+                contraventionData.toDoActivityCategoryType = categoryTypeEnum.INDIVIDUAL_COMPLAINT_STANDINGORDERCONTRAVENTIONIRCODE
+                contraventionData.applicationType = this.paramInfo.applicationType
+                this.appHttpRequestHandlerService.httpPost(contraventionData,'pbsamadhannetcoreapi.Models.Complaint_StandingOrderContraventionIRCode','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe))
+                .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+                  if(this.OtherContraventionIrCodeComponent.otherContraventionList.length > 0){
+                this.OtherContraventionIrCodeComponent.otherContraventionList.forEach(otherContraventionData =>{
+                otherContraventionData.appRefId = this.paramInfo.appRefId
+                otherContraventionData.applicationPurposeType = this.paramInfo.applicationPurposeType
+                otherContraventionData.projectSiteVersion = this.paramInfo.projectSiteVersion
+                otherContraventionData.rootActivityRefId = this.paramInfo.rootActivityRefId
+                otherContraventionData.toDoActivityCategoryType = categoryTypeEnum.INDIVIDUAL_COMPLAINT_STANDINGORDEROTHERCONTRAVENTIONIRCODE
+                otherContraventionData.applicationType = this.paramInfo.applicationType
+                this.appHttpRequestHandlerService.httpPost(otherContraventionData,'pbsamadhannetcoreapi.Models.Complaint_OtherContraventionProvisionIRCode','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe))
+                .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
+                       this.navigateToNextStep(data)
+                })
+                })
+                }
+               })
+              })
+             }
            });
        } else {
          this.Input_Form.markAllAsTouched();
@@ -130,6 +171,24 @@ export class PenalityCodeOnWagesBreachComponent {
    }
          });
        }
+  }
+
+
+  navigateToNextStep(data : ICRUD_CreateUpdateOperationResponse){
+    this.router.navigate(
+      [this.appFormStepsList.find(x => x.stepCode === 'PCOW')?.uiNextPageComponentPath],
+      {
+        queryParams: {
+          info: this.commonOpsService.encodeQueryParamsInBase64({
+            identityKey: data.entityKeyId,
+            appRefId:this.paramInfo.appRefId,
+            applicationType: this.paramInfo.applicationType,
+            applicationPurposeType: this.paramInfo?.applicationPurposeType,
+            projectSiteVersion: this.paramInfo?.projectSiteVersion,
+          }),
+        },
+      }
+    );
   }
 
   onChange(){

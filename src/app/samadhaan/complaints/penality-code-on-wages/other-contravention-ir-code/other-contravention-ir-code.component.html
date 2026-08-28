@@ -1,1 +1,61 @@
-<p>other-contravention-ir-code works!</p>
+
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+
+    
+    <div class="section-card">
+        <div class="general-info-label">
+     Other Contraventions of the provision of the IR code, 2020 not specified above
+    </div>
+  
+      <!-- Claim Information -->
+      <div class="row mb-4">
+   
+        <div class="col-md-4">
+          <label>Specify the section</label>
+          <input type="text" class="form-control" formControlName="otherContraventionSection" />
+        </div>
+  
+        <div class="col-md-4">
+          <label>Specify the offences</label>
+          <input type="text" class="form-control" formControlName="otherContraventionOffences" />
+        </div>
+      </div>
+      </div>
+
+           <div class="text-right mt-3">
+        <button type="button" class="btn btn-primary ml-2" (click)="addOtherContravention()">Add</button>
+      </div>
+
+      <div *ngIf="otherContraventionList.length > 0">
+        <h6 class="details-title">Details Added</h6>
+        <table class="table table-bordered details-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Contravention</th>
+              <th>Offences</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of otherContraventionList; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{emp.otherContraventionSection}}</td>
+              <td>{{emp.otherContraventionOffences}}</td>
+              <td><button (click)="deleteEmployer(i)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+  </form>

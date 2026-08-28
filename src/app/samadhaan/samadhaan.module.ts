@@ -28,9 +28,10 @@ import { RecoveryOfMoneyGeneralDetailsComponent } from './complaints/recovery-of
 import { IndustrialDisputesComponent } from './complaints/industrial-disputes/industrial-disputes.component';
 import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
 import { ContraventionIrCodeComponent } from './complaints/penality-code-on-wages/contravention-ir-code/contravention-ir-code.component';
+import { OtherContraventionIrCodeComponent } from './complaints/penality-code-on-wages/other-contravention-ir-code/other-contravention-ir-code.component';
 @NgModule({
   declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent, RecoveryOfMoneyGeneralDetailsComponent, IndustrialDisputesComponent,
-    PenalityCodeOnWagesBreachComponent, ContraventionIrCodeComponent
+    PenalityCodeOnWagesBreachComponent, ContraventionIrCodeComponent, OtherContraventionIrCodeComponent
   ],
   imports: [
     CommonModule,

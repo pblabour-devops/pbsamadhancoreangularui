@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TForm } from 'src/app/generic-implementation/generic-form-builder.type';
-import { IComplaint_StandingOrderContraventionIRCode } from 'src/app/samadhaan/samadhaan-typed-modelts';
+import { IComplaint_PenaltyImpositionIndustrialRelationCode, IComplaint_StandingOrderContraventionIRCode } from 'src/app/samadhaan/samadhaan-typed-modelts';
 import { applicationTypeEnum, categoryTypeEnum } from 'src/app/shared.data';
 import { CommonOpsService } from 'src/app/shared/common-ops-service';
 import Swal from 'sweetalert2';
@@ -14,19 +14,19 @@ import Swal from 'sweetalert2';
   standalone : false
 })
 export class ContraventionIrCodeComponent {
-    contraventionList : any[] = []
-      paramInfo : any
-
+@Input() contraventionIrCodeData : IComplaint_StandingOrderContraventionIRCode[]
+contraventionList : any[] = []
+paramInfo : any
 
  constructor(private fb : FormBuilder, private route : ActivatedRoute, private commonOpsService : CommonOpsService){}
     Input_Form: TForm<IComplaint_StandingOrderContraventionIRCode> = this.fb.group({
     id : [0, Validators.required],
-    standingOrderContravention : [''],
-    standingOrderClause : [''],
+    standingOrderContravention : ['', Validators.required],
+    standingOrderClause : ['', Validators.required],
     appRefId: [0, Validators.required],
     applicationType: [applicationTypeEnum.SAMADHAN_COMPLAINTS, Validators.required],
     applicationPurposeType: [1, Validators.required],
-    projectSiteVersion: [0, Validators.required],
+    projectSiteVersion: [1, Validators.required],
     toDoActivityModeType: [1, Validators.required],
     rootActivityRefId: ['defaultValue'],
     toDoActivityCategoryType: [categoryTypeEnum.INDIVIDUAL_COMPLAINT_STANDINGORDERCONTRAVENTIONIRCODE, Validators.required],
@@ -34,6 +34,16 @@ export class ContraventionIrCodeComponent {
 
   get formControls() {
     return this.Input_Form.controls;
+  }
+
+  ngOnChanges(changes : SimpleChanges){
+  if(this.contraventionIrCodeData && this.contraventionIrCodeData.length > 0){
+  this.contraventionIrCodeData.forEach(contraventionData =>{
+    this.Input_Form.patchValue(contraventionData);
+    this.Input_Form.controls.toDoActivityModeType.patchValue(2);
+    this.addContravention();
+  })
+  }
   }
 
     ngAfterViewInit(){
@@ -61,7 +71,7 @@ export class ContraventionIrCodeComponent {
             });
         }
 
-   addContravention() {
+addContravention() {
   if(this.Input_Form.valid){
    const contravention = {
       ...this.Input_Form.value,

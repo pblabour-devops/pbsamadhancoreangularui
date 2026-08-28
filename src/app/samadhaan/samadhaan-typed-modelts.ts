@@ -530,3 +530,20 @@ export interface IComplaint_StandingOrderContraventionIRCode {
   rootActivityRefId: string;
   toDoActivityCategoryType: number;
 }
+
+export interface IComplaint_OtherStandingOrderContraventionIRCode {
+  id: number;
+  StandingOrderContravention: string;
+  StandingOrderClause: string;
+  appRefId: number;
+  projectSiteRefId: number;
+  applicationType: number;
+  applicationPurposeType: number;
+  iPin: number;
+  investPunjab_AppId: number;
+  factoryCircleRefId: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  rootActivityRefId: string;
+  toDoActivityCategoryType: number;
+}

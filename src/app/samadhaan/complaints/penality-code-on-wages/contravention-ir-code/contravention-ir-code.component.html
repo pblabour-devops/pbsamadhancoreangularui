@@ -2,30 +2,30 @@
 <form [formGroup]="Input_Form">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
-    <input type="hidden" formControlName="projectSiteRefId">
     <input type="hidden" formControlName="applicationPurposeType">
-    <input type="hidden" formControlName="iPin">
-    <input type="hidden" formControlName="investPunjab_AppId">
     <input type="hidden" formControlName="projectSiteVersion">
     <input type="hidden" formControlName="toDoActivityModeType">
     <input type="hidden" formControlName="rootActivityRefId">
     <input type="hidden" formControlName="toDoActivityCategoryType">
 
-  
-    <div class="section-card">
+
     
+    <div class="section-card">
+        <div class="general-info-label">
+      Contravention of the standing order finally certified under the IR code, 2020
+    </div>
   
       <!-- Claim Information -->
       <div class="row mb-4">
    
         <div class="col-md-4">
           <label>Specify the contravention</label>
-          <input type="date" class="form-control" formControlName="StandingOrderContravention" />
+          <input type="text" class="form-control" formControlName="standingOrderContravention" />
         </div>
   
         <div class="col-md-4">
           <label>Specify the Clause</label>
-          <input type="date" class="form-control" formControlName="StandingOrderClause" />
+          <input type="text" class="form-control" formControlName="standingOrderClause" />
         </div>
       </div>
       </div>
@@ -42,6 +42,7 @@
               <th>S No.</th>
               <th>Contravention</th>
               <th>Clause</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -50,6 +51,7 @@
               <td>{{i+1}}</td>
               <td>{{emp.standingOrderContravention}}</td>
               <td>{{emp.standingOrderClause}}</td>
+              <td><button (click)="deleteEmployer(i)">Delete</button></td>
             </tr>
           </tbody>
         </table>

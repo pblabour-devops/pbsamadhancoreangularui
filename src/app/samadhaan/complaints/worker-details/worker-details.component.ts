@@ -67,6 +67,7 @@ export class WorkerDetailsComponent {
 
   ngOnInit(): void {
     // Watch for checkbox changes
+    // this.initiateApplication();
     this.Input_Form.get('sameAsAbove')?.valueChanges.subscribe((checked: boolean) => {
       this.toggleCorrespondenceAddress(checked);
     });
@@ -74,6 +75,14 @@ export class WorkerDetailsComponent {
     // Initialize on load
     this.toggleCorrespondenceAddress(this.Input_Form.get('sameAsAbove')?.value);
   }
+
+  // initiateApplication(){
+    
+  //   this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
+  //    .subscribe(()=>{
+      
+  //    })
+  // }
 
   ngAfterViewInit(){
     this.getDistricts();
