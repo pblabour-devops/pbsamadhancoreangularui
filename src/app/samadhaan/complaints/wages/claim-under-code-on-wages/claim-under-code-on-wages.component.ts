@@ -335,7 +335,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //  this.codeOnWagesDetailData.toDoActivityCategoryType=2006;
   //  this.codeOnWagesDetailData.applicationType = this.paramInfo.applicationType;
 
-  //  console.log('codeOnWagesDetailData', this.codeOnWagesDetailData)
+  //  
 
   //   this.appHttpRequestHandlerService
   //     .httpPost(this.codeOnWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_Claim_CodeOnWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
@@ -351,7 +351,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       data.rootActivityRefId='default value';
   //       data.toDoActivityCategoryType=2007;
   //       data.applicationType = this.paramInfo.app
-  //       console.log('data', data)
+  //       
   //       this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_MinimumWagesPeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //       next: () => {
   //       this.minimumWagesDetailData.appRefId = this.paramInfo?.appRefId;
@@ -360,7 +360,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       this.minimumWagesDetailData.rootActivityRefId='default value';
   //       this.minimumWagesDetailData.toDoActivityCategoryType=2008;
   //       this.minimumWagesDetailData.applicationType = this.paramInfo.applicationType;
-  //       console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+  //       
   //       this.appHttpRequestHandlerService.httpPost(this.minimumWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_MinimumWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //        next: () => {
           
@@ -378,7 +378,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       this.wagesWeeklyDayDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_WEEKLY;
   //       this.wagesWeeklyDayDetailData.applicationType = this.paramInfo.applicationType;
   //       this.wagesWeeklyDayDetailData.rootActivityRefId = ''
-  //       console.log('wagesWeeklyDayDetailData', this.wagesWeeklyDayDetailData)
+  //       
   //       this.appHttpRequestHandlerService.httpPost(this.wagesWeeklyDayDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_WkDay','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //        next: () => {
   //       this.wagesWeeklyDayDetailData.periodAmtDetails.forEach(data => {
@@ -437,7 +437,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       // data.toDoActivityModeType=1;
   //       data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_NOT_PAID_PERIOD_AMOUNT         ;
   //       data.applicationType = this.paramInfo.applicationType
-  //       console.log('data', data);
+  //       
   //       this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_Not_Paid_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //       next: () => {
           
@@ -452,7 +452,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       this.wagesUnauthDedDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_UNAUTHDED;
   //       this.wagesUnauthDedDetailData.applicationType = this.paramInfo.applicationType;
   //       this.wagesUnauthDedDetailData.rootActivityRefId = ''
-  //       console.log('wagesUnauthDedDetailData', this.wagesUnauthDedDetailData)
+  //       
   //       this.appHttpRequestHandlerService.httpPost(this.wagesUnauthDedDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_Unauth_Deduct','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //        next: () => {
   //       this.wagesUnauthDedDetailData.periodAmtDetails.forEach(data => {
@@ -461,7 +461,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       data.projectSiteVersion=this.paramInfo?.projectSiteVersion;
   //       data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_UNAUTHDED_PERIOD_AMOUNT         ;
   //       data.applicationType = this.paramInfo.applicationType
-  //       console.log('data', data);
+  //       
   //       this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Wages_Unauth_Deduct_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //       next: () => {
           
@@ -477,7 +477,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       this.nonPayBonusDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_NON_PAY_BONUS;
   //       this.nonPayBonusDetailData.applicationType = this.paramInfo.applicationType;
   //       this.nonPayBonusDetailData.rootActivityRefId = ''
-  //       console.log('wagesUnauthDedDetailData', this.wagesUnauthDedDetailData)
+  //       
   //       this.appHttpRequestHandlerService.httpPost(this.nonPayBonusDetailData,'pbsamadhannetcoreapi.Models.Complaint_Non_Pay_Bonus','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //        next: () => {
   //       this.nonPayBonusDetailData.periodAmtDetails.forEach(data => {
@@ -487,7 +487,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
   //       data.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_NON_PAY_BONUS_PERIOD_AMOUNT;
   //       data.applicationType = this.paramInfo.applicationType
   //       data.rootActivityRefId = ''
-  //       console.log('data', data);
+  //       
   //       this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_Non_Pay_Bonus_PeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
   //       next: () => {
           
@@ -559,7 +559,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
           data.rootActivityRefId='default value';
           data.toDoActivityCategoryType=2007;
           data.applicationType = this.paramInfo.app
-          console.log('data', data)
+          
           this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Complaint_MinimumWagesPeriodAmt','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
           next: () => {
           this.minimumWagesDetailData.appRefId = this.paramInfo?.appRefId;
@@ -568,7 +568,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
           this.minimumWagesDetailData.rootActivityRefId='default value';
           this.minimumWagesDetailData.toDoActivityCategoryType=2008;
           this.minimumWagesDetailData.applicationType = this.paramInfo.applicationType;
-          console.log('minimumWagesDetailData', this.minimumWagesDetailData)
+          
           this.appHttpRequestHandlerService.httpPost(this.minimumWagesDetailData,'pbsamadhannetcoreapi.Models.Complaint_MinimumWage','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
            next: () => {
 
@@ -579,7 +579,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
             this.wagesWeeklyDayDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_WEEKLY;
             this.wagesWeeklyDayDetailData.applicationType = this.paramInfo.applicationType;
             this.wagesWeeklyDayDetailData.rootActivityRefId = ''
-            console.log('wagesWeeklyDayDetailData', this.wagesWeeklyDayDetailData)
+            
             this.appHttpRequestHandlerService.httpPost(this.wagesWeeklyDayDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_WkDay','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
              next: () => {
               this.wagesWeeklyDayDetailData.periodAmtDetails.forEach(data => {
@@ -634,7 +634,7 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
                         this.wagesUnauthDedDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_WAGES_UNAUTHDED;
                         this.wagesUnauthDedDetailData.applicationType = this.paramInfo.applicationType;
                         this.wagesUnauthDedDetailData.rootActivityRefId = ''
-                        console.log('wagesUnauthDedDetailData', this.wagesUnauthDedDetailData)
+                        
                         this.appHttpRequestHandlerService.httpPost(this.wagesUnauthDedDetailData,'pbsamadhannetcoreapi.Models.Complaint_Wages_Unauth_Deduct','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
                          next: () => {
                           this.wagesUnauthDedDetailData.periodAmtDetails.forEach(data => {
@@ -653,7 +653,7 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
                             this.nonPayBonusDetailData.toDoActivityCategoryType=categoryTypeEnum.INDIVIDUAL_COMPLAINT_NON_PAY_BONUS;
                             this.nonPayBonusDetailData.applicationType = this.paramInfo.applicationType;
                             this.nonPayBonusDetailData.rootActivityRefId = ''
-                            console.log('wagesUnauthDedDetailData', this.wagesUnauthDedDetailData)
+                            
                             this.appHttpRequestHandlerService.httpPost(this.nonPayBonusDetailData,'pbsamadhannetcoreapi.Models.Complaint_Non_Pay_Bonus','Crud','CreateUpdate').pipe(takeUntil(this.ngUnsubscribe)).subscribe({
                              next: () => {
                               this.nonPayBonusDetailData.periodAmtDetails.forEach(data => {
@@ -714,12 +714,12 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
 
 
   claimUnderCodeOnWagesDataEventListener(data:IComplaint_Claim_CodeOnWage){
-  console.log('daa')
+  
   this.codeOnWagesDetailData = data
   }
 
   minimumWagesDataDataEventListener(data: any){
-    console.log('minimun wages deail data', this.minimumWagesDetailData)
+    
     this.minimumWagesDetailData = data
   }
 
@@ -735,7 +735,7 @@ this.appHttpRequestHandlerService.httpPost(data,'pbsamadhannetcoreapi.Models.Com
   }
 
   wagesUnauthDedEventListener(data: IComplaint_Wages){
-    console.log('data', data)
+    
     this.wagesUnauthDedDetailData = data
   }
 

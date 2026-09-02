@@ -19,9 +19,9 @@ export class SettlementDetailsComponent implements OnInit {
 
   
     ngOnChanges(changes : SimpleChanges){
-    console.log('changes', changes );
+    
     this.settlementTypeOptions = this.settlementDetailsApiData.enumTemplateLists.find(e => e.selectListTypeCode == "SettlementTypeEnum").selectListItems;
-    console.log('sdttilementypeotpions', this.settlementDetailsApiData);
+    
     if(this.settlementDetailsApiData.formModel){
     const formData = { ...this.settlementDetailsApiData.formModel};
     Object.keys(formData).forEach(key => {

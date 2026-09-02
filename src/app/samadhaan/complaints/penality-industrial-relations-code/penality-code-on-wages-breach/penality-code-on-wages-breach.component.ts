@@ -77,7 +77,7 @@ export class PenalityCodeOnWagesBreachComponent {
           .subscribe(params => {
             this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
               this.paramInfo = info;
-              console.log('paraminfo', this.paramInfo);
+              
               this.getPenalityCodeOnWagesData();
               this.getContraventionIrCodeData();
               this.getOtherContraventionIrCodeData();
@@ -192,7 +192,7 @@ export class PenalityCodeOnWagesBreachComponent {
   }
 
   onChange(){
-    console.log("input form ", this.Input_Form.value)
+    
   }
 
 

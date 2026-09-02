@@ -74,7 +74,7 @@ export class EmployerDetailsComponent implements OnInit, AfterViewInit, OnDestro
           .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getEmployerOrContractorDetails')
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: GenericFormModel<IComplaint_EmployerDetail>) => {
-            console.log('employer data', data);
+            
             this.genericFormData = data;
             this.appFormStepsList = data.appFormStepsList;
             this.establishments = data.enumTemplateLists.find(e => e.selectListTypeCode == 'SamadhaanEstablishmentTypeEnum').selectListItems

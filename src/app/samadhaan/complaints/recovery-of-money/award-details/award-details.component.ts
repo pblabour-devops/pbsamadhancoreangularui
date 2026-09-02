@@ -15,7 +15,7 @@ export class AwardDetailsComponent {
   constructor(private fb : FormBuilder){}
 
     ngOnChanges(changes : SimpleChanges){
-    console.log('changes', changes );
+    
     if(this.awardDetailsApiData.formModel){
     const formData = { ...this.awardDetailsApiData.formModel};
     Object.keys(formData).forEach(key => {

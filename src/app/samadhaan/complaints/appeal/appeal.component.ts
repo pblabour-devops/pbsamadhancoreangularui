@@ -85,7 +85,6 @@ export class AppealComponent implements AfterViewInit, OnDestroy{
           this.Input_Form.controls.rootActivityRefId.patchValue('Default');
           this.Input_Form.controls.toDoActivityCategoryType.patchValue(1);
           this.Input_Form.controls.applicationType.patchValue(100001);
-          console.log('input form value', this.Input_Form.value);
           this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.Complaint_Appeal", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
               // this.navigateToNextStep(data);
@@ -94,16 +93,11 @@ export class AppealComponent implements AfterViewInit, OnDestroy{
       } else {
           this.Input_Form.markAllAsTouched();
 
-    console.log('❌ Form is invalid');
 
     Object.keys(this.Input_Form.controls).forEach(key => {
 
       const control = this.Input_Form.get(key);
 
-      console.log('Control:', key);
-      console.log('Value:', control?.value);
-      console.log('Valid:', control?.valid);
-      console.log('Errors:', control?.errors);
 
       if (control?.invalid) {
         console.log('❌ INVALID CONTROL:', key, {

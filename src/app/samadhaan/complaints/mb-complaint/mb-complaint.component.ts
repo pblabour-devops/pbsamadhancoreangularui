@@ -88,9 +88,9 @@ export class MbComplaintComponent {
             this.appFormStepsList = data.appFormStepsList;
             if (data.formModel) {
               this.Input_Form.patchValue(data.formModel);
-              console.log('input value 1',this.Input_Form.value)
+              
               this.Input_Form.controls.toDoActivityModeType.patchValue(2);
-              console.log('input value 2',this.Input_Form.value)
+              
               // Ensure conditional validator state is set correctly after patch
               this.onDischargeStatusChange();
             }
@@ -138,7 +138,7 @@ export class MbComplaintComponent {
 }
 
   onSubmit(): void {
-    console.log('input form value', this.Input_Form.value);
+    
     if (this.Input_Form.valid) {
 
     this.Input_Form.controls.applicationPurposeType.patchValue(this.paramInfo?.applicationPurposeType);
@@ -175,7 +175,7 @@ export class MbComplaintComponent {
         const control = this.Input_Form.get(key);
     
         if (control?.invalid) {
-          console.log('invli', control.invalid)
+          
 }
       });
     }

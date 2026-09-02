@@ -59,7 +59,7 @@ paramInfo : any
                     // this.allUnfairLabourPracticeSubCategoryType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeSubCategoryTypeEnum').selectListItems
   
                     // this.appFormStepsList = data.appFormStepsList;
-                    //   console.log("formodle", data.formModel);
+                    //   
                     //   if (data.formModel) {
                     //    const formData = data.formModel;
                     //   this.Input_Form.patchValue(formData);

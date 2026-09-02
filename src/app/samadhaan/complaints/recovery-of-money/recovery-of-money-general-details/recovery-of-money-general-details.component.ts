@@ -82,7 +82,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info)=>{
 
         this.paramInfo = info;
-        console.log('paraminof', this.paramInfo);
+        
         this.appRefId = this.paramInfo.appRefId;
         this.projectSiteVersion = this.paramInfo.projectSiteVersion;
         this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);
@@ -111,7 +111,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
         .httpGet({ id: this.paramInfo?.appRefId }, 'Complaints', 'getComplaintRecOfMonDueDetail')
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((data: GenericFormModel<IComplaint_RecOfMon_DueDetail[]>) => {
-          console.log('Money Due Details:', data);
+          
 
           if(data.formModel && data.formModel.length > 0){
             data.formModel.forEach((value: IComplaint_RecOfMon_DueDetail) => {
@@ -119,7 +119,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
             })
           }
           this.Input_Form.controls.moneyDueOptions.patchValue(this.moneyDueReasonArray);
-          console.log('Money Due Reason Array:', this.Input_Form.value);
+          
         })
   }
 
@@ -198,12 +198,12 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
 
       onSubmit(): void {
         
-        console.log('recovery of money details', this.Input_Form.value);
-        // console.log('settilement details', this.settlementDetailData);
-        // console.log('award details', this.awardDetailData);
-        // console.log("notice pay details", this.noticePaydDetailData);
-        // console.log('retrenchment detail', this.retrenchmentDetailData);
-        // console.log('lay off detail', this.layOffDetailData);
+        
+        // 
+        // 
+        // 
+        // 
+        // 
         if(!this.settlementDetailsComponent?.isFormValid() && this.Input_Form.value.moneyDueOptions.includes(1)){
         Swal.fire({ icon: 'warning', text: 'Please fill Settlement Details completely.' });
         return;
@@ -317,7 +317,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
           Object.keys(this.Input_Form.controls).forEach(key => {
             const control = this.Input_Form.get(key);
             if (control?.invalid) {
-              console.log('Invalid control:', key, '| Value:', control.value, '| Errors:', control.errors);
+              
             }
           });
         }
@@ -358,7 +358,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
       data.moneyDueReasonType = Number(value);
       this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_RecOfMon_MoneyDueDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-       console.log('Money Due Details saved successfully for value:', value);
+       
       });
     })
   }
@@ -386,7 +386,7 @@ export class RecoveryOfMoneyGeneralDetailsComponent {
     }
 
     layOffDetailDataEventListener(data:IComplaint_RecOfMon_LayOffDetail){
-      console.log('retrentment detail data', data);
+      
     this.layOffDetailData = data;
     }
 

@@ -33,7 +33,7 @@ export class ReviewComponent {
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info)=>{
 
         this.paramInfo = info;
-        console.log('paraminof', this.paramInfo);
+        
         this.appRefId = this.paramInfo.appRefId;
         this.projectSiteVersion = this.paramInfo.projectSiteVersion;
         this.Input_Form.controls.appRefId.patchValue(this.paramInfo?.appRefId);

@@ -45,7 +45,7 @@ export class PenalityCodeOnWagesOffenceComponent {
 
   ngOnInit() {
     this.Input_Form.valueChanges.subscribe((value) => {
-      console.log('Form Value Changed:', value);
+      
     });
   }
 

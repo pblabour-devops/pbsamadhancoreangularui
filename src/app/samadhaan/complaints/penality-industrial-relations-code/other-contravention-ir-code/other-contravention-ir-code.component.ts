@@ -37,7 +37,7 @@ paramInfo : any
   }
 
   ngOnChanges(){
-    console.log('other contravention ir code', this.otherContraventionIrCodeData);
+    
   if(this.otherContraventionIrCodeData && this.otherContraventionIrCodeData.length > 0){
   this.otherContraventionIrCodeData.forEach(contraventionData =>{
     this.Input_Form.patchValue(contraventionData);
@@ -91,9 +91,9 @@ addOtherContravention() {
            const control = this.Input_Form.get(key);
        
            if (control?.invalid) {
-          console.log('Invalid field:', key);
-        console.log('Errors:', control.errors);
-        console.log('Value:', control.value);
+          
+        
+        
    }
          });
   }

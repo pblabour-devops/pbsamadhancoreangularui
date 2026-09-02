@@ -99,7 +99,7 @@ protected ngUnsubscribe: Subject<void> = new Subject<void>();
           .subscribe((data: GenericFormModel<IComplaint_EstablishmentDetail>) => {
             this.genericFormData = data;
             // this.appFormStepsList = data.appFormStepsList;
-            // console.log('appFormStepsList data for establishment',this.appFormStepsList);
+            // 
             this.categoryOptions = data.enumTemplateLists
               ?.find(x => x.selectListTypeCode === 'ComplaintCategoryTypeEnum')
               ?.selectListItems ?? [];
