@@ -1,4 +1,3 @@
-
 <form [formGroup]="Input_Form">
     <input type="hidden" formControlName="id">
     <input type="hidden" formControlName="appRefId">
@@ -9,36 +8,40 @@
     <input type="hidden" formControlName="toDoActivityCategoryType">
 
 
-    
     <div class="section-card">
-            <h5 class="section-title">Details of offence for which complaint is being filed :</h5>
+        <h5 class="section-title">Details of offence for which complaint is being filed :</h5>
 
-           <div class="text-right mt-3">
-        <button type="button" class="btn btn-primary ml-2" (click)="addOffence()">Add</button>
-      </div>
+        <table class="table table-bordered details-table" formArrayName="offenceList">
+            <thead>
+                <tr>
+                    <th>Section Rule</th>
+                    <th>Offence</th>
+                    <th style="width: 80px;">Action</th>
+                </tr>
+            </thead>
 
-      <div *ngIf="offenceList.length > 0">
-        <h6 class="details-title">Details Added</h6>
-        <table class="table table-bordered details-table">
-          <thead>
-            <tr>
-              <th>S No.</th>
-              <th>Section Rule</th>
-              <th>Offence</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr *ngFor="let emp of offenceList; let i = index">
-              <td>{{i+1}}</td>
-              <td>{{emp.otherContraventionSection}}</td>
-              <td>{{emp.otherContraventionOffences}}</td>
-              <td><button (click)="deleteOffence(i)">Delete</button></td>
-            </tr>
-          </tbody>
+            <tbody>
+                <tr *ngFor="let offence of offenceList.controls; let i = index" [formGroupName]="i">
+                    <td>
+                        <input type="text" class="form-control" formControlName="sectionRule">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" formControlName="offence">
+                    </td>
+                    <td class="text-center">
+                       <button type="button" class="btn btn-link text-danger p-0" (click)="deleteOffence(i)">
+                          delete 
+                      </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-      </div>
-      </div>
 
+        <div class="mt-2">
+            <button type="button" class="btn btn-outline-secondary" (click)="addOffence()">
+                <i class="fa fa-plus"></i> ADD OFFENCE
+            </button>
+        </div>
+    </div>
 
-  </form>
+</form>
