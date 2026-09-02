@@ -80,7 +80,7 @@ import Swal from 'sweetalert2';
           .subscribe((data: GenericFormModel<IComplaint_WorkplaceDetail>) => {
             this.genericFormData = data;
             // this.appFormStepsList = data.appFormStepsList;
-            // 
+            // console.log('appFormStepsList data for workplace',this.appFormStepsList);
             if (data.formModel) {
                  const formData = data.formModel;
                 this.Input_Form.patchValue(formData);

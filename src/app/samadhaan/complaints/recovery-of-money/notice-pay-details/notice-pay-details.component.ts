@@ -18,7 +18,7 @@ export class NoticePayDetailsComponent {
     constructor(private fb : FormBuilder){}
 
      ngOnChanges(changes : SimpleChanges){
-    
+    console.log('changes', changes );
     this.noticePeriodOptions = this.noticePayApiData.enumTemplateLists.find(e => e.selectListTypeCode == "NoticePayPeriodTypeEnum").selectListItems;
     if(this.noticePayApiData.formModel){
     const formData = { ...this.noticePayApiData.formModel};

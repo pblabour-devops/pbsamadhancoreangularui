@@ -16,7 +16,7 @@ export class RetrenchmentCompensationDetailsComponent {
    constructor(private fb : FormBuilder){}
 
     ngOnChanges(changes : SimpleChanges){
-    
+    console.log('changes', changes );
     if(this.retrenchmentDetailApiData.formModel){
     const formData = { ...this.retrenchmentDetailApiData.formModel};
     Object.keys(formData).forEach(key => {

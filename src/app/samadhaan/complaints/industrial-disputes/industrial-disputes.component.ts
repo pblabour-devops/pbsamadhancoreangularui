@@ -207,17 +207,17 @@ export class IndustrialDisputesComponent {
           this.saveIndustrailDisputeReasonDetails();
       } else {
           this.Input_Form.markAllAsTouched();
-         
-    
+         console.log('input form', this.Input_Form.value);
+    console.log('❌ Form is invalid');
 
     Object.keys(this.Input_Form.controls).forEach(key => {
 
       const control = this.Input_Form.get(key);
 
-      
-      
-      
-      
+      console.log('Control:', key);
+      console.log('Value:', control?.value);
+      console.log('Valid:', control?.valid);
+      console.log('Errors:', control?.errors);
 
       if (control?.invalid) {
         console.log('❌ INVALID CONTROL:', key, {
@@ -232,7 +232,7 @@ export class IndustrialDisputesComponent {
 
    saveIndustrailDisputeReasonDetails(){
       const industrialDisputeReasonOptions = this.Input_Form.get('industrialDisputeReasonTypes')?.value as string[];
-      
+      console.log('industrialDisputeReasonOptions', industrialDisputeReasonOptions)
       industrialDisputeReasonOptions.forEach((value: string) => {
       const data: any = {};
       data.id = 0;
@@ -244,10 +244,10 @@ export class IndustrialDisputesComponent {
       data.toDoActivityCategoryType = categoryTypeEnum.INDIVIDUAL_COMPLAINT_IND_DIS_REASON;
       data.todoActivityModeType = this.industrialDisputeReasonArray.length > 0 ? 2 : 1;
       data.IndustrialDisputesReasonType = Number(value);
-      
+      console.log('data', data);
       this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDisputeReasonMapping", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-       
+       console.log('Money Due Details saved successfully for value:', value);
        this.saveIndustrailDisputeReliefSoughtDetails();
       });
     })
@@ -269,7 +269,7 @@ export class IndustrialDisputesComponent {
       data.IndustrialDisputesReliefSoughtType = Number(value);
       this.appHttpRequestHandlerService.httpPost(data, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDisputeReliefSoughtMapping", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-       
+       console.log('Money Due Details saved successfully for value:', value);
        this.saveIndustrialDisputeForm();
       });
     })
@@ -282,7 +282,7 @@ export class IndustrialDisputesComponent {
       this.Input_Form.controls.rootActivityRefId.patchValue(this.paramInfo.rootActivityRefId);
       this.Input_Form.controls.toDoActivityCategoryType.patchValue(categoryTypeEnum.INDIVIDUAL_COMPLAINT_INDUSTRIAL_DISPUTES);
       this.Input_Form.controls.applicationType.patchValue(this.paramInfo.applicationType);
-      
+      console.log('input form value', this.Input_Form.value);
       this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.Complaint_IndustrialDispute", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
           this.navigateToNextStep(data);

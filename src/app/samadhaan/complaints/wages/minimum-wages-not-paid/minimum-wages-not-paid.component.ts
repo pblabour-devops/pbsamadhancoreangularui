@@ -67,7 +67,7 @@ export class MinimumWagesNotPaidComponent {
     });
       this.addMore(detail)
     })
-    
+    console.log('input form', this.Input_Form.value)
     }
     }
   }
