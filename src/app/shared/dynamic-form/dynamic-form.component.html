@@ -1,0 +1,8 @@
+<form>
+    <div *ngFor="let i of dynamicForm?.dynamicFormFields">
+        {{i.captionText}} <input autocomplete="off" () [type]="getInputType(i.key)" [id]="i.key"
+            (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)"
+            [value]="i.value">
+    </div>
+    <input type="submit" (click)="onLoginSubmit()">
+</form>
