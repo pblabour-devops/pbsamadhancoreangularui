@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit { protected ngUnsubscribe: 
   
   hasErrorInLogin: boolean= false;
   loginErrorMsg:string = '';
-  screenType: string='LOGIN';
+  screenType: any='LOGIN';
   loginResp: ILoginResponseViewModel;
   resetPasswordResp: IResetPasswordResponseViewModel;
   pageMode: string = 'LOGIN';

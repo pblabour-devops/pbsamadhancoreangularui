@@ -1,50 +1,135 @@
+<!-- <div class="top-bar">
+    <div class="top-left">
+        <a href="javascript:void(0)">Government of India</a>
+        <a href="javascript:void(0)">M/o Labour &amp; Employment</a>
+        <a href="javascript:void(0)">Skip to main content</a>
+        <a href="javascript:void(0)">Screen Reader Access</a>
+    </div>
+    <div class="top-right">
+        <button style="background:#fff;">&#9633;</button>
+        <button class="dark">&#9632;</button>
+        <button>A-</button>
+        <button>A</button>
+        <button>A+</button>
+        <button class="lang-toggle">अ / A</button>
+    </div>
+</div> -->
+
+<!-- ===================== MAIN HEADER ===================== -->
+<div class="main-header">
+    <div class="gov-emblem-block">
+            <img src="./assets/images/eNivaraan-logo.png" alt="Emblem of India" height="83px">
+        <div>
+            <p class="gov-text-punjabi">ਕਿਰਤ ਵਿਭਾਗ</p>
+            <p class="gov-text-sub">Department of Labour, Punjab</p>
+            <p class="gov-text-sub">Government of Punjab</p>
+        </div>
+    </div>
+
+    <div class="title-block">
+        <div class="samadhan-title">
+            <span><span class="e-color"><span>e</span> <span style="position:relative; top : 5px">-</span> </span><span class="s-orange">ਨਿਵਾਰਨ</span></span> / 
+            <span><span class="e-color"><span>e</span> <span style="position:relative; top : 5px">-</span> </span><span class="s-orange">Nivaraan</span></span> 
+            <!-- <span class="beta-badge">Beta Version</span> -->
+        </div>
+        <p class="tagline">Justice for Workmen made Simple, Easy &amp; Quick</p>
+        <!-- <p class="test-notice">(This website is for testing purpose only)</p> -->
+    </div>
+    <img src="assets/img/logo_Latest.png" alt="Punjab Logo" height="83px">
+
+    
+<!-- <div class="flag-emblem-custom" title="India Flag Emblem">
+    <div class="stripe saffron"></div>
+    <div class="stripe white">
+        <div class="ashoka-chakra">
+            <div class="ashoka-chakra-spokes"></div>
+        </div>
+    </div>
+    <div class="stripe green"></div>
+</div> -->
+</div>
+
+<!-- ===================== NAVIGATION BAR ===================== -->
+<div class="nav-bar">
+    <!-- <a href="javascript:void(0)" class="nav-item"><i class="feather icon-home"></i></a>
+    <a href="javascript:void(0)" class="nav-item">About Us <i class="feather icon-chevron-down"></i></a>
+    <a href="javascript:void(0)" class="nav-item">CSC <i class="feather icon-chevron-down"></i></a>
+    <a href="javascript:void(0)" class="nav-item">Track your Application</a>
+    <a href="javascript:void(0)" class="nav-item">FAQs</a> -->
+</div>
+
 <div class="login-page">
+    <!-- HEADER  -->
+     
     <div class="mainwraper">
         <div class="wrapper">
             <div class="logincontainer">
+                <div class="left-panel">
+                    <div class="row">
+                        <div class="col-md-12 text-align">
+                            <h2 style="font-weight: bold;">Welcome to e-Nivaraan Portal!</h2><br>
+                             <h2 style="font-weight: bold;">(PUNJAB)</h2>
+                        </div>
+                        <div class="col-md-12 text-align">
+                            <img src="assets/img/logo_Latest.png" alt="Invest Punjab Logo" />
+                        </div>
+                        <!-- <div class="col-md-12 text-align">
+                            <span style="font-size: 20px; color: yellow;"><u>Helpdesk Support</u></span><br>
+                            <span style="font-size: 16px;"><i class="feather icon-phone-call"></i> 0172-2920755,  0172-2925755</span><br>
+                            <span style="font-size: 16px;"><i class="feather icon-mail"></i> elabourhelpdesk[at]gmail[dot]com</span>
+                        </div> -->
+                    </div>
+                </div>
                 <div class="right-panel">
-                   <div class="row"style="border-bottom: 3px solid #2141A4; padding-bottom: 10px;">
-                    <div class="col-md-2"><img src="./assets/images/gov_new.png" style="height: 90px;"></div>
-                    <div class="col-md-8 deparartment-heading">
-                        <span>DEPARTMENT OF LABOUR</span><br>
-                        <span>PUNJAB</span>
+                   <div class="row" style="border-bottom: 3px solid #2141A4; padding-bottom: 104px;">
+                        <div class="col-md-12">
+                            <div class="col-md-12" style="text-align:center;">
+                                <img src="./assets/images/eNivaraan-logo.png" style="height: 170px;">
+                                <!-- <img src="./assets/img/logo_Latest.png" style="height: 100px; float: inline-end;"> -->
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-2"><img src="./assets/img/logo_Latest.png" style="height: 100px; float: inline-end;"></div>
-                    </div>
+
 
                     <div class="row form-box" *ngIf="screenType=='LOGIN'">
                         <div class="col-md-12">
                             <h2 class="login-title">New User Registration</h2>
                         </div>
                          <div class="col-md-12 text-danger" *ngIf="hasErrorInLogin">{{loginErrorMsg}}</div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <div *ngFor="let i of getFormField('FirstName')" class="form-group">
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
+                                <div class="input-with-icon">
                                 <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <div *ngFor="let i of getFormField('MiddleName')" class="form-group">
                                 <label class="form-label">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
+                                <div class="input-with-icon">
                                 <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <div *ngFor="let i of getFormField('LastName')" class="form-group">
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
+                                <div class="input-with-icon">
                                 <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -52,24 +137,28 @@
                         </div>
 
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div *ngFor="let i of getFormField('Mobile')" class="form-group">
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
+                                <div class="input-with-icon">
                                 <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
                             </div>
                         </div>
+                                            </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div *ngFor="let i of getFormField('Email')" class="form-group">
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label>
+                                <div class="input-with-icon">
                                 <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -83,9 +172,10 @@
                                 {{ i.captionText }} <span class="text-danger"></span>
                             </label>
                             <div class="captcha-row">
-                                <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
-                                    (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
-
+                                <div class="input-with-icon">
+                                    <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                        (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
                                 <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
                                 <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
                                     <img src="./assets/img/refresh.png" class="refresh-icon">    
@@ -110,7 +200,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
                     <div class="form-box" *ngIf="screenType=='OTP'">
                          <div class="col-md-12">
                             <h2 class="login-title">OTP Verification</h2>
@@ -122,7 +211,9 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span>
                                 </label><span class="mini-caption-text">(Sent on mobile number: <strong>{{getMashedMobileNo()}}</strong>)</span>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -133,7 +224,9 @@
                                 <label class="form-label required">
                                     {{i.captionText}} <span class="text-danger"></span> 
                                 </label><span class="mini-caption-text">(Sent on email address: <strong>{{getMashedEmail()}}</strong>)</span>
-                                <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                <div class="input-with-icon">
+                                    <input autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value" (keydown)="onKeyDown($event)">
+                                </div>
                                 <div class="text-danger small" *ngIf="!i.isValid">
                                     {{i.validationErrorText}}
                                 </div>
@@ -144,9 +237,10 @@
                                 {{ i.captionText }} <span class="text-danger"></span>
                             </label>
                             <div class="captcha-row">
-                                <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
-                                    (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
-
+                                <div class="input-with-icon">
+                                    <input class="captcha-input" placeholder="Enter Captcha" autocomplete="off" [type]="getInputType(i.key)" [id]="i.key" (focus)="onFocus($event)" 
+                                        (focusout)="onFormFieldChange(i.isClientSideEncryption, $event)" [value]="i.value"  (keydown)="onKeyDown($event)">
+                                </div>
                                 <img class="captcha-image" src="data:image/png;base64,{{captchaImg}}">
                                 <button type="button" class="captcha-refresh" (click)="getCaptchaCode()">
                                     <img src="./assets/img/refresh.png" class="refresh-icon">    
@@ -159,7 +253,9 @@
                         </div>
 
                         <div *ngFor="let i of getFormField('OriginalCaptcha')" class="d-none">
+                              <div class="input-with-icon">
                             <input [type]="getInputType(i.key)" [id]="i.key" [value]="i.value">
+                            </div>
                         </div>
 
                         <button class="login-btn mt-4" (click)="getMatchOtpCode()">
@@ -202,3 +298,4 @@
         </div>
     </div>
 </div>
+
