@@ -130,7 +130,16 @@ export class FileApplicationComponent {
           })
         }
       });
-    } else {
+    } else if(this.selectedIssues.some(x => x.complaintCategoryType === 15 )) {
+      this.router.navigate(['/samadhaan/penality-code-on-wages'], {
+        queryParams: {
+          info: this.commonOpsService.encodeQueryParamsInBase64({
+            selectedIssues: this.selectedIssues.map(x => x.id).join(',')
+          })
+        }
+      });
+    } 
+    else {
       this.router.navigate(['/samadhaan/appeal'], {
         queryParams: {
           info: this.commonOpsService.encodeQueryParamsInBase64({
