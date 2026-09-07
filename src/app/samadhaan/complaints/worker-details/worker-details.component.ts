@@ -90,8 +90,13 @@ export class WorkerDetailsComponent {
       .subscribe(params => {
         this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
           this.paramInfo = info;
-          this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId , projectSiteId: 0}, "Complaints", "getWorkerDetails").pipe(takeUntil(this.ngUnsubscribe))
-            .subscribe((data: GenericFormModel<any>) => {
+          const issueIds = this.paramInfo.selectedIssues?.split(',').map((x: string) => Number(x.trim())).filter((x: number) => !isNaN(x));
+
+        console.log('issue ids', issueIds);
+
+        this.appHttpRequestHandlerService.httpGet({ id: this.paramInfo.appRefId, issueIds: issueIds?.join(',') ?? '' },"Complaints","getWorkerDetails")
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((data: GenericFormModel<any>) => {
               this.genericFormData = data;
               this.appFormStepsList = data.appFormStepsList;
                 if (data.formModel.id > 0) {
@@ -193,7 +198,7 @@ export class WorkerDetailsComponent {
         this.Input_Form.controls.applicationType.patchValue(100001);
         this.appHttpRequestHandlerService.httpPost(this.Input_Form.value, "pbsamadhannetcoreapi.Models.WorkerDetail", "Crud", "CreateUpdate").pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
-            this.navigateToNextStep(data);
+            this.mapCategories(data);
         });
     } else {
       this.Input_Form.markAllAsTouched();
@@ -210,8 +215,7 @@ export class WorkerDetailsComponent {
   const issueIds = this.paramInfo.selectedIssues.split(',').map((x: string) => Number(x.trim()));
 
   issueIds.forEach((issueId: number) => {
-    this.appHttpRequestHandlerService.httpPost({appRefId: regFormRspData.appId,complaintsCategoryRefId: issueId},
- "pbsamadhannetcoreapi.Models.AppComplaintTypeMapping","Complaints","createAppComplaintTypeMapping").pipe(takeUntil(this.ngUnsubscribe))
+    this.appHttpRequestHandlerService.httpPost({appRefId: regFormRspData.appId,complaintsCategoryRefId: issueId},"pbsamadhannetcoreapi.Models.AppComplaintTypeMapping","Complaints","createAppComplaintTypeMapping").pipe(takeUntil(this.ngUnsubscribe))
     .subscribe((data: ICRUD_CreateUpdateOperationResponse) => {
       if(!data.hasExceptions){
       this.navigateToNextStep(regFormRspData);

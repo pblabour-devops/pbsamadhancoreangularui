@@ -59,7 +59,8 @@ export class AppealComponent implements AfterViewInit, OnDestroy{
         .subscribe(params => {
           this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
             this.paramInfo = info;
-            this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId , projectSiteId: 0}, "Complaints", "getAppealDetail").pipe(takeUntil(this.ngUnsubscribe))
+            const issueIds = this.paramInfo.selectedIssues?.split(',').map((x: string) => Number(x.trim())).filter((x: number) => !isNaN(x));
+            this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId ,  issueIds: issueIds?.join(',') ?? '' }, "Complaints", "getAppealDetail").pipe(takeUntil(this.ngUnsubscribe))
               .subscribe((data: GenericFormModel<any>) => {
                 this.appFormStepsList = data.appFormStepsList;
                   if (data.formModel.id > 0) {
