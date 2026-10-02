@@ -10,7 +10,8 @@ import { AppealComponent } from './complaints/appeal/appeal.component';
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details/employer-details.component';
 import { RecoveryOfMoneyGeneralDetailsComponent } from './complaints/recovery-of-money/recovery-of-money-general-details/recovery-of-money-general-details.component';
 import { IndustrialDisputesComponent } from './complaints/industrial-disputes/industrial-disputes.component';
-import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
+import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-industrial-relations-code/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
+import { PenalityCodeOnWagesGeneralDetailsComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-general-details/penality-code-on-wages-general-details.component';
 
 const routes: Routes = [
    {path : 'worker-details',component : WorkerDetailsComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
    {path : 'review',component : ReviewComponent},
    {path : 'appeal',component : AppealComponent},
    {path : 'industrial-disputes',component : IndustrialDisputesComponent},
-   {path : 'penality-code-on-wages',component : PenalityCodeOnWagesBreachComponent}
+   {path : 'penality-code-on-wages',component : PenalityCodeOnWagesGeneralDetailsComponent},
+   {path : 'penality-industrial-relations-code',component : PenalityCodeOnWagesBreachComponent}
 ];
 
 @NgModule({

@@ -547,3 +547,31 @@ export interface IComplaint_OtherStandingOrderContraventionIRCode {
   rootActivityRefId: string;
   toDoActivityCategoryType: number;
 }
+
+export interface IComplaint_PenaltyImpositionCodeOnWage {
+  id: number;
+  appRefId: number;
+  isEmployerPaidLessAmountType: boolean;
+  ClaimApplicationRefId: number;
+  FinalOrderDate: string;
+  ApplicationFilingDate: string;
+  applicationType: number;
+  applicationPurposeType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  rootActivityRefId: string;
+  toDoActivityCategoryType: number;
+}
+
+export interface IComplaint_PenaltyCodeOnWagesOffence {
+  id: number;
+  appRefId: number;
+  sectionRule: string;
+  offence: string;
+  applicationType: number;
+  applicationPurposeType: number;
+  projectSiteVersion: number;
+  toDoActivityModeType: number;
+  rootActivityRefId: string;
+  toDoActivityCategoryType: number;
+}

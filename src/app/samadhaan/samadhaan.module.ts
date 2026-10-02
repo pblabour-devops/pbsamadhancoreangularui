@@ -26,12 +26,15 @@ import { AppealComponent } from './complaints/appeal/appeal.component';
 import { EmployerDetailsComponent } from './complaints/employer-details/employer-details/employer-details.component';
 import { RecoveryOfMoneyGeneralDetailsComponent } from './complaints/recovery-of-money/recovery-of-money-general-details/recovery-of-money-general-details.component';
 import { IndustrialDisputesComponent } from './complaints/industrial-disputes/industrial-disputes.component';
-import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
-import { ContraventionIrCodeComponent } from './complaints/penality-code-on-wages/contravention-ir-code/contravention-ir-code.component';
-import { OtherContraventionIrCodeComponent } from './complaints/penality-code-on-wages/other-contravention-ir-code/other-contravention-ir-code.component';
+import { ContraventionIrCodeComponent } from './complaints/penality-industrial-relations-code/contravention-ir-code/contravention-ir-code.component';
+import { OtherContraventionIrCodeComponent } from './complaints/penality-industrial-relations-code/other-contravention-ir-code/other-contravention-ir-code.component';
+import { PenalityCodeOnWagesBreachComponent } from './complaints/penality-industrial-relations-code/penality-code-on-wages-breach/penality-code-on-wages-breach.component';
+import { PenalityCodeOnWagesGeneralDetailsComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-general-details/penality-code-on-wages-general-details.component';
+import { PenalityCodeOnWagesOffenceComponent } from './complaints/penality-code-on-wages/penality-code-on-wages-offence/penality-code-on-wages-offence.component';
+
 @NgModule({
   declarations: [ EmployerDetailsComponent, WorkplaceDetailsComponent, EstablishmentDetailsComponent, GratuityClaimsComponent, MbComplaintComponent, ClaimUnderCodeOnWagesComponent, MinimumWagesNotPaidComponent, WagesWeeklydayComponent, WagesWorkingOvertimeComponent, WagesNotPaidAtAllComponent, WagesUnauthorisedDeductionComponent, NonPaymentBonusComponent, DetailsComponent, SettlementDetailsComponent, AwardDetailsComponent, NoticePayDetailsComponent, RetrenchmentCompensationDetailsComponent, LayOffDetailsComponent, ReviewComponent, AppealComponent, RecoveryOfMoneyGeneralDetailsComponent, IndustrialDisputesComponent,
-    PenalityCodeOnWagesBreachComponent, ContraventionIrCodeComponent, OtherContraventionIrCodeComponent
+    PenalityCodeOnWagesBreachComponent, ContraventionIrCodeComponent, OtherContraventionIrCodeComponent, PenalityCodeOnWagesOffenceComponent, PenalityCodeOnWagesGeneralDetailsComponent
   ],
   imports: [
     CommonModule,

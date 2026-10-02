@@ -52,22 +52,6 @@ paramInfo : any
             .subscribe(params => {
               this.commonOpsService.decodeQueryParamsFromBase64ToModel(params.info, (info) => {
                 this.paramInfo = info;
-                // this.appHttpRequestHandlerService.httpGet({id : this.paramInfo.appRefId}, "Complaints", "getPenaltyImpositionIndustrialRelationCodeDetail").pipe(takeUntil(this.ngUnsubscribe))
-                //   .subscribe((data: GenericFormModel<IComplaint_PenaltyImpositionIndustrialRelationCode>) => {
-                    // this.breachSectionType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'PenaltyBreachSectionEnum').selectListItems
-                    // this.specifyUnfairLabourPracticeTypes = data.enumTemplateLists.find(e => e.selectListTypeCode == 'SpecifyUnfairLabourPracticeTypeEnum').selectListItems
-                    // this.allUnfairLabourPracticeType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeTypeEnum').selectListItems
-                    // this.allUnfairLabourPracticeSubCategoryType = data.enumTemplateLists.find(e => e.selectListTypeCode == 'UnfairLabourPracticeSubCategoryTypeEnum').selectListItems
-  
-                    // this.appFormStepsList = data.appFormStepsList;
-                    //   console.log("formodle", data.formModel);
-                    //   if (data.formModel) {
-                    //    const formData = data.formModel;
-                    //   this.Input_Form.patchValue(formData);
-                    //   this.Input_Form.patchValue({ toDoActivityModeType: 2});
-                    //   this.Input_Form.patchValue({rootActivityRefId : 'defaultValue'});
-                    // }
-                  // });
               });
             });
         }

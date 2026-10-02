@@ -1,0 +1,44 @@
+
+<form [formGroup]="Input_Form">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="appRefId">
+    <input type="hidden" formControlName="applicationPurposeType">
+    <input type="hidden" formControlName="projectSiteVersion">
+    <input type="hidden" formControlName="toDoActivityModeType">
+    <input type="hidden" formControlName="rootActivityRefId">
+    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+
+    
+    <div class="section-card">
+            <h5 class="section-title">Details of offence for which complaint is being filed :</h5>
+
+           <div class="text-right mt-3">
+        <button type="button" class="btn btn-primary ml-2" (click)="addOffence()">Add</button>
+      </div>
+
+      <div *ngIf="offenceList.length > 0">
+        <h6 class="details-title">Details Added</h6>
+        <table class="table table-bordered details-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Section Rule</th>
+              <th>Offence</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of offenceList; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{emp.otherContraventionSection}}</td>
+              <td>{{emp.otherContraventionOffences}}</td>
+              <td><button (click)="deleteOffence(i)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+
+  </form>

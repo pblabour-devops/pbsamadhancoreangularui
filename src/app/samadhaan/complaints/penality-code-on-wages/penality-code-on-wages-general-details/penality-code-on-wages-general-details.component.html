@@ -1,0 +1,110 @@
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="card">
+            <div class="m-2">
+                <form [formGroup]="Input_Form" (ngSubmit)="onSubmit()">
+
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="appRefId">
+                    <input type="hidden" formControlName="applicationPurposeType">
+                    <input type="hidden" formControlName="projectSiteVersion">
+                    <input type="hidden" formControlName="toDoActivityModeType">
+                    <input type="hidden" formControlName="rootActivityRefId">
+                    <input type="hidden" formControlName="toDoActivityCategoryType">
+
+                    <!-- Title bar -->
+                    <div class="title-bar">
+                        Application for Your Complaint
+                    </div>
+                    <!-- General Information label -->
+                    <div class="general-info-label">
+                        General Information <span class="required"></span>
+                    </div>
+                    <app-formtab [appSteps]="appFormStepsList"></app-formtab>
+
+
+                    <!-- Basic / General Info -->
+                    <div class="card-body" style="margin-top: 0px;">
+
+                        <div class="section-card">
+                            <div class="row mb-2">
+                                   <div class="toggle-group flex-wrap align-items-center" role="radiogroup"
+                                >
+                                <label>Breach of section 54(1)(a) - Employer has paid less amount due to the employee</label>
+                                    @for (item of isEmployerPaidLessAmountType; track $index) {
+                                    <div class="col">
+                                    <label class="toggle-option">
+                                    <input type="radio" [value]="+item.value" formControlName="isEmployerPaidLessAmountType" />
+                                    <span>{{$index+1 + ')' + item.text}}</span>
+                                    </label>
+                                    </div>
+                                }
+                                </div>
+                                </div>
+
+                        @if(Input_Form.get('isEmployerPaidLessAmountType').value){
+                            <div class="row mb-2">
+
+                                <div class="col-md-6 ">
+                                    <label class="required">Claim application number filed before authority appointed under section 45(1) of the code</label>
+                                      <select formControlName="ClaimApplicationRefId" class="form-control">
+                                        <option value="" disabled selected>Select</option>
+                                        <option *ngFor="let type of ClaimApplicationRefId" [value]="type.value">{{ type.text }}</option>
+                                    </select>
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('ClaimApplicationRefId')?.invalid && Input_Form.get('ClaimApplicationRefId')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-6">
+                                    <label class="required">Date of final order passed by the authority appointed under section 45(1) of the code</label>
+                                    <input type="date" formControlName="FinalOrderDate" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('FinalOrderDate')?.invalid && Input_Form.get('FinalOrderDate')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+                                   <div class="col-md-6">
+                                    <label class="required">Date of filing of application</label>
+                                    <input type="date" formControlName="ApplicationFilingDate" class="form-control" />
+                                    <div class="text-danger"
+                                        *ngIf="Input_Form.get('ApplicationFilingDate')?.invalid && Input_Form.get('ApplicationFilingDate')?.touched">
+                                        Required
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+                              </div>
+
+                        @if(!Input_Form.get('isEmployerPaidLessAmountType').value){
+                           <app-penality-code-on-wages-offence></app-penality-code-on-wages-offence>
+                        }
+                      
+                        
+                      <!-- <app-contravention-ir-code [contraventionIrCodeData]="contraventionIrCodeData"></app-contravention-ir-code>
+                      <app-other-contravention-ir-code  [otherContraventionIrCodeData]="otherContraventionIrCodeData"></app-other-contravention-ir-code> -->
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                            <!-- <button type="button" class="btn btn-info text-white mr-3" (click)="onReset()">
+                            Reset
+                            </button>
+                            <button type="button" class="btn mr-3" style="background-color:#1c7fa4;color:#fff;" (click)="onSaveDraft()">
+                            Save as Draft
+                            </button> -->
+                            <button type="submit" class="btn btn-primary">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

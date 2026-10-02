@@ -29,7 +29,7 @@ export const  environment = {
   },
   thirdPartyIntegrationConfigs:{
     investPunjab:{
-      defaultReturnPath:'https://pbindustries.gov.in/testportal/login',
+      defaultReturnPath:'http://localhost:4200/',
       investPunjabReturnPath : 'http://pbindustries.gov.in/testportal/dashboard/investor-dashboard?t=SR&role=INVT'
     },
     sys_o_urls:{
